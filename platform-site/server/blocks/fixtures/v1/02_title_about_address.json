@@ -1,0 +1,19 @@
+{
+  "v": 1,
+  "blocks": [
+    {
+      "type": "title",
+      "text": "Cafe X"
+    },
+    {
+      "type": "about",
+      "text": "Ранкова кава та випічка.\nТиха тераса у дворі."
+    },
+    {
+      "type": "address",
+      "text": "Stodolní 12, Ostrava",
+      "lat": 49.8347,
+      "lon": 18.282
+    }
+  ]
+}

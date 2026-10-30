@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab_chats">Chats</string>
+    <string name="home_tab_wallet">Wallet</string>
+    <string name="home_tab_map">Map</string>
+    <string name="home_tab_profile">You</string>
+
+    <string name="profile_action_edit">Edit</string>
+    <string name="profile_name_missing">Add your name</string>
+    <string name="profile_handle_missing">Add a name people can find</string>
+    <string name="profile_photo">Profile photo</string>
+
+    <string name="profile_privacy">Privacy and security</string>
+    <string name="profile_notifications">Notifications</string>
+    <string name="profile_calls">Calls</string>
+    <string name="profile_calls_all">For all calls</string>
+    <string name="profile_profiles">Profiles</string>
+    <string name="profile_people">My people</string>
+    <string name="profile_pages">My pages</string>
+    <string name="profile_devices">Devices</string>
+    <string name="profile_offline_maps">Maps on this phone</string>
+    <string name="profile_data">Data and storage</string>
+    <string name="profile_appearance">Appearance</string>
+    <string name="profile_language">Language</string>
+    <string name="profile_help">Help</string>
+    <string name="profile_developer">For developers</string>
+
+    <string name="profile_dev_unlocked">Developer section unlocked</string>
+    <string name="profile_dev_steps">%1$d more to unlock the developer section</string>
+
+    <string name="profile_value_on_pc">on your computer</string>
+    <string name="profile_value_cloud">in the cloud</string>
+    <string name="profile_value_not_set">not set up</string>
+    <string name="profile_value_auto">By sun</string>
+    <string name="profile_value_day">Day</string>
+    <string name="profile_value_night">Night</string>
+    <string name="profile_value_count">%1$d</string>
+
+    <string name="profile_back">Back</string>
+
+    <string name="privacy_mic">Microphone</string>
+    <string name="privacy_mic_body">When and why Nightpost listens</string>
+    <string name="privacy_actions">Actions on this phone</string>
+    <string name="privacy_actions_body">What Nightpost does alone, and what needs your OK</string>
+    <string name="privacy_vault">Vault</string>
+    <string name="privacy_vault_body">Passwords and notes behind your fingerprint</string>
+    <string name="privacy_location">Location in the background</string>
+    <string name="privacy_system">Permissions in phone settings</string>
+
+    <string name="notif_system">Sound, vibration and badges</string>
+    <string name="notif_system_body">Opens the phone settings for Nightpost</string>
+    <string name="notif_alerts_title">Alerts and messages</string>
+    <string name="notif_hush_title">Exceptions</string>
+    <string name="notif_hush_mentions">Mentions in muted chats</string>
+    <string name="notif_hush_none">No muted chats</string>
+    <string name="notif_hush_forever">Muted</string>
+    <string name="notif_hush_until">Muted until %1$s</string>
+    <string name="notif_hush_unmute">Unmute</string>
+
+    <string name="devices_pc">Computer</string>
+    <string name="devices_this_phone">This phone</string>
+    <string name="devices_pc_none">Not connected. Nightpost can think on your computer.</string>
+    <string name="devices_pc_connect">Connect a computer</string>
+    <string name="devices_disconnect">Disconnect</string>
+    <string name="devices_handle">Name people can find</string>
+
+    <string name="phantom_mind">Mind</string>
+    <string name="phantom_voice">Voice</string>
+    <string name="phantom_voice_body">How Nightpost speaks and listens</string>
+    <string name="phantom_memory">What I know about you</string>
+    <string name="phantom_memory_body">Opens your chat with Nightpost</string>
+
+
+
+    <string name="data_saved">Vault</string>
+
+    <string name="appearance_theme">Theme</string>
+    <string name="appearance_auto">By sun</string>
+    <string name="appearance_day">Day</string>
+    <string name="appearance_night">Night</string>
+    <string name="appearance_text">Text size</string>
+    <string name="appearance_text_smaller">Smaller</string>
+    <string name="appearance_text_larger">Larger</string>
+    <string name="appearance_text_sample">This is how text will look in the app</string>
+    <string name="appearance_preview_them">See you at six?</string>
+    <string name="appearance_preview_me">Yes, I\'ll be there</string>
+    <string name="appearance_accent">Accent</string>
+    <string name="appearance_accent_amber">Amber</string>
+    <string name="appearance_accent_sage">Sage</string>
+    <string name="appearance_accent_sea">Sea</string>
+    <string name="appearance_accent_iris">Iris</string>
+    <string name="appearance_accent_rose">Rose</string>
+    <string name="appearance_accent_graphite">Graphite</string>
+    <string name="appearance_wallpaper">Chat wallpaper</string>
+    <string name="appearance_wallpaper_none">None</string>
+    <string name="appearance_wallpaper_gallery">Gallery</string>
+    <string name="appearance_wp_contour">Contour</string>
+    <string name="appearance_wp_sand">Sand</string>
+    <string name="appearance_wp_sage">Sage</string>
+    <string name="appearance_wp_slate">Slate</string>
+    <string name="appearance_wp_clay">Clay</string>
+    <string name="appearance_wp_dusk">Dusk</string>
+    <string name="appearance_wp_stone">Stone</string>
+    <string name="appearance_dim">Dim</string>
+    <string name="appearance_blur">Blur</string>
+    <string name="appearance_photo_failed">Couldn\'t open that photo.</string>
+    <string name="appearance_bubbles">Message bubbles</string>
+    <string name="appearance_list">Chat list</string>
+    <string name="appearance_comfortable">Comfortable</string>
+    <string name="appearance_compact">Compact</string>
+    <string name="language_system">As on phone</string>
+
+    <string name="help_sources">Where the map data comes from</string>
+    <string name="help_reports">Reports and requests</string>
+    <string name="help_license">Your copy of Nightpost</string>
+    <string name="help_version">Version</string>
+
+    <string name="dev_diagnostics">Diagnostics</string>
+    <string name="dev_precision">Position accuracy</string>
+    <string name="dev_symbiote">Symbiote</string>
+    <string name="dev_whisper">Overlay ribbon</string>
+
+    <string name="call_phantom_title">Nightpost</string>
+    <string name="call_listening">Listening</string>
+    <string name="call_hearing">Hearing you</string>
+    <string name="call_thinking">Thinking</string>
+    <string name="call_speaking">Speaking</string>
+    <string name="call_connecting">Connecting</string>
+    <string name="call_end">End</string>
+    <string name="call_mic_needed">Allow the microphone to talk to Nightpost.</string>
+    <string name="call_hold_to_talk">Hold and speak</string>
+    <string name="call_mode_live">Live voice</string>
+    <string name="call_mode_turn">Push to talk</string>
+    <string name="call_live_unavailable">Live voice unavailable — hold the button</string>
+    <string name="call_mic_allow">Allow microphone</string>
+    <string name="call_live_lost">The line dropped. Hold the button and speak.</string>
+    <string name="call_not_heard">Did not catch that — say it again.</string>
+    <string name="call_answer_in_chat">The answer is in the Nightpost chat.</string>
+    <string name="call_brain_silent">The brain did not answer within ninety seconds.</string>
+    <string name="call_mute">Microphone</string>
+    <string name="call_speaker">Speaker</string>
+    <string name="call_captions">Captions</string>
+    <string name="call_confirm_yes">Yes</string>
+    <string name="call_confirm_no">No</string>
+    <string name="call_you">You</string>
+    <string name="call_text_only">As text</string>
+
+    <string name="phantom_mind_pc">Nightpost thinks on your computer.</string>
+    <string name="phantom_mind_cloud">Nightpost thinks in the cloud with your key.</string>
+    <string name="phantom_mind_server">Thinks on the Nightpost server. No key needed.</string>
+    <string name="phantom_mind_server_spent">Today’s free questions are used up. Back tomorrow.</string>
+    <string name="phantom_mind_server_offline">The Nightpost server isn’t answering right now.</string>
+    <string name="phantom_mind_none">Connect a computer, or add a key in Advanced.</string>
+
+    <!-- Points: the Profile row and its section. Only the server counts; here they are only read. -->
+    <string name="profile_points">Points</string>
+    <string name="points_value_settle">add</string>
+    <string name="points_value_offline">no connection</string>
+    <string name="points_loading">Reading your points…</string>
+    <string name="points_offline_body">Points server is unreachable</string>
+    <string name="points_total">Total</string>
+    <string name="points_empty">No points yet</string>
+    <string name="points_kind_meetup">Meetup happened</string>
+    <string name="points_kind_payment">First paid share</string>
+    <string name="points_kind_invite">Friend joined by invite</string>
+    <string name="points_kind_other">Other action</string>
+    <string name="points_pending_title">A paid share is not counted yet</string>
+    <string name="points_pending_body">Confirm with your fingerprint to count it</string>
+    <string name="points_settle">Count it</string>
+    <string name="points_busy">Counting…</string>
+    <string name="points_confirm_title">Count this payment toward points</string>
+    <string name="points_confirm_detail">The points server will learn your wallet address</string>
+    <string name="points_note_declined">Nothing was counted without your confirmation.</string>
+    <string name="points_note_nothing">There is no payment waiting any more.</string>
+    <string name="points_note_wallet_changed">It was paid from another wallet, so the request was dropped.</string>
+    <string name="points_note_counted">Points added: %1$d.</string>
+    <string name="points_note_already">This payment was already counted, so there are no new points.</string>
+    <string name="points_note_not_confirmed">The network has not confirmed the payment yet. Try again in a minute.</string>
+    <string name="points_private">Visible only to you. Non-transferable.</string>
+</resources>

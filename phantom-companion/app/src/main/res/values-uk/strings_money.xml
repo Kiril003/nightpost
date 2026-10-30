@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Чернетка переказу: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Переказ для %1$s (%2$s) — вкажіть суму й підтвердіть.</string>
+    <string name="money_coin_guessed">Обрано монету %1$s</string>
+    <string name="money_which_one">Кілька людей з таким імʼям: %1$s. Уточніть прізвище.</string>
+    <string name="money_no_wallet">%1$s ще не має адреси гаманця.</string>
+    <string name="money_nobody">Не знайшов «%1$s» серед людей у ваших розмовах.</string>
+    <string name="money_who_missing">Кому переказати? Назвіть людину з розмов.</string>
+    <string name="money_bad_amount">Суму %1$s %2$s не скласти: найменша частка %2$s — %3$s.</string>
+    <string name="money_coin_not_here">%1$s у мережі %2$s немає.</string>
+    <string name="money_no_own_wallet">Ваш гаманець ще не готовий — відкрийте Налаштування › Гаманець.</string>
+    <string name="money_seal_pick">Оберіть фото для засвідчення SHA-256</string>
+    <string name="money_drafted_cash">Готівка з кишені: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Без інтернету можу дати лише готівкою з кишені, а %1$s</string>
+    <string name="money_offline_no_sol">у кишені бракує SOL на комісію й рахунок отримувача.</string>
+    <string name="money_offline_empty">там порожньо.</string>
+    <string name="money_offline_other_coin">там купюри в %1$s, не в %2$s.</string>
+    <string name="money_offline_short">там вільно лише %1$s %2$s.</string>
+    <string name="money_offline_external">кишеня працює лише з вбудованим гаманцем.</string>
+    <string name="money_offline_not_person">купюра передається лише контакту з розмови.</string>
+    <string name="money_watch_out">Зверніть увагу:</string>
+</resources>

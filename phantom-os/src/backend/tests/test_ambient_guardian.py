@@ -1,0 +1,139 @@
+"""Ambient guardian — perception → proactive care (slice 1)."""
+import pytest
+
+from agent.cognition.ambient.guardian import AmbientGuardian, AmbientRule, AmbientAlert
+from agent.cognition.ambient.rules import default_rules
+from agent.consciousness_stream import ConsciousnessStream
+
+
+def _snap(**over):
+    base = {
+        "who": {"user_id": "u1"},
+        "env": {"aqi": None},
+        "system": {"disk_percent": 10.0, "cpu_percent": 5.0, "internet_available": True},
+        "history": {"last_interaction_ago_s": 9999},
+        "when": {"hour": 12},
+    }
+    for k, v in over.items():
+        base.setdefault(k, {})
+        if isinstance(v, dict):
+            base[k] = {**base.get(k, {}), **v}
+        else:
+            base[k] = v
+    return base
+
+
+def test_air_quality_fires_when_unhealthy():
+    g = AmbientGuardian(rules=default_rules())
+    alerts = g.scan(_snap(env={"aqi": 180}), now=1000.0)
+    ids = [a.rule_id for a in alerts]
+    assert "air_quality" in ids
+    msg = next(a.message for a in alerts if a.rule_id == "air_quality")
+    assert "180" in msg
+
+
+def test_missing_field_never_fires():
+    g = AmbientGuardian(rules=default_rules())
+    # aqi None, normal system → nothing fires
+    alerts = g.scan(_snap(), now=1000.0)
+    assert alerts == []
+
+
+def test_debounce_blocks_refire_within_cooldown():
+    g = AmbientGuardian(rules=default_rules())
+    s = _snap(env={"aqi": 250})
+    first = g.scan(s, now=0.0)
+    again = g.scan(s, now=60.0)  # cooldown is 2h → still blocked
+    later = g.scan(s, now=0.0 + 2 * 3600 + 1)  # past cooldown
+    assert any(a.rule_id == "air_quality" for a in first)
+    assert not any(a.rule_id == "air_quality" for a in again)
+    assert any(a.rule_id == "air_quality" for a in later)
+
+
+def test_no_body_sensor_rules_remain():
+    """PHANTOM has no ESP32: no rule may read radar/biosignal/room-sensor data."""
+    ids = {r.id for r in default_rules()}
+    assert not ids & {"heat", "cold", "pressure_drop", "high_stress"}
+
+
+def test_deep_night_awake_fires_only_when_person_is_talking():
+    g = AmbientGuardian(rules=default_rules())
+    quiet = g.scan(_snap(when={"hour": 3}), now=0.0)
+    assert not any(a.rule_id == "deep_night_awake" for a in quiet)
+    talking = g.scan(_snap(when={"hour": 3}, history={"last_interaction_ago_s": 30}), now=1.0)
+    assert any(a.rule_id == "deep_night_awake" for a in talking)
+
+def test_internet_lost_is_edge_triggered():
+    g = AmbientGuardian(rules=default_rules())
+    g.scan(_snap(system={"internet_available": True}), now=0.0)
+    lost = g.scan(_snap(system={"internet_available": False}), now=10.0)
+    assert any(a.rule_id == "internet_lost" for a in lost)
+
+
+def test_disabled_rule_skipped():
+    rule = AmbientRule("x", "system", 5, 0.0,
+                       lambda s, p: "boom", enabled=False)
+    g = AmbientGuardian(rules=[rule])
+    assert g.scan(_snap(), now=0.0) == []
+
+
+def test_broken_rule_does_not_break_scan():
+    def boom(s, p):
+        raise ValueError("nope")
+    g = AmbientGuardian(rules=[AmbientRule("b", "system", 1, 0.0, boom),
+                              AmbientRule("ok", "system", 1, 0.0, lambda s, p: "fine")])
+    alerts = g.scan(_snap(), now=0.0)
+    assert [a.rule_id for a in alerts] == ["ok"]
+
+
+def test_open_meteo_aqi_parser():
+    from geo.sources.environmental import EnvironmentalAdapter
+    assert EnvironmentalAdapter.parse_open_meteo_aqi({"current": {"us_aqi": 73}}) == 73.0
+    assert EnvironmentalAdapter.parse_open_meteo_aqi({"current": {}}) is None
+    assert EnvironmentalAdapter.parse_open_meteo_aqi({}) is None
+    assert EnvironmentalAdapter.parse_open_meteo_aqi({"current": {"us_aqi": "bad"}}) is None
+
+
+def test_set_env_aqi_is_sticky_and_guards_none():
+    from core.context_engine import context_engine
+    context_engine.set_env_aqi(140.0)
+    assert context_engine.get_snapshot()["env"]["aqi"] == 140.0
+    context_engine.set_env_aqi(None)  # must not clobber
+    assert context_engine.get_snapshot()["env"]["aqi"] == 140.0
+
+
+class _FakeLoop:
+    def __init__(self):
+        self.triggers = []
+    def push_trigger(self, t):
+        self.triggers.append(t)
+
+
+@pytest.mark.asyncio
+async def test_serious_alert_becomes_proactive_trigger():
+    from agent.cognition.proactive.loop import set_loop, get_loop
+    from agent.cognition.proactive.triggers import ProactiveTriggerKind
+    prev = get_loop()
+    fake = _FakeLoop()
+    set_loop(fake)
+    try:
+        g = AmbientGuardian(rules=[])
+        await g._surface(_snap(), AmbientAlert("air_quality", "environment", 7, "погане повітря"))
+        await g._surface(_snap(), AmbientAlert("internet_lost", "system", 3, "зник інтернет"))
+    finally:
+        set_loop(prev)
+    kinds = [t.kind for t in fake.triggers]
+    assert ProactiveTriggerKind.AMBIENT_ALERT in kinds
+    assert len(fake.triggers) == 1  # only the severity-7 alert crossed the bar
+
+
+def test_consciousness_push_dedups_and_caps():
+    cs = ConsciousnessStream()
+    cs.push_insight("u1", "a")
+    cs.push_insight("u1", "a")  # dup ignored
+    for i in range(10):
+        cs.push_insight("u1", f"m{i}")
+    q = cs._pending_insights["u1"]
+    assert len(q) <= 5
+    assert q.count("a") <= 1
+    assert cs.get_pending_insight("u1") is not None

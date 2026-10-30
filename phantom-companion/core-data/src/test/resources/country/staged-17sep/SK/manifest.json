@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 49.6138,
+    "maxLon": 22.5657,
+    "minLat": 47.7312,
+    "minLon": 16.8332
+  },
+  "files": [
+    {
+      "bytes": 1013162,
+      "name": "places.tsv.gz",
+      "sha256": "b62ea28dd1bf4925bd3039d8d33570a736b95c9b21b77c5d15564914d46ba838"
+    },
+    {
+      "bytes": 418483,
+      "name": "streets.tsv.gz",
+      "sha256": "5c854475a2c5d2a341439ee97b44b2e0f26401abd44fe9a2b35eb958d9d45ab5"
+    }
+  ],
+  "home": {
+    "lat": 48.1517,
+    "lon": 17.1093,
+    "zoom": 12.0
+  },
+  "id": "SK",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "sk-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Словаччина: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "sk-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Словаччина: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Словаччина",
+  "version": 1
+}

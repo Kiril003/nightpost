@@ -1,0 +1,3625 @@
+{
+  "version": 1,
+  "primitives": {
+    "text": {
+      "json": "string",
+      "min": 1,
+      "max": 200,
+      "refusal": "bad_text"
+    },
+    "richtext": {
+      "json": "string",
+      "min": 1,
+      "max": 4000,
+      "multiline": true,
+      "https_only": true,
+      "refusal": "bad_text"
+    },
+    "number": {
+      "json": "number",
+      "min": 0,
+      "max": 1000000,
+      "refusal": "bad_number"
+    },
+    "percent": {
+      "json": "integer",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "refusal": "bad_percent"
+    },
+    "money": {
+      "json": "object",
+      "decimals": {
+        "USDC": 6,
+        "SOL": 9,
+        "EURC": 6
+      },
+      "refusal": "bad_price"
+    },
+    "token": {
+      "json": "string",
+      "vocab": "token",
+      "decimals": {
+        "USDC": 6,
+        "SOL": 9,
+        "EURC": 6
+      },
+      "refusal": "bad_token"
+    },
+    "time": {
+      "json": "string",
+      "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+      "refusal": "bad_time"
+    },
+    "timerange": {
+      "json": "object",
+      "refusal": "bad_timerange"
+    },
+    "duration": {
+      "json": "integer",
+      "min": 5,
+      "max": 1440,
+      "step": 5,
+      "refusal": "bad_duration"
+    },
+    "date": {
+      "json": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$",
+      "refusal": "bad_date"
+    },
+    "daterange": {
+      "json": "object",
+      "max_days": 366,
+      "refusal": "bad_daterange"
+    },
+    "datetime": {
+      "json": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])T([01]\\d|2[0-3]):[0-5]\\d$",
+      "refusal": "bad_datetime"
+    },
+    "dayset": {
+      "json": "array",
+      "vocab": "day",
+      "min": 1,
+      "max": 7,
+      "refusal": "bad_dayset"
+    },
+    "recurrence": {
+      "json": "object",
+      "max_occurrences": 52,
+      "refusal": "bad_recurrence"
+    },
+    "image": {
+      "json": "object",
+      "max_bytes": 8388608,
+      "max_alt": 120,
+      "refusal": "bad_image"
+    },
+    "gallery": {
+      "json": "array",
+      "min": 1,
+      "max": 24,
+      "refusal": "bad_gallery"
+    },
+    "video": {
+      "json": "object",
+      "max_secs": 60,
+      "max_bytes": 41943040,
+      "refusal": "bad_video"
+    },
+    "audio": {
+      "json": "object",
+      "max_secs": 600,
+      "max_title": 80,
+      "refusal": "bad_audio"
+    },
+    "file": {
+      "json": "object",
+      "mime": "application/pdf",
+      "max_bytes": 10485760,
+      "max_name": 120,
+      "refusal": "bad_file"
+    },
+    "link": {
+      "json": "object",
+      "https_only": true,
+      "max_url": 300,
+      "max_label": 80,
+      "refusal": "bad_link"
+    },
+    "phone": {
+      "json": "string",
+      "pattern": "^\\+[1-9]\\d{6,14}$",
+      "refusal": "bad_phone"
+    },
+    "email": {
+      "json": "string",
+      "max": 120,
+      "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+      "refusal": "bad_email"
+    },
+    "point": {
+      "json": "object",
+      "lat_min": -90.0,
+      "lat_max": 90.0,
+      "lon_min": -180.0,
+      "lon_max": 180.0,
+      "refusal": "bad_point"
+    },
+    "route": {
+      "json": "array",
+      "min": 2,
+      "max": 50,
+      "refusal": "bad_route"
+    },
+    "person": {
+      "json": "object",
+      "max_role": 40,
+      "refusal": "bad_person"
+    },
+    "choice": {
+      "json": "string",
+      "refusal": "bad_choice"
+    },
+    "tagset": {
+      "json": "array",
+      "min": 1,
+      "max": 24,
+      "refusal": "bad_tagset"
+    },
+    "toggle": {
+      "json": "boolean",
+      "refusal": "bad_toggle"
+    },
+    "ref": {
+      "json": "string",
+      "scopes": [
+        "page",
+        "venue"
+      ],
+      "refusal": "bad_ref"
+    },
+    "list": {
+      "json": "array",
+      "min": 1,
+      "max": 200,
+      "refusal": "bad_list"
+    },
+    "wallet": {
+      "json": "string",
+      "bytes": 32,
+      "refusal": "bad_wallet"
+    },
+    "derived": {
+      "json": "null",
+      "sources": [
+        "rating",
+        "counter",
+        "qr",
+        "stat",
+        "status",
+        "slots",
+        "local"
+      ],
+      "refusal": "derived_field"
+    }
+  },
+  "families": [
+    "id",
+    "loc",
+    "hrs",
+    "ame",
+    "cat",
+    "deal",
+    "book",
+    "cls",
+    "evt",
+    "loy",
+    "pay",
+    "com",
+    "org",
+    "med",
+    "sta"
+  ],
+  "vocab": {
+    "token": [
+      "USDC",
+      "SOL",
+      "EURC"
+    ],
+    "subject": [
+      "place"
+    ],
+    "tone": [
+      "amber",
+      "sage",
+      "sea",
+      "iris",
+      "rose",
+      "graphite"
+    ],
+    "audience": [
+      "public",
+      "pass"
+    ],
+    "day": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun"
+    ],
+    "kind": [
+      "cafe",
+      "bar",
+      "pub",
+      "restaurant",
+      "bistro",
+      "bakery",
+      "pastry",
+      "coffee_roaster",
+      "tea_house",
+      "wine_bar",
+      "craft_beer",
+      "cocktail_bar",
+      "club",
+      "venue",
+      "promoter",
+      "festival",
+      "meetup",
+      "supper_club",
+      "street_food",
+      "food_truck",
+      "market_stall",
+      "gelato",
+      "juice_bar",
+      "barber",
+      "hair_salon",
+      "beauty",
+      "nails",
+      "spa",
+      "massage",
+      "tattoo",
+      "piercing",
+      "gym",
+      "fitness",
+      "yoga",
+      "pilates",
+      "dance",
+      "martial_arts",
+      "climbing",
+      "swimming",
+      "tennis",
+      "running_club",
+      "sports_club",
+      "coworking",
+      "studio",
+      "photo_studio",
+      "recording_studio",
+      "rehearsal_room",
+      "makerspace",
+      "ceramics",
+      "woodwork",
+      "print_shop",
+      "museum",
+      "gallery",
+      "art_space",
+      "cinema",
+      "theatre",
+      "concert_hall",
+      "library",
+      "cultural_centre",
+      "community_space",
+      "society",
+      "language_school",
+      "music_school",
+      "cooking_school",
+      "tutoring",
+      "workshop",
+      "shop",
+      "boutique",
+      "vintage",
+      "records",
+      "books",
+      "comics",
+      "board_games",
+      "florist",
+      "plants",
+      "deli",
+      "zero_waste",
+      "bike_shop",
+      "outdoor",
+      "electronics",
+      " stationery",
+      "crafts",
+      "pet_shop",
+      "hostel",
+      "guesthouse",
+      "boutique_hotel",
+      "cabin",
+      "campsite",
+      "tour",
+      "walking_tour",
+      "bike_tour",
+      "boat_rental",
+      "kayak",
+      "ski_rental",
+      "repair_cafe",
+      "tailor",
+      "cobbler",
+      "watch_repair",
+      "bike_repair",
+      "laundry",
+      "dry_cleaner",
+      "vet",
+      "dog_grooming",
+      "dental",
+      "optician",
+      "physio",
+      "therapy",
+      "acupuncture",
+      "nutrition",
+      "chiropractic",
+      "pharmacy",
+      "childcare",
+      "play_space",
+      "escape_room",
+      "arcade",
+      "bowling",
+      "billiards",
+      "sauna",
+      "bathhouse",
+      "rooftop",
+      "garden_bar",
+      "pop_up"
+    ],
+    "amenity": [
+      "wifi",
+      "power",
+      "terrace",
+      "garden",
+      "rooftop",
+      "courtyard",
+      "step_free",
+      "toilet",
+      "accessible_toilet",
+      "baby_change",
+      "high_chair",
+      "pets",
+      "water_bowl",
+      "kids",
+      "play_corner",
+      "quiet_corner",
+      "laptop_friendly",
+      "meeting_table",
+      "late_kitchen",
+      "all_day_breakfast",
+      "vegan_options",
+      "gluten_free_options",
+      "plant_milk",
+      "decaf",
+      "filter_coffee",
+      "natural_wine",
+      "craft_beer",
+      "low_abv",
+      "free_water",
+      "takeaway",
+      "own_cup",
+      "returnable_cup",
+      "delivery_pickup",
+      "board_games",
+      "bookshelf",
+      "piano",
+      "vinyl_player",
+      "projector",
+      "stage",
+      "pa_system",
+      "dj_booth",
+      "dance_floor",
+      "cloakroom",
+      "lockers",
+      "showers",
+      "towels",
+      "changing_room",
+      "hair_dryer",
+      "mats_provided",
+      "chalk_rental",
+      "shoe_rental",
+      "bike_racks",
+      "ev_charger",
+      "parking",
+      "air_conditioning",
+      "heating",
+      "fireplace",
+      "blankets",
+      "shade",
+      "smoking_area",
+      "cashless",
+      "crypto_pay"
+    ],
+    "access": [
+      "step_free_entrance",
+      "ramp",
+      "lift",
+      "wide_doors",
+      "accessible_toilet",
+      "low_counter",
+      "braille",
+      "hearing_loop",
+      "quiet_hours",
+      "service_animals",
+      "seated_waiting",
+      "accessible_parking"
+    ],
+    "diet": [
+      "vegan",
+      "vegetarian",
+      "gluten_free",
+      "lactose_free",
+      "nut_free",
+      "sugar_free",
+      "halal",
+      "kosher"
+    ],
+    "allergen": [
+      "gluten",
+      "crustaceans",
+      "eggs",
+      "fish",
+      "peanuts",
+      "soybeans",
+      "milk",
+      "nuts",
+      "celery",
+      "mustard",
+      "sesame",
+      "sulphites",
+      "lupin",
+      "molluscs"
+    ],
+    "lang": [
+      "uk",
+      "en",
+      "cs",
+      "pl",
+      "de",
+      "sk",
+      "fr",
+      "es",
+      "it",
+      "pt",
+      "nl",
+      "sv",
+      "no",
+      "da",
+      "fi",
+      "et",
+      "lv",
+      "lt",
+      "ro",
+      "hu",
+      "bg",
+      "hr",
+      "sl",
+      "el",
+      "tr",
+      "ka",
+      "hy",
+      "he",
+      "ar",
+      "ja",
+      "ko",
+      "zh"
+    ],
+    "mode": [
+      "walk",
+      "tram",
+      "bus",
+      "metro",
+      "train",
+      "bike",
+      "car"
+    ],
+    "kids": [
+      "high_chair",
+      "baby_change",
+      "kids_menu",
+      "play_area",
+      "pram_space",
+      "family_toilet"
+    ],
+    "visibility": [
+      "public",
+      "unlisted",
+      "group"
+    ],
+    "look": [
+      "journal",
+      "studio",
+      "shop"
+    ],
+    "circle": [
+      "close",
+      "friends",
+      "social",
+      "work",
+      "everyone"
+    ],
+    "size": [
+      "1x1",
+      "2x1",
+      "2x2",
+      "3x1"
+    ],
+    "surface": [
+      "W",
+      "A",
+      "M",
+      "C"
+    ],
+    "book_mode": [
+      "book",
+      "request",
+      "hidden"
+    ]
+  },
+  "blocks": {
+    "id.name": {
+      "family": "id",
+      "tier": "P0",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "name": {
+          "p": "text",
+          "max": 80,
+          "req": true
+        },
+        "kind": {
+          "p": "choice",
+          "vocab": "kind"
+        },
+        "tagline": {
+          "p": "text",
+          "max": 60
+        }
+      },
+      "records": {},
+      "variants": [
+        "plain",
+        "with_logo",
+        "over_cover"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_choice"
+      ]
+    },
+    "id.about": {
+      "family": "id",
+      "tier": "P0",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "text": {
+          "p": "richtext",
+          "max": 1000,
+          "req": true
+        }
+      },
+      "records": {},
+      "variants": [
+        "paragraph",
+        "lead_body"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text"
+      ]
+    },
+    "loc.address": {
+      "family": "loc",
+      "tier": "P0",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "text": {
+          "p": "text",
+          "max": 200,
+          "req": true
+        },
+        "point": {
+          "p": "point",
+          "req": true
+        }
+      },
+      "records": {},
+      "variants": [
+        "map_line",
+        "line",
+        "big_map"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_point"
+      ]
+    },
+    "hrs.week": {
+      "family": "hrs",
+      "tier": "P0",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "rows": {
+          "p": "list",
+          "of": "row",
+          "min": 1,
+          "max": 14,
+          "req": true,
+          "refusal": "bad_hours"
+        }
+      },
+      "records": {
+        "row": {
+          "days": {
+            "p": "dayset",
+            "req": true
+          },
+          "hours": {
+            "p": "timerange",
+            "req": true
+          }
+        }
+      },
+      "variants": [
+        "strip",
+        "ranges",
+        "table"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_hours",
+        "bad_list",
+        "bad_dayset",
+        "bad_timerange"
+      ]
+    },
+    "cat.menu": {
+      "family": "cat",
+      "tier": "P0",
+      "max": 8,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "item",
+          "min": 1,
+          "max": 100,
+          "req": true
+        }
+      },
+      "records": {
+        "item": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 80,
+            "req": true
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "note": {
+            "p": "text",
+            "max": 140
+          },
+          "diet": {
+            "p": "tagset",
+            "vocab": "diet",
+            "max": 8
+          },
+          "allergens": {
+            "p": "tagset",
+            "vocab": "allergen",
+            "max": 14
+          }
+        }
+      },
+      "variants": [
+        "two_col",
+        "list",
+        "photo_cards"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "no_items",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item",
+        "too_many_items",
+        "bad_price",
+        "bad_tagset"
+      ]
+    },
+    "evt.single": {
+      "family": "evt",
+      "tier": "P0",
+      "max": 20,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 80,
+          "req": true
+        },
+        "starts": {
+          "p": "datetime",
+          "req": true
+        },
+        "ends": {
+          "p": "datetime"
+        },
+        "note": {
+          "p": "richtext",
+          "max": 400
+        },
+        "capacity": {
+          "p": "number",
+          "min": 1,
+          "max": 10000,
+          "int": true
+        },
+        "price": {
+          "p": "money"
+        },
+        "audience": {
+          "p": "choice",
+          "options": [
+            "public",
+            "people",
+            "invite"
+          ]
+        }
+      },
+      "records": {},
+      "variants": [
+        "card",
+        "hero",
+        "row"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_datetime",
+        "bad_event_time",
+        "bad_number",
+        "bad_price",
+        "bad_choice",
+        "duplicate_event",
+        "too_many_events"
+      ]
+    },
+    "pay.wallet": {
+      "family": "pay",
+      "tier": "P0",
+      "max": 1,
+      "surfaces": [
+        "P"
+      ],
+      "edit": "owner",
+      "fields": {
+        "address": {
+          "p": "wallet",
+          "req": true
+        }
+      },
+      "records": {},
+      "variants": [
+        "address_row"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_wallet"
+      ]
+    },
+    "id.hero": {
+      "family": "id",
+      "tier": "P0",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "headline": {
+          "p": "text",
+          "max": 90,
+          "req": true
+        },
+        "lede": {
+          "p": "text",
+          "max": 200
+        },
+        "image": {
+          "p": "image"
+        },
+        "chips": {
+          "p": "list",
+          "of": "chip",
+          "min": 1,
+          "max": 4
+        },
+        "primary": {
+          "p": "ref"
+        },
+        "primary_label": {
+          "p": "text",
+          "max": 32
+        },
+        "secondary": {
+          "p": "ref"
+        },
+        "secondary_label": {
+          "p": "text",
+          "max": 32
+        },
+        "proof": {
+          "p": "derived",
+          "source": "local"
+        }
+      },
+      "records": {
+        "chip": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "label": {
+            "p": "text",
+            "max": 30,
+            "req": true
+          }
+        }
+      },
+      "variants": [
+        "split",
+        "cover",
+        "stacked"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_image",
+        "bad_ref",
+        "derived_field",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "cat.products": {
+      "family": "cat",
+      "tier": "P0",
+      "max": 4,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60,
+          "req": true
+        },
+        "eyebrow": {
+          "p": "text",
+          "max": 40
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "product",
+          "min": 1,
+          "max": 120,
+          "req": true
+        }
+      },
+      "records": {
+        "product": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 60,
+            "req": true
+          },
+          "detail": {
+            "p": "text",
+            "max": 80
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "stock": {
+            "p": "number",
+            "min": 0,
+            "max": 10000,
+            "int": true,
+            "req": true
+          },
+          "group": {
+            "p": "text",
+            "max": 24
+          },
+          "image": {
+            "p": "image"
+          }
+        }
+      },
+      "variants": [
+        "grid",
+        "list",
+        "carousel"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "no_items",
+        "too_many_items",
+        "bad_price",
+        "bad_number",
+        "bad_image",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "deal.drop": {
+      "family": "deal",
+      "tier": "P0",
+      "max": 4,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60,
+          "req": true
+        },
+        "note": {
+          "p": "text",
+          "max": 200
+        },
+        "cover": {
+          "p": "image"
+        },
+        "products": {
+          "p": "ref",
+          "target": "cat.products",
+          "req": true
+        },
+        "total": {
+          "p": "number",
+          "min": 1,
+          "max": 10000,
+          "int": true,
+          "req": true
+        },
+        "stages": {
+          "p": "list",
+          "of": "stage",
+          "min": 1,
+          "max": 5,
+          "req": true
+        },
+        "closes": {
+          "p": "datetime"
+        },
+        "left": {
+          "p": "derived",
+          "source": "counter"
+        }
+      },
+      "records": {
+        "stage": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "circle": {
+            "p": "choice",
+            "vocab": "circle",
+            "req": true
+          },
+          "opens": {
+            "p": "datetime",
+            "req": true
+          }
+        }
+      },
+      "variants": [
+        "staged",
+        "count",
+        "band"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_ref",
+        "bad_number",
+        "bad_choice",
+        "bad_datetime",
+        "derived_field",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "cat.services": {
+      "family": "cat",
+      "tier": "P0",
+      "max": 4,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "eyebrow": {
+          "p": "text",
+          "max": 40
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "service",
+          "min": 1,
+          "max": 60,
+          "req": true
+        }
+      },
+      "records": {
+        "service": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 80,
+            "req": true
+          },
+          "duration": {
+            "p": "duration",
+            "req": true
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "note": {
+            "p": "text",
+            "max": 140
+          },
+          "capacity": {
+            "p": "number",
+            "min": 1,
+            "max": 200,
+            "int": true
+          },
+          "image": {
+            "p": "image"
+          }
+        }
+      },
+      "variants": [
+        "grouped",
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "no_items",
+        "bad_duration",
+        "bad_price",
+        "bad_number",
+        "bad_image",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "book.slots": {
+      "family": "book",
+      "tier": "P0",
+      "max": 2,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "services": {
+          "p": "ref",
+          "target": "cat.services",
+          "req": true
+        },
+        "slot": {
+          "p": "duration",
+          "req": true
+        },
+        "buffer": {
+          "p": "duration",
+          "req": true
+        },
+        "lead": {
+          "p": "number",
+          "min": 0,
+          "max": 168,
+          "int": true,
+          "req": true
+        },
+        "horizon": {
+          "p": "number",
+          "min": 1,
+          "max": 90,
+          "int": true,
+          "req": true
+        },
+        "auto": {
+          "p": "toggle",
+          "req": true
+        },
+        "who": {
+          "p": "choice",
+          "vocab": "circle"
+        },
+        "access": {
+          "p": "list",
+          "of": "rule",
+          "min": 1,
+          "max": 5
+        },
+        "slots": {
+          "p": "derived",
+          "source": "slots"
+        }
+      },
+      "records": {
+        "rule": {
+          "circle": {
+            "p": "choice",
+            "vocab": "circle",
+            "req": true,
+            "unique": true
+          },
+          "mode": {
+            "p": "choice",
+            "vocab": "book_mode",
+            "req": true
+          }
+        }
+      },
+      "variants": [
+        "day_strip",
+        "next_free",
+        "compact_chip"
+      ],
+      "compact": "row",
+      "empty": "honest",
+      "rules": [],
+      "refusals": [
+        "bad_ref",
+        "bad_duration",
+        "bad_number",
+        "bad_toggle",
+        "bad_choice",
+        "derived_field",
+        "bad_list",
+        "duplicate_item"
+      ]
+    },
+    "com.reviews": {
+      "family": "com",
+      "tier": "P0",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "text": {
+          "p": "toggle",
+          "req": true
+        },
+        "show": {
+          "p": "number",
+          "min": 1,
+          "max": 6,
+          "int": true
+        },
+        "rating": {
+          "p": "derived",
+          "source": "rating"
+        }
+      },
+      "records": {},
+      "variants": [
+        "summary",
+        "list",
+        "compact"
+      ],
+      "compact": "row",
+      "empty": "honest",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_toggle",
+        "bad_number",
+        "derived_field"
+      ]
+    },
+    "loc.message": {
+      "family": "loc",
+      "tier": "P0",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "on": {
+          "p": "toggle",
+          "req": true
+        },
+        "who": {
+          "p": "choice",
+          "options": [
+            "owner",
+            "staff"
+          ],
+          "req": true
+        },
+        "hours": {
+          "p": "timerange"
+        },
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "starters": {
+          "p": "list",
+          "of": "starter",
+          "min": 1,
+          "max": 3
+        },
+        "thread": {
+          "p": "derived",
+          "source": "local"
+        }
+      },
+      "records": {
+        "starter": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "text": {
+            "p": "text",
+            "max": 80,
+            "req": true
+          }
+        }
+      },
+      "variants": [
+        "button",
+        "row",
+        "card"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_toggle",
+        "bad_choice",
+        "bad_timerange",
+        "bad_text",
+        "derived_field",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "loc.meet_point": {
+      "family": "loc",
+      "tier": "P1",
+      "max": 2,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "point": {
+          "p": "point",
+          "req": true
+        },
+        "text": {
+          "p": "text",
+          "max": 120,
+          "req": true
+        },
+        "image": {
+          "p": "image"
+        }
+      },
+      "records": {},
+      "variants": [
+        "map_card",
+        "line"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_point",
+        "bad_text",
+        "bad_image"
+      ]
+    },
+    "pay.qr": {
+      "family": "pay",
+      "tier": "P0",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "C"
+      ],
+      "edit": "owner",
+      "fields": {
+        "label": {
+          "p": "text",
+          "max": 32,
+          "req": true
+        },
+        "amount": {
+          "p": "toggle",
+          "req": true
+        },
+        "qr": {
+          "p": "derived",
+          "source": "qr"
+        }
+      },
+      "records": {},
+      "variants": [
+        "big_qr",
+        "qr_amount",
+        "compact"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_toggle",
+        "derived_field"
+      ]
+    },
+    "evt.rsvp": {
+      "family": "evt",
+      "tier": "P0",
+      "max": 20,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "event": {
+          "p": "ref",
+          "target": "evt.single",
+          "req": true
+        },
+        "waitlist": {
+          "p": "toggle",
+          "req": true
+        },
+        "plus_ones": {
+          "p": "number",
+          "min": 0,
+          "max": 10,
+          "int": true
+        },
+        "going": {
+          "p": "derived",
+          "source": "counter"
+        },
+        "known": {
+          "p": "derived",
+          "source": "local"
+        }
+      },
+      "records": {},
+      "variants": [
+        "button_count",
+        "avatars"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_ref",
+        "bad_toggle",
+        "bad_number",
+        "derived_field"
+      ]
+    },
+    "org.members": {
+      "family": "org",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "members": {
+          "p": "list",
+          "of": "member",
+          "min": 1,
+          "max": 60,
+          "req": true
+        }
+      },
+      "records": {
+        "member": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 40,
+            "req": true
+          },
+          "role": {
+            "p": "text",
+            "max": 40
+          }
+        }
+      },
+      "variants": [
+        "faces",
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "pay.split_cost": {
+      "family": "pay",
+      "tier": "P1",
+      "max": 4,
+      "surfaces": [
+        "W",
+        "A",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60,
+          "req": true
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "total": {
+          "p": "money",
+          "token": "$token",
+          "req": true
+        },
+        "shares": {
+          "p": "number",
+          "min": 2,
+          "max": 200,
+          "int": true,
+          "req": true
+        },
+        "closes": {
+          "p": "datetime"
+        },
+        "paid": {
+          "p": "derived",
+          "source": "counter"
+        }
+      },
+      "records": {},
+      "variants": [
+        "seats",
+        "bar"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_number",
+        "bad_datetime",
+        "derived_field"
+      ]
+    },
+    "org.join": {
+      "family": "org",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60,
+          "req": true
+        },
+        "note": {
+          "p": "text",
+          "max": 120
+        },
+        "approve": {
+          "p": "choice",
+          "options": [
+            "owner",
+            "members",
+            "auto"
+          ],
+          "req": true
+        },
+        "requests": {
+          "p": "derived",
+          "source": "counter"
+        }
+      },
+      "records": {},
+      "variants": [
+        "card",
+        "row"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_choice",
+        "derived_field"
+      ]
+    },
+    "loc.contact": {
+      "family": "loc",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "phone": {
+          "p": "phone"
+        },
+        "email": {
+          "p": "email"
+        },
+        "site": {
+          "p": "link"
+        }
+      },
+      "records": {},
+      "variants": [
+        "rows",
+        "buttons"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_phone",
+        "bad_email",
+        "bad_link"
+      ]
+    },
+    "loc.list": {
+      "family": "loc",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "items": {
+          "p": "list",
+          "of": "place",
+          "min": 1,
+          "max": 20,
+          "req": true
+        }
+      },
+      "records": {
+        "place": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 60,
+            "req": true
+          },
+          "address": {
+            "p": "text",
+            "max": 120,
+            "req": true
+          },
+          "hours": {
+            "p": "text",
+            "max": 60
+          },
+          "point": {
+            "p": "point"
+          }
+        }
+      },
+      "variants": [
+        "list",
+        "map_list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_point",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "loc.transit": {
+      "family": "loc",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "items": {
+          "p": "list",
+          "of": "way",
+          "min": 1,
+          "max": 8,
+          "req": true
+        },
+        "image": {
+          "p": "image"
+        }
+      },
+      "records": {
+        "way": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "mode": {
+            "p": "choice",
+            "vocab": "mode",
+            "req": true
+          },
+          "text": {
+            "p": "text",
+            "max": 120,
+            "req": true
+          }
+        }
+      },
+      "variants": [
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_choice",
+        "bad_image",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "loc.service_area": {
+      "family": "loc",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "zone",
+          "min": 1,
+          "max": 12,
+          "req": true
+        },
+        "pickup": {
+          "p": "toggle"
+        }
+      },
+      "records": {
+        "zone": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "area": {
+            "p": "text",
+            "max": 60,
+            "req": true
+          },
+          "fee": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "min": {
+            "p": "money",
+            "token": "$token"
+          },
+          "eta": {
+            "p": "duration",
+            "max": 480
+          }
+        }
+      },
+      "variants": [
+        "table",
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_duration",
+        "bad_toggle",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "hrs.exceptions": {
+      "family": "hrs",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "items": {
+          "p": "list",
+          "of": "day",
+          "min": 1,
+          "max": 30,
+          "req": true
+        }
+      },
+      "records": {
+        "day": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "date": {
+            "p": "date",
+            "req": true
+          },
+          "hours": {
+            "p": "timerange"
+          },
+          "note": {
+            "p": "text",
+            "max": 60
+          }
+        }
+      },
+      "variants": [
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_date",
+        "bad_timerange",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "hrs.happy_hour": {
+      "family": "hrs",
+      "tier": "P1",
+      "max": 2,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60,
+          "req": true
+        },
+        "days": {
+          "p": "dayset",
+          "req": true
+        },
+        "hours": {
+          "p": "timerange",
+          "req": true
+        },
+        "percent": {
+          "p": "percent"
+        },
+        "note": {
+          "p": "text",
+          "max": 120
+        }
+      },
+      "records": {},
+      "variants": [
+        "card",
+        "line"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_dayset",
+        "bad_timerange",
+        "bad_percent"
+      ]
+    },
+    "ame.amenities": {
+      "family": "ame",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "tags": {
+          "p": "tagset",
+          "vocab": "amenity",
+          "max": 24,
+          "req": true
+        }
+      },
+      "records": {},
+      "variants": [
+        "chips",
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_tagset"
+      ]
+    },
+    "ame.access": {
+      "family": "ame",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "tags": {
+          "p": "tagset",
+          "vocab": "access",
+          "max": 12,
+          "req": true
+        },
+        "note": {
+          "p": "text",
+          "max": 140
+        }
+      },
+      "records": {},
+      "variants": [
+        "chips",
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_tagset"
+      ]
+    },
+    "ame.rules": {
+      "family": "ame",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "items": {
+          "p": "list",
+          "of": "rule",
+          "min": 1,
+          "max": 8,
+          "req": true
+        }
+      },
+      "records": {
+        "rule": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "text": {
+            "p": "text",
+            "max": 140,
+            "req": true
+          }
+        }
+      },
+      "variants": [
+        "numbered",
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "cat.price_table": {
+      "family": "cat",
+      "tier": "P1",
+      "max": 3,
+      "surfaces": [
+        "W",
+        "A",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "price",
+          "min": 1,
+          "max": 60,
+          "req": true
+        }
+      },
+      "records": {
+        "price": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 80,
+            "req": true
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "unit": {
+            "p": "text",
+            "max": 30
+          },
+          "note": {
+            "p": "text",
+            "max": 80
+          }
+        }
+      },
+      "variants": [
+        "table",
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "cat.featured": {
+      "family": "cat",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "from": {
+          "p": "ref",
+          "target": "cat.products",
+          "req": true
+        },
+        "show": {
+          "p": "number",
+          "min": 1,
+          "max": 3,
+          "int": true,
+          "req": true
+        }
+      },
+      "records": {},
+      "variants": [
+        "grid"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_ref",
+        "bad_number"
+      ]
+    },
+    "cat.specials": {
+      "family": "cat",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "special",
+          "min": 1,
+          "max": 12,
+          "req": true
+        }
+      },
+      "records": {
+        "special": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 80,
+            "req": true
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "dates": {
+            "p": "daterange"
+          },
+          "note": {
+            "p": "text",
+            "max": 60
+          }
+        }
+      },
+      "variants": [
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_daterange",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "cat.rental": {
+      "family": "cat",
+      "tier": "P1",
+      "max": 2,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "rent",
+          "min": 1,
+          "max": 20,
+          "req": true
+        }
+      },
+      "records": {
+        "rent": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 80,
+            "req": true
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "per": {
+            "p": "duration",
+            "req": true
+          },
+          "deposit": {
+            "p": "money",
+            "token": "$token"
+          }
+        }
+      },
+      "variants": [
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_duration",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "deal.offer": {
+      "family": "deal",
+      "tier": "P1",
+      "max": 2,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60,
+          "req": true
+        },
+        "percent": {
+          "p": "percent"
+        },
+        "dates": {
+          "p": "daterange",
+          "req": true
+        },
+        "terms": {
+          "p": "text",
+          "max": 140
+        }
+      },
+      "records": {},
+      "variants": [
+        "card",
+        "banner"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_percent",
+        "bad_daterange"
+      ]
+    },
+    "deal.first_visit": {
+      "family": "deal",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "percent": {
+          "p": "percent",
+          "req": true
+        },
+        "on": {
+          "p": "text",
+          "max": 80
+        },
+        "note": {
+          "p": "text",
+          "max": 80
+        }
+      },
+      "records": {},
+      "variants": [
+        "card",
+        "line"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_percent"
+      ]
+    },
+    "deal.gift_card": {
+      "family": "deal",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "amounts": {
+          "p": "list",
+          "of": "amount",
+          "min": 1,
+          "max": 6,
+          "req": true
+        },
+        "custom": {
+          "p": "toggle"
+        },
+        "months": {
+          "p": "number",
+          "min": 1,
+          "max": 36,
+          "int": true
+        }
+      },
+      "records": {
+        "amount": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "value": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          }
+        }
+      },
+      "variants": [
+        "card"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_toggle",
+        "bad_number",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "book.packages": {
+      "family": "book",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "package",
+          "min": 1,
+          "max": 8,
+          "req": true
+        }
+      },
+      "records": {
+        "package": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 60,
+            "req": true
+          },
+          "sessions": {
+            "p": "number",
+            "min": 1,
+            "max": 100,
+            "int": true,
+            "req": true
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "months": {
+            "p": "number",
+            "min": 1,
+            "max": 24,
+            "int": true
+          },
+          "includes": {
+            "p": "text",
+            "max": 140
+          }
+        }
+      },
+      "variants": [
+        "list",
+        "cards"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_number",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "book.staff": {
+      "family": "book",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "items": {
+          "p": "list",
+          "of": "staff",
+          "min": 1,
+          "max": 30,
+          "req": true
+        }
+      },
+      "records": {
+        "staff": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 40,
+            "req": true
+          },
+          "role": {
+            "p": "text",
+            "max": 60
+          },
+          "image": {
+            "p": "image"
+          }
+        }
+      },
+      "variants": [
+        "faces",
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_image",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "book.table": {
+      "family": "book",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "party_min": {
+          "p": "number",
+          "min": 1,
+          "max": 20,
+          "int": true,
+          "req": true
+        },
+        "party_max": {
+          "p": "number",
+          "min": 1,
+          "max": 50,
+          "int": true,
+          "req": true
+        },
+        "hours": {
+          "p": "timerange",
+          "req": true
+        },
+        "slot": {
+          "p": "duration",
+          "min": 15,
+          "max": 120,
+          "req": true
+        },
+        "auto": {
+          "p": "toggle"
+        },
+        "note": {
+          "p": "text",
+          "max": 140
+        }
+      },
+      "records": {},
+      "variants": [
+        "card"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_number",
+        "bad_timerange",
+        "bad_duration",
+        "bad_toggle"
+      ]
+    },
+    "book.waitlist": {
+      "family": "book",
+      "tier": "P1",
+      "max": 2,
+      "surfaces": [
+        "W",
+        "A",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "for": {
+          "p": "ref",
+          "req": true
+        },
+        "capacity": {
+          "p": "number",
+          "min": 1,
+          "max": 500,
+          "int": true
+        },
+        "notify": {
+          "p": "toggle",
+          "req": true
+        },
+        "waiting": {
+          "p": "derived",
+          "source": "counter"
+        }
+      },
+      "records": {},
+      "variants": [
+        "card"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_ref",
+        "bad_number",
+        "bad_toggle",
+        "derived_field"
+      ]
+    },
+    "book.policy": {
+      "family": "book",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "cancel": {
+          "p": "number",
+          "min": 0,
+          "max": 168,
+          "int": true,
+          "req": true
+        },
+        "deposit": {
+          "p": "percent"
+        },
+        "no_show": {
+          "p": "money"
+        },
+        "note": {
+          "p": "text",
+          "max": 140
+        }
+      },
+      "records": {},
+      "variants": [
+        "rows"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_number",
+        "bad_percent",
+        "bad_price"
+      ]
+    },
+    "cls.timetable": {
+      "family": "cls",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "items": {
+          "p": "list",
+          "of": "class",
+          "min": 1,
+          "max": 40,
+          "req": true
+        }
+      },
+      "records": {
+        "class": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 60,
+            "req": true
+          },
+          "days": {
+            "p": "dayset",
+            "req": true
+          },
+          "time": {
+            "p": "time",
+            "req": true
+          },
+          "length": {
+            "p": "duration",
+            "req": true
+          },
+          "coach": {
+            "p": "text",
+            "max": 40
+          },
+          "note": {
+            "p": "text",
+            "max": 60
+          }
+        }
+      },
+      "variants": [
+        "list",
+        "week"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_dayset",
+        "bad_time",
+        "bad_duration",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "cls.course": {
+      "family": "cls",
+      "tier": "P1",
+      "max": 3,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60,
+          "req": true
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "price": {
+          "p": "money",
+          "token": "$token"
+        },
+        "seats": {
+          "p": "number",
+          "min": 1,
+          "max": 500,
+          "int": true
+        },
+        "items": {
+          "p": "list",
+          "of": "module",
+          "min": 1,
+          "max": 24,
+          "req": true
+        },
+        "sessions": {
+          "p": "list",
+          "of": "session",
+          "min": 1,
+          "max": 60
+        }
+      },
+      "records": {
+        "module": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 80,
+            "req": true
+          },
+          "lessons": {
+            "p": "number",
+            "min": 1,
+            "max": 50,
+            "int": true
+          },
+          "length": {
+            "p": "duration"
+          }
+        },
+        "session": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 80,
+            "req": true
+          },
+          "date": {
+            "p": "date",
+            "req": true
+          },
+          "time": {
+            "p": "time",
+            "req": true
+          }
+        }
+      },
+      "variants": [
+        "numbered"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_number",
+        "bad_duration",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item",
+        "bad_date",
+        "bad_time"
+      ]
+    },
+    "cls.pass": {
+      "family": "cls",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "pass",
+          "min": 1,
+          "max": 6,
+          "req": true
+        }
+      },
+      "records": {
+        "pass": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "visits": {
+            "p": "number",
+            "min": 1,
+            "max": 100,
+            "int": true,
+            "req": true
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "months": {
+            "p": "number",
+            "min": 1,
+            "max": 24,
+            "int": true
+          }
+        }
+      },
+      "variants": [
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_number",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "cls.membership": {
+      "family": "cls",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "tier",
+          "min": 1,
+          "max": 4,
+          "req": true
+        }
+      },
+      "records": {
+        "tier": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 40,
+            "req": true
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "includes": {
+            "p": "text",
+            "max": 140
+          }
+        }
+      },
+      "variants": [
+        "list",
+        "cards"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "evt.tickets": {
+      "family": "evt",
+      "tier": "P1",
+      "max": 3,
+      "surfaces": [
+        "W",
+        "A",
+        "M",
+        "C"
+      ],
+      "edit": "manager",
+      "fields": {
+        "event": {
+          "p": "ref",
+          "target": "evt.single",
+          "req": true
+        },
+        "token": {
+          "p": "token",
+          "req": true
+        },
+        "items": {
+          "p": "list",
+          "of": "tier",
+          "min": 1,
+          "max": 6,
+          "req": true
+        },
+        "sold": {
+          "p": "derived",
+          "source": "counter"
+        }
+      },
+      "records": {
+        "tier": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 40,
+            "req": true
+          },
+          "price": {
+            "p": "money",
+            "token": "$token",
+            "req": true
+          },
+          "qty": {
+            "p": "number",
+            "min": 1,
+            "max": 10000,
+            "int": true
+          },
+          "until": {
+            "p": "date"
+          }
+        }
+      },
+      "variants": [
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [
+        "one_token_per_page"
+      ],
+      "refusals": [
+        "bad_ref",
+        "bad_text",
+        "bad_token",
+        "mixed_tokens",
+        "bad_price",
+        "bad_number",
+        "bad_date",
+        "derived_field",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "evt.series": {
+      "family": "evt",
+      "tier": "P1",
+      "max": 2,
+      "surfaces": [
+        "W",
+        "A",
+        "M"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60,
+          "req": true
+        },
+        "days": {
+          "p": "dayset",
+          "req": true
+        },
+        "hours": {
+          "p": "timerange",
+          "req": true
+        },
+        "starts": {
+          "p": "date",
+          "req": true
+        },
+        "ends": {
+          "p": "date"
+        },
+        "note": {
+          "p": "text",
+          "max": 140
+        }
+      },
+      "records": {},
+      "variants": [
+        "dates"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_dayset",
+        "bad_timerange",
+        "bad_date"
+      ]
+    },
+    "evt.agenda": {
+      "family": "evt",
+      "tier": "P1",
+      "max": 2,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "event": {
+          "p": "ref",
+          "target": "evt.single"
+        },
+        "items": {
+          "p": "list",
+          "of": "slot",
+          "min": 1,
+          "max": 30,
+          "req": true
+        }
+      },
+      "records": {
+        "slot": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "time": {
+            "p": "time",
+            "req": true
+          },
+          "name": {
+            "p": "text",
+            "max": 80,
+            "req": true
+          },
+          "who": {
+            "p": "text",
+            "max": 40
+          }
+        }
+      },
+      "variants": [
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_ref",
+        "bad_time",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "evt.lineup": {
+      "family": "evt",
+      "tier": "P1",
+      "max": 2,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "items": {
+          "p": "list",
+          "of": "act",
+          "min": 1,
+          "max": 30,
+          "req": true
+        }
+      },
+      "records": {
+        "act": {
+          "id": {
+            "p": "text",
+            "max": 36,
+            "req": true,
+            "refusal": "bad_item_id"
+          },
+          "name": {
+            "p": "text",
+            "max": 60,
+            "req": true
+          },
+          "role": {
+            "p": "text",
+            "max": 40
+          },
+          "image": {
+            "p": "image"
+          }
+        }
+      },
+      "variants": [
+        "faces",
+        "list"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_image",
+        "bad_list",
+        "bad_item_id",
+        "duplicate_item"
+      ]
+    },
+    "loy.stamps": {
+      "family": "loy",
+      "tier": "P1",
+      "max": 1,
+      "surfaces": [
+        "W",
+        "A"
+      ],
+      "edit": "manager",
+      "fields": {
+        "title": {
+          "p": "text",
+          "max": 60
+        },
+        "stamps": {
+          "p": "number",
+          "min": 3,
+          "max": 20,
+          "int": true,
+          "req": true
+        },
+        "reward": {
+          "p": "text",
+          "max": 80,
+          "req": true
+        },
+        "note": {
+          "p": "text",
+          "max": 80
+        },
+        "have": {
+          "p": "derived",
+          "source": "local"
+        }
+      },
+      "records": {},
+      "variants": [
+        "card"
+      ],
+      "compact": "row",
+      "empty": "hide",
+      "rules": [],
+      "refusals": [
+        "bad_text",
+        "bad_number",
+        "derived_field"
+      ]
+    }
+  },
+  "page_rules": {
+    "max_blocks": 60,
+    "max_bytes": 98304,
+    "one_token": [
+      "cat.menu",
+      "cat.services",
+      "cat.products",
+      "pay.bill",
+      "cat.products",
+      "cat.services",
+      "pay.split_cost",
+      "loc.service_area",
+      "cat.price_table",
+      "cat.specials",
+      "cat.rental",
+      "deal.gift_card",
+      "book.packages",
+      "cls.course",
+      "cls.pass",
+      "cls.membership",
+      "evt.tickets"
+    ],
+    "publish": {
+      "all": [
+        "id.name"
+      ],
+      "any": [
+        [
+          "loc.address"
+        ],
+        [
+          "loc.meet_point"
+        ]
+      ]
+    }
+  }
+}

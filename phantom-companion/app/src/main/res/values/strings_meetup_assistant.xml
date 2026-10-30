@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Meetups and bills by voice. The assistant only opens a draft: a person invites and pays. -->
+    <string name="meetup_ask_drafted">Meetup draft: %1$s. Review it in the messenger.</string>
+    <string name="meetup_ask_still_empty">Still empty: %1$s.</string>
+    <string name="meetup_ask_field_people">people</string>
+    <string name="meetup_ask_field_place">place</string>
+    <string name="meetup_ask_field_time">time</string>
+    <string name="meetup_ask_empty">Meetup draft ready — pick people, place and time.</string>
+    <string name="meetup_ask_split_claimed">Bill opens in the messenger: tick your items and pay.</string>
+    <string name="meetup_ask_split_equal">Bill opens in the messenger: tick all items to split equally.</string>
+    <string name="meetup_ask_roster_unreadable">Couldn\'t read your contacts. Open People.</string>
+    <string name="meetup_ask_draft_failed">The messenger didn\'t take the draft. Try again.</string>
+    <string name="meetup_ask_bad_mode">I didn\'t get how to split: “%1$s”. A bill splits by ticks or equally.</string>
+</resources>

@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 49.0205,
+    "maxLon": 17.1608,
+    "minLat": 46.3723,
+    "minLon": 9.5307
+  },
+  "files": [
+    {
+      "bytes": 2224342,
+      "name": "places.tsv.gz",
+      "sha256": "cd4c73412e41af341ec4d86cb494c7c9c387566c13158a94bc89398d04e6da4d"
+    },
+    {
+      "bytes": 2204049,
+      "name": "streets.tsv.gz",
+      "sha256": "4056bae8b14a213f567eb06fe18d6ed5c5ce03db2ac34adc4f66b023f81b2bbc"
+    }
+  ],
+  "home": {
+    "lat": 48.2084,
+    "lon": 16.3725,
+    "zoom": 12.0
+  },
+  "id": "AT",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "at-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Австрія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "at-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Австрія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Австрія",
+  "version": 1
+}

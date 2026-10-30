@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="people_duty_undelivered">neodešlo</string>
+    <string name="people_duty_your_turn">jste na řadě</string>
+    <string name="people_back">zpět</string>
+    <string name="people_search_clear">vymazat</string>
+    <string name="people_filter_all">Vše</string>
+    <string name="people_filter_ai">AI ✦</string>
+    <string name="people_filter_people">Kontakty</string>
+    <string name="people_filter_groups">Skupiny</string>
+    <string name="people_filter_live">Na příjmu</string>
+    <string name="people_ai_alias">fantom</string>
+    <string name="people_ai_preview">samostatný asistent — tady, bez připojení</string>
+    <string name="people_now">teď</string>
+    <string name="people_state_online">v zařízení</string>
+    <string name="people_new_ai_room">nový chat s asistentem</string>
+    <string name="people_scan_qr">naskenovat QR kód</string>
+    <string name="people_memory_head">co si o vás pamatuji</string>
+    <string name="people_none_yet">zatím nikdo</string>
+    <string name="people_empty_body">Zatím žádné kontakty. Přidejte přes QR nebo kód pozvánky.</string>
+    <string name="people_empty_ai_cta">K asistentovi</string>
+    <string name="people_empty_scan_cta">Naskenovat kód</string>
+    <string name="people_kind_voice">Hlasová zpráva</string>
+    <string name="people_kind_table">Tabulka</string>
+    <string name="people_kind_tasks">Úkoly</string>
+    <string name="people_kind_poll">Anketa</string>
+    <string name="people_kind_bill">Účet</string>
+    <string name="people_kind_chart">Graf</string>
+    <string name="people_kind_quotes">Citáty</string>
+    <string name="people_kind_event">Událost</string>
+    <string name="people_kind_code">Kód</string>
+    <string name="people_kind_file">Soubor</string>
+    <string name="people_kind_image">Fotka</string>
+    <string name="people_kind_key">Klíč</string>
+    <string name="people_kind_place">Poloha</string>
+    <string name="people_kind_other">Příloha</string>
+    <string name="people_kind_route">Trasa</string>
+</resources>

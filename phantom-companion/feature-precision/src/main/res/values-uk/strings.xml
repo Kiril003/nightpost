@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- feature-precision UI strings. Default locale = Ukrainian (uk); the English
+     mirror lives in res/values-en (TranslationParityFirewallTest keeps the two
+     key sets equal). -->
+<resources>
+    <!-- Єдиний вихід з екрана до цього був лише системний жест "назад" —
+         усі сусідні екрани налаштувань мають PhantomBackPill, цей не мав. -->
+    <string name="precision_back">Назад</string>
+
+    <!-- ОФЛАЙН-ДОРОГИ — що саме внесено дорожнім пакетом (RoadPackCard).
+         Не помилка: `~/phantom_ai/road-mesh-bake` наразі пече без тегів, тож
+         «без тегів» — звичайний випадок. Але наслідок для оператора реальний. -->
+    <string name="roadpack_done_tagless">Без тегів доріг: маршрут лише за довжиною</string>
+    <string name="roadpack_done_stale_recipe">Старий формат пакета: без класів доріг і швидкості</string>
+    <string name="roadpack_done_tagged">Враховано класи доріг та обмеження швидкості</string>
+    <string name="roadpack_done_no_transit">Дороги внесено (без даних транспорту)</string>
+    <string name="roadpack_done_transit">Транспорт: %1$d зуп., %2$d колій, %3$d маршр.</string>
+    <string name="roadpack_missing_keys">Відсутні ключі в пакеті: %1$s</string>
+
+    <!-- ОФЛАЙН-ОСНОВА — файл тайлів (.mbtiles), OfflineBasemapCard. -->
+    <string name="offline_basemap_title">ОФЛАЙН-ОСНОВА</string>
+    <string name="offline_basemap_explainer">Файл тайлів (.mbtiles) для роботи без мережі</string>
+    <string name="offline_basemap_working">Перевіряю файл…</string>
+    <string name="offline_basemap_absent">Файла немає — мапа малюється з мережі, як завжди</string>
+    <string name="offline_basemap_add_button">Внести файл основи вручну</string>
+    <string name="offline_basemap_replace_button">Внести інший файл основи вручну</string>
+
+    <!-- ХМАРНІ ПАКЕТИ — каталог основи й доріг, спечених на phantom-oracle і
+         виставлених за адресою WorldPackLink.baseUrl (порожня, доки власник
+         не вирішить, де вони лежатимуть — CloudPacksCard). -->
+    <string name="cloud_packs_title">ХМАРНІ ПАКЕТИ</string>
+    <string name="cloud_packs_explainer">Підписані пакети мап і доріг для роботи без мережі</string>
+    <string name="cloud_packs_loading">Питаю каталог…</string>
+    <string name="cloud_packs_not_configured">Адресу каталогу ще не налаштовано.</string>
+    <string name="cloud_packs_empty">Каталог порожній.</string>
+    <string name="cloud_packs_kind_basemap">ОСНОВА</string>
+    <string name="cloud_packs_kind_road_mesh">ДОРОГИ Й ТРАНСПОРТ</string>
+    <string name="cloud_packs_size_baked">%1$s · спечено %2$s</string>
+    <string name="cloud_packs_size_only">%1$s</string>
+    <string name="cloud_packs_action_download">Завантажити</string>
+    <string name="cloud_packs_action_update">Оновити</string>
+    <string name="cloud_packs_action_retry">Спробувати ще раз</string>
+    <string name="cloud_packs_state_checking">Перевіряю…</string>
+    <string name="cloud_packs_state_verifying">Звіряю суму…</string>
+    <string name="cloud_packs_state_installed">Внесено ✓</string>
+    <string name="cloud_packs_state_downloading">Завантажую… %1$d%% · %2$s з %3$s</string>
+    <string name="cloud_packs_metered_warning">На мобільних даних.</string>
+    <string name="cloud_packs_action_metered_confirm">Качати</string>
+    <string name="cloud_packs_action_cancel">Скасувати</string>
+    <string name="forge_packs_title">КУЗНЯ — ПАКЕТИ НОВОГО ПОКОЛІННЯ</string>
+    <string name="forge_packs_kind_geocoder">МІСЦЯ Й АДРЕСИ</string>
+    <string name="forge_packs_kind_terrain">РЕЛЬЄФ</string>
+    <string name="forge_packs_kind_basemap">ОСНОВА PMTILES</string>
+    <string name="forge_packs_kind_transit">РОЗКЛАДИ ТРАНСПОРТУ</string>
+    <string name="forge_packs_kind_places">МІСЦЯ Й ВУЛИЦІ КРАЇНИ</string>
+    <string name="forge_packs_kind_unsupported">ця збірка ще не вміє вносити цей рід</string>
+</resources>

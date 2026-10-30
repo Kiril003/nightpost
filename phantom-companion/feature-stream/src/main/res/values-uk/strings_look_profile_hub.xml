@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Картка людини v1.2 (profile-hub, 04.10): три швидкі дії під іменем і
+         лічба спільного в розмові. Раніше ці слова стояли літералами в коді. -->
+    <string name="peer_card_quick_chat">Чат</string>
+    <string name="peer_card_quick_verify">Звірка</string>
+    <string name="peer_card_quick_share">Мій код</string>
+    <string name="peer_card_vault_title">У цій розмові</string>
+    <string name="peer_card_vault_media">Медіа</string>
+    <string name="peer_card_vault_files">Файли</string>
+    <string name="peer_card_vault_places">Місця</string>
+    <string name="peer_card_vault_hint">Відкрийте розмову, щоб переглянути</string>
+</resources>

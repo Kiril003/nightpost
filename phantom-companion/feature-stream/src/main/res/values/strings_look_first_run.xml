@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prof_look_vault_up">working</string>
+    <string name="vault_look_title">Vault</string>
+    <string name="mic_look_title">Nightpost asks for the microphone</string>
+    <string name="mic_look_body">Nightpost needs the microphone to hear you. Allow it?</string>
+    <string name="mic_look_allow">Allow</string>
+    <string name="mic_look_skip">Skip</string>
+</resources>

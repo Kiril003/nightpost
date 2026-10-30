@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Backup gespeichert · %1$s</string>
+    <string name="backup_sheet_title">Backup erstellen</string>
+    <string name="backup_loss_title">Ohne Backup verlierst du:</string>
+    <string name="backup_loss_chats">Chats</string>
+    <string name="backup_loss_contacts">Kontakte</string>
+    <string name="backup_loss_profiles">Profile</string>
+    <string name="backup_loss_venues">Orte-Bearbeitung</string>
+    <string name="backup_loss_licences">Solana- und Seeker-Lizenzen</string>
+    <string name="backup_loss_handle">\@Name für 30 Tage</string>
+    <string name="backup_loss_points">Punkte und Bewertungen</string>
+    <string name="backup_loss_wallet">Wallet ohne eigenen Export</string>
+    <string name="backup_loss_memory">Gedächtnis nur auf dem Handy</string>
+    <string name="backup_pass_hint">Passphrase (mind. 12 Zeichen)</string>
+    <string name="backup_pass_confirm_hint">Passphrase wiederholen</string>
+    <string name="backup_pass_mismatch">Passphrasen stimmen nicht überein</string>
+    <string name="backup_pass_too_short">Mindestens 12 Zeichen nötig</string>
+    <string name="backup_save_action">Backup speichern</string>
+    <string name="backup_restore_title">Aus Backup wiederherstellen</string>
+    <string name="backup_restore_pass_hint">Backup-Passphrase</string>
+    <string name="backup_restore_action">Wiederherstellen</string>
+    <string name="backup_restore_err_wrong_pass">Falsche Passphrase</string>
+    <string name="backup_restore_err_not_our_file">Kein Nightpost-Backup</string>
+    <string name="backup_restore_err_not_empty">Lösche zuerst die Daten auf diesem Handy</string>
+    <string name="backup_restore_success">Wiederhergestellt: %1$d Kontakte, %2$d Nachrichten, %3$d Profile</string>
+    <string name="backup_restore_err_read">Datei lässt sich nicht öffnen</string>
+    <string name="backup_restore_err_invalid">Backup ist beschädigt</string>
+    <string name="backup_restore_err_failed">Nicht wiederhergestellt</string>
+</resources>

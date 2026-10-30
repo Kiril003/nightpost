@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {"$ref": "#/$defs/Registry"},
+    {"$ref": "#/$defs/Pack"},
+    {"$ref": "#/$defs/Templates"}
+  ],
+  "$defs": {
+    "Registry": {
+      "type": "object",
+      "required": ["version", "primitives", "families", "vocab", "blocks", "page_rules"],
+      "additionalProperties": false,
+      "properties": {
+        "version": {"const": 1},
+        "primitives": {
+          "type": "object",
+          "minProperties": 32,
+          "maxProperties": 32,
+          "additionalProperties": {"$ref": "#/$defs/Primitive"}
+        },
+        "families": {
+          "type": "array",
+          "minItems": 15,
+          "maxItems": 15,
+          "items": {"type": "string", "pattern": "^[a-z]{2,6}$"}
+        },
+        "vocab": {
+          "type": "object",
+          "required": [
+            "token",
+            "subject",
+            "tone",
+            "audience",
+            "day",
+            "kind",
+            "amenity",
+            "access",
+            "diet",
+            "allergen",
+            "lang",
+            "mode",
+            "kids"
+          ],
+          "additionalProperties": {"$ref": "#/$defs/StringList"}
+        },
+        "blocks": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/Block"}
+        },
+        "page_rules": {"$ref": "#/$defs/PageRules"}
+      }
+    },
+    "Pack": {
+      "type": "object",
+      "required": ["pack", "subject", "blocks"],
+      "additionalProperties": false,
+      "properties": {
+        "pack": {"type": "string", "pattern": "^[a-z0-9_-]{1,32}$"},
+        "subject": {"type": "string", "minLength": 1},
+        "blocks": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/Block"}
+        }
+      }
+    },
+    "Templates": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/TemplateEntry"}
+    },
+    "TemplateEntry": {
+      "type": "object",
+      "required": ["id", "kind", "core", "optional"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9_-]{1,32}$"},
+        "kind": {"type": "string", "minLength": 1},
+        "subject": {"type": "string", "minLength": 1},
+        "core": {"$ref": "#/$defs/StringList"},
+        "optional": {"$ref": "#/$defs/StringList"}
+      }
+    },
+    "Primitive": {
+      "type": "object",
+      "required": ["json", "refusal"],
+      "additionalProperties": false,
+      "properties": {
+        "json": {
+          "type": "string",
+          "enum": ["string", "number", "integer", "boolean", "object", "array", "null"]
+        },
+        "refusal": {"type": "string", "minLength": 1},
+        "min": {"type": "number"},
+        "max": {"type": "number"},
+        "step": {"type": "number"},
+        "bytes": {"type": "integer"},
+        "max_bytes": {"type": "integer"},
+        "max_secs": {"type": "integer"},
+        "max_days": {"type": "integer"},
+        "max_occurrences": {"type": "integer"},
+        "max_alt": {"type": "integer"},
+        "max_title": {"type": "integer"},
+        "max_name": {"type": "integer"},
+        "max_url": {"type": "integer"},
+        "max_label": {"type": "integer"},
+        "max_role": {"type": "integer"},
+        "lat_min": {"type": "number"},
+        "lat_max": {"type": "number"},
+        "lon_min": {"type": "number"},
+        "lon_max": {"type": "number"},
+        "multiline": {"type": "boolean"},
+        "https_only": {"type": "boolean"},
+        "pattern": {"type": "string"},
+        "mime": {"type": "string"},
+        "vocab": {"type": "string"},
+        "scopes": {"$ref": "#/$defs/StringList"},
+        "sources": {"$ref": "#/$defs/StringList"},
+        "decimals": {
+          "type": "object",
+          "additionalProperties": {"type": "integer"}
+        }
+      }
+    },
+    "Block": {
+      "type": "object",
+      "required": [
+        "family",
+        "tier",
+        "max",
+        "surfaces",
+        "edit",
+        "fields",
+        "records",
+        "variants",
+        "compact",
+        "empty",
+        "rules",
+        "refusals"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "family": {"type": "string", "pattern": "^[a-z]{2,6}$"},
+        "tier": {"type": "string", "enum": ["P0", "P1", "P2"]},
+        "max": {"type": "integer", "minimum": 1, "maximum": 60},
+        "surfaces": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "enum": ["W", "A", "M", "C", "P"]}
+        },
+        "edit": {"type": "string", "enum": ["owner", "manager", "staff", "door"]},
+        "fields": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/Field"}
+        },
+        "records": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/RecordFields"}
+        },
+        "variants": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "compact": {"type": "string", "minLength": 1},
+        "empty": {"type": "string", "enum": ["hide", "honest"]},
+        "rules": {"$ref": "#/$defs/StringList"},
+        "refusals": {"$ref": "#/$defs/StringList"}
+      }
+    },
+    "RecordFields": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/Field"}
+    },
+    "Field": {
+      "type": "object",
+      "required": ["p"],
+      "additionalProperties": false,
+      "properties": {
+        "p": {"type": "string", "minLength": 1},
+        "req": {"type": "boolean"},
+        "min": {"type": "number"},
+        "max": {"type": "number"},
+        "step": {"type": "number"},
+        "int": {"type": "boolean"},
+        "of": {"type": "string"},
+        "vocab": {"type": "string"},
+        "options": {"$ref": "#/$defs/StringList"},
+        "token": {"type": "string"},
+        "target": {"type": "string"},
+        "scope": {"type": "string", "enum": ["page", "venue"]},
+        "item": {"type": "boolean"},
+        "unique": {"type": "boolean"},
+        "source": {
+          "type": "string",
+          "enum": ["rating", "counter", "qr", "stat", "status", "slots", "local"]
+        },
+        "refusal": {"type": "string"}
+      }
+    },
+    "PageRules": {
+      "type": "object",
+      "required": ["max_blocks", "max_bytes", "one_token", "publish"],
+      "additionalProperties": false,
+      "properties": {
+        "max_blocks": {"type": "integer", "minimum": 1},
+        "max_bytes": {"type": "integer", "minimum": 1},
+        "one_token": {"$ref": "#/$defs/StringList"},
+        "publish": {"$ref": "#/$defs/PublishRule"}
+      }
+    },
+    "PublishRule": {
+      "type": "object",
+      "required": ["all", "any"],
+      "additionalProperties": false,
+      "properties": {
+        "all": {"$ref": "#/$defs/StringList"},
+        "any": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/StringList"}
+        }
+      }
+    },
+    "StringList": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

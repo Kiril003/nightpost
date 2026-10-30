@@ -1,0 +1,375 @@
+import type { ContextSnapshot, SystemState, ChatMessage, StateTransition } from '@shared/types';
+import { readToken } from './tokenStore';
+import { BEARER_SUBPROTOCOL } from './wsAuth';
+import { nodeWsUrl } from './nodeOrigin';
+
+/* ─── Message types ───────────────────────────────────────────────────────── */
+
+export type WSChannel =
+  | 'sensor'
+  | 'state'
+  | 'chat'
+  | 'voice'
+  | 'terminal'
+  | 'alert'
+  | 'map'
+  | 'settings'
+  | 'face'
+  | 'agent.stream'
+  // agent/runtime.py:255-285 splits foreground vs background ticks across
+  // two channels — pre-fix the type union only listed agent.stream so any
+  // FE listener typed against WSChannel could not subscribe to background
+  // events at all (audit B-23).
+  | 'background_events'
+  // Phase 9.3b — inner monologue stream. Dedicated channel so main
+  // agent.stream subscribers don't get flooded with per-step thinking.
+  // No consumer in 9.3b; a future Inspector panel will subscribe.
+  | 'inner_monologue.stream'
+  // Phase 5 R1 FAMILIAR — AI-summoned wisp manifestation events.
+  // Backend `routes_familiar.py` POST /familiar/manifest broadcasts here;
+  // FE `wsHandlers.ts` translates into a familiarStore.manifest('ai-summon').
+  | 'familiar'
+  // Phase 19 Mobile Companion — pairing lifecycle. `pair/claimed` fires
+  // when a phone successfully completes the QR handshake; `pair/revoked`
+  // when a paired device is dropped from the desktop UI. The Settings
+  // "Mobile Companion" panel subscribes here to live-refresh its device
+  // list without polling.
+  | 'pair'
+  | 'vision'
+  // ПОЛІС — mission fabric deltas: node/mission status, gates, keys, waves.
+  | 'polis'
+  // Месенджер — нове повідомлення, записане вузлом. Сюди приходить те, що
+  // надіслав інший пристрій власника, тож телефон і ПК бачать одну стрічку.
+  | 'messenger'
+  // Дзвінок 1:1 — SDP і ICE-кандидати від вузла співрозмовника. Медіа сюди
+  // не заходить: воно йде між браузерами напряму. Див. services/callEngine.ts.
+  | 'call'
+  | '_meta';
+
+export interface WSMessage {
+  channel: WSChannel;
+  type: string;
+  data: Record<string, unknown>;
+  ts?: number;
+}
+
+export interface WSControlMessage {
+  control: string;
+  channels?: string[];
+  ts?: number;
+}
+
+export interface SensorMessage extends WSMessage {
+  channel: 'sensor';
+  type: 'snapshot';
+  data: { snapshot: ContextSnapshot };
+}
+
+export interface StateMessage extends WSMessage {
+  channel: 'state';
+  type: 'transition';
+  data: StateTransition & Record<string, unknown>;
+}
+
+export interface ChatStreamMessage extends WSMessage {
+  channel: 'chat';
+  type: 'stream';
+  data: { message_id: string; delta: string; done: boolean; session_id?: string; message?: ChatMessage };
+}
+
+export interface VoiceMessage extends WSMessage {
+  channel: 'voice';
+  type: 'partial' | 'final' | 'tts_start' | 'tts_end';
+  data: { text?: string; engine?: string; duration_ms?: number };
+}
+
+export interface AlertMessage extends WSMessage {
+  channel: 'alert';
+  type: 'priority';
+  data: { level: number; title: string; body: string };
+}
+
+export interface StateChangeNotification {
+  state: SystemState;
+}
+
+/* ─── WebSocket Client ────────────────────────────────────────────────────── */
+
+type ChannelHandler<T extends WSMessage = WSMessage> = (msg: T) => void;
+type ConnectHandler = () => void;
+type DisconnectHandler = () => void;
+
+const INITIAL_RECONNECT_DELAY = 1000;
+/** Код закриття вузла: немає/хибний/прострочений токен або відкликаний пристрій. */
+export const WS_UNAUTHORIZED = 4401;
+const MAX_RECONNECT_DELAY = 30000;
+
+class WebSocketClient {
+  private ws: WebSocket | null = null;
+  private token: string | undefined;
+  private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
+  private reconnectDelay = INITIAL_RECONNECT_DELAY;
+  private intentionalClose = false;
+  // Скільки 4401 поспіль. onopen не рахується: вузол спершу приймає сокет
+  // і лише тоді закриває його 4401. Скидає лише живе зʼєднання (кадр) або
+  // обрив з іншої причини.
+  private unauthorizedStreak = 0;
+  private openedWith: string | undefined;
+
+  private connectHandlers: ConnectHandler[] = [];
+  private disconnectHandlers: DisconnectHandler[] = [];
+  private channelHandlers = new Map<WSChannel, ChannelHandler[]>();
+  private broadcast: BroadcastChannel | null =
+    typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('phantom_mesh_bus') : null;
+
+  constructor() {
+    if (this.broadcast) {
+      this.broadcast.onmessage = (event: MessageEvent<WSMessage>) => {
+        try {
+          const msg = event.data;
+          if (msg && msg.channel) {
+            const handlers = this.channelHandlers.get(msg.channel) ?? [];
+            handlers.forEach((h) => h(msg));
+          }
+        } catch {
+          /* ignore */
+        }
+      };
+    }
+  }
+
+  connect(token?: string): void {
+    const wanted = readToken() || token;
+    // Без токена сокета немає: вихід чи чужа сесія закривають і живий.
+    if (!wanted) {
+      this.disconnect();
+      this.token = undefined;
+      return;
+    }
+    this.token = token;
+    this.intentionalClose = false;
+
+    // Той самий токен — сокет лишається; інший (вихід → інша людина,
+    // refresh) — старий закриваємо, бо вузол знає його за старим власником.
+    if (
+      this.ws &&
+      (this.ws.readyState === WebSocket.OPEN ||
+        this.ws.readyState === WebSocket.CONNECTING)
+    ) {
+      if (this.openedWith === wanted) return;
+      const stale = this.ws;
+      this.ws = null;
+      stale.onopen = null;
+      stale.onmessage = null;
+      stale.onerror = null;
+      stale.onclose = null;
+      try {
+        stale.close();
+      } catch {
+        /* ignore */
+      }
+    }
+
+    // Clear any scheduled reconnect — we're connecting now.
+    if (this.reconnectTimer) {
+      clearTimeout(this.reconnectTimer);
+      this.reconnectTimer = null;
+    }
+
+    this._open();
+  }
+
+  disconnect(): void {
+    this.intentionalClose = true;
+    if (this.reconnectTimer) {
+      clearTimeout(this.reconnectTimer);
+      this.reconnectTimer = null;
+    }
+    const ws = this.ws;
+    this.ws = null;
+    if (!ws) return;
+
+    // Detach handlers so no late onclose/onerror triggers reconnect.
+    ws.onopen = null;
+    ws.onmessage = null;
+    ws.onerror = null;
+    ws.onclose = null;
+
+    if (ws.readyState === WebSocket.CONNECTING) {
+      // Can't close a CONNECTING socket without the "closed before established"
+      // error. Wait for open, then close cleanly.
+      ws.addEventListener(
+        'open',
+        () => {
+          try {
+            ws.close(1000, 'client disconnect');
+          } catch {
+            /* ignore */
+          }
+        },
+        { once: true }
+      );
+    } else if (ws.readyState === WebSocket.OPEN) {
+      try {
+        ws.close(1000, 'client disconnect');
+      } catch {
+        /* ignore */
+      }
+    }
+  }
+
+  send(msg: WSMessage | WSControlMessage): void {
+    if (this.ws?.readyState === WebSocket.OPEN) {
+      this.ws.send(JSON.stringify({ ...msg, ts: msg.ts ?? Date.now() }));
+    }
+    if (this.broadcast && 'channel' in msg) {
+      try {
+        this.broadcast.postMessage({ ...msg, ts: msg.ts ?? Date.now() });
+      } catch {
+        /* ignore */
+      }
+    }
+  }
+
+  onConnect(handler: ConnectHandler): () => void {
+    this.connectHandlers.push(handler);
+    return () => {
+      this.connectHandlers = this.connectHandlers.filter((h) => h !== handler);
+    };
+  }
+
+  onDisconnect(handler: DisconnectHandler): () => void {
+    this.disconnectHandlers.push(handler);
+    return () => {
+      this.disconnectHandlers = this.disconnectHandlers.filter((h) => h !== handler);
+    };
+  }
+
+  on<T extends WSMessage>(channel: WSChannel, handler: ChannelHandler<T>): () => void {
+    const handlers = this.channelHandlers.get(channel) ?? [];
+    handlers.push(handler as ChannelHandler);
+    this.channelHandlers.set(channel, handlers);
+    return () => this.off(channel, handler);
+  }
+
+  off<T extends WSMessage>(channel: WSChannel, handler: ChannelHandler<T>): void {
+    const current = this.channelHandlers.get(channel);
+    if (current) {
+      this.channelHandlers.set(
+        channel,
+        current.filter((h) => h !== (handler as ChannelHandler))
+      );
+    }
+  }
+
+  get isConnected(): boolean {
+    return this.ws?.readyState === WebSocket.OPEN;
+  }
+
+  private _open(): void {
+    const url = nodeWsUrl('/ws');
+    // Always prefer the freshest token from storage: connect() caches the
+    // token once, but it may have been refreshed since (the cached one can
+    // expire). A reconnect on the stale/expired token authenticates as
+    // user=None on the backend, which then filters this client out of all
+    // user-scoped broadcasts — so chat replies silently never arrive.
+    const liveToken = readToken() || this.token;
+    // Вузол анонімів не слухає (4401). Без токена сокета немає взагалі:
+    // після входу Providers викличе connect() знову.
+    if (!liveToken) return;
+    this.token = liveToken;
+
+    let ws: WebSocket;
+    try {
+      // Раунд-4 П4: токен їде під-протоколом, а не в `?token=`. Адресний
+      // рядок uvicorn пише в лог дослівно — панель нарахувала 25 повних
+      // JWT у логах вузла за один прогін. Заголовок рукостискання в лог
+      // не потрапляє. Вузол підтверджує маркер у відповіді, інакше
+      // браузер розірве зʼєднання.
+      ws = new WebSocket(url.toString(), [BEARER_SUBPROTOCOL, liveToken]);
+    } catch {
+      this._scheduleReconnect();
+      return;
+    }
+    this.ws = ws;
+    this.openedWith = liveToken;
+
+    ws.onopen = () => {
+      if (this.ws !== ws) return;
+      this.reconnectDelay = INITIAL_RECONNECT_DELAY;
+      this.connectHandlers.forEach((h) => {
+        try {
+          h();
+        } catch {
+          /* handler error — ignore */
+        }
+      });
+    };
+
+    ws.onmessage = (event: MessageEvent<string>) => {
+      if (this.ws !== ws) return;
+      this.unauthorizedStreak = 0;
+      try {
+        const msg = JSON.parse(event.data) as WSMessage;
+        const handlers = this.channelHandlers.get(msg.channel) ?? [];
+        handlers.forEach((h) => h(msg));
+      } catch {
+        /* malformed — ignore */
+      }
+    };
+
+    ws.onclose = (ev?: CloseEvent) => {
+      // If this ws was detached by disconnect(), this.ws will be null or
+      // point to a new socket; skip side-effects in that case.
+      if (this.ws !== ws) return;
+      this.ws = null;
+      this.disconnectHandlers.forEach((h) => {
+        try {
+          h();
+        } catch {
+          /* handler error — ignore */
+        }
+      });
+      if (ev?.code === WS_UNAUTHORIZED) {
+        // Не стукаємо тим самим токеном по колу: спершу оновлення токена
+        // (authStore), новий токен перепідключить Providers. Другий 4401
+        // поспіль — сесії кінець.
+        // Сплив сам токен — це не відмова, а «онови мене»: тихий сокет
+        // (кадрів немає) інакше вийшов би із сесії на другому спливанні.
+        const renew = ev.reason === 'token_expired' || ev.reason === 'role_changed';
+        this.unauthorizedStreak = renew ? 1 : this.unauthorizedStreak + 1;
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(
+            new Event(this.unauthorizedStreak >= 2 ? 'phantom:unauthorized' : 'phantom:ws-unauthorized'),
+          );
+        }
+        return;
+      }
+      this.unauthorizedStreak = 0;
+      if (!this.intentionalClose) {
+        this._scheduleReconnect();
+      }
+    };
+
+    ws.onerror = () => {
+      // Let onclose handle reconnect logic.
+      try {
+        ws.close();
+      } catch {
+        /* ignore */
+      }
+    };
+  }
+
+  private _scheduleReconnect(): void {
+    if (this.reconnectTimer) return;
+    const delay = this.reconnectDelay;
+    this.reconnectTimer = setTimeout(() => {
+      this.reconnectTimer = null;
+      this.reconnectDelay = Math.min(this.reconnectDelay * 2, MAX_RECONNECT_DELAY);
+      if (!this.intentionalClose) this._open();
+    }, delay);
+  }
+}
+
+export const wsClient = new WebSocketClient();

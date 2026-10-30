@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="night">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- /webmsgr/ — інакше в APK іконка йде від кореня, куди перехоплювач
+         телефона не пускає (усе поза /webmsgr/ дістає blocked() і text/plain). -->
+    <link rel="icon" type="image/svg+xml" href="/webmsgr/phantom-icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0B0A08" />
+    <title>Nightpost</title>
+    <!-- Синхронно й до стилів заставки: ставить data-theme з теми телефона
+         (PhantomBridge.getTheme(), без мосту — Ніч) і data-shell="phone". -->
+    <script src="/webmsgr/boot-theme.js"></script>
+    <!-- Один шрифт — Manrope (власні файли, src/styles/phantom/fonts.css), без CDN.
+         Заставка — у палітрі теми телефона: boot-theme.js ставить data-theme
+         до першого кадру; без мосту — Ніч (типова тема Nightpost). Барви — ті
+         самі значення, що --ph-* у tokens.css: самі токени ще не приїхали. -->
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --boot-canvas: #111214;
+        --boot-text: #eceae5;
+        --boot-text-3: #949599;
+        --boot-raised: #202125;
+      }
+      :root[data-theme='day'] {
+        --boot-canvas: #f6f1e7;
+        --boot-text: #1e1a15;
+        --boot-text-3: #665f55;
+        --boot-raised: #ede6d8;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+        background: var(--boot-canvas);
+        color: var(--boot-text);
+        font-family: 'Manrope', system-ui, Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #root {
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        position: relative;
+      }
+      /* ЗАСТАВКА ЗАВАНТАЖЕННЯ.
+         Виміряно 20.09 на A52: від дотику до першого рядка списку розмов
+         минало дев'ять секунд, і всі дев'ять екран був порожній — жодного
+         знаку, що застосунок узагалі живий. Розмітка стоїть у самому
+         документі, тож її видно з ПЕРШОГО кадру, ще до того, як приїде
+         й виконається модуль; React змітає її, щойно змалює перший екран
+         (createRoot чистить контейнер при першому комміті).
+
+         Збірка 16: на телефоні тут уже не знак із «Відкриваю месенджер…», а
+         спокійний ескіз ПЕРШОГО екрана — домівки Nightpost (PhantomHome.tsx):
+         шапка з диском знака, капсула питання з мікрофоном, рядок розмови й
+         картки. Ті самі числа (px = dp) малює рідний ескіз під WebView
+         (MessengerSkeleton.kt), тож передача рідний кадр → #boot → React не
+         стрибає. Без тексту (шрифт ще не приїхав — гліфи стрибнули б) і без
+         анімації: застиглий ескіз передається між трьома власниками без
+         шва, а пульс у різних фазах блимнув би на кожній передачі.
+         ПК (без мосту) лишає знак по центру: його перший екран — не домівка. */
+      #boot {
+        position: absolute;
+        inset: 0;
+        background: var(--boot-canvas);
+      }
+      #boot .glyph {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 56px;
+        height: 56px;
+        margin: -28px 0 0 -28px;
+        color: var(--boot-text);
+      }
+      #boot .sk {
+        display: none;
+      }
+      :root[data-shell='phone'] #boot .glyph {
+        display: none;
+      }
+      :root[data-shell='phone'] #boot .sk {
+        display: block;
+        padding-top: 8px;
+      }
+      #boot .sk i {
+        display: block;
+        background: var(--boot-raised);
+      }
+      #boot .sk-head {
+        height: 52px;
+        padding: 0 8px 0 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      #boot .sk-disc {
+        flex: 0 0 36px;
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        background: var(--boot-text);
+        color: var(--boot-canvas);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #boot .sk-disc svg {
+        width: 48%;
+        height: 48%;
+      }
+      #boot .sk i.sk-title {
+        width: 92px;
+        height: 12px;
+        border-radius: 6px;
+      }
+      #boot .sk i.sk-pill {
+        margin-left: auto;
+        width: 108px;
+        height: 44px;
+        border-radius: 22px;
+      }
+      #boot .sk-ask {
+        margin: 12px 16px 0;
+        display: flex;
+        gap: 8px;
+      }
+      #boot .sk i.sk-capsule {
+        flex: 1 1 auto;
+        height: 48px;
+        border-radius: 24px;
+      }
+      #boot .sk i.sk-mic {
+        flex: 0 0 48px;
+        height: 48px;
+        border-radius: 24px;
+      }
+      #boot .sk-row {
+        margin-top: 16px;
+        height: 48px;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+      }
+      #boot .sk i.sk-line {
+        width: 42%;
+        height: 12px;
+        border-radius: 6px;
+      }
+      #boot .sk i.sk-line.thin {
+        width: 64%;
+        height: 10px;
+        border-radius: 5px;
+      }
+      #boot .sk i.sk-card {
+        margin: 12px 16px 0;
+        height: 88px;
+        border-radius: 16px;
+      }
+      #boot .sk i.sk-card.first {
+        margin-top: 8px;
+      }
+    </style>
+    <script type="module" crossorigin src="/webmsgr/assets/index-DSnCPZ_E.js"></script>
+    <link rel="modulepreload" crossorigin href="/webmsgr/assets/vendor-react-nasdJtPQ.js">
+    <link rel="modulepreload" crossorigin href="/webmsgr/assets/vendor-motion-a-opI9eo.js">
+    <link rel="stylesheet" crossorigin href="/webmsgr/assets/index-CbMveQp6.css">
+  </head>
+  <body>
+    <div id="root">
+      <div id="boot" aria-hidden="true">
+        <svg class="glyph" viewBox="0 0 24 24"><path fill="currentColor" d="M11 2A8 8 0 0 0 11 18ZM13 6A8 8 0 0 1 13 22Z"/></svg>
+        <div class="sk">
+          <div class="sk-head">
+            <span class="sk-disc"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M11 2A8 8 0 0 0 11 18ZM13 6A8 8 0 0 1 13 22Z"/></svg></span>
+            <i class="sk-title"></i>
+            <i class="sk-pill"></i>
+          </div>
+          <div class="sk-ask"><i class="sk-capsule"></i><i class="sk-mic"></i></div>
+          <div class="sk-row"><i class="sk-line"></i><i class="sk-line thin"></i></div>
+          <i class="sk-card first"></i>
+          <i class="sk-card"></i>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onb_to_chats">До чатів</string>
+    <string name="onb_start">Почати</string>
+    <string name="onb_restore">Відновити</string>
+    <string name="onb_photo_add">Додати фото</string>
+    <string name="onb_retry">Спробувати ще раз</string>
+
+    <string name="onb_name_title">Як вас звати?</string>
+    <string name="onb_name_field_label">Ваше імʼя або нікнейм</string>
+    <string name="onb_name_placeholder">імʼя…</string>
+    <string name="onb_name_hint_long">Не більше %1$d символів.</string>
+    <string name="onb_name_unnamed">Ваше імʼя</string>
+
+    <string name="onb_error_kicker">помилка</string>
+    <string name="onb_creating_profile">готую профіль на цьому телефоні</string>
+    <string name="onb_error_title">Щось пішло не так</string>
+    <!-- Перший запуск, збірка 18: знак, один рядок про застосунок і вибір мови. -->
+    <string name="onb_lang_mark">Nightpost</string>
+    <string name="onb_lang_line">Розмови, мапа й гроші з вашими людьми — в одному місці.</string>
+    <string name="onb_lang_title">Оберіть мову</string>
+    <string name="onb_lang_continue">Далі</string>
+</resources>

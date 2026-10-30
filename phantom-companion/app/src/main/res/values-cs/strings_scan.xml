@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_title">Naskenovat kód</string>
+    <string name="scan_card_old_invite">Staré pozvání</string>
+    <string name="scan_card_own_device">Přenos profilu</string>
+    <string name="scan_card_no_match">Čísla se neshodují</string>
+    <string name="scan_card_self">To je váš kód</string>
+    <string name="scan_card_not_ours">Toto není kód Nightpost</string>
+    <string name="scan_enter_code">Zadat kód</string>
+    <string name="scan_action">Skenovat</string>
+    <string name="scan_hint">Namiřte fotoaparát na kód</string>
+    <string name="scan_code_field">Kód nebo odkaz</string>
+    <string name="scan_paste">Vložit</string>
+    <string name="scan_code_open">Otevřít</string>
+</resources>

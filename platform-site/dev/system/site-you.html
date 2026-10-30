@@ -1,0 +1,120 @@
+<html data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440, initial-scale=1">
+<title>You · Nightpost</title>
+<script>document.documentElement.dataset.theme = location.hash.slice(1) || 'night'</script>
+<link rel="stylesheet" href="./system.css">
+<style>
+  .you-wrap { min-height: 100vh; display: flex; flex-direction: column; }
+  .you-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; align-items: start; }
+  .build-title { margin-top: 8px; }
+  .build-meta { margin-top: 4px; }
+  .build-actions { display: flex; gap: 16px; align-items: center; margin-top: 24px; }
+  .group-list { margin-top: 8px; }
+  .group-head-spaced { margin-top: 32px; }
+  .footer { margin-top: auto; }
+</style>
+</head>
+<body>
+  <div class="wrap you-wrap">
+    <header class="topbar">
+      <a href="site-home.html" class="wordmark">Nightpost</a>
+      <nav>
+        <a href="site-home.html">Overview</a>
+        <a href="site-talk.html">Talk</a>
+        <a href="#">People</a>
+        <a href="#">Money</a>
+        <a href="site-places-one.html">Places</a>
+        <a href="#">Download</a>
+      </nav>
+      <div class="end">
+        <div class="lang">
+          <span aria-current="true">EN</span>
+          <span>UA</span>
+        </div>
+        <a href="site-you.html" class="avatar" aria-current="page">AN</a>
+      </div>
+    </header>
+
+    <section class="page-head">
+      <div>
+        <div class="eyebrow">You</div>
+        <h1>Ana</h1>
+        <p class="line">ana@example.com · member since October 2026</p>
+      </div>
+    </section>
+
+    <nav class="tabs">
+      <a href="#" aria-current="page">You</a>
+      <a href="#">Devices</a>
+      <a href="#">Places</a>
+      <a href="#">Messages</a>
+      <a href="#">Security</a>
+    </nav>
+
+    <div class="you-grid">
+      <div class="card">
+        <div class="t-caption c-2">Nightpost for Android</div>
+        <div class="t-display build-title">Build 17</div>
+        <div class="t-footnote c-3 build-meta">0.1.0-tier1+353c226e · 71.1 MB · 11 Oct 2026</div>
+        <div class="build-actions">
+          <button class="btn btn--primary" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            <span>Download</span>
+          </button>
+          <button class="btn btn--text" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <span>Copy checksum</span>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="t-title-2">Devices</h2>
+        <ul class="list group-list">
+          <li class="row row--compact">
+            <span class="tile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg>
+            </span>
+            <div class="main">
+              <div class="name">Samsung A52 · this phone</div>
+            </div>
+            <div class="meta">Today</div>
+          </li>
+          <li class="row row--compact">
+            <span class="tile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg>
+            </span>
+            <div class="main">
+              <div class="name">Laptop · Nightpost for PC</div>
+            </div>
+            <div class="meta">Yesterday</div>
+          </li>
+        </ul>
+
+        <h2 class="t-title-2 group-head-spaced">Places</h2>
+        <ul class="list group-list">
+          <li class="row row--compact">
+            <span class="tile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div class="main">
+              <div class="name">No places yet</div>
+            </div>
+            <a href="site-places-empty.html" class="btn btn--text">Create a place</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 Nightpost</span>
+      <a href="#">Security and data</a>
+      <a href="#">Pricing</a>
+      <a href="#">Legal terms</a>
+      <a href="site-you.html">You</a>
+    </footer>
+  </div>
+</body>
+</html>

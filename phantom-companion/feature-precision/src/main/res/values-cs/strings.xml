@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="precision_back">Zpět</string>
+    <string name="roadpack_done_tagless">Bez značek silnic: trasa jen podle délky</string>
+    <string name="roadpack_done_stale_recipe">Starší formát balíčku: bez tříd silnic a rychlostních limitů</string>
+    <string name="roadpack_done_tagged">Třídy silnic a rychlostní limity načteny</string>
+    <string name="roadpack_done_no_transit">Silnice načteny (bez dat MHD)</string>
+    <string name="roadpack_done_transit">Doprava: %1$d zast., %2$d linek, %3$d tras</string>
+    <string name="roadpack_missing_keys">Chybějící klíče v balíčku: %1$s</string>
+    <string name="offline_basemap_title">PODKLADOVÁ MAPA BEZ INTERNETU</string>
+    <string name="offline_basemap_explainer">Soubor dlaždic (.mbtiles) pro použití mapy bez internetu</string>
+    <string name="offline_basemap_working">Kontrola souboru…</string>
+    <string name="offline_basemap_absent">Zatím žádný soubor — mapa se načítá ze sítě jako obvykle</string>
+    <string name="offline_basemap_add_button">Vložit soubor podkladové mapy ručně</string>
+    <string name="offline_basemap_replace_button">Vložit jiný soubor podkladové mapy ručně</string>
+    <string name="cloud_packs_title">CLOUDOVÉ BALÍČKY</string>
+    <string name="cloud_packs_explainer">Podepsané balíčky map a silnic pro použití bez internetu</string>
+    <string name="cloud_packs_loading">Načítání katalogu…</string>
+    <string name="cloud_packs_not_configured">Adresa katalogu zatím není nastavena.</string>
+    <string name="cloud_packs_empty">Katalog je prázdný.</string>
+    <string name="cloud_packs_kind_basemap">PODKLADOVÁ MAPA</string>
+    <string name="cloud_packs_kind_road_mesh">SILNICE A DOPRAVA</string>
+    <string name="cloud_packs_size_baked">%1$s · sestaveno %2$s</string>
+    <string name="cloud_packs_size_only">%1$s</string>
+    <string name="cloud_packs_action_download">Stáhnout</string>
+    <string name="cloud_packs_action_update">Aktualizovat</string>
+    <string name="cloud_packs_action_retry">Zkusit znovu</string>
+    <string name="cloud_packs_state_checking">Kontrola…</string>
+    <string name="cloud_packs_state_verifying">Ověřování součtu…</string>
+    <string name="cloud_packs_state_installed">Nainstalováno ✓</string>
+    <string name="cloud_packs_state_downloading">Stahování… %1$d%% · %2$s z %3$s</string>
+    <string name="cloud_packs_metered_warning">Na mobilních datech.</string>
+    <string name="cloud_packs_action_metered_confirm">Přesto stáhnout</string>
+    <string name="cloud_packs_action_cancel">Zrušit</string>
+    <string name="forge_packs_title">KOVÁRNA — BALÍČKY NOVÉ GENERACE</string>
+    <string name="forge_packs_kind_geocoder">MÍSTA A ADRESY</string>
+    <string name="forge_packs_kind_terrain">RELIÉF</string>
+    <string name="forge_packs_kind_basemap">PODKLAD PMTILES</string>
+    <string name="forge_packs_kind_transit">JÍZDNÍ ŘÁDY</string>
+    <string name="forge_packs_kind_places">MÍSTA A ULICE ZEMĚ</string>
+    <string name="forge_packs_kind_unsupported">toto sestavení zatím tento typ neumí nainstalovat</string>
+</resources>

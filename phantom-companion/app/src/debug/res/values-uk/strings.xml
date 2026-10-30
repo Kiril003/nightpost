@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Ім'я, видиме у списку програм. Окреме для debug, бо 06.09 на апараті
+    власника стояли ДВІ збірки під одним ім'ям «PHANTOM» і одним значком:
+    `local.phantom.companion` (05.09) і `local.phantom.companion.debug`
+    (06.09). Хвилі ставлять debug, він відкривав перший — і бачив учорашній
+    застосунок. «звідки він взагалі ще є у телефоні??»
+
+    Перекривається саме джерельним набором `src/debug`, а не `resValue`:
+    `app_name` уже оголошений у `src/main/res/values/strings.xml`, і другий
+    такий самий ресурс із Gradle зіткнувся б із ним.
+-->
+<resources>
+    <string name="app_name">Nightpost · debug</string>
+</resources>

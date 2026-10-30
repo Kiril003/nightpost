@@ -1,0 +1,70 @@
+# phantom-mono — спільні правила для трьох дерев.
+# Власні .gitignore кожного дерева лишаються й діють поверх цього.
+
+# ── Секрети: ніколи в git ────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+**/.env.example.local
+local.properties
+keystore.properties
+*.jks
+*.keystore
+google-services.json
+*.p12
+*.pfx
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.mcp.json
+.npmrc
+.pypirc
+**/token_secret.key
+
+# ── Збірки й кеші ────────────────────────────────────────────────────────
+build/
+.gradle/
+.kotlin/
+.cxx/
+captures/
+node_modules/
+dist/
+dist-*/
+.vite/
+coverage/
+playwright-report/
+test-results/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.netlify/
+src-tauri/target/
+target/
+
+# ── Артефакти ────────────────────────────────────────────────────────────
+*.apk
+*.aab
+*.idsig
+*.AppImage
+*.deb
+*.msi
+*.pt
+*.pth
+
+# ── Робоче середовище ────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.iml
+.DS_Store
+*.log
+*.swp
+.claude/settings.local.json
+.claude/gate-stamp
+
+# стан scripts/cloud-setup.sh
+.cloud-setup/

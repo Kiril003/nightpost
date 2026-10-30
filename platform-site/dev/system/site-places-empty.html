@@ -1,0 +1,61 @@
+<html data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440, initial-scale=1">
+<title>Places · Nightpost</title>
+<script>document.documentElement.dataset.theme = location.hash.slice(1) || 'night'</script>
+<link rel="stylesheet" href="./system.css">
+<style>
+  .places-wrap { min-height: 100vh; display: flex; flex-direction: column; }
+  .create-form { max-width: 560px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .create-form .field { width: 100%; }
+  .footer { margin-top: auto; }
+</style>
+</head>
+<body>
+  <div class="wrap places-wrap">
+    <header class="topbar">
+      <a href="site-home.html" class="wordmark">Nightpost</a>
+      <nav>
+        <a href="site-home.html">Overview</a>
+        <a href="site-talk.html">Talk</a>
+        <a href="#">People</a>
+        <a href="#">Money</a>
+        <a href="site-places-empty.html" aria-current="page">Places</a>
+        <a href="#">Download</a>
+      </nav>
+      <div class="end">
+        <div class="lang">
+          <span aria-current="true">EN</span>
+          <span>UA</span>
+        </div>
+        <a href="site-you.html" class="avatar">AN</a>
+      </div>
+    </header>
+
+    <section class="page-head">
+      <div>
+        <div class="eyebrow">Places</div>
+        <h1>Your places</h1>
+        <p class="line">A page for your place: hours, menu and events, shown in Nightpost.</p>
+      </div>
+    </section>
+
+    <form class="create-form" action="#" method="get">
+      <div class="field">
+        <label for="place-name">Place name</label>
+        <input id="place-name" type="text" placeholder="Pho Corner">
+      </div>
+      <button class="btn btn--primary" type="button">Create</button>
+    </form>
+
+    <footer class="footer">
+      <span>© 2026 Nightpost</span>
+      <a href="#">Security and data</a>
+      <a href="#">Pricing</a>
+      <a href="#">Legal terms</a>
+      <a href="site-you.html">You</a>
+    </footer>
+  </div>
+</body>
+</html>

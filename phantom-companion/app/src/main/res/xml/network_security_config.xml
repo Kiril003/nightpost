@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Production: HTTPS only, with the phantom-os Caddy cert pinned via the
+         QR payload's SHA-256 (see PairCrypto.verifyCertPin). The pin is checked
+         at Ktor-client level, not here, so this file only disables cleartext
+         globally and lets the certificate pinner own the trust chain.
+
+         The LAN dev permits (RFC1918 ranges, phantom.local, localhost) used to
+         live here and shipped to users. They belong to the laptop, not to the
+         phone in someone's pocket, and two of them — `phantom.local`, the
+         loopback pair — really did open cleartext in release. They now live in
+         `src/debug/res/xml/network_security_config.xml`, which AGP merges over
+         this file for debug builds only. -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- GTFS static-розклад/живі позиції, що відповідають ЛИШЕ по http —
+         кожен хост тут названий поіменно в UkrainePack.kt / EuropePack.kt
+         KDoc разом із причиною. Виняток був ЗАДЕКЛАРОВАНИЙ у обох файлах
+         від 05.09 (Київ, 193.23.225.211), але цей <domain-config> раніше
+         не існував узагалі — GtfsStaticClient (core-net, HttpClient(OkHttp))
+         підкоряється саме цьому файлу на релізі, а base-config вище
+         забороняє http ГЛОБАЛЬНО. Тобто Київський розклад мовчки падав
+         на GtfsStaticClient.Result.Failed на кожному реальному пристрої
+         відколи "поїхав" — задокументований намір без коду за ним, рівно
+         той клас вади, що phantom-written-but-never-called. Знайдено й
+         полагоджено 14.09 разом із додаванням європейських http-фідів. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">193.23.225.211</domain>
+        <domain includeSubdomains="false">gtfs.ovapi.nl</domain>
+        <domain includeSubdomains="false">data.pid.cz</domain>
+        <domain includeSubdomains="false">dev.hsl.fi</domain>
+        <domain includeSubdomains="false">www.stops.lt</domain>
+        <domain includeSubdomains="false">actv.avmspa.it</domain>
+        <domain includeSubdomains="false">185.220.72.38</domain>
+    </domain-config>
+</network-security-config>

@@ -1,0 +1,18 @@
+{
+  "ok": false,
+  "refused": "missing_field",
+  "at": "blocks[0].data.name",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {}
+      }
+    ]
+  }
+}

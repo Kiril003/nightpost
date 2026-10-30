@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_title">Pindai kode</string>
+    <string name="scan_card_old_invite">Undangan lama</string>
+    <string name="scan_card_own_device">Transfer profil</string>
+    <string name="scan_card_no_match">Nomor tidak cocok</string>
+    <string name="scan_card_self">Ini kodemu</string>
+    <string name="scan_card_not_ours">Bukan kode Nightpost</string>
+    <string name="scan_enter_code">Masukkan kode</string>
+    <string name="scan_action">Pindai</string>
+    <string name="scan_hint">Arahkan kamera ke kode</string>
+    <string name="scan_code_field">Kode atau tautan</string>
+    <string name="scan_paste">Tempel</string>
+    <string name="scan_code_open">Buka</string>
+</resources>

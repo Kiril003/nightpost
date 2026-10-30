@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab_chats">Розмови</string>
+    <string name="home_tab_wallet">Гаманець</string>
+    <string name="home_tab_map">Мапа</string>
+    <string name="home_tab_profile">Я</string>
+
+    <string name="profile_action_edit">Змінити</string>
+    <string name="profile_name_missing">Додати імʼя</string>
+    <string name="profile_handle_missing">Додати імʼя для пошуку</string>
+    <string name="profile_photo">Фото профілю</string>
+
+    <string name="profile_privacy">Приватність і безпека</string>
+    <string name="profile_notifications">Сповіщення</string>
+    <string name="profile_calls">Дзвінки</string>
+    <string name="profile_calls_all">Для всіх дзвінків</string>
+    <string name="profile_profiles">Профілі</string>
+    <string name="profile_people">Мої люди</string>
+    <string name="profile_pages">Мої сторінки</string>
+    <string name="profile_devices">Пристрої</string>
+    <string name="profile_offline_maps">Мапи на телефоні</string>
+    <string name="profile_data">Дані й памʼять</string>
+    <string name="profile_appearance">Вигляд</string>
+    <string name="profile_language">Мова</string>
+    <string name="profile_help">Допомога</string>
+    <string name="profile_developer">Для розробника</string>
+
+    <string name="profile_dev_unlocked">Розділ «Для розробника» відкрито</string>
+    <string name="profile_dev_steps">Ще %1$d — і відкриється розділ для розробника</string>
+
+    <string name="profile_value_on_pc">на компʼютері</string>
+    <string name="profile_value_cloud">у хмарі</string>
+    <string name="profile_value_not_set">не налаштовано</string>
+    <string name="profile_value_auto">За сонцем</string>
+    <string name="profile_value_day">Денна</string>
+    <string name="profile_value_night">Нічна</string>
+    <string name="profile_value_count">%1$d</string>
+
+    <string name="profile_back">Назад</string>
+
+    <!-- Приватність -->
+    <string name="privacy_mic">Мікрофон</string>
+    <string name="privacy_mic_body">Коли й навіщо Nightpost слухає</string>
+    <string name="privacy_actions">Дії на телефоні</string>
+    <string name="privacy_actions_body">Що Nightpost робить сам, а що — з вашого дозволу</string>
+    <string name="privacy_vault">Сховище</string>
+    <string name="privacy_vault_body">Паролі й нотатки під відбитком пальця</string>
+    <string name="privacy_location">Місце у фоні</string>
+    <string name="privacy_system">Дозволи в налаштуваннях телефона</string>
+
+    <!-- Сповіщення -->
+    <string name="notif_system">Звук, вібрація й значки</string>
+    <string name="notif_system_body">Відкриються налаштування телефона для Nightpost</string>
+    <string name="notif_alerts_title">Тривоги й повідомлення</string>
+    <string name="notif_hush_title">Винятки</string>
+    <string name="notif_hush_mentions">Згадки в розмовах без звуку</string>
+    <string name="notif_hush_none">Розмов без звуку немає</string>
+    <string name="notif_hush_forever">Без звуку</string>
+    <string name="notif_hush_until">Без звуку до %1$s</string>
+    <string name="notif_hush_unmute">Увімкнути звук</string>
+
+    <!-- Пристрої -->
+    <string name="devices_pc">Компʼютер</string>
+    <string name="devices_this_phone">Цей телефон</string>
+    <string name="devices_pc_none">Не підʼєднано. Nightpost може думати на компʼютері.</string>
+    <string name="devices_pc_connect">Підʼєднати компʼютер</string>
+    <string name="devices_disconnect">Відключити</string>
+    <string name="devices_handle">Імʼя для пошуку</string>
+
+    <!-- PHANTOM -->
+    <string name="phantom_mind">Розум</string>
+    <string name="phantom_voice">Голос</string>
+    <string name="phantom_voice_body">Як Nightpost говорить і слухає</string>
+    <string name="phantom_memory">Що я про вас знаю</string>
+    <string name="phantom_memory_body">Відкриває розмову з Nightpost</string>
+
+
+    <!-- Офлайн-мапи -->
+
+    <!-- Дані -->
+    <string name="data_saved">Сховище</string>
+
+    <!-- Вигляд -->
+    <string name="appearance_theme">Тема</string>
+    <string name="appearance_auto">За сонцем</string>
+    <string name="appearance_day">Денна</string>
+    <string name="appearance_night">Нічна</string>
+    <string name="appearance_text">Розмір тексту</string>
+    <string name="appearance_text_smaller">Менше</string>
+    <string name="appearance_text_larger">Більше</string>
+    <string name="appearance_text_sample">Так виглядатиме текст у застосунку</string>
+    <string name="appearance_preview_them">Бачимось о шостій?</string>
+    <string name="appearance_preview_me">Так, буду</string>
+    <string name="appearance_accent">Акцент</string>
+    <string name="appearance_accent_amber">Бурштин</string>
+    <string name="appearance_accent_sage">Шавлія</string>
+    <string name="appearance_accent_sea">Море</string>
+    <string name="appearance_accent_iris">Ірис</string>
+    <string name="appearance_accent_rose">Троянда</string>
+    <string name="appearance_accent_graphite">Графіт</string>
+    <string name="appearance_wallpaper">Тло розмов</string>
+    <string name="appearance_wallpaper_none">Без тла</string>
+    <string name="appearance_wallpaper_gallery">Галерея</string>
+    <string name="appearance_wp_contour">Рельєф</string>
+    <string name="appearance_wp_sand">Пісок</string>
+    <string name="appearance_wp_sage">Шавлія</string>
+    <string name="appearance_wp_slate">Сланець</string>
+    <string name="appearance_wp_clay">Глина</string>
+    <string name="appearance_wp_dusk">Сутінки</string>
+    <string name="appearance_wp_stone">Камінь</string>
+    <string name="appearance_dim">Приглушення</string>
+    <string name="appearance_blur">Розмиття</string>
+    <string name="appearance_photo_failed">Не вдалося відкрити це фото.</string>
+    <string name="appearance_bubbles">Бульбашки</string>
+    <string name="appearance_list">Список розмов</string>
+    <string name="appearance_comfortable">Просторо</string>
+    <string name="appearance_compact">Щільно</string>
+
+    <!-- Мова -->
+    <string name="language_system">Як у телефоні</string>
+
+    <!-- Допомога -->
+    <string name="help_sources">Звідки дані на мапі</string>
+    <string name="help_reports">Скарги й звернення</string>
+    <string name="help_license">Ваша копія Nightpost</string>
+    <string name="help_version">Версія</string>
+
+    <!-- Розробнику -->
+    <string name="dev_diagnostics">Діагностика</string>
+    <string name="dev_precision">Точність позиції</string>
+    <string name="dev_symbiote">Симбіонт</string>
+    <string name="dev_whisper">Стрічка поверх екрана</string>
+
+    <!-- Дзвінок PHANTOM -->
+    <string name="call_phantom_title">Nightpost</string>
+    <string name="call_listening">Слухаю</string>
+    <string name="call_hearing">Чую вас</string>
+    <string name="call_thinking">Думаю</string>
+    <string name="call_speaking">Говорю</string>
+    <string name="call_connecting">Зʼєдную</string>
+    <string name="call_end">Завершити</string>
+    <string name="call_mic_needed">Щоб поговорити з Nightpost, дозвольте мікрофон.</string>
+    <string name="call_hold_to_talk">Утримуйте й говоріть</string>
+    <string name="call_mode_live">Живий голос</string>
+    <string name="call_mode_turn">Натисніть і говоріть</string>
+    <string name="call_live_unavailable">Живий голос недоступний — утримуйте кнопку</string>
+    <string name="call_mic_allow">Дозволити мікрофон</string>
+    <string name="call_live_lost">Звʼязок обірвався. Далі — утримуйте кнопку й говоріть.</string>
+    <string name="call_not_heard">Не розчув — скажіть ще раз.</string>
+    <string name="call_answer_in_chat">Відповідь лежить у розмові з Nightpost.</string>
+    <string name="call_brain_silent">Розум не відповів за півтори хвилини.</string>
+    <string name="call_mute">Мікрофон</string>
+    <string name="call_speaker">Динамік</string>
+    <string name="call_captions">Субтитри</string>
+    <string name="call_confirm_yes">Так</string>
+    <string name="call_confirm_no">Ні</string>
+    <string name="call_you">Ви</string>
+    <string name="call_text_only">Текстом</string>
+
+    <string name="phantom_mind_pc">Nightpost думає на вашому компʼютері.</string>
+    <string name="phantom_mind_cloud">Nightpost думає в хмарі за вашим ключем.</string>
+    <string name="phantom_mind_server">Думає на сервері Nightpost. Ключ не потрібен.</string>
+    <string name="phantom_mind_server_spent">Безкоштовні питання на сьогодні скінчились. Завтра знову.</string>
+    <string name="phantom_mind_server_offline">Сервер Nightpost зараз не відповідає.</string>
+    <string name="phantom_mind_none">Підʼєднайте компʼютер або додайте ключ у «Додатково».</string>
+
+    <!-- Бали: рядок Профілю й розділ. Рахує лише сервер; тут їх лише читають. -->
+    <string name="profile_points">Бали</string>
+    <string name="points_value_settle">зарахувати</string>
+    <string name="points_value_offline">немає звʼязку</string>
+    <string name="points_loading">Читаю бали…</string>
+    <string name="points_offline_body">Сервер балів зараз недоступний</string>
+    <string name="points_total">Разом</string>
+    <string name="points_empty">Балів ще немає</string>
+    <string name="points_kind_meetup">Зустріч відбулась</string>
+    <string name="points_kind_payment">Перша оплачена частка</string>
+    <string name="points_kind_invite">Друг приєднався за запрошенням</string>
+    <string name="points_kind_other">Інша дія</string>
+    <string name="points_pending_title">Оплачену частку ще не зараховано</string>
+    <string name="points_pending_body">Підтвердіть відбитком для зарахування</string>
+    <string name="points_settle">Зарахувати</string>
+    <string name="points_busy">Зараховую…</string>
+    <string name="points_confirm_title">Зарахувати оплату до балів</string>
+    <string name="points_confirm_detail">Адреса гаманця стане відома серверу балів</string>
+    <string name="points_note_declined">Без підтвердження нічого не зараховано.</string>
+    <string name="points_note_nothing">Заявки на оплату вже немає.</string>
+    <string name="points_note_wallet_changed">Платили з іншого гаманця — заявку знято.</string>
+    <string name="points_note_counted">Зараховано балів: %1$d.</string>
+    <string name="points_note_already">Цю оплату вже було зараховано — нових балів немає.</string>
+    <string name="points_note_not_confirmed">Мережа ще не підтвердила оплату. Спробуйте за хвилину.</string>
+    <string name="points_private">Бали бачите лише ви. Купити, передати чи вивести їх неможливо.</string>
+</resources>

@@ -1,0 +1,53 @@
+{
+  "ok": false,
+  "refused": "mixed_tokens",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Linde Studio",
+          "kind": "ceramics",
+          "tagline": "Ceramics and coffee"
+        }
+      },
+      {
+        "id": "pass-44",
+        "kind": "cls.pass",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "token": "SOL",
+          "items": [
+            {
+              "id": "ps-5",
+              "visits": 5,
+              "price": "0.5"
+            }
+          ]
+        }
+      },
+      {
+        "id": "membership-45",
+        "kind": "cls.membership",
+        "variant": "cards",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "tr-member",
+              "name": "Member",
+              "price": "40"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

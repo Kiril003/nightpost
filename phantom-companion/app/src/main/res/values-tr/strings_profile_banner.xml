@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_banner">Afiş</string>
+    <string name="profile_banner_add">Afiş ekle</string>
+    <string name="profile_banner_photos">Fotoğraflar</string>
+    <string name="profile_banner_video">Video</string>
+    <string name="profile_banner_from_phone">Telefondan</string>
+    <string name="profile_banner_max">En fazla 6</string>
+    <string name="profile_banner_count">%1$d/%2$d</string>
+    <string name="profile_banner_focus">Odak</string>
+    <string name="profile_banner_save">Kaydet</string>
+    <string name="profile_banner_saving">Kaydediliyor…</string>
+    <string name="profile_banner_first_frame">diğerleri ilk kareyi görür</string>
+    <string name="profile_banner_video_local">8 MB üstü: diğerleri ilk kareyi görür</string>
+    <string name="profile_banner_video_long">En fazla 15 sn video</string>
+    <string name="profile_banner_failed">Kaydedilmedi</string>
+    <string name="profile_banner_remove">Afişi kaldır</string>
+    <string name="profile_banner_photo_n">Fotoğraf %1$d</string>
+    <string name="profile_banner_close">Kapat</string>
+    <string name="profile_edit">Düzenle</string>
+    <string name="profile_moment_new">An</string>
+    <string name="profile_photo_row">Profil fotoğrafı</string>
+    <string name="profile_about_row">Durum ve biyografi</string>
+    <string name="profile_new">Yeni</string>
+</resources>

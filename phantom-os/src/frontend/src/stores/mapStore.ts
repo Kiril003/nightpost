@@ -1,0 +1,457 @@
+import { create } from 'zustand';
+import type { MapPOI, TrackPoint, CliffScreeFeature } from '@shared/types';
+import { translate } from '../i18n';
+import { resolveLocale } from '../i18n/useTranslation';
+import { useSettingsStore, LANGUAGE_SETTING_KEY } from './settingsStore';
+import { geocodeErrorKey, geocodeReason } from '../services/geocodeError';
+import {
+  mapApi,
+  type Bounds,
+  type GeoTaggedFact,
+  type OfflineRegion,
+  type RouteResult,
+} from '../services/api';
+import { tNow } from '../components/chat/tNow';
+
+export interface Entity {
+  id: string;
+  position: [number, number, number]; // lon, lat, elevation
+  speed: number;
+  heading: number;
+}
+
+/** One endpoint of a planned route, with a human label for the HUD. */
+export interface RoutePoint {
+  lat: number;
+  lon: number;
+  label: string;
+}
+
+/** A planned route plus the resolved origin/destination it connects. */
+export interface PlannedRoute {
+  result: RouteResult;
+  from: RoutePoint;
+  to: RoutePoint;
+}
+
+/**
+ * `map.snapshot`'s result. No PNG capture exists anywhere in this
+ * codebase — `hasImage` is always `false` until that's built. What IS
+ * real: the layers the agent had active server-side, plus whatever
+ * camera state this browser tab happens to hold at the moment the
+ * mutation arrives (the backend has no way to know that; it only
+ * exists client-side). A bookmark, not a photo.
+ */
+export interface MapSnapshotRecord {
+  id: string;
+  label: string | null;
+  activeLayerIds: string[];
+  center: [number, number] | null;
+  zoom: number;
+  capturedAt: string;
+  hasImage: false;
+}
+
+// Keep the most recent N track points client-side. Older points are
+// dropped on append; full history is re-hydrated from the backend via
+// `loadTrack(hours)` when the user widens the time window.
+export const MAX_TRACK_HISTORY = 1000;
+
+export type MapLayerKey =
+  | 'base'
+  | 'presence'
+  | 'intel'
+  | 'recon'
+  // Phase 9.4c audit G6 — geo-tagged memory facts rendered as subtle markers.
+  | 'facts'
+  // Baked OSM natural=cliff|scree|bare_rock — a hazard/obstacle layer, not decorative.
+  | 'cliff_scree';
+
+export type MapSelection =
+  | { kind: 'poi'; poi: MapPOI }
+  | { kind: 'fact'; fact: GeoTaggedFact }
+  | { kind: 'geofence'; geofence: any }
+  | null;
+
+interface MapStoreState {
+  pois: MapPOI[];
+  track: TrackPoint[];
+  geoTaggedFacts: GeoTaggedFact[];
+  geofences: any[];
+  /** Baked cliff/scree/bare_rock hazard features in the last-loaded viewport. */
+  cliffScree: CliffScreeFeature[];
+  center: [number, number] | null;
+  zoom: number;
+  layers: Record<MapLayerKey, boolean>;
+  selection: MapSelection;
+  loading: boolean;
+  error: string | null;
+
+  longitude: number;
+  latitude: number;
+  pitch: number;
+  bearing: number;
+  entities: Entity[];
+  setViewState: (viewState: Partial<{ longitude: number; latitude: number; zoom: number; pitch: number; bearing: number }>) => void;
+  updateEntities: (data: string | ArrayBuffer | Entity[]) => void;
+
+  /** Phase 24-C — the active planned route (null when none). */
+  route: PlannedRoute | null;
+  /** True while a plan request is in flight (geocode + route round-trip). */
+  routing: boolean;
+  /** Last routing failure, for the HUD to surface. Cleared on success. */
+  routeError: string | null;
+  /** Phase 24-H — Time Machine date (ISO string). Defaults to 'today'. */
+  temporalDate: string;
+  
+  /** Phase 24-PRE — Tactical HUD info synced from context. */
+  tactical: {
+    lat: number | null;
+    lon: number | null;
+    bearing: number;
+    satellites: number;
+    speed: number;
+    fix: boolean;
+    source: string;
+    confidence?: number;
+    accuracyM?: number | null;
+  };
+
+  tappedPlace: {
+    name: string;
+    cls: string;
+    lon: number;
+    lat: number;
+    distanceM: number | null;
+  } | null;
+  setTappedPlace: (place: MapStoreState['tappedPlace']) => void;
+
+  offlineRegions: OfflineRegion[];
+  setOfflineRegions: (regions: OfflineRegion[]) => void;
+
+  setPOIs: (pois: MapPOI[]) => void;
+  appendPOI: (poi: MapPOI) => void;
+  removePOI: (id: string) => void;
+  setTrack: (points: TrackPoint[]) => void;
+  appendTrackPoint: (point: TrackPoint) => void;
+  setGeofences: (gfs: any[]) => void;
+  setCliffScree: (features: CliffScreeFeature[]) => void;
+  setCenter: (center: [number, number]) => void;
+  setZoom: (zoom: number) => void;
+  setTemporalDate: (date: string) => void;
+  setTactical: (info: Partial<MapStoreState['tactical']>) => void;
+
+  searchQuery: string;
+  setSearchQuery: (q: string) => void;
+  toast: string | null;
+  setToast: (t: string | null) => void;
+
+  toggleLayer: (key: MapLayerKey) => void;
+  setLayer: (key: MapLayerKey, visible: boolean) => void;
+  select: (selection: MapSelection) => void;
+  setError: (e: string | null) => void;
+
+  /**
+   * Plan a route from `from` to `to`. Both are free text: each is
+   * forward-geocoded to coordinates, except an empty `from`, which uses
+   * the operator's current position. Writes `route` on success and
+   * `routeError` on any failure. Never throws.
+   */
+  planRoute: (from: string, to: string) => Promise<void>;
+  /**
+   * Маршрут до точки, яку вже показали на екрані. Геокодувати її нема
+   * чого — координати відомі. `fallbackOrigin` потрібен там, де немає
+   * супутників: тоді відлік іде від того, на що людина дивиться.
+   */
+  routeToPoint: (dest: RoutePoint, fallbackOrigin?: RoutePoint) => Promise<void>;
+  clearRoute: () => void;
+  /**
+   * Apply an already-computed route directly — the agent-driven path
+   * (`useMapAgentBridge` on `map.plan_route`'s `"route"` mutation) has no
+   * text fields to geocode, it already has the geometry. Reuses the same
+   * `route` field `planRoute`/`routeToPoint` write, so `RouteLayer` draws
+   * it exactly the same way regardless of who planned it.
+   */
+  setRoute: (route: PlannedRoute | null) => void;
+
+  /** Most recent `map.snapshot` bookmark (null when none taken yet). */
+  lastSnapshot: MapSnapshotRecord | null;
+  setLastSnapshot: (snapshot: MapSnapshotRecord | null) => void;
+
+  loadCliffScree: (bounds: Bounds) => Promise<void>;
+  loadPOIs: (category?: string) => Promise<void>;
+  loadTrack: (hours?: number) => Promise<void>;
+  loadGeoTaggedFacts: () => Promise<void>;
+  loadGeofences: () => Promise<void>;
+  savePOI: (poi: Omit<MapPOI, 'id' | 'created_at' | 'user_id'>) => Promise<MapPOI | null>;
+  deletePOI: (id: string) => Promise<boolean>;
+}
+
+const DEFAULT_LAYERS: Record<MapLayerKey, boolean> = {
+  base: true,
+  presence: true,
+  intel: true,
+  recon: false,
+  facts: true,
+  cliff_scree: false,
+};
+
+export const useMapStore = create<MapStoreState>((set, get) => ({
+  pois: [],
+  track: [],
+  geoTaggedFacts: [],
+  geofences: [],
+  cliffScree: [],
+  center: null,
+  zoom: 15,
+  layers: DEFAULT_LAYERS,
+  selection: null,
+  loading: false,
+  error: null,
+  route: null,
+  routing: false,
+  routeError: null,
+  longitude: 30.5234,
+  latitude: 50.4501,
+  pitch: 45,
+  bearing: 0,
+  entities: [],
+  setViewState: (vs) => set((s) => ({ ...s, ...vs })),
+  updateEntities: (data) => {
+    // Basic implementation for JSON or Array
+    if (Array.isArray(data)) {
+      set({ entities: data });
+    } else if (typeof data === 'string') {
+      try {
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed)) {
+          set({ entities: parsed });
+        }
+      } catch (e) {
+        console.error('Failed to parse entities', e);
+      }
+    }
+    // Binary processing could be added here if needed
+  },
+  temporalDate: new Date().toISOString().split('T')[0],
+  tactical: {
+    lat: null,
+    lon: null,
+    bearing: 0,
+    satellites: 0,
+    speed: 0,
+    fix: false,
+    source: 'none',
+    confidence: 0,
+    accuracyM: null,
+  },
+
+  tappedPlace: null,
+  setTappedPlace: (tappedPlace) => set({ tappedPlace }),
+
+  offlineRegions: [],
+  setOfflineRegions: (offlineRegions) => set({ offlineRegions }),
+
+  setPOIs: (pois) => set({ pois }),
+  appendPOI: (poi) =>
+    set((s) => ({ pois: [poi, ...s.pois.filter((p) => p.id !== poi.id)] })),
+  removePOI: (id) =>
+    set((s) => ({ pois: s.pois.filter((p) => p.id !== id) })),
+  setTrack: (points) => set({ track: points }),
+  appendTrackPoint: (point) =>
+    set((s) => ({ track: [...s.track.slice(-(MAX_TRACK_HISTORY - 1)), point] })),
+  setGeofences: (gfs) => set({ geofences: gfs }),
+  setCliffScree: (features) => set({ cliffScree: features }),
+  setCenter: (center) => set({ center }),
+  setZoom: (zoom) => set({ zoom }),
+  setTemporalDate: (date) => set({ temporalDate: date }),
+  setTactical: (info) => set((s) => ({ tactical: { ...s.tactical, ...info } })),
+
+  searchQuery: '',
+  setSearchQuery: (q) => set({ searchQuery: q }),
+  toast: null,
+  setToast: (t) => set({ toast: t }),
+
+  toggleLayer: (key) =>
+    set((s) => ({ layers: { ...s.layers, [key]: !s.layers[key] } })),
+  setLayer: (key, visible) =>
+    set((s) => ({ layers: { ...s.layers, [key]: visible } })),
+  select: (selection) => set({ selection }),
+  setError: (e) => set({ error: e }),
+
+  planRoute: async (fromRaw, toRaw) => {
+    const from = fromRaw.trim();
+    const to = toRaw.trim();
+    if (!to) {
+      set({ routeError: tNow('mapRoute.noDest') });
+      return;
+    }
+
+    // Geocode a text field to its first candidate coordinate.
+    const geocodeFirst = async (query: string): Promise<RoutePoint | null> => {
+      const { results } = await mapApi.geocode(query, 1);
+      const hit = results[0];
+      if (!hit) return null;
+      return { lat: hit.lat, lon: hit.lon, label: hit.display_name };
+    };
+
+    set({ routing: true, routeError: null });
+    try {
+      const dest = await geocodeFirst(to);
+      if (!dest) {
+        set({ routing: false, routeError: tNow('mapRoute.notFound', { q: to }) });
+        return;
+      }
+
+      let origin: RoutePoint | null;
+      if (from) {
+        origin = await geocodeFirst(from);
+        if (!origin) {
+          set({ routing: false, routeError: tNow('mapRoute.notFound', { q: from }) });
+          return;
+        }
+      } else {
+        // Empty "from" means "route from where I am now".
+        const t = get().tactical;
+        if (t.lat == null || t.lon == null) {
+          set({ routing: false, routeError: tNow('mapRoute.noPos') });
+          return;
+        }
+        origin = { lat: t.lat, lon: t.lon, label: tNow('mapRoute.myPlace') };
+      }
+
+      const result = await mapApi.planRoute(
+        [[origin.lat, origin.lon], [dest.lat, dest.lon]],
+        'car',
+      );
+      set({ route: { result, from: origin, to: dest }, routing: false, routeError: null });
+    } catch (err) {
+      set({
+        routing: false,
+        routeError: geocodeReason(err)
+          ? translate(geocodeErrorKey(err), resolveLocale(useSettingsStore.getState().values[LANGUAGE_SETTING_KEY]))
+          : err instanceof Error ? err.message : tNow('mapRoute.failed'),
+      });
+    }
+  },
+
+  routeToPoint: async (dest, fallbackOrigin) => {
+    set({ routing: true, routeError: null });
+    try {
+      // Без фіксу «моє місце» — це здогад браузера по мережі, і він тут
+      // за вісім кілометрів від того, що на екрані. Маршрут від такої
+      // точки виглядає як несправність, хоч дані чесні. Тоді рахуємо від
+      // того, на що людина дивиться, і кажемо це прямо в підписі.
+      const t = get().tactical;
+      const origin: RoutePoint | null =
+        t.fix && t.lat != null && t.lon != null
+          ? { lat: t.lat, lon: t.lon, label: tNow('mapRoute.myPlace') }
+          : fallbackOrigin
+            ?? (t.lat != null && t.lon != null
+              ? { lat: t.lat, lon: t.lon, label: tNow('mapRoute.approx') }
+              : null);
+      if (!origin) {
+        set({ routing: false, routeError: tNow('mapRoute.noOrigin') });
+        return;
+      }
+      const result = await mapApi.planRoute(
+        [[origin.lat, origin.lon], [dest.lat, dest.lon]],
+        'car',
+      );
+      set({ route: { result, from: origin, to: dest }, routing: false, routeError: null });
+    } catch (err) {
+      set({
+        routing: false,
+        routeError: err instanceof Error ? err.message : tNow('mapRoute.failed'),
+      });
+    }
+  },
+
+  clearRoute: () => set({ route: null, routeError: null }),
+
+  setRoute: (route) => set({ route, routing: false, routeError: null }),
+
+  lastSnapshot: null,
+  setLastSnapshot: (snapshot) => set({ lastSnapshot: snapshot }),
+
+  loadCliffScree: async (bounds) => {
+    try {
+      const resp = await mapApi.getCliffScree(bounds);
+      set({ cliffScree: resp.features });
+    } catch (err) {
+      // Non-critical — a hazard overlay failing to refresh should not block the map.
+      console.warn('Failed to load cliff/scree hazards:', err);
+    }
+  },
+
+  loadPOIs: async (category) => {
+    set({ loading: true, error: null });
+    try {
+      const resp = await mapApi.getPOIs(category);
+      set({ pois: resp.pois, loading: false });
+    } catch (err) {
+      set({
+        loading: false,
+        error: err instanceof Error ? err.message : 'Failed to load POIs',
+      });
+    }
+  },
+
+  loadTrack: async (hours = 2) => {
+    set({ loading: true, error: null });
+    try {
+      const resp = await mapApi.getTrack(hours);
+      set({ track: resp.points, loading: false });
+    } catch (err) {
+      set({
+        loading: false,
+        error: err instanceof Error ? err.message : 'Failed to load track',
+      });
+    }
+  },
+
+  loadGeoTaggedFacts: async () => {
+    try {
+      const resp = await mapApi.getGeoTaggedFacts();
+      set({ geoTaggedFacts: resp.facts });
+    } catch (err) {
+      // Non-critical — silently leave previous facts in place.
+      console.warn('Failed to load geo-tagged facts:', err);
+    }
+  },
+
+  loadGeofences: async () => {
+    try {
+      const data = await mapApi.getGeofences();
+      set({ geofences: data });
+    } catch (err) {
+      console.warn('Failed to load geofences:', err);
+    }
+  },
+
+  savePOI: async (poi) => {
+    try {
+      const saved = await mapApi.createPOI(poi);
+      get().appendPOI(saved);
+      return saved;
+    } catch (err) {
+      set({ error: err instanceof Error ? err.message : 'Failed to save POI' });
+      return null;
+    }
+  },
+
+  deletePOI: async (id) => {
+    try {
+      await mapApi.deletePOI(id);
+      get().removePOI(id);
+      const sel = get().selection;
+      if (sel && sel.kind === 'poi' && sel.poi.id === id) {
+        set({ selection: null });
+      }
+      return true;
+    } catch (err) {
+      set({ error: err instanceof Error ? err.message : 'Failed to delete POI' });
+      return false;
+    }
+  },
+}));

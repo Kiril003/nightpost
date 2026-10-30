@@ -1,0 +1,32 @@
+/* Оболонка на ПК: присутність (`data-mood`) тонує точку в смузі. */
+
+.shell-root {
+  --mood-core: var(--ph-accent);
+  --mood-breath: 6s;
+  font-family: var(--ph-font-sans);
+}
+.shell-root[data-mood='watch'] {
+  --mood-breath: 3.6s;
+}
+.shell-root[data-mood='work'] {
+  --mood-core: var(--ph-accent-hover);
+  --mood-breath: 2.2s;
+}
+.shell-root[data-mood='alarm'] {
+  --mood-core: var(--ph-danger);
+  --mood-breath: 1.4s;
+}
+
+.shell-dot {
+  border-radius: 9999px;
+  background: var(--mood-core);
+  animation: shell-breathe var(--mood-breath) ease-in-out infinite;
+}
+
+@keyframes shell-breathe {
+  0%, 100% { transform: scale(0.97); }
+  50% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shell-dot { animation: none; }
+}

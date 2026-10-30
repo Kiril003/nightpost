@@ -1,0 +1,127 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AlertTriangle, ChevronDown, ChevronUp, Info, MapPinOff, ShieldAlert, Smartphone } from 'lucide-react';
+import { formatDistance } from '../../../services/positioning/fuse';
+import { sourceLabel } from '../../../services/positioning/types';
+import { useTranslation } from '../../../i18n/useTranslation';
+import type { MessageKey } from '../../../i18n';
+import type { FusedPosition } from '../../../services/positioning/types';
+
+/** Упевненість словом: відсотки тут нічого не пояснюють. */
+function confidenceWord(c: number): { text: MessageKey; dot: string } {
+  if (c >= 0.7) return { text: 'map.where.good', dot: 'var(--signal-ok)' };
+  if (c >= 0.4) return { text: 'map.where.mid', dot: 'var(--signal-warn)' };
+  return { text: 'map.where.low', dot: 'var(--signal-alert)' };
+}
+
+/**
+ * Де я і наскільки цьому можна вірити.
+ *
+ * Тут раніше стояли самі координати з підписом джерела. Але коли джерел
+ * кілька і вони не згодні між собою, одна точка — це вже твердження, а не
+ * факт. Чипс показує рішення, а тап розкриває, ЧОМУ саме таке.
+ */
+export function WhereChip({ position, pairedDevices = 0 }: {
+  position: FusedPosition | null;
+  /** 0 — телефона немає, і це найкорисніша підказка на цьому екрані. */
+  pairedDevices?: number;
+}) {
+  const { t, locale } = useTranslation();
+  const [open, setOpen] = useState(false);
+
+  if (!position) {
+    return (
+      <div className="bg-[color:var(--ph-surface)] border border-[color:var(--ph-line)] flex min-h-[44px] items-center gap-2 rounded-2xl px-3 py-2">
+        <MapPinOff size={12} className="text-ink-muted" />
+        <span className="text-[11px] font-semibold text-ink-secondary">{t('map.hud.placeUnknown')}</span>
+      </div>
+    );
+  }
+
+  const conf = confidenceWord(position.confidence);
+  const worst = position.findings.reduce<'info' | 'warn' | 'alarm'>(
+    (acc, f) => (f.level === 'alarm' ? 'alarm' : f.level === 'warn' && acc !== 'alarm' ? 'warn' : acc),
+    'info',
+  );
+
+  return (
+    <div className="bg-[color:var(--ph-surface)] border border-[color:var(--ph-line)] w-full max-w-[240px] rounded-2xl">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-label={open ? t('map.where.hide') : t('map.where.show')}
+        className="flex min-h-[44px] w-full flex-col items-start gap-0.5 px-3 py-2 text-left"
+      >
+        <div className="flex w-full items-center gap-2">
+          <span className="block h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: conf.dot }} aria-hidden />
+          <span className="min-w-0 flex-1 truncate text-[12px] font-semibold text-ink-primary">
+            {position.label || sourceLabel(position.kind)}
+          </span>
+          {position.spoofSuspected ? (
+            <ShieldAlert size={13} className="shrink-0 text-[color:var(--ph-danger)]" aria-hidden />
+          ) : worst === 'warn' ? (
+            <AlertTriangle size={13} className="shrink-0 text-[color:var(--ph-warning)]" aria-hidden />
+          ) : null}
+          {open ? <ChevronUp size={12} className="shrink-0 opacity-60" /> : <ChevronDown size={12} className="shrink-0 opacity-60" />}
+        </div>
+        <span className="text-[10px] text-ink-muted">
+          ±{formatDistance(position.accuracyM, locale)} · {t(conf.text)}
+        </span>
+        {position.spoofSuspected && (
+          <span className="text-[10px] font-semibold text-[color:var(--ph-danger)]">{t('map.where.spoof')}</span>
+        )}
+      </button>
+
+      {open && (
+        <div className="space-y-2 border-t border-[color:var(--ph-line)] px-3 py-2">
+          <div className="text-[10px] text-ink-muted">
+            {t('map.where.taken')} <span className="font-semibold text-ink-secondary">{sourceLabel(position.kind)}</span>
+            {position.candidates.length > 1 && ` · ${t('map.where.compared', { n: position.candidates.length - 1 })}`}
+          </div>
+          {position.findings.length === 0 ? (
+            <div className="flex items-start gap-1.5 text-[10px] leading-snug text-ink-muted">
+              <Info size={11} className="mt-[1px] shrink-0 opacity-60" />
+              {t('map.where.agree')}
+            </div>
+          ) : (
+            position.findings.map((f, i) => (
+              <div key={i} className="flex items-start gap-1.5">
+                <span
+                  className="mt-[5px] block h-1 w-1 shrink-0 rounded-full"
+                  style={{
+                    background:
+                      f.level === 'alarm' ? 'var(--signal-alert)'
+                        : f.level === 'warn' ? 'var(--signal-warn)' : 'var(--ink-muted)',
+                  }}
+                  aria-hidden
+                />
+                <div className="min-w-0">
+                  <div className="text-[10px] leading-snug text-ink-secondary">{f.text}</div>
+                  {f.hint && <div className="text-[10px] leading-snug text-ink-muted">{f.hint}</div>}
+                </div>
+              </div>
+            ))
+          )}
+          {/* Порада, якою не можна скористатись, — це не порада. Пара вже
+              написана й живе в налаштуваннях; ведемо прямо туди. */}
+          {pairedDevices === 0 && (
+            <Link
+              to="/settings/mobile"
+              className="flex min-h-[44px] items-start gap-1.5 rounded-lg bg-[color:var(--ph-raised)] px-2 py-1.5 transition-colors hover:bg-[color:var(--ph-line)]"
+            >
+              <Smartphone size={11} className="mt-[3px] shrink-0 text-[color:var(--ph-warning)]" />
+              <div className="text-[10px] leading-snug text-ink-secondary">
+                {t('map.where.noReceiver')}
+                <span className="text-ink-muted"> {t('map.where.pairPhone')}</span>
+              </div>
+            </Link>
+          )}
+          <div className="pt-0.5 font-mono text-[10px] tabular-nums text-ink-muted">
+            {position.lat.toFixed(5)}, {position.lon.toFixed(5)}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

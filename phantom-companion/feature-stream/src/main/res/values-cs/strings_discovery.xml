@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_discovery_note_generator">Generátory vyznačené na otevřené mapě.</string>
+    <string name="map_discovery_note_ev_charging">Dobíjecí stanice pro elektromobily.</string>
+    <string name="map_discovery_note_drinking_water">Pítka, pumpy a prameny pitné vody z otevřené mapy.</string>
+    <string name="map_discovery_note_shelter">Úkryty označené na otevřené mapě jako ochranné.</string>
+    <string name="map_discovery_note_metro_shelter">Stanice metra.</string>
+    <string name="map_discovery_note_pharmacy">Lékárny.</string>
+    <string name="map_discovery_note_hospital">Nemocnice.</string>
+    <string name="map_discovery_note_post_office">Pošty.</string>
+    <string name="map_discovery_note_parcel_locker">Výdejní boxy.</string>
+    <string name="map_discovery_note_atm">Bankomaty.</string>
+    <string name="map_discovery_note_transit_stop">Zastávky povrchové dopravy.</string>
+    <string name="map_discovery_note_transit_hub">Stanice metra, příměstské železnice a nádraží.</string>
+    <string name="map_discovery_note_fuel">Čerpací stanice.</string>
+    <string name="map_discovery_note_underground_parking">Podzemní parkoviště.</string>
+    <string name="map_discovery_note_supermarket">Supermarkety.</string>
+    <string name="map_discovery_note_invincibility_point">Body nezlomnosti z otevřené mapy.</string>
+    <string name="map_discovery_note_bridge">Mosty.</string>
+    <string name="map_discovery_note_landmark">Památky, hrady, pomníky, vyhlídky.</string>
+    <string name="map_discovery_note_museum">Muzea a galerie.</string>
+    <string name="map_discovery_note_park">Parky a zahrady.</string>
+    <string name="map_discovery_note_place_of_worship">Sakrální stavby.</string>
+    <string name="map_discovery_note_entrance">Vchody vyznačené na otevřené mapě.</string>
+    <string name="map_discovery_note_passage">Průchody domy do dvorů.</string>
+    <string name="map_discovery_note_steps">Schody a rampy.</string>
+</resources>

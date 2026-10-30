@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onb_to_chats">To chats</string>
+    <string name="onb_start">Start</string>
+    <string name="onb_restore">Restore</string>
+    <string name="onb_photo_add">Add photo</string>
+    <string name="onb_retry">Try again</string>
+
+    <string name="onb_name_title">What is your name?</string>
+    <string name="onb_name_field_label">Your name or nickname</string>
+    <string name="onb_name_placeholder">name…</string>
+    <string name="onb_name_hint_long">Up to %1$d characters max.</string>
+    <string name="onb_name_unnamed">Your name</string>
+
+    <string name="onb_error_kicker">error</string>
+    <string name="onb_creating_profile">setting up your profile on this phone</string>
+    <string name="onb_error_title">Something went wrong</string>
+    <!-- First run, build 18: the mark, one line about the app and the language pick. -->
+    <string name="onb_lang_mark">Nightpost</string>
+    <string name="onb_lang_line">Chats, map and money with your people — in one place.</string>
+    <string name="onb_lang_title">Choose your language</string>
+    <string name="onb_lang_continue">Continue</string>
+</resources>

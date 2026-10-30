@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_notify_title">Notificações</string>
+    <string name="perm_notify_body">Para mensagens e chamadas com o app fechado</string>
+    <string name="settings_ua_alerts">Alertas aéreos da Ucrânia</string>
+    <string name="settings_ua_alerts_body">Alertas da sua região na Ucrânia</string>
+    <string name="settings_ua_alerts_body_map">No mapa, da sua região</string>
+    <string name="perm_sms_title">Mensagens sem internet</string>
+    <string name="perm_sms_body">O acesso a SMS é necessário para enviar e receber pedidos sem rede.</string>
+    <string name="perm_bg_loc_title">Localização em segundo plano</string>
+    <string name="perm_bg_loc_body">Mantém o rastro da sua viagem completo</string>
+</resources>

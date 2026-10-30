@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_c_fallback_title">Point on the map</string>
+    <string name="mapl_c_station_nearby_title">NEAR STATION</string>
+</resources>

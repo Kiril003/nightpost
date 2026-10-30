@@ -1,0 +1,35 @@
+{
+  "why": "Один вхід — один підпис. Читається Kotlin-тестом (PeerDirectoryVectorTest) і pytest'ом (test_directory.py); розходження тут означає, що телефон публікує запис, якого сервер не прийме, або приймає той, якого телефон не складе. Головне, що доводить вектор: у підписаному реченні стоїть sha256 імені, а не саме ім'я — тож серверові ім'я не потрібне й не надсилається.",
+  "version": "PH-DIR-v2",
+  "handle_raw": "@Marta_K",
+  "handle": "marta_k",
+  "ed25519": {
+    "why": "RFC 8032 §7.1 TEST 1: підпис Ed25519 детермінований, тож обидві мови мусять дати БАЙТ У БАЙТ той самий рядок.",
+    "seed_hex": "9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7f60",
+    "pub_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+    "pub_b64": "11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+  },
+  "invite": {
+    "why": "Запрошення PH2 для довідника — рівно те, що друкує PeerInvite.encode(PeerDirectory.addressless(...)): host порожній, port «0» І показне ім'я порожнє. У конверті не лишається жодного людського рядка — лише відбиток ключа й два ключі.",
+    "peer_id": "d1d27b5fa7533574",
+    "name": "",
+    "dh_pub_b64": "hSDwCYkwp1R0i33ctD73Wg2/Og0mOBr066SpjqqbTmo",
+    "code": "PH2:ZDFkMjdiNWZhNzUzMzU3NHx8MTFxWUFZS3hDcmZWUy83VHlXUUhPZzdoY3ZQYXBpTWxyd0lhYVBjSFVSb3xoU0R3Q1lrd3AxUjBpMzNjdEQ3M1dnMi9PZzBtT0JyMDY2U3BqcXFiVG1vfHww:02622a"
+  },
+  "exp": 1790000000,
+  "expected": {
+    "handle_hash": "aac5adbbdadadb1a3b8ad4d9b15c3dd4d715378630556ea14e56d68b2f0d736f",
+    "invite_fields": [
+      "d1d27b5fa7533574",
+      "",
+      "11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo",
+      "hSDwCYkwp1R0i33ctD73Wg2/Og0mOBr066SpjqqbTmo",
+      "",
+      "0"
+    ],
+    "publish_message": "PH-DIR-v2|aac5adbbdadadb1a3b8ad4d9b15c3dd4d715378630556ea14e56d68b2f0d736f|PH2:ZDFkMjdiNWZhNzUzMzU3NHx8MTFxWUFZS3hDcmZWUy83VHlXUUhPZzdoY3ZQYXBpTWxyd0lhYVBjSFVSb3xoU0R3Q1lrd3AxUjBpMzNjdEQ3M1dnMi9PZzBtT0JyMDY2U3BqcXFiVG1vfHww:02622a|1790000000",
+    "publish_sig_b64url": "KgiRmbX1yztoRJ95kkIsnICUJjPxQzCfS2wyAae-OuVZ4yG7_WIQkKvVFA8cKqxSTZo55EWtPuW0-ni_zHEOBQ",
+    "withdraw_message": "PH-DIR-del-v2|aac5adbbdadadb1a3b8ad4d9b15c3dd4d715378630556ea14e56d68b2f0d736f|1790000000",
+    "withdraw_sig_b64url": "4gAR7JuVKOvnf68aCKUeF0ESFCR9HLdx0qGEGrUA6am7eTwXDueXwhdfpYBPRzpjX3mrF3dVQPGmqHPjEq3cDQ"
+  }
+}

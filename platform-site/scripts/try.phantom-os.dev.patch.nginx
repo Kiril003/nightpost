@@ -1,0 +1,79 @@
+# Дві правки до ВЖЕ ІСНУЮЧОГО вхоста try.phantom-os.dev на phantom-oracle
+# (/etc/nginx/sites-enabled/phantom-demo). Файл не замінює той вхост — це
+# рівно два блоки, які треба в нього внести, і їх ставлять ПЕРЕД `location /`.
+#
+# Чому це окремий файл, а не правка на машині: конфіг nginx тієї машини не
+# лежить у жодному репозиторії, тож кожна зміна там досі була невидимою і
+# незворотною. Тепер вона хоча б записана там, де її видно рецензентові.
+
+# ── 1. Моделі слуху й голосу ────────────────────────────────────────────────
+#
+# Бригада «пакети» поклала 10 файлів (463 006 826 Б) у served-root
+# ~/road-mesh-bake/serve/models/{moonshine,supertonic}/, і внутрішньо
+# http://127.0.0.1:8091/models/… віддає їх правильно. Публічно вони НЕ
+# роздаються: /models/ падає в `location /` і йде на 127.0.0.1:8000, тобто
+# панель ПК віддає свою SPA-сторінку на будь-яку адресу під /models/.
+#
+# Це найпідступніший різновид зеленого: `curl -o /dev/null -w %{http_code}`
+# показує 200 і на /models/, і на /models/definitely-not-here-9z8x/. Перевіряти
+# тут можна лише ТИП відповіді, не код.
+#
+# Кеш доречний: файли моделі незмінні за побудовою — телефон звіряє sha256, і
+# байт, що змінився, він просто відхилить.
+#
+# БАЗА ДЛЯ ЗБІРКИ — КОРІНЬ САЙТУ, не цей шлях:
+#     -Pphantom.modelsBaseUrl=https://try.phantom-os.dev
+# `ModelManager.resolvePartUrl` складає адресу як `"$base/${part.url}"`, а ключі
+# вже несуть теку: `MOONSHINE_DIR = "models/moonshine"`, `SUPERTONIC_DIR =
+# "models/supertonic"`. Тобто база `…/models` дала б `…/models/models/moonshine/…`
+# і 404 на кожен файл. Перевіряти це на телефоні через 5 ГБ мобільного трафіку —
+# найдорожчий спосіб дізнатись про зайве слово в адресі.
+location /models/ {
+    proxy_pass http://127.0.0.1:8091/models/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    limit_except GET HEAD { deny all; }
+    proxy_cache phantom_ram_cache;
+    proxy_cache_valid 200 206 7d;
+    proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
+    add_header X-Phantom-Cache $upstream_cache_status;
+}
+
+# ── 2. Каталог і манiфести не можна кешувати тиждень ────────────────────────
+#
+# Заміряно бригадою «пакети» 12.09: після stage/sign публічний
+# world-catalog.json ще ГОДИНУ віддавав старі 27 пакетів з minAppBuild 0,
+# з X-Phantom-Cache: HIT. Причина — `proxy_cache_valid 200 206 7d` у
+# `location /packs/` з ключем за URI: .bin незмінні, але .json — документи,
+# які змінюються при кожній публікації, і вони потрапили під те саме правило.
+#
+# Наслідок був не «трохи застаріло»: телефон, який прочитав такий каталог,
+# бачив світ, якого вже немає, і жодна публікація його не виправляла б тиждень.
+#
+# Порядок відносно `location /packs/` НЕ має значення, і це варто знати, бо
+# здорова інтуїція каже протилежне. Регулярний вираз б'є будь-який префіксний
+# збіг незалежно від того, вище він у файлі чи нижче. Заміряно на справжньому
+# nginx із префіксом ВИЩЕ за регулярку:
+#     /packs/world-catalog.json → регулярка
+#     /packs/road-mesh-de.bin   → префікс
+# Тобто .bin і далі йдуть старою дорогою з тижневим кешем, а .json — новою.
+location ~ ^/packs/.*\.json$ {
+    proxy_pass http://127.0.0.1:8091;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    limit_except GET HEAD { deny all; }
+    proxy_cache phantom_ram_cache;
+    proxy_cache_valid 200 30s;
+    add_header X-Phantom-Cache $upstream_cache_status;
+    add_header Cache-Control "public, max-age=30, must-revalidate";
+}
+
+# ── Чого цей файл НЕ лікує ──────────────────────────────────────────────────
+#
+# Перепікання пакета під тим самим ім'ям. `.bin` лишаються на 7 діб, тож той
+# самий URI віддаватиме старі байти тиждень. Телефон їх відхилить за sha256 —
+# тобто вада не мовчазна, але й не лікується сама. Два виходи, обидва кращі за
+# purge: класти нову версію під НОВИМ ім'ям (ім'я з версією — те саме правило,
+# що вже діє для збірок у publish-build.sh), або після публікації прибрати
+# записи з кешу:
+#     sudo find /var/cache/nginx_ram -type f -delete && sudo systemctl reload nginx

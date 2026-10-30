@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Záloha uložena · %1$s</string>
+    <string name="backup_sheet_title">Vytvořit zálohu</string>
+    <string name="backup_loss_title">Bez zálohy ztratíte:</string>
+    <string name="backup_loss_chats">Zprávy</string>
+    <string name="backup_loss_contacts">Kontakty</string>
+    <string name="backup_loss_profiles">Profily</string>
+    <string name="backup_loss_venues">Úprava míst</string>
+    <string name="backup_loss_licences">Licence Solana a Seeker</string>
+    <string name="backup_loss_handle">@handle na 30 dní</string>
+    <string name="backup_loss_points">Body a hodnocení</string>
+    <string name="backup_loss_wallet">Peněženka bez vlastního exportu</string>
+    <string name="backup_loss_memory">Paměť mimo počítač</string>
+    <string name="backup_pass_hint">Heslo (alespoň 12 znaků)</string>
+    <string name="backup_pass_confirm_hint">Zopakujte heslo</string>
+    <string name="backup_pass_mismatch">Hesla se neshodují</string>
+    <string name="backup_pass_too_short">Je vyžadováno alespoň 12 znaků</string>
+    <string name="backup_save_action">Uložit zálohu</string>
+    <string name="backup_restore_title">Obnovit ze zálohy</string>
+    <string name="backup_restore_pass_hint">Heslo k záloze</string>
+    <string name="backup_restore_action">Obnovit</string>
+    <string name="backup_restore_err_wrong_pass">Heslo nesouhlasí</string>
+    <string name="backup_restore_err_not_our_file">Toto není záloha Nightpost</string>
+    <string name="backup_restore_err_not_empty">Nejprve smažte data v tomto telefonu</string>
+    <string name="backup_restore_success">Obnoveno: %1$d kontaktů, %2$d zpráv, %3$d profilů</string>
+    <string name="backup_restore_err_read">Soubor nelze otevřít</string>
+    <string name="backup_restore_err_invalid">Záloha je poškozená</string>
+    <string name="backup_restore_err_failed">Obnovení selhalo</string>
+    <string name="profile_backup_old_phone">Starý telefon je dobré vymazat</string>
+    <string name="backup_pass_show">Zobrazit heslo</string>
+    <string name="backup_pass_hide">Skrýt heslo</string>
+    <string name="backup_create_err">Zálohu se nepodařilo uložit</string>
+    <string name="profile_backup_restore">Obnovit ze zálohy</string>
+    <string name="profile_backup_wallet_no_lock">Peněženka není v záloze · bez zámku obrazovky</string>
+    <string name="profile_backup_wallet_needs_words">Peněženka není v záloze · otevřete slova v Peněžence</string>
+    <plurals name="profile_backup_media_left">
+        <item quantity="one">%d fotka či soubor neobnoveny</item>
+        <item quantity="few">%d fotky či soubory neobnoveny</item>
+        <item quantity="many">%d fotky či souboru neobnoveno</item>
+        <item quantity="other">%d fotek či souborů neobnoveno</item>
+    </plurals>
+</resources>

@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 51.0557,
+    "maxLon": 18.8593,
+    "minLat": 48.5518,
+    "minLon": 12.0906
+  },
+  "files": [
+    {
+      "bytes": 1673530,
+      "name": "places.tsv.gz",
+      "sha256": "eaf9b6344d61ec59dd5d0252a721fddd92e1cbc34ec4849ee9849e42fb8c4669"
+    },
+    {
+      "bytes": 1193815,
+      "name": "streets.tsv.gz",
+      "sha256": "e4cae83a4732f964506732c010f571e52b7de882f77af4f431899eee49e658f6"
+    }
+  ],
+  "home": {
+    "lat": 50.0875,
+    "lon": 14.4213,
+    "zoom": 12.0
+  },
+  "id": "CZ",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "cz-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Чехія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "cz-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Чехія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Чехія",
+  "version": 1
+}

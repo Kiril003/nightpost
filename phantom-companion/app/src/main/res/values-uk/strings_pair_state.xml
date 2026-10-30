@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pair_err_bad_input">Це не QR-код компʼютера.</string>
+    <string name="pair_err_expired">QR-код застарів. На компʼютері вже новий.</string>
+    <string name="pair_err_not_found">Компʼютер не знайдено.</string>
+    <string name="pair_err_digits_not_found">Компʼютер не знайдено в цій мережі. Скануйте його QR-код.</string>
+    <string name="pair_err_not_proven">Компʼютер не пройшов перевірку.</string>
+    <string name="pair_err_unreachable">Немає звʼязку з компʼютером: %1$s</string>
+    <string name="sphere_place">Місце</string>
+    <string name="sphere_sound">Звук і голос</string>
+    <string name="sphere_notices">Сповіщення</string>
+    <string name="sphere_clipboard">Буфер і посилання</string>
+    <string name="sphere_screen">Екран</string>
+    <string name="sphere_keyboard">Клавіатура</string>
+</resources>

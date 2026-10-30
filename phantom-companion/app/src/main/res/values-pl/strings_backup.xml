@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Kopia zapisana · %1$s</string>
+    <string name="backup_sheet_title">Utwórz kopię</string>
+    <string name="backup_loss_title">Bez kopii stracisz:</string>
+    <string name="backup_loss_chats">Czaty</string>
+    <string name="backup_loss_contacts">Kontakty</string>
+    <string name="backup_loss_profiles">Profile</string>
+    <string name="backup_loss_venues">Edycję miejsc</string>
+    <string name="backup_loss_licences">Licencje Solana i Seeker</string>
+    <string name="backup_loss_handle">\@nazwę na 30 dni</string>
+    <string name="backup_loss_points">Punkty i oceny</string>
+    <string name="backup_loss_wallet">Portfel bez własnego eksportu</string>
+    <string name="backup_loss_memory">Pamięć spoza komputera</string>
+    <string name="backup_pass_hint">Fraza (min. 12 znaków)</string>
+    <string name="backup_pass_confirm_hint">Powtórz frazę</string>
+    <string name="backup_pass_mismatch">Frazy się nie zgadzają</string>
+    <string name="backup_pass_too_short">Wymagane min. 12 znaków</string>
+    <string name="backup_save_action">Zapisz kopię</string>
+    <string name="backup_restore_title">Przywróć z kopii</string>
+    <string name="backup_restore_pass_hint">Fraza kopii</string>
+    <string name="backup_restore_action">Przywróć</string>
+    <string name="backup_restore_err_wrong_pass">Zła fraza</string>
+    <string name="backup_restore_err_not_our_file">To nie kopia Nightpost</string>
+    <string name="backup_restore_err_not_empty">Najpierw usuń dane z tego telefonu</string>
+    <string name="backup_restore_success">Przywrócono: %1$d kontaktów, %2$d wiadomości, %3$d profili</string>
+    <string name="backup_restore_err_read">Nie można otworzyć pliku</string>
+    <string name="backup_restore_err_invalid">Kopia jest uszkodzona</string>
+    <string name="backup_restore_err_failed">Nie udało się przywrócić</string>
+</resources>

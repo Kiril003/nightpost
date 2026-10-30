@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="here_now_lang">uk</string>
+    <string name="here_now_title">Що тут зараз</string>
+    <string name="here_now_report">Повідомити, що тут</string>
+    <string name="here_now_report_short">Повідомити</string>
+    <string name="here_now_held_short">надішлеться пізніше</string>
+    <string name="here_now_sent_short">надіслано</string>
+    <string name="here_now_unsure">не підтверджено</string>
+    <string name="here_now_from_people">від людей</string>
+    <string name="here_now_yes">Є</string>
+    <string name="here_now_no">Немає</string>
+    <string name="here_now_road_yes">Проїзд є</string>
+    <string name="here_now_road_no">Перекрито</string>
+    <string name="here_now_embargo">Під час тривоги свідчення надсилаються після відбою</string>
+    <string name="here_now_held">Ваше свідчення чекає відбою</string>
+    <string name="here_now_sent">Прийнято — іншим покажуть із затримкою</string>
+    <string name="here_now_no_key">З цього телефона поки не можна свідчити.</string>
+    <string name="here_now_limited">Забагато свідчень за годину — спробуйте за %1$d хв.</string>
+    <string name="here_now_failed">Не вдалося надіслати — немає звʼязку.</string>
+    <string name="here_now_refused">Свідчення не прийняли — спробуйте трохи згодом.</string>
+</resources>

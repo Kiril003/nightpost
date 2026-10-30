@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_settings">Einstellungen</string>
+    <string name="profile_cover_add">Cover hinzufügen</string>
+    <string name="profile_cover_change">Cover ändern</string>
+    <string name="profile_cover_chip">Ändern</string>
+    <string name="profile_photo_change">Foto ändern</string>
+    <string name="profile_photo_failed">Das Foto ließ sich nicht öffnen. Versuch ein anderes.</string>
+    <string name="profile_name_edit">Namen bearbeiten</string>
+    <string name="profile_name_save">Speichern</string>
+    <string name="profile_name_save_failed">Nicht gespeichert</string>
+    <string name="profile_circles">Personen</string>
+    <string name="profile_circles_empty">Noch niemand hier</string>
+    <string name="profile_moments">Momente</string>
+    <string name="profile_moments_empty">Heute keine Momente</string>
+    <string name="profile_moment">Dein Moment</string>
+    <string name="profile_moment_add">Hinzufügen</string>
+    <string name="profile_action_code">Mein Code</string>
+    <string name="profile_code_send">Link senden</string>
+    <string name="profile_code_failed">Code konnte nicht erstellt werden</string>
+    <string name="circle_close">Engste</string>
+    <string name="circle_family">Familie</string>
+    <string name="circle_friends">Freunde</string>
+    <string name="circle_work">Arbeit</string>
+    <string name="circle_study">Studium</string>
+    <string name="circle_travel">Reisen</string>
+    <string name="profile_name_budget">%1$d/%2$d</string>
+    <string name="profile_name_too_long">Ein längerer Name passt nicht in deinen Einladungscode.</string>
+    <string name="profile_server">Assistent</string>
+    <string name="profile_key_short">Fingerabdruck</string>
+    <string name="profile_key_created">Erstellt</string>
+    <string name="profile_value_server">Nightpost</string>
+    <string name="profile_value_server_spent">heute aufgebraucht</string>
+    <string name="profile_value_server_quiet">antwortet nicht</string>
+    <string name="profile_backup">Backup</string>
+    <string name="profile_backup_none">Keins</string>
+    <string name="profile_about_edit">Über mich</string>
+    <string name="profile_status_hint">Status</string>
+    <string name="profile_photo_remove">Foto entfernen</string>
+    <string name="profile_cover_remove">Cover entfernen</string>
+</resources>

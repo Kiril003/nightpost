@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Sauvegarde enregistrée · %1$s</string>
+    <string name="backup_sheet_title">Créer une sauvegarde</string>
+    <string name="backup_loss_title">Sans sauvegarde, vous perdez :</string>
+    <string name="backup_loss_chats">Discussions</string>
+    <string name="backup_loss_contacts">Contacts</string>
+    <string name="backup_loss_profiles">Profils</string>
+    <string name="backup_loss_venues">Modification des lieux</string>
+    <string name="backup_loss_licences">Licences Solana et Seeker</string>
+    <string name="backup_loss_handle">\@pseudo pendant 30 jours</string>
+    <string name="backup_loss_points">Points et notes</string>
+    <string name="backup_loss_wallet">Portefeuille sans export</string>
+    <string name="backup_loss_memory">Mémoire absente d’un ordinateur</string>
+    <string name="backup_pass_hint">Phrase secrète (12 caractères min.)</string>
+    <string name="backup_pass_confirm_hint">Répétez la phrase secrète</string>
+    <string name="backup_pass_mismatch">Les phrases ne correspondent pas</string>
+    <string name="backup_pass_too_short">12 caractères minimum</string>
+    <string name="backup_save_action">Sauvegarder</string>
+    <string name="backup_restore_title">Restaurer une sauvegarde</string>
+    <string name="backup_restore_pass_hint">Phrase secrète de la sauvegarde</string>
+    <string name="backup_restore_action">Restaurer</string>
+    <string name="backup_restore_err_wrong_pass">Phrase incorrecte</string>
+    <string name="backup_restore_err_not_our_file">Pas une sauvegarde Nightpost</string>
+    <string name="backup_restore_err_not_empty">Effacez d’abord les données de ce téléphone</string>
+    <string name="backup_restore_success">Restauré : %1$d contacts, %2$d messages, %3$d profils</string>
+    <string name="backup_restore_err_read">Impossible d’ouvrir le fichier</string>
+    <string name="backup_restore_err_invalid">Sauvegarde endommagée</string>
+    <string name="backup_restore_err_failed">Échec de la restauration</string>
+</resources>

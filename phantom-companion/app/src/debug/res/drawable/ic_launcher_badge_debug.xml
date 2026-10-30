@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Смуга під знаком: другий, незалежний від кольору знак «це debug». Колір
+     з'їдає темна тема лаунчера й монохромні значки Android 13 — форма ні.
+
+     Геометрія: безпечна зона адаптивного значка — коло r33 навколо (54,54).
+     Найдальша точка смуги — 32.3 від центру; від низу знака (y 74.25) її
+     відділяє 4.75. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M42.5,79 L65.5,79 A2.5,2.5 0 0 1 65.5,84 L42.5,84 A2.5,2.5 0 0 1 42.5,79 Z"
+        android:fillColor="#22D3EE" />
+</vector>

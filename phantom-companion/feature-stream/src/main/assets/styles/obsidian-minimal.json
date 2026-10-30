@@ -1,0 +1,6272 @@
+{
+  "glyphs": "asset://fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "obsidian-ground",
+      "paint": {
+        "background-color": "#F8F4EE"
+      },
+      "type": "background"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "residential",
+          "suburb",
+          "neighbourhood",
+          "quarter"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landuse-residential",
+      "minzoom": 8,
+      "paint": {
+        "fill-color": "#FAF7F3",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "hospital",
+          "school",
+          "university",
+          "college",
+          "kindergarten",
+          "stadium",
+          "cemetery"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landuse-civic",
+      "minzoom": 12,
+      "paint": {
+        "fill-color": "#EFECE8",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "industrial",
+          "commercial",
+          "retail",
+          "garages",
+          "quarry",
+          "railway"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landuse-industrial",
+      "minzoom": 10,
+      "paint": {
+        "fill-color": "#F3EDE6",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "type": "fill"
+    },
+    {
+      "id": "obsidian-park",
+      "minzoom": 7,
+      "paint": {
+        "fill-color": "#DDE0D3",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "park",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "wood",
+          "forest"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landcover-wood",
+      "minzoom": 4,
+      "paint": {
+        "fill-color": "#D5D9CA",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "grass",
+          "meadow"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landcover-grass",
+      "minzoom": 7,
+      "paint": {
+        "fill-color": "#E5E5DB",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "farmland"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landcover-farmland",
+      "minzoom": 6,
+      "paint": {
+        "fill-color": "#DDD6C8",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "rock"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landcover-rock",
+      "minzoom": 7,
+      "paint": {
+        "fill-color": "#EDE7DE",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "sand"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landcover-sand",
+      "minzoom": 6,
+      "paint": {
+        "fill-color": "#F2E5D4",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "ice"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landcover-ice",
+      "minzoom": 2,
+      "paint": {
+        "fill-color": "#D6E1ED",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "wetland"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landcover-wetland",
+      "minzoom": 8,
+      "paint": {
+        "fill-color": "#DCDFDB",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "match",
+        [
+          "get",
+          "class"
+        ],
+        [
+          "wetland"
+        ],
+        true,
+        false
+      ],
+      "id": "obsidian-landcover-wetland-edge",
+      "minzoom": 10,
+      "paint": {
+        "line-color": "rgba(229,233,228,0.45)",
+        "line-dasharray": [
+          "step",
+          [
+            "zoom"
+          ],
+          [
+            "literal",
+            [
+              2.307692,
+              4.153846
+            ]
+          ],
+          13,
+          [
+            "literal",
+            [
+              1.666667,
+              3
+            ]
+          ],
+          16,
+          [
+            "literal",
+            [
+              1.428571,
+              2.571429
+            ]
+          ]
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.2
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          0.6,
+          16,
+          1.4
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "!=",
+        [
+          "get",
+          "intermittent"
+        ],
+        1
+      ],
+      "id": "obsidian-water",
+      "paint": {
+        "fill-color": [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "ocean"
+          ],
+          "#8C9CA7",
+          "#A5B7C1"
+        ],
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "==",
+        [
+          "get",
+          "intermittent"
+        ],
+        1
+      ],
+      "id": "obsidian-water-intermittent",
+      "minzoom": 6,
+      "paint": {
+        "fill-color": "#C8D1D4",
+        "fill-opacity": 0.72
+      },
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "type": "fill"
+    },
+    {
+      "id": "obsidian-water-shore",
+      "minzoom": 10,
+      "paint": {
+        "line-color": "#AFBFC8",
+        "line-opacity": 0.55,
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.3
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          0.4,
+          14,
+          1,
+          18,
+          2.4
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "!=",
+          [
+            "get",
+            "intermittent"
+          ],
+          1
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "river",
+            "canal",
+            "stream",
+            "ditch",
+            "drain"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-waterway",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 7,
+      "paint": {
+        "line-color": "#AABBC5",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          7,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "river",
+              "canal"
+            ],
+            0.6,
+            0
+          ],
+          11.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "river",
+              "canal"
+            ],
+            1.68,
+            0
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "river",
+              "canal"
+            ],
+            1.8,
+            0.5
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "river",
+              "canal"
+            ],
+            5,
+            2
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "river",
+              "canal"
+            ],
+            14,
+            6
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "waterway",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "==",
+        [
+          "get",
+          "intermittent"
+        ],
+        1
+      ],
+      "id": "obsidian-waterway-intermittent",
+      "minzoom": 9,
+      "paint": {
+        "line-color": "#AABBC5",
+        "line-dasharray": [
+          "step",
+          [
+            "zoom"
+          ],
+          [
+            "literal",
+            [
+              4.651163,
+              3.953488
+            ]
+          ],
+          12,
+          [
+            "literal",
+            [
+              2.857143,
+              2.428571
+            ]
+          ],
+          16,
+          [
+            "literal",
+            [
+              1.311475,
+              1.114754
+            ]
+          ]
+        ],
+        "line-opacity": 0.7,
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.3
+          ],
+          [
+            "zoom"
+          ],
+          9,
+          0.5,
+          14,
+          1.4,
+          18,
+          3.6
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "waterway",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "geometry-type"
+          ],
+          "Polygon"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "apron",
+            "runway",
+            "taxiway",
+            "helipad"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-aeroway-area",
+      "minzoom": 10,
+      "paint": {
+        "fill-color": "#EFE9E1",
+        "fill-opacity": 1
+      },
+      "source": "openmaptiles",
+      "source-layer": "aeroway",
+      "type": "fill"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "geometry-type"
+          ],
+          "LineString"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "runway"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-aeroway-runway",
+      "minzoom": 9,
+      "paint": {
+        "line-color": "#E0D7CC",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.4
+          ],
+          [
+            "zoom"
+          ],
+          9,
+          1,
+          12,
+          3,
+          16,
+          14,
+          20,
+          60
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "aeroway",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "geometry-type"
+          ],
+          "LineString"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "taxiway"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-aeroway-taxiway",
+      "minzoom": 11,
+      "paint": {
+        "line-color": "#E8E1D8",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.4
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          0.5,
+          14,
+          1.6,
+          18,
+          8
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "aeroway",
+      "type": "line"
+    },
+    {
+      "id": "obsidian-building-shadow",
+      "minzoom": 14,
+      "paint": {
+        "fill-color": "rgba(139,134,128,0.2)",
+        "fill-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          14,
+          0,
+          15.5,
+          1
+        ],
+        "fill-translate": [
+          1.5,
+          1.5
+        ],
+        "fill-translate-anchor": "viewport"
+      },
+      "source": "openmaptiles",
+      "source-layer": "building",
+      "type": "fill"
+    },
+    {
+      "id": "obsidian-building",
+      "minzoom": 13,
+      "paint": {
+        "fill-color": "#E6DFD7",
+        "fill-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          13,
+          0,
+          14.5,
+          1
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "building",
+      "type": "fill"
+    },
+    {
+      "id": "obsidian-building-edge",
+      "minzoom": 16,
+      "paint": {
+        "line-color": "#D3CDC5",
+        "line-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          16,
+          0,
+          17,
+          0.8
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.2
+          ],
+          [
+            "zoom"
+          ],
+          16,
+          0.4,
+          20,
+          1.2
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "building",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "tunnel"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway",
+            "trunk",
+            "primary",
+            "secondary",
+            "tertiary",
+            "minor",
+            "service",
+            "track",
+            "path"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-tunnel-casing",
+      "layout": {
+        "line-join": "round"
+      },
+      "minzoom": 11,
+      "paint": {
+        "line-color": "#C8BBAA",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            4.3,
+            [
+              "trunk"
+            ],
+            3.88,
+            [
+              "primary"
+            ],
+            3.58,
+            [
+              "secondary"
+            ],
+            3.28,
+            [
+              "tertiary"
+            ],
+            2.98,
+            [
+              "minor"
+            ],
+            0,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          11.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            4.75,
+            [
+              "trunk"
+            ],
+            4.288,
+            [
+              "primary"
+            ],
+            3.958,
+            [
+              "secondary"
+            ],
+            3.628,
+            [
+              "tertiary"
+            ],
+            3.298,
+            [
+              "minor"
+            ],
+            0,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            5.2,
+            [
+              "trunk"
+            ],
+            4.696,
+            [
+              "primary"
+            ],
+            4.336,
+            [
+              "secondary"
+            ],
+            3.976,
+            [
+              "tertiary"
+            ],
+            3.616,
+            [
+              "minor"
+            ],
+            3.256,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          12.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            6,
+            [
+              "trunk"
+            ],
+            5.412,
+            [
+              "primary"
+            ],
+            4.992,
+            [
+              "secondary"
+            ],
+            4.572,
+            [
+              "tertiary"
+            ],
+            4.152,
+            [
+              "minor"
+            ],
+            3.732,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          13,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            6.8,
+            [
+              "trunk"
+            ],
+            6.128,
+            [
+              "primary"
+            ],
+            5.648,
+            [
+              "secondary"
+            ],
+            5.168,
+            [
+              "tertiary"
+            ],
+            4.688,
+            [
+              "minor"
+            ],
+            4.208,
+            [
+              "service",
+              "track"
+            ],
+            3.536,
+            0
+          ],
+          13.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            7.6,
+            [
+              "trunk"
+            ],
+            6.844,
+            [
+              "primary"
+            ],
+            6.304,
+            [
+              "secondary"
+            ],
+            5.764,
+            [
+              "tertiary"
+            ],
+            5.224,
+            [
+              "minor"
+            ],
+            4.684,
+            [
+              "service",
+              "track"
+            ],
+            3.928,
+            0
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            8.4,
+            [
+              "trunk"
+            ],
+            7.56,
+            [
+              "primary"
+            ],
+            6.96,
+            [
+              "secondary"
+            ],
+            6.36,
+            [
+              "tertiary"
+            ],
+            5.76,
+            [
+              "minor"
+            ],
+            5.16,
+            [
+              "service",
+              "track"
+            ],
+            4.32,
+            3.48
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            16,
+            [
+              "trunk"
+            ],
+            14.32,
+            [
+              "primary"
+            ],
+            13.12,
+            [
+              "secondary"
+            ],
+            11.92,
+            [
+              "tertiary"
+            ],
+            10.72,
+            [
+              "minor"
+            ],
+            9.52,
+            [
+              "service",
+              "track"
+            ],
+            7.84,
+            6.16
+          ],
+          18,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            30,
+            [
+              "trunk"
+            ],
+            26.64,
+            [
+              "primary"
+            ],
+            24.24,
+            [
+              "secondary"
+            ],
+            21.84,
+            [
+              "tertiary"
+            ],
+            19.44,
+            [
+              "minor"
+            ],
+            17.04,
+            [
+              "service",
+              "track"
+            ],
+            13.68,
+            10.32
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            56,
+            [
+              "trunk"
+            ],
+            49.28,
+            [
+              "primary"
+            ],
+            44.48,
+            [
+              "secondary"
+            ],
+            39.68,
+            [
+              "tertiary"
+            ],
+            34.88,
+            [
+              "minor"
+            ],
+            30.08,
+            [
+              "service",
+              "track"
+            ],
+            23.36,
+            16.64
+          ],
+          22,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            102,
+            [
+              "trunk"
+            ],
+            89.12,
+            [
+              "primary"
+            ],
+            79.92,
+            [
+              "secondary"
+            ],
+            70.72,
+            [
+              "tertiary"
+            ],
+            61.52,
+            [
+              "minor"
+            ],
+            52.32,
+            [
+              "service",
+              "track"
+            ],
+            39.44,
+            26.56
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "tunnel"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway",
+            "trunk",
+            "primary",
+            "secondary",
+            "tertiary",
+            "minor",
+            "service",
+            "track",
+            "path"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-tunnel",
+      "layout": {
+        "line-join": "round"
+      },
+      "minzoom": 11,
+      "paint": {
+        "line-color": [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway"
+          ],
+          "#F9F3EB",
+          [
+            "trunk"
+          ],
+          "#F7F2ED",
+          [
+            "primary"
+          ],
+          "#F6F2ED",
+          [
+            "secondary"
+          ],
+          "#F2EEE8",
+          [
+            "tertiary"
+          ],
+          "#EFEAE3",
+          [
+            "minor"
+          ],
+          "#ECE6DE",
+          [
+            "service",
+            "track"
+          ],
+          "#E9E2D9",
+          "#E6DFD5"
+        ],
+        "line-dasharray": [
+          "step",
+          [
+            "zoom"
+          ],
+          [
+            "literal",
+            [
+              1.893939,
+              1.262626
+            ]
+          ],
+          14,
+          [
+            "literal",
+            [
+              0.865801,
+              0.577201
+            ]
+          ],
+          17,
+          [
+            "literal",
+            [
+              0.30303,
+              0.20202
+            ]
+          ],
+          20,
+          [
+            "literal",
+            [
+              0.12987,
+              0.08658
+            ]
+          ]
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            3,
+            [
+              "trunk"
+            ],
+            2.58,
+            [
+              "primary"
+            ],
+            2.28,
+            [
+              "secondary"
+            ],
+            1.98,
+            [
+              "tertiary"
+            ],
+            1.68,
+            [
+              "minor"
+            ],
+            0,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          11.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            3.3,
+            [
+              "trunk"
+            ],
+            2.838,
+            [
+              "primary"
+            ],
+            2.508,
+            [
+              "secondary"
+            ],
+            2.178,
+            [
+              "tertiary"
+            ],
+            1.848,
+            [
+              "minor"
+            ],
+            0,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            3.6,
+            [
+              "trunk"
+            ],
+            3.096,
+            [
+              "primary"
+            ],
+            2.736,
+            [
+              "secondary"
+            ],
+            2.376,
+            [
+              "tertiary"
+            ],
+            2.016,
+            [
+              "minor"
+            ],
+            1.656,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          12.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            4.2,
+            [
+              "trunk"
+            ],
+            3.612,
+            [
+              "primary"
+            ],
+            3.192,
+            [
+              "secondary"
+            ],
+            2.772,
+            [
+              "tertiary"
+            ],
+            2.352,
+            [
+              "minor"
+            ],
+            1.932,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          13,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            4.8,
+            [
+              "trunk"
+            ],
+            4.128,
+            [
+              "primary"
+            ],
+            3.648,
+            [
+              "secondary"
+            ],
+            3.168,
+            [
+              "tertiary"
+            ],
+            2.688,
+            [
+              "minor"
+            ],
+            2.208,
+            [
+              "service",
+              "track"
+            ],
+            1.536,
+            0
+          ],
+          13.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            5.4,
+            [
+              "trunk"
+            ],
+            4.644,
+            [
+              "primary"
+            ],
+            4.104,
+            [
+              "secondary"
+            ],
+            3.564,
+            [
+              "tertiary"
+            ],
+            3.024,
+            [
+              "minor"
+            ],
+            2.484,
+            [
+              "service",
+              "track"
+            ],
+            1.728,
+            0
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            6,
+            [
+              "trunk"
+            ],
+            5.16,
+            [
+              "primary"
+            ],
+            4.56,
+            [
+              "secondary"
+            ],
+            3.96,
+            [
+              "tertiary"
+            ],
+            3.36,
+            [
+              "minor"
+            ],
+            2.76,
+            [
+              "service",
+              "track"
+            ],
+            1.92,
+            1.08
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            12,
+            [
+              "trunk"
+            ],
+            10.32,
+            [
+              "primary"
+            ],
+            9.12,
+            [
+              "secondary"
+            ],
+            7.92,
+            [
+              "tertiary"
+            ],
+            6.72,
+            [
+              "minor"
+            ],
+            5.52,
+            [
+              "service",
+              "track"
+            ],
+            3.84,
+            2.16
+          ],
+          18,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            24,
+            [
+              "trunk"
+            ],
+            20.64,
+            [
+              "primary"
+            ],
+            18.24,
+            [
+              "secondary"
+            ],
+            15.84,
+            [
+              "tertiary"
+            ],
+            13.44,
+            [
+              "minor"
+            ],
+            11.04,
+            [
+              "service",
+              "track"
+            ],
+            7.68,
+            4.32
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            48,
+            [
+              "trunk"
+            ],
+            41.28,
+            [
+              "primary"
+            ],
+            36.48,
+            [
+              "secondary"
+            ],
+            31.68,
+            [
+              "tertiary"
+            ],
+            26.88,
+            [
+              "minor"
+            ],
+            22.08,
+            [
+              "service",
+              "track"
+            ],
+            15.36,
+            8.64
+          ],
+          22,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            92,
+            [
+              "trunk"
+            ],
+            79.12,
+            [
+              "primary"
+            ],
+            69.92,
+            [
+              "secondary"
+            ],
+            60.72,
+            [
+              "tertiary"
+            ],
+            51.52,
+            [
+              "minor"
+            ],
+            42.32,
+            [
+              "service",
+              "track"
+            ],
+            29.44,
+            16.56
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "path"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-path",
+      "layout": {
+        "line-cap": "round"
+      },
+      "minzoom": 14,
+      "paint": {
+        "line-color": "#D9CFC3",
+        "line-dasharray": [
+          "step",
+          [
+            "zoom"
+          ],
+          [
+            "literal",
+            [
+              2.798354,
+              2.139918
+            ]
+          ],
+          15.5,
+          [
+            "literal",
+            [
+              1.399177,
+              1.069959
+            ]
+          ],
+          17.5,
+          [
+            "literal",
+            [
+              0.699588,
+              0.534979
+            ]
+          ],
+          19.5,
+          [
+            "literal",
+            [
+              0.355723,
+              0.272023
+            ]
+          ]
+        ],
+        "line-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          14,
+          0.4,
+          16,
+          0.58,
+          18.5,
+          0.82
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          14,
+          0.972,
+          16,
+          1.944,
+          18,
+          3.888,
+          20,
+          7.776,
+          22,
+          14.904
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "service",
+            "track",
+            "minor"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-casing-minor",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 12,
+      "paint": {
+        "line-color": "#C8BBAA",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "service",
+              "track"
+            ],
+            0,
+            3.496
+          ],
+          12.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "service",
+              "track"
+            ],
+            0,
+            4.002
+          ],
+          13,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "service",
+              "track"
+            ],
+            3.836,
+            4.508
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "service",
+              "track"
+            ],
+            4.68,
+            5.52
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "service",
+              "track"
+            ],
+            8.44,
+            10.12
+          ],
+          18,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "service",
+              "track"
+            ],
+            14.58,
+            17.94
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "service",
+              "track"
+            ],
+            24.56,
+            31.28
+          ],
+          22,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "service",
+              "track"
+            ],
+            40.94,
+            53.82
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "service",
+            "track"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-service",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 13,
+      "paint": {
+        "line-color": "#DED5CA",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          13,
+          1.536,
+          14,
+          1.92,
+          16,
+          3.84,
+          18,
+          7.68,
+          20,
+          15.36,
+          22,
+          29.44
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "minor"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-minor",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 12,
+      "paint": {
+        "line-color": "#E3DBD3",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1.656,
+          14,
+          2.76,
+          16,
+          5.52,
+          18,
+          11.04,
+          20,
+          22.08,
+          22,
+          42.32
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "tertiary",
+            "secondary"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-casing-mid",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 9,
+      "paint": {
+        "line-color": "#C8BBAA",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          9,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "tertiary"
+            ],
+            0,
+            2.253667
+          ],
+          9.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "tertiary"
+            ],
+            0,
+            2.418833
+          ],
+          10,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "tertiary"
+            ],
+            2.344,
+            2.584
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "tertiary"
+            ],
+            3.616,
+            3.976
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "tertiary"
+            ],
+            5.76,
+            6.36
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "tertiary"
+            ],
+            10.72,
+            11.92
+          ],
+          18,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "tertiary"
+            ],
+            19.44,
+            21.84
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "tertiary"
+            ],
+            34.88,
+            39.68
+          ],
+          22,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "tertiary"
+            ],
+            61.52,
+            70.72
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "tertiary"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-tertiary",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 10,
+      "paint": {
+        "line-color": "#E8E2DB",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          1.344,
+          12,
+          2.016,
+          14,
+          3.36,
+          16,
+          6.72,
+          18,
+          13.44,
+          20,
+          26.88,
+          22,
+          51.52
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "secondary"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-secondary",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 9,
+      "paint": {
+        "line-color": "#EEE9E3",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          9,
+          1.287,
+          10,
+          1.584,
+          12,
+          2.376,
+          14,
+          3.96,
+          16,
+          7.92,
+          18,
+          15.84,
+          20,
+          31.68,
+          22,
+          60.72
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "primary",
+            "trunk",
+            "motorway"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-casing-major",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 4,
+      "paint": {
+        "line-color": "#9A8C7E",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          4,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            0,
+            [
+              "trunk"
+            ],
+            0,
+            1.3
+          ],
+          4.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            0,
+            [
+              "trunk"
+            ],
+            0,
+            1.416667
+          ],
+          5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            0,
+            [
+              "trunk"
+            ],
+            1.435333,
+            1.533333
+          ],
+          6,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            0,
+            [
+              "trunk"
+            ],
+            1.640667,
+            1.766667
+          ],
+          6.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            0,
+            [
+              "trunk"
+            ],
+            1.786333,
+            1.933333
+          ],
+          7,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            1.812,
+            [
+              "trunk"
+            ],
+            1.932,
+            2.1
+          ],
+          8,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            2.073333,
+            [
+              "trunk"
+            ],
+            2.223333,
+            2.433333
+          ],
+          10,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            2.824,
+            [
+              "trunk"
+            ],
+            3.064,
+            3.4
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            4.336,
+            [
+              "trunk"
+            ],
+            4.696,
+            5.2
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            6.96,
+            [
+              "trunk"
+            ],
+            7.56,
+            8.4
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            13.12,
+            [
+              "trunk"
+            ],
+            14.32,
+            16
+          ],
+          18,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            24.24,
+            [
+              "trunk"
+            ],
+            26.64,
+            30
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            44.48,
+            [
+              "trunk"
+            ],
+            49.28,
+            56
+          ],
+          22,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "primary"
+            ],
+            79.92,
+            [
+              "trunk"
+            ],
+            89.12,
+            102
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "primary"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-primary",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 7,
+      "paint": {
+        "line-color": "#F4F1ED",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          7,
+          0.912,
+          8,
+          1.14,
+          10,
+          1.824,
+          12,
+          2.736,
+          14,
+          4.56,
+          16,
+          9.12,
+          18,
+          18.24,
+          20,
+          36.48,
+          22,
+          69.92
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "trunk"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-trunk",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 5,
+      "paint": {
+        "line-color": "#F6F1EC",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          5,
+          0.602,
+          6,
+          0.774,
+          8,
+          1.29,
+          10,
+          2.064,
+          12,
+          3.096,
+          14,
+          5.16,
+          16,
+          10.32,
+          18,
+          20.64,
+          20,
+          41.28,
+          22,
+          79.12
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-motorway",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 4,
+      "paint": {
+        "line-color": "#F9F2E9",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          4,
+          0.5,
+          6,
+          0.9,
+          8,
+          1.5,
+          10,
+          2.4,
+          12,
+          3.6,
+          14,
+          6,
+          16,
+          12,
+          18,
+          24,
+          20,
+          48,
+          22,
+          92
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "rail"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-rail",
+      "minzoom": 9,
+      "paint": {
+        "line-color": "#A39B91",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.3
+          ],
+          [
+            "zoom"
+          ],
+          9,
+          0.5,
+          14,
+          1.2,
+          18,
+          2.6,
+          22,
+          5
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "rail"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-rail-tie",
+      "minzoom": 13,
+      "paint": {
+        "line-color": "#7A7064",
+        "line-dasharray": [
+          "step",
+          [
+            "zoom"
+          ],
+          [
+            "literal",
+            [
+              0.471698,
+              2.122642
+            ]
+          ],
+          16,
+          [
+            "literal",
+            [
+              0.30581,
+              1.376147
+            ]
+          ],
+          19,
+          [
+            "literal",
+            [
+              0.190476,
+              0.857143
+            ]
+          ]
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.3
+          ],
+          [
+            "zoom"
+          ],
+          13,
+          2.4,
+          18,
+          7,
+          22,
+          14
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "all",
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "bridge"
+          ],
+          [
+            "!=",
+            [
+              "get",
+              "brunnel"
+            ],
+            "tunnel"
+          ]
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "transit"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-rail-service",
+      "minzoom": 12,
+      "paint": {
+        "line-color": "#C3BDB4",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.3
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          0.4,
+          18,
+          1.8
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "bridge"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway",
+            "trunk",
+            "primary",
+            "secondary",
+            "tertiary",
+            "minor",
+            "service",
+            "track",
+            "path"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-bridge-casing",
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round"
+      },
+      "minzoom": 11,
+      "paint": {
+        "line-color": "#9A8C7E",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            5.47,
+            [
+              "trunk"
+            ],
+            5.05,
+            [
+              "primary"
+            ],
+            4.75,
+            [
+              "secondary"
+            ],
+            4.45,
+            [
+              "tertiary"
+            ],
+            4.15,
+            [
+              "minor"
+            ],
+            0,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          11.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            6.055,
+            [
+              "trunk"
+            ],
+            5.593,
+            [
+              "primary"
+            ],
+            5.263,
+            [
+              "secondary"
+            ],
+            4.933,
+            [
+              "tertiary"
+            ],
+            4.603,
+            [
+              "minor"
+            ],
+            0,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            6.64,
+            [
+              "trunk"
+            ],
+            6.136,
+            [
+              "primary"
+            ],
+            5.776,
+            [
+              "secondary"
+            ],
+            5.416,
+            [
+              "tertiary"
+            ],
+            5.056,
+            [
+              "minor"
+            ],
+            4.696,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          12.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            7.62,
+            [
+              "trunk"
+            ],
+            7.032,
+            [
+              "primary"
+            ],
+            6.612,
+            [
+              "secondary"
+            ],
+            6.192,
+            [
+              "tertiary"
+            ],
+            5.772,
+            [
+              "minor"
+            ],
+            5.352,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          13,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            8.6,
+            [
+              "trunk"
+            ],
+            7.928,
+            [
+              "primary"
+            ],
+            7.448,
+            [
+              "secondary"
+            ],
+            6.968,
+            [
+              "tertiary"
+            ],
+            6.488,
+            [
+              "minor"
+            ],
+            6.008,
+            [
+              "service",
+              "track"
+            ],
+            5.336,
+            0
+          ],
+          13.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            9.58,
+            [
+              "trunk"
+            ],
+            8.824,
+            [
+              "primary"
+            ],
+            8.284,
+            [
+              "secondary"
+            ],
+            7.744,
+            [
+              "tertiary"
+            ],
+            7.204,
+            [
+              "minor"
+            ],
+            6.664,
+            [
+              "service",
+              "track"
+            ],
+            5.908,
+            0
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            10.56,
+            [
+              "trunk"
+            ],
+            9.72,
+            [
+              "primary"
+            ],
+            9.12,
+            [
+              "secondary"
+            ],
+            8.52,
+            [
+              "tertiary"
+            ],
+            7.92,
+            [
+              "minor"
+            ],
+            7.32,
+            [
+              "service",
+              "track"
+            ],
+            6.48,
+            5.64
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            19.6,
+            [
+              "trunk"
+            ],
+            17.92,
+            [
+              "primary"
+            ],
+            16.72,
+            [
+              "secondary"
+            ],
+            15.52,
+            [
+              "tertiary"
+            ],
+            14.32,
+            [
+              "minor"
+            ],
+            13.12,
+            [
+              "service",
+              "track"
+            ],
+            11.44,
+            9.76
+          ],
+          18,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            35.4,
+            [
+              "trunk"
+            ],
+            32.04,
+            [
+              "primary"
+            ],
+            29.64,
+            [
+              "secondary"
+            ],
+            27.24,
+            [
+              "tertiary"
+            ],
+            24.84,
+            [
+              "minor"
+            ],
+            22.44,
+            [
+              "service",
+              "track"
+            ],
+            19.08,
+            15.72
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            63.2,
+            [
+              "trunk"
+            ],
+            56.48,
+            [
+              "primary"
+            ],
+            51.68,
+            [
+              "secondary"
+            ],
+            46.88,
+            [
+              "tertiary"
+            ],
+            42.08,
+            [
+              "minor"
+            ],
+            37.28,
+            [
+              "service",
+              "track"
+            ],
+            30.56,
+            23.84
+          ],
+          22,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            111,
+            [
+              "trunk"
+            ],
+            98.12,
+            [
+              "primary"
+            ],
+            88.92,
+            [
+              "secondary"
+            ],
+            79.72,
+            [
+              "tertiary"
+            ],
+            70.52,
+            [
+              "minor"
+            ],
+            61.32,
+            [
+              "service",
+              "track"
+            ],
+            48.44,
+            35.56
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "bridge"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway",
+            "trunk",
+            "primary",
+            "secondary",
+            "tertiary",
+            "minor",
+            "service",
+            "track",
+            "path"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-bridge",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 11,
+      "paint": {
+        "line-color": [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway"
+          ],
+          "#F9F2E9",
+          [
+            "trunk"
+          ],
+          "#F6F1EC",
+          [
+            "primary"
+          ],
+          "#F4F1ED",
+          [
+            "secondary"
+          ],
+          "#EEE9E3",
+          [
+            "tertiary"
+          ],
+          "#E8E2DB",
+          [
+            "minor"
+          ],
+          "#E3DBD3",
+          [
+            "service",
+            "track"
+          ],
+          "#DED5CA",
+          "#D9CFC3"
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          11,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            3,
+            [
+              "trunk"
+            ],
+            2.58,
+            [
+              "primary"
+            ],
+            2.28,
+            [
+              "secondary"
+            ],
+            1.98,
+            [
+              "tertiary"
+            ],
+            1.68,
+            [
+              "minor"
+            ],
+            0,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          11.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            3.3,
+            [
+              "trunk"
+            ],
+            2.838,
+            [
+              "primary"
+            ],
+            2.508,
+            [
+              "secondary"
+            ],
+            2.178,
+            [
+              "tertiary"
+            ],
+            1.848,
+            [
+              "minor"
+            ],
+            0,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            3.6,
+            [
+              "trunk"
+            ],
+            3.096,
+            [
+              "primary"
+            ],
+            2.736,
+            [
+              "secondary"
+            ],
+            2.376,
+            [
+              "tertiary"
+            ],
+            2.016,
+            [
+              "minor"
+            ],
+            1.656,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          12.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            4.2,
+            [
+              "trunk"
+            ],
+            3.612,
+            [
+              "primary"
+            ],
+            3.192,
+            [
+              "secondary"
+            ],
+            2.772,
+            [
+              "tertiary"
+            ],
+            2.352,
+            [
+              "minor"
+            ],
+            1.932,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          13,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            4.8,
+            [
+              "trunk"
+            ],
+            4.128,
+            [
+              "primary"
+            ],
+            3.648,
+            [
+              "secondary"
+            ],
+            3.168,
+            [
+              "tertiary"
+            ],
+            2.688,
+            [
+              "minor"
+            ],
+            2.208,
+            [
+              "service",
+              "track"
+            ],
+            1.536,
+            0
+          ],
+          13.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            5.4,
+            [
+              "trunk"
+            ],
+            4.644,
+            [
+              "primary"
+            ],
+            4.104,
+            [
+              "secondary"
+            ],
+            3.564,
+            [
+              "tertiary"
+            ],
+            3.024,
+            [
+              "minor"
+            ],
+            2.484,
+            [
+              "service",
+              "track"
+            ],
+            1.728,
+            0
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            6,
+            [
+              "trunk"
+            ],
+            5.16,
+            [
+              "primary"
+            ],
+            4.56,
+            [
+              "secondary"
+            ],
+            3.96,
+            [
+              "tertiary"
+            ],
+            3.36,
+            [
+              "minor"
+            ],
+            2.76,
+            [
+              "service",
+              "track"
+            ],
+            1.92,
+            1.08
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            12,
+            [
+              "trunk"
+            ],
+            10.32,
+            [
+              "primary"
+            ],
+            9.12,
+            [
+              "secondary"
+            ],
+            7.92,
+            [
+              "tertiary"
+            ],
+            6.72,
+            [
+              "minor"
+            ],
+            5.52,
+            [
+              "service",
+              "track"
+            ],
+            3.84,
+            2.16
+          ],
+          18,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            24,
+            [
+              "trunk"
+            ],
+            20.64,
+            [
+              "primary"
+            ],
+            18.24,
+            [
+              "secondary"
+            ],
+            15.84,
+            [
+              "tertiary"
+            ],
+            13.44,
+            [
+              "minor"
+            ],
+            11.04,
+            [
+              "service",
+              "track"
+            ],
+            7.68,
+            4.32
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            48,
+            [
+              "trunk"
+            ],
+            41.28,
+            [
+              "primary"
+            ],
+            36.48,
+            [
+              "secondary"
+            ],
+            31.68,
+            [
+              "tertiary"
+            ],
+            26.88,
+            [
+              "minor"
+            ],
+            22.08,
+            [
+              "service",
+              "track"
+            ],
+            15.36,
+            8.64
+          ],
+          22,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            92,
+            [
+              "trunk"
+            ],
+            79.12,
+            [
+              "primary"
+            ],
+            69.92,
+            [
+              "secondary"
+            ],
+            60.72,
+            [
+              "tertiary"
+            ],
+            51.52,
+            [
+              "minor"
+            ],
+            42.32,
+            [
+              "service",
+              "track"
+            ],
+            29.44,
+            16.56
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway",
+            "trunk",
+            "primary",
+            "secondary",
+            "tertiary",
+            "minor",
+            "service",
+            "track",
+            "path"
+          ],
+          true,
+          false
+        ],
+        [
+          "has",
+          "surface"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "surface"
+          ],
+          [
+            "unpaved",
+            "gravel",
+            "fine_gravel",
+            "compacted",
+            "dirt",
+            "earth",
+            "ground",
+            "sand",
+            "mud",
+            "grass",
+            "pebblestone",
+            "wood",
+            "woodchips"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-unpaved",
+      "layout": {
+        "line-cap": "round"
+      },
+      "minzoom": 12,
+      "paint": {
+        "line-color": "#B7794E",
+        "line-dasharray": [
+          "step",
+          [
+            "zoom"
+          ],
+          [
+            "literal",
+            [
+              1.185771,
+              1.976285
+            ]
+          ],
+          15,
+          [
+            "literal",
+            [
+              0.474308,
+              0.790514
+            ]
+          ],
+          18,
+          [
+            "literal",
+            [
+              0.197628,
+              0.329381
+            ]
+          ]
+        ],
+        "line-opacity": 0.85,
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            1.98,
+            [
+              "trunk"
+            ],
+            1.7028,
+            [
+              "primary"
+            ],
+            1.5048,
+            [
+              "secondary"
+            ],
+            1.3068,
+            [
+              "tertiary"
+            ],
+            1.1088,
+            [
+              "minor"
+            ],
+            0.9108,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          12.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            2.31,
+            [
+              "trunk"
+            ],
+            1.9866,
+            [
+              "primary"
+            ],
+            1.7556,
+            [
+              "secondary"
+            ],
+            1.5246,
+            [
+              "tertiary"
+            ],
+            1.2936,
+            [
+              "minor"
+            ],
+            1.0626,
+            [
+              "service",
+              "track"
+            ],
+            0,
+            0
+          ],
+          13,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            2.64,
+            [
+              "trunk"
+            ],
+            2.2704,
+            [
+              "primary"
+            ],
+            2.0064,
+            [
+              "secondary"
+            ],
+            1.7424,
+            [
+              "tertiary"
+            ],
+            1.4784,
+            [
+              "minor"
+            ],
+            1.2144,
+            [
+              "service",
+              "track"
+            ],
+            0.8448,
+            0
+          ],
+          13.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            2.97,
+            [
+              "trunk"
+            ],
+            2.5542,
+            [
+              "primary"
+            ],
+            2.2572,
+            [
+              "secondary"
+            ],
+            1.9602,
+            [
+              "tertiary"
+            ],
+            1.6632,
+            [
+              "minor"
+            ],
+            1.3662,
+            [
+              "service",
+              "track"
+            ],
+            0.9504,
+            0
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            3.3,
+            [
+              "trunk"
+            ],
+            2.838,
+            [
+              "primary"
+            ],
+            2.508,
+            [
+              "secondary"
+            ],
+            2.178,
+            [
+              "tertiary"
+            ],
+            1.848,
+            [
+              "minor"
+            ],
+            1.518,
+            [
+              "service",
+              "track"
+            ],
+            1.056,
+            0.594
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            6.6,
+            [
+              "trunk"
+            ],
+            5.676,
+            [
+              "primary"
+            ],
+            5.016,
+            [
+              "secondary"
+            ],
+            4.356,
+            [
+              "tertiary"
+            ],
+            3.696,
+            [
+              "minor"
+            ],
+            3.036,
+            [
+              "service",
+              "track"
+            ],
+            2.112,
+            1.188
+          ],
+          18,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            13.2,
+            [
+              "trunk"
+            ],
+            11.352,
+            [
+              "primary"
+            ],
+            10.032,
+            [
+              "secondary"
+            ],
+            8.712,
+            [
+              "tertiary"
+            ],
+            7.392,
+            [
+              "minor"
+            ],
+            6.072,
+            [
+              "service",
+              "track"
+            ],
+            4.224,
+            2.376
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            26.4,
+            [
+              "trunk"
+            ],
+            22.704,
+            [
+              "primary"
+            ],
+            20.064,
+            [
+              "secondary"
+            ],
+            17.424,
+            [
+              "tertiary"
+            ],
+            14.784,
+            [
+              "minor"
+            ],
+            12.144,
+            [
+              "service",
+              "track"
+            ],
+            8.448,
+            4.752
+          ],
+          22,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            50.6,
+            [
+              "trunk"
+            ],
+            43.516,
+            [
+              "primary"
+            ],
+            38.456,
+            [
+              "secondary"
+            ],
+            33.396,
+            [
+              "tertiary"
+            ],
+            28.336,
+            [
+              "minor"
+            ],
+            23.276,
+            [
+              "service",
+              "track"
+            ],
+            16.192,
+            9.108
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway",
+            "trunk",
+            "primary",
+            "secondary",
+            "tertiary",
+            "minor",
+            "service",
+            "track",
+            "path"
+          ],
+          true,
+          false
+        ],
+        [
+          "match",
+          [
+            "get",
+            "access"
+          ],
+          [
+            "no",
+            "private"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-road-closed",
+      "layout": {
+        "line-cap": "butt"
+      },
+      "minzoom": 13,
+      "paint": {
+        "line-color": "#E5DDD3",
+        "line-dasharray": [
+          "step",
+          [
+            "zoom"
+          ],
+          [
+            "literal",
+            [
+              0.483092,
+              0.905797
+            ]
+          ],
+          16,
+          [
+            "literal",
+            [
+              0.207039,
+              0.388199
+            ]
+          ],
+          19,
+          [
+            "literal",
+            [
+              0.09058,
+              0.169837
+            ]
+          ]
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.35
+          ],
+          [
+            "zoom"
+          ],
+          13,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            3.84,
+            [
+              "trunk"
+            ],
+            3.3024,
+            [
+              "primary"
+            ],
+            2.9184,
+            [
+              "secondary"
+            ],
+            2.5344,
+            [
+              "tertiary"
+            ],
+            2.1504,
+            [
+              "minor"
+            ],
+            1.7664,
+            [
+              "service",
+              "track"
+            ],
+            1.2288,
+            0
+          ],
+          13.5,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            4.32,
+            [
+              "trunk"
+            ],
+            3.7152,
+            [
+              "primary"
+            ],
+            3.2832,
+            [
+              "secondary"
+            ],
+            2.8512,
+            [
+              "tertiary"
+            ],
+            2.4192,
+            [
+              "minor"
+            ],
+            1.9872,
+            [
+              "service",
+              "track"
+            ],
+            1.3824,
+            0
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            4.8,
+            [
+              "trunk"
+            ],
+            4.128,
+            [
+              "primary"
+            ],
+            3.648,
+            [
+              "secondary"
+            ],
+            3.168,
+            [
+              "tertiary"
+            ],
+            2.688,
+            [
+              "minor"
+            ],
+            2.208,
+            [
+              "service",
+              "track"
+            ],
+            1.536,
+            0.864
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            9.6,
+            [
+              "trunk"
+            ],
+            8.256,
+            [
+              "primary"
+            ],
+            7.296,
+            [
+              "secondary"
+            ],
+            6.336,
+            [
+              "tertiary"
+            ],
+            5.376,
+            [
+              "minor"
+            ],
+            4.416,
+            [
+              "service",
+              "track"
+            ],
+            3.072,
+            1.728
+          ],
+          18,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            19.2,
+            [
+              "trunk"
+            ],
+            16.512,
+            [
+              "primary"
+            ],
+            14.592,
+            [
+              "secondary"
+            ],
+            12.672,
+            [
+              "tertiary"
+            ],
+            10.752,
+            [
+              "minor"
+            ],
+            8.832,
+            [
+              "service",
+              "track"
+            ],
+            6.144,
+            3.456
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            38.4,
+            [
+              "trunk"
+            ],
+            33.024,
+            [
+              "primary"
+            ],
+            29.184,
+            [
+              "secondary"
+            ],
+            25.344,
+            [
+              "tertiary"
+            ],
+            21.504,
+            [
+              "minor"
+            ],
+            17.664,
+            [
+              "service",
+              "track"
+            ],
+            12.288,
+            6.912
+          ],
+          22,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "motorway"
+            ],
+            73.6,
+            [
+              "trunk"
+            ],
+            63.296,
+            [
+              "primary"
+            ],
+            55.936,
+            [
+              "secondary"
+            ],
+            48.576,
+            [
+              "tertiary"
+            ],
+            41.216,
+            [
+              "minor"
+            ],
+            33.856,
+            [
+              "service",
+              "track"
+            ],
+            23.552,
+            13.248
+          ]
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "maritime"
+          ],
+          1
+        ],
+        [
+          "<=",
+          [
+            "get",
+            "admin_level"
+          ],
+          2
+        ],
+        [
+          "!=",
+          [
+            "get",
+            "disputed"
+          ],
+          1
+        ]
+      ],
+      "id": "obsidian-boundary-maritime",
+      "layout": {
+        "line-join": "round"
+      },
+      "minzoom": 4,
+      "paint": {
+        "line-color": "#D5CFC7",
+        "line-dasharray": [
+          "step",
+          [
+            "zoom"
+          ],
+          [
+            "literal",
+            [
+              6.136364,
+              4.363636
+            ]
+          ],
+          7,
+          [
+            "literal",
+            [
+              4.390244,
+              3.121951
+            ]
+          ],
+          10,
+          [
+            "literal",
+            [
+              3.75,
+              2.666667
+            ]
+          ]
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.2
+          ],
+          [
+            "zoom"
+          ],
+          4,
+          0.5,
+          10,
+          1.2
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "boundary",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "!=",
+          [
+            "get",
+            "maritime"
+          ],
+          1
+        ],
+        [
+          "any",
+          [
+            "all",
+            [
+              ">=",
+              [
+                "get",
+                "admin_level"
+              ],
+              3
+            ],
+            [
+              "<=",
+              [
+                "get",
+                "admin_level"
+              ],
+              4
+            ],
+            [
+              "!=",
+              [
+                "get",
+                "disputed"
+              ],
+              1
+            ]
+          ],
+          [
+            "all",
+            [
+              "==",
+              [
+                "get",
+                "disputed"
+              ],
+              1
+            ],
+            [
+              "==",
+              [
+                "get",
+                "claimed_by"
+              ],
+              "UA"
+            ]
+          ]
+        ]
+      ],
+      "id": "obsidian-boundary-region",
+      "layout": {
+        "line-join": "round"
+      },
+      "minzoom": 4,
+      "paint": {
+        "line-color": "#B8B0A7",
+        "line-dasharray": [
+          "step",
+          [
+            "zoom"
+          ],
+          [
+            "literal",
+            [
+              4,
+              3.6
+            ]
+          ],
+          8,
+          [
+            "literal",
+            [
+              2.696629,
+              2.426966
+            ]
+          ],
+          13,
+          [
+            "literal",
+            [
+              1.935484,
+              1.741935
+            ]
+          ]
+        ],
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.2
+          ],
+          [
+            "zoom"
+          ],
+          4,
+          0.6,
+          10,
+          1.4,
+          16,
+          2.4
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "boundary",
+      "type": "line"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "!=",
+          [
+            "get",
+            "maritime"
+          ],
+          1
+        ],
+        [
+          "<=",
+          [
+            "get",
+            "admin_level"
+          ],
+          2
+        ],
+        [
+          "!=",
+          [
+            "get",
+            "disputed"
+          ],
+          1
+        ]
+      ],
+      "id": "obsidian-boundary-country",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "minzoom": 1,
+      "paint": {
+        "line-color": "#897F74",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1.2
+          ],
+          [
+            "zoom"
+          ],
+          1,
+          0.6,
+          6,
+          1.4,
+          12,
+          2.6,
+          18,
+          4
+        ]
+      },
+      "source": "openmaptiles",
+      "source-layer": "boundary",
+      "type": "line"
+    },
+    {
+      "id": "obsidian-label-housenumber",
+      "layout": {
+        "text-field": [
+          "get",
+          "housenumber"
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-padding": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          17,
+          16,
+          18,
+          10,
+          19,
+          6
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          17,
+          10.5,
+          19,
+          12.5
+        ]
+      },
+      "minzoom": 17,
+      "paint": {
+        "text-color": "#665A4D",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.2
+      },
+      "source": "openmaptiles",
+      "source-layer": "housenumber",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "!",
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "parking",
+              "bicycle_parking",
+              "waste_basket",
+              "bollard",
+              "gate",
+              "lift_gate",
+              "information",
+              "post",
+              "recycling",
+              "toilets",
+              "drinking_water",
+              "entrance",
+              "shelter",
+              "railway",
+              "bus",
+              "ferry_terminal"
+            ],
+            true,
+            false
+          ]
+        ],
+        [
+          "!",
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "checkpoint",
+              "bunker",
+              "border_control"
+            ],
+            true,
+            false
+          ]
+        ]
+      ],
+      "id": "obsidian-label-poi",
+      "layout": {
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "coalesce",
+            [
+              "get",
+              "rank"
+            ],
+            100
+          ]
+        ],
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-max-width": 7,
+        "text-padding": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          15,
+          12,
+          16,
+          8,
+          18,
+          4
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          15,
+          10.5,
+          18,
+          12.5
+        ]
+      },
+      "minzoom": 15,
+      "paint": {
+        "text-color": "#4E4339",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.2
+      },
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "has",
+        "name"
+      ],
+      "id": "obsidian-label-peak",
+      "layout": {
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "coalesce",
+            [
+              "get",
+              "rank"
+            ],
+            100
+          ]
+        ],
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-size": 10.5
+      },
+      "minzoom": 11,
+      "paint": {
+        "text-color": "#665A4D",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.2
+      },
+      "source": "openmaptiles",
+      "source-layer": "mountain_peak",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "has",
+        "name"
+      ],
+      "id": "obsidian-label-road",
+      "layout": {
+        "symbol-placement": "line",
+        "symbol-sort-key": [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "motorway"
+          ],
+          0,
+          [
+            "trunk"
+          ],
+          1,
+          [
+            "primary"
+          ],
+          2,
+          [
+            "secondary"
+          ],
+          3,
+          [
+            "tertiary"
+          ],
+          4,
+          [
+            "minor"
+          ],
+          5,
+          [
+            "service",
+            "track"
+          ],
+          6,
+          7
+        ],
+        "symbol-spacing": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          260,
+          15,
+          200,
+          17,
+          130,
+          19,
+          90
+        ],
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-max-angle": 30,
+        "text-padding": 2,
+        "text-rotation-alignment": "map",
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          10.5,
+          16,
+          12.5,
+          18.5,
+          15
+        ]
+      },
+      "minzoom": 12,
+      "paint": {
+        "text-color": "#322C27",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.2
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation_name",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "railway",
+            "bus",
+            "ferry_terminal"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-label-transit",
+      "layout": {
+        "symbol-sort-key": [
+          "match",
+          [
+            "get",
+            "subclass"
+          ],
+          [
+            "station",
+            "subway",
+            "halt",
+            "bus_station",
+            "ferry_terminal"
+          ],
+          0,
+          1
+        ],
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-max-width": 7,
+        "text-padding": 6,
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          15,
+          10.5,
+          17,
+          12.5
+        ]
+      },
+      "minzoom": 15,
+      "paint": {
+        "text-color": "#17110C",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.2
+      },
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "river",
+            "canal"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-label-waterway",
+      "layout": {
+        "symbol-placement": "line",
+        "symbol-spacing": 400,
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-max-angle": 30,
+        "text-rotation-alignment": "map",
+        "text-size": 12.5
+      },
+      "minzoom": 12,
+      "paint": {
+        "text-color": "#3C4147",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.2
+      },
+      "source": "openmaptiles",
+      "source-layer": "waterway",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "has",
+        "name"
+      ],
+      "id": "obsidian-label-water",
+      "layout": {
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-max-width": 6,
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          5,
+          10.5,
+          12,
+          12.5
+        ]
+      },
+      "minzoom": 5,
+      "paint": {
+        "text-color": "#3C4147",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.2
+      },
+      "source": "openmaptiles",
+      "source-layer": "water_name",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "suburb",
+            "quarter",
+            "neighbourhood"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-label-suburb",
+      "layout": {
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "coalesce",
+            [
+              "get",
+              "rank"
+            ],
+            100
+          ]
+        ],
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-letter-spacing": 0.08,
+        "text-max-width": 8,
+        "text-padding": 4,
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          10.5,
+          16,
+          12.5
+        ],
+        "text-transform": "uppercase"
+      },
+      "minzoom": 12,
+      "paint": {
+        "text-color": "#4E4339",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.4
+      },
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "village",
+            "hamlet",
+            "isolated_dwelling"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-label-village",
+      "layout": {
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "coalesce",
+            [
+              "get",
+              "rank"
+            ],
+            100
+          ]
+        ],
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-letter-spacing": 0.02,
+        "text-max-width": 8,
+        "text-padding": 4,
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          10.5,
+          14,
+          12.5
+        ]
+      },
+      "minzoom": 10,
+      "paint": {
+        "text-color": "#4E4339",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.4
+      },
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "town"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-label-town",
+      "layout": {
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "coalesce",
+            [
+              "get",
+              "rank"
+            ],
+            100
+          ]
+        ],
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-letter-spacing": 0.03,
+        "text-max-width": 8,
+        "text-padding": 4,
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          8,
+          12.5,
+          13,
+          15
+        ]
+      },
+      "minzoom": 8,
+      "paint": {
+        "text-color": "#17110C",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.4
+      },
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "city"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-label-city",
+      "layout": {
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "coalesce",
+            [
+              "get",
+              "rank"
+            ],
+            100
+          ]
+        ],
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-letter-spacing": 0.04,
+        "text-max-width": 8,
+        "text-padding": 4,
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          4,
+          12.5,
+          8,
+          15,
+          12,
+          20
+        ]
+      },
+      "minzoom": 4,
+      "paint": {
+        "text-color": "#17110C",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.4
+      },
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "type": "symbol"
+    },
+    {
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          [
+            "country"
+          ],
+          true,
+          false
+        ]
+      ],
+      "id": "obsidian-label-country",
+      "layout": {
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "coalesce",
+            [
+              "get",
+              "rank"
+            ],
+            100
+          ]
+        ],
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:uk"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-letter-spacing": 0.08,
+        "text-max-width": 7,
+        "text-padding": 6,
+        "text-size": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          2,
+          12.5,
+          5,
+          15
+        ],
+        "text-transform": "uppercase"
+      },
+      "maxzoom": 8,
+      "minzoom": 2,
+      "paint": {
+        "text-color": "#4E4339",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#F8F4EE",
+        "text-halo-width": 1.4
+      },
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "type": "symbol"
+    }
+  ],
+  "metadata": {
+    "phantom:contract": "1",
+    "phantom:generator": "tools/obsidian",
+    "phantom:variant": "obsidian-minimal"
+  },
+  "name": "PHANTOM Obsidian · Мінімал",
+  "sources": {
+    "openmaptiles": {
+      "attribution": "© OpenStreetMap contributors · OpenMapTiles · OpenFreeMap",
+      "type": "vector",
+      "url": "https://tiles.openfreemap.org/planet"
+    }
+  },
+  "version": 8
+}

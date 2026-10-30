@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 56.4504,
+    "maxLon": 26.8355,
+    "minLat": 53.8968,
+    "minLon": 20.6557
+  },
+  "files": [
+    {
+      "bytes": 233265,
+      "name": "places.tsv.gz",
+      "sha256": "3804925d1e92d0c18d31d85073b912ccbd308c8033fae577d0b7d46cb811cdf2"
+    },
+    {
+      "bytes": 619062,
+      "name": "streets.tsv.gz",
+      "sha256": "ccd5cc839828fdb68f933e476ef853bf305fcd5319af7abc0afc19eb3987fb01"
+    }
+  ],
+  "home": {
+    "lat": 54.687,
+    "lon": 25.2829,
+    "zoom": 12.0
+  },
+  "id": "LT",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "lt-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Литва: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "lt-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Литва: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Литва",
+  "version": 1
+}

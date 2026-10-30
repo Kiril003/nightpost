@@ -1,0 +1,38 @@
+/** Тло розмови (меню ⋮ › Тло). uk — джерело, en — переклад. */
+export const uk = {
+  'look.door': 'Тло',
+  'look.title': 'Тло розмови',
+  'look.default': 'Як усюди',
+  'look.defaultHint': 'Задається в профілі, у «Вигляді»',
+  'look.none': 'Без тла',
+  'look.gallery': 'З галереї',
+  'look.galleryNote': 'Фото лишається на цьому пристрої.',
+  'look.failed': 'Не вдалося змінити тло. Спробуйте ще раз.',
+  'look.pending': 'Очікує',
+  'look.wp.contour': 'Рельєф',
+  'look.wp.sand': 'Пісок',
+  'look.wp.sage': 'Шавлія',
+  'look.wp.slate': 'Сланець',
+  'look.wp.clay': 'Глина',
+  'look.wp.dusk': 'Сутінки',
+  'look.wp.stone': 'Камінь',
+} as const;
+
+export const en: Record<keyof typeof uk, string> = {
+  'look.door': 'Wallpaper',
+  'look.title': 'Chat wallpaper',
+  'look.default': 'Same as everywhere',
+  'look.defaultHint': 'Set in your profile, under Appearance',
+  'look.none': 'No wallpaper',
+  'look.gallery': 'From gallery',
+  'look.galleryNote': 'The photo stays on this device.',
+  'look.failed': "Couldn't change the wallpaper. Try again.",
+  'look.pending': 'Pending',
+  'look.wp.contour': 'Contour',
+  'look.wp.sand': 'Sand',
+  'look.wp.sage': 'Sage',
+  'look.wp.slate': 'Slate',
+  'look.wp.clay': 'Clay',
+  'look.wp.dusk': 'Dusk',
+  'look.wp.stone': 'Stone',
+};

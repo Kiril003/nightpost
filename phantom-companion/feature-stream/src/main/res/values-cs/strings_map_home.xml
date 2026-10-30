@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_search_field">Hledat na mapě</string>
+    <string name="map_me">Jsem tady</string>
+    <string name="map_my_people">Moji lidé</string>
+    <string name="map_shelters">Úkryty</string>
+    <string name="map_loading">Mapa se načítá</string>
+    <string name="map_sheet_style">Vzhled mapy</string>
+    <string name="map_sheet_offline">Uložit tuto oblast pro použití bez internetu</string>
+    <string name="map_people_none">Zatím s vámi nikdo nesdílí polohu</string>
+    <string name="map_sheet_car">Telefon v autě</string>
+    <string name="map_sheet_saved">Uložené oblasti</string>
+    <string name="map_home_search_hint">Hledat místa a lidi</string>
+    <string name="map_chip_coffee">Káva</string>
+    <string name="map_chip_food">Jídlo</string>
+    <string name="map_chip_tonight">Dnes večer</string>
+    <string name="map_chip_groceries">Potraviny</string>
+    <string name="map_chip_pharmacy">Lékárna</string>
+    <string name="map_chip_transit">Doprava</string>
+    <string name="map_search_this_area">Hledat v této oblasti</string>
+    <string name="map_tray_plans">Plány</string>
+    <string name="map_tray_meet">Setkání</string>
+    <string name="map_state_allow_location">Povolit polohu</string>
+    <string name="map_invite_empty">Nikdo poblíž</string>
+</resources>

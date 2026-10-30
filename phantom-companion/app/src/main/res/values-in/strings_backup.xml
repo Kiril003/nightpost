@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Cadangan tersimpan · %1$s</string>
+    <string name="backup_sheet_title">Buat cadangan</string>
+    <string name="backup_loss_title">Tanpa cadangan kamu kehilangan:</string>
+    <string name="backup_loss_chats">Chat</string>
+    <string name="backup_loss_contacts">Kontak</string>
+    <string name="backup_loss_profiles">Profil</string>
+    <string name="backup_loss_venues">Pengeditan tempat</string>
+    <string name="backup_loss_licences">Lisensi Solana dan Seeker</string>
+    <string name="backup_loss_handle">\@nama selama 30 hari</string>
+    <string name="backup_loss_points">Poin dan penilaian</string>
+    <string name="backup_loss_wallet">Dompet tanpa ekspor sendiri</string>
+    <string name="backup_loss_memory">Memori yang tak ada di komputer</string>
+    <string name="backup_pass_hint">Frasa sandi (min. 12 karakter)</string>
+    <string name="backup_pass_confirm_hint">Ulangi frasa sandi</string>
+    <string name="backup_pass_mismatch">Frasa sandi tidak cocok</string>
+    <string name="backup_pass_too_short">Minimal 12 karakter</string>
+    <string name="backup_save_action">Simpan cadangan</string>
+    <string name="backup_restore_title">Pulihkan dari cadangan</string>
+    <string name="backup_restore_pass_hint">Frasa sandi cadangan</string>
+    <string name="backup_restore_action">Pulihkan</string>
+    <string name="backup_restore_err_wrong_pass">Frasa sandi salah</string>
+    <string name="backup_restore_err_not_our_file">Bukan cadangan Nightpost</string>
+    <string name="backup_restore_err_not_empty">Hapus dulu data di ponsel ini</string>
+    <string name="backup_restore_success">Dipulihkan: %1$d kontak, %2$d pesan, %3$d profil</string>
+    <string name="backup_restore_err_read">File tak bisa dibuka</string>
+    <string name="backup_restore_err_invalid">Cadangan rusak</string>
+    <string name="backup_restore_err_failed">Pemulihan gagal</string>
+</resources>

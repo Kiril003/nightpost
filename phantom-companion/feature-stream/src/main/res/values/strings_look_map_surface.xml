@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="indoor_level_title">Floor</string>
+    <string name="indoor_level_desc">Floor %1$s</string>
+    <string name="map_offline_all_maps">All saved maps</string>
+    <string name="map_offline_all_maps_line">On the phone: %1$d · downloading: %2$d</string>
+    <string name="map_offline_panel_title">Saved maps</string>
+    <string name="map_pc_layers_title">From the computer</string>
+    <string name="map_offline_corridor_show">Show</string>
+</resources>

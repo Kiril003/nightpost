@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_around_title">V okolí</string>
+    <string name="map_around_friends">Přátelé sdílející polohu</string>
+    <string name="map_around_places">Místa v okolí</string>
+    <string name="map_around_venues">Místa Nightpost v okolí</string>
+    <string name="map_around_sharing">sdílí: %1$d</string>
+    <string name="map_around_now">právě teď</string>
+    <string name="map_around_min_ago">před %1$d min</string>
+    <string name="map_around_h_ago">před %1$d h</string>
+    <string name="map_around_area">oblast</string>
+    <string name="map_around_places_wait">Hledám místa v okolí…</string>
+    <string name="map_around_places_none">V okolí nebyla nalezena žádná místa</string>
+    <string name="map_around_places_unknown">Místa v okolí teď nelze načíst</string>
+    <string name="map_around_no_fix">Zapněte polohu pro zobrazení vzdáleností a míst v okolí</string>
+    <string name="map_around_rating">%1$s · hodnocení: %2$d</string>
+    <string name="map_layers">Vrstvy</string>
+    <string name="place_meet_here">Sejít se tady</string>
+    <string name="place_send_chat">Do chatu</string>
+    <string name="place_send_title">Odeslat „%1$s“ komu…</string>
+    <string name="place_send_none">Zatím není komu odeslat. Zde se objeví lidé, které přidáte.</string>
+    <string name="place_sent">Odesláno: %1$s</string>
+    <string name="place_rating_label">Hodnocení</string>
+    <string name="place_generic">Toto místo</string>
+    <string name="map_peek_zoom_in">Přibližte mapu a uvidíte místa</string>
+    <string name="map_peek_all">Vše</string>
+    <plurals name="map_peek_count">
+        <item quantity="one">%1$d místo</item>
+        <item quantity="few">%1$d místa</item>
+        <item quantity="many">%1$d místa</item>
+        <item quantity="other">%1$d míst</item>
+    </plurals>
+    <string name="map_peek_collapse">Sbalit</string>
+    <string name="map_peek_expand">Rozbalit</string>
+</resources>

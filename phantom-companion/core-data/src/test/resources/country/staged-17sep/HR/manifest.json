@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 46.555,
+    "maxLon": 19.4473,
+    "minLat": 42.1766,
+    "minLon": 13.2125
+  },
+  "files": [
+    {
+      "bytes": 528499,
+      "name": "places.tsv.gz",
+      "sha256": "0fce1ecb7cb5a6bcb9864bf2cb02f079352405038f2eeda2d6cbd18452252c28"
+    },
+    {
+      "bytes": 556995,
+      "name": "streets.tsv.gz",
+      "sha256": "314331cdd66fc533476f40411ea10500f5fdcbf5232fa7ac35ef6b47f9d52a8a"
+    }
+  ],
+  "home": {
+    "lat": 45.8131,
+    "lon": 15.9773,
+    "zoom": 12.0
+  },
+  "id": "HR",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "hr-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Хорватія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "hr-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Хорватія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Хорватія",
+  "version": 1
+}

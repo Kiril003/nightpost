@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chatlist_title">People and keys</string>
+    <string name="chatlist_add_person">add a person</string>
+    <string name="chatlist_scan_code">scan a code</string>
+
+    <string name="keys_lede">Tap a contact to manage their key</string>
+    <string name="keys_section_people">people</string>
+    <string name="keys_section_rooms">spaces</string>
+    <string name="keys_empty">No keys yet</string>
+    <string name="keys_empty_body">No keys yet. Add a contact via QR or code.</string>
+</resources>

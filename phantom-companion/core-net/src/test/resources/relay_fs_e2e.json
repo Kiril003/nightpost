@@ -1,0 +1,34 @@
+{
+  "why": "Наскрізний v5 «телефон ↔ ПК» (docs/crypto/RELAY_FS.md §9). Зерна: sha256(мітка). Генератор ключів RelayFsKeys: i-й ключ — sha256(префікс + i). Kotlin RelayFsE2eTest відтворює phone.* байт у байт; pytest test_relay_fs_e2e.py веде ці листи крізь PhoneCourier. Ключі ТЕСТОВІ.",
+  "clock_ms": 1790000000000,
+  "seeds": {
+    "pc_ed": "e2e/pc/ed",
+    "pc_dh": "e2e/pc/dh",
+    "pc_fs_prefix": "e2e/pc/fs/",
+    "pc_ek": "e2e/pc/ek/1",
+    "phone_ed": "e2e/phone/ed",
+    "phone_dh": "e2e/phone/dh",
+    "phone_fs_prefix": "e2e/phone/fs/",
+    "phone_ek": "e2e/phone/ek/1"
+  },
+  "pc": {
+    "id": "8d43b4efcc8dfe27",
+    "ed": "/WeBSzzpzsygOA3pJFU7tVtejBfUvVRKyvitOZOE0T4=",
+    "dh": "bp7iT7DJyAGfYAh4d3XNEzNx3uuuPrB8vSwc4xK0K1E="
+  },
+  "phone": {
+    "id": "c554dd1525c71760",
+    "ed": "bfEeangIsteiiq/s3AkDus5uQ/Nh6Vlh4u0MWfi2uSo=",
+    "dh": "sY/4p7kjeZ2vus9FpXUBbr60DDEcgb5JXSkTWk8n9mc="
+  },
+  "phone_bundle": "PH-PKB:{\"spk\":{\"id\":1,\"pub\":\"ZmRsBVs79XtkLnECcQ2p0iIeTarOP2nlidGJjljql1I=\",\"sig\":\"XsoZfCe7kE1eXU1okn3CMJVUQ0fJcwD/hj7bznofS/7x51tJWCDxjlsv5f4c8hcd2EUHPjLVfiVSexN8taoBCw==\"},\"opks\":[{\"id\":1,\"pub\":\"zm8KjtxIfMGBriO+OCBh9hAy5Eez7GCwH46tD7jhfA8=\"},{\"id\":2,\"pub\":\"59PTBlSuRnTTKIcdIA1Jc7diqzcYTj9xBMAAL//wo1k=\"},{\"id\":3,\"pub\":\"3JfIqelxvP/HsnWhuY0N++gZJxAbOj7KTXIRndeZ/GU=\"},{\"id\":4,\"pub\":\"CJrHleMPF4re2m/ZEKYM0h4kWZFvh4298gnTx749X08=\"},{\"id\":5,\"pub\":\"UV3COUQQ6tFjDcXvHDD3jkVsWdanWfDsJBQfaBxUpgk=\"},{\"id\":6,\"pub\":\"MpewqdxEecvyFx35F0AZ9oHWNMFgVVzR3r9jZGgvalg=\"},{\"id\":7,\"pub\":\"LICDAzg5Tq1+mBQOxEFHJfl0rEAvQXFi8iAFUA8zoiw=\"},{\"id\":8,\"pub\":\"i4a7oEX+DCImSlZOFShjanoe1RjJkIqtrEuCAA6IGVE=\"},{\"id\":9,\"pub\":\"vR6iWfwifwjANkp7Ss/ROBYC3kDXUawQduykMXW4Q1U=\"},{\"id\":10,\"pub\":\"VA6+5nmKQJ1pbnYMLkrF3cum1MrPwrRIKbZsLOY9SVw=\"},{\"id\":11,\"pub\":\"hj5HPZhQFJ4UqJrXRq3aorHlA5A+s0wjF3TwSfmHdjE=\"},{\"id\":12,\"pub\":\"AJZP8Q0chDyt53zr75CZheTaK+1yPxhPepBakw6YfUM=\"},{\"id\":13,\"pub\":\"eLESVulhgMXPWAZbwWvmZKYD11HqQPkY5MtE8+F6IAU=\"},{\"id\":14,\"pub\":\"aNQw5EnAmGAIqBr6VfTaGmK1Hnlo3vmzwCLmvdanGgg=\"},{\"id\":15,\"pub\":\"WAqOXCF4jt1594K5GvJ2k4KT6BPgYJbg510AB+6S20E=\"},{\"id\":16,\"pub\":\"oO12LRKWujxBc9ch0WDTVXtJxCu7c6lxyrsR2hjriSE=\"}],\"gen\":1}",
+  "pc_bundle": "PH-PKB:{\"spk\":{\"id\":1,\"pub\":\"IMZmU1g3fJgEQcnVOQ3bnmMnMEGUgY3Dt6L2cYn6hG0=\",\"sig\":\"YHB5t9v1CTavciElKQNwd3sZ1CaNBhEsWMpDXENDcMTH+RPmVYso5OaRwv/K5IQdlSh9QPhNdSNKKv2f2HjSBA==\"},\"opks\":[{\"id\":1,\"pub\":\"JhJJ0CdlVsF6vgayermTbotpruQo9pi5PaD2MdIkwWw=\"},{\"id\":2,\"pub\":\"ni++SKZRFy1yAGGzLzhvev6rosTcgvDOMDne0ogw6iE=\"},{\"id\":3,\"pub\":\"TwByFoLx5KrhWABfuLwZPBnfAtRyCsjoXsLtSBHlWns=\"},{\"id\":4,\"pub\":\"UyBF1G+FNxrNIjhwaXE50A7Anj5I+cTxQeTXTF8kZmQ=\"},{\"id\":5,\"pub\":\"0oC562ELzonYDWCXMY8Ljrlzsf5Xguhyya5KuII+VFQ=\"},{\"id\":6,\"pub\":\"pYxDQo2eUIKdbIAQM/ayI8cXSz7Hac4fMRI48fe/y2M=\"},{\"id\":7,\"pub\":\"mjzq+ufORykgfpc4en+6gi1pHDRTYHao+AYi5/RG3hw=\"},{\"id\":8,\"pub\":\"UFcEPt9Wd0gz6Etq8CZDeOqdSR60WTdQTFkpGoA90DI=\"},{\"id\":9,\"pub\":\"7csu4L3w3rAI5OwIxB698a2hknXu9IYwnJUNSrrZ0h8=\"},{\"id\":10,\"pub\":\"tePkeGIajBWYS7FeQyoG7zN0qM1VNaMB95JCcMokEh4=\"},{\"id\":11,\"pub\":\"63gaN2bQAKtdvlncwPUAGqFKEvjwR+C7Qh6eXTArnGM=\"},{\"id\":12,\"pub\":\"Iae4wIqOCwkuxp4Qh3uI4p3yIObuq+CPE59X47kjll8=\"},{\"id\":13,\"pub\":\"ZsECAUJYERAuTsY47TFTKwQTFaecRl833FrHsSK/Vw0=\"},{\"id\":14,\"pub\":\"Bewmn1O2E/nINW4fxfldG2BLxVZjqBOqu5EbGmjtgBs=\"},{\"id\":15,\"pub\":\"Y0XkAJwoosqjW3zfK8ZAIDl+Ru044DKflnnc5z8dbEU=\"},{\"id\":16,\"pub\":\"pwYlNYLlPLQDvRf6rvPLHZRbSwCLfzfwMkqPoaiTZiU=\"}],\"gen\":1}",
+  "phone_letter": {
+    "json": "{\"id\":\"e2e-phone-1\",\"fromId\":\"c554dd1525c71760\",\"toId\":\"8d43b4efcc8dfe27\",\"body\":\"Телефон → ПК: лист під v5\",\"sentAtMs\":1790000000123,\"signature\":\"vqiH0BwBQJPp58CqYuJBwZy7JIdl+nnzrPsjbHVAaK3z1od/N8k/SojlPNTHByzwdUczXninED887/N2TEeMAg\"}",
+    "frame": "{\"v\":5,\"from\":\"c554dd1525c71760\",\"to\":\"8d43b4efcc8dfe27\",\"ek\":\"2pWgmKXtdhPSD9c3hPPsNEG9rRHRFtfiNAr+zbDoJV8\",\"spk\":1,\"opk\":1,\"n\":\"VxtKjvGawZxnRDw/\",\"ct\":\"N/CmYa+5A6TDnrbIx9J0zeA2EMpDkfqzdYa3xz3ixdlIwPJtUaEdGwVpKwSSxHjSrqzx9/2HUmJNJONxCrR9OMwnJ3WZIxOK9WV5K++kzyElzV55lpgIpVMSFklt9/Bk8AbE6VnjsGDlji7g0UdUIBa8IWx6bZ8cKtZ1I5t1uabJlPpl/EdWZe+XqNiqebuB3gcH6bnt6VMsTFvne4iblPRB4RneSYqCxa1WtBTlKYv60oPPtqxugIgkY9JUP7snuCZaH2ajFiH6h0SMKta64Dl3bSlk4NljEcqPfLvHYcJN4LHnLTFKbB13/a24eU8WGcILBkVY+CUO5kQzTd4xsgnPGRlBVp7MJ0vvbYY\"}"
+  },
+  "pc_letter": {
+    "json": "{\"id\":\"e2e-pc-1\",\"fromId\":\"8d43b4efcc8dfe27\",\"toId\":\"c554dd1525c71760\",\"body\":\"ПК → телефон: лист під v5\",\"sentAtMs\":1790000000456,\"signature\":\"W6sh1tcCR3Eep0j9rOArGbP8gak6H8Hl1Zmz7H1pwL4u7+BALVCJTcH7zkU3pJmAxb6nEdlVEtZ0xXCLNj20AQ\"}",
+    "frame": "{\"v\":5,\"from\":\"8d43b4efcc8dfe27\",\"to\":\"c554dd1525c71760\",\"ek\":\"4K+LAzhT4x4oPsNyffpY1vmr4+6LCRqlyEO5YCodo20\",\"spk\":1,\"opk\":1,\"n\":\"b4E7V6YCk//eRR3p\",\"ct\":\"tTTo1plRNNAO0BgHY1p9k95A5F+A9X+eW0KfY30cTJf3gTEjtlheogKf96UdLahw1KjCeqkih1bnqioazjhjgOra2oIHjkHyQ5pklpBWpfKjUZKnBUEdsYy4rIyzXhO2T6f0g7xzA3YJeFP94ZnXHZD1h0CbMOGpIgzlHf4hhqTBvvuvbHO/7PVaDeSCObyR2JdprTgqPzmHvSqgOUnHaetEfPW15ALJXA4LmBEW+sqbACgUu4NnZeTp153+D/KS0jf3lR3lEKH2IWd/3nXXqf3htGRWcDE1HkVMBJrw+7O/+ixNvr14Td570VyzvDV4T2UyG97W6thChRDe0ugQwKaF9KQX4klXGFo\"}"
+  }
+}

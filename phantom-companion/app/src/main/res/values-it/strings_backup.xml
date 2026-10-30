@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Backup salvato · %1$s</string>
+    <string name="backup_sheet_title">Crea backup</string>
+    <string name="backup_loss_title">Senza backup perdi:</string>
+    <string name="backup_loss_chats">Chat</string>
+    <string name="backup_loss_contacts">Contatti</string>
+    <string name="backup_loss_profiles">Profili</string>
+    <string name="backup_loss_venues">Modifica dei luoghi</string>
+    <string name="backup_loss_licences">Licenze Solana e Seeker</string>
+    <string name="backup_loss_handle">\@nome per 30 giorni</string>
+    <string name="backup_loss_points">Punti e valutazioni</string>
+    <string name="backup_loss_wallet">Wallet senza export proprio</string>
+    <string name="backup_loss_memory">Memoria non su un computer</string>
+    <string name="backup_pass_hint">Passphrase (almeno 12 caratteri)</string>
+    <string name="backup_pass_confirm_hint">Ripeti la passphrase</string>
+    <string name="backup_pass_mismatch">Le passphrase non coincidono</string>
+    <string name="backup_pass_too_short">Servono almeno 12 caratteri</string>
+    <string name="backup_save_action">Salva backup</string>
+    <string name="backup_restore_title">Ripristina da backup</string>
+    <string name="backup_restore_pass_hint">Passphrase del backup</string>
+    <string name="backup_restore_action">Ripristina</string>
+    <string name="backup_restore_err_wrong_pass">Passphrase errata</string>
+    <string name="backup_restore_err_not_our_file">Non è un backup Nightpost</string>
+    <string name="backup_restore_err_not_empty">Prima elimina i dati su questo telefono</string>
+    <string name="backup_restore_success">Ripristinati: %1$d contatti, %2$d messaggi, %3$d profili</string>
+    <string name="backup_restore_err_read">Impossibile aprire il file</string>
+    <string name="backup_restore_err_invalid">Il backup è danneggiato</string>
+    <string name="backup_restore_err_failed">Ripristino non riuscito</string>
+</resources>

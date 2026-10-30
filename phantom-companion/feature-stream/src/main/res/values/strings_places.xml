@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="live_share_channel">Live location</string>
+    <string name="live_share_title">Sharing location</string>
+    <string name="live_share_stop">Stop</string>
+</resources>

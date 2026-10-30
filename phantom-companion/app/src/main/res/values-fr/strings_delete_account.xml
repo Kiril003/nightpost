@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Tout supprimer</string>
+    <string name="delete_everything_after">Supprimé après 7 jours</string>
+    <string name="delete_everything_left_backup">Votre fichier de sauvegarde</string>
+    <string name="delete_everything_left_photos">Photos enregistrées</string>
+    <string name="delete_everything_left_letters">Lettres déjà remises</string>
+    <string name="delete_everything_pc">Ordinateur : les copies restent</string>
+    <string name="delete_everything_retry">Réessayer</string>
+    <string name="delete_everything_phone_only">Ce téléphone seulement</string>
+    <string name="delete_everything_protected">Indisponible pour ce compte</string>
+    <string name="delete_everything_allow">Autoriser « Tout supprimer »</string>
+    <string name="delete_pending_on">Suppression le %1$s</string>
+    <string name="delete_pending_cancel">Annuler la suppression</string>
+    <string name="delete_everything_stays">Reste après la suppression :</string>
+    <string name="delete_everything_cancel">Annuler</string>
+    <string name="delete_everything_phone_only_note">Efface tout sur ce téléphone, portefeuille compris</string>
+    <string name="delete_pending_note">D’ici là, vous pouvez annuler et tout garder</string>
+    <string name="delete_pending_offline">Pas de connexion</string>
+    <string name="delete_pending_failed">Annulation impossible</string>
+    <string name="delete_pending_wallet">Portefeuille</string>
+</resources>

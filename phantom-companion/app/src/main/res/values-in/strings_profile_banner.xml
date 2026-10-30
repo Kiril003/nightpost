@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_banner">Banner</string>
+    <string name="profile_banner_add">Tambah banner</string>
+    <string name="profile_banner_photos">Foto</string>
+    <string name="profile_banner_video">Video</string>
+    <string name="profile_banner_from_phone">Dari ponsel</string>
+    <string name="profile_banner_max">Maks. 6</string>
+    <string name="profile_banner_count">%1$d/%2$d</string>
+    <string name="profile_banner_focus">Fokus</string>
+    <string name="profile_banner_save">Simpan</string>
+    <string name="profile_banner_saving">Menyimpan…</string>
+    <string name="profile_banner_first_frame">orang lain melihat bingkai pertama</string>
+    <string name="profile_banner_video_local">lebih dari 8 MB: orang lain melihat bingkai pertama</string>
+    <string name="profile_banner_video_long">Video hingga 15 dtk</string>
+    <string name="profile_banner_failed">Tidak tersimpan</string>
+    <string name="profile_banner_remove">Hapus banner</string>
+    <string name="profile_banner_photo_n">Foto %1$d</string>
+    <string name="profile_banner_close">Tutup</string>
+    <string name="profile_edit">Ubah</string>
+    <string name="profile_moment_new">Momen</string>
+    <string name="profile_photo_row">Foto profil</string>
+    <string name="profile_about_row">Status dan bio</string>
+    <string name="profile_new">Baru</string>
+</resources>

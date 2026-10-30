@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_around_title">Around you</string>
+    <string name="map_around_friends">Friends sharing location</string>
+    <string name="map_around_places">Places nearby</string>
+    <string name="map_around_venues">Nightpost places nearby</string>
+    <string name="map_around_sharing">%1$d sharing</string>
+    <string name="map_around_now">just now</string>
+    <string name="map_around_min_ago">%1$d min ago</string>
+    <string name="map_around_h_ago">%1$d h ago</string>
+    <string name="map_around_area">area</string>
+    <string name="map_around_places_wait">Looking for places nearby…</string>
+    <string name="map_around_places_none">No places found nearby</string>
+    <string name="map_around_places_unknown">Places nearby can’t be loaded right now</string>
+    <string name="map_around_no_fix">Turn on location to see distances and places nearby</string>
+    <string name="map_around_rating">%1$s · %2$d ratings</string>
+    <string name="map_layers">Layers</string>
+    <string name="place_meet_here">Meet here</string>
+    <string name="place_send_chat">To a chat</string>
+    <string name="place_send_title">Send “%1$s” to…</string>
+    <string name="place_send_none">No one to send it to yet. People you add will appear here.</string>
+    <string name="place_sent">Sent to %1$s</string>
+    <string name="place_rating_label">Rating</string>
+    <string name="place_generic">This place</string>
+    <string name="map_peek_zoom_in">Zoom in to see places</string>
+    <string name="map_peek_all">All</string>
+    <plurals name="map_peek_count">
+        <item quantity="one">%1$d place</item>
+        <item quantity="other">%1$d places</item>
+    </plurals>
+    <string name="map_peek_collapse">Collapse</string>
+    <string name="map_peek_expand">Expand</string>
+</resources>

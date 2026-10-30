@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Alles löschen</string>
+    <string name="delete_everything_after">Entfernt nach 7 Tagen</string>
+    <string name="delete_everything_left_backup">Deine Backup-Datei</string>
+    <string name="delete_everything_left_photos">Gespeicherte Fotos</string>
+    <string name="delete_everything_left_letters">Bereits zugestellte Briefe</string>
+    <string name="delete_everything_pc">Computer: Kopien bleiben</string>
+    <string name="delete_everything_retry">Erneut versuchen</string>
+    <string name="delete_everything_phone_only">Nur dieses Handy</string>
+    <string name="delete_everything_protected">Für dieses Konto nicht verfügbar</string>
+    <string name="delete_everything_allow">„Alles löschen“ erlauben</string>
+    <string name="delete_pending_on">Löschung am %1$s</string>
+    <string name="delete_pending_cancel">Löschung abbrechen</string>
+    <string name="delete_everything_stays">Bleibt nach dem Löschen:</string>
+    <string name="delete_everything_cancel">Abbrechen</string>
+    <string name="delete_everything_phone_only_note">Löscht alles auf diesem Handy, auch die Wallet</string>
+    <string name="delete_pending_note">Bis dahin kannst du abbrechen und alles behalten</string>
+    <string name="delete_pending_offline">Keine Verbindung</string>
+    <string name="delete_pending_failed">Abbrechen nicht möglich</string>
+    <string name="delete_pending_wallet">Wallet</string>
+</resources>

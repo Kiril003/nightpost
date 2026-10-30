@@ -1,0 +1,121 @@
+/* МІСТ СТАРОГО СЛОВНИКА → PHANTOM v1.2 (04.10).
+ *
+ * Тут жив «Sunrise Build»: світла кремова палітра на :root і чотири теми
+ * поверх неї (amber-night, cyberdeck-cold, pro-console, еспресо ПК
+ * `[data-desk-night]`) плюс шість станових акцентів `[data-state]`. Уночі
+ * телефон отримував `--surface-base` #f8f7f5 — кремову заставку з
+ * помаранчевою кулею, — а ПК малював еспресо-панелі поруч із чорнильною
+ * рейкою. Одна палітра під кожним екраном — це вона, а не п'ять.
+ *
+ * Тепер старі імена — ПСЕВДОНІМИ `--ph-*` (src/styles/phantom/tokens.css,
+ * згенеровано з docs/design/system/tokens.json). Вони стоять на :root —
+ * тобто на тому самому <html>, що несе `data-theme`, — тож самі йдуть за
+ * Ніччю й Днем: окремого денного блоку не треба.
+ *
+ * Сяйва (`--glow-*`, `--accent-glow`) у новій мові немає — вони прозорі.
+ * Числа лишились лише в нефарбових змінних, які ще читають живі екрани:
+ * кегль, інтерліньяж, трекінг, радіуси, дотикова підлога, масштаб руху.
+ *
+ * ВИДАЛИТИ, коли grep не знайде жодного споживача. Нова розмітка пише
+ * класами пресету (`bg-raised`, `text-ink-2`) або `var(--ph-*)` напряму.
+ * Сторож — src/__tests__/tokenBridge.test.ts. */
+
+:root {
+  /* ── Акцент: бурштин — лише для дій ───────────────────────────────── */
+  --primary:            var(--ph-accent);
+  --primary-deep:       var(--ph-accent);
+  --primary-shadow:     var(--ph-accent-text);
+  --accent:             var(--ph-accent);
+  --accent-radial:      var(--ph-accent);
+  --accent-fade:        transparent;
+  --accent-glow:        transparent;
+  /* Помаранч старих градієнтів — натиснутий бурштин, а не третя барва. */
+  --orange:             var(--ph-accent-press);
+  /* Корал був кольором тривоги — у v1.2 це danger. */
+  --coral:              var(--ph-danger);
+  --coral-soft:         var(--ph-danger);
+  --coral-deep:         var(--ph-danger);
+  /* «Тепло» мішало корал із бурштином; окремої барви для нього немає. */
+  --warmth:             var(--ph-accent);
+
+  /* ── Поверхні ─────────────────────────────────────────────────────── */
+  --surface-base:       var(--ph-canvas);
+  --surface-deep:       var(--ph-canvas);
+  --surface-void:       var(--ph-canvas);
+  --surface-raised:     var(--ph-raised);
+  --surface-sunrise:    var(--ph-canvas);
+  --surface-coral:      var(--ph-canvas);
+
+  /* ── Колишнє «скло» — суцільні поверхні, без розмиття ─────────────── */
+  --glass-subtle:       var(--ph-surface);
+  --glass-panel:        var(--ph-surface);
+  --glass-card:         var(--ph-surface);
+  --glass-elevated:     var(--ph-raised);
+  --glass-border:       var(--ph-line);
+  --glass-border-hover: var(--ph-line-strong);
+  --glass-highlight:    var(--ph-line-strong);
+
+  /* ── Сяйва — немає ────────────────────────────────────────────────── */
+  --glow-primary:       transparent;
+  --glow-secondary:     transparent;
+
+  /* ── Чорнило ──────────────────────────────────────────────────────── */
+  --ink-primary:        var(--ph-text);
+  --ink-secondary:      var(--ph-text-2);
+  --ink-muted:          var(--ph-text-3);
+  --ink-faint:          var(--ph-text-3);
+  --ink-inverse:        var(--ph-on-accent);
+
+  /* ── Лінії ────────────────────────────────────────────────────────── */
+  --line-subtle:        var(--ph-line);
+  --line-default:       var(--ph-line);
+  --line-strong:        var(--ph-line-strong);
+
+  /* ── Сигнали ──────────────────────────────────────────────────────── */
+  --signal-ok:          var(--ph-success);
+  --signal-warn:        var(--ph-warning);
+  --signal-alert:       var(--ph-danger);
+  /* «Інфо»-синього у v1.2 немає: синій — тон людини, не стан. */
+  --signal-info:        var(--ph-text-2);
+
+  /* ── Тіні — три рівні системи ─────────────────────────────────────── */
+  --shadow-sm:          var(--ph-shadow-1);
+  --shadow-md:          var(--ph-shadow-2);
+  --shadow-lg:          var(--ph-shadow-2);
+  --shadow-xl:          var(--ph-shadow-3);
+
+  /* ── Шрифт — один Manrope; моно — лише код ────────────────────────── */
+  --font-display:       var(--ph-font-sans);
+  --font-body:          var(--ph-font-sans);
+  --font-serif:         var(--ph-font-sans);
+  --font-mono:          var(--ph-font-mono);
+  --font-tech:          var(--ph-font-mono);
+
+  /* ── Нефарбові змінні, які ще читають живі екрани ─────────────────── */
+  /* Кегль множиться на --fs-scale (Налаштування › Вигляд на ПК). */
+  --fs-scale:   1;
+  --fs-micro:   calc(12px * var(--fs-scale, 1));
+  --fs-xs:      calc(13px * var(--fs-scale, 1));
+  --fs-sm:      calc(15px * var(--fs-scale, 1));
+  --fs-base:    calc(16px * var(--fs-scale, 1));
+  --fs-md:      calc(18px * var(--fs-scale, 1));
+  --fs-lg:      calc(23px * var(--fs-scale, 1));
+  --fs-xl:      calc(33px * var(--fs-scale, 1));
+
+  --tracking-tight:    -0.02em;
+  --tracking-normal:    0;
+  --tracking-wide:      0.05em;
+  --tracking-wider:     0.10em;
+  --tracking-widest:    0.15em;
+
+  --lh-tight:    1.1;
+  --lh-normal:   1.4;
+
+  --touch-min:      44px;
+  --radius-md:      10px;
+  --radius-lg:      14px;
+  --radius-pill:    999px;
+
+  --motion-scale:      1;
+  --motion-scale-user: 1;
+}

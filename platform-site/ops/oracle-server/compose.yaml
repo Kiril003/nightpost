@@ -1,0 +1,57 @@
+# Nightpost licence/relay server on the Oracle VM (aarch64). Lives at /srv/nightpost-api/.
+# TLS is terminated by the VM's existing host nginx (api.phantom-os.dev.nginx); this file only
+# publishes the app on 127.0.0.1:8480. One container by design: the live-channel map is in memory.
+name: nightpost-api
+
+services:
+  server:
+    build:
+      context: ./src
+    image: nightpost-api:local
+    restart: unless-stopped
+    init: true
+    user: "${NP_UID:-1001}:${NP_UID:-1001}"
+    env_file: ./server.env
+    environment:
+      SITE_ORIGINS: "https://phantom-os.dev,https://www.phantom-os.dev"
+      TRUSTED_COUNTRY_HEADER: ""
+      NP_ALLOW_NEW_KEY: "${NP_ALLOW_NEW_KEY:-0}"
+    command:
+      - sh
+      - -c
+      - >-
+        test -s /data/keys/signing.pem || [ "$$NP_ALLOW_NEW_KEY" = 1 ] ||
+        { echo "REFUSING TO START: /data/keys/signing.pem is missing; a new key would void every issued certificate"; exit 78; };
+        mkdir -p /data/keys /relay &&
+        exec uvicorn main:app --host 0.0.0.0 --port 8080 --ws-max-size 131072 --ws-ping-interval 20 --ws-ping-timeout 20
+    ports:
+      - "127.0.0.1:8480:8080"
+    volumes:
+      - ./data:/data
+      - ./relay:/relay
+      - ./secrets:/secrets:ro
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 768m
+    memswap_limit: 768m
+    mem_reservation: 384m
+    cpus: "1.0"
+    pids_limit: 256
+    oom_score_adj: -500
+    ulimits:
+      nofile: 65536
+    stop_grace_period: 15s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=4).status == 200 else 1)"]
+      interval: 30s
+      timeout: 6s
+      retries: 3
+      start_period: 25s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

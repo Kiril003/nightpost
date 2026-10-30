@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_search_field">Пошук на мапі</string>
+    <string name="map_me">Я тут</string>
+    <string name="map_my_people">Мої люди</string>
+    <string name="map_shelters">Укриття</string>
+    <string name="map_loading">Мапа завантажується</string>
+    <string name="map_sheet_style">Вигляд мапи</string>
+    <string name="map_sheet_offline">Зберегти цю ділянку без інтернету</string>
+    <string name="map_people_none">Поки ніхто не ділиться з вами місцем</string>
+    <string name="map_sheet_car">Телефон у машині</string>
+    <string name="map_sheet_saved">Збережені ділянки</string>
+    <string name="map_home_search_hint">Пошук місць і людей</string>
+    <string name="map_chip_coffee">Кава</string>
+    <string name="map_chip_food">Їжа</string>
+    <string name="map_chip_tonight">Сьогодні ввечері</string>
+    <string name="map_chip_groceries">Продукти</string>
+    <string name="map_chip_pharmacy">Аптека</string>
+    <string name="map_chip_transit">Транспорт</string>
+    <string name="map_search_this_area">Шукати в цій області</string>
+    <string name="map_tray_plans">Плани</string>
+    <string name="map_tray_meet">Зустріч</string>
+    <string name="map_state_allow_location">Дозволити геопозицію</string>
+    <string name="map_invite_empty">Нікого поруч</string>
+</resources>

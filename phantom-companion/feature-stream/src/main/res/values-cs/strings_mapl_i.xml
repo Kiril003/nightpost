@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_i_metres">%1$d m</string>
+    <string name="mapl_i_kilometres">%1$s km</string>
+    <string name="mapl_i_room">Místnost</string>
+    <string name="mapl_i_toll_booth">Mýtná brána</string>
+</resources>

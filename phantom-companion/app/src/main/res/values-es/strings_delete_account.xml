@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Borrar todo</string>
+    <string name="delete_everything_after">Se elimina tras 7 días</string>
+    <string name="delete_everything_left_backup">Tu archivo de copia</string>
+    <string name="delete_everything_left_photos">Fotos guardadas</string>
+    <string name="delete_everything_left_letters">Cartas ya entregadas</string>
+    <string name="delete_everything_pc">Ordenador: quedan copias</string>
+    <string name="delete_everything_retry">Reintentar</string>
+    <string name="delete_everything_phone_only">Solo este teléfono</string>
+    <string name="delete_everything_protected">No disponible para esta cuenta</string>
+    <string name="delete_everything_allow">Permitir Borrar todo</string>
+    <string name="delete_pending_on">Eliminación el %1$s</string>
+    <string name="delete_pending_cancel">Cancelar eliminación</string>
+    <string name="delete_everything_stays">Se conserva tras borrar:</string>
+    <string name="delete_everything_cancel">Cancelar</string>
+    <string name="delete_everything_phone_only_note">Borra todo en este teléfono, billetera incluida</string>
+    <string name="delete_pending_note">Hasta entonces puedes cancelar y conservarlo todo</string>
+    <string name="delete_pending_offline">Sin conexión</string>
+    <string name="delete_pending_failed">No se pudo cancelar</string>
+    <string name="delete_pending_wallet">Billetera</string>
+</resources>

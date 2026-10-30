@@ -1,0 +1,10 @@
+{
+  "ok": false,
+  "refused": "not_a_list",
+  "at": "blocks",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": {}
+  }
+}

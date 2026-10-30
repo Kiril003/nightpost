@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Usuń wszystko</string>
+    <string name="delete_everything_after">Usunięte po 7 dniach</string>
+    <string name="delete_everything_left_backup">Twój plik kopii</string>
+    <string name="delete_everything_left_photos">Zapisane zdjęcia</string>
+    <string name="delete_everything_left_letters">Już dostarczone listy</string>
+    <string name="delete_everything_pc">Komputer: kopie zostają</string>
+    <string name="delete_everything_retry">Spróbuj ponownie</string>
+    <string name="delete_everything_phone_only">Tylko ten telefon</string>
+    <string name="delete_everything_protected">Niedostępne dla tego konta</string>
+    <string name="delete_everything_allow">Zezwól na Usuń wszystko</string>
+    <string name="delete_pending_on">Usunięcie: %1$s</string>
+    <string name="delete_pending_cancel">Anuluj usunięcie</string>
+    <string name="delete_everything_stays">Zostaje po usunięciu:</string>
+    <string name="delete_everything_cancel">Anuluj</string>
+    <string name="delete_everything_phone_only_note">Usuwa wszystko z tego telefonu, razem z portfelem</string>
+    <string name="delete_pending_note">Do tego czasu możesz anulować i zachować wszystko</string>
+    <string name="delete_pending_offline">Brak połączenia</string>
+    <string name="delete_pending_failed">Nie udało się anulować</string>
+    <string name="delete_pending_wallet">Portfel</string>
+</resources>

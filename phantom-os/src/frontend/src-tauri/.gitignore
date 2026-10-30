@@ -1,0 +1,5 @@
+# Tauri build artefacts (rebuildable). Keep manifest + Rust source under VCS.
+/target
+/binaries
+# Cargo.lock закомічено: це застосунок, і без нього CI щоразу брав найновіший
+# tauri, який розходився з @tauri-apps/api і валив `tauri build`.

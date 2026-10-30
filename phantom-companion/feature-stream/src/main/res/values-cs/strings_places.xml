@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="live_share_channel">Poloha živě</string>
+    <string name="live_share_title">Sdílím polohu</string>
+    <string name="live_share_stop">Zastavit</string>
+</resources>

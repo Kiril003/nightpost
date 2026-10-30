@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_pack_banner_title">Mapa %1$s · %2$d MB</string>
+    <string name="map_pack_banner_title_nosize">Mapa %1$s</string>
+    <string name="map_pack_download">Stáhnout</string>
+    <string name="map_pack_progress">%1$s · %2$d %%</string>
+    <string name="map_search_empty">Žádné výsledky</string>
+    <string name="map_search_wider">Hledat šířeji</string>
+    <string name="map_nearby_empty">Nic v okolí</string>
+</resources>

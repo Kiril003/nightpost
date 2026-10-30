@@ -1,0 +1,51 @@
+{
+  "ok": false,
+  "refused": "bad_date",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Svitlo Studio",
+          "kind": "photo_studio",
+          "tagline": "Photography from zero"
+        }
+      },
+      {
+        "id": "course-1",
+        "kind": "cls.course",
+        "variant": "numbered",
+        "hidden": false,
+        "data": {
+          "title": "Photo basics",
+          "token": "USDC",
+          "price": "240",
+          "seats": 12,
+          "items": [
+            {
+              "id": "m-camera",
+              "name": "Manual camera settings"
+            },
+            {
+              "id": "m-light",
+              "name": "Natural and studio light"
+            }
+          ],
+          "sessions": [
+            {
+              "id": "s1",
+              "name": "Camera and optics",
+              "date": "2026-11-31",
+              "time": "19:00"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

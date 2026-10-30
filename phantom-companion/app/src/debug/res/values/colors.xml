@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Тло значка debug. Продакшен — нічне полотно #0A0C10 (майже чорне); тут
+    холодна синь, щоб два значки поруч у списку програм не читались як один.
+-->
+<resources>
+    <color name="ic_launcher_background">#0F2438</color>
+</resources>

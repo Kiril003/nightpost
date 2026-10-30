@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 53.7,
+    "maxLon": 7.23,
+    "minLat": 50.75,
+    "minLon": 3.36
+  },
+  "files": [
+    {
+      "bytes": 1947090,
+      "name": "places.tsv.gz",
+      "sha256": "e24594ac866f54f4099b05b52263694655222cc88711f86c303ce5aa2f3e38f8"
+    },
+    {
+      "bytes": 3740452,
+      "name": "streets.tsv.gz",
+      "sha256": "950c46c686e6e37c52f2e0e73a23563bda6523f6569e30348ee97c88bb9db35c"
+    }
+  ],
+  "home": {
+    "lat": 52.3731,
+    "lon": 4.8925,
+    "zoom": 12.0
+  },
+  "id": "NL",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "nl-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Нідерланди: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "nl-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Нідерланди: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Нідерланди",
+  "version": 1
+}

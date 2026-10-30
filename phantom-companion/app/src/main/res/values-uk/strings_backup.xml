@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Копія збережена · %1$s</string>
+    <string name="backup_sheet_title">Створити резервну копію</string>
+    <string name="backup_loss_title">Без копії втрачається:</string>
+    <string name="backup_loss_chats">Листування</string>
+    <string name="backup_loss_contacts">Контакти</string>
+    <string name="backup_loss_profiles">Профілі</string>
+    <string name="backup_loss_venues">Редагування місць</string>
+    <string name="backup_loss_licences">Ліцензії Solana і Seeker</string>
+    <string name="backup_loss_handle">@handle на 30 днів</string>
+    <string name="backup_loss_points">Бали та оцінки</string>
+    <string name="backup_loss_wallet">Гаманець без власного експорту</string>
+    <string name="backup_loss_memory">Памʼять поза компʼютером</string>
+    <string name="backup_pass_hint">Пароль (щонайменше 12 символів)</string>
+    <string name="backup_pass_confirm_hint">Повторіть пароль</string>
+    <string name="backup_pass_mismatch">Паролі не збігаються</string>
+    <string name="backup_pass_too_short">Потрібно щонайменше 12 символів</string>
+    <string name="backup_save_action">Зберегти копію</string>
+    <string name="backup_restore_title">Відновити з копії</string>
+    <string name="backup_restore_pass_hint">Пароль до копії</string>
+    <string name="backup_restore_action">Відновити</string>
+    <string name="backup_restore_err_wrong_pass">Пароль не підходить</string>
+    <string name="backup_restore_err_not_our_file">Це не копія Nightpost</string>
+    <string name="backup_restore_err_not_empty">Спершу видаліть дані на цьому телефоні</string>
+    <string name="backup_restore_success">Відновлено: %1$d контактів, %2$d повідомлень, %3$d профілів</string>
+    <string name="backup_restore_err_read">Файл не відкривається</string>
+    <string name="backup_restore_err_invalid">Копія пошкоджена</string>
+    <string name="backup_restore_err_failed">Не вдалося відновити</string>
+    <string name="profile_backup_old_phone">Старий телефон варто стерти</string>
+    <string name="backup_pass_show">Показати пароль</string>
+    <string name="backup_pass_hide">Сховати пароль</string>
+    <string name="backup_create_err">Не вдалося зберегти копію</string>
+    <string name="profile_backup_restore">Відновити з копії</string>
+    <string name="profile_backup_wallet_no_lock">Гаманець не в копії · немає блокування</string>
+    <string name="profile_backup_wallet_needs_words">Гаманець не в копії · відкрийте слова в Гаманці</string>
+    <plurals name="profile_backup_media_left">
+        <item quantity="one">Не відновлено %d фото чи файл</item>
+        <item quantity="few">Не відновлено %d фото чи файли</item>
+        <item quantity="many">Не відновлено %d фото чи файлів</item>
+        <item quantity="other">Не відновлено %d фото чи файлу</item>
+    </plurals>
+</resources>

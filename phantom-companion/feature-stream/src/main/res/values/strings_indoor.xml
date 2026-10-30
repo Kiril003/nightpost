@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="indoor_landmark_toilets">WC</string>
+    <string name="indoor_landmark_atm">ATM</string>
+    <string name="indoor_landmark_information">Information</string>
+    <string name="indoor_landmark_pharmacy">Pharmacy</string>
+    <string name="indoor_landmark_post_office">Post office</string>
+    <string name="indoor_landmark_police">Police</string>
+    <string name="indoor_landmark_first_aid">First aid</string>
+    <string name="indoor_landmark_lost_and_found">Lost and found</string>
+    <string name="indoor_landmark_lockers">Lockers</string>
+    <string name="indoor_landmark_prayer_room">Prayer room</string>
+    <string name="indoor_landmark_nursing_room">Nursing room</string>
+    <string name="indoor_landmark_childcare">Childcare</string>
+    <string name="indoor_landmark_smoking_area">Smoking area</string>
+    <string name="indoor_landmark_waiting_room">Waiting room</string>
+    <string name="indoor_landmark_ticket_office">Ticket office</string>
+    <string name="indoor_landmark_reception">Reception</string>
+</resources>

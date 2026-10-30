@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 55.0361,
+    "maxLon": 24.1458,
+    "minLat": 49.002,
+    "minLon": 14.0696
+  },
+  "files": [
+    {
+      "bytes": 5339889,
+      "name": "places.tsv.gz",
+      "sha256": "69bdf6953a02d2a01003caa075d39c21021f38039be8606ef68f85576d23dea3"
+    },
+    {
+      "bytes": 3866832,
+      "name": "streets.tsv.gz",
+      "sha256": "5485e5230a8f6c62f19a494dd7b72519f857353ff39452cee038a0e74533cad4"
+    }
+  ],
+  "home": {
+    "lat": 52.232,
+    "lon": 21.0067,
+    "zoom": 12.0
+  },
+  "id": "PL",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "pl-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Польща: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "pl-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Польща: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Польща",
+  "version": 1
+}

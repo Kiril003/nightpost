@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Delete everything</string>
+    <string name="delete_everything_after">Removed after 7 days</string>
+    <string name="delete_everything_left_backup">Your backup file</string>
+    <string name="delete_everything_left_photos">Saved photos</string>
+    <string name="delete_everything_left_letters">Letters already delivered</string>
+    <string name="delete_everything_pc">Computer: copies remain</string>
+    <string name="delete_everything_retry">Retry</string>
+    <string name="delete_everything_phone_only">This phone only</string>
+    <string name="delete_everything_protected">Not available for this account</string>
+    <string name="delete_everything_allow">Allow Delete everything</string>
+    <string name="delete_pending_on">Deletion on %1$s</string>
+    <string name="delete_pending_cancel">Cancel deletion</string>
+    <string name="delete_everything_stays">Stays after deletion:</string>
+    <string name="delete_everything_cancel">Cancel</string>
+    <string name="delete_everything_phone_only_note">Erases everything on this phone, wallet included</string>
+    <string name="delete_pending_note">Until then you can cancel and keep everything</string>
+    <string name="delete_pending_offline">No connection</string>
+    <string name="delete_pending_failed">Couldn\'t cancel</string>
+    <string name="delete_pending_wallet">Wallet</string>
+</resources>

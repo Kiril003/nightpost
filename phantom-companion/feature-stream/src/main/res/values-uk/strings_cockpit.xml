@@ -1,0 +1,16 @@
+<resources>
+    <string name="cockpit_title">За кермом</string>
+    <string name="cockpit_close">Закрити</string>
+    <string name="cockpit_mount_title">Екран у кріпленні</string>
+    <string name="cockpit_mount_sub">великі цифри маршруту; є дзеркало для відбиття в склі</string>
+    <string name="cockpit_marks_kicker">Позначити на дорозі · зникне за 2 год</string>
+    <string name="cockpit_mark_crash">ДТП</string>
+    <string name="cockpit_mark_repair">Ремонт дороги</string>
+    <string name="cockpit_mark_camera">Камера швидкості</string>
+    <string name="cockpit_find_kicker">Знайти поруч</string>
+    <string name="cockpit_find_fuel">АЗС</string>
+    <string name="cockpit_find_charging">Зарядка електромобіля</string>
+    <string name="cockpit_find_tyres">Шиномонтаж і СТО</string>
+    <string name="cockpit_find_wash">Автомийка</string>
+    <string name="cockpit_find_parking">Підземний паркінг</string>
+</resources>

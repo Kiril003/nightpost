@@ -1,0 +1,33 @@
+export const uk = {
+  'callSettings.title': 'Налаштування дзвінка',
+  'callSettings.wifi': 'Через Wi-Fi',
+  'callSettings.mobile': 'Через мобільний інтернет',
+  'callSettings.mode.auto': 'Авто',
+  'callSettings.mode.save': 'Економія',
+  'callSettings.mode.best': 'Найкраща',
+  'callSettings.video': 'Відео',
+  'callSettings.audioOnly': 'Лише звук',
+  'callSettings.dataUsed': 'Використано даних',
+  'callSettings.close': 'Закрити',
+  'callSettings.mb': 'МБ',
+  'callSettings.sound': 'Звук',
+  'callSettings.khz': 'кГц',
+  'callSettings.kbps': 'кбіт/с',
+} as const;
+
+export const en: Record<keyof typeof uk, string> = {
+  'callSettings.title': 'Call settings',
+  'callSettings.wifi': 'On Wi-Fi',
+  'callSettings.mobile': 'On mobile data',
+  'callSettings.mode.auto': 'Auto',
+  'callSettings.mode.save': 'Save data',
+  'callSettings.mode.best': 'Best',
+  'callSettings.video': 'Video',
+  'callSettings.audioOnly': 'Audio only',
+  'callSettings.dataUsed': 'Data used',
+  'callSettings.close': 'Close',
+  'callSettings.mb': 'MB',
+  'callSettings.sound': 'Sound',
+  'callSettings.khz': 'kHz',
+  'callSettings.kbps': 'kbps',
+};

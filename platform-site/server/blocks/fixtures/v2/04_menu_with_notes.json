@@ -1,0 +1,38 @@
+{
+  "v": 2,
+  "tone": "amber",
+  "blocks": [
+    {
+      "id": "name-0",
+      "kind": "id.name",
+      "variant": "plain",
+      "hidden": false,
+      "data": {
+        "name": "Бістро"
+      }
+    },
+    {
+      "id": "menu-1",
+      "kind": "cat.menu",
+      "variant": "two_col",
+      "hidden": false,
+      "data": {
+        "title": "Основне меню",
+        "token": "USDC",
+        "items": [
+          {
+            "id": "borsch",
+            "name": "Борщ",
+            "price": "4.50",
+            "note": "зі сметаною"
+          },
+          {
+            "id": "tea",
+            "name": "Чай",
+            "price": "1.25"
+          }
+        ]
+      }
+    }
+  ]
+}

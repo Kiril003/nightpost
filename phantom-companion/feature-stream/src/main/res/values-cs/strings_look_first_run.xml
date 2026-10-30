@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prof_look_vault_up">funguje</string>
+    <string name="vault_look_title">Úložiště</string>
+    <string name="mic_look_title">Nightpost žádá o mikrofon</string>
+    <string name="mic_look_body">Nightpost potřebuje mikrofon, aby vás slyšel. Povolíte ho?</string>
+    <string name="mic_look_allow">Povolit</string>
+    <string name="mic_look_skip">Přeskočit</string>
+</resources>

@@ -1,0 +1,849 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+import maplibregl, { Map as MapLibreMap } from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+// Воркер оголошується тут, а не у вході застосунку: у вході він тягнув увесь
+// рушій мап у перший кадр месенджера, який мап не малює. Цей модуль maplibre
+// вже тягне статично, тож імпорт нічого не додає — лише гарантує, що
+// `setWorkerUrl` відпрацює до `new maplibregl.Map()` нижче.
+import '../../lib/maplibreWorker';
+import { offlineVectorUrl, pmtilesProtocol, regionFor } from './offlineBasemap';
+import { readToken } from '../../services/tokenStore';
+import { MapContext } from './MapContext';
+import { BaseLayer } from './layers/BaseLayer';
+import { PresenceLayer, PeersLayer } from './layers/PresenceLayer';
+import { RouteLayer } from './layers/RouteLayer';
+import { IntelLayer } from './layers/IntelLayer';
+import { ReconLayer } from './layers/ReconLayer';
+import { FactMarkerLayer } from './layers/FactMarkerLayer';
+import { GeofencesLayer } from './layers/GeofencesLayer';
+import { CliffScreeLayer } from './layers/CliffScreeLayer';
+import { MarkerCard } from './MarkerCard';
+import { tilesReason, watchBaseTiles } from './tilesWatch';
+import { TilesDownBanner } from './TilesDownBanner';
+import { translate, type MessageKey } from '../../i18n';
+import { resolveLocale, useTranslation } from '../../i18n/useTranslation';
+import { PlaceCard } from './PlaceCard';
+import { useMapStore } from '../../stores/mapStore';
+import { useSystemStore } from '../../stores/systemStore';
+import { getMapTokens, preserveOverlayLayers, resolvePhase, type MapPhase, type PhantomMapStyle } from './mapTokens';
+import { buildPhantomMapStyle, sunFor, DEM_TERRAIN_ID } from './phantomStyle';
+import { sunLight } from './style/sun';
+import { useSettingsStore, LANGUAGE_SETTING_KEY } from '../../stores/settingsStore';
+import { mapApi, settingsApi, type Bounds } from '../../services/api';
+import {
+  useCapabilityStore,
+  ensureCapabilityProbed,
+  type RenderTier,
+} from '../../stores/capabilityStore';
+
+function loadToast(key: MessageKey, err: unknown): string {
+  console.error(key, err);
+  return translate(key, resolveLocale(useSettingsStore.getState().values[LANGUAGE_SETTING_KEY]));
+}
+
+interface TacticalMapProps {
+  initialCenter?: [number, number];
+  initialZoom?: number;
+  className?: string;
+  onResetBearing?: (fn: () => void) => void;
+  onZoomIn?: (fn: () => void) => void;
+  onZoomOut?: (fn: () => void) => void;
+  onCenterToMe?: (fn: () => void) => void;
+  onAddPoi?: (fn: () => void) => void;
+  /** Перемикач об'єму: нахил камери + рельєф. */
+  onToggleTilt?: (fn: () => void) => void;
+  onTiltChange?: (pitch: number) => void;
+}
+
+/**
+ * Every `PhantomMapStyle` value that a persisted `ui_map_style` setting may
+ * legally hold — includes the retired 'satellite' value so old settings
+ * don't silently reset to 'dark'; `buildPhantomStyle` resolves it to the
+ * 'streets' style URL at render time (see mapTokens.ts).
+ */
+const MAP_STYLE_VALUES: readonly PhantomMapStyle[] = ['dark', 'satellite', 'streets'];
+
+/** Values the style-cycle button walks through — 'satellite' removed (no
+ * free-for-commercial-use satellite source; see mapTokens.ts). */
+const CYCLABLE_MAP_STYLES: readonly PhantomMapStyle[] = ['dark', 'streets'];
+
+function resolveMapStyle(raw: unknown): PhantomMapStyle {
+  return typeof raw === 'string' && (MAP_STYLE_VALUES as readonly string[]).includes(raw)
+    ? (raw as PhantomMapStyle)
+    : 'dark';
+}
+
+/** Фаза мапи з `data-phase`/`data-theme` на <html> — і далі за їхніми змінами. */
+function useMapPhase(): MapPhase {
+  const [phase, setPhase] = useState<MapPhase>(() => resolvePhase());
+  useEffect(() => {
+    if (typeof MutationObserver === 'undefined') return;
+    const obs = new MutationObserver(() => setPhase(resolvePhase()));
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-phase', 'data-theme'] });
+    return () => obs.disconnect();
+  }, []);
+  return phase;
+}
+
+// `pmtiles://` (регіони з цього комп'ютера) і локальні гліфи підписів.
+if (typeof window !== 'undefined') pmtilesProtocol();
+
+
+/**
+ * Mirrors the container background/filter that OpenFreeMap's own style no
+ * longer needs a `bg` layer for (the vector styles paint their own
+ * background), but we still want the pre-tile-load flash to match the
+ * theme, and GHOST mode still wants its washed-out look — vector styles
+ * don't expose per-pixel raster-opacity/brightness paint tricks, so GHOST
+ * is now a CSS filter on the map container instead.
+ */
+function applyContainerTheming(container: HTMLDivElement, tokens: ReturnType<typeof getMapTokens>): void {
+  container.style.backgroundColor = tokens.mapBackdrop;
+  container.style.filter = tokens.theme === 'ghost' ? 'grayscale(1) brightness(0.4)' : '';
+}
+
+/** Відстань по поверхні, метри. Потрібна лише щоб підписати «звідси». */
+function haversineM(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 6371000;
+  const p = Math.PI / 180;
+  const a = Math.sin(((lat2 - lat1) * p) / 2) ** 2
+    + Math.cos(lat1 * p) * Math.cos(lat2 * p) * Math.sin(((lon2 - lon1) * p) / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+/**
+ * DPR cap from the capability probe (render-paths.md §1d): T0 keeps the
+ * device's real pixel ratio (full quality); T1/T2 cap at 1 — the one
+ * probe-driven behaviour wired end-to-end in this pass. Render-on-demand,
+ * extrusion toggling, style pruning and the true T2 Canvas2D fallback are
+ * Phase 4 work (map-plan.md) and are not implemented here.
+ */
+function effectiveDprFor(tier: RenderTier): number {
+  if (tier === 'T0') {
+    return typeof window !== 'undefined' && window.devicePixelRatio ? window.devicePixelRatio : 1;
+  }
+  return 1;
+}
+
+function computeBounds(map: MapLibreMap | null): Bounds {
+  if (!map || typeof map.getBounds !== 'function') {
+    return { lat1: 0, lon1: 0, lat2: 0, lon2: 0 };
+  }
+  try {
+    const b = map.getBounds();
+    if (!b) return { lat1: 0, lon1: 0, lat2: 0, lon2: 0 };
+    return {
+      lat1: typeof b.getSouth === 'function' ? b.getSouth() : 0,
+      lon1: typeof b.getWest === 'function' ? b.getWest() : 0,
+      lat2: typeof b.getNorth === 'function' ? b.getNorth() : 0,
+      lon2: typeof b.getEast === 'function' ? b.getEast() : 0,
+    };
+  } catch (err) {
+    console.error('Failed to compute bounds:', err);
+    return { lat1: 0, lon1: 0, lat2: 0, lon2: 0 };
+  }
+}
+
+/** Чому тайли не дійшли — словами людини. */
+export { tilesReason };
+
+export function TacticalMap({
+  initialCenter,
+  initialZoom = 15,
+  className = '',
+  onResetBearing,
+  onZoomIn,
+  onZoomOut,
+  onCenterToMe,
+  onAddPoi,
+  onToggleTilt,
+  onTiltChange,
+}: TacticalMapProps) {
+  const { t } = useTranslation();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<MapLibreMap | null>(null);
+  /** Which tier's DPR was last applied to the live map — guards against
+   * re-applying on every render and against flapping mid-session (the
+   * probe only ever resolves once per session; see capabilityStore.ts). */
+  const appliedRenderTier = useRef<RenderTier | null>(null);
+  const seenTheme = useRef<string | null>(null);
+  const styleReady = useRef(false);
+  const [ready, setReady] = useState(false);
+  const [bearing, setBearing] = useState(0);
+  const [styleLoadFailed, setStyleLoadFailed] = useState(false);
+  // Фаза доби оболонки: світанок/день → денна мапа, сутінки, ніч. Змінилась —
+  // стиль перебудовується на місці (див. ефект теми нижче).
+  const phase = useMapPhase();
+  /** `pmtiles://…` регіону з цього комп'ютера, коли мапа малюється з нього. */
+  const offlineUrl = useRef<string | undefined>(undefined);
+  const [slowLoad, setSlowLoad] = useState(false);
+  // Детальні тайли не дійшли (мережа, CSP, сервер): мапа не чорна — під нею
+  // вбудований світ, — але людина має знати, чому не видно вулиць.
+  const [tilesDown, setTilesDown] = useState<string | null>(null);
+  const [webglSupported, setWebglSupported] = useState(true);
+  const [retryNonce, setRetryNonce] = useState(0);
+
+  const mapStyleSetting = useSettingsStore((s) => s.values.ui_map_style);
+  const mapStyle = resolveMapStyle(mapStyleSetting);
+  const setSettingValue = useSettingsStore((s) => s.setValue);
+
+  const cycleMapStyle = useCallback(() => {
+    const idx = CYCLABLE_MAP_STYLES.indexOf(mapStyle);
+    const next = CYCLABLE_MAP_STYLES[(idx + 1) % CYCLABLE_MAP_STYLES.length];
+    setSettingValue('ui_map_style', next);
+    settingsApi.set('ui_map_style', next).catch(() => {});
+  }, [mapStyle, setSettingValue]);
+
+  const layers = useMapStore((s) => s.layers);
+  const select = useMapStore((s) => s.select);
+  const setCenter = useMapStore((s) => s.setCenter);
+  const setZoom = useMapStore((s) => s.setZoom);
+  const context = useSystemStore((s) => s.context);
+  const systemState = useSystemStore((s) => s.state);
+
+  const loadPOIs = useMapStore((s) => s.loadPOIs);
+  const loadTrack = useMapStore((s) => s.loadTrack);
+  const loadGeoTaggedFacts = useMapStore((s) => s.loadGeoTaggedFacts);
+  const loadCliffScree = useMapStore((s) => s.loadCliffScree);
+  const savePOI = useMapStore((s) => s.savePOI);
+  const toast = useMapStore((s) => s.toast);
+  const setToast = useMapStore((s) => s.setToast);
+  const setTactical = useMapStore((s) => s.setTactical);
+  const tappedPlace = useMapStore((s) => s.tappedPlace);
+  const setTappedPlace = useMapStore((s) => s.setTappedPlace);
+  const offlineRegions = useMapStore((s) => s.offlineRegions);
+  const setOfflineRegions = useMapStore((s) => s.setOfflineRegions);
+
+  // GPU capability tier (T0/T1/T2) — main.tsx already kicks this off at
+  // boot; calling it again here is a cheap no-op once resolved (in-memory
+  // guard) and a safety net if this component ever mounts without
+  // main.tsx having run (tests, alternate entry points).
+  const renderTier = useCapabilityStore((s) => s.result?.tier ?? null);
+  useEffect(() => {
+    void ensureCapabilityProbed();
+  }, []);
+
+  useEffect(() => {
+    if (!toast) return;
+    const t = setTimeout(() => setToast(null), 2400);
+    return () => clearTimeout(t);
+  }, [toast, setToast]);
+
+  useEffect(() => {
+    setTactical({ bearing });
+  }, [bearing, setTactical]);
+
+  useEffect(() => {
+    const where = context?.where;
+    if (where?.lat != null && where?.lon != null) {
+      setTactical({
+        lat: where.lat,
+        lon: where.lon,
+        satellites: where.satellites ?? 0,
+        speed: where.speed_kmh ?? 0,
+        fix: !!(where.fix || (where.confidence ?? 0) >= 0.2),
+        source: where.source ?? (where.fix ? 'gps_hardware' : 'browser'),
+        confidence: where.confidence ?? (where.fix ? 1 : 0.5),
+        accuracyM: where.accuracy_m ?? null,
+      });
+    } else if (where) {
+      const current = useMapStore.getState().tactical;
+      if (current.source === 'none' || current.source === 'gps_hardware') {
+        setTactical({
+          lat: null,
+          lon: null,
+          satellites: where.satellites ?? 0,
+          speed: where.speed_kmh ?? 0,
+          fix: false,
+          source: 'none',
+          confidence: 0,
+          accuracyM: null,
+        });
+      }
+    }
+  }, [context, setTactical]);
+
+  const contextWhere = context?.where;
+  const resolvedInitialCenter: [number, number] =
+    initialCenter && Array.isArray(initialCenter) && initialCenter.length >= 2 &&
+    typeof initialCenter[0] === 'number' && typeof initialCenter[1] === 'number' &&
+    !isNaN(initialCenter[0]) && !isNaN(initialCenter[1])
+      ? [initialCenter[0], initialCenter[1]]
+      : (contextWhere?.fix && contextWhere?.lat != null && contextWhere?.lon != null &&
+         typeof contextWhere.lat === 'number' && typeof contextWhere.lon === 'number'
+        ? [contextWhere.lon, contextWhere.lat]
+        : [30.52, 50.45]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || mapRef.current) return;
+
+    const tokens = getMapTokens();
+    applyContainerTheming(container, tokens);
+
+    let map: MapLibreMap;
+    try {
+      const isSupported = typeof (maplibregl as any).supported === 'function' ? (maplibregl as any).supported() : true;
+      if (!isSupported) {
+        throw new Error('WebGL not supported');
+      }
+      // Capability-probe verdict, if it already resolved (e.g. from this
+      // tab's sessionStorage cache) before the map was constructed.
+      const probedTier = useCapabilityStore.getState().result?.tier ?? null;
+      if (probedTier) appliedRenderTier.current = probedTier;
+      map = new maplibregl.Map({
+        container,
+        // Свій стиль, не чужий URL: звідси об'єм, рельєф, небо й одна мова
+        // підписів. `mapStyle` лишається перемикачем теми всередині нього.
+        style: buildPhantomMapStyle(tokens, { center: resolvedInitialCenter }),
+        center: resolvedInitialCenter,
+        zoom: initialZoom,
+        // OpenFreeMap styles require OSM attribution to stay visible;
+        // `compact` keeps it collapsed to a small "i" chip so it fits the
+        // 1024×600 layout without competing with the HUD chrome.
+        attributionControl: { compact: true },
+        dragRotate: true,
+        pitchWithRotate: true,
+        // Понад ~72° видно вже не місто, а лінію обрію, всипану точками з
+        // сусідніх районів. Об'єм від цього не додається, читабельність
+        // зникає.
+        maxPitch: 72,
+        fadeDuration: 100, // Optimize transitions
+        // If the verdict hasn't resolved yet, omit the option — MapLibre
+        // defaults to window.devicePixelRatio, and the effect below
+        // applies the cap retroactively via setPixelRatio() the moment
+        // the verdict lands.
+        ...(probedTier ? { pixelRatio: effectiveDprFor(probedTier) } : {}),
+      });
+      mapRef.current = map;
+      setWebglSupported(true);
+    } catch (err) {
+      console.error('Failed to initialize MapLibre GL map:', err);
+      setWebglSupported(false);
+      setStyleLoadFailed(true);
+      return;
+    }
+
+    if (typeof window !== 'undefined') {
+      const phantom = ((window as any).__phantom = (window as any).__phantom ?? {});
+      phantom.map = map;
+    }
+
+    const onLoad = () => {
+      setReady(true);
+      setStyleLoadFailed(false);
+    };
+    // Єдиний чесний сигнал «стиль живий». `loaded()` і `isStyleLoaded()`
+    // обидва падають у false, щойно полетів бодай один тайл — на нахиленій
+    // камері це майже завжди.
+    const onStyleLoad = () => { styleReady.current = true; };
+    map.on('style.load', onStyleLoad);
+    const onRotate = () => setBearing(map.getBearing());
+    const onError = (e: any) => {
+      if (e?.sourceId && e.sourceId !== 'world-base') return;
+      const msg: string = e?.error?.message ?? '';
+      if (msg) useMapStore.getState().setToast(t('tmap.toast', { msg: msg.slice(0, 80) }));
+    };
+    const detachTilesWatch = watchBaseTiles(map, setTilesDown);
+    const onMove = () => {
+      try {
+        const c = map.getCenter();
+        if (c && typeof c.lng === 'number' && typeof c.lat === 'number') {
+          setCenter([c.lng, c.lat]);
+        }
+        const z = map.getZoom();
+        if (typeof z === 'number' && !isNaN(z)) {
+          setZoom(z);
+        }
+      } catch (err) {
+        console.error('Error in onMove handler:', err);
+      }
+    };
+    // Тап по точці міста. Мапа малювала тисячі POI і жодна не відповідала
+    // на дотик — саме це читалось як «кнопки нічого не роблять».
+    const onClick = (e: maplibregl.MapMouseEvent) => {
+      select(null);
+      let hits: maplibregl.MapGeoJSONFeature[] = [];
+      try {
+        hits = map.queryRenderedFeatures(
+          [[e.point.x - 8, e.point.y - 8], [e.point.x + 8, e.point.y + 8]],
+          { layers: ['poi-mark', 'poi-disc'] },
+        );
+      } catch {
+        // Шарів ще немає — стиль не осів.
+      }
+      const hit = hits[0];
+      if (!hit || hit.geometry.type !== 'Point') {
+        useMapStore.getState().setTappedPlace(null);
+        return;
+      }
+      const [lon, lat] = hit.geometry.coordinates as [number, number];
+      const props = hit.properties ?? {};
+      const where = useSystemStore.getState().context?.where;
+      const distanceM =
+        where?.fix && typeof where.lat === 'number' && typeof where.lon === 'number'
+          ? haversineM(where.lat, where.lon, lat, lon)
+          : null;
+      useMapStore.getState().setTappedPlace({
+        name: String(props['name:uk'] ?? props['name:en'] ?? props.name ?? ''),
+        cls: String(props.class ?? ''),
+        lon,
+        lat,
+        distanceM,
+      });
+    };
+
+    const onEnterPoi = () => { map.getCanvas().style.cursor = 'pointer'; };
+    const onLeavePoi = () => { map.getCanvas().style.cursor = ''; };
+    map.on('mouseenter', 'poi-disc', onEnterPoi);
+    map.on('mouseleave', 'poi-disc', onLeavePoi);
+
+    // Кнопка атрибуції MapLibre — англійська («Toggle attribution»), своєї
+    // локалізації бібліотека не має. Одного присвоєння замало: контрол
+    // перемальовує себе при кожній зміні джерел і затирає атрибути, тож
+    // тримаємо підпис спостерігачем. Сам текст ліцензії OSM не чіпаємо.
+    const ATTRIB_UA = t('tmap.attrib');
+    const nameAttribution = () => {
+      const toggle = map.getContainer().querySelector<HTMLElement>('.maplibregl-ctrl-attrib-button');
+      if (!toggle || toggle.getAttribute('aria-label') === ATTRIB_UA) return;
+      toggle.setAttribute('aria-label', ATTRIB_UA);
+      toggle.setAttribute('title', ATTRIB_UA);
+    };
+    map.on('idle', nameAttribution);
+    map.on('styledata', nameAttribution);
+    const attribWatch = new MutationObserver(nameAttribution);
+    attribWatch.observe(container, { childList: true, subtree: true, attributes: true });
+    // Кнопку створює конструктор мапи — тобто вона вже стоїть на місці, і
+    // спостерігач її не побачить. Коли стиль не вантажиться, `idle` теж не
+    // настає, і англійський підпис лишався на екрані саме в цьому стані.
+    nameAttribution();
+    // Рельєф прив'язаний до стилю, і КОЖНА його перебудова (зміна теми,
+    // стану системи, вигляду) мовчки скидає terrain у null. Тому вмикаємо
+    // не один раз, а щоразу, коли стиль осів.
+    const keepTerrain = () => {
+      try {
+        if (map.getSource(DEM_TERRAIN_ID) && !map.getTerrain()) {
+          map.setTerrain({ source: DEM_TERRAIN_ID, exaggeration: 1.25 });
+        }
+      } catch {
+        // Немає рельєфу — мапа лишається пласкою, але живою.
+      }
+    };
+    map.on('styledata', keepTerrain);
+    map.on('idle', keepTerrain);
+    map.on('load', onLoad);
+    map.on('moveend', onMove);
+    map.on('rotate' as any, onRotate);
+    map.on('error' as any, onError);
+    map.on('click', onClick);
+
+    return () => {
+      map.off('load', onLoad);
+      map.off('style.load', onStyleLoad);
+      styleReady.current = false;
+      map.off('moveend', onMove);
+      map.off('rotate' as any, onRotate);
+      map.off('error' as any, onError);
+      detachTilesWatch();
+      map.off('click', onClick);
+      map.off('mouseenter', 'poi-disc', onEnterPoi);
+      map.off('mouseleave', 'poi-disc', onLeavePoi);
+      map.off('idle', nameAttribution);
+      map.off('styledata', keepTerrain);
+      map.off('idle', keepTerrain);
+      map.off('styledata', nameAttribution);
+      attribWatch.disconnect();
+      map.remove();
+      mapRef.current = null;
+      setReady(false);
+    };
+  }, [retryNonce]);
+
+  const storeCenter = useMapStore((s) => s.center);
+  const storeZoom = useMapStore((s) => s.zoom);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !storeCenter || !Array.isArray(storeCenter) || storeCenter.length < 2 || map.isMoving()) return;
+    const [lng, lat] = storeCenter;
+    if (typeof lng !== 'number' || typeof lat !== 'number' || isNaN(lng) || isNaN(lat)) return;
+    try {
+      const current = map.getCenter();
+      if (Math.abs(current.lng - lng) > 0.0001 || Math.abs(current.lat - lat) > 0.0001) {
+        map.flyTo({
+          center: [lng, lat],
+          zoom: storeZoom ?? map.getZoom(),
+          duration: 1000,
+        });
+      }
+    } catch (err) {
+      console.error('Failed to sync map center:', err);
+    }
+  }, [storeCenter, storeZoom, ready]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    const tokens = getMapTokens();
+    if (containerRef.current) applyContainerTheming(containerRef.current, tokens);
+    
+    // Конструктор уже поставив рівно цей стиль. Перший прогін ставив його
+    // вдруге, MapLibre не міг звести діф («Cannot read properties of
+    // undefined (reading '_checkLoaded')») і перебудовував усе з нуля —
+    // тайли починались наново, а світло, яке ми щойно поставили, гасло.
+    const themeKey = `${mapStyle}|${systemState}|${phase}`;
+    if (seenTheme.current === null) {
+      seenTheme.current = themeKey;
+      return;
+    }
+    if (seenTheme.current === themeKey) return;
+    seenTheme.current = themeKey;
+
+    // Кнопка «Вигляд» писала налаштування і на цьому все: стиль ставився
+    // ЛИШЕ в конструкторі, тож до перезавантаження сторінки нічого не
+    // мінялось. Тепер перебудовуємо стиль на місці, зберігаючи накладені
+    // шари (маркери, маршрути, теплокарту).
+    try {
+      const c = map.getCenter();
+      const next = buildPhantomMapStyle(tokens, {
+        center: [c.lng, c.lat],
+        offlineVectorUrl: offlineUrl.current,
+      });
+      map.setStyle(next, {
+        diff: true,
+        transformStyle: (prev, incoming) => preserveOverlayLayers(prev, incoming),
+      });
+      if (map.getSource(DEM_TERRAIN_ID) && !map.getTerrain()) {
+        map.setTerrain({ source: DEM_TERRAIN_ID, exaggeration: 1.25 });
+      }
+    } catch (err) {
+      console.warn('Стиль не перебудувався:', err);
+    }
+  }, [mapStyle, ready, systemState, phase]);
+
+  // Регіон із цього комп'ютера, якщо він покриває місце, — мапа з нього, а
+  // не з мережі: без інтернету вона не порожня, з ним — швидша й приватна.
+  useEffect(() => {
+    if (!ready) return;
+    let gone = false;
+    mapApi
+      .getOfflineRegions()
+      .then((res) => {
+        if (gone) return;
+        setOfflineRegions(res.regions ?? []);
+      })
+      .catch(() => undefined); // регіонів не видно — лишаємось на мережі
+    return () => {
+      gone = true;
+    };
+  }, [ready, setOfflineRegions]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    const c = map.getCenter();
+    const pt: [number, number] =
+      storeCenter && Array.isArray(storeCenter) && storeCenter.length >= 2
+        ? [storeCenter[0], storeCenter[1]]
+        : [c.lng, c.lat];
+    const region = regionFor(offlineRegions ?? [], pt);
+    const nextUrl = region ? offlineVectorUrl(region, readToken()) : undefined;
+    if (offlineUrl.current === nextUrl) return;
+    offlineUrl.current = nextUrl;
+    try {
+      map.setStyle(
+        buildPhantomMapStyle(getMapTokens(), {
+          center: pt,
+          offlineVectorUrl: offlineUrl.current,
+        }),
+        { diff: true, transformStyle: (prev, incoming) => preserveOverlayLayers(prev, incoming) },
+      );
+    } catch {
+      // ignore style rebuild failure in detached map
+    }
+  }, [ready, offlineRegions, storeCenter]);
+
+  // Світло — це справжнє сонце для цього місця й цієї години, а не зашита
+  // позиція [1.5, 210, 30], яка стояла тут раніше. Тінь на будинку мусить
+  // падати туди, куди вона падає за вікном; інакше об'єм — декорація.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    // `setLight` сам піднімає `styledata`. Слухати `styledata` тут — це
+    // нескінченна петля, у якій стиль ніколи не осідає і мапа лишається
+    // порожньою. Тому тільки `style.load` і рух камери, і тільки коли
+    // світло справді змінилось.
+    let last = '';
+    const applyLight = (force = false) => {
+      try {
+        const c = map.getCenter();
+        const light = sunLight(sunFor({ center: [c.lng, c.lat] }));
+        const key = JSON.stringify(light);
+        if (!force && key === last) return;
+        last = key;
+        map.setLight(light);
+      } catch {
+        // Стиль саме перебудовується — світло приїде наступним тактом.
+      }
+    };
+    // Новий стиль приходить БЕЗ світла. Порівняння з попереднім значенням
+    // тоді працює проти нас: воно однакове, ми виходимо, і мапа лишається
+    // без сонця до наступного руху камери.
+    const onStyle = () => applyLight(true);
+    const onMove = () => applyLight();
+    applyLight(true);
+    map.on('moveend', onMove);
+    map.on('style.load', onStyle);
+    // Сонце їде далі, поки людина дивиться на мапу.
+    const tick = window.setInterval(onMove, 5 * 60 * 1000);
+    return () => {
+      map.off('moveend', onMove);
+      map.off('style.load', onStyle);
+      window.clearInterval(tick);
+    };
+  }, [ready]);
+
+  // Збій — це збій СТИЛЮ, а не повільні тайли. Раніше тут стояло
+  // `!map.loaded()` через 5 секунд, а `loaded()` лишається false, доки
+  // летить бодай один тайл: люди бачили «Мапа не завантажилась» над мапою,
+  // яка нормально вантажилась, просто по слабкій мережі.
+  useEffect(() => {
+    if (ready) {
+      setStyleLoadFailed(false);
+      setSlowLoad(false);
+      return;
+    }
+    const slowTimer = window.setTimeout(() => setSlowLoad(true), 1200);
+    const failTimer = window.setTimeout(() => {
+      if (mapRef.current && !styleReady.current) setStyleLoadFailed(true);
+    }, 20000);
+    return () => {
+      window.clearTimeout(slowTimer);
+      window.clearTimeout(failTimer);
+    };
+  }, [ready, retryNonce]);
+
+  const handleStyleRetry = useCallback(() => {
+    setStyleLoadFailed(false);
+    setReady(false);
+    setRetryNonce((n) => n + 1);
+  }, []);
+
+  // Об'ємний режим — головне, заради чого з'явились рельєф і будівлі.
+  // Без кнопки людина про них не дізнається: мишею нахил тягнеться лише
+  // правою кнопкою з Ctrl, а на тачскріні — двома пальцями.
+  const handleToggleTilt = useCallback(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    const flat = map.getPitch() < 10;
+    map.easeTo({
+      pitch: flat ? 60 : 0,
+      zoom: flat ? Math.max(map.getZoom(), 15.5) : map.getZoom(),
+      duration: 900,
+    });
+  }, []);
+
+  const handleResetBearing = useCallback(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    map.rotateTo(0, { duration: 400 });
+    map.easeTo({ pitch: 0, duration: 400 });
+  }, []);
+
+  const handleCenterToMe = useCallback(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    const t = useMapStore.getState().tactical;
+    const contextWhere = context?.where;
+    const lat = t.lat ?? (contextWhere?.fix ? contextWhere.lat : null);
+    const lon = t.lon ?? (contextWhere?.fix ? contextWhere.lon : null);
+    const hasFix = (t.fix && lat != null && lon != null) || !!(contextWhere?.fix && lat != null && lon != null);
+    if (hasFix && typeof lat === 'number' && typeof lon === 'number') {
+      try {
+        map.flyTo({ center: [lon, lat], zoom: 17 });
+        setCenter([lon, lat]);
+        setZoom(17);
+      } catch (err) {
+        console.error('Failed to fly to user location:', err);
+      }
+    }
+  }, [context, setCenter, setZoom]);
+
+  // Applies the capability-probe DPR cap once a verdict lands, for the
+  // (common) case where the map was constructed before the probe
+  // resolved. Guarded to run at most once per resolved tier — the probe
+  // itself only ever settles once per session (capabilityStore.ts), so
+  // this is initial application, never a live mid-session demotion (an
+  // in-session watchdog is out of scope for this pass — see Phase 4).
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !renderTier || appliedRenderTier.current === renderTier) return;
+    appliedRenderTier.current = renderTier;
+    try {
+      map.setPixelRatio(effectiveDprFor(renderTier));
+    } catch (err) {
+      console.error('Failed to apply capability-probe pixel ratio:', err);
+    }
+  }, [renderTier]);
+
+  const [pendingPoi, setPendingPoi] = useState<{ lng: number; lat: number } | null>(null);
+  const [pendingName, setPendingName] = useState('');
+
+  const handleAddPoi = useCallback(async () => {
+    const map = mapRef.current;
+    if (!map) return;
+    const c = map.getCenter();
+    setPendingPoi({ lng: c.lng, lat: c.lat });
+  }, []);
+
+  const confirmPendingPoi = useCallback(async () => {
+    if (!pendingPoi) return;
+    const name = pendingName.trim() || `POI ${new Date().toLocaleTimeString()}`;
+    const saved = await savePOI({
+      lat: pendingPoi.lat,
+      lon: pendingPoi.lng,
+      name,
+      category: 'saved',
+      notes: '',
+      icon: '📍',
+      is_secret: false,
+    });
+    setPendingPoi(null);
+    setPendingName('');
+    if (saved) setToast(`POI "${saved.name}" dropped`);
+    else setToast('POI save failed');
+  }, [pendingPoi, pendingName, savePOI, setToast]);
+
+  useEffect(() => {
+    onZoomIn?.(() => {
+      if (mapRef.current && ready) {
+        try {
+          mapRef.current.zoomIn();
+        } catch (err) {
+          console.error('Error zooming in:', err);
+        }
+      }
+    });
+    onZoomOut?.(() => {
+      if (mapRef.current && ready) {
+        try {
+          mapRef.current.zoomOut();
+        } catch (err) {
+          console.error('Error zooming out:', err);
+        }
+      }
+    });
+    onCenterToMe?.(handleCenterToMe);
+    onAddPoi?.(handleAddPoi);
+    onResetBearing?.(handleResetBearing);
+    onToggleTilt?.(handleToggleTilt);
+  }, [onZoomIn, onZoomOut, onCenterToMe, onAddPoi, onResetBearing, onToggleTilt, handleCenterToMe, handleAddPoi, handleResetBearing, handleToggleTilt, ready]);
+
+  // Нахил віддаємо нагору, щоб кнопка об'єму світилась, коли він увімкнений.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !onTiltChange) return;
+    const emit = () => onTiltChange(map.getPitch());
+    emit();
+    map.on('pitchend', emit);
+    return () => { map.off('pitchend', emit); };
+  }, [ready, onTiltChange]);
+
+  useEffect(() => {
+    if (!ready || !mapRef.current) return;
+    const map = mapRef.current;
+    const bounds = computeBounds(map);
+    if (layers?.intel) loadPOIs().catch((err) => useMapStore.getState().setToast(loadToast('map.load.places', err)));
+    if (layers?.recon) loadTrack(2).catch((err) => useMapStore.getState().setToast(loadToast('map.load.track', err)));
+    if (layers?.facts) loadGeoTaggedFacts().catch((err) => useMapStore.getState().setToast(loadToast('map.load.memories', err)));
+    if (layers?.cliff_scree) loadCliffScree(bounds).catch((err) => useMapStore.getState().setToast(loadToast('map.load.cliffs', err)));
+  }, [ready, layers?.intel, layers?.recon, layers?.facts, layers?.cliff_scree, loadPOIs, loadTrack, loadGeoTaggedFacts, loadCliffScree]);
+
+  return (
+    <div aria-label={t('tmap.aria')} className={`phantom-map-frame relative w-full h-full overflow-hidden ${className}`}>
+      {/* maplibre-gl.css ставить .maplibregl-map position: relative і перебиває клас — тоді мапа 20 px заввишки. */}
+      <div ref={containerRef} className="absolute inset-0" style={{ position: 'absolute' }} />
+      <MapContext.Provider value={{ map: mapRef.current, ready: ready && !!mapRef.current }}>
+        {ready && mapRef.current && (
+          <>
+            {layers?.base && <BaseLayer />}
+            <PresenceLayer />
+            {layers?.presence && <PeersLayer />}
+            {layers?.intel && <IntelLayer />}
+            {layers?.recon && <ReconLayer />}
+            {layers?.facts && <FactMarkerLayer />}
+            {layers?.cliff_scree && <CliffScreeLayer />}
+            <GeofencesLayer />
+            <RouteLayer />
+            <MarkerCard />
+          </>
+        )}
+      </MapContext.Provider>
+
+      <PlaceCard
+        place={tappedPlace}
+        onClose={() => setTappedPlace(null)}
+        origin={
+          mapRef.current
+            ? {
+                lat: mapRef.current.getCenter().lat,
+                lon: mapRef.current.getCenter().lng,
+                label: t('tmap.center'),
+              }
+            : null
+        }
+      />
+
+      <div className="absolute top-1/2 left-1/2 pointer-events-none -translate-x-1/2 -translate-y-1/2 w-10 h-10">
+        <span className="absolute top-1/2 left-0 right-0 h-px bg-[color:var(--ph-text-3)]" />
+        <span className="absolute left-1/2 top-0 bottom-0 w-px bg-[color:var(--ph-text-3)]" />
+      </div>
+
+      {pendingPoi && (
+        <div className="absolute inset-0 z-40 flex items-center justify-center bg-[color:var(--ph-scrim)]" onClick={() => setPendingPoi(null)}>
+          <div className="bg-[color:var(--ph-surface)] border border-[color:var(--ph-line)] w-[340px] p-5 flex flex-col gap-3 rounded-2xl" onClick={e => e.stopPropagation()}>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-ink-muted">{t('tmap.newPlace')}</div>
+            <input autoFocus value={pendingName} onChange={e => setPendingName(e.target.value)} placeholder={t('tmap.namePh')} className="min-h-[44px] px-3 rounded-xl bg-[color:var(--ph-raised)] border border-[color:var(--ph-line)] text-ink-primary outline-none" />
+            <div className="flex justify-end gap-2 mt-2">
+              <button onClick={() => setPendingPoi(null)} className="min-h-[40px] px-4 rounded-full border border-[color:var(--ph-line)] text-[color:var(--ph-text)] hover:bg-[color:var(--ph-overlay)] active:scale-95 text-xs font-bold uppercase">{t('tmap.cancel')}</button>
+              <button onClick={confirmPendingPoi} className="min-h-[40px] px-5 rounded-full bg-[color:var(--ph-text)] text-[color:var(--ph-surface)] active:scale-95 text-xs font-bold uppercase">{t('tmap.save')}</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {tilesDown && !styleLoadFailed && (
+        <TilesDownBanner reason={tilesDown} onRetry={() => { setTilesDown(null); handleStyleRetry(); }} />
+      )}
+
+      {slowLoad && !ready && !styleLoadFailed && !tilesDown && (
+        <div className="pointer-events-none absolute bottom-4 left-1/2 z-40 -translate-x-1/2 rounded-full bg-[color:var(--ph-surface)] border border-[color:var(--ph-line)] px-4 py-2 text-[11px] font-semibold text-[color:var(--ph-text-2)]">
+          {t('tmap.loading')}
+        </div>
+      )}
+
+      {styleLoadFailed && (
+        <div data-testid="map-style-failed" className="absolute inset-0 z-40 flex items-center justify-center bg-[color:var(--ph-scrim)]">
+          <div className="bg-[color:var(--ph-surface)] border border-[color:var(--ph-line)] max-w-[360px] p-6 flex flex-col gap-4 rounded-2xl text-center">
+            <div className="text-sm font-semibold text-[color:var(--ink-primary)]">
+              {!webglSupported ? t('tmap.noGl') : t('tmap.failed')}
+            </div>
+            {/* Раніше тут світився самий заголовок «Помилка завантаження» —
+                людина бачила збій і не знала ні причини, ні що робити далі. */}
+            <div className="text-xs leading-relaxed text-[color:var(--ink-secondary)]">
+              {!webglSupported
+                ? t('tmap.noGlBody')
+                : t('tmap.failedBody')}
+            </div>
+            <div className="flex gap-2 justify-center mt-2">
+              {webglSupported && (
+                <button onClick={handleStyleRetry} aria-label={t('tmap.retryAria')} className="min-h-[44px] px-6 rounded-full bg-[color:var(--ph-text)] text-[color:var(--ph-surface)] active:scale-95 text-xs font-bold">{t('tmap.retry')}</button>
+              )}
+              <button onClick={cycleMapStyle} aria-label={t('tmap.styleAria')} className="min-h-[44px] px-4 rounded-full border border-[color:var(--ph-line)] text-[color:var(--ink-secondary)] text-xs font-bold">{t('tmap.style')}</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

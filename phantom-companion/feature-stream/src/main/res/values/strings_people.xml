@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="people_duty_undelivered">never left</string>
+    <string name="people_duty_your_turn">your turn</string>
+
+    <string name="people_back">back</string>
+    <string name="people_search_clear">clear</string>
+    <string name="people_filter_all">All</string>
+    <string name="people_filter_ai">AI ✦</string>
+    <string name="people_filter_people">Contacts</string>
+    <string name="people_filter_groups">Groups</string>
+    <string name="people_filter_live">Live</string>
+
+    <string name="people_ai_alias">phantom</string>
+    <string name="people_ai_preview">standalone assistant — here, with no network</string>
+    <string name="people_now">now</string>
+    <string name="people_state_online">on device</string>
+    <string name="people_new_ai_room">new chat with the assistant</string>
+    <string name="people_scan_qr">scan a QR code</string>
+
+    <string name="people_memory_head">what I remember about you</string>
+    <string name="people_none_yet">nobody yet</string>
+    <string name="people_empty_body">No contacts yet. Add via QR or invite code.</string>
+    <string name="people_empty_ai_cta">To the assistant</string>
+    <string name="people_empty_scan_cta">Scan a code</string>
+
+    <string name="people_kind_voice">Voice</string>
+    <string name="people_kind_table">Table</string>
+    <string name="people_kind_tasks">Tasks</string>
+    <string name="people_kind_poll">Poll</string>
+    <string name="people_kind_bill">Bill</string>
+    <string name="people_kind_chart">Chart</string>
+    <string name="people_kind_quotes">Quotes</string>
+    <string name="people_kind_event">Event</string>
+    <string name="people_kind_code">Code</string>
+    <string name="people_kind_file">File</string>
+    <string name="people_kind_image">Photo</string>
+    <string name="people_kind_key">Key</string>
+    <string name="people_kind_place">Location</string>
+    <string name="people_kind_other">Attachment</string>
+    <string name="people_kind_route">Route</string>
+</resources>

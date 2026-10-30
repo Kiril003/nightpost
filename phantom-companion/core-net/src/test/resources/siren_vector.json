@@ -1,0 +1,93 @@
+{
+  "why": "Сирена-маяк (розд. 07 §10). Kotlin SirenSnapshotVectorTest перевіряє рівно ці байти; pytest test_siren.py звіряє файл із siren.py. Ключ — ТЕСТОВИЙ, не закріплювати.",
+  "version": 1,
+  "domain_hex": "5048414e544f4d20736972656e20763100",
+  "key_id": 7,
+  "public_hex": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8",
+  "fresh_s": 300,
+  "skew_s": 300,
+  "oblast_order": [
+    "cherkasy",
+    "chernihiv",
+    "chernivtsi",
+    "crimea",
+    "dnipro",
+    "donetsk",
+    "ivano-frankivsk",
+    "kharkiv",
+    "kherson",
+    "khmelnytskyi",
+    "kirovohrad",
+    "kyiv-city",
+    "kyiv",
+    "luhansk",
+    "lviv",
+    "mykolaiv",
+    "odesa",
+    "poltava",
+    "rivne",
+    "sevastopol",
+    "sumy",
+    "ternopil",
+    "vinnytsia",
+    "volyn",
+    "zakarpattia",
+    "zaporizhzhia",
+    "zhytomyr"
+  ],
+  "cases": [
+    {
+      "alerts": {
+        "kharkiv": 1,
+        "sumy": 2,
+        "zhytomyr": 15
+      },
+      "seq": 1790000000,
+      "observed_at": 1790000100,
+      "body_hex": "01076ab13b806ab13be40410008000000001000000000000200000f0",
+      "snapshot_b64": "AQdqsTuAarE75AQQAIAAAAABAAAAAAAAIAAA8K+nJzkSud640Kdk3r/ALAhHPjgQK4PvTWlBfQK2r6cTcNtmPhmAuwWYsD3I/RG5TtV3rCpbZd22DQmtdlelZws="
+    },
+    {
+      "alerts": {},
+      "seq": 1790000500,
+      "observed_at": 1790000520,
+      "body_hex": "01076ab13d746ab13d88000000000000000000000000000000000000",
+      "snapshot_b64": "AQdqsT10arE9iAAAAAAAAAAAAAAAAAAAAAAAAIXezlt7LRbQTnfaydYfwxgoCeCI1elELhxxm6UB50aE/Gbc2ua0MT5IJoH27bfjDIlS+/cCLDBwMuD2GXuDsw8="
+    },
+    {
+      "alerts": {
+        "cherkasy": 1,
+        "chernihiv": 1,
+        "chernivtsi": 1,
+        "crimea": 1,
+        "dnipro": 1,
+        "donetsk": 1,
+        "ivano-frankivsk": 1,
+        "kharkiv": 1,
+        "kherson": 1,
+        "khmelnytskyi": 1,
+        "kirovohrad": 1,
+        "kyiv-city": 1,
+        "kyiv": 1,
+        "luhansk": 1,
+        "lviv": 1,
+        "mykolaiv": 1,
+        "odesa": 1,
+        "poltava": 1,
+        "rivne": 1,
+        "sevastopol": 1,
+        "sumy": 1,
+        "ternopil": 1,
+        "vinnytsia": 1,
+        "volyn": 1,
+        "zakarpattia": 1,
+        "zaporizhzhia": 1,
+        "zhytomyr": 1
+      },
+      "seq": 1790001000,
+      "observed_at": 1790001000,
+      "body_hex": "01076ab13f686ab13f6807ffffff1111111111111111111111111110",
+      "snapshot_b64": "AQdqsT9oarE/aAf///8RERERERERERERERERED9SvowxJfCso69TWuz7PFnMGnnhL0gO5Kf/td/xZV2hxuJJkiTHrKtQs6alk/YR9A6UbfnEpaxi8MNhDkUaeQo="
+    }
+  ]
+}

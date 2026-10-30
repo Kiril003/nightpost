@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="venue_card_verified">Ověřeno</string>
+    <string name="venue_card_hours">Otevírací doba</string>
+    <string name="venue_card_menu">Menu</string>
+    <string name="venue_card_menu_more">+%1$d</string>
+    <string name="venue_card_events">Akce</string>
+    <string name="venue_card_going_count">Jde: %1$d</string>
+    <string name="venue_card_going_of">Jde: %1$d z %2$d</string>
+    <string name="venue_card_going">Jdu</string>
+    <string name="venue_card_youre_going">Jdete</string>
+    <string name="venue_card_full">Plno</string>
+    <string name="venue_card_cancelled">Zrušeno</string>
+    <string name="venue_card_ended">Ukončeno</string>
+    <string name="venue_card_load_failed">Nelze načíst</string>
+    <string name="venue_card_retry">Zkusit znovu</string>
+</resources>

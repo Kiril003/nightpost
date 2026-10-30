@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Hapus semuanya</string>
+    <string name="delete_everything_after">Dihapus setelah 7 hari</string>
+    <string name="delete_everything_left_backup">File cadanganmu</string>
+    <string name="delete_everything_left_photos">Foto tersimpan</string>
+    <string name="delete_everything_left_letters">Surat yang sudah terkirim</string>
+    <string name="delete_everything_pc">Komputer: salinan tetap ada</string>
+    <string name="delete_everything_retry">Coba lagi</string>
+    <string name="delete_everything_phone_only">Hanya ponsel ini</string>
+    <string name="delete_everything_protected">Tidak tersedia untuk akun ini</string>
+    <string name="delete_everything_allow">Izinkan Hapus semuanya</string>
+    <string name="delete_pending_on">Penghapusan pada %1$s</string>
+    <string name="delete_pending_cancel">Batalkan penghapusan</string>
+    <string name="delete_everything_stays">Tetap ada setelah dihapus:</string>
+    <string name="delete_everything_cancel">Batal</string>
+    <string name="delete_everything_phone_only_note">Menghapus semuanya di ponsel ini, termasuk dompet</string>
+    <string name="delete_pending_note">Sampai saat itu kamu bisa membatalkan dan menyimpan semuanya</string>
+    <string name="delete_pending_offline">Tidak ada koneksi</string>
+    <string name="delete_pending_failed">Gagal membatalkan</string>
+    <string name="delete_pending_wallet">Dompet</string>
+</resources>

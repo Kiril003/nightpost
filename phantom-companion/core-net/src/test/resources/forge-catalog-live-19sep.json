@@ -1,0 +1,662 @@
+{
+  "packs": [
+    {
+      "bakedAt": "2026-09-12T15:41:31Z",
+      "bytes": 3111966467,
+      "country": "DE",
+      "id": "basemap-pm-de",
+      "kind": "BASEMAP_PMTILES",
+      "labelUa": "Німеччина",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:43:49Z",
+      "bytes": 3450286334,
+      "country": "FR",
+      "id": "basemap-pm-fr",
+      "kind": "BASEMAP_PMTILES",
+      "labelUa": "Франція",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:45:09Z",
+      "bytes": 35873130,
+      "country": "LU",
+      "id": "basemap-pm-lu",
+      "kind": "BASEMAP_PMTILES",
+      "labelUa": "Люксембург",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:45:17Z",
+      "bytes": 1795614765,
+      "country": "NO",
+      "id": "basemap-pm-no",
+      "kind": "BASEMAP_PMTILES",
+      "labelUa": "Норвегія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-06T21:53:26Z",
+      "bytes": 4428391,
+      "country": "AT",
+      "id": "AT",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Австрія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:07:09Z",
+      "bytes": 3851467,
+      "country": "BE",
+      "id": "BE",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Бельгія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:07:40Z",
+      "bytes": 1277148,
+      "country": "BG",
+      "id": "BG",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Болгарія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:43:46Z",
+      "bytes": 2867345,
+      "country": "CZ",
+      "id": "CZ",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Чехія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:40:00Z",
+      "bytes": 33681774,
+      "country": "DE",
+      "id": "DE",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Німеччина — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:08:10Z",
+      "bytes": 553949,
+      "country": "EE",
+      "id": "EE",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Естонія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:49:48Z",
+      "bytes": 18102760,
+      "country": "ES",
+      "id": "ES",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Іспанія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:11:22Z",
+      "bytes": 3788381,
+      "country": "FI",
+      "id": "FI",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Фінляндія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:05:07Z",
+      "bytes": 35984326,
+      "country": "FR",
+      "id": "FR",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Франція — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:08:19Z",
+      "bytes": 1085494,
+      "country": "HR",
+      "id": "HR",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Хорватія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:45:00Z",
+      "bytes": 2941383,
+      "country": "HU",
+      "id": "HU",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Угорщина — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:46:57Z",
+      "bytes": 19372631,
+      "country": "IT",
+      "id": "IT",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Італія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:07:54Z",
+      "bytes": 852327,
+      "country": "LT",
+      "id": "LT",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Литва — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:08:02Z",
+      "bytes": 663557,
+      "country": "LV",
+      "id": "LV",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Латвія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:45:16Z",
+      "bytes": 913751,
+      "country": "MD",
+      "id": "MD",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Молдова — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:52:27Z",
+      "bytes": 5687542,
+      "country": "NL",
+      "id": "NL",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Нідерланди — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:12:31Z",
+      "bytes": 3357680,
+      "country": "NO",
+      "id": "NO",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Норвегія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:34:04Z",
+      "bytes": 9206721,
+      "country": "PL",
+      "id": "PL",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Польща — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:09:12Z",
+      "bytes": 4500098,
+      "country": "PT",
+      "id": "PT",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Португалія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:44:31Z",
+      "bytes": 2826120,
+      "country": "RO",
+      "id": "RO",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Румунія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:08:45Z",
+      "bytes": 1747664,
+      "country": "RS",
+      "id": "RS",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Сербія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:09:59Z",
+      "bytes": 3708429,
+      "country": "SE",
+      "id": "SE",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Швеція — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T22:08:33Z",
+      "bytes": 590287,
+      "country": "SI",
+      "id": "SI",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Словенія — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-06T21:44:11Z",
+      "bytes": 1431645,
+      "country": "SK",
+      "id": "SK",
+      "kind": "COUNTRY_PLACES",
+      "labelUa": "Словаччина — місця й вулиці",
+      "minAppBuild": 13
+    },
+    {
+      "bakedAt": "2026-09-12T15:26:18Z",
+      "bytes": 186002580,
+      "country": "AT",
+      "id": "dem-at",
+      "kind": "DEM",
+      "labelUa": "Австрія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:25:33Z",
+      "bytes": 73174124,
+      "country": "BE",
+      "id": "dem-be",
+      "kind": "DEM",
+      "labelUa": "Бельгія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T07:50:49Z",
+      "bytes": 145293036,
+      "country": "BG",
+      "id": "dem-bg",
+      "kind": "DEM",
+      "labelUa": "Болгарія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:26:59Z",
+      "bytes": 156483708,
+      "country": "CZ",
+      "id": "dem-cz",
+      "kind": "DEM",
+      "labelUa": "Чехія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:31:42Z",
+      "bytes": 551945286,
+      "country": "DE",
+      "id": "dem-de",
+      "kind": "DEM",
+      "labelUa": "Німеччина",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T07:46:01Z",
+      "bytes": 93703095,
+      "country": "EE",
+      "id": "dem-ee",
+      "kind": "DEM",
+      "labelUa": "Естонія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T07:49:49Z",
+      "bytes": 163531875,
+      "country": "HR",
+      "id": "dem-hr",
+      "kind": "DEM",
+      "labelUa": "Хорватія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:32:22Z",
+      "bytes": 554919216,
+      "country": "IT",
+      "id": "dem-it",
+      "kind": "DEM",
+      "labelUa": "Італія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T07:48:28Z",
+      "bytes": 138580153,
+      "country": "LT",
+      "id": "dem-lt",
+      "kind": "DEM",
+      "labelUa": "Литва",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:28:09Z",
+      "bytes": 8788183,
+      "country": "LU",
+      "id": "dem-lu",
+      "kind": "DEM",
+      "labelUa": "Люксембург",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T07:47:19Z",
+      "bytes": 147904583,
+      "country": "LV",
+      "id": "dem-lv",
+      "kind": "DEM",
+      "labelUa": "Латвія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T05:58:39Z",
+      "bytes": 90669473,
+      "country": "MD",
+      "id": "dem-md",
+      "kind": "DEM",
+      "labelUa": "Молдова",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:26:31Z",
+      "bytes": 64808181,
+      "country": "NL",
+      "id": "dem-nl",
+      "kind": "DEM",
+      "labelUa": "Нідерланди",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:31:30Z",
+      "bytes": 496769456,
+      "country": "PL",
+      "id": "dem-pl",
+      "kind": "DEM",
+      "labelUa": "Польща",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:39:40Z",
+      "bytes": 1423225976,
+      "country": "SE",
+      "id": "dem-se",
+      "kind": "DEM",
+      "labelUa": "Швеція",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T07:48:45Z",
+      "bytes": 47142009,
+      "country": "SI",
+      "id": "dem-si",
+      "kind": "DEM",
+      "labelUa": "Словенія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:25:47Z",
+      "bytes": 108316343,
+      "country": "SK",
+      "id": "dem-sk",
+      "kind": "DEM",
+      "labelUa": "Словаччина",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T15:37:14Z",
+      "bytes": 1031157507,
+      "country": "UA",
+      "id": "dem-ua",
+      "kind": "DEM",
+      "labelUa": "Україна",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:46:10Z",
+      "bytes": 343261184,
+      "country": "AT",
+      "id": "geocoder-at",
+      "kind": "GEOCODER",
+      "labelUa": "Австрія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:38:22Z",
+      "bytes": 379154432,
+      "country": "BE",
+      "id": "geocoder-be",
+      "kind": "GEOCODER",
+      "labelUa": "Бельгія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T23:58:22Z",
+      "bytes": 69324800,
+      "country": "BG",
+      "id": "geocoder-bg",
+      "kind": "GEOCODER",
+      "labelUa": "Болгарія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T01:02:39Z",
+      "bytes": 367239168,
+      "country": "CZ",
+      "id": "geocoder-cz",
+      "kind": "GEOCODER",
+      "labelUa": "Чехія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T05:57:23Z",
+      "bytes": 2608603136,
+      "country": "DE",
+      "id": "geocoder-de",
+      "kind": "GEOCODER",
+      "labelUa": "Німеччина",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T23:53:46Z",
+      "bytes": 49963008,
+      "country": "EE",
+      "id": "geocoder-ee",
+      "kind": "GEOCODER",
+      "labelUa": "Естонія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T01:47:52Z",
+      "bytes": 875933696,
+      "country": "ES",
+      "id": "geocoder-es",
+      "kind": "GEOCODER",
+      "labelUa": "Іспанія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:38:24Z",
+      "bytes": 199794688,
+      "country": "FI",
+      "id": "geocoder-fi",
+      "kind": "GEOCODER",
+      "labelUa": "Фінляндія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T06:14:14Z",
+      "bytes": 1997905920,
+      "country": "FR",
+      "id": "geocoder-fr",
+      "kind": "GEOCODER",
+      "labelUa": "Франція",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T23:59:32Z",
+      "bytes": 74502144,
+      "country": "HR",
+      "id": "geocoder-hr",
+      "kind": "GEOCODER",
+      "labelUa": "Хорватія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:12:24Z",
+      "bytes": 167473152,
+      "country": "HU",
+      "id": "geocoder-hu",
+      "kind": "GEOCODER",
+      "labelUa": "Угорщина",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T04:33:02Z",
+      "bytes": 1031540736,
+      "country": "IT",
+      "id": "geocoder-it",
+      "kind": "GEOCODER",
+      "labelUa": "Італія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:01:50Z",
+      "bytes": 104845312,
+      "country": "LT",
+      "id": "geocoder-lt",
+      "kind": "GEOCODER",
+      "labelUa": "Литва",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T23:51:30Z",
+      "bytes": 21528576,
+      "country": "LU",
+      "id": "geocoder-lu",
+      "kind": "GEOCODER",
+      "labelUa": "Люксембург",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T23:55:11Z",
+      "bytes": 64897024,
+      "country": "LV",
+      "id": "geocoder-lv",
+      "kind": "GEOCODER",
+      "labelUa": "Латвія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T23:53:59Z",
+      "bytes": 99479552,
+      "country": "MD",
+      "id": "geocoder-md",
+      "kind": "GEOCODER",
+      "labelUa": "Молдова",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T01:42:31Z",
+      "bytes": 821346304,
+      "country": "NL",
+      "id": "geocoder-nl",
+      "kind": "GEOCODER",
+      "labelUa": "Нідерланди",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T01:21:27Z",
+      "bytes": 278376448,
+      "country": "NO",
+      "id": "geocoder-no",
+      "kind": "GEOCODER",
+      "labelUa": "Норвегія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T02:29:29Z",
+      "bytes": 960057344,
+      "country": "PL",
+      "id": "geocoder-pl",
+      "kind": "GEOCODER",
+      "labelUa": "Польща",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:25:00Z",
+      "bytes": 229826560,
+      "country": "PT",
+      "id": "geocoder-pt",
+      "kind": "GEOCODER",
+      "labelUa": "Португалія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:16:19Z",
+      "bytes": 178274304,
+      "country": "RO",
+      "id": "geocoder-ro",
+      "kind": "GEOCODER",
+      "labelUa": "Румунія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:06:13Z",
+      "bytes": 223932416,
+      "country": "RS",
+      "id": "geocoder-rs",
+      "kind": "GEOCODER",
+      "labelUa": "Сербія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:59:06Z",
+      "bytes": 240705536,
+      "country": "SE",
+      "id": "geocoder-se",
+      "kind": "GEOCODER",
+      "labelUa": "Швеція",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:07:07Z",
+      "bytes": 55414784,
+      "country": "SI",
+      "id": "geocoder-si",
+      "kind": "GEOCODER",
+      "labelUa": "Словенія",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-13T00:17:17Z",
+      "bytes": 205230080,
+      "country": "SK",
+      "id": "geocoder-sk",
+      "kind": "GEOCODER",
+      "labelUa": "Словаччина",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T19:06:35Z",
+      "bytes": 464199680,
+      "country": "UA",
+      "id": "geocoder-ua",
+      "kind": "GEOCODER",
+      "labelUa": "Україна",
+      "minAppBuild": 8
+    },
+    {
+      "bakedAt": "2026-09-12T06:00:08Z",
+      "bytes": 4923392,
+      "country": "LU",
+      "id": "transit-lu",
+      "kind": "TRANSIT_GTFS",
+      "labelUa": "Люксембург",
+      "minAppBuild": 8
+    }
+  ],
+  "sig": "DZDqYW4zqWrdY7DukXfx25jfrdvq/g1BMMDyBx+iECgITiRA0F72CfWUiz1gufesTp8erHW8WxACkNc/qLaUBw=="
+}

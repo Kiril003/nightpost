@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_settings">Ajustes</string>
+    <string name="profile_cover_add">Añadir portada</string>
+    <string name="profile_cover_change">Cambiar portada</string>
+    <string name="profile_cover_chip">Cambiar</string>
+    <string name="profile_photo_change">Cambiar foto</string>
+    <string name="profile_photo_failed">Esa foto no se abrió. Prueba con otra.</string>
+    <string name="profile_name_edit">Editar nombre</string>
+    <string name="profile_name_save">Guardar</string>
+    <string name="profile_name_save_failed">No guardado</string>
+    <string name="profile_circles">Personas</string>
+    <string name="profile_circles_empty">Aún no hay nadie</string>
+    <string name="profile_moments">Momentos</string>
+    <string name="profile_moments_empty">Hoy no hay momentos</string>
+    <string name="profile_moment">Tu momento</string>
+    <string name="profile_moment_add">Añadir</string>
+    <string name="profile_action_code">Mi código</string>
+    <string name="profile_code_send">Enviar enlace</string>
+    <string name="profile_code_failed">No se pudo crear el código</string>
+    <string name="circle_close">Cercanos</string>
+    <string name="circle_family">Familia</string>
+    <string name="circle_friends">Amigos</string>
+    <string name="circle_work">Trabajo</string>
+    <string name="circle_study">Estudios</string>
+    <string name="circle_travel">Viajes</string>
+    <string name="profile_name_budget">%1$d/%2$d</string>
+    <string name="profile_name_too_long">Un nombre más largo no cabe en tu código de invitación.</string>
+    <string name="profile_server">Asistente</string>
+    <string name="profile_key_short">Huella</string>
+    <string name="profile_key_created">Creada</string>
+    <string name="profile_value_server">Nightpost</string>
+    <string name="profile_value_server_spent">agotado hoy</string>
+    <string name="profile_value_server_quiet">no responde</string>
+    <string name="profile_backup">Copia</string>
+    <string name="profile_backup_none">Ninguna</string>
+    <string name="profile_about_edit">Sobre mí</string>
+    <string name="profile_status_hint">Estado</string>
+    <string name="profile_photo_remove">Quitar foto</string>
+    <string name="profile_cover_remove">Quitar portada</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meetup_ask_drafted">Draf kumpul: %1$s. Periksa di messenger.</string>
+    <string name="meetup_ask_still_empty">Masih kosong: %1$s.</string>
+    <string name="meetup_ask_field_people">orang</string>
+    <string name="meetup_ask_field_place">tempat</string>
+    <string name="meetup_ask_field_time">waktu</string>
+    <string name="meetup_ask_empty">Draf kumpul siap, pilih orang, tempat, dan waktu.</string>
+    <string name="meetup_ask_split_claimed">Tagihan terbuka di messenger: centang pesananmu lalu bayar.</string>
+    <string name="meetup_ask_split_equal">Tagihan terbuka di messenger: centang semua untuk dibagi rata.</string>
+    <string name="meetup_ask_roster_unreadable">Kontakmu tak bisa dibaca. Buka Orang.</string>
+    <string name="meetup_ask_draft_failed">Messenger tidak menerima draf. Coba lagi.</string>
+    <string name="meetup_ask_bad_mode">Aku tidak paham cara membaginya: “%1$s”. Tagihan dibagi menurut centang atau rata.</string>
+</resources>

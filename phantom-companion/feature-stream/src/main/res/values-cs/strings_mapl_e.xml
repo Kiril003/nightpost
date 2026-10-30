@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_e_threat_unknown_label">Letecký poplach</string>
+    <string name="mapl_e_threat_unknown_short">poplach</string>
+    <string name="mapl_e_duration_just_now">právě teď</string>
+    <string name="mapl_e_duration_min">%1$d min</string>
+    <string name="mapl_e_duration_hr_min">%1$d h %2$02d min</string>
+    <string name="mapl_e_duration_day_hr">%1$d d %2$d h</string>
+    <string name="mapl_e_duration_month">%1$d měs</string>
+    <string name="mapl_e_duration_year">%1$d r</string>
+    <string name="mapl_e_districts_more">%1$s · a dalších %2$d</string>
+    <string name="mapl_e_alarm_started">Letecký poplach — %1$s.</string>
+    <string name="mapl_e_alarm_ended">Konec poplachu — %1$s.</string>
+
+    <string name="mapl_e_layers_unavailable">Vrstvy mapy nejsou dostupné</string>
+    <string name="mapl_e_empty_transit">Žádná doprava poblíž (možná offline)</string>
+    <string name="mapl_e_empty_routes">Žádné trasy poblíž (možná offline)</string>
+    <string name="mapl_e_empty_cameras">Žádné kamery poblíž (možná offline)</string>
+    <string name="mapl_e_empty_aircraft">Žádná letadla poblíž (možná offline)</string>
+    <string name="mapl_e_empty_other">Nic poblíž nenalezeno (možná offline)</string>
+    <string name="mapl_e_line_absent_on_map">Tato linka na mapě není</string>
+    <string name="mapl_e_line_ref">č. %1$s</string>
+    <string name="mapl_e_line_fallback">trasa</string>
+    <string name="mapl_e_line_title">Linka %1$s</string>
+    <string name="mapl_e_routes_glyph">trasy</string>
+    <string name="mapl_e_line_no_geometry">Geometrie linky není v databázi</string>
+    <string name="mapl_e_line_drawn">Trasa %1$s zakreslena na mapě</string>
+    <string name="mapl_e_hazard_marked">Označeno „%1$s“ — zmizí za 2 h</string>
+    <string name="mapl_e_hazard_mark_failed">Značku se nepodařilo umístit</string>
+    <string name="mapl_e_isochrone_no_roads">Cesty v okolí ještě nejsou načteny — otevřete mapu na místě</string>
+    <string name="mapl_e_isochrone_unreachable">Odtud nelze v rámci načtené mapy dojít</string>
+    <string name="mapl_e_danger_field_empty">Žádná označená rizika pro pole nebezpečí</string>
+
+    <string name="mapl_e_board_stop">Nástup: %1$s %2$s</string>
+    <string name="mapl_e_transfer_stop">Přestup: %1$s → %2$s %3$s</string>
+    <string name="mapl_e_alight_stop">Výstup zde</string>
+    <string name="mapl_e_mode_metro">metro</string>
+    <string name="mapl_e_mode_tram">tramvaj</string>
+    <string name="mapl_e_mode_trolleybus">trolejbus</string>
+    <string name="mapl_e_mode_bus">autobus</string>
+    <string name="mapl_e_mode_rail">vlak</string>
+    <string name="mapl_e_mode_funicular">lanovka</string>
+    <string name="mapl_e_mode_ferry">přívoz</string>
+    <string name="mapl_e_mode_other">doprava</string>
+
+    <string name="mapl_e_comfort_shelter">s přístřeškem</string>
+    <string name="mapl_e_comfort_wheelchair">bezbariérový přístup</string>
+    <string name="mapl_e_comfort_tactile">vodicí dlažba</string>
+    <string name="mapl_e_mode_light_rail">rychłodráha</string>
+    <string name="mapl_e_mode_share_taxi">minibus</string>
+    <string name="mapl_e_mode_monorail">jednokolejka</string>
+
+    <string name="mapl_e_amenity_bench">lavička</string>
+    <string name="mapl_e_amenity_shelter">přístřešek</string>
+    <string name="mapl_e_amenity_display">odjezdová tabule</string>
+    <string name="mapl_e_amenity_bin">koš</string>
+    <string name="mapl_e_amenity_lit">pouliční lampa</string>
+    <string name="mapl_e_both_directions">Zobrazeny linky pro obě strany ulice</string>
+    <string name="mapl_e_operating_hours">Provozní doba: %1$s – %2$s</string>
+    <string name="mapl_e_not_running">Nyní mimo provoz</string>
+    <string name="mapl_e_headway_subtitle">%1$s • přibližně každých ~%2$d min</string>
+    <string name="mapl_e_dep_min_clock">%1$d min (%2$s)</string>
+    <string name="mapl_e_dep_min">%1$d min</string>
+    <string name="mapl_e_stop_sequence_header">Pořadí zastávek (%1$d):</string>
+    <string name="mapl_e_you_are_here">Jste zde</string>
+    <string name="mapl_e_plus_min">+%1$d min</string>
+    <string name="mapl_e_mode_train_dossier">vlak</string>
+</resources>

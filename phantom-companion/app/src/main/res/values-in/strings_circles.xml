@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="circle_personal">Pribadi</string>
+    <string name="circle_social">Kenalan</string>
+</resources>

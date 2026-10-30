@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_basemap_replace_button">Importar otro archivo de mapa base a mano</string>
+    <string name="cloud_packs_title">PAQUETES EN LA NUBE</string>
+    <string name="cloud_packs_explainer">Paquetes firmados de mapa base y carreteras para usar sin internet</string>
+    <string name="cloud_packs_loading">Consultando el catálogo…</string>
+    <string name="cloud_packs_not_configured">La dirección del catálogo aún no está configurada.</string>
+    <string name="cloud_packs_empty">El catálogo está vacío.</string>
+    <string name="cloud_packs_kind_basemap">MAPA BASE</string>
+    <string name="cloud_packs_kind_road_mesh">CARRETERAS Y TRANSPORTE</string>
+    <string name="cloud_packs_size_baked">%1$s · generado %2$s</string>
+    <string name="cloud_packs_size_only">%1$s</string>
+    <string name="cloud_packs_action_download">Descargar</string>
+    <string name="cloud_packs_action_update">Actualizar</string>
+    <string name="cloud_packs_action_retry">Reintentar</string>
+    <string name="cloud_packs_state_checking">Comprobando…</string>
+    <string name="cloud_packs_state_verifying">Verificando suma de control…</string>
+    <string name="cloud_packs_state_installed">Instalado ✓</string>
+    <string name="cloud_packs_state_downloading">Descargando… %1$d%% · %2$s de %3$s</string>
+    <string name="cloud_packs_metered_warning">Con datos móviles.</string>
+    <string name="cloud_packs_action_metered_confirm">Descargar igualmente</string>
+    <string name="cloud_packs_action_cancel">Cancelar</string>
+    <string name="forge_packs_title">FORGE: PAQUETES DE NUEVA GENERACIÓN</string>
+    <string name="forge_packs_kind_geocoder">LUGARES Y DIRECCIONES</string>
+    <string name="forge_packs_kind_terrain">RELIEVE</string>
+    <string name="forge_packs_kind_basemap">MAPA BASE PMTILES</string>
+    <string name="forge_packs_kind_transit">HORARIOS DE TRANSPORTE</string>
+    <string name="forge_packs_kind_places">LUGARES Y CALLES DEL PAÍS</string>
+    <string name="forge_packs_kind_unsupported">esta versión aún no puede instalar este tipo</string>
+</resources>

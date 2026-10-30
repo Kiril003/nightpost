@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meetup_ask_drafted">Rascunho de encontro: %1$s. Revise no messenger.</string>
+    <string name="meetup_ask_still_empty">Ainda falta: %1$s.</string>
+    <string name="meetup_ask_field_people">pessoas</string>
+    <string name="meetup_ask_field_place">local</string>
+    <string name="meetup_ask_field_time">horário</string>
+    <string name="meetup_ask_empty">Rascunho de encontro pronto: escolha pessoas, local e horário.</string>
+    <string name="meetup_ask_split_claimed">A conta abre no messenger: marque os seus itens e pague.</string>
+    <string name="meetup_ask_split_equal">A conta abre no messenger: marque tudo para dividir por igual.</string>
+    <string name="meetup_ask_roster_unreadable">Não consegui ler seus contatos. Abra Pessoas.</string>
+    <string name="meetup_ask_draft_failed">O messenger não aceitou o rascunho. Tente de novo.</string>
+    <string name="meetup_ask_bad_mode">Não entendi como dividir: “%1$s”. A conta divide por marcações ou por igual.</string>
+</resources>

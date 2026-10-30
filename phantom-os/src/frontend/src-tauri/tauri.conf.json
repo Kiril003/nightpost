@@ -1,0 +1,105 @@
+{
+  "$schema": "https://schema.tauri.app/config/2.0",
+  "productName": "Nightpost",
+  "version": "0.20.0",
+  "identifier": "ai.phantom.os",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Nightpost",
+        "width": 1440,
+        "height": 900,
+        "minWidth": 1024,
+        "minHeight": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": true,
+        "transparent": false,
+        "alwaysOnTop": false,
+        "center": true,
+        "backgroundColor": "#0B0B0D",
+        "url": "index.html",
+        "visible": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' ipc: http://ipc.localhost http://127.0.0.1:8000 ws://127.0.0.1:8000 https://tiles.openfreemap.org https://s3.amazonaws.com/elevation-tiles-prod/ https://api.phantom-os.dev blob: data:; img-src 'self' data: blob: http://127.0.0.1:8000; style-src 'self' 'unsafe-inline'; script-src 'self'; worker-src 'self' blob:; child-src 'self' blob:; media-src 'self' blob: data: http://127.0.0.1:8000",
+      "dangerousDisableAssetCspModification": [
+        "style-src"
+      ]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "appimage",
+      "deb",
+      "msi",
+      "nsis",
+      "rpm"
+    ],
+    "category": "Productivity",
+    "shortDescription": "Nightpost — розмови з людьми, мапа й помічник на вашому компʼютері.",
+    "longDescription": "Nightpost на вашому компʼютері: зашифровані розмови з людьми, мапа й помічник. Усе працює тут, на цьому компʼютері, а з телефоном Nightpost поєднується одним QR-кодом.",
+    "publisher": "Nightpost",
+    "homepage": "https://phantom-os.dev",
+    "copyright": "© 2026 Nightpost",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/icon.ico",
+      "icons/icon.icns"
+    ],
+    "resources": {
+      "binaries/phantom-node/": "phantom-node/"
+    },
+    "linux": {
+      "appimage": {
+        "bundleMediaFramework": false
+      },
+      "deb": {
+        "depends": []
+      },
+      "rpm": {
+        "depends": [
+          "webkit2gtk4.1",
+          "libayatana-appindicator-gtk3"
+        ]
+      }
+    },
+    "windows": {
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper",
+        "silent": true
+      },
+      "wix": {
+        "language": "uk-UA"
+      },
+      "nsis": {
+        "installerIcon": "icons/icon.ico",
+        "languages": [
+          "Ukrainian",
+          "English"
+        ],
+        "displayLanguageSelector": false,
+        "installMode": "currentUser"
+      }
+    }
+  },
+  "plugins": {
+    "shell": {
+      "open": false
+    },
+    "updater": {
+      "pubkey": "",
+      "requireSignedVersion": true
+    }
+  }
+}

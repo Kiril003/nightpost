@@ -1,0 +1,38 @@
+{
+ "comment": "Знаки seeker_badge, підписані серверним кодом (seeker.badge + license_crypto.sign_certificate) тестовим ключем 0x11*32: badge — без стейку (старий формат), badge_skr — SGT і рівень 10k, badge_staker_only — без SGT, рівень 1k.",
+ "public_key_hex": "d04ab232742bb4ab3a1368bd4615e4e6d0224ab71a016baf8520a332c9778737",
+ "badge": {
+  "v": 1,
+  "kind": "seeker_badge",
+  "wallet": "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+  "identity": "peer-olena-01",
+  "sgt": true,
+  "issued_at": 1790000000,
+  "expires": 1792592000,
+  "sig": "M5Cd64QXwr5u7AFd962vqbn9Ro8/H3kJ/y/U2WuuKNgoKzgmPb/9WLHpxsZc6MgGPRr+W/nXtgGBEwsP7e1hDQ=="
+ },
+ "badge_skr": {
+  "v": 1,
+  "kind": "seeker_badge",
+  "wallet": "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+  "identity": "peer-olena-01",
+  "sgt": true,
+  "issued_at": 1790000000,
+  "expires": 1792592000,
+  "skr_tier": "10k",
+  "skr_checked_at": 1790000000,
+  "sig": "XxGmBcdeiL+91JYmkm3Br1sc0mD4ATIp8QUxrm4hVTssJspZaafdzmWXGZijwMfftcjER0FQFRUCNb/RL5+MAg=="
+ },
+ "badge_staker_only": {
+  "v": 1,
+  "kind": "seeker_badge",
+  "wallet": "4vJ9JU1bJJE96FWSJKvHsmmFADCg4gpZQff4P3bkLKi",
+  "identity": "peer-olena-01",
+  "sgt": false,
+  "issued_at": 1790000000,
+  "expires": 1792592000,
+  "skr_tier": "1k",
+  "skr_checked_at": 1790000000,
+  "sig": "Sx1AMSuCGZWsZ6yX22y/V9thvZt0Y2P2aIvRKSDYmJwqP3BJiBu7s2s998hFTG5PsdSUWZ1QJEmi7K9biBusAg=="
+ }
+}

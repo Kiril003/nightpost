@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pair_err_bad_input">Bu bir bilgisayar QR kodu değil.</string>
+    <string name="pair_err_expired">Bu QR kodun süresi doldu. Yenisi bilgisayarda.</string>
+    <string name="pair_err_not_found">Bilgisayar bulunamadı.</string>
+    <string name="pair_err_digits_not_found">Bilgisayar bu ağda bulunamadı. QR kodunu tara.</string>
+    <string name="pair_err_not_proven">Bilgisayar doğrulamayı geçemedi.</string>
+    <string name="pair_err_unreachable">Bilgisayara ulaşılamıyor: %1$s</string>
+    <string name="sphere_place">Yer</string>
+    <string name="sphere_sound">Ses ve konuşma</string>
+    <string name="sphere_notices">Bildirimler</string>
+    <string name="sphere_clipboard">Pano ve bağlantılar</string>
+    <string name="sphere_screen">Ekran</string>
+    <string name="sphere_keyboard">Klavye</string>
+</resources>

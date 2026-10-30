@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_faucet_get">Ottieni USDC di prova</string>
+    <string name="sol_faucet_off">Non disponibile</string>
+    <string name="sol_faucet_wait">Già ricevuto</string>
+    <string name="sol_faucet_retry">Riprova più tardi</string>
+    <string name="sol_faucet_sending">Richiesta in corso</string>
+    <string name="sol_note_label">Nota</string>
+</resources>

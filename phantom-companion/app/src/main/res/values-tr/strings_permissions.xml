@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_notify_title">Bildirimler</string>
+    <string name="perm_notify_body">Uygulama kapalıyken mesajlar ve aramalar için</string>
+    <string name="settings_ua_alerts">Ukrayna hava uyarıları</string>
+    <string name="settings_ua_alerts_body">Ukrayna’daki bölgen için uyarılar</string>
+    <string name="settings_ua_alerts_body_map">Haritada, bölgen için</string>
+    <string name="perm_sms_title">İnternetsiz mesajlar</string>
+    <string name="perm_sms_body">Ağ yokken istek göndermek ve almak için SMS erişimi gerekir.</string>
+    <string name="perm_bg_loc_title">Arka planda konum</string>
+    <string name="perm_bg_loc_body">Yolculuk izini eksiksiz tutar</string>
+</resources>

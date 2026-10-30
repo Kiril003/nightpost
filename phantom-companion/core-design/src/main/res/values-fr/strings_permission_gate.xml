@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_allow">Autoriser</string>
+    <string name="perm_not_now">Pas maintenant</string>
+    <string name="perm_open_settings">Ouvrir les réglages</string>
+    <string name="perm_denied_title">Pas encore d’accès</string>
+    <string name="perm_blocked_title">Accès désactivé</string>
+    <string name="perm_blocked_body">Android ne demandera plus. Activez l’accès dans les réglages de l’appli, puis revenez.</string>
+</resources>

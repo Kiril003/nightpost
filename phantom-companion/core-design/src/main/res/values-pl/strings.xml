@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vitals_bpm">BPM</string>
+    <string name="vitals_breath">ODDECH</string>
+    <string name="vitals_stress">STRES</string>
+    <string name="state_shadow">CIEŃ</string>
+    <string name="state_focus">SKUPIENIE</string>
+    <string name="state_dialogue">DIALOG</string>
+    <string name="state_sentinel">STRAŻNIK</string>
+    <string name="state_ghost">DUCH</string>
+    <string name="state_dream">SEN</string>
+    <string name="state_standing_orders">· stałe zlecenia: %1$d</string>
+    <string name="license_gate_open">Otwórz licencję</string>
+    <string name="license_gate_trial">próba · %1$d d</string>
+    <string name="void_loading_title">Czytam…</string>
+    <string name="void_empty_title">Tu nic nie ma</string>
+    <string name="void_failed_title">Nie udało się odczytać</string>
+    <string name="void_failed_detail">To nieudany odczyt, a nie pusty wynik.</string>
+    <string name="void_mismatch_title">Pusto, choć licznik pokazuje %1$d</string>
+    <string name="void_mismatch_detail">Aplikacja sama sobie przeczy: dane są, ale nie dotarły.</string>
+    <string name="back_pill_action">Wstecz</string>
+</resources>

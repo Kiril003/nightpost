@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="look_granted">Granted</string>
+    <string name="look_grant">Grant</string>
+    <string name="look_open">Open</string>
+    <string name="look_turn_on">Turn on</string>
+    <string name="look_remove">Remove</string>
+
+    <string name="look_privacy_screen">Screen</string>
+    <string name="look_screen_grant">See the screen</string>
+    <string name="look_screen_grant_body">Nightpost reads the screen and acts in apps</string>
+    <string name="look_screen_title">Share the screen with the AI</string>
+    <string name="look_screen_body">With a cloud key, screen text leaves the phone</string>
+    <string name="look_lock_reveal_forced">Only “New message”</string>
+
+    <string name="look_notif_background">Background work</string>
+    <string name="look_battery_title">Run in the background</string>
+    <string name="look_battery_body">Keeps Nightpost active in the background</string>
+
+    <string name="look_brain_order">Whom to ask first</string>
+    <string name="look_brain_cloud_first">Cloud first</string>
+    <string name="look_brain_local_first">Device first</string>
+    <string name="look_brain_local_only">Device only</string>
+    <string name="look_brain_cloud_only">Cloud only</string>
+    <string name="look_brain_no_key">No key: the Nightpost server answers when reachable.</string>
+    <string name="look_ai_key_remove">Remove the Gemini key</string>
+    <string name="look_ai_key_remove_title">Remove the Gemini key?</string>
+    <string name="look_ai_key_remove_body">Nightpost stops using it. The HuggingFace key stays.</string>
+    <string name="look_phantom_talk">Conversation</string>
+    <string name="look_tts_title">Read replies aloud</string>
+    <string name="look_tts_body">Ukrainian voice, while the app is open</string>
+    <string name="look_proactive_title">Speak first</string>
+    <string name="look_proactive_body">Brief heads-ups, like a change of plans</string>
+    <string name="look_live_title">Live dialogue</string>
+    <string name="look_live_body">Mic stays open. Uses more battery.</string>
+    <string name="look_live_blocked">The microphone is off — live dialogue is paused</string>
+    <string name="look_live_unmute">Turn the microphone on</string>
+
+    <string name="look_pair_paired">Connected: %1$s</string>
+    <string name="look_pair_drop_stale">Pair again so messages arrive while the computer is away</string>
+    <string name="look_unpair">Disconnect the computer</string>
+    <string name="look_unpair_title">Disconnect the computer?</string>
+    <string name="look_unpair_body">Reconnect with a new code</string>
+    <string name="look_pair_subtitle">Open Nightpost on the computer and point the camera at its QR code.</string>
+    <string name="look_pair_scan_again">Scan again</string>
+    <string name="look_pair_camera_allow">Camera access</string>
+
+    <string name="look_dev_keys">Keys</string>
+    <string name="look_hf_key_remove">Remove the HuggingFace key</string>
+    <string name="look_hf_key_remove_title">Remove the HuggingFace key?</string>
+    <string name="look_hf_key_remove_body">Gated models will no longer download. The Gemini key stays.</string>
+    <string name="look_dev_place">Place and role</string>
+    <string name="look_dev_models">Models</string>
+    <string name="look_models_delete">Delete downloaded models</string>
+    <string name="look_models_none">No downloaded models</string>
+    <string name="look_models_delete_title">Delete downloaded models?</string>
+    <string name="look_models_delete_body">Deletes downloaded models. Chats and maps stay.</string>
+    <string name="look_models_delete_yes">Yes, delete</string>
+    <string name="look_models_sure">Really delete?</string>
+    <string name="look_models_tap_again">This cannot be undone.</string>
+    <string name="look_models_wait">Wait %1$d s — so a stray tap cannot do it.</string>
+    <string name="look_models_commit">Delete</string>
+    <string name="look_models_commit_wait">Delete · %1$d</string>
+    <string name="look_dev_build">Build</string>
+    <string name="look_build">Type and number</string>
+    <string name="look_package">Package</string>
+    <string name="look_web_bundle">Web messenger</string>
+    <string name="phantom_advanced">Advanced</string>
+</resources>

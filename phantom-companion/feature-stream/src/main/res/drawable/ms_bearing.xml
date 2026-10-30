@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Курс машини на пігулці флоту: залитий наконечник, носом на північ; пігулка повертає його на bearing. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:pathData="M12 3 19 20 12 16 5 20z"
+        android:fillColor="#FF000000" />
+</vector>

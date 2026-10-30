@@ -1,0 +1,20 @@
+map $http_upgrade $np_up { default upgrade; '' close; }
+server {
+    listen 8080;
+    access_log off;
+    client_max_body_size 1m;
+    resolver 1.1.1.1 valid=60s;
+    location / {
+        set $upstream https://${UPSTREAM_HOST};
+        proxy_pass $upstream;
+        proxy_http_version 1.1;
+        proxy_ssl_server_name on;
+        proxy_set_header Host ${UPSTREAM_HOST};
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $np_up;
+        proxy_set_header X-Edge-Auth ${EDGE_SECRET};
+        proxy_buffering off;
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+    }
+}

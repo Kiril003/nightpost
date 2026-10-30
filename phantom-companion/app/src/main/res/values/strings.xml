@@ -1,0 +1,1264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- app UI strings — English mirror. Only the strings extracted so far are
+     translated; everything else falls back to res/values (Ukrainian). -->
+<resources>
+    <string name="invite_link_bad">The invite code is incomplete — ask them to send it again.</string>
+    <string name="invite_link_legacy">Outdated invite. Update the app and create a new one.</string>
+
+    <!-- LUX-7 — Settings › Appearance (SettingsRealm.kt). -->
+    <string name="settings_theme_living">Living</string>
+    <string name="settings_theme_light">Day</string>
+    <string name="settings_theme_dark">Night</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_living_desc">Now %1$s — follows time of day</string>
+    <string name="settings_theme_light_desc">Day palette pinned.</string>
+    <string name="settings_theme_dark_desc">Night palette pinned.</string>
+    <string name="settings_theme_system_desc">Follows the system dark mode.</string>
+    <string name="settings_phase_dawn">dawn</string>
+    <string name="settings_phase_day">day</string>
+    <string name="settings_phase_dusk">dusk</string>
+    <string name="settings_phase_night">night</string>
+    <string name="settings_font_smaller">A−</string>
+    <string name="settings_font_sample">Aa</string>
+    <string name="settings_font_larger">A＋</string>
+
+    <!-- Bottom navigation island (VISUAL DAY 2 — chat-first) -->
+
+    <!-- Overrides of MapLibre / Material3 strings — see values/strings.xml. -->
+    <string name="maplibre_mapActionDescription">Shows a map built with MapLibre. Pan with two fingers. Pinch to zoom.</string>
+    <string name="maplibre_compassContentDescription">Compass. Tap to point the map north.</string>
+    <string name="maplibre_myLocationViewContentDescription">Your position on the map.</string>
+    <string name="maplibre_attributionsIconContentDescription">Data sources. Tap to show the list.</string>
+    <string name="m3c_bottom_sheet_dismiss_description">Close sheet</string>
+    <string name="m3c_bottom_sheet_drag_handle_description">Sheet handle</string>
+    <string name="m3c_bottom_sheet_collapse_description">Collapse sheet</string>
+    <string name="m3c_bottom_sheet_expand_description">Expand sheet</string>
+    <string name="m3c_bottom_sheet_pane_title">Sheet</string>
+
+    <!-- Chest sheet rows — vault/diagnostics reuse existing app-module
+         strings (license_feature_core_vault, settings_diag_open); only this
+         row had no row-appropriate (lowercase) form yet. -->
+
+    <!-- Whisper overlay: the grant its switch depends on. -->
+    <string name="whisper_grant_overlay">needs the draw-over-other-apps permission</string>
+    <string name="whisper_line_kicker">WHISPER · LINE</string>
+    <string name="whisper_overlay_title">Always-visible line</string>
+    <string name="whisper_overlay_body_running">1.5px of golden silence over any app</string>
+    <string name="whisper_overlay_body_off">turn on to keep Nightpost sitting at the top of the screen</string>
+    <string name="whisper_freq_title">Frequency</string>
+    <string name="whisper_sound_title">Sound</string>
+    <string name="whisper_sound_body">a soft tone when a new line appears</string>
+    <string name="whisper_overlay_rationale_title">Needs the "draw over other apps" permission</string>
+    <string name="whisper_overlay_rationale_body">without it Nightpost cannot draw the line on top. On Samsung One UI this option lives under Settings → Advanced features → Appear on top.</string>
+    <string name="whisper_overlay_rationale_action">·  open settings  ·</string>
+
+    <!-- Wave 1 §5 Executor C — map POI save/delete/rename, ContinuumHost.kt. -->
+    <string name="map_poi_saved">Saved</string>
+    <string name="map_poi_save_failed">could not save</string>
+    <string name="map_poi_deleted">Mark deleted</string>
+    <string name="map_poi_delete_failed">could not delete</string>
+    <string name="map_poi_renamed">Renamed</string>
+    <string name="map_poi_recategorized">Category changed</string>
+    <string name="map_poi_rename_failed">could not rename</string>
+    <string name="map_poi_ask_prompt">Tell me about %1$s</string>
+
+    <!-- AppContainer boot-failure notices — construction throwing leaves the
+         fallback null for the rest of the process; errorBus.emit needs a
+         Context.getString here since AppContainer isn't a @Composable. -->
+    <string name="ai_router_boot_failed">Mind failed to start — restart the app</string>
+    <string name="tts_engine_boot_failed">voice is off — Android TTS won\'t start</string>
+    <!-- Why there is no answer — AgencySessionManager.words(), one reason per AIError type -->
+    <string name="ai_fail_no_network">No network</string>
+    <string name="ai_fail_no_brain">Assistant not set up</string>
+    <string name="ai_fail_pc">PC did not answer (%1$d)</string>
+    <string name="ai_fail_key">Key rejected</string>
+    <string name="ai_fail_too_often">Too many requests</string>
+    <string name="ai_fail_daily_limit">Daily limit reached</string>
+    <string name="ai_fail_cloud_down">Assistant unavailable</string>
+    <string name="ai_fail_cloud">Cloud error %1$d</string>
+    <string name="ai_fail_cancelled">Cancelled</string>
+    <string name="ai_fail_silent">No answer</string>
+    <string name="ai_fail_unknown">Could not answer</string>
+    <string name="ai_fail_unknown_with_tail">Could not answer: %1$s</string>
+    <string name="ai_fail_empty_ask">Empty question</string>
+    <string name="ai_group_unavailable">Not available in groups</string>
+    <string name="assistant_sees_text_only">I see only text and captions</string>
+    <string name="ai_fail_group_unsent">Not sent to the group</string>
+
+    <!-- Pairing with PHANTOM OS. -->
+    <string name="pair_title">Connect to your computer</string>
+    <string name="pair_subtitle">Point the camera at the QR on your computer</string>
+    <string name="pair_scan_again">scan again</string>
+    <string name="pair_paste">Paste the full JSON config (not a PIN)</string>
+    <string name="pair_claim">Connect</string>
+    <string name="pair_camera_denied">Reading the QR needs camera access.</string>
+    <string name="pair_scan_status">Found the QR, connecting…</string>
+    <string name="pair_manual_label">Or by hand</string>
+    <string name="pair_manual_placeholder">{ \"v\": 1, \"host\": …</string>
+    <string name="pair_connecting_status">Connecting to your computer…</string>
+
+    <!-- Settings: the sections, the hero, and where the thinking happens. -->
+    <string name="settings_hero_body">changes apply at once — nothing to save.</string>
+    <!-- Retention: the operator's number, and the only thing that goes sooner. -->
+    <string name="settings_retention_title">How long history is kept</string>
+    <string name="settings_retention_detent_days">%1$d d</string>
+    <string name="settings_retention_detent_year">Year</string>
+    <string name="settings_retention_detent_forever">Forever</string>
+    <string name="settings_retention_status">%1$d items · since %2$s · %3$d pinned · ~%4$d MB</string>
+    <string name="settings_retention_status_empty">History is empty so far</string>
+    <string name="settings_retention_wipe">Erase %1$d items</string>
+    <string name="settings_retention_wipe_armed">Really erase?</string>
+    <string name="settings_sec_brain">MIND</string>
+    <string name="settings_sec_assets">MODELS</string>
+    <string name="settings_sec_debug_state">DEBUG · STATE</string>
+    <string name="settings_brain_cloud">thinking through the cloud</string>
+    <string name="settings_brain_local">thinking here, on this device</string>
+    <string name="settings_brain_cloud_body">Questions go to the cloud using your key</string>
+    <string name="settings_brain_local_body">Runs on this device without a network</string>
+
+    <!-- Settings hub: six disclosure groups, each row carrying its own value. -->
+    <string name="settings_look_value">%1$s · text %2$d%%</string>
+    <string name="settings_device_value_paired">Desktop · %1$s</string>
+    <string name="settings_device_value_solo">solo — no desktop</string>
+    <string name="settings_about_value">version %1$s</string>
+
+    <!-- Seven operator decisions: a group is named by its question, not its module. -->
+    <string name="settings_realm_senses">heard and seen</string>
+    <string name="settings_realm_senses_q">what Nightpost hears and sees</string>
+    <string name="settings_realm_attention">attention</string>
+    <string name="settings_realm_attention_q">when Nightpost speaks up on its own</string>
+    <string name="settings_realm_autonomy">autonomy</string>
+    <string name="settings_realm_autonomy_q">what works with no network</string>
+    <string name="settings_realm_rest">what stays</string>
+    <string name="settings_realm_rest_q">what they would find on this phone</string>
+    <string name="settings_realm_look">appearance</string>
+    <string name="settings_realm_look_q">how this looks and reads</string>
+    <string name="settings_realm_link">link</string>
+    <string name="settings_realm_link_q">PC, shell, diagnostics</string>
+    <string name="settings_realm_about">about Nightpost</string>
+    <string name="settings_realm_about_q">version, licence, data sources</string>
+
+    <string name="settings_value_two">%1$s · %2$s</string>
+    <string name="settings_senses_mic_muted">microphone off</string>
+    <string name="settings_senses_mic_live">microphone open all the time</string>
+    <string name="settings_senses_mic_ptt">microphone only while held</string>
+    <string name="settings_senses_screen_on">screen is read</string>
+    <string name="settings_senses_screen_off">screen is not read</string>
+    <string name="settings_attention_voice_on">speaks aloud</string>
+    <string name="settings_attention_voice_off">silent</string>
+    <string name="settings_attention_proactive_on">speaks up on its own</string>
+    <string name="settings_attention_proactive_off">only when asked</string>
+    <string name="settings_autonomy_value">%1$s · models %2$d of %3$d · map %4$s</string>
+    <string name="settings_rest_records">%1$d records</string>
+
+    <!-- Search over the levers: results are the levers themselves, not links to them. -->
+    <string name="settings_search_hint">Find a setting</string>
+    <string name="settings_search_clear">clear search</string>
+    <string name="settings_search_found">found: %1$d</string>
+    <string name="settings_search_empty">Nothing matched</string>
+    <string name="settings_search_empty_body">Try another word</string>
+
+    <!-- The price of a lever. A toggle whose effect you cannot predict is a trap. -->
+    <string name="settings_cost_battery">battery: %1$s</string>
+    <string name="settings_cost_network">network: %1$s</string>
+    <string name="settings_cost_privacy">privacy: %1$s</string>
+    <string name="settings_cost_battery_word">battery</string>
+    <string name="settings_cost_network_word">network</string>
+    <string name="settings_cost_privacy_word">privacy</string>
+    <string name="settings_cost_saves">saves</string>
+    <string name="settings_cost_low">a little</string>
+    <string name="settings_cost_medium">noticeable</string>
+    <string name="settings_cost_high">heavy — plan for a shorter day</string>
+    <string name="settings_cost_light_battery">on OLED the Day theme costs more</string>
+    <string name="settings_cost_net_never">sends nothing</string>
+    <string name="settings_cost_net_once">one download, offline after that</string>
+    <string name="settings_cost_net_cloud">questions go to the cloud</string>
+    <string name="settings_cost_priv_mic_off">while on, hears nothing at all</string>
+    <string name="settings_cost_priv_mic_open">microphone stays open</string>
+    <string name="settings_cost_priv_screen">reads text from other apps</string>
+    <string name="settings_cost_priv_local">everything stays on the phone</string>
+    <string name="settings_cost_priv_cloud">the key provider sees your question text</string>
+
+    <string name="settings_a11y_expanded">expanded</string>
+    <string name="settings_a11y_collapsed">collapsed</string>
+    <string name="settings_a11y_two_step">two-step action</string>
+    <string name="settings_a11y_armed">Confirm once more</string>
+
+    <string name="settings_theme_row">Theme</string>
+    <string name="settings_font_row">Text size</string>
+    <string name="settings_font_body">Sample text size</string>
+    <string name="settings_font_smaller_a11y">smaller text</string>
+    <string name="settings_font_larger_a11y">larger text</string>
+    <string name="settings_map_body">saved territories work with no network</string>
+    <string name="settings_pair_body">link to a PC on your own network</string>
+
+    <!-- Search synonyms: words that are not in the row itself. -->
+    <string name="settings_kw_mic">microphone audio hearing recording</string>
+    <string name="settings_kw_live">live dialogue conversation voice</string>
+    <string name="settings_kw_screen">screen accessibility reading</string>
+    <string name="settings_kw_notif">notifications shade</string>
+    <string name="settings_kw_voice">voice speech tts synthesis</string>
+    <string name="settings_kw_proactive">proactive initiative hints</string>
+    <string name="settings_kw_battery">battery background optimisation power</string>
+    <string name="settings_kw_lock">lock screen preview</string>
+    <string name="settings_kw_brain">brain model llm gemma cloud key</string>
+    <string name="settings_kw_models">models download files vosk whisper</string>
+    <string name="settings_kw_map">map offline regions territories</string>
+    <string name="settings_kw_retention">history retention term cleanup deletion</string>
+    <string name="settings_kw_theme">theme appearance colour day night</string>
+    <string name="settings_kw_font">font size text larger smaller</string>
+    <string name="settings_kw_pair">pc pair link bridge connection</string>
+    <string name="settings_kw_symbiote">symbiote shell</string>
+    <string name="settings_kw_whisper">whisper line ribbon overlay always visible</string>
+    <string name="settings_kw_diag">diagnostics status log</string>
+    <string name="settings_kw_license">licence tier subscription</string>
+    <string name="settings_kw_sources">sources data osm attribution</string>
+    <string name="settings_kw_version">version build package web messenger</string>
+    <!-- Wave 05.09 — SettingsRealm search-blind-spot fix: "notif" bundled
+         four unrelated controls under one haystack, so none of these three
+         had their own searchable words. -->
+    <string name="settings_kw_false_position">false position location spoof coordinates geolocation</string>
+    <string name="settings_kw_bg_location">trail background location always allow</string>
+    <string name="settings_kw_ai_key">key cloud gemini google ai studio api</string>
+    <string name="settings_kw_hf_key">key token huggingface hf gemma gated model</string>
+
+    <!-- The honest capability strip: what PHANTOM can do right now. -->
+    <string name="settings_caps_title">What Nightpost can do right now</string>
+    <string name="settings_caps_open">full status</string>
+    <string name="settings_cap_mind">mind</string>
+    <string name="settings_cap_hearing">hearing</string>
+    <string name="settings_cap_voice">voice</string>
+    <string name="settings_cap_map">map</string>
+    <string name="settings_cap_link">link</string>
+    <string name="settings_cap_mind_local">on this device</string>
+    <string name="settings_cap_mind_cloud">via the cloud</string>
+    <string name="settings_cap_mind_pc">via the PC</string>
+    <string name="settings_cap_mind_fetching">downloading</string>
+    <string name="settings_cap_mind_none">not here yet</string>
+    <string name="settings_cap_hearing_on">model present</string>
+    <string name="settings_cap_hearing_none">no model</string>
+    <string name="settings_hearing_fetch">download the hearing model</string>
+    <string name="settings_hearing_size">%1$d MiB</string>
+    <string name="settings_hearing_fetching">downloading the hearing model</string>
+    <string name="settings_hearing_percent">%1$d%%</string>
+    <string name="settings_hearing_failed">the hearing model could not be downloaded</string>
+    <string name="settings_hearing_retry">try again</string>
+    <string name="settings_cap_voice_on">on</string>
+    <string name="settings_cap_voice_off">off</string>
+    <string name="settings_cap_voice_fetching">fetching the live voice</string>
+    <string name="settings_cap_voice_offline">no network · system voice speaks</string>
+    <string name="settings_cap_voice_wifi">waiting for Wi-Fi</string>
+    <string name="settings_cap_voice_nospace">out of space</string>
+    <string name="settings_cap_voice_stalled">did not download</string>
+    <string name="settings_cap_voice_not_requested">system · premium not requested</string>
+    <string name="settings_voice_fetching">Fetching the live voice</string>
+    <!-- 05.09 privacy audit — the resting state on every fresh install: this tap is the consent LiveVoiceProvisioner now waits for. -->
+    <string name="settings_voice_fetch">Download the live voice</string>
+    <string name="settings_voice_size">%1$d MB</string>
+    <string name="settings_voice_allow_mobile">fetch the live voice over mobile data</string>
+    <string name="settings_voice_allow">allow</string>
+    <string name="settings_voice_nospace">no room for the live voice</string>
+    <string name="settings_voice_stalled">the live voice did not download</string>
+    <string name="settings_voice_offline">the live voice is waiting for a network</string>
+    <string name="settings_cap_map_offline">works offline</string>
+    <string name="settings_cap_map_online">only while online</string>
+    <string name="settings_cap_link_paired">Desktop nearby</string>
+    <string name="settings_cap_link_solo">solo</string>
+    <string name="settings_value_reading">reading…</string>
+    <string name="settings_mind_short_local">brain on device</string>
+    <string name="settings_mind_short_cloud">brain in the cloud</string>
+    <string name="settings_mind_short_fetching">fetching the brain</string>
+    <string name="settings_mind_short_absent">no brain yet</string>
+
+    <!-- Where the thinking happens — status, never a question. -->
+    <string name="settings_brain_fetching">building its mind · %1$d%%</string>
+    <string name="settings_brain_fetching_body">fetching the model itself. you can close this — it keeps going.</string>
+    <string name="settings_brain_absent">the mind is not on the device yet</string>
+    <string name="settings_brain_absent_body">Pair with a PC via QR or add a Gemini key</string>
+    <string name="settings_brain_failed">the mind failed to come up</string>
+    <string name="settings_keys_stored_body">From an older build</string>
+    <string name="settings_keys_clear">clear the keys</string>
+    <string name="settings_keys_clear_confirm">clear them for sure?</string>
+
+    <!-- Cloud-model key — used to be an input field with no resources at
+         all, living under notifications instead of next to the status
+         above. Removal stays settings_keys_clear's button; this is only
+         paste/change. -->
+    <string name="ai_key_title">Gemini key</string>
+    <string name="ai_key_body_unset">Not set</string>
+    <string name="ai_key_body_set">Connected</string>
+    <string name="ai_key_action_paste">Paste</string>
+    <string name="ai_key_action_change">Change</string>
+    <string name="ai_key_dialog_title">Google AI Studio key</string>
+    <string name="ai_key_dialog_body">Stored encrypted on this phone. Sent only to Google.</string>
+    <string name="ai_key_dialog_hint">AIza…</string>
+    <string name="ai_key_save">Save</string>
+    <string name="hf_key_title">Hugging Face token (gated models)</string>
+    <string name="hf_key_body_unset">Not set. Gated models won’t download.</string>
+    <string name="hf_key_body_set">Connected</string>
+    <string name="hf_key_dialog_title">Hugging Face token</string>
+    <string name="hf_key_dialog_body">Stored encrypted on the phone for huggingface.co only</string>
+    <string name="hf_key_dialog_hint">hf_…</string>
+
+    <!-- Voice and hearing. -->
+    <string name="settings_tts_title">Nightpost reads aloud</string>
+    <string name="settings_tts_body">answers are spoken in Ukrainian — while you are in the app</string>
+    <string name="settings_live_title">Live dialogue</string>
+    <string name="settings_live_body">the microphone stays open and picks up speech by itself</string>
+    <string name="settings_live_blocked">microphone off — live dialogue is paused</string>
+    <string name="settings_live_unmute">turn the microphone on</string>
+    <string name="settings_voice_open">test hearing and voice</string>
+
+    <!-- Privacy: the master mute, the soft screen gate, the three OS grants. -->
+    <string name="settings_mic_title">Turn off every microphone input</string>
+    <string name="settings_mic_body">Disables all voice inputs</string>
+    <string name="settings_mic_open">who is holding the microphone</string>
+    <string name="settings_screen_title">Pass the screen to the AI</string>
+    <string name="settings_screen_body">text from the screen enters the model\'s context</string>
+    <string name="settings_screen_blocked">grant «see the screen» first</string>
+    <string name="settings_perm_screen">see the screen</string>
+    <string name="settings_perm_screen_detail">accessibility — so it can act inside apps</string>
+    <string name="settings_alert_delivery_none">notifications off — the alert will not arrive</string>
+    <string name="settings_alert_delivery_none_detail">Visible only while the app is open</string>
+    <string name="settings_alert_delivery_quiet">alert channel muted — it will not wake you</string>
+    <string name="settings_alert_delivery_quiet_detail">The banner appears in the shade, without sound.</string>
+    <string name="settings_alert_delivery_ok">the alert reaches the shade</string>
+    <string name="settings_alert_delivery_caveat">System shells may delay notifications</string>
+    <string name="settings_perm_notif">read notifications</string>
+    <string name="settings_perm_notif_detail">Telegram, Viber and the rest</string>
+    <string name="settings_perm_battery">run in the background</string>
+    <string name="settings_perm_battery_detail">so the system does not put Nightpost to sleep</string>
+    <string name="settings_perm_granted">granted</string>
+    <string name="settings_perm_grant">grant</string>
+
+    <!-- Data that lives on the device. -->
+    <string name="settings_map_open">offline map</string>
+    <string name="settings_map_value_regions">regions saved: %1$d</string>
+    <string name="settings_map_value_none">no offline regions</string>
+    <string name="settings_licenses_open">data and licences</string>
+    <string name="settings_licenses_value">OpenStreetMap · ODbL 1.0</string>
+    <string name="settings_asset_ready">Ready</string>
+    <string name="settings_asset_absent">Not on the device</string>
+    <string name="settings_asset_absent_sized">Not on the device · %1$s</string>
+    <string name="settings_size_gb">%1$.1f GB</string>
+    <string name="settings_size_mb">%1$d MB</string>
+    <string name="settings_asset_fetching">Downloading · %1$d%%</string>
+    <string name="settings_asset_unwired">no engine for it yet</string>
+    <string name="settings_asset_get">download</string>
+    <string name="settings_asset_drop">delete</string>
+    <string name="settings_asset_import">take from a file</string>
+    <string name="settings_asset_about">about this</string>
+
+    <!-- Device: the desktop link, the overlay orb, the two child screens. -->
+    <string name="settings_pair_open">connect (QR)</string>
+    <string name="settings_unpair">unpair</string>
+    <string name="settings_unpair_confirm">unpair for sure?</string>
+    <string name="settings_unpair_body">Nightpost will run on its own. you can pair again from a QR.</string>
+    <string name="settings_pair_drop_stale">Pair again so messages arrive while PC is away</string>
+    <string name="settings_diag_open">diagnostics</string>
+    <string name="settings_symbiote_open">assistant</string>
+    <string name="settings_whisper_open">whisper</string>
+    <string name="settings_whisper_value">a thin line over other apps</string>
+
+    <!-- About. -->
+    <string name="settings_about_version">version</string>
+    <string name="settings_about_build">build</string>
+    <string name="settings_about_package">package</string>
+    <string name="settings_about_web">web messenger</string>
+
+    <!-- The danger zone: two steps, a cooldown, and named consequences. -->
+    <string name="settings_danger">danger zone</string>
+    <string name="settings_danger_empty">Nothing to delete yet</string>
+    <string name="settings_danger_drop_models">delete every downloaded model</string>
+    <string name="settings_danger_drop_title">Delete every downloaded model?</string>
+    <string name="settings_danger_drop_body">Deletes all downloaded models from this device</string>
+    <string name="settings_danger_yes">yes, delete</string>
+    <string name="settings_danger_no">no</string>
+    <string name="settings_danger_sure">really?</string>
+    <string name="settings_danger_wait">wait %1$d — so a stray tap cannot do this</string>
+    <string name="settings_danger_tap_again">tap once more to confirm · this cannot be undone</string>
+    <string name="settings_danger_commit">delete</string>
+    <string name="settings_danger_commit_wait">delete · %1$d</string>
+    <string name="settings_danger_cancel">cancel</string>
+    <string name="settings_saved">saved</string>
+    <string name="settings_back">← settings</string>
+
+    <!-- Who is holding the microphone, and what each owner is doing. -->
+    <string name="mic_state_muted">microphone off</string>
+    <string name="mic_state_active">microphone live · %1$d%%</string>
+    <string name="mic_state_idle">microphone not in use</string>
+    <string name="mic_owners_kicker">Microphone owners</string>
+    <string name="mic_status_active">listening</string>
+    <string name="mic_status_idle">waiting</string>
+    <string name="mic_status_muted">off</string>
+    <string name="mic_status_disabled">unavailable</string>
+
+    <!-- Diagnostics: read from live sources, never from a placeholder. -->
+    <string name="diag_kicker">DIAGNOSTICS</string>
+    <string name="diag_state">STATE</string>
+    <string name="diag_pair">pair</string>
+    <string name="diag_pair_none">none</string>
+    <string name="diag_sensors">sensors</string>
+    <string name="diag_gnss_title">POSITION · WEAK SIGNAL</string>
+    <string name="diag_gnss_body">Satellites, divergence, spoof detection</string>
+    <string name="diag_resources">RESOURCES</string>
+    <string name="diag_mem_pss">PSS memory</string>
+    <string name="diag_ram_free">free RAM</string>
+    <string name="diag_megabytes">%1$d MB</string>
+    <string name="diag_log">ERROR LOG · %1$d</string>
+    <string name="diag_clear">clear</string>
+    <string name="diag_empty">Quiet so far · every subsystem is up</string>
+    <string name="diag_constitution_title">REJECTED BY CONSTITUTION · %1$d</string>
+    <string name="diag_constitution_empty">Nothing rejected</string>
+    <string name="diag_axiom_operator_advocate">threatens the operator\'s independence</string>
+    <string name="diag_axiom_refusal_ok">acts without the operator\'s consent</string>
+    <string name="diag_axiom_conflict_transparency">hides a conflict of interest</string>
+    <string name="diag_axiom_power_asymmetry_guard">could harm someone vulnerable</string>
+    <string name="diag_axiom_sunset_clause">has no clear expiry</string>
+    <string name="diag_axiom_self_audit_daily">failed the daily self-check</string>
+
+    <!-- Data and licences: what is bundled, where it came from, under what terms. -->
+    <string name="lic_map">Map</string>
+    <string name="lic_map_body">Data © OpenStreetMap contributors, ODbL 1.0 (openstreetmap.org/copyright). Tiles — OpenFreeMap (openfreemap.org).</string>
+    <string name="lic_bundled">Bundled data</string>
+    <string name="lic_bundled_note">Derived OpenStreetMap databases (ODbL 1.0) and government open registers (CC BY 4.0) — terms noted per source.</string>
+    <string name="lic_poi">points of interest</string>
+    <string name="lic_streets">street names</string>
+    <string name="lic_transit">transport</string>
+    <string name="lic_oblasts">oblast borders</string>
+    <string name="lic_official_health">pharmacies and clinics</string>
+    <string name="lic_feeds">Live feeds</string>
+    <string name="lic_feed_alerts">Air-raid alerts</string>
+    <string name="lic_feed_threats">Alert types, districts</string>
+    <string name="lic_feed_details">Alert detail</string>
+    <string name="lic_feed_radar">Precipitation radar</string>
+    <string name="lic_feed_weather">Weather</string>
+    <string name="lic_fonts">Fonts</string>
+    <string name="lic_fonts_body">Inter, JetBrains Mono — SIL Open Font License 1.1.</string>
+    <!-- Its own section rather than a row under "bundled data": that section is
+         entirely ODbL, and this is a US Government public-domain work. Filing
+         one under the other's licence would be exactly the inaccuracy this
+         screen exists to prevent. -->
+    <string name="lic_model">Geophysical model</string>
+    <string name="lic_model_wmm_name">World Magnetic Model WMM2025</string>
+    <string name="lic_model_wmm">NOAA/NCEI · public domain · valid to 2030</string>
+    <string name="lic_engines">Engines</string>
+
+    <!-- Voice and hearing lab: what is running, and a five-second proof of it. -->
+    <string name="voice_engines">Running now</string>
+    <string name="voice_stt_models">Hearing models</string>
+    <string name="voice_clone_models">Voice clone</string>
+    <string name="voice_test_title">Hearing test</string>
+    <string name="voice_test_idle">Say something — you have 5 seconds</string>
+    <string name="voice_test_listening">Listening · %1$d s left</string>
+    <string name="voice_test_muted">Microphone is off</string>
+    <string name="voice_test_stt_off">Speech recognition is off</string>
+    <string name="voice_test_nothing">Heard nothing</string>
+    <string name="voice_test_heard">Heard you</string>
+    <string name="voice_test_button">Test 5 s</string>
+    <string name="voice_test_button_live">Listening…</string>
+
+    <!-- Voice character: ten shipped styles and five pace stops, each answered by the same probe phrase — the ear is the only honest picker among opaque names. -->
+    <string name="voice_character_title">Voice character</string>
+    <string name="voice_styles_male">male</string>
+    <string name="voice_styles_female">female</string>
+    <string name="voice_tempo_label">Pace</string>
+    <string name="voice_tempo_slow">slow</string>
+    <string name="voice_tempo_calm">calm</string>
+    <string name="voice_tempo_default">usual</string>
+    <string name="voice_tempo_fast">fast</string>
+    <string name="voice_tempo_max">brisk</string>
+    <string name="voice_tempo_slower_a11y">slower pace</string>
+    <string name="voice_tempo_faster_a11y">faster pace</string>
+    <string name="voice_preview_phrase">Nightpost is here. Moving with you.</string>
+    <string name="voice_preview_button">Voice preview</string>
+    <string name="voice_styles_fetch">fetch styles · ~3 MB</string>
+    <string name="voice_styles_fetching">downloading styles…</string>
+    <string name="voice_styles_missing_hint">Only some styles are on the device — the rest weigh ~3 MB total</string>
+    <string name="tts_route_baked">Nightpost · navigation pack</string>
+    <string name="tts_route_premium">Supertonic 3 · stream</string>
+    <string name="tts_route_system">system TTS (uk-UA)</string>
+    <string name="stt_route_hybrid">Moonshine + Vosk-UA</string>
+    <string name="stt_route_moonshine">Moonshine · Tiny UK</string>
+    <string name="stt_route_vosk">Vosk-UA</string>
+    <string name="route_off">off</string>
+    <!-- Voice: when the system voice speaks instead of the live one — a reason, not a guess by timbre. -->
+    <string name="voice_fallback_channel">Voice</string>
+    <string name="voice_fallback_channel_desc">when the system voice speaks instead of Nightpost\'s live voice</string>
+    <string name="voice_fallback_title">The system voice spoke</string>
+    <string name="voice_silent_title">The voice stayed silent</string>
+    <string name="voice_fallback_reason_not_loaded">the live voice is not loaded</string>
+    <string name="voice_fallback_reason_failed">the live voice failed on this line</string>
+    <string name="voice_fallback_reason_unproven">live voice not warmed up yet</string>
+    <string name="voice_fallback_reason_none">no voice spoke at all</string>
+    <string name="voice_fallback_line">At %1$s the system voice read the line: %2$s</string>
+    <string name="voice_silent_line">At %1$s no voice read the line</string>
+
+    <!-- Symbiote: what PHANTOM is allowed to notice about the body. -->
+    <string name="symbiote_kicker">ASSISTANT</string>
+    <string name="symbiote_group_body">the body</string>
+    <string name="symbiote_group_self">himself</string>
+    <string name="symbiote_haptic">haptic pulse of the state</string>
+    <string name="symbiote_haptic_hint">A 30-second tick that follows the current state</string>
+    <string name="symbiote_audit">daily self-audit</string>
+    <string name="symbiote_audit_hint">At 03:00 Nightpost checks itself for axiom drift</string>
+
+    <!-- Settings › Map: offline data and an honest source readout, no questions. -->
+    <string name="map_source_title">Map source</string>
+    <string name="map_source_reset">Restore the default source</string>
+    <string name="map_regions_title">Saved map areas</string>
+    <string name="map_regions_empty">No area saved yet</string>
+    <string name="map_regions_open_map">Open the map</string>
+    <string name="map_region_ready">Ready · %1$s MB · %2$d tiles</string>
+    <string name="map_region_progress">%1$d%% · %2$s MB</string>
+    <string name="map_region_waiting">Waiting for tiles · %1$s MB</string>
+    <string name="map_region_drop">Delete area</string>
+    <string name="map_online_title">Online geo services</string>
+    <string name="map_online_off">Off</string>
+    <string name="map_online_on">On</string>
+    <string name="diag_sensor_live">live</string>
+    <string name="diag_sensor_idle">idle</string>
+    <string name="diag_sensor_off">off</string>
+    <string name="diag_sev_info">info</string>
+    <string name="diag_sev_warn">warning</string>
+    <string name="diag_sev_error">error</string>
+    <string name="diag_sev_critical">critical</string>
+    <string name="diag_link_connected">connected</string>
+    <string name="diag_link_connecting">connecting</string>
+    <string name="diag_link_disconnected">disconnected</string>
+    <string name="mic_owner_ptt">Push-to-talk</string>
+    <string name="mic_owner_live">Live dialogue</string>
+
+    <!-- Phase 2-A5 — sttEnabled had no writer anywhere; this switch is it. -->
+    <string name="mic_stt_title">Voice input (STT)</string>
+    <string name="model_fetch_failed">could not download %1$s</string>
+    <string name="model_role_brain">the brain</string>
+    <string name="model_role_hearing">hearing</string>
+    <string name="model_role_voice">the voice</string>
+    <string name="model_role_sounds">sound recognition</string>
+    <string name="model_role_memory">memory search</string>
+    <string name="model_role_meaning">meaning search</string>
+    <string name="err_region_save_failed">could not start saving the region · details in Diagnostics</string>
+    <string name="err_symbiote_audit_drift">self-audit: %1$d divergences, %2$d rules expired</string>
+    <string name="stop_all_tile">Stop everything</string>
+    <string name="err_tool_refused_source">Constitution</string>
+    <string name="err_tool_refused">Action "%1$s" blocked by safety policy</string>
+    <string name="app_name">Nightpost</string>
+
+    <!-- One standing row: the sky first, the pipes after. -->
+    <string name="status_channel">Nightpost · state</string>
+    <string name="status_channel_desc">Nightpost is running</string>
+
+
+
+
+
+    <string name="nav_service_channel">Nightpost · Navigation</string>
+    <string name="nav_service_channel_desc">Keeps the route running while the app is in the background.</string>
+    <string name="nav_service_status_default">Navigation running</string>
+    <string name="nav_service_status_waiting">Navigation · waiting for a signal</string>
+    <string name="accessibility_description">Lets Nightpost see the active windows so it can help with context.</string>
+    <string name="peer_channel">Nightpost · messages</string>
+    <string name="peer_channel_buzz">%1$s · vibrate only</string>
+    <string name="peer_channel_desc">Someone of yours wrote — arrives even with the app closed</string>
+    <string name="peer_me">Me</string>
+
+    <string name="peer_reply">Reply</string>
+    <string name="peer_reply_hint">Write…</string>
+    <string name="peer_reply_failed">Not sent. Open the chat.</string>
+    <string name="peer_quick_ack">Got it</string>
+    <string name="peer_mark_read">Mark read</string>
+
+    <string name="peer_lock_redacted">New message</string>
+    <plurals name="peer_summary_chats">
+        <item quantity="one">%d conversation</item>
+        <item quantity="other">%d conversations</item>
+    </plurals>
+
+    <string name="mission_lock_redacted">Task running</string>
+    <string name="reminder_title">Reminder</string>
+
+
+
+    <string name="lock_reveal_title">Lock screen</string>
+    <string name="lock_reveal_body">What shows before you unlock</string>
+    <string name="lock_reveal_hidden">Nothing</string>
+    <string name="lock_reveal_hidden_cost">No notification row at all</string>
+    <string name="lock_reveal_system">Follow phone settings</string>
+    <string name="lock_reveal_system_cost">Default. Name and text when the phone shows them</string>
+    <string name="lock_reveal_redacted">Only “New message”</string>
+    <string name="lock_reveal_redacted_cost">No name, no text.</string>
+    <string name="lock_reveal_full">Name and text</string>
+    <string name="lock_reveal_full_cost">Anyone holding the phone can read it</string>
+    <plurals name="lock_reveal_exceptions">
+        <item quantity="one">%d conversation with its own rule</item>
+        <item quantity="other">%d conversations with their own rule</item>
+    </plurals>
+    <string name="lock_reveal_reset">Clear the exceptions</string>
+    <string name="mission_channel">Long missions</string>
+    <string name="mission_notif_idle">mission finishing</string>
+    <string name="mission_notif_many">%1$d missions running</string>
+    <string name="mission_notif_progress">step %1$d of %2$d · %3$d min</string>
+    <string name="mission_notif_stop">stop</string>
+    <string name="settings_proactive_title">Speaks first</string>
+    <string name="settings_proactive_body">Brief heads-ups without being asked</string>
+    <string name="license_title">Licence</string>
+    <string name="license_kicker">rights for this copy</string>
+    <string name="license_state_active">Licence active</string>
+    <string name="license_state_trial">Trial period</string>
+    <string name="license_state_free">Free tier</string>
+    <string name="license_state_broken">Certificate does not verify</string>
+    <string name="license_state_foreign">Certificate belongs to another device</string>
+    <string name="license_state_revoked">Licence revoked</string>
+    <string name="license_state_outdated">Build retired</string>
+    <string name="license_state_stale">Long without a check-in</string>
+    <string name="license_tier_free">Free</string>
+    <string name="license_tier_personal">Personal</string>
+    <string name="license_tier_crew">Crew</string>
+    <string name="license_tier_unit">Unit</string>
+    <string name="license_safety_note">Navigation, alerts, map and vault always work.</string>
+    <string name="license_signature_section">Build signature</string>
+    <string name="license_signature_foreign">This copy was not signed by us.</string>
+    <string name="license_signature_meaning">It was repackaged and signed with a different key after we released the build. We switch nothing off because of that: navigation, alerts, map and vault work as usual. But this copy does not send its licence certificate, so a paid key will not activate on it. What else was changed in it, we cannot say.</string>
+    <string name="license_signature_found">Signature of this copy</string>
+    <string name="license_signature_expected">Signature of our builds</string>
+    <string name="license_signature_row">Not signed by us</string>
+    <string name="license_key_hint">PHTM-XXXXX-XXXXX-XXXXX-XXXXX</string>
+    <string name="license_key_label">Licence key</string>
+    <string name="license_activate">Activate</string>
+    <string name="license_release">Release this device</string>
+    <string name="license_recheck">Check now</string>
+    <string name="license_err_malformed">That key has a typo</string>
+    <string name="license_err_notfound">No such key</string>
+    <string name="license_err_limit">All activations used — release another device first</string>
+    <string name="license_err_revoked">This licence was revoked</string>
+    <string name="checkout_section">Buy on Google Play</string>
+    <string name="checkout_buy">Buy</string>
+    <string name="checkout_restore">Restore purchase</string>
+    <string name="checkout_note">Paid via Google Play. Key activates automatically.</string>
+    <string name="checkout_loading">Prices from Google Play have not loaded yet.</string>
+    <string name="checkout_working">Checking the purchase with Google Play…</string>
+    <string name="checkout_pending">Waiting for payment confirmation from Google Play</string>
+    <string name="checkout_activated">Purchase confirmed, licence activated.</string>
+    <string name="checkout_nothing">This Google Play account has no Nightpost purchases.</string>
+    <string name="checkout_unavailable">Google Play is unavailable on this device</string>
+    <string name="checkout_failed">Purchase failed (%1$d). Try Restore purchase.</string>
+    <string name="license_err_network">No connection to the licence server</string>
+    <string name="license_trial_left">%1$d days of trial left</string>
+    <string name="license_grace_left">%1$d days before a check-in is required</string>
+    <string name="license_updates_until">Updates included until %1$s</string>
+    <string name="license_device_id">Device fingerprint · %1$s</string>
+    <string name="license_features_title">What is unlocked</string>
+    <string name="license_feature_trial_only">until trial ends</string>
+    <string name="license_feature_core_chat">Chat and dialogue memory</string>
+    <string name="license_feature_core_map">Map</string>
+    <string name="license_feature_core_nav">Navigation</string>
+    <string name="license_feature_core_alerts">Alerts</string>
+    <string name="license_feature_core_vault">Vault</string>
+    <string name="license_feature_core_voice">Voice</string>
+    <string name="license_feature_bridge_pair">Bridge to the desktop</string>
+    <string name="license_feature_memory_longterm">Long-term memory</string>
+    <string name="license_feature_map_terrain3d">3D terrain and city</string>
+    <string name="license_feature_voice_premium">Premium voice</string>
+    <string name="license_feature_gnss_blackbox">GNSS black box</string>
+    <string name="license_feature_export_reports">Report export</string>
+    <string name="license_feature_crew_sync">Crew sync</string>
+    <string name="license_feature_fleet_onprem">Unit-owned server</string>
+    <string name="license_release_confirm">Release for sure?</string>
+    <string name="update_headline">Version %1$s is out</string>
+    <string name="update_detail">You have %1$s. File signature is verified before install.</string>
+    <string name="update_detail_cabinet">You have %1$s. File %2$s, %3$s — download it in your cabinet.</string>
+    <string name="update_fetch">Download (%1$s)</string>
+    <string name="update_progress">Downloading · %1$s of %2$s</string>
+    <string name="update_verifying">Checking the sum against the signed policy…</string>
+    <string name="update_ready">The sums match. The system install dialog comes next.</string>
+    <string name="update_install">Install</string>
+    <string name="update_pause">Stop</string>
+    <string name="update_stalled">Download interrupted — retrying</string>
+    <string name="update_no_space">Not enough space: %1$s more needed</string>
+    <string name="update_mismatch_headline">The sum does not match</string>
+    <string name="update_mismatch">Checksum mismatch. File deleted.</string>
+    <string name="update_unknown_sources">Android will ask for permission to install from this source</string>
+    <string name="update_file">File %1$s, %2$s</string>
+    <string name="update_open">Update</string>
+    <string name="update_later">Later</string>
+    <string name="update_checksum">Check the sha256 before installing:</string>
+    <string name="update_none">This is the newest build we know of</string>
+    <string name="update_via_dapp_store">Updates arrive through the Solana dApp Store</string>
+    <string name="update_developer">This is a developer build — cabinet updates are not offered</string>
+    <string name="update_locked">Version %1$s is out (requires an active key)</string>
+    <string name="update_section">Update</string>
+
+    <string name="pair_without">Without a computer for now</string>
+    <string name="settings_pair_trial">trial · %1$d d</string>
+    <string name="pair_gate_headline">Bridge to the desktop — Personal tier</string>
+    <string name="pair_gate_body">Needs the Personal plan. The phone works fully without it.</string>
+
+    <!-- Node messenger. Delivery words say exactly what the phone knows:
+         clock — the node holds the letter, tick — the letter is in the node's
+         database. Whether a person read it, the phone does not know. -->
+
+    <!-- Conversation list -->
+
+
+
+    <!-- The feed -->
+
+    <!-- Attachments from the phone -->
+
+    <!-- Composer -->
+
+    <!-- The «I am here» point -->
+
+    <!-- A node message in the shade -->
+
+    <!-- Circles -->
+
+    <string name="update_wrong_package">Package mismatch. Installation cancelled.</string>
+    <string name="update_wrong_signer">Signature mismatch. Installation cancelled.</string>
+
+    <!-- Messenger: attachment hub -->
+
+    <!-- Messenger: polls -->
+
+    <!-- Messenger: task lists -->
+
+    <!-- Messenger: events -->
+
+    <!-- Messenger: split bill -->
+
+    <!-- Messenger: code blocks -->
+
+    <!-- Messenger: voice messages -->
+
+    <!-- Messenger: conversation digest -->
+
+    <!-- Messenger: audio calls -->
+
+    <!-- Messenger: message actions -->
+
+    <!-- Messenger: new conversation -->
+
+    <!-- Messenger: transport and verification -->
+
+    <!-- Messenger: profile and spheres -->
+
+    <!-- Messenger: tables and charts -->
+
+    <!-- Messenger: quote synthesis -->
+
+    <!-- Messenger: location dossier -->
+
+    <!-- Messenger: scheduled messages -->
+
+    <!-- Messenger: group details -->
+
+    <!-- Messenger: P2P diagnostics -->
+
+    <!-- Messenger: desktop node source (WebMessengerScreen) -->
+    <string name="msgr_web_exit">leave the messenger</string>
+    <string name="msgr_files_bad_body">empty request</string>
+    <string name="msgr_files_no_conversation">no conversation was named</string>
+    <string name="msgr_files_empty">Empty attachment</string>
+    <string name="msgr_files_unreadable">the attachment cannot be read</string>
+    <string name="msgr_files_empty_file">there is nothing in an empty file to carry</string>
+    <string name="msgr_files_too_big">larger than %1$d MB — too big to send this way</string>
+    <string name="msgr_save_bad_body">nothing to save — the file could not be read</string>
+    <string name="msgr_save_too_big">larger than %1$d MB — the phone will not save it</string>
+    <string name="msgr_save_bad_mime">Disallowed or mismatched file type</string>
+    <string name="msgr_save_failed">could not write the file to the phone\'s storage</string>
+    <string name="msgr_files_no_store">could not put the file on disk</string>
+    <string name="false_position_channel">False position</string>
+    <string name="false_position_title">The world sees a different point</string>
+    <string name="false_position_text">Reporting %1$.5f, %2$.5f to other apps</string>
+    <string name="false_position_stop">Show the truth again</string>
+    <string name="false_position_refused">False position did not start</string>
+    <string name="false_position_row_title">False position for other apps</string>
+    <string name="false_position_row_off">Off — reporting real position</string>
+    <string name="false_position_row_on">The world sees %1$.5f, %2$.5f</string>
+    <string name="false_position_row_set">Set a point</string>
+    <string name="false_position_row_stop">Turn off</string>
+    <string name="false_position_row_open_dev">Developer options</string>
+    <string name="false_position_dialog_title">Which point to show the world</string>
+    <string name="false_position_dialog_body">Select Nightpost as mock location app in developer options.</string>
+    <string name="false_position_lat">Latitude</string>
+    <string name="false_position_lon">Longitude</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="bg_loc_title">Trail off screen</string>
+    <string name="bg_loc_on">Allowed all the time</string>
+    <string name="bg_loc_off">Only while the screen is on; the trail will have gaps</string>
+    <string name="bg_loc_needs_fine">Precise location access is needed first.</string>
+    <string name="dir_row_title">My name for search</string>
+    <string name="dir_row_off">Not published</string>
+    <string name="dir_row_republish">Publish again</string>
+    <string name="dir_change_title">Change the name</string>
+    <string name="dir_withdraw_title">Remove the name from the directory</string>
+    <string name="dir_row_change">Change</string>
+    <string name="dir_row_withdraw">Withdraw</string>
+    <string name="dir_dialog_title">The name people will find you by</string>
+    <string name="dir_dialog_body">Found only by the full name. Short names are easy to guess.</string>
+    <string name="dir_dialog_label">8–32 characters: latin letters, digits, underscore</string>
+    <string name="dir_dialog_findable">People will find you by this nickname</string>
+    <string name="dir_dialog_save">Publish</string>
+    <string name="dir_working">One moment…</string>
+    <string name="dir_err_no_route">No such path in the directory.</string>
+    <string name="dir_err_no_address">Search by name isn’t available in this build.</string>
+    <string name="dir_err_unreachable">The search server didn’t answer. Try again later.</string>
+    <string name="dir_err_not_proven">Record signature does not match its key</string>
+    <string name="dir_err_bad_handle">8–32 characters: lowercase latin letters, digits, underscore.</string>
+    <string name="dir_err_none">No such name in the directory.</string>
+    <string name="dir_err_taken">That name already belongs to somebody else.</string>
+    <string name="dir_err_no_identity">The phone does not have its own key yet.</string>
+    <string name="dir_err_refused">The server refused and gave no reason.</string>
+    <string name="settings_brain_order">who answers first</string>
+    <string name="settings_brain_order_cloud_first">cloud first</string>
+    <string name="settings_brain_order_local_first">on-device first</string>
+    <string name="settings_brain_order_local_only">on-device only</string>
+    <string name="settings_brain_order_cloud_only">cloud only</string>
+    <string name="settings_brain_order_cloud_first_body">Faster; the question leaves the phone</string>
+    <string name="settings_brain_order_local_first_body">Stays on the phone when it can</string>
+    <string name="settings_brain_order_local_only_body">Never leaves the phone; some questions go unanswered</string>
+    <string name="settings_brain_order_cloud_only_body">Needs a network and a key</string>
+    <string name="settings_brain_no_key_fact">No key — on-device model answers</string>
+    <string name="settings_brain_no_key_nothing">No cloud key and no on-device model</string>
+    <string name="peer_typed_service_prefix">Reserved frame prefix — add a character in front</string>
+    <string name="peer_frame_broken">Device frame is damaged</string>
+    <string name="peer_reply_refused">Not sent: the line began like a device frame.</string>
+    <string name="peer_reply_key_hold">Not sent: safety key changed. Open the chat.</string>
+    <string name="link_preview_row">Link previews</string>
+    <string name="cloud_backup_row">Cloud backup</string>
+    <string name="cloud_backup_held">Backup can\'t be restored</string>
+    <string name="cloud_backup_no_cloud">Cloud copy unavailable: this phone only</string>
+    <string name="cloud_backup_weak">Backup: weak protection · no screen lock</string>
+    <string name="cloud_backup_set_lock">Turn on screen lock</string>
+    <string name="msgr_bridge_key_hold">the safety key changed — verify the contact or tap Continue</string>
+    <string name="msgr_say_voice">Voice · %1$s (playback not supported yet)</string>
+    <string name="msgr_say_event">Event: "%1$s" · %2$s at %3$s</string>
+    <string name="msgr_say_event_where">Event: "%1$s" · %2$s at %3$s · %4$s</string>
+    <string name="msgr_say_bodiless">Empty attachment — no data</string>
+    <string name="msgr_say_unknown">This app cannot show this content yet (%1$s).</string>
+    <string name="msgr_say_empty">The "%1$s" card arrived with no content — there is nothing to show.</string>
+    <string name="msgr_group_sys_add">%1$s adds %2$s</string>
+    <string name="msgr_group_sys_add_you_actor">you add %1$s</string>
+    <string name="msgr_group_sys_add_you_object">%1$s adds you</string>
+    <string name="msgr_group_sys_rm">%1$s removes %2$s</string>
+    <string name="msgr_group_sys_rm_you_actor">you remove %1$s</string>
+    <string name="msgr_group_sys_rm_you_object">%1$s removes you from the group</string>
+    <string name="msgr_group_sys_leave">%1$s leaves the group</string>
+    <string name="msgr_group_sys_leave_you">you leave the group</string>
+    <string name="msgr_group_sys_rename">%1$s renames the group to "%2$s"</string>
+    <string name="msgr_group_sys_rename_you">you rename the group to "%1$s"</string>
+    <string name="msgr_group_opening">Started a group. Let\'s talk here.</string>
+    <string name="msgr_group_needs_people">Select at least one person</string>
+    <string name="msgr_group_gone">You are no longer in the group</string>
+    <string name="msgr_group_full">the group already holds as many people as it can</string>
+    <string name="msgr_group_no_key">this person has no key — a fresh invite is needed</string>
+    <string name="msgr_group_not_member">this person is not in the group</string>
+    <string name="msgr_group_unsent">Not sent: no reachable members in the group</string>
+    <string name="msgr_group_avatar_too_big">Image too large — choose a smaller one</string>
+    <!-- Roles in a branch. Every line is a REASON the receiver refused
+         (PeerGroupRoles.Why), never «it did not work»: an honest build will
+         not apply an act without authority, and the person must know which
+         authority is missing. -->
+    <string name="msgr_group_why_not_in_group">you are not in this branch — you act on it in no way at all</string>
+    <string name="msgr_group_why_subject_gone">this person is not in the roster</string>
+    <string name="msgr_group_why_needs_moderator">a moderator or above can do this</string>
+    <string name="msgr_group_why_needs_admin">an administrator or above can do this</string>
+    <string name="msgr_group_why_needs_owner">only the owner of the branch can do this</string>
+    <string name="msgr_group_why_outranks">Cannot act on a member of equal or higher rank</string>
+    <string name="msgr_group_why_role_too_high">you cannot hand out a rank that is not below your own</string>
+    <string name="msgr_group_why_no_change">this person already holds exactly that rank</string>
+    <string name="msgr_group_why_already_in">this person is already in the roster</string>
+    <string name="msgr_group_why_self">this is not done to oneself: leaving is a separate act</string>
+    <string name="msgr_group_about_too_big">the description is too long for a branch — shorter</string>
+    <!-- Rank changes in the feed. The wire carries the verb, not the words. -->
+    <string name="msgr_group_sys_grant">%1$s makes %2$s: %3$s</string>
+    <string name="msgr_group_sys_grant_you_actor">you make %1$s: %2$s</string>
+    <string name="msgr_group_sys_grant_you_object">%1$s makes you: %2$s</string>
+    <string name="msgr_group_sys_own">%1$s hands the branch to %2$s</string>
+    <string name="msgr_group_sys_own_you_actor">you hand the branch to %1$s</string>
+    <string name="msgr_group_sys_own_you_object">%1$s hands the branch to you</string>
+    <string name="msgr_group_sys_pin">%1$s pins a line</string>
+    <string name="msgr_group_sys_pin_you">you pin a line</string>
+    <string name="msgr_group_sys_unpin">%1$s unpins</string>
+    <string name="msgr_group_sys_unpin_you">you unpin</string>
+    <string name="msgr_group_sys_about">%1$s changes the branch description</string>
+    <string name="msgr_group_sys_about_you">you change the branch description</string>
+    <string name="msgr_group_sys_face">%1$s changes the branch face</string>
+    <string name="msgr_group_sys_face_you">you change the branch face</string>
+    <string name="msgr_group_why_no_right">the owner has not given you this right</string>
+    <string name="msgr_group_sys_settings">%1$s changes group settings</string>
+    <string name="msgr_group_sys_settings_you">you change group settings</string>
+    <string name="msgr_group_sys_rights">%1$s changes rights: %2$s</string>
+    <string name="msgr_group_sys_rights_you">you change rights: %1$s</string>
+    <string name="msgr_group_slow">Slow mode: %1$d s left</string>
+    <string name="msgr_group_channel_admins">Only admins post here</string>
+    <string name="msgr_group_role_owner">owner</string>
+    <string name="msgr_group_role_admin">administrator</string>
+    <string name="msgr_group_role_mod">moderator</string>
+    <string name="msgr_group_role_member">member</string>
+    <string name="msgr_group_ai_author">Nightpost</string>
+    <string name="msgr_group_no_files">Files in groups are not supported yet</string>
+    <string name="msgr_group_past_none">History on this phone starts at %1$s</string>
+    <string name="msgr_group_past_empty">There are no earlier letters on this phone.</string>
+    <string name="msgr_group_past_ask">Ask the others for the history</string>
+    <string name="msgr_group_past_asked">Requested history from %1$s</string>
+    <string name="msgr_group_past_nobody">No members with a shared key</string>
+    <string name="msgr_group_retold">retold via %1$s, %2$s</string>
+    <string name="msgr_group_retold_unsigned">Retold copy — vouched for by the sender</string>
+    <string name="invite_link_pc">This is a PC code. Connect it in Devices.</string>
+    <string name="peer_group_not_in_messenger">Groups aren\'t shown here yet. The message is kept.</string>
+    <string name="msgr_web_link_refused">The messenger does not open links of that kind.</string>
+    <string name="msgr_web_link_no_browser">Nothing can open the link: there is no browser on this device.</string>
+    <string name="agency_council_halted">Council stopped at \'%1$s\': %2$s</string>
+    <string name="agency_agent_architect">System Designer</string>
+    <string name="agency_agent_architect_badge">Topology &amp; DB contracts</string>
+    <string name="agency_agent_red_team">Red Team / Challenger</string>
+    <string name="agency_agent_red_team_badge">Security &amp; race conditions</string>
+    <string name="agency_agent_hardware">Performance Profiler</string>
+    <string name="agency_agent_hardware_badge">O(N) complexity &amp; memory</string>
+    <string name="agency_agent_synthesizer">Lead Synthesizer</string>
+    <string name="agency_agent_synthesizer_badge">Consensus &amp; finished result</string>
+    <string name="agency_council_finished">🏛️ Agents that spoke: %1$d.</string>
+    <string name="agency_no_reply">the model did not answer</string>
+    <string name="agency_tool_missing">There is no tool \'%1$s\' on this device — nothing was run.</string>
+    <string name="agency_memory_empty">Memory is empty</string>
+    <string name="agency_no_ai_route">none (no cloud key and no on-device model)</string>
+    <string name="agency_pc_open_usage">⚠️ Name the link or path to open: `!pc.open &lt;url|path&gt;`</string>
+    <string name="agency_pc_open_ok">🖥️ **[PC Symbiote]**: Opened on the desktop: `%1$s`</string>
+    <string name="agency_pc_open_fail">🖥️ **[PC Symbiote]**: pc.open refused: %1$s</string>
+    <string name="agency_pc_clipboard_usage">⚠️ Name the text for the clipboard: `!pc.clipboard &lt;text&gt;`</string>
+    <string name="agency_pc_clipboard_ok">Copied to PC clipboard: %1$s...</string>
+    <string name="agency_pc_clipboard_fail">🖥️ **[PC Symbiote]**: Clipboard error: %1$s</string>
+    <string name="agency_pc_type_usage">⚠️ Name the text to type: `!pc.type &lt;text&gt;`</string>
+    <string name="agency_pc_type_ok">🖥️ **[PC Symbiote]**: Typed on the PC: `%1$s`</string>
+    <string name="agency_pc_type_fail">🖥️ **[PC Symbiote]**: Typing error: %1$s</string>
+    <string name="agency_pc_lock_ok">🔒 **[PC Symbiote]**: The PC screen is locked.</string>
+    <string name="widget_link_pc">PC · CONNECTED</string>
+    <string name="widget_link_solo">Nightpost · NO PC</string>
+    <string name="agency_pc_lock_fail">🔒 **[PC Symbiote]**: Reply: %1$s</string>
+    <string name="agency_pc_notify_title">Notice from Nightpost</string>
+    <string name="agency_pc_notify_body">A message from the phone</string>
+    <string name="agency_pc_notify_ok">Notice sent to PC: %1$s</string>
+    <string name="agency_pc_notify_fail">🔔 **[PC Symbiote]**: Notice error: %1$s</string>
+    <string name="agency_pc_no_link">no link to the PC</string>
+    <string name="agency_pc_not_paired">PC not connected. Open Devices.</string>
+    <string name="agency_pc_state">PC: %1$s · %2$s · %3$s</string>
+    <string name="agency_pc_link">Link: %1$s</string>
+    <string name="agency_pc_unpaired">Not paired</string>
+    <string name="agency_memory_header">🧠 **Operator long-term memory (%1$d facts):**</string>
+    <string name="agency_council_usage">Usage: !agency.council &lt;task&gt;</string>
+    <string name="agency_council_handoff">Handing task to the Council of Agents</string>
+    <string name="agency_tool_denied">Access denied: %1$s</string>
+    <string name="agency_tool_cancelled">Cancelled</string>
+    <string name="agency_model_link_error">the link to the model failed</string>
+    <string name="agency_dialogue_error">⚡ Processing failed: %1$s. Check the Gemini key settings.</string>
+    <string name="msgr_profile_avatar_unreadable">the avatar did not read — the bytes arrived damaged</string>
+    <string name="msgr_profile_avatar_kind">the avatar must be WebP or JPEG — the wire carries no other kind</string>
+    <string name="msgr_profile_too_big">Field \"%1$s\": +%2$d B over %3$d limit</string>
+    <string name="msgr_profile_frame_failed">the profile frame did not compose</string>
+    <string name="msgr_bridge_bad_body">empty request</string>
+    <string name="msgr_bridge_no_path">no such path: %1$s</string>
+    <string name="msgr_bridge_no_route">no such path: %1$s %2$s</string>
+    <string name="msgr_bridge_not_bridged">the phone bridge does not carry this yet: %1$s</string>
+    <string name="msgr_bridge_new_project">New Project</string>
+    <string name="msgr_bridge_new_topic">Multi-agent development</string>
+    <string name="msgr_report_subject">Nightpost — report a person</string>
+    <string name="msgr_report_intro">Reporting a user in Nightpost. Details below:</string>
+    <string name="msgr_bridge_no_contact">there is no such contact</string>
+    <string name="paired_pc_name">My computer</string>
+    <string name="msgr_pulse_not_sharing">this person is no longer sharing a place</string>
+    <string name="msgr_link_narrow">weak signal — text goes first</string>
+    <string name="msgr_where_not_ready">you can\'t show this person where you are yet</string>
+    <string name="msgr_where_gone">this person is no longer showing where they are</string>
+    <string name="msgr_where_bad_choice">the menu offers no such precision or duration</string>
+    <string name="msgr_bridge_no_speaker">there is no such correspondent</string>
+    <string name="msgr_bridge_needs_contact">a conversation starts from a contact, not from a title</string>
+    <string name="msgr_bridge_bad_title">Empty title</string>
+    <string name="msgr_bridge_bad_json">the request did not read as JSON — nothing was signed</string>
+    <string name="msgr_claim_bad_size">file size out of range: storage takes 1 byte to 2 GiB</string>
+    <string name="msgr_claim_bad_key">not an attachment key — no claim will be signed for it</string>
+    <string name="msgr_claim_bad_op">unknown claim kind: only \'put\' or \'get\'</string>
+    <string name="msgr_bridge_no_conversation">there is no such conversation</string>
+    <string name="msgr_bridge_no_message">there is no such letter</string>
+    <string name="msgr_pair_bad_input">This does not look like the computer\'s QR</string>
+    <string name="msgr_bridge_place_unreadable">the place did not read — no frame was composed</string>
+    <string name="msgr_bridge_reaction_unreadable">the mark did not compose into a frame — the emoji did not go</string>
+    <string name="msgr_bridge_me">Me</string>
+    <string name="msgr_bridge_kind_not_carried">this build does not carry the kind \"%1$s\" — the letter did not go</string>
+    <string name="msgr_bridge_card_unreadable">the card did not read — no frame was composed</string>
+    <string name="msgr_bridge_card_too_big">the card is too big for one frame — split it</string>
+    <string name="peer_card_notification">New card</string>
+    <string name="gift_notification">Gift</string>
+    <string name="moment_notification">a new moment</string>
+    <string name="msgr_bridge_edit_not_mine">only your own letter can be rewritten</string>
+    <string name="msgr_bridge_edit_not_words">a device composed this letter, not words — it is not rewritten</string>
+    <string name="msgr_bridge_edit_too_long">the edit is too long to travel the wire — shorten it</string>
+    <string name="msgr_bridge_edit_window">more than 48 hours have passed — this message can no longer be edited</string>
+    <string name="msgr_bridge_not_mine">of someone else\'s letter this phone knows only its own copy</string>
+    <string name="msgr_bridge_empty_text">empty letter</string>
+    <string name="msgr_bridge_sched_past">that time has already passed</string>
+    <string name="msgr_bridge_sched_gone">this letter is no longer scheduled</string>
+    <string name="msgr_saved_title">Saved</string>
+    <string name="msgr_saved_permanent">Saved can only be cleared</string>
+    <string name="msgr_saved_kind_not_kept">Kind \"%1$s\" is not supported in Saved yet</string>
+    <string name="msgr_bridge_media_unreadable">a voice or video note without its attachment — not sent</string>
+    <string name="msgr_saved_media_unreadable">Media note without attachment — not saved</string>
+    <string name="msgr_bridge_add_who">it was not said whom to add</string>
+    <string name="msgr_bridge_bad_key">the code does not read, or it has expired</string>
+    <string name="msgr_bridge_no_invite">the text holds no PH2 invite code and no node address</string>
+    <string name="msgr_bridge_node_name">Node %1$s</string>
+    <string name="msgr_bridge_no_identity">the phone has no key of its own yet</string>
+    <string name="msgr_bridge_peer_no_key">this contact has no key — a fresh invite is needed</string>
+    <string name="msgr_bridge_pin_unsupported">Their app doesn\'t take shared pins yet</string>
+    <!-- Meetup scene: places, points, marks on a card. Bridge refusals in words. -->
+    <string name="msgr_scene_no_fix">Position unknown — nearby places unavailable</string>
+    <string name="msgr_scene_place_coarse">Position is approximate — a precise fix is needed</string>
+    <string name="msgr_scene_bad_stars">A rating is a whole number from 1 to 5.</string>
+    <string name="msgr_scene_no_venue">There is no such place.</string>
+    <string name="msgr_scene_no_key">This phone has no device key, so there is nothing to sign with.</string>
+    <string name="msgr_scene_not_enabled">The places and points server is not switched on yet.</string>
+    <string name="msgr_scene_unreachable">The server did not answer. Try again when you have a connection.</string>
+    <string name="msgr_scene_limited">Too many requests — wait a little.</string>
+    <string name="msgr_scene_refused">The server said no.</string>
+    <string name="msgr_scene_bad_answer">The server answered in a way that cannot be read.</string>
+    <string name="msgr_scene_not_found">There is no such path.</string>
+    <string name="msgr_scene_points_test_only">For now points count only transfers made on the test network.</string>
+    <string name="msgr_scene_points_built_in">Points count only from the built-in wallet</string>
+    <string name="msgr_scene_bad_body">The request could not be read.</string>
+    <string name="msgr_scene_no_wallet">There is no wallet on this phone, so there is nothing to claim.</string>
+    <string name="msgr_scene_mark_bad">This mark is not accepted.</string>
+    <string name="msgr_scene_not_card">A mark can only go on a meetup or bill card.</string>
+    <string name="msgr_scene_checkin_no_fix">Position unknown — cannot check in</string>
+    <string name="msgr_scene_near_stale">Turn location on to see places nearby</string>
+    <string name="msgr_scene_peer_old">Contact needs a newer app version for marks</string>
+    <string name="msgr_scene_mark_failed">The tap did not go through. Try again.</string>
+    <string name="msgr_bridge_second_door">this message is already in the conversation — the reply arrives there</string>
+    <string name="msgr_bridge_no_license_host">No ICE server configured in this build</string>
+    <string name="msgr_bridge_ice_http">the ICE node answered HTTP %1$d</string>
+    <string name="msgr_bridge_ice_bad_answer">the ICE node\'s answer was malformed</string>
+    <string name="msgr_bridge_ice_dns">ICE: could not find the address %1$s</string>
+    <string name="msgr_bridge_ice_tls">ICE: secure connection failed — %1$s</string>
+    <string name="msgr_bridge_ice_timeout">ICE: node %1$s did not answer in time</string>
+    <string name="msgr_bridge_ice_connect">ICE: could not connect — %1$s</string>
+    <string name="msgr_bridge_call_no_address">there is no address for this person — the call has nowhere to go</string>
+    <string name="msgr_bridge_call_refused">the person\'s node did not take the signal</string>
+    <string name="msgr_bridge_call_kind">unknown call signal kind: %1$s</string>
+    <string name="msgr_bridge_call_group_empty">Nobody else is in this group — there is no one to call</string>
+    <string name="msgr_bridge_call_group_partial">the frame reached %1$d of %2$d — the rest are off the direct road</string>
+    <string name="msgr_bridge_call_room_full">Room limit %2$d — %1$d could not join</string>
+    <string name="msgr_bridge_call_no_leg">no leg was named to drop</string>
+    <!-- One-to-one and group calls. -->
+    <string name="peer_call_channel">Nightpost · calls</string>
+    <string name="peer_call_channel_desc">Incoming calls from people in your roster</string>
+    <string name="peer_call_unknown">Unknown</string>
+    <string name="peer_call_ringing">Incoming call</string>
+    <string name="peer_call_missed_quiet">Missed call · quiet hours</string>
+    <string name="peer_call_dialing">Calling…</string>
+    <string name="peer_call_talking">In call</string>
+    <string name="peer_call_answer">Answer</string>
+    <string name="peer_call_decline">Decline</string>
+    <string name="peer_call_hang_up">Hang up</string>
+    <string name="peer_call_close">Got it</string>
+    <string name="peer_call_no_route">nobody is nearby — a call only goes the direct way</string>
+    <string name="peer_call_ended">Call ended</string>
+    <string name="peer_call_declined">Declined</string>
+    <string name="peer_call_busy">Busy</string>
+    <string name="peer_call_missed">No answer</string>
+    <string name="peer_call_hung_up">Hung up</string>
+    <string name="peer_call_allow_full_screen">Full screen</string>
+    <string name="peer_call_spoken">Spoke for %1$s</string>
+    <string name="peer_call_no_voice">Voice audio is not supported in this build yet</string>
+
+    <string name="msgr_road_direct_title">Direct</string>
+    <string name="msgr_road_direct_detail">Phone to phone on the same network</string>
+    <string name="msgr_road_direct_howto">be on the same Wi-Fi, or nearby</string>
+    <string name="msgr_road_relay_title">Through the drop</string>
+    <string name="msgr_road_relay_detail">Held in the drop until the recipient is online</string>
+    <string name="msgr_road_relay_detail_absent">No drop server configured in this build</string>
+    <string name="msgr_road_relay_howto">one of the two needs a network</string>
+    <plurals name="retention_days">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+    <plurals name="retention_records">
+        <item quantity="one">%1$d item</item>
+        <item quantity="other">%1$d items</item>
+    </plurals>
+    <string name="stance_country_title">Country and region</string>
+    <string name="stance_country_body">From language and position. Tap to change.</string>
+    <string name="stance_country_auto">auto · %1$s</string>
+    <string name="stance_role_title">Who you are</string>
+    <string name="stance_role_body">This decides what the map offers in quick access.</string>
+    <string name="stance_role_civilian">civilian</string>
+    <string name="stance_role_volunteer">volunteer</string>
+    <string name="stance_role_service">service</string>
+    <string name="settings_kw_stance">country region role civilian volunteer service shelter</string>
+    <!-- Consent for a tool with consequences -->
+    <string name="tool_consent_title">Allow this action?</string>
+    <string name="tool_consent_risk_device">Acts on this device</string>
+    <string name="tool_consent_risk_outward">Reaches beyond this device</string>
+    <string name="tool_consent_args">Arguments: %1$s</string>
+    <string name="tool_consent_field_recipient">Recipient</string>
+    <string name="tool_consent_field_amount">Amount</string>
+    <string name="tool_consent_field_url">URL</string>
+    <string name="tool_consent_field_method">Method</string>
+    <string name="tool_consent_field_target">Parameter · %1$s</string>
+    <string name="tool_consent_field_body">Content</string>
+    <string name="tool_consent_once">Just this once</string>
+    <string name="tool_consent_always">Always</string>
+    <string name="tool_consent_never">Never</string>
+    <string name="tool_consent_hint">"Always" and "never" can be changed in Settings → Tools.</string>
+    <!-- Settings -> Tools -->
+    <string name="tools_screen_title">Tools</string>
+    <string name="tools_screen_subtitle">What Nightpost may do with your hands</string>
+    <string name="tools_group_outward">Reach outward</string>
+    <string name="tools_group_device">Act on the device</string>
+    <string name="tools_group_read">Read only</string>
+    <string name="tools_decision_ask">Ask</string>
+    <string name="tools_decision_always">Allowed</string>
+    <string name="tools_decision_never">Blocked</string>
+    <string name="tools_read_never_asks">Reading never asks — no permission needed here.</string>
+    <string name="tools_all_caption">For all</string>
+    <string name="tools_all_confirm_title">All tools: “%1$s”?</string>
+    <string name="tools_all_apply">Apply</string>
+    <string name="tools_journal_title">Action journal</string>
+    <string name="tools_journal_empty">No action has been taken yet.</string>
+    <string name="tools_journal_entry">%1$s · %2$s</string>
+    <string name="tools_journal_open">Show the journal</string>
+    <string name="tool_label_accessibility">Screen actions</string>
+    <string name="tool_label_calendar_add">Add calendar event</string>
+    <string name="tool_label_calendar_remove">Remove calendar event</string>
+    <string name="tool_label_fence_set">Set geofence</string>
+    <string name="tool_label_file">App files</string>
+    <string name="tool_label_http">Web requests (HTTP)</string>
+    <string name="tool_label_launch">Open another app</string>
+    <string name="tool_label_map_patrol">Check an area on the map</string>
+    <string name="tool_label_map_prefetch">Download map ahead</string>
+    <string name="tool_label_medevac_handover">Share my position card</string>
+    <string name="tool_label_media">Media playback</string>
+    <string name="tool_label_memory_forget">Forget saved fact</string>
+    <string name="tool_label_nav_add_stop">Add route stop</string>
+    <string name="tool_label_nav_exfil">Route to a safe place</string>
+    <string name="tool_label_nav_retrace">Route back by footsteps</string>
+    <string name="tool_label_nav_start">Start navigation</string>
+    <string name="tool_label_nav_stop">Stop navigation</string>
+    <string name="tool_label_notification">Show notification</string>
+    <string name="tool_label_people_draft">Draft message to a contact</string>
+    <string name="tool_label_phone_alarm">Set alarm</string>
+    <string name="tool_label_phone_calendar">Draft in system calendar</string>
+    <string name="tool_label_phone_dial">Open dialer with number</string>
+    <string name="tool_label_phone_dnd">Do Not Disturb</string>
+    <string name="tool_label_phone_panel">Open system panel</string>
+    <string name="tool_label_phone_sms">Draft SMS</string>
+    <string name="tool_label_phone_timer">Set timer</string>
+    <string name="tool_label_phone_torch">Flashlight</string>
+    <string name="tool_label_place_remove">Remove saved place</string>
+    <string name="tool_label_reminder_remove">Remove reminder</string>
+    <string name="tool_label_settings">Volume, brightness and flashlight</string>
+    <string name="tool_label_shell">Command line</string>
+    <string name="tool_label_task_remove">Delete task</string>
+    <string name="tool_label_track_export">Export recorded track</string>
+    <string name="tool_label_world_report">Mark event on the map</string>
+    <!-- System-voice prosody (Settings -> VOICE). Heard from the next
+         sentence on: the engine re-reads these numbers every utterance. -->
+    <string name="voice_prosody">Voice pitch and tempo</string>
+    <string name="voice_pitch">Pitch</string>
+    <string name="voice_rate">Tempo</string>
+    <string name="voice_prosody_reset">Back to neutral</string>
+    <string name="voice_prosody_untouched">Following system settings</string>
+    <!-- The start-up profile picker (ProfileLauncherScreen). -->
+    <string name="profile_picker_kicker">CHOOSE A PROFILE</string>
+    <string name="profile_delete_title">Delete this profile?</string>
+    <string name="profile_delete_body">Profile «%1$s» and all data tied to it will be erased for good.</string>
+    <string name="profile_delete_cancel">CANCEL</string>
+    <string name="profile_delete_confirm">DELETE</string>
+    <string name="profile_tile_active">ACTIVE</string>
+    <string name="profile_add_cd">Add a profile</string>
+    <string name="profile_add_label">New profile</string>
+    <string name="settings_wallet_open">Wallet</string>
+    <string name="settings_wallet_value">Transfers in chats, Seeker</string>
+    <string name="settings_kw_wallet">wallet solana transfer payment seeker usdc</string>
+    <string name="intents_test_question">Checking the route to the PC. Answer in one word: \"yes\".</string>
+    <!-- Замок застосунку (паритет, хвиля 1). -->
+    <string name="peer_hidden_message">New message</string>
+    <string name="peer_in_profile">%1$s · as %2$s</string>
+    <string name="applock_title">Nightpost is locked</string>
+    <string name="applock_wrong">Wrong code</string>
+    <string name="applock_wait">Too many attempts. %1$d s more</string>
+    <string name="applock_open">Unlock</string>
+    <string name="applock_delete">Delete digit</string>
+    <string name="applock_biometric">Fingerprint</string>
+    <string name="applock_use_code">Use code</string>
+    <string name="applock_row">App lock</string>
+    <string name="applock_on">On</string>
+    <string name="applock_off">Off</string>
+    <string name="applock_hide_text">Hide text in notifications</string>
+    <string name="applock_new_code">New code</string>
+    <string name="applock_next">Next</string>
+    <string name="applock_repeat_code">The same code again</string>
+    <string name="applock_save">Save</string>
+    <string name="applock_mismatch">The codes did not match — start again</string>
+    <string name="applock_current_code">Current code</string>
+    <string name="applock_explain">A 4+ digit code protects the app and notifications.</string>
+    <string name="applock_turn_on">Turn on the lock</string>
+    <string name="applock_biometric_row">Unlock with fingerprint</string>
+    <string name="applock_change">Change code</string>
+    <string name="applock_turn_off">Turn off the lock</string>
+    <string name="applock_auto">Lock after leaving</string>
+    <string name="applock_auto_now">At once</string>
+    <string name="applock_auto_1m">1 min</string>
+    <string name="applock_auto_5m">5 min</string>
+    <string name="applock_auto_1h">1 h</string>
+    <string name="web_signin_title">Sign in on the web</string>
+    <string name="web_signin_bad_qr">Not a Nightpost sign-in code</string>
+    <string name="web_signin_expired">Code expired</string>
+    <string name="web_signin_browser">Browser</string>
+    <string name="web_signin_country">Country</string>
+    <string name="web_signin_time">Time</string>
+    <string name="web_signin_account">Account</string>
+    <string name="web_signin_purpose_signin">Sign in</string>
+    <string name="web_signin_purpose_erase">Delete account</string>
+    <string name="web_signin_purpose_link">Read requests from your pages</string>
+    <string name="web_signin_link_title">Connect phone</string>
+    <string name="web_signin_link_confirm">Connect</string>
+    <string name="web_signin_confirm">Sign in</string>
+    <string name="web_signin_cancel">Cancel</string>
+    <string name="web_signin_done">Signed in</string>
+    <string name="web_signin_refused">Sign-in refused</string>
+    <string name="web_signin_unreachable">Server unreachable</string>
+    <string name="web_signin_network">Network</string>
+    <string name="web_signin_other_network">Different network</string>
+    <string name="web_signin_back_to_browser">Back to browser</string>
+    <string name="commitment_saved">%1$s: %2$s</string>
+    <string name="commitment_saved_due">%1$s: %2$s — %3$s</string>
+    <string name="commitment_choose">%1$s: %2$s</string>
+    <string name="commitment_none">No open commitments</string>
+    <string name="commitment_list_header">Commitments</string>
+    <string name="commitment_marked_done">Done · %1$s: %2$s</string>
+    <string name="commitment_when_today">today</string>
+    <string name="commitment_when_tomorrow">tomorrow</string>
+    <string name="commitment_when_day_after">day after tomorrow</string>
+    <string name="lic_places">places across the country</string>
+    <string name="lic_settlements">towns and villages</string>
+    <string name="lic_schedule">transport timetable</string>
+    <string name="lic_invincibility_points">invincibility points</string>
+    <string name="voice_now_voice">Voice</string>
+    <string name="voice_now_hearing">Speech recognition</string>
+    <string name="voice_route_nav">Navigation phrases</string>
+    <string name="voice_route_system">System voice</string>
+    <string name="voice_route_off">Off</string>
+    <string name="voice_route_on">On</string>
+    <string name="model_label_hearing_full">Speech recognition · full</string>
+    <string name="model_label_hearing_light">Speech recognition · compact</string>
+    <string name="model_label_voice">Live voice</string>
+    <string name="model_label_voice_lite">Live voice · lite</string>
+    <string name="peer_unknown_sender">Unknown contact</string>
+    <string name="peer_reaction_notification">Reacted %1$s to “%2$s”</string>
+    <string name="peer_reaction_notification_plain">Reacted %1$s to your message</string>
+    <string name="peer_marker_edu">Assignment</string>
+    <string name="peer_marker_order">Order</string>
+    <string name="peer_marker_order_status">Order update</string>
+    <string name="peer_marker_update">Update</string>
+    <string name="peer_marker_sticker">Sticker</string>
+</resources>

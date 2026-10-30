@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_guard_typed">Diketik manual, bukan dari obrolanmu. Pastikan dengan orangnya.</string>
+    <string name="sol_guard_venue">Dompet tempat dari tagihan – periksa namanya</string>
+    <string name="sol_guard_scanned">Dari kode QR, bukan dari obrolanmu. Pastikan dengan orangnya.</string>
+    <string name="sol_guard_new_address">Alamat baru: kamu biasa membayar orang ini di tempat lain. Tanyakan padanya.</string>
+    <string name="sol_guard_first_time">Transfer pertama ke orang ini. Pastikan itu dia.</string>
+    <string name="sol_guard_other_network">Kamu biasa membayar orang ini di %1$s, dan sekarang %2$s.</string>
+    <string name="sol_guard_other_coin">Kamu biasa mengirim %1$s ke orang ini, dan sekarang %2$s.</string>
+    <string name="sol_guard_unusual">Lebih dari biasanya: sejauh ini paling banyak %1$s %2$s.</string>
+</resources>

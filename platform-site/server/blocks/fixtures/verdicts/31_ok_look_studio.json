@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "studio",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Alma Brandt"
+        }
+      }
+    ]
+  }
+}

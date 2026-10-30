@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_guard_typed">Elle yazıldı, sohbetinden gelmedi. Kişiyle doğrula.</string>
+    <string name="sol_guard_venue">Hesaptaki mekân cüzdanı – adı kontrol et</string>
+    <string name="sol_guard_scanned">QR koddan, sohbetinden değil. Kişiyle doğrula.</string>
+    <string name="sol_guard_new_address">Yeni adres: bu kişiye daha önce başka yerden ödüyordun. Ona sor.</string>
+    <string name="sol_guard_first_time">Bu kişiye ilk transfer. Onun olduğundan emin ol.</string>
+    <string name="sol_guard_other_network">Bu kişiye daha önce %1$s üzerinden ödüyordun, şimdi %2$s.</string>
+    <string name="sol_guard_other_coin">Bu kişiye genelde %1$s gönderirsin, şimdi %2$s.</string>
+    <string name="sol_guard_unusual">Alışılandan fazla: şimdiye dek en çok %1$s %2$s.</string>
+</resources>

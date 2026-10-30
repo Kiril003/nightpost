@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meetup_ask_drafted">Návrh setkání: %1$s. Zkontrolujte ho v chatu.</string>
+    <string name="meetup_ask_still_empty">Ještě chybí: %1$s.</string>
+    <string name="meetup_ask_field_people">lidé</string>
+    <string name="meetup_ask_field_place">místo</string>
+    <string name="meetup_ask_field_time">čas</string>
+    <string name="meetup_ask_empty">Návrh setkání je připraven — vyberte lidi, místo a čas.</string>
+    <string name="meetup_ask_split_claimed">Účet se otevře v chatu: označte své položky a zaplaťte.</string>
+    <string name="meetup_ask_split_equal">Účet v chatu: pro rozdělení rovným dílem označte vše.</string>
+    <string name="meetup_ask_roster_unreadable">Kontakty nešlo načíst. Otevřete Lidé.</string>
+    <string name="meetup_ask_draft_failed">Návrh se nepodařilo otevřít. Zkuste to znovu.</string>
+    <string name="meetup_ask_bad_mode">Neznámý režim „%1$s“. Účet lze dělit podle položek nebo rovným dílem.</string>
+</resources>

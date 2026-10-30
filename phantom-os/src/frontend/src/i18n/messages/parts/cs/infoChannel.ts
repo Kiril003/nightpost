@@ -1,0 +1,26 @@
+import type { uk } from '../infoChannel';
+
+export const cs: Record<keyof typeof uk, string> = {
+  'infoChannel.kindOwner': 'Kanál · jste vlastník',
+  'infoChannel.edit': 'Upravit',
+  'infoChannel.stats': 'Statistiky',
+  'infoChannel.subscribers': 'Odběratelé',
+  'infoChannel.week': 'Za 7 dní',
+  'infoChannel.posts': 'Příspěvky',
+  'infoChannel.noPosts': 'Zatím žádné příspěvky',
+  'infoChannel.pinned': 'Připnuto',
+  'infoChannel.today': 'Dnes',
+  'infoChannel.discussion': 'Diskuse',
+  'infoChannel.comments': 'Komentáře',
+  'infoChannel.commentsOff': 'Vypnuto',
+  'infoChannel.period7': '7 dní',
+  'infoChannel.period30': '30 dní',
+  'infoChannel.periodAll': 'Celou dobu',
+  'infoChannel.joined': 'Noví',
+  'infoChannel.left': 'Odešli',
+  'infoChannel.byDay': 'Odběratelé po dnech',
+  'infoChannel.byMonth': 'Odběratelé po měsících',
+  'infoChannel.subscribersTab': 'Odběratelé',
+  'infoChannel.unsubscribe': 'Zrušit odběr',
+  'infoChannel.report': 'Nahlásit kanál',
+};

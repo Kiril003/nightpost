@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vitals_bpm">BPM</string>
+    <string name="vitals_breath">NEFES</string>
+    <string name="vitals_stress">STRES</string>
+    <string name="state_shadow">GÖLGE</string>
+    <string name="state_focus">ODAK</string>
+    <string name="state_dialogue">DİYALOG</string>
+    <string name="state_sentinel">NÖBETÇİ</string>
+    <string name="state_ghost">HAYALET</string>
+    <string name="state_dream">RÜYA</string>
+    <string name="state_standing_orders">· %1$d düzenli talimat</string>
+    <string name="license_gate_open">Lisansı aç</string>
+    <string name="license_gate_trial">deneme · %1$d g</string>
+    <string name="void_loading_title">Okunuyor…</string>
+    <string name="void_empty_title">Burada hiçbir şey yok</string>
+    <string name="void_failed_title">Okunamadı</string>
+    <string name="void_failed_detail">Bu başarısız bir okuma, boş bir sonuç değil.</string>
+    <string name="void_mismatch_title">Boş, oysa sayaç %1$d diyor</string>
+    <string name="void_mismatch_detail">Uygulama kendiyle çelişiyor: veri var ama gelmedi.</string>
+    <string name="back_pill_action">Geri</string>
+</resources>

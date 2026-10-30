@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lx_map_title_fuel">Čerpací stanice</string>
+    <string name="lx_map_title_ev">Nabíječky EV</string>
+    <string name="lx_map_title_auto_repair">Autoservis</string>
+    <string name="lx_map_title_shelters">Kryty</string>
+    <string name="lx_map_title_water">Pitná voda</string>
+    <string name="lx_map_title_pharmacies">Lékárny</string>
+    <string name="lx_map_title_rest_areas">Odpočívadla</string>
+    <string name="lx_map_title_power_towers">Stožáry VVN</string>
+    <string name="lx_map_title_drainage">Příkopy a propustky</string>
+    <string name="lx_map_title_fords">Brody</string>
+    <string name="lx_map_title_other">Vrstva</string>
+
+    <string name="lx_map_empty_fuel">Žádné čerpací stanice poblíž</string>
+    <string name="lx_map_empty_ev">Žádné nabíječky EV poblíž</string>
+    <string name="lx_map_empty_auto_repair">Žádný autoservis poblíž</string>
+    <string name="lx_map_empty_shelters">Žádné kryty poblíž</string>
+    <string name="lx_map_empty_water">Žádná pitná voda poblíž</string>
+    <string name="lx_map_empty_pharmacies">Žádné lékárny poblíž</string>
+    <string name="lx_map_empty_rest_areas">Žádná odpočívadla poblíž</string>
+    <string name="lx_map_empty_power_towers">Žádné stožáry VVN poblíž</string>
+    <string name="lx_map_empty_drainage">Žádné příkopy ani propustky poblíž</string>
+    <string name="lx_map_empty_fords">Žádné brody poblíž</string>
+    <string name="lx_map_empty_other">Nic poblíž</string>
+
+    <string name="lx_map_unavail_fuel">Čerpací stanice nedostupné</string>
+    <string name="lx_map_unavail_ev">Nabíječky EV nedostupné</string>
+    <string name="lx_map_unavail_auto_repair">Autoservis nedostupný</string>
+    <string name="lx_map_unavail_shelters">Kryty nedostupné</string>
+    <string name="lx_map_unavail_water">Pitná voda nedostupná</string>
+    <string name="lx_map_unavail_pharmacies">Lékárny nedostupné</string>
+    <string name="lx_map_unavail_rest_areas">Odpočívadla nedostupná</string>
+    <string name="lx_map_unavail_power_towers">Stožáry VVN nedostupné</string>
+    <string name="lx_map_unavail_drainage">Příkopy a propustky nedostupné</string>
+    <string name="lx_map_unavail_fords">Brody nedostupné</string>
+    <string name="lx_map_unavail_other">Vrstva nedostupná</string>
+
+    <string name="lx_map_marker_fuel_default">Čerpací stanice</string>
+    <string name="lx_map_marker_fuel_diesel">NM</string>
+    <string name="lx_map_marker_fuel_lpg">LPG</string>
+    <string name="lx_map_marker_fuel_detail">Čerpací stanice: %1$s</string>
+    <string name="lx_map_marker_ev_default">Nabíječka EV</string>
+    <string name="lx_map_marker_ev_detail">Nabíječka EV: %1$s</string>
+    <string name="lx_map_marker_tyres">Pneuservis</string>
+    <string name="lx_map_marker_car_wash">Automyčka</string>
+    <string name="lx_map_marker_auto_repair">Autoservis</string>
+    <string name="lx_map_marker_auto_repair_detail">Autoservis: %1$s</string>
+    <string name="lx_map_marker_shelter_default">Kryt</string>
+    <string name="lx_map_marker_shelter_detail">Kryt: %1$s</string>
+    <string name="lx_map_marker_spring">Pramen</string>
+    <string name="lx_map_marker_water_default">Pitná voda</string>
+    <string name="lx_map_marker_water_detail">Pitná voda: %1$s</string>
+    <string name="lx_map_marker_pharmacy_default">Lékárna</string>
+    <string name="lx_map_marker_pharmacy_detail">Lékárna: %1$s</string>
+    <string name="lx_map_marker_rest_area_default">Odpočívadlo</string>
+    <string name="lx_map_marker_rest_area_detail">Odpočívadlo: %1$s</string>
+    <string name="lx_map_marker_tower_label">Stožár</string>
+    <string name="lx_map_marker_tower_detail">OSM: stožár VVN</string>
+    <string name="lx_map_marker_culvert_label">Propustek</string>
+    <string name="lx_map_marker_ditch_label">Příkop</string>
+    <string name="lx_map_marker_culvert_detail">OSM: propustek pod silnicí — stav neověřen</string>
+    <string name="lx_map_marker_ditch_detail">OSM: otevřený příkop — možná překážka</string>
+    <string name="lx_map_marker_ford_label">Brod</string>
+    <string name="lx_map_marker_ford_detail">OSM: brod — sjízdnost neznámá</string>
+</resources>

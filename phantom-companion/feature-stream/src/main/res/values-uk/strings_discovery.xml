@@ -1,0 +1,28 @@
+<resources>
+    <!-- Перепис 24.09: примітка каже, ЩО це за місце в OSM, а не що там гарантовано є
+         (бренди, гарантії якості, обладнання, якого тег не називає, — знято). -->
+    <string name="map_discovery_note_generator">Генератори, позначені на відкритій мапі.</string>
+    <string name="map_discovery_note_ev_charging">Зарядні станції для електромобілів.</string>
+    <string name="map_discovery_note_drinking_water">Бювети, колонки й джерела питної води з відкритої мапи.</string>
+    <string name="map_discovery_note_shelter">Укриття, позначені на відкритій мапі як захисні.</string>
+    <string name="map_discovery_note_metro_shelter">Станції метро.</string>
+    <string name="map_discovery_note_pharmacy">Аптеки.</string>
+    <string name="map_discovery_note_hospital">Лікарні.</string>
+    <string name="map_discovery_note_post_office">Відділення пошти.</string>
+    <string name="map_discovery_note_parcel_locker">Поштомати.</string>
+    <string name="map_discovery_note_atm">Банкомати.</string>
+    <string name="map_discovery_note_transit_stop">Зупинки наземного транспорту.</string>
+    <string name="map_discovery_note_transit_hub">Станції метро, електрички й вокзали.</string>
+    <string name="map_discovery_note_fuel">Автозаправні станції.</string>
+    <string name="map_discovery_note_underground_parking">Підземні паркінги.</string>
+    <string name="map_discovery_note_supermarket">Супермаркети.</string>
+    <string name="map_discovery_note_invincibility_point">Пункти незламності з відкритої мапи.</string>
+    <string name="map_discovery_note_bridge">Мости.</string>
+    <string name="map_discovery_note_landmark">Памʼятки, замки, монументи, оглядові майданчики.</string>
+    <string name="map_discovery_note_museum">Музеї й галереї.</string>
+    <string name="map_discovery_note_park">Парки й сади.</string>
+    <string name="map_discovery_note_place_of_worship">Храми.</string>
+    <string name="map_discovery_note_entrance">Входи й підʼїзди, позначені на відкритій мапі.</string>
+    <string name="map_discovery_note_passage">Проходи крізь будинки у двори.</string>
+    <string name="map_discovery_note_steps">Сходи й пандуси.</string>
+</resources>

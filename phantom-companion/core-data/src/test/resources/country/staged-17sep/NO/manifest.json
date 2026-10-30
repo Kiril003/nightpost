@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 71.2,
+    "maxLon": 31.1,
+    "minLat": 57.95,
+    "minLon": 4.6
+  },
+  "files": [
+    {
+      "bytes": 1239774,
+      "name": "places.tsv.gz",
+      "sha256": "9ed7240acfcd8dbd5e4b2a5ad5e89610673320a3e5bc220a1e45e512836aa7ea"
+    },
+    {
+      "bytes": 2117906,
+      "name": "streets.tsv.gz",
+      "sha256": "c56ce9a911dd8217cfee029653be98a89a6cd53bab7a4cbb2f11b95c216aa10f"
+    }
+  ],
+  "home": {
+    "lat": 59.9133,
+    "lon": 10.739,
+    "zoom": 12.0
+  },
+  "id": "NO",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "no-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Норвегія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "no-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Норвегія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Норвегія",
+  "version": 1
+}

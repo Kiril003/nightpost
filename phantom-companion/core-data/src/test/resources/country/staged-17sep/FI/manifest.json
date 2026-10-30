@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 70.0923,
+    "maxLon": 31.5867,
+    "minLat": 59.4542,
+    "minLon": 19.0832
+  },
+  "files": [
+    {
+      "bytes": 751853,
+      "name": "places.tsv.gz",
+      "sha256": "885b3cfcd53104efb9c48fae1b0ec59b5a405dcd79123908dc47a10836fd6cbf"
+    },
+    {
+      "bytes": 3036528,
+      "name": "streets.tsv.gz",
+      "sha256": "19ebf8747e69437e9a3967e51342ae0424ac4a7bee888c6213cc33d0c8966a09"
+    }
+  ],
+  "home": {
+    "lat": 60.1666,
+    "lon": 24.9435,
+    "zoom": 12.0
+  },
+  "id": "FI",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "fi-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Фінляндія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "fi-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Фінляндія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Фінляндія",
+  "version": 1
+}

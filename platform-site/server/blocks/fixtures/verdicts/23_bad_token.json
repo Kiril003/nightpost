@@ -1,0 +1,27 @@
+{
+  "ok": false,
+  "refused": "bad_token",
+  "at": "blocks[0].data.token",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "menu-0",
+        "kind": "cat.menu",
+        "variant": "two_col",
+        "hidden": false,
+        "data": {
+          "token": "GBP",
+          "items": [
+            {
+              "id": "tea",
+              "name": "Чай",
+              "price": "2.00"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

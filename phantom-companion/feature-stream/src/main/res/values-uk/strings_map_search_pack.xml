@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_pack_banner_title">Мапа %1$s · %2$d МБ</string>
+    <string name="map_pack_banner_title_nosize">Мапа %1$s</string>
+    <string name="map_pack_download">Завантажити</string>
+    <string name="map_pack_progress">%1$s · %2$d %%</string>
+    <string name="map_search_empty">Нічого не знайдено</string>
+    <string name="map_search_wider">Шукати ширше</string>
+    <string name="map_nearby_empty">Поруч нічого немає</string>
+</resources>

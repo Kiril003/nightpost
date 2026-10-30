@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="peer_card_trust_live">In person</string>
+    <string name="peer_card_trust_handle">Found by handle</string>
+    <string name="peer_card_trust_link">By link</string>
+    <string name="peer_card_trust_none">Not verified</string>
+    <string name="peer_card_verify_live">Verify in person</string>
+    <string name="peer_card_optional">Optional</string>
+    <string name="peer_card_untitled">Name not shared</string>
+    <string name="peer_card_safety_code">Safety code</string>
+    <string name="peer_card_scan_code">Scan code</string>
+    <string name="peer_card_digits_match">Digits match</string>
+</resources>

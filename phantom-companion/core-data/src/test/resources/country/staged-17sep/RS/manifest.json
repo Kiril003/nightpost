@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 46.1901,
+    "maxLon": 23.0063,
+    "minLat": 42.2325,
+    "minLon": 18.815
+  },
+  "files": [
+    {
+      "bytes": 501687,
+      "name": "places.tsv.gz",
+      "sha256": "b5ecb06a1ef29fca17bb31503aeab2533c2dd83043ec7036032f2dfe4a1107f3"
+    },
+    {
+      "bytes": 1245977,
+      "name": "streets.tsv.gz",
+      "sha256": "dd7130128ebf27c13e6c05ed5ddb777b7b6f394edff39f47172d30975a5ce10a"
+    }
+  ],
+  "home": {
+    "lat": 44.8178,
+    "lon": 20.4569,
+    "zoom": 12.0
+  },
+  "id": "RS",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "rs-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Сербія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "rs-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Сербія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Сербія",
+  "version": 1
+}

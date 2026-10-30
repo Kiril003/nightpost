@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_r0_transit_far_stop">Nejbližší zastávka je ~%1$.1f km pěšky — odsud žádná doprava</string>
+    <string name="map_r0_transit_no_trips_at">V %1$d:%2$02d žádné spoje — zkuste jiný čas odjezdu</string>
+    <string name="map_r0_transit_unreachable">Bez sítě a v zařízení není jízdní řád pro tuto oblast</string>
+    <string name="map_r0_transit_no_schedule">Pro toto město není jízdní řád</string>
+    <string name="map_r0_map_not_saved">Mapa není uložena</string>
+    <string name="map_r0_save_area">Uložit oblast</string>
+</resources>

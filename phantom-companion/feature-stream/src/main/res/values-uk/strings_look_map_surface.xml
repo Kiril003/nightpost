@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Слова поверхні мапи v1.2 (хвиля map-surface): перемикач поверхів і
+     двері «Усі офлайн-мапи» в офлайн-панелі, її назва і підпис шарів з ПК
+     без кікерних великих літер. -->
+<resources>
+    <string name="indoor_level_title">Поверх</string>
+    <string name="indoor_level_desc">Поверх %1$s</string>
+    <string name="map_offline_all_maps">Усі офлайн-мапи</string>
+    <string name="map_offline_all_maps_line">На телефоні: %1$d · завантажується: %2$d</string>
+    <string name="map_offline_panel_title">Офлайн-мапи</string>
+    <string name="map_pc_layers_title">З компʼютера</string>
+    <string name="map_offline_corridor_show">Показати</string>
+</resources>

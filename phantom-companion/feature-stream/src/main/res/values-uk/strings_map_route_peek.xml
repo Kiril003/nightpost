@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_route_stops_count">Зупинки (%1$d)</string>
+    <string name="map_route_remove_stop">Видалити зупинку</string>
+    <string name="map_route_barriers_stops">%1$d зупинки</string>
+    <string name="map_route_barriers_tolls">%1$d платні пункти</string>
+    <string name="map_route_barriers_gates">%1$d шлагбауми</string>
+    <string name="map_route_on_route">%1$s на маршруті</string>
+    <string name="map_route_trunk_shoulder">Узбіччя магістралі</string>
+    <string name="map_route_parking">Паркінг</string>
+</resources>

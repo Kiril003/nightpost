@@ -1,0 +1,791 @@
+{
+ "pack": {
+  "format": "1",
+  "country": "MD",
+  "source": "OpenStreetMap (ODbL 1.0)",
+  "osm_timestamp": "2026-09-03T20:21:51Z",
+  "built_at": "2026-09-11T23:55:54+00:00",
+  "langs": "name|name:uk|name:en|name:ru|fold|translit",
+  "tokenizer": "unicode61",
+  "fts": "fts4",
+  "tri_boundary": "0",
+  "coord_scale": "1000000",
+  "pipe_escape": "%7C",
+  "kinds": "{\"place\": 5003, \"poi\": 45554, \"street\": 40346, \"address\": 982475}"
+ },
+ "sql": {
+  "match": "SELECT id,kind,osm_type,osm_id,lat,lon,rank,cls,sub,cat,name,name_uk,name_en,name_ru,city,names FROM places WHERE id IN (SELECT rowid FROM places_fts WHERE places_fts MATCH ?) LIMIT ?",
+  "match_near": "SELECT id,kind,osm_type,osm_id,lat,lon,rank,cls,sub,cat,name,name_uk,name_en,name_ru,city,names FROM places WHERE id IN (SELECT rowid FROM places_fts WHERE places_fts MATCH ?) ORDER BY (lat-?)*(lat-?)+(lon-?)*(lon-?)*? LIMIT ?",
+  "category": "SELECT id,kind,osm_type,osm_id,lat,lon,rank,cls,sub,cat,name,name_uk,name_en,name_ru,city,names FROM places WHERE kind='poi' AND cat=? AND lat BETWEEN ? AND ? AND lon BETWEEN ? AND ? ORDER BY (lat-?)*(lat-?)+(lon-?)*(lon-?)*? LIMIT ?",
+  "address": "SELECT a.street_id, a.housenumber, a.lat, a.lon, a.osm_type, a.osm_id, p.name, p.city FROM addresses a JOIN places p ON p.id = a.street_id WHERE a.street_id IN ({}) AND a.housenumber = ? LIMIT ?",
+  "reverse_addr": "SELECT a.street_id, a.housenumber, a.lat, a.lon, a.osm_type, a.osm_id, p.name, p.city FROM addresses a JOIN places p ON p.id = a.street_id WHERE a.lat BETWEEN ? AND ? AND a.lon BETWEEN ? AND ? LIMIT 400",
+  "reverse_place": "SELECT id,kind,osm_type,osm_id,lat,lon,rank,cls,sub,cat,name,name_uk,name_en,name_ru,city,names FROM places WHERE kind IN ('street','place') AND lat BETWEEN ? AND ? AND lon BETWEEN ? AND ? LIMIT 400",
+  "df": "SELECT tri, n FROM tri_df WHERE tri IN ({})"
+ },
+ "fold": "casefold; NFKD drop combining; drop ʼ’'; ё→е; non-[0-9a-zа-яіїєґ]→space",
+ "trigram": "per folded word: '0'+word+'0', all 3-char windows; fuzzy = OR of ≤3 rarest by tri_df, keep mean over query words of max over row words |tq∩tw|/max(|tq|,|tw|) ≥ 0.5",
+ "vectors": [
+  {
+   "q": "Кишинів",
+   "near": null,
+   "ms": 159.5,
+   "top": [
+    {
+     "kind": "place",
+     "osm_type": "n",
+     "osm_id": 129991407,
+     "name": "Chișinău",
+     "lat": 47.02451,
+     "lon": 28.83229,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 1748490,
+     "name": "Chișinău",
+     "lat": 47.01482,
+     "lon": 28.85654,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 415964911,
+     "name": "Chișinău",
+     "lat": 47.01305,
+     "lon": 28.8602,
+     "cat": "rail_station",
+     "city": "Chișinău",
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 1691801,
+     "name": "Municipiul Chișinău",
+     "lat": 47.05327,
+     "lon": 28.57645,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "street",
+     "osm_type": "w",
+     "osm_id": 0,
+     "name": "Chișinău-Leușeni",
+     "lat": 46.79761,
+     "lon": 28.16867,
+     "cat": null,
+     "city": "Albița",
+     "distance_m": null
+    }
+   ]
+  },
+  {
+   "q": "Кишенів",
+   "near": null,
+   "ms": 1718.1,
+   "top": [
+    {
+     "kind": "place",
+     "osm_type": "n",
+     "osm_id": 129991407,
+     "name": "Chișinău",
+     "lat": 47.02451,
+     "lon": 28.83229,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 1748490,
+     "name": "Chișinău",
+     "lat": 47.01482,
+     "lon": 28.85654,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 1691801,
+     "name": "Municipiul Chișinău",
+     "lat": 47.05327,
+     "lon": 28.57645,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "street",
+     "osm_type": "w",
+     "osm_id": 0,
+     "name": "Chișinău-Leușeni",
+     "lat": 46.79761,
+     "lon": 28.16867,
+     "cat": null,
+     "city": "Albița",
+     "distance_m": null
+    },
+    {
+     "kind": "street",
+     "osm_type": "w",
+     "osm_id": 0,
+     "name": "Chișinău-Leușeni",
+     "lat": 46.84865,
+     "lon": 28.20891,
+     "cat": null,
+     "city": "Sărăteni",
+     "distance_m": null
+    }
+   ]
+  },
+  {
+   "q": "Chisinau",
+   "near": null,
+   "ms": 246.3,
+   "top": [
+    {
+     "kind": "place",
+     "osm_type": "n",
+     "osm_id": 129991407,
+     "name": "Chișinău",
+     "lat": 47.02451,
+     "lon": 28.83229,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 1748490,
+     "name": "Chișinău",
+     "lat": 47.01482,
+     "lon": 28.85654,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "street",
+     "osm_type": "n",
+     "osm_id": 0,
+     "name": "Chisinau",
+     "lat": 46.83244,
+     "lon": 28.60473,
+     "cat": null,
+     "city": "Hîncești",
+     "distance_m": null
+    },
+    {
+     "kind": "street",
+     "osm_type": "n",
+     "osm_id": 0,
+     "name": "Chisinau",
+     "lat": 47.37047,
+     "lon": 28.82067,
+     "cat": null,
+     "city": "Orhei",
+     "distance_m": null
+    },
+    {
+     "kind": "street",
+     "osm_type": "n",
+     "osm_id": 0,
+     "name": "Chisinau",
+     "lat": 47.46742,
+     "lon": 28.17793,
+     "cat": null,
+     "city": "Cucioaia",
+     "distance_m": null
+    }
+   ]
+  },
+  {
+   "q": "Strada Haltei 6/1",
+   "near": [
+    47.0105,
+    28.8638
+   ],
+   "ms": 2398.1,
+   "top": [
+    {
+     "kind": "address",
+     "osm_type": "n",
+     "osm_id": 12954517196,
+     "name": "Strada Haltei 6/1",
+     "lat": 47.0104,
+     "lon": 28.86464,
+     "cat": null,
+     "city": "Chișinău",
+     "distance_m": 65
+    },
+    {
+     "kind": "address",
+     "osm_type": "w",
+     "osm_id": 205552736,
+     "name": "Strada Haltei 6/1",
+     "lat": 47.01039,
+     "lon": 28.86465,
+     "cat": null,
+     "city": "Chișinău",
+     "distance_m": 66
+    },
+    {
+     "kind": "address",
+     "osm_type": "w",
+     "osm_id": 224115007,
+     "name": "Strada Haltei 6/1",
+     "lat": 47.00909,
+     "lon": 28.86585,
+     "cat": null,
+     "city": "Chișinău",
+     "distance_m": 221
+    },
+    {
+     "kind": "street",
+     "osm_type": "w",
+     "osm_id": 0,
+     "name": "Strada Lămăiței",
+     "lat": 46.99399,
+     "lon": 28.80944,
+     "cat": null,
+     "city": "Codru",
+     "distance_m": 4513
+    },
+    {
+     "kind": "street",
+     "osm_type": "w",
+     "osm_id": 0,
+     "name": "Strada 6 Iulie 2010",
+     "lat": 46.84017,
+     "lon": 28.18714,
+     "cat": null,
+     "city": "Cotul Morii",
+     "distance_m": 54765
+    }
+   ]
+  },
+  {
+   "q": "Ștefan cel Mare 1",
+   "near": [
+    47.0105,
+    28.8638
+   ],
+   "ms": 364.5,
+   "top": [
+    {
+     "kind": "address",
+     "osm_type": "w",
+     "osm_id": 38591267,
+     "name": "Bulevardul Ștefan cel Mare și Sfânt 1",
+     "lat": 47.01328,
+     "lon": 28.84815,
+     "cat": null,
+     "city": "Chișinău",
+     "distance_m": 1226
+    },
+    {
+     "kind": "address",
+     "osm_type": "n",
+     "osm_id": 12954557924,
+     "name": "Bulevardul Ștefan cel Mare și Sfânt 1",
+     "lat": 47.01328,
+     "lon": 28.84815,
+     "cat": null,
+     "city": "Chișinău",
+     "distance_m": 1226
+    },
+    {
+     "kind": "address",
+     "osm_type": "w",
+     "osm_id": 254911510,
+     "name": "Bulevardul Ștefan cel Mare și Sfânt 1",
+     "lat": 47.01291,
+     "lon": 28.84761,
+     "cat": null,
+     "city": "Chișinău",
+     "distance_m": 1256
+    },
+    {
+     "kind": "address",
+     "osm_type": "w",
+     "osm_id": 1467598058,
+     "name": "Strada Ștefan cel Mare și Sfânt 1",
+     "lat": 46.97865,
+     "lon": 28.93467,
+     "cat": null,
+     "city": "Bubuieci",
+     "distance_m": 6437
+    },
+    {
+     "kind": "address",
+     "osm_type": "n",
+     "osm_id": 12954561881,
+     "name": "Strada Ștefan cel Mare și Sfînt 1",
+     "lat": 47.03849,
+     "lon": 28.95225,
+     "cat": null,
+     "city": "Colonița",
+     "distance_m": 7392
+    }
+   ]
+  },
+  {
+   "q": "Штефан чел Маре 1",
+   "near": [
+    47.0105,
+    28.8638
+   ],
+   "ms": 49.0,
+   "top": [
+    {
+     "kind": "address",
+     "osm_type": "w",
+     "osm_id": 1467598058,
+     "name": "Strada Ștefan cel Mare și Sfânt 1",
+     "lat": 46.97865,
+     "lon": 28.93467,
+     "cat": null,
+     "city": "Bubuieci",
+     "distance_m": 6437
+    },
+    {
+     "kind": "address",
+     "osm_type": "w",
+     "osm_id": 1253510235,
+     "name": "Strada Ștefan cel Mare și Sfânt 1",
+     "lat": 47.06123,
+     "lon": 28.94789,
+     "cat": null,
+     "city": "Buneți",
+     "distance_m": 8511
+    },
+    {
+     "kind": "address",
+     "osm_type": "n",
+     "osm_id": 13694805125,
+     "name": "Strada Ștefan cel Mare și Sfânt 1",
+     "lat": 47.06117,
+     "lon": 28.94797,
+     "cat": null,
+     "city": "Buneți",
+     "distance_m": 8511
+    },
+    {
+     "kind": "address",
+     "osm_type": "w",
+     "osm_id": 162110787,
+     "name": "Strada Ștefan cel Mare și Sfânt 1",
+     "lat": 47.08673,
+     "lon": 28.83251,
+     "cat": null,
+     "city": "Grătiești",
+     "distance_m": 8802
+    },
+    {
+     "kind": "address",
+     "osm_type": "w",
+     "osm_id": 162110784,
+     "name": "Strada Ștefan cel Mare și Sfânt 1",
+     "lat": 47.08688,
+     "lon": 28.83279,
+     "cat": null,
+     "city": "Grătiești",
+     "distance_m": 8812
+    }
+   ]
+  },
+  {
+   "q": "укриття",
+   "near": [
+    47.0105,
+    28.8638
+   ],
+   "ms": 1.0,
+   "top": [
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 11704812757,
+     "name": "Bomb shelter",
+     "lat": 47.02772,
+     "lon": 28.82238,
+     "cat": "shelter",
+     "city": "Chișinău",
+     "distance_m": 3678
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 4162789692,
+     "name": "Бомбоубежище",
+     "lat": 46.82902,
+     "lon": 29.45336,
+     "cat": "shelter",
+     "city": "Протягайловка",
+     "distance_m": 49113
+    }
+   ]
+  },
+  {
+   "q": "альтанка",
+   "near": [
+    47.0105,
+    28.8638
+   ],
+   "ms": 648.1,
+   "top": []
+  },
+  {
+   "q": "аптека",
+   "near": [
+    47.0105,
+    28.8638
+   ],
+   "ms": 92.2,
+   "top": [
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 1538059959,
+     "name": "Apoteka",
+     "lat": 47.01116,
+     "lon": 28.85883,
+     "cat": "pharmacy",
+     "city": "Chișinău",
+     "distance_m": 384
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 5375787722,
+     "name": "Zolușca",
+     "lat": 47.01107,
+     "lon": 28.85824,
+     "cat": "pharmacy",
+     "city": "Chișinău",
+     "distance_m": 426
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 1280210366,
+     "name": "Mama",
+     "lat": 47.01227,
+     "lon": 28.85758,
+     "cat": "pharmacy",
+     "city": "Chișinău",
+     "distance_m": 511
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 1538060242,
+     "name": "Orient",
+     "lat": 47.01306,
+     "lon": 28.85625,
+     "cat": "pharmacy",
+     "city": "Chișinău",
+     "distance_m": 639
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 486654989,
+     "name": "Hippocrates",
+     "lat": 47.01344,
+     "lon": 28.8561,
+     "cat": "pharmacy",
+     "city": "Chișinău",
+     "distance_m": 669
+    }
+   ]
+  },
+  {
+   "q": "вода",
+   "near": [
+    47.7624,
+    27.9286
+   ],
+   "ms": 4.6,
+   "top": [
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 3678947646,
+     "name": "",
+     "lat": 47.76374,
+     "lon": 27.93414,
+     "cat": "water",
+     "city": "Bălți",
+     "distance_m": 440
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 4575988107,
+     "name": "",
+     "lat": 47.75413,
+     "lon": 27.92255,
+     "cat": "water",
+     "city": "Bălți",
+     "distance_m": 1025
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 13284653328,
+     "name": "Izvor",
+     "lat": 47.74241,
+     "lon": 27.91441,
+     "cat": "water",
+     "city": "Bălți",
+     "distance_m": 2463
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 13284653318,
+     "name": "",
+     "lat": 47.7419,
+     "lon": 27.90939,
+     "cat": "water",
+     "city": "Bălți",
+     "distance_m": 2694
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 4444083189,
+     "name": "",
+     "lat": 47.78376,
+     "lon": 27.90442,
+     "cat": "water",
+     "city": "Bălți",
+     "distance_m": 2984
+    }
+   ]
+  },
+  {
+   "q": "Bălți",
+   "near": null,
+   "ms": 8.4,
+   "top": [
+    {
+     "kind": "place",
+     "osm_type": "n",
+     "osm_id": 266185307,
+     "name": "Bălți",
+     "lat": 47.7624,
+     "lon": 27.9286,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 18967626,
+     "name": "Bălți",
+     "lat": 47.76275,
+     "lon": 27.91367,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 12207955,
+     "name": "Bălți",
+     "lat": 47.7628,
+     "lon": 27.91538,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "poi",
+     "osm_type": "w",
+     "osm_id": 41794316,
+     "name": "Bălţi",
+     "lat": 47.79881,
+     "lon": 27.86922,
+     "cat": "power",
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 58983,
+     "name": "Municipiul Bălți",
+     "lat": 47.77407,
+     "lon": 27.93131,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    }
+   ]
+  },
+  {
+   "q": "Belci",
+   "near": null,
+   "ms": 207.5,
+   "top": [
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 4887459722,
+     "name": "Belciuc",
+     "lat": 48.31039,
+     "lon": 26.94136,
+     "cat": "convenience",
+     "city": "Berlinți",
+     "distance_m": null
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 13999328501,
+     "name": "Belcinschi Ian voluntarilor77",
+     "lat": 47.75427,
+     "lon": 27.91596,
+     "cat": "amenity",
+     "city": "Bălți",
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "n",
+     "osm_id": 278775801,
+     "name": "Белочи",
+     "lat": 47.88529,
+     "lon": 28.98131,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 19015285,
+     "name": "Белочи",
+     "lat": 47.89377,
+     "lon": 28.99199,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "street",
+     "osm_type": "w",
+     "osm_id": 0,
+     "name": "Вадатурково-Белочи",
+     "lat": 47.90483,
+     "lon": 28.97588,
+     "cat": null,
+     "city": "Белочи",
+     "distance_m": null
+    }
+   ]
+  },
+  {
+   "q": "Тирасполь",
+   "near": null,
+   "ms": 55.0,
+   "top": [
+    {
+     "kind": "place",
+     "osm_type": "n",
+     "osm_id": 2339172677,
+     "name": "Тирасполь",
+     "lat": 46.83711,
+     "lon": 29.611,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "place",
+     "osm_type": "r",
+     "osm_id": 3031682,
+     "name": "Тирасполь",
+     "lat": 46.85257,
+     "lon": 29.60804,
+     "cat": null,
+     "city": null,
+     "distance_m": null
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 2324556718,
+     "name": "Тирасполь",
+     "lat": 46.8363,
+     "lon": 29.62378,
+     "cat": "shop",
+     "city": "Тирасполь",
+     "distance_m": null
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 4246784406,
+     "name": "Тирасполь",
+     "lat": 46.82213,
+     "lon": 29.58029,
+     "cat": "tourism",
+     "city": "Новотираспольский",
+     "distance_m": null
+    },
+    {
+     "kind": "poi",
+     "osm_type": "n",
+     "osm_id": 4748715104,
+     "name": "Тирасполь",
+     "lat": 46.84762,
+     "lon": 29.6296,
+     "cat": "rail_station",
+     "city": "Tiraspol",
+     "distance_m": null
+    }
+   ]
+  },
+  {
+   "reverse": [
+    47.0105,
+    28.8638
+   ],
+   "hit": {
+    "kind": "address",
+    "name": "Strada Haltei 6/1",
+    "osm_id": 12954517196,
+    "distance_m": 65
+   }
+  },
+  {
+   "reverse": [
+    47.3617,
+    28.1275
+   ],
+   "hit": {
+    "kind": "street",
+    "name": "Strada Stânei",
+    "osm_id": 0,
+    "distance_m": 2538
+   }
+  }
+ ]
+}

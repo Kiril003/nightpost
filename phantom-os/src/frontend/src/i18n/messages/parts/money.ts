@@ -1,0 +1,33 @@
+export const uk = {
+  'settle.title': 'Розрахуватися',
+  'settle.pay': 'Сплатити {amount}',
+  'settle.settled': 'Усе сплачено',
+  'settle.pending': 'Очікує',
+  'settle.failed': 'Не вдалося',
+  'money.title': 'Гроші',
+  'money.request': 'Попросити',
+  'money.requestAmount': 'Попросити {amount}',
+  'money.note': 'Примітка',
+  'money.next': 'Далі',
+  'money.overTotal': 'Більше за суму',
+  'money.noMembers': 'Немає учасників',
+  'money.cantPay': 'Не можна переказати',
+  'money.total': 'Сума',
+} as const;
+
+export const en: Record<keyof typeof uk, string> = {
+  'settle.title': 'Settle up',
+  'settle.pay': 'Pay {amount}',
+  'settle.settled': 'All settled',
+  'settle.pending': 'Pending',
+  'settle.failed': 'Didnʼt go through',
+  'money.title': 'Money',
+  'money.request': 'Request',
+  'money.requestAmount': 'Request {amount}',
+  'money.note': 'Note',
+  'money.next': 'Next',
+  'money.overTotal': 'More than the total',
+  'money.noMembers': 'No members',
+  'money.cantPay': 'Canʼt pay',
+  'money.total': 'Total',
+};

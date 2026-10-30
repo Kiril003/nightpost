@@ -1,0 +1,37 @@
+{
+  "ok": false,
+  "refused": "bad_choice",
+  "at": "blocks[1].tone",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "shop",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Alma Brandt"
+        }
+      },
+      {
+        "id": "hero-1",
+        "kind": "id.hero",
+        "variant": "split",
+        "hidden": false,
+        "data": {
+          "headline": "Small batches",
+          "image": {
+            "blob": "sample-hero-01",
+            "w": 1600,
+            "h": 1200,
+            "alt": "Vase and bowl"
+          }
+        },
+        "tone": "teal"
+      }
+    ]
+  }
+}

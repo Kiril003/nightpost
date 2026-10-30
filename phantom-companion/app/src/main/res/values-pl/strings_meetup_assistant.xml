@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meetup_ask_drafted">Szkic spotkania: %1$s. Sprawdź go w komunikatorze.</string>
+    <string name="meetup_ask_still_empty">Nadal puste: %1$s.</string>
+    <string name="meetup_ask_field_people">osoby</string>
+    <string name="meetup_ask_field_place">miejsce</string>
+    <string name="meetup_ask_field_time">czas</string>
+    <string name="meetup_ask_empty">Szkic spotkania gotowy – wybierz osoby, miejsce i czas.</string>
+    <string name="meetup_ask_split_claimed">Rachunek otworzy się w komunikatorze: zaznacz swoje pozycje i zapłać.</string>
+    <string name="meetup_ask_split_equal">Rachunek otworzy się w komunikatorze: zaznacz wszystko, by podzielić po równo.</string>
+    <string name="meetup_ask_roster_unreadable">Nie mogę odczytać kontaktów. Otwórz Osoby.</string>
+    <string name="meetup_ask_draft_failed">Komunikator nie przyjął szkicu. Spróbuj ponownie.</string>
+    <string name="meetup_ask_bad_mode">Nie zrozumiałem podziału: „%1$s”. Rachunek dzieli się według zaznaczeń albo po równo.</string>
+</resources>

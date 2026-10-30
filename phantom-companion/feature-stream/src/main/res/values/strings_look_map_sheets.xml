@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_sheets_hub_title">Transit</string>
+    <string name="map_sheets_hub_tab_metro">Metro</string>
+    <string name="map_sheets_hub_nearby_empty">No stops nearby — 1.2 km radius</string>
+    <string name="map_sheets_hub_walk">%1$d m · %2$d min walk</string>
+    <string name="map_sheets_hub_route_to">Route here</string>
+    <string name="map_sheets_hub_search">Number (114, 38…) or street</string>
+    <string name="map_sheets_hub_filter_all">All</string>
+    <string name="map_sheets_hub_filter_bus">Buses</string>
+    <string name="map_sheets_hub_filter_trolleybus">Trolleybuses</string>
+    <string name="map_sheets_hub_filter_tram">Trams</string>
+    <string name="map_sheets_hub_stops_count">stops: %1$d</string>
+    <string name="map_sheets_hub_stations_count">stations: %1$d</string>
+    <string name="map_sheets_hub_show_on_map">Show on map</string>
+    <string name="map_sheets_hub_stops_title">Stops on this line · %1$d</string>
+    <string name="map_sheets_stop_lines_title">Lines at this stop</string>
+</resources>

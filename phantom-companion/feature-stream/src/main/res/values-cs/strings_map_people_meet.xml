@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_people_title">Lidé</string>
+    <string name="map_people_you">Vy</string>
+    <string name="map_people_none_sharing">Nikdo nesdílí polohu</string>
+    <string name="map_share_my_location">Sdílet moji polohu</string>
+    <string name="map_share_with_close">Sdíleno s Blízkými · %1$s</string>
+    <string name="map_share_15m">15 min</string>
+    <string name="map_share_1h">1 h</string>
+    <string name="map_share_until_arrive">Než dorazím</string>
+    <string name="map_meet_at">Setkání v %1$s</string>
+    <string name="map_meet_send_chat">Poslat do chatu</string>
+    <string name="map_meet_now">Teď</string>
+    <string name="map_share_close_audience">Blízcí</string>
+    <string name="map_people_meet">Setkat se</string>
+    <plurals name="map_minutes_away">
+        <item quantity="one">%1$d min odtud</item>
+        <item quantity="few">%1$d min odtud</item>
+        <item quantity="many">%1$d min odtud</item>
+        <item quantity="other">%1$d min odtud</item>
+    </plurals>
+    <plurals name="map_minutes_ago">
+        <item quantity="one">před %1$d min</item>
+        <item quantity="few">před %1$d min</item>
+        <item quantity="many">před %1$d min</item>
+        <item quantity="other">před %1$d min</item>
+    </plurals>
+</resources>

@@ -1,0 +1,27 @@
+{
+  "v": 1,
+  "blocks": [
+    {
+      "type": "title",
+      "text": "Бістро"
+    },
+    {
+      "type": "menu",
+      "title": "Основне меню",
+      "token": "USDC",
+      "items": [
+        {
+          "id": "borsch",
+          "name": "Борщ",
+          "price": "4.50",
+          "note": "зі сметаною"
+        },
+        {
+          "id": "tea",
+          "name": "Чай",
+          "price": "1.25"
+        }
+      ]
+    }
+  ]
+}

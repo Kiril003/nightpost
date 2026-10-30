@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chatwindow_verify_open">ověřit klíč</string>
+    <string name="chatwindow_verify_camera">ověřit fotoaparátem</string>
+    <string name="chatwindow_why_default">Porovnejte toto číslo na obou telefonech</string>
+    <string name="chatwindow_why_scanned">Klíč naskenován z obrazovky — porovnejte číslo</string>
+    <string name="chatwindow_why_handed">Kód z jiné aplikace — porovnejte číslo</string>
+    <string name="chatwindow_why_changed">Klíč se změnil — porovnejte číslo znovu</string>
+</resources>

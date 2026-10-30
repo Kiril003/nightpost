@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vitals_bpm">BPM</string>
+    <string name="vitals_breath">RESP</string>
+    <string name="vitals_stress">ESTR</string>
+    <string name="state_shadow">SOMBRA</string>
+    <string name="state_focus">FOCO</string>
+    <string name="state_dialogue">DIÁLOGO</string>
+    <string name="state_sentinel">CENTINELA</string>
+    <string name="state_ghost">FANTASMA</string>
+    <string name="state_dream">SUEÑO</string>
+    <string name="state_standing_orders">· %1$d órdenes permanentes</string>
+    <string name="license_gate_open">Abrir licencia</string>
+    <string name="license_gate_trial">prueba · %1$d d</string>
+    <string name="void_loading_title">Leyendo…</string>
+    <string name="void_empty_title">Aquí no hay nada</string>
+    <string name="void_failed_title">No se pudo leer</string>
+    <string name="void_failed_detail">Es una lectura fallida, no un resultado vacío.</string>
+    <string name="void_mismatch_title">Vacío, aunque el contador dice %1$d</string>
+    <string name="void_mismatch_detail">La app se contradice: los datos existen pero no llegaron.</string>
+    <string name="back_pill_action">Atrás</string>
+</resources>

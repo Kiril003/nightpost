@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vitals_bpm">BPM</string>
+    <string name="vitals_breath">NAPAS</string>
+    <string name="vitals_stress">STRES</string>
+    <string name="state_shadow">BAYANGAN</string>
+    <string name="state_focus">FOKUS</string>
+    <string name="state_dialogue">DIALOG</string>
+    <string name="state_sentinel">PENJAGA</string>
+    <string name="state_ghost">HANTU</string>
+    <string name="state_dream">MIMPI</string>
+    <string name="state_standing_orders">· %1$d perintah tetap</string>
+    <string name="license_gate_open">Buka lisensi</string>
+    <string name="license_gate_trial">uji coba · %1$d hr</string>
+    <string name="void_loading_title">Membaca…</string>
+    <string name="void_empty_title">Belum ada apa pun</string>
+    <string name="void_failed_title">Tidak bisa dibaca</string>
+    <string name="void_failed_detail">Ini pembacaan yang gagal, bukan hasil kosong.</string>
+    <string name="void_mismatch_title">Kosong, padahal penghitung menunjukkan %1$d</string>
+    <string name="void_mismatch_detail">Aplikasi bertentangan dengan dirinya: datanya ada tetapi tidak sampai.</string>
+    <string name="back_pill_action">Kembali</string>
+</resources>

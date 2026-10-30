@@ -1,0 +1,122 @@
+{
+ "springs": {
+  "press": {
+   "stiffness": 700,
+   "dampingRatio": 0.9
+  },
+  "layer": {
+   "stiffness": 400,
+   "dampingRatio": 0.86
+  },
+  "flight": {
+   "stiffness": 260,
+   "dampingRatio": 0.78
+  },
+  "snap": {
+   "stiffness": 180,
+   "dampingRatio": 0.75
+  },
+  "breath": {
+   "stiffness": 120,
+   "dampingRatio": 0.85
+  }
+ },
+ "rest": {
+  "gap": 2,
+  "step": 4
+ },
+ "symbol": {
+  "idle": {
+   "ua": "спокій",
+   "loop": false,
+   "gap": 2,
+   "step": 4,
+   "rule": "Stands still. The mark never loops when nothing is happening."
+  },
+  "send": {
+   "ua": "передача",
+   "loop": false,
+   "from": {
+    "gap": 0,
+    "step": 0
+   },
+   "to": {
+    "gap": 2,
+    "step": 4
+   },
+   "gather_ms": 150,
+   "spring": "flight",
+   "rule": "Message sent, payment signed, first open: the whole light (gap 0, step 0) splits and is handed on a step."
+  },
+  "listening": {
+   "ua": "слухає",
+   "loop": true,
+   "gap": "2 + 1.5 * level",
+   "step": 4,
+   "spring": "breath",
+   "rule": "Microphone open. The gap follows the real input level (0..1); in silence it rests at 2. No invented breathing."
+  },
+  "thinking": {
+   "ua": "думає",
+   "loop": true,
+   "gap": 2,
+   "step": "4 -> 0 -> 4",
+   "period_ms": 2400,
+   "easing": [
+    0.2,
+    0,
+    0,
+    1
+   ],
+   "delay_ms": 400,
+   "rule": "Waiting for an answer for more than 400 ms. The halves meet and part again. Stops on the first word with a snap spring."
+  },
+  "speaking": {
+   "ua": "говорить",
+   "loop": true,
+   "gap": 2,
+   "step": "4 + 2 * envelope",
+   "spring": "flight",
+   "rule": "Voice playing. The step follows the voice envelope (0..1); pauses return it to 4."
+  }
+ },
+ "eyes": {
+  "send": {
+   "light": "1.0 -> 0.6 -> 1.0",
+   "aperture": 1.0,
+   "spring": "flight",
+   "rule": "Both slits dip to 60 % for a moment and come back: the light was handed on."
+  },
+  "idle": {
+   "light": "0.8 <-> 1.0",
+   "period_ms": 4800,
+   "aperture": 1.0,
+   "rule": "Only while the companion is on screen: one slow breath, the way a lamp is never perfectly still."
+  },
+  "listening": {
+   "light": 1.0,
+   "aperture": "1 + 0.3 * level",
+   "spring": "breath",
+   "rule": "The slits open with the voice it hears."
+  },
+  "thinking": {
+   "light": "left 1.0 / right 0.55, then swap",
+   "period_ms": 2400,
+   "aperture": 0.85,
+   "easing": [
+    0.2,
+    0,
+    0,
+    1
+   ],
+   "rule": "The light is handed from one slit to the other, the relay of the symbol."
+  },
+  "speaking": {
+   "light": "0.75 + 0.25 * envelope",
+   "aperture": 1.0,
+   "spring": "flight",
+   "rule": "The light follows its own voice. Never a glow, never a colour change."
+  }
+ },
+ "reduced_motion": "Every state holds the rest pose; the state is said in words (слухаю, думаю)."
+}

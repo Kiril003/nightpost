@@ -1,0 +1,1699 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- feature-stream UI strings. Default locale = Ukrainian (uk); the English
+     mirror lives in res/values-en. Extracted from composables under a /ui/
+     path per the I18N-1 firewall (HardcodedCyrillicFirewallTest). -->
+<resources>
+    <!-- NAV-2 — turn-by-turn guidance chrome (GuidanceChrome.kt). -->
+    <string name="nav_waiting_gps">шукаю, де ви…</string>
+    <string name="nav_off_route">поза маршрутом — перепрокладаю</string>
+    <string name="nav_arrived">Ви на місці</string>
+    <string name="nav_finish">завершити</string>
+    <string name="nav_eta">прибуття %1$s</string>
+    <string name="nav_navigating">навігація</string>
+    <string name="nav_speed_unit">км/год</string>
+    <string name="nav_stop">зупинити навігацію</string>
+    <string name="nav_next_maneuver">потім</string>
+    <string name="nav_steps_kicker">Покроковий маршрут</string>
+    <string name="nav_steps_close">Закрити</string>
+    <!-- PRESENCE — смуги перед маневром; %1$d — скільки з них ведуть за маршрутом. -->
+    <string name="nav_lanes_desc">смуги перед маневром, за маршрутом веде %1$d</string>
+    <string name="nav_arrival_label">Прибуття</string>
+    <string name="nav_speed_limit_sign">Обмеження %1$d км/год</string>
+    <string name="nav_speed_over">понад ліміт</string>
+    <string name="nav_speed_desc">швидкість %1$d км/год</string>
+    <string name="nav_speed_desc_over">швидкість %1$d км/год — понад ліміт</string>
+    <string name="nav_slack_minutes">%1$s хв</string>
+    <string name="nav_slack_comfortable">із запасом</string>
+    <string name="nav_slack_tight">впритул</string>
+    <string name="nav_slack_late">запізнення</string>
+    <string name="nav_slack_desc">запас %1$s хв — %2$s</string>
+    <!-- Регістр землі людина не бачить; говоримо лише про давню мапу. -->
+    <string name="nav_route_stale">Частина шляху — за давньою мапою</string>
+    <string name="map_ground_stale">Мапа тут давня — місцевість могла змінитись</string>
+
+    <!-- MOUNT — the phone-on-windscreen driving mode (ui/map/mount/). -->
+    <string name="mount_entry_action">Увімкнути режим кріплення</string>
+    <string name="mount_exit_action">Вихід з режиму кріплення</string>
+    <string name="mount_exit_hint">Утримуйте 1,5 с, щоб вийти</string>
+    <string name="mount_heading_no_fix">немає позиції</string>
+    <string name="mount_distance_off_route">поза маршрутом</string>
+    <string name="mount_distance_arrived">прибули</string>
+    <string name="mount_distance_no_route">немає маршруту</string>
+
+    <!-- LUX — the dialogue timeline (StreamScreen.kt): exit affordance,
+         quote-picker chrome, the per-message action menu, restore skeleton. -->
+    <string name="stream_close">закрити</string>
+    <string name="stream_action_copy">копіювати</string>
+    <!-- Імʼя довгого натиску на хід: без нього меню дій просто не існує
+         для екранного диктора. -->
+    <string name="hero_kicker">ПРИСУТНІСТЬ</string>
+    <string name="hero_sub_morning">ніч минула тихо. скажіть, що на сьогодні — або спитайте, що я помітив.</string>
+    <string name="hero_sub_day">я поруч. скажіть, що потрібно.</string>
+    <string name="hero_sub_evening">день був довгий. можу підсумувати — або просто побути поруч.</string>
+    <string name="hero_sub_night">я поруч. якщо щось муляє — кажи, розберемо разом.</string>
+    <string name="hero_chip_missed">що я пропустив?</string>
+    <string name="hero_chip_missed_prompt">Що я пропустив і що зараз важливо?</string>
+    <string name="hero_chip_plan">сплануй день</string>
+    <string name="hero_chip_plan_prompt">Допоможи спланувати день: пріоритети, ризики, наступні кроки.</string>
+
+    <!-- UX §2.7/§2.12 — the thread's own states: thinking, empty answer,
+         failure rows and their two actions. -->
+    <!-- Turn ended silent AND a tool failed this turn — names the tool and
+         quotes its own [ToolResult.Err.message] instead of the bare
+         stream_empty_answer notice. %1$s = friendly tool name, %2$s = reason. -->
+    <string name="stream_retry">повторити</string>
+    <!-- Wave 2 §3 Proposal 1 item 2 — retry pill once the failed act is
+         known: primary reissues just that act, secondary is the old
+         whole-ask resend, kept as an explicit fallback. %1$s = friendly
+         tool name (same TurnTrace.friendlyName as stream_tool_failed_notice). -->
+    <string name="stream_search">пошук</string>
+    <string name="stream_more">ще</string>
+
+    <!-- Chasm Wave 0 — Доручення block: the intent echo before any act
+         runs, and the fold/unfold label on a finished turn. -->
+    <string name="turn_heard">Почув: %1$s</string>
+    <string name="turn_collapse">згорнути</string>
+
+    <!-- Сповіщення зі шторки: один тихий рядок на відправника. Не збій,
+         тож ані знаку тривоги, ані кнопок. Підпис під розгорнутим —
+         буквальна правда: показане не лягає в жодну таблицю. -->
+    <string name="stream_ambient_row">%1$s · %2$s · %3$s</string>
+    <string name="stream_ambient_row_no_sender">%1$s · %2$s</string>
+    <string name="stream_ambient_not_stored">показую, не зберігаю</string>
+    <plurals name="stream_ambient_new">
+        <item quantity="one">%1$d нове</item>
+        <item quantity="few">%1$d нових</item>
+        <item quantity="many">%1$d нових</item>
+        <item quantity="other">%1$d нових</item>
+    </plurals>
+
+    <!-- ui/items — the chat's own atoms: the widget placeholder inside a
+         prose pane, the voice-notice prefix, the widget expand affordance
+         and the proactive insight card. -->
+    <string name="stream_notice_voice">голос · %1$s</string>
+
+    <!-- ui/widget — the four states every data card must be able to show.
+         «Читаю» is not «нічого не знайшов», and neither is «не прочитав». -->
+    <string name="widget_reading">читаю…</string>
+    <string name="widget_offline_note">офлайн — не було з чим звіритись</string>
+    <string name="widget_unreadable">не зміг прочитати відповідь</string>
+    <string name="widget_ask_again">спитати ще раз</string>
+    <string name="widget_cached">збережене · %1$s</string>
+    <string name="widget_places_empty">Жодного збереженого місця</string>
+    <string name="widget_tasks_empty">Порожній список</string>
+    <string name="widget_agenda_empty">Попереду вільно — жодної події</string>
+
+    <!-- Tool-call refusal card — the constitution said no, not "not found". -->
+    <string name="widget_refusal_title">Відмовлено</string>
+    <string name="widget_refusal_body">«%1$s»: модель попросила, конституція відмовила</string>
+    <string name="widget_refusal_axiom_operator_advocate">загрожує самостійності оператора</string>
+    <string name="widget_refusal_axiom_refusal_ok">діє без згоди оператора</string>
+    <string name="widget_refusal_axiom_conflict_transparency">приховує конфлікт інтересів</string>
+    <string name="widget_refusal_axiom_power_asymmetry_guard">може зашкодити вразливим</string>
+    <string name="widget_refusal_axiom_sunset_clause">не має чіткого строку дії</string>
+    <string name="widget_refusal_axiom_self_audit_daily">не пройшло щоденний самоогляд</string>
+    <string name="widget_refusal_axiom_unknown">порушує принцип роботи</string>
+
+    <!-- Чому місія агента зупинилася. Внутрішні коди (tool_missing:…,
+         constitution_rejected, …) лишаються в логах і в історії моделі —
+         на картку йде тільки це. -->
+    <string name="agent_fail_router">модель не відповіла: %1$s</string>
+    <string name="agent_fail_unknown">місія не вдалася (%1$s)</string>
+    <string name="agent_fail_detail_unknown">причину не названо</string>
+
+    <!-- Generic fallback cards — kind decided by result shape, not tool id. -->
+    <string name="widget_result_list_title">Результати</string>
+    <string name="widget_result_list_empty">Нічого не знайдено</string>
+    <string name="widget_result_place_title">Місця</string>
+    <string name="widget_result_place_empty">Жодного місця</string>
+    <string name="widget_result_measurement_title">Показники</string>
+    <string name="widget_result_measurement_empty">Нема чого показати</string>
+    <string name="widget_reminders_empty">Нема про що нагадувати — все чисто</string>
+    <string name="widget_weather_empty">Погоду не виміряно</string>
+    <string name="widget_route_empty">Маршрут не прокладено</string>
+    <string name="widget_route_refresh">онови маршрут</string>
+    <string name="widget_chart_empty">Графік без даних</string>
+    <string name="widget_chart_refresh">побудуй цей графік ще раз</string>
+    <string name="widget_show_again">покажи це ще раз</string>
+    <string name="widget_voice_memo">голосове</string>
+    <string name="widget_voice_memo_dur">голосове · %1$dс</string>
+
+    <!-- Chamber: ДЕНЬ (DayScreen.kt). -->
+    <string name="day_alerts_kicker">·  ТРИВОГИ</string>
+
+    <!-- Chamber: ТІЛО (BodyVitalsScreen.kt). -->
+
+    <!-- Chamber: РУКИ (HandsAutomationScreen.kt). -->
+
+    <!-- Chamber: ПАМʼЯТЬ (LifeGraphScreen.kt, LifeLogPresentation.kt). -->
+
+    <!-- Chamber: СХОВИЩЕ (VaultScreen.kt). -->
+    <string name="vault_title">СХОВИЩЕ · ПРИМАРА</string>
+    <string name="vault_subtitle">Слідів не залишаю</string>
+    <string name="vault_confirm_you">підтвердіть · це ви?</string>
+    <string name="vault_finger_on_sensor">палець на сенсорі</string>
+    <string name="vault_recognise_pill">·  розпізнати  ·</string>
+    <string name="vault_recognise">розпізнати</string>
+    <string name="vault_cancel">скасувати</string>
+    <string name="vault_empty">Тут поки порожньо</string>
+    <string name="vault_empty_why">Для записів, що не покидають телефон</string>
+    <string name="vault_auto_exit">· вихід авто через 30с тиші ·</string>
+    <string name="vault_lock">замкнути</string>
+    <string name="vault_delete">стерти</string>
+    <string name="vault_copied">скопійовано · %1$dс</string>
+    <string name="vault_copy">копія · 6с</string>
+    <string name="vault_sealed_shut">не відкривається</string>
+    <string name="vault_sealed_shut_why">ключ пристрою більше не підходить · вміст втрачено</string>
+    <string name="vault_masked">••••••••</string>
+
+    <!-- Vault: lock face. -->
+    <string name="vault_status_locked">ЗАМКНЕНО</string>
+    <string name="vault_status_open">ВІДКРИТО</string>
+    <string name="vault_locked_headline">збережене на замку</string>
+    <string name="vault_locked_lead">Відкриється за відбитком пальця</string>
+    <string name="vault_unlock_waiting">чекаю · палець на сенсорі</string>
+    <string name="vault_auth_failed_hint">Палець мокрий або не той — витри й приклади ще раз</string>
+
+    <!-- Vault: what is protected, and what is not. -->
+    <string name="vault_shield_title">Як це захищено</string>
+    <string name="vault_shield_values_head">вміст записів</string>
+    <string name="vault_shield_values">Зашифровано апаратним ключем пристрою</string>
+    <string name="vault_shield_names_head">назви записів</string>
+    <string name="vault_shield_names">Зашифровано ключем бази даних</string>
+    <string name="vault_shield_network_head">мережа</string>
+    <string name="vault_shield_network">збережене лишається на цьому телефоні · нікуди не надсилається</string>
+    <string name="vault_shield_clipboard_head">буфер обміну</string>
+    <string name="vault_shield_clipboard">Очищується через 6 секунд</string>
+    <string name="vault_shield_network_offline">мережі зараз немає — сховищу байдуже</string>
+    <string name="vault_shield_level_sealed">під шифром</string>
+    <string name="vault_shield_level_partial">під шифром бази</string>
+    <string name="vault_shield_level_offline">не виходить</string>
+    <string name="vault_shield_level_temporary">тимчасово</string>
+
+    <!-- Vault: open face. -->
+    <string name="vault_open_total">під ключем</string>
+    <string name="vault_open_all_good">усе відкривається</string>
+    <string name="vault_open_broken">%1$d не відкривається</string>
+    <string name="vault_reading">дістаю записи</string>
+    <string name="vault_broken_title">Не можу прочитати збережене</string>
+    <string name="vault_broken_why">записи на місці, але база не віддає їх · нічого не стерто</string>
+    <string name="vault_broken_retry">спробувати ще</string>
+
+    <!-- Vault: groups. -->
+    <string name="vault_group_broken">зламані</string>
+    <string name="vault_group_broken_why">Ключ пристрою змінився — вміст втрачено</string>
+    <string name="vault_group_secret">ключі й доступи</string>
+    <string name="vault_group_secret_why">закриті, поки не попросите показати</string>
+    <string name="vault_group_note">нотатки</string>
+    <string name="vault_group_note_why">те, що ви відклали із розмови</string>
+    <string name="vault_group_trace">сліди пошуку</string>
+    <string name="vault_group_trace_why">це не ви клали — так мапа памʼятає ваші запити</string>
+
+    <!-- Vault: row actions. -->
+    <string name="vault_reveal">показати · 6с</string>
+    <string name="vault_hide">сховати</string>
+    <string name="vault_erase_ask">стерти назавжди?</string>
+    <string name="vault_erase_yes">так, стерти</string>
+    <string name="vault_erase_no">ні</string>
+    <string name="vault_idle_countdown">замкну через %1$dс</string>
+
+    <!-- Vault: what went wrong. -->
+    <string name="vault_trouble_no_room">на пристрої немає місця — зміну не записано</string>
+    <string name="vault_trouble_erase">не вдалося стерти запис</string>
+    <string name="vault_trouble_dismiss">зрозумів</string>
+
+    <!-- Vault: the empty face. -->
+    <string name="vault_empty_how_title">Звідки сюди щось потрапляє</string>
+    <string name="vault_empty_how_chat">у розмові · дія «зберегти» під кожною відповіддю</string>
+    <string name="vault_empty_how_seal">усе, що сюди лягає, шифрується тієї ж миті</string>
+
+    <!-- Chamber: creator canvas (CreatorCanvasScreen.kt). -->
+
+    <!-- Chamber: ОКО (LensScreen.kt). -->
+
+    <!-- ТВОРЕННЯ: why the code cannot run yet. -->
+
+    <!-- ЛЮДИ: the honest solo state and the way out of it. -->
+    <string name="peer_day_today">сьогодні</string>
+    <string name="peer_day_yesterday">вчора</string>
+    <string name="peer_chat_back">назад</string>
+    <string name="peer_chat_send">надіслати</string>
+    <string name="peer_chat_empty">Поки тиша — напишіть першими</string>
+    <string name="peer_state_queued">чекає</string>
+    <string name="peer_state_sent">надіслано</string>
+    <string name="peer_state_held">лежить у сховку</string>
+    <string name="peer_state_delivered">доставлено</string>
+    <string name="peer_state_failed">не вдалось</string>
+    <string name="peer_state_retry">ще раз</string>
+    <string name="peer_state_no_route">чекає — його ще не чути</string>
+    <string name="peer_state_no_meeting_key">без свіжого ключа зустрічі</string>
+    <string name="peer_send_failed">не надіслано — спробуйте ще</string>
+    <string name="peer_note_added_unverified">додано %1$s</string>
+    <string name="peer_note_added_verified">додано %1$s · ключ звірено %2$s</string>
+    <string name="peer_note_key_changed">ключ змінився — звірте число наново</string>
+    <string name="peer_chat_verify_why">Звірте це число на обох телефонах</string>
+    <string name="peer_chat_scanned_why">Ключ відскановано з екрана — порівняйте число</string>
+    <string name="peer_chat_key_changed_why">Ключ змінився — звірте число наново</string>
+    <string name="peer_detail_title">Що з цим листом</string>
+    <string name="peer_detail_written">написано о %1$s</string>
+    <string name="peer_detail_attempts">спроб: %1$d з %2$d</string>
+    <string name="peer_detail_next">наступна спроба о %1$s</string>
+    <string name="peer_detail_no_route_why">В черзі — доставиться за наявності звʼязку</string>
+    <string name="peer_detail_intro_why">Очікує обміну ключами при зʼєднанні</string>
+    <string name="people_handshake_title">Додати людину</string>
+    <string name="people_handshake_mine">Ваш код — покажіть або надішліть</string>
+    <string name="people_handshake_spoken">Відбиток вашого ключа</string>
+    <string name="people_handshake_camera">Відскануйте QR-код з екрана співрозмовника</string>
+    <string name="people_handshake_pasted">Вставлений код потребує подальшої звірки</string>
+    <string name="people_handshake_theirs">Його код — відскануйте або вставте</string>
+    <string name="people_handshake_remote_tip">Обміняйтеся кодами зі співрозмовником</string>
+    <string name="people_handshake_close">закрити</string>
+    <string name="people_invite_mine">мій код</string>
+    <string name="people_invite_copy">скопіювати</string>
+    <string name="people_invite_share">надіслати запрошення</string>
+    <!-- Лист, що вилітає з PHANTOM на телефон, де PHANTOM ще немає.
+         Посилання — інтродукція (публічні ключі й адреса), не таємниця:
+         сеансові ключі телефони складають самі, коли зустрінуться. Правду
+         про доставку кажемо наперед — обіцяти її цьому листу нічим. -->
+    <string name="people_invite_message">%1$s запрошує в Nightpost:\n%2$s</string>
+    <string name="people_invite_call_cta">Покликати людину</string>
+    <string name="people_invite_first_body">Ще немає контактів. Надішліть свій код запрошення.</string>
+    <string name="people_invite_first_truth">Потрібен Nightpost на обох телефонах</string>
+    <string name="people_invite_called_by">Вас кличе %1$s</string>
+    <string name="people_invite_paste_clip">вставити з буфера</string>
+    <string name="people_invite_words">звірте вголос: %1$s</string>
+    <string name="people_invite_paste">вставте код людини</string>
+    <string name="people_invite_add">додати</string>
+    <string name="people_invite_bad">це не код запрошення</string>
+    <string name="people_invite_legacy">Застаріле запрошення. Оновіть застосунок і створіть нове.</string>
+    <string name="peer_chat_needs_new_invite">Немає ключа шифрування — прийміть нове запрошення</string>
+    <string name="peer_card_legacy_key">Немає ключа шифрування — потрібне нове запрошення.</string>
+    <string name="people_fact_transport">ТРАНСПОРТ:</string>
+    <string name="people_fact_key">КЛЮЧ:</string>
+    <string name="mem_screen_title">Що я про вас знаю</string>
+    <string name="mem_screen_close">закрити</string>
+    <string name="mem_screen_no_semantic">модель памʼяті не завантажена — згадую за свіжістю, не за змістом</string>
+    <string name="mem_screen_empty">Ще немає збережених фактів</string>
+    <string name="mem_screen_confirmed"> · підтверджено %1$d</string>
+    <string name="mem_screen_forget">забути</string>
+    <string name="mem_screen_forget_sure">точно забути</string>
+    <string name="mem_cat_all">усі</string>
+    <string name="mem_cat_preference">уподобання</string>
+    <string name="mem_cat_vehicle">транспорт</string>
+    <string name="mem_cat_person">люди</string>
+    <string name="mem_cat_place">місця</string>
+    <string name="mem_cat_routine">розпорядок</string>
+    <string name="mem_cat_fact">факти</string>
+    <string name="mem_known_kicker">що я знаю</string>
+    <string name="mem_known_empty">У цьому зрізі поки нічого.</string>
+    <string name="mem_stages_kicker">етапи</string>
+    <string name="mem_stage_first">дізнався вперше</string>
+    <string name="mem_stage_last">підтверджено востаннє</string>
+    <string name="mem_actions_kicker">швидкі дії</string>
+    <string name="mem_meta_pair">%1$s · %2$s</string>
+    <string name="canvas_expand">розгорнути</string>
+    <string name="canvas_close_full">закрити</string>
+    <string name="canvas_unknown_node">⚠ незнайомий компʼютер: %1$s</string>
+    <string name="canvas_reply_hint">Підказка помічника — ляже у поле вводу, надішлете ви</string>
+    <string name="canvas_button_dead">⚠ кнопка без дії: модель не вказала ні інструмент, ні текст</string>
+    <string name="canvas_version">версія %1$d</string>
+    <string name="people_title">Люди</string>
+    <string name="people_add">Додати людину</string>
+    <string name="people_search">пошук</string>
+    <string name="people_search_close">згорнути пошук</string>
+    <string name="people_kind_person">людина</string>
+    <string name="people_kind_device">пристрій</string>
+    <string name="people_here_now">поруч</string>
+    <string name="people_in_touch_not_near">на звʼязку, не поруч</string>
+    <string name="people_offline">не чути</string>
+    <string name="people_last_mine">Ви: %1$s</string>
+    <string name="peer_card_name">Імʼя</string>
+    <string name="peer_card_rename_save">зберегти імʼя</string>
+    <string name="peer_card_proven">ключ доведено</string>
+    <string name="peer_card_matched">число збіглось</string>
+    <string name="peer_card_unverified">ключ не звірено</string>
+    <string name="peer_card_number_label">Число розмови</string>
+    <string name="peer_chat_verify_strip">Число ще не звірене — торкніться, щоб порівняти</string>
+    <string name="peer_chat_empty_sealed">ЛИСТИ ЗАПЕЧАТАНО ЇЇ КЛЮЧЕМ</string>
+    <string name="peer_chat_empty_unsealed">КЛЮЧА ЩЕ НЕМАЄ — ЗАПЕЧАТАТИ НЕМА ЧИМ</string>
+    <string name="peer_chat_empty_group_sealed">ЛИСТИ ЗАПЕЧАТАНО КЛЮЧАМИ СКЛАДУ</string>
+    <string name="peer_chat_empty_group_unsealed">НЕ В УСІХ УЧАСНИКІВ Є КЛЮЧ</string>
+    <string name="peer_group_unnamed">Група без назви</string>
+    <string name="peer_card_proven_why">Ключ підтверджено скануванням екрана</string>
+    <string name="peer_card_matched_why">Число звірено. Відскануйте QR для повної перевірки.</string>
+    <string name="peer_card_matched_unknown_why">Число звірено. Відскануйте QR для повної перевірки.</string>
+    <string name="peer_card_scanned_why">Ключ відскановано — порівняйте число на обох телефонах</string>
+    <string name="peer_card_unverified_why">Порівняйте це число вголос або через QR-код</string>
+    <string name="peer_card_shared_why">Код отримано з іншого застосунку — звірте число</string>
+    <string name="peer_card_verify">число збіглось</string>
+    <string name="peer_card_mismatch">не збіглось</string>
+    <string name="peer_card_mismatch_title">Різні числа — ключ під цим іменем не її</string>
+    <string name="peer_card_mismatch_why">Ключ «%1$s» не збігається. Видаліть контакт і додайте знову особисто.</string>
+    <string name="peer_card_mismatch_keep">перечитаю ще раз</string>
+    <string name="peer_card_key_changed">ключ змінився</string>
+    <string name="peer_card_key_changed_why">Ключ змінився — звірте число наново</string>
+    <string name="peer_card_unverify">зняти звірку</string>
+    <string name="peer_card_scan_upgrade">відсканувати число з її екрана</string>
+    <string name="peer_card_key">ключ</string>
+    <string name="peer_card_seen_at">востаннє на %1$s</string>
+    <string name="peer_card_open_chat">відкрити розмову</string>
+    <string name="peer_card_remove">прибрати з реєстру</string>
+    <string name="peer_card_remove_ask">Прибрати «%1$s» та його ключ?</string>
+    <string name="peer_card_remove_yes">прибрати</string>
+    <string name="peer_card_remove_no">лишити</string>
+    <string name="peer_card_title">Контакт</string>
+    <string name="peer_card_mismatch_mine_why">На телефоні «%1$s» невірний ваш ключ — додайтеся наново через QR.</string>
+    <string name="peer_card_safety_qr_show">показати QR-код</string>
+    <string name="peer_card_safety_qr_hide">сховати QR</string>
+    <string name="peer_card_safety_qr_hint">Покажіть цей QR співрозмовнику для сканування</string>
+    <string name="peer_card_safety_pending">число зʼявиться, щойно телефон дочитає власний ключ</string>
+    <string name="people_scan_safety_hint">Наведіть на QR числа або код запрошення</string>
+    <string name="people_scan_hint">Наведіть на код іншого телефона</string>
+    <string name="people_scan_not_invite">Це не запрошення Nightpost. Шукаю далі.</string>
+    <string name="people_scan_legacy">Застарілий формат запрошення. Оновіть застосунок.</string>
+    <string name="people_scan_needs_camera">Щоб прочитати код, потрібна камера</string>
+    <string name="people_scan_close">закрити</string>
+    <string name="people_scan_open">сканувати</string>
+    <string name="people_filter_reachable">в мережі · %1$d</string>
+    <string name="people_filter_reachable_none">в мережі · нікого</string>
+    <string name="people_filter_on">показано лише в мережі · %1$d</string>
+    <string name="people_filter_off">показати всіх</string>
+    <string name="people_filter_none">Нікого не чути зараз</string>
+    <string name="people_filter_none_why">Видно лише телефони в одній мережі Wi-Fi</string>
+    <string name="people_network_wifi_off_title">Wi-Fi вимкнено</string>
+    <string name="people_network_disconnected_title">Не в мережі Wi-Fi</string>
+    <string name="people_network_explain">«поруч» бачить лише телефони в тій самій мережі Wi-Fi</string>
+    <string name="people_network_action">Налаштування Wi-Fi</string>
+    <string name="people_row_unverified">не підтверджено</string>
+    <!-- Коротко, бо це пілюля в рядку списку: довге речення забирало всю
+         ширину і лишало імені людини нуль. Пояснення — на картці особи. -->
+    <string name="people_row_key_changed">ключ змінився — звір</string>
+    <string name="people_row_proven">ключ доведено камерою</string>
+    <string name="people_row_matched">число збіглось, але не з екрана людини</string>
+    <string name="people_row_undelivered">не дійшло</string>
+    <string name="people_row_your_turn">чекає на вас</string>
+    <string name="people_search_hint">Імʼя або ключ</string>
+    <string name="people_search_empty">За «%1$s» нікого</string>
+    <string name="people_invite_qr_hint">Хай наведе камеру — або надішліть код</string>
+    <string name="peer_chat_new_mark">нове</string>
+    <string name="peer_place_title">Місце</string>
+    <string name="peer_place_accuracy">точність ±%1$d м</string>
+    <string name="peer_place_show">показати на мапі</string>
+    <string name="peer_place_send">надіслати своє місце</string>
+    <string name="peer_place_unknown">Місця поки не знаю — увімкніть геолокацію</string>
+    <string name="peer_place_marker">місце з розмови</string>
+    <string name="peer_place_notification">Місце</string>
+    <string name="peer_photo_notification">Фото</string>
+    <string name="peer_file_notification">Файл</string>
+    <string name="stratum_world">Мапа</string>
+    <string name="stratum_vault">Сховище</string>
+    <string name="thread_now">Зараз</string>
+    <string name="whisper_setting_sound">звук</string>
+    <string name="whisper_setting_cadence">частота</string>
+    <string name="whisper_setting_bg">фон</string>
+    <string name="whisper_sound_on">увімк.</string>
+    <string name="whisper_sound_off">вимк.</string>
+    <string name="whisper_try">спробувати звук</string>
+    <string name="whisper_try_muted">звук вимкнено — нема чого програвати</string>
+    <string name="whisper_preview_sample_mark">приклад · це не ваші повідомлення</string>
+    <string name="vault_no_device_lock">Встановіть блокування екрана на телефоні</string>
+    <string name="vault_auth_failed">не впізнав — спробуйте ще раз</string>
+    <string name="vault_auth_cancelled">підтвердження скасовано</string>
+    <string name="map_region_saving">зберігаю цю ділянку — буде видно й без мережі</string>
+    <string name="map_region_no_map">мапа ще не готова — спробуйте за мить</string>
+    <string name="map_offline_title">ТЕРИТОРІЇ ОФЛАЙН</string>
+    <string name="map_offline_total">на пристрої · %1$s МБ</string>
+    <string name="map_offline_empty">Жодної ділянки ще не збережено</string>
+    <string name="map_offline_close">закрити</string>
+    <string name="map_offline_view_covered">цей вид уже збережено — працює без мережі</string>
+    <string name="map_offline_view_partial">збережено частково — краї лишаться без карти</string>
+    <string name="map_offline_view_other_map">збережено для іншої карти — на цій буде порожньо</string>
+    <string name="map_offline_view_none">цього виду немає офлайн</string>
+    <string name="map_offline_save_view">зберегти цей вид</string>
+    <string name="map_offline_save_rest">зберегти решту</string>
+    <string name="map_offline_save_this_map">зберегти для цієї карти</string>
+    <string name="map_offline_downloading">завантажую · %1$d%%</string>
+    <string name="map_offline_ready">%1$s МБ · без мережі</string>
+    <string name="map_offline_other_map">%1$s МБ · інша карта</string>
+    <string name="map_offline_delete">видалити ділянку</string>
+    <string name="map_offline_delete_confirm">видалити?</string>
+    <string name="map_provider_openfreemap">OpenFreeMap (Liberty)</string>
+    <string name="map_provider_maptiler">MapTiler (Bright / Dark Matter)</string>
+    <string name="map_provider_stadia">Stadia (Alidade Smooth)</string>
+    <string name="map_provider_custom">Власний URL стилю</string>
+    <string name="map_provider_obsidian">Nightpost Обсидіан</string>
+    <string name="map_tools_expand">розгорнути</string>
+    <string name="map_tools_collapse">згорнути</string>
+    <string name="map_tools_title">Показувати</string>
+    <string name="map_section_layers">Шари на мапі</string>
+    <string name="map_section_nearby">поруч</string>
+    <string name="map_section_along_route">по дорозі</string>
+    <string name="map_section_context">активне зараз</string>
+    <string name="map_layer_alerts">тривоги</string>
+    <string name="map_layer_radar">опади</string>
+    <string name="map_layer_transit">транспорт</string>
+    <string name="map_layer_cameras">камери</string>
+    <string name="map_layer_power_towers">опори ЛЕП</string>
+    <string name="map_layer_drainage">канави та труби</string>
+    <string name="map_layer_fords">де перейти річку</string>
+    <string name="map_layer_untitled">шар</string>
+    <string name="map_layer_busy">працюю</string>
+    <string name="map_layer_alerts_none">тривог зараз немає</string>
+    <string name="map_layer_alerts_silent">не вдається дізнатись про тривоги</string>
+    <string name="map_layer_alerts_no_feed">для цієї країни тривог не показуємо</string>
+    <string name="map_layer_radar_silent">опади зараз не показати</string>
+    <string name="map_route_no_origin">немає позиції — не можу прокласти маршрут</string>
+    <string name="map_search_busy">шукаю</string>
+    <string name="map_route_busy">рахую</string>
+    <string name="map_layer_focus">до шару</string>
+    <string name="map_layer_remove">прибрати шар</string>
+    <string name="map_route_clear">прибрати маршрут</string>
+    <string name="map_route_active">маршрут · %1$s · %2$s</string>
+    <string name="map_compass_north">компас · повернути північ угору</string>
+    <string name="map_locate_no_fix">місця ще немає — сигнал не зловився</string>
+    <string name="map_fallback_plan">запасний план</string>
+    <string name="map_motion_walk">пішки</string>
+    <string name="map_motion_run">біг</string>
+    <string name="map_motion_cycle">вело</string>
+    <string name="map_motion_drive">авто</string>
+    <string name="map_motion_train">потяг</string>
+    <string name="map_motion_train_maybe">потяг · ймовірно</string>
+    <string name="map_motion_flight">політ</string>
+    <!-- ATLAS-2 «Лінза» — вхід у режим, що прибирає з екрана зайве. -->
+    <string name="map_mode_drive">режим: за кермом</string>
+    <string name="map_mode_threat">режим: тривога</string>
+    <!-- ux-map-design.md §5.1 — the viewport confidence readout. -->
+    <!-- H-02 — придатне світло до кінця цивільних сутінків, не до заходу. -->
+    <string name="map_light_remaining">дня ще ~%1$d хв</string>
+    <string name="map_light_until_dark">сутінки за ~%1$d хв</string>
+    <string name="map_light_until_first">світання за ~%1$d хв</string>
+    <string name="map_light_all_night">видно всю ніч</string>
+    <string name="map_light_no_day">сонце сьогодні не зійде</string>
+    <string name="map_light_no_dark">сутінки до самого ранку</string>
+    <string name="map_light_horizon">відкритий горизонт</string>
+    <!-- H-02, друге застереження. Раніше воно жило ЛИШЕ в описі для TalkBack —
+         тобто зрячий оператор у сутінках його не бачив. Тепер годинник справді
+         звіряється із супутниками, і рядок каже, що саме з ним не так. -->
+    <string name="map_light_clock_fast_min">годинник телефона спішить на %1$d хв</string>
+    <string name="map_light_clock_fast_hr">годинник телефона спішить на %1$d год</string>
+    <string name="map_light_clock_slow_min">годинник телефона відстає на %1$d хв</string>
+    <string name="map_light_clock_slow_hr">годинник телефона відстає на %1$d год</string>
+    <string name="map_light_clock_unverified">годинник не перевірено</string>
+    <string name="map_light_desc">%1$s (для відкритого горизонту)</string>
+    <!-- H-05, магнітне схилення. Цілі градуси навмисно: модель заявлена з
+         точністю ±0,5°, тож десята частка градуса була б вигаданою точністю.
+         Відмова займає місце числа, а не ховає рядок: порожнє місце читалося б
+         як «поправка не потрібна» — єдиний висновок, який ніколи не є правдою. -->
+    <string name="map_declination_east">схилення %1$d° сх.</string>
+    <string name="map_declination_west">схилення %1$d° зх.</string>
+    <string name="map_declination_none">схилення ~0°</string>
+    <string name="map_declination_expired">схилення: модель діяла до %1$d</string>
+    <string name="map_declination_clock">схилення: перевірте дату в телефоні</string>
+    <string name="map_declination_undefined">схилення: тут не визначене</string>
+    <string name="map_declination_unavailable">схилення тут невідоме</string>
+    <string name="map_declination_desc">%1$s — відхилення від істинної півночі</string>
+    <string name="map_search_quick">швидкий доступ</string>
+    <string name="map_search_ask">спитати Nightpost</string>
+    <string name="map_search_recent">нещодавнє</string>
+    <string name="map_search_recent_clear">очистити</string>
+    <string name="map_search_saved">збережене у сховищі</string>
+    <string name="map_search_saved_matches">серед збереженого</string>
+    <!-- Асиметрія навмисна: сусідній рядок каже «офлайн», цей мусить сказати,
+         що слово оператора йде на сервер. Мережевий пошук лишається — людина
+         його натиснула, — але мовчазним він бути не має. -->
+    <string name="map_search_places">місця та адреси · запит у мережу</string>
+    <string name="map_search_offline">з памʼяті пристрою · офлайн</string>
+    <string name="map_evac_cancel">скасувати евакуацію</string>
+    <string name="map_evac_scanning">сканую околиці — офіційні укриття, потім альтернативне</string>
+    <string name="map_evac_routing">прокладаю пішохідний маршрут…</string>
+    <string name="map_evac_alt_shelter">альтернативне укриття</string>
+    <string name="map_evac_arrived">ви біля укриття з довідника</string>
+    <string name="map_evac_seeking">Пошук укриття…</string>
+    <string name="map_evac_plotting">Прокладання маршруту…</string>
+    <string name="map_evac_impossible">Маршрут неможливий</string>
+    <string name="map_evac_in_place">Укриття поруч не знаю</string>
+    <string name="map_evac_in_place_protocol">Укриттів поруч у базі немає. Дотримуйтесь правила 2 стін.</string>
+    <string name="map_evac_registry_blind">База укриттів порожня. Дотримуйтесь правила 2 стін.</string>
+    <string name="map_shelter_quick">Укриття</string>
+    <string name="map_shelter_quick_action">Маршрут до найближчого укриття</string>
+    <string name="map_shelter_no_fix">Невідома позиція — не можу знайти найближче укриття</string>
+    <string name="map_alert_loud">тривога</string>
+    <string name="map_alert_quiet">тиша</string>
+    <string name="map_alert_country">по країні</string>
+    <string name="map_alert_unknown">про тривоги не знаю</string>
+    <string name="map_alert_feed_silent">тривоги не чути</string>
+    <string name="present_sky_alert">тривога</string>
+    <string name="present_sky_quiet">небо тихе</string>
+    <string name="present_sky_unknown">про тривоги не знаю</string>
+    <string name="map_alert_since">почалась %1$s</string>
+    <string name="map_alert_country_count">%1$d обл.</string>
+    <string name="map_alert_country_count_spoken">по країні %1$d обл. під тривогою</string>
+    <string name="map_alert_country_only">%1$d областей під тривогою</string>
+    <string name="map_basemap_auto">Авто</string>
+    <string name="map_basemap_dark">Темна</string>
+    <string name="map_basemap_light">Денна</string>
+    <string name="map_basemap_minimal">Спокійна</string>
+    <string name="map_value_unknown">—</string>
+    <string name="map_deadline_leave_by">відлік: виїзд до %1$s</string>
+    <string name="map_deadline_missed">відлік: за оцінкою вже не встигаємо до %1$s</string>
+    <!-- Знак номера перед номером маршруту на пігулці транспорту. Без нього
+         «36» читалось як «через 36 хвилин» (гонтлет, 4 персони). -->
+    <string name="map_transit_route_prefix">№</string>
+    <string name="map_transit_close">закрити</string>
+    <string name="map_transit_live_gps">наживо</string>
+    <string name="map_transit_unnumbered">без номера</string>
+    <string name="map_transit_show_line">лінія на мапі</string>
+    <string name="map_transit_hub_title">ТРАНСПОРТНИЙ ХАБ</string>
+    <string name="map_transit_hub_live">живий флот · %1$s</string>
+    <string name="map_transit_hub_model">орієнтовно за розкладом · %1$s · маршрутів: %2$d</string>
+    <string name="map_transit_hub_static">за розкладом · позицій машин немає</string>
+    <string name="map_transit_absent_no_key">дані про транспорт тут недоступні</string>
+    <string name="map_transit_absent_source">джерело недоступне</string>
+    <string name="map_transit_absent_here">мережа цього міста не завантажена</string>
+    <string name="map_transit_tab_nearby">Поруч</string>
+    <string name="map_transit_tab_routes">Маршрути</string>
+    <string name="map_transit_tab_metro">Метрополітен</string>
+    <string name="map_transit_tab_fleet">Живий флот</string>
+    <string name="map_transit_fleet_title">ЖИВИЙ ФЛОТ</string>
+    <string name="map_transit_fleet_count">машин видно просто зараз: %1$d</string>
+    <string name="map_transit_fleet_stale">дані не оновлюються — показано останнє відоме</string>
+    <string name="map_dossier_departures_model">орієнтовно:</string>
+    <string name="map_dossier_departures_real">за розкладом:</string>
+    <string name="map_dir_n">Пн</string>
+    <string name="map_dir_ne">Пн-Сх</string>
+    <string name="map_dir_e">Сх</string>
+    <string name="map_dir_se">Пд-Сх</string>
+    <string name="map_dir_s">Пд</string>
+    <string name="map_dir_sw">Пд-Зх</string>
+    <string name="map_dir_w">Зх</string>
+    <string name="map_dir_nw">Пн-Зх</string>
+    <string name="agent_status_running">виконується</string>
+    <string name="agent_status_done">готово ✓</string>
+    <string name="agent_status_failed">помилка ✕</string>
+    <string name="agent_status_cancelled">скасовано —</string>
+    <string name="agent_status_interrupted">обірвано — застосунок закрився під час роботи</string>
+    <string name="agent_status_unknown">стан не вказано</string>
+
+    <!-- ui/widget — the honest four faces for the rest of the card family.
+         A card that failed to read never says the world is empty. -->
+    <string name="widget_agent_empty">Агент нічого не повідомив</string>
+    <string name="widget_agent_steps">кроків · %1$d</string>
+    <string name="widget_agent_cancel">скасувати</string>
+    <string name="widget_table_empty">Жодного рядка</string>
+    <string name="widget_comparison_empty">Нічого порівнювати</string>
+    <string name="widget_comparison_refresh">склади це порівняння ще раз</string>
+    <string name="widget_diff_empty">Жодного рядка змін</string>
+    <string name="widget_diff_refresh">покажи цей дифф ще раз</string>
+    <string name="widget_diff_title">Зміни</string>
+    <string name="widget_progress_empty">Жодного кроку</string>
+    <string name="widget_progress_refresh">покажи цей прогрес ще раз</string>
+    <string name="widget_markdown_title">Відповідь</string>
+    <string name="widget_markdown_empty">Порожній текст</string>
+    <string name="widget_markdown_refresh">напиши це ще раз</string>
+    <string name="widget_question_empty">Питання без варіантів</string>
+    <string name="widget_sheet_empty">Жодного рядка не прочитано</string>
+    <string name="widget_sheet_read">· ПРОЧИТАНО ·</string>
+    <string name="widget_sheet_kicker">· ТАБЛИЦЯ ·</string>
+    <string name="widget_file_empty">Файл не описано</string>
+    <string name="widget_transfer_empty">Жодного файлу в передачі</string>
+    <string name="widget_transfer_title">Передача · %1$d з %2$d</string>
+    <string name="widget_transfer_encrypting">· ПЕРЕДАЮ ·</string>
+    <string name="widget_transfer_done">· ГОТОВО ·</string>
+    <string name="widget_audio_empty">Запис не передано</string>
+    <string name="widget_audio_quotes">· Nightpost · ФРАГМЕНТИ, ВАРТІ ПОВЕРНЕННЯ</string>
+    <string name="widget_audio_untitled">аудіо</string>
+    <string name="widget_audio_title">Аудіо · %1$s</string>
+    <string name="widget_audio_silent">запис не програється тут — тривалість невідома</string>
+    <string name="widget_model_empty">Модель не передано</string>
+    <string name="widget_model_untitled">модель</string>
+    <string name="widget_photo_title">Зображення</string>
+    <string name="widget_photo_none">посилання на зображення не передано</string>
+    <string name="widget_photo_failed">зображення не завантажилось</string>
+    <string name="widget_photo_gone">файла вже немає на пристрої</string>
+    <string name="widget_audio_play">програти</string>
+    <string name="widget_audio_pause">пауза</string>
+    <string name="widget_timer_empty">Таймер без тривалості</string>
+    <string name="widget_code_empty">Порожній фрагмент</string>
+    <string name="widget_reasoning_untitled">хід думки</string>
+    <string name="widget_code_lang_unknown">мову не вказано</string>
+    <string name="widget_code_refresh">покажи цей код ще раз</string>
+    <string name="widget_armap_empty">AR-вид не описано</string>
+    <string name="widget_armap_title">Доповнена реальність</string>
+    <string name="widget_armap_note">AR відкривається окремим екраном</string>
+    <string name="widget_attachment_empty">Вкладення не прочиталось</string>
+    <string name="widget_citation_unreadable">джерело не прочиталось</string>
+    <string name="widget_action_title">Дія в додатку</string>
+    <string name="widget_action_steps">дія в додатку · %1$d</string>
+    <string name="widget_action_unreadable">дії не прочитались — нічого не запускав</string>
+    <string name="widget_action_waiting">чекаю на перший крок</string>
+    <string name="widget_vitals_empty">Показники недоступні</string>
+    <string name="widget_vitals_title">Стан пристрою</string>
+    <string name="widget_vitals_percent">%1$d%%</string>
+    <string name="widget_vitals_level">рів. %1$d</string>
+    <string name="widget_vitals_charging">заряджається</string>
+    <string name="widget_vitals_battery">батарея</string>
+    <string name="widget_vitals_signal">сигнал</string>
+    <string name="widget_vitals_link">звʼязок</string>
+    <string name="widget_map_unreadable">не вдалося прочитати координати</string>
+    <string name="widget_artifact_unreadable">артефакт не прочитався</string>
+    <string name="widget_model_placeholder">· ЕСКІЗ · НЕ САМА МОДЕЛЬ ·</string>
+    <string name="widget_model_polys">ПОЛІГОНІВ</string>
+    <string name="widget_model_drag">тягни, щоб крутити</string>
+    <string name="widget_sheet_untitled">таблиця</string>
+    <string name="widget_file_untitled">файл</string>
+    <string name="widget_question_title">Питання</string>
+    <string name="widget_citation_untitled">посилання</string>
+    <string name="widget_artifact_untitled">артефакт</string>
+    <string name="widget_table_untitled">таблиця</string>
+    <string name="widget_comparison_untitled">порівняння</string>
+    <string name="widget_progress_untitled">прогрес</string>
+    <string name="widget_attachment_untitled">вкладення</string>
+    <string name="map_search_hint">Місце, адреса, «кава», «ПБ»…</string>
+    <string name="facet_briefing_title">Брифінг</string>
+    <string name="facet_briefing_empty">Брифінг без жодного пункту</string>
+    <string name="facet_checklist_title">Чеклист</string>
+    <string name="facet_checklist_empty">Чеклист без пунктів</string>
+    <string name="facet_checklist_done">%1$d з %2$d готово</string>
+    <string name="facet_digest_title">Дайджест</string>
+    <string name="facet_digest_empty">За цей період нічого не записано</string>
+    <string name="facet_trip_title">Поїздка</string>
+    <string name="facet_trip_empty">Поїздку не описано</string>
+    <string name="facet_stat_title">Показник</string>
+    <string name="facet_stat_empty">Значення не виміряно</string>
+    <string name="facet_citation_title">Відповідь з джерелами</string>
+    <string name="facet_citation_empty">Жодного джерела не наведено</string>
+    <string name="facet_memory_title">З памʼяті</string>
+    <string name="facet_memory_empty">Спогад не прочитався</string>
+    <string name="facet_alert_title">Попередження</string>
+    <string name="facet_alert_empty">Попередження без тексту</string>
+    <string name="widget_canvas_title">Полотно</string>
+    <string name="widget_canvas_invalid">полотно не зібралось: %1$s</string>
+
+    <!-- TurnTrace: tool vocabulary -->
+    <string name="tt_doing_weather">перевіряю погоду</string>
+    <string name="tt_doing_shell">виконую команду</string>
+    <string name="tt_doing_http">звертаюсь у мережу</string>
+    <string name="tt_doing_web_search">шукаю в інтернеті</string>
+    <string name="tt_doing_file">працюю з файлами</string>
+    <string name="tt_doing_settings">змінюю налаштування</string>
+    <string name="tt_doing_widget">готую віджет</string>
+    <string name="tt_doing_location_current">визначаю місцезнаходження</string>
+    <string name="tt_doing_geo_search">шукаю місце</string>
+    <string name="tt_doing_geo_nearby">дивлюсь що поруч</string>
+    <string name="tt_doing_geo_route">будую маршрут</string>
+    <string name="tt_doing_notification">надсилаю сповіщення</string>
+    <string name="tt_doing_media">керую медіа</string>
+    <string name="tt_doing_launch">запускаю застосунок</string>
+    <string name="tt_doing_accessibility">взаємодію з екраном</string>
+    <string name="tt_doing_mental_park">звертаюсь до ментального парку</string>
+    <string name="tt_doing_map_show">кладу шар на мапу</string>
+    <string name="tt_doing_map_focus">наводжу мапу</string>
+    <string name="tt_doing_map_clear">прибираю позначки з мапи</string>
+    <string name="tt_doing_map_route">прокладаю маршрут на мапі</string>
+    <string name="tt_doing_transit_nearby">шукаю зупинки поруч</string>
+    <string name="tt_doing_transit_routes">дивлюсь маршрути транспорту</string>
+    <string name="tt_doing_world_cameras">шукаю камери поруч</string>
+    <string name="tt_doing_world_aircraft">дивлюсь літаки в небі</string>
+    <string name="tt_doing_world_report">позначаю на мапі</string>
+    <string name="tt_doing_phone_alarm">ставлю будильник</string>
+    <string name="tt_doing_phone_timer">запускаю таймер</string>
+    <string name="tt_doing_phone_dial">відкриваю дзвонилку</string>
+    <string name="tt_doing_phone_sms">готую SMS</string>
+    <string name="tt_doing_phone_calendar">готую подію в календарі</string>
+    <string name="tt_doing_phone_panel">відкриваю системну панель</string>
+    <string name="tt_done_weather">перевірив погоду</string>
+    <string name="tt_done_shell">виконав команду</string>
+    <string name="tt_done_http">звернувся у мережу</string>
+    <string name="tt_done_web_search">пошукав в інтернеті</string>
+    <string name="tt_done_file">попрацював з файлами</string>
+    <string name="tt_done_settings">змінив налаштування</string>
+    <string name="tt_done_widget">підготував віджет</string>
+    <string name="tt_done_location_current">визначив місцезнаходження</string>
+    <string name="tt_done_geo_search">знайшов місце</string>
+    <string name="tt_done_geo_nearby">подивився що поруч</string>
+    <string name="tt_done_geo_route">проклав маршрут</string>
+    <string name="tt_done_notification">надіслав сповіщення</string>
+    <string name="tt_done_media">керував медіа</string>
+    <string name="tt_done_launch">запустив застосунок</string>
+    <string name="tt_done_accessibility">попрацював з екраном</string>
+    <string name="tt_done_mental_park">звернувся до ментального парку</string>
+    <string name="tt_done_map_show">поклав шар на мапу</string>
+    <string name="tt_done_map_focus">навів мапу</string>
+    <string name="tt_done_map_clear">прибрав позначки з мапи</string>
+    <string name="tt_done_map_route">проклав маршрут на мапі</string>
+    <string name="tt_done_transit_nearby">знайшов зупинки поруч</string>
+    <string name="tt_done_transit_routes">подивився маршрути транспорту</string>
+    <string name="tt_done_world_cameras">знайшов камери поруч</string>
+    <string name="tt_done_world_aircraft">подивився літаки в небі</string>
+    <string name="tt_done_world_report">позначив на мапі</string>
+    <string name="tt_done_phone_alarm">поставив будильник</string>
+    <string name="tt_done_phone_timer">запустив таймер</string>
+    <string name="tt_done_phone_dial">відкрив дзвонилку</string>
+    <string name="tt_done_phone_sms">підготував SMS</string>
+    <string name="tt_done_phone_calendar">підготував подію в календарі</string>
+    <string name="tt_done_phone_panel">відкрив системну панель</string>
+    <string name="tt_name_weather_now">Погода</string>
+    <string name="tt_name_weather_forecast">Прогноз погоди</string>
+    <string name="tt_name_shell">Термінал</string>
+    <string name="tt_name_http">Мережевий запит</string>
+    <string name="tt_name_web_search">Пошук</string>
+    <string name="tt_name_file">Файли</string>
+    <string name="tt_name_settings">Налаштування</string>
+    <string name="tt_name_widget">Віджет</string>
+    <string name="tt_name_location_current">Геолокація</string>
+    <string name="tt_name_geo_search">Пошук місця</string>
+    <string name="tt_name_geo_nearby">Поруч</string>
+    <string name="tt_name_geo_route">Маршрут</string>
+    <string name="tt_name_notification">Сповіщення</string>
+    <string name="tt_name_media">Медіа</string>
+    <string name="tt_name_launch">Запуск застосунку</string>
+    <string name="tt_name_accessibility">Дії на екрані</string>
+    <string name="tt_name_mental_park">Ментальний парк</string>
+    <string name="tt_name_map_show">Шар на мапі</string>
+    <string name="tt_name_map_focus">Фокус мапи</string>
+    <string name="tt_name_map_clear">Очистка мапи</string>
+    <string name="tt_name_map_route">Маршрут на мапі</string>
+    <string name="tt_name_transit_nearby">Зупинки поруч</string>
+    <string name="tt_name_transit_routes">Маршрути транспорту</string>
+    <string name="tt_name_world_cameras">Камери поруч</string>
+    <string name="tt_name_world_aircraft">Літаки в небі</string>
+    <string name="tt_name_world_report">Позначка оператора</string>
+    <string name="tt_name_phone_alarm">Будильник</string>
+    <string name="tt_name_phone_timer">Таймер</string>
+    <string name="tt_name_phone_dial">Дзвінок</string>
+    <string name="tt_name_phone_sms">SMS</string>
+    <string name="tt_name_phone_calendar">Календар</string>
+    <string name="tt_name_phone_panel">Системна панель</string>
+    <string name="tt_arg_query">запит</string>
+    <string name="tt_arg_text">текст</string>
+    <string name="tt_arg_city">місто</string>
+    <string name="tt_arg_place">місце</string>
+    <string name="tt_arg_address">адреса</string>
+    <string name="tt_arg_latitude">широта</string>
+    <string name="tt_arg_longitude">довгота</string>
+    <string name="tt_arg_name">Назва</string>
+    <string name="tt_arg_host">вузол</string>
+    <string name="tt_arg_path">шлях</string>
+    <string name="tt_arg_command">команда</string>
+    <string name="tt_arg_app">застосунок</string>
+    <string name="tt_arg_radius">радіус</string>
+    <string name="tt_arg_zoom">масштаб</string>
+    <string name="tt_arg_how_many">скільки</string>
+    <string name="tt_arg_category">категорія</string>
+    <string name="tt_arg_kind">вид</string>
+    <string name="tt_arg_mode">режим</string>
+    <string name="tt_arg_level">рівень</string>
+    <string name="tt_arg_state">стан</string>
+    <string name="tt_arg_date">дата</string>
+    <string name="tt_arg_time">час</string>
+    <string name="tt_arg_when">коли</string>
+    <string name="tt_arg_duration">тривалість</string>
+    <string name="tt_arg_minutes">хвилин</string>
+    <string name="tt_arg_from">звідки</string>
+    <string name="tt_arg_to">куди</string>
+    <string name="tt_doing_generic">викликаю %1$s</string>
+    <string name="tt_done_generic">звернувся до %1$s</string>
+    <string name="tt_failed">не вдалося: %1$s</string>
+    <string name="tt_failed_word">збій</string>
+    <string name="tt_no_reason">причини інструмент не назвав</string>
+    <string name="tt_expand">розгорнути: %1$s</string>
+    <string name="tt_collapse">згорнути: %1$s</string>
+    <string name="group_chat_empty">Ще немає повідомлень</string>
+    <string name="group_fan_progress">%1$d з %2$d</string>
+    <string name="group_new_title">Нова група</string>
+    <string name="group_new_name_hint">Назва групи…</string>
+    <string name="group_new_create">створити</string>
+    <string name="group_new_pick">кого беремо</string>
+    <string name="group_section">Групи · %1$d</string>
+    <string name="group_members_count">%1$d учасників</string>
+    <string name="group_new_action">Нова група</string>
+    <string name="group_create_failed">ще не готово — спробуйте ще за мить</string>
+    <string name="group_opening_line">Створив групу. Пишемо тут.</string>
+    <string name="group_members_title">Хто в групі</string>
+    <string name="group_member_you">це ви</string>
+    <string name="group_member_stranger">немає у вашому списку</string>
+    <string name="group_members_gap">Не всі в цій групі є у вашому списку</string>
+    <string name="group_members_gap_why">Обміняйтесь кодами з новими учасниками</string>
+    <string name="group_detail_title">Кому дійшло</string>
+    <string name="peer_clear_open">стерти розмову</string>
+    <plurals name="peer_clear_preview">
+        <item quantity="one">Стерти %1$d лист (%2$s) на цьому телефоні</item>
+        <item quantity="few">Стерти %1$d листи (%2$s) на цьому телефоні</item>
+        <item quantity="many">Стерти %1$d листів (%2$s) на цьому телефоні</item>
+        <item quantity="other">Стерти %1$d листа (%2$s) на цьому телефоні</item>
+    </plurals>
+    <plurals name="peer_clear_wipe">
+        <item quantity="one">стерти %1$d лист</item>
+        <item quantity="few">стерти %1$d листи</item>
+        <item quantity="many">стерти %1$d листів</item>
+        <item quantity="other">стерти %1$d листа</item>
+    </plurals>
+    <string name="peer_clear_armed">Точно стерти?</string>
+    <plurals name="peer_card_remove_ask_messages">
+        <item quantity="one">Прибрати «%1$s» і стерти %2$d лист на цьому телефоні?</item>
+        <item quantity="few">Прибрати «%1$s» і стерти %2$d листи на цьому телефоні?</item>
+        <item quantity="many">Прибрати «%1$s» і стерти %2$d листів на цьому телефоні?</item>
+        <item quantity="other">Прибрати «%1$s» і стерти %2$d листа на цьому телефоні?</item>
+    </plurals>
+    <string name="peer_card_remove_groups_note">У спільних групах повідомлення лишаться під ключем</string>
+    <string name="peer_action_delete">прибрати з цього телефона</string>
+    <string name="peer_action_delete_armed">Точно прибрати?</string>
+    <string name="peer_action_delete_armed_unsent">точно прибрати? ще не надсилалось — нікуди й не піде</string>
+    <string name="peer_action_delete_armed_waiting">прибрати? спроби доставки зупиняться</string>
+    <string name="peer_action_delete_last_group">це останній лист групи — з ним зникне і сама група</string>
+    <string name="group_clear_open">стерти історію групи</string>
+    <plurals name="group_clear_preview">
+        <item quantity="one">Стерти %1$d лист (%2$s) на цьому телефоні</item>
+        <item quantity="few">Стерти %1$d листи (%2$s) на цьому телефоні</item>
+        <item quantity="many">Стерти %1$d листів (%2$s) на цьому телефоні</item>
+        <item quantity="other">Стерти %1$d листа (%2$s) на цьому телефоні</item>
+    </plurals>
+    <string name="group_clear_removes">Група зникне зі списку до нового повідомлення</string>
+    <string name="group_rename_action">Перейменувати</string>
+    <string name="group_rename_note">нову назву кожен побачить, щойно до нього дійде звістка.</string>
+    <string name="group_add_action">Додати людину</string>
+    <string name="group_add_note">Новий учасник бачитиме лише нові повідомлення</string>
+    <string name="group_add_none">усі, кого ви знаєте, уже тут</string>
+    <string name="group_add_full">у групі вже %1$d — місць немає</string>
+    <string name="group_member_remove">прибрати</string>
+    <string name="group_remove_ask">Прибрати %1$s з групи?</string>
+    <string name="group_leave_action">Вийти з групи</string>
+    <string name="group_leave_ask">Вийти з групи «%1$s»?</string>
+    <string name="group_leave_yes">вийти</string>
+    <string name="group_leave_no">лишитись</string>
+    <string name="group_left">ви більше не в групі</string>
+    <string name="group_left_pending">вихід у дорозі — почули %1$d з %2$d</string>
+    <string name="group_left_stuck">вихід не донесено: для інших ви досі в групі</string>
+    <string name="group_removed">вас прибрали з групи</string>
+    <string name="group_gone_composer">Ви більше не в групі</string>
+    <string name="group_member_gone">вже не в групі</string>
+    <string name="group_sys_add">%1$s додає %2$s</string>
+    <string name="group_sys_add_you_actor">ви додаєте %1$s</string>
+    <string name="group_sys_add_you_object">%1$s додає вас</string>
+    <string name="group_sys_rm">%1$s прибирає %2$s</string>
+    <string name="group_sys_rm_you_actor">ви прибираєте %1$s</string>
+    <string name="group_sys_rm_you_object">%1$s прибирає вас з групи</string>
+    <string name="group_sys_leave">%1$s виходить з групи</string>
+    <string name="group_sys_leave_you">ви виходите з групи</string>
+    <string name="group_sys_rename">%1$s перейменовує групу на «%2$s»</string>
+    <string name="group_sys_rename_you">ви перейменовуєте групу на «%1$s»</string>
+    <string name="peer_reply_cancel">скасувати відповідь</string>
+    <string name="peer_action_reply">відповісти</string>
+    <string name="peer_action_copy">копіювати текст</string>
+    <string name="peer_action_copy_place">копіювати координати</string>
+    <string name="peer_action_copied">скопійовано</string>
+    <plurals name="peer_chat_new_below">
+        <item quantity="one">%1$d нове</item>
+        <item quantity="few">%1$d нові</item>
+        <item quantity="many">%1$d нових</item>
+        <item quantity="other">%1$d нового</item>
+    </plurals>
+
+    <string name="map_gate_rail">Мапа пласка: рельєф і обʼємне місто — у рівні «Особистий»</string>
+    <string name="mem_gate_headline">Довготривала памʼять — у рівні «Особистий»</string>
+    <string name="mem_gate_body">Без ключа в розмові доступні лише останні 30 днів.</string>
+    <string name="mem_gate_fact_beyond"> · поза межею згадування</string>
+    <plurals name="mem_gate_waiting">
+        <item quantity="one">%1$d факт чекає на ключ.</item>
+        <item quantity="few">%1$d факти чекають на ключ.</item>
+        <item quantity="many">%1$d фактів чекають на ключ.</item>
+        <item quantity="other">%1$d факту чекають на ключ.</item>
+    </plurals>
+    <string name="report_export">експорт</string>
+    <string name="report_export_done">скопійовано</string>
+    <string name="report_export_locked">експорт · ключ</string>
+    <string name="report_gate_headline">Експорт звіту — у рівні «Особистий»</string>
+    <string name="report_gate_body">Копіювання звіту потребує рівня «Особистий».</string>
+
+    <!-- design-critic §S9 — tap-to-interrogate for the five-state honesty grammar. -->
+    <string name="map_prov_state_not_downloaded">не завантажено</string>
+    <string name="map_prov_state_no_object">немає обʼєкта</string>
+    <string name="map_prov_state_stale">застаріло</string>
+    <string name="map_prov_line_not_downloaded">Ця ділянка ще не збережена офлайн</string>
+    <string name="map_offline_basemap_out_of_bounds">Поза межами збереженої мапи</string>
+    <string name="map_prov_line_no_object">Дані є — тут просто нічого не позначено</string>
+    <string name="map_prov_line_stale">Пакет «%1$s» завантажено %2$s тому — карта могла змінитися</string>
+    <string name="map_prov_action_show_packs">Показати офлайн-пакети</string>
+    <string name="map_prov_action_details">Детальніше</string>
+    <string name="map_prov_sheet_title_not_downloaded">Не завантажено</string>
+    <string name="map_prov_sheet_body_not_downloaded">Ділянка не збережена на пристрої.</string>
+    <string name="map_prov_sheet_title_no_object">Немає обʼєкта</string>
+    <string name="map_prov_sheet_body_no_object">Ділянка збережена — тут нічого не позначено.</string>
+    <string name="map_prov_sheet_title_stale">Застаріло</string>
+    <string name="map_prov_sheet_body_stale">Пакет «%1$s» завантажено %2$s тому.</string>
+    <plurals name="map_prov_age_days">
+        <item quantity="one">%1$d день тому</item>
+        <item quantity="few">%1$d дні тому</item>
+        <item quantity="many">%1$d днів тому</item>
+        <item quantity="other">%1$d дня тому</item>
+    </plurals>
+
+    <!-- Map-symbiosis — ui/map/PcLayerPacksSection.kt's PC-baked layer intake. -->
+    <string name="map_pc_layers_kicker">З КОМПʼЮТЕРА</string>
+    <string name="map_pc_layers_disconnected">ПК не на звʼязку</string>
+    <string name="map_pc_layers_loading">Питаю ПК, які шари є…</string>
+    <string name="map_pc_layers_retry">Спробувати ще раз</string>
+    <string name="map_pc_layers_empty">На компʼютері ще немає шарів цього виду.</string>
+    <string name="map_pc_layers_all_have">Усі шари ПК вже на телефоні</string>
+    <string name="map_pc_layers_on_device">на пристрої · %1$s</string>
+    <string name="map_pc_layers_error_disconnected">ПК не на звʼязку.</string>
+    <string name="map_pc_layers_error_no_view">Спершу відкрийте карту на потрібній ділянці.</string>
+    <string name="map_pc_layers_link_failed_fallback">Не вдалося звʼязатися з ПК.</string>
+    <string name="map_pc_layers_feature_count">%1$d обʼєктів · %2$s · %3$s</string>
+    <string name="map_pc_layers_offered">ПК пропонує — ще не отримано</string>
+    <string name="map_pc_layers_downloading_progress">Завантажую… %1$d%%</string>
+    <string name="map_pc_layers_downloading">Завантажую…</string>
+    <string name="map_pc_layers_action_fetch">Отримати</string>
+    <string name="map_pc_layers_action_delete_confirm">видалити?</string>
+    <string name="map_pc_layers_action_update">Оновити</string>
+    <string name="map_pc_layers_action_remove">прибрати</string>
+
+    <string name="peer_lock_title">Розмови на замку</string>
+    <string name="peer_lock_body">Підтвердіть особу, щоб відкрити розмови</string>
+    <string name="peer_lock_unlock">це я</string>
+    <string name="peer_lock_prompt_subtitle">Відчиняю розмови · це ви?</string>
+    <string name="peer_lock_nolock_title">На цьому телефоні немає замка</string>
+    <string name="peer_lock_nolock_body">Встановіть PIN або відбиток у налаштуваннях телефона</string>
+    <string name="peer_lock_nolock_ack">розумію — відчиняй</string>
+    <string name="peer_lock_nolock_settings">поставити замок</string>
+
+    <!-- Небо: що я думаю про власні координати. Слово, а не колір — колір
+         сам по собі нічого не каже під червоним фільтром і на сонці. -->
+    <string name="map_trust_degraded">Місце приблизне — можу помилитись із поворотом</string>
+    <string name="map_trust_jammed">Сигналу немає — місце приблизне, звіряйтесь із тим, що навколо</string>
+    <string name="map_trust_searching">Ще шукаю, де ви</string>
+    <string name="map_trust_spoofed">Місце може бути підробленим — перевірте на мапі</string>
+    <string name="map_trust_confirmed">Місце певне</string>
+    <string name="map_trust_explain_trusted">Місце підтверджене рухом телефона.</string>
+    <string name="map_trust_explain_degraded">Зараз місце приблизне. На маршруті звіряйте повороти очима.</string>
+    <string name="map_trust_explain_jammed">Сигнал зник — ведення за інерцією руху</string>
+    <string name="map_trust_explain_searching">Шукаю позицію — вийдіть на відкрите місце</string>
+    <string name="map_trust_explain_spoofed">Можлива підміна координат — звіряйтесь із місцевістю</string>
+    <string name="map_coast_coasting">Сигналу немає — веду за маршрутом сам</string>
+    <string name="map_coast_merging">Сигнал повернувся — уточнюю місце</string>
+    <string name="map_coast_waiting">Надто довго без сигналу — чекаю, поки зʼявиться</string>
+    <string name="map_coast_explain_coasting">Без сигналу — точка рухається за маршрутом</string>
+    <string name="map_coast_explain_merging">Сигнал повернувся: плавно переводжу точку на справжнє місце.</string>
+    <string name="map_coast_explain_waiting">Очікування сигналу на останній відомій позиції</string>
+    <!-- Стишена форма: та сама правда в один-два токени. Повне речення живе
+         поруч і повертається на зміну стану, в дотику й в озвученні. -->
+    <string name="map_trust_word_trusted">місце певне</string>
+    <string name="map_trust_word_degraded">місце приблизне</string>
+    <string name="map_trust_word_jammed">без сигналу</string>
+    <string name="map_trust_word_searching">шукаю, де ви</string>
+    <string name="map_trust_word_spoofed">місце підроблене</string>
+    <string name="map_coast_word_coasting">веду сам</string>
+    <string name="map_coast_word_merging">уточнюю</string>
+    <string name="map_coast_word_waiting">чекаю сигнал</string>
+
+    <string name="map_alert_prefix">ТРИВОГА</string>
+
+    <string name="map_unit_m">м</string>
+    <string name="map_unit_km">км</string>
+    <string name="map_unit_min">хв</string>
+    <string name="map_unit_hour">год</string>
+
+    <string name="map_command_line_desc">Пошук і запит на мапі</string>
+    <string name="map_command_line_hint">Спитай або шукай…</string>
+    <string name="map_search_desc">пошук</string>
+
+    <string name="widget_stale">старе</string>
+    <string name="widget_refresh">оновити</string>
+    <string name="widget_card_expand">розгорнути · %1$s</string>
+    <string name="widget_card_collapse">згорнути · %1$s</string>
+    <string name="widget_step_now">зараз</string>
+    <string name="widget_code_copied">скопійовано</string>
+    <string name="widget_code_copy">копіювати</string>
+    <string name="widget_code_not_paired">не зʼєднано з компʼютером</string>
+    <string name="widget_code_run">запустити на ПК</string>
+    <string name="widget_code_run_title">Запуск на компʼютері</string>
+    <string name="widget_code_run_body">це виконається на компʼютері. дозволити?</string>
+    <string name="widget_code_run_confirm">запустити</string>
+    <string name="widget_code_run_cancel">ні</string>
+    <string name="widget_route_title">Маршрут</string>
+    <string name="widget_route_from">звідси</string>
+    <string name="widget_route_to">куди</string>
+    <string name="widget_route_distance">відстань</string>
+    <string name="widget_route_time">час</string>
+    <string name="widget_route_guide">вести мене</string>
+    <string name="widget_route_other_map">відкрити в іншій мапі</string>
+    <string name="widget_weather_title">Погода</string>
+    <string name="widget_weather_remind">нагадати</string>
+    <string name="widget_weather_week">на тиждень</string>
+    <string name="widget_weather_map">на мапі</string>
+    <string name="widget_weather_vault">у сховище</string>
+    <string name="widget_weather_minmax">мін %1$d° · макс %2$d°</string>
+    <string name="widget_weather_wind">%1$d м/с</string>
+    <string name="widget_weather_rain_peak">до %1$s мм</string>
+    <string name="widget_weather_range">діапазон %1$d°…%2$d° · наступні 12 год</string>
+    <string name="widget_cmp_yes">так</string>
+    <string name="widget_cmp_no">ні</string>
+    <string name="widget_cmp_partial">частково</string>
+    <string name="widget_cmp_missing">немає даних</string>
+    <string name="widget_artifact_back">назад</string>
+    <string name="widget_artifact_reload">перезапустити</string>
+    <string name="widget_agent_duration">%1$dс · %2$d кроків</string>
+    <string name="widget_agenda_now">іде зараз</string>
+    <string name="widget_agenda_on_map">показати на мапі · %1$s</string>
+    <string name="widget_agent_head">агент</string>
+    <string name="widget_photo_zoom">відкрити на весь екран</string>
+    <string name="widget_refusal_unnamed">інструмент не названо</string>
+    <string name="widget_step_done">зроблено</string>
+    <string name="widget_step_error">збій</string>
+    <string name="widget_step_waiting">чекає</string>
+    <string name="widget_table_more">+ ще %1$d ряд%2$s</string>
+    <string name="widget_timer_title">Таймер</string>
+    <string name="widget_timer_cancelled">скасовано</string>
+    <string name="widget_timer_cancel">скасувати</string>
+    <string name="widget_timer_done">завершено</string>
+    <string name="widget_timer_resume">продовжити</string>
+    <string name="widget_timer_pause">пауза</string>
+    <string name="widget_table_sort_asc">сортувати за %1$s, за зростанням</string>
+    <string name="widget_table_sort_desc">сортувати за %1$s, за спаданням</string>
+    <string name="widget_unknown_type">невідома картка · %1$s</string>
+    <string name="widget_voice_play_toggle">програти або спинити</string>
+    <string name="widget_task_toggle">змінити стан завдання · %1$s</string>
+    <string name="widget_task_urgent">терміново</string>
+    <string name="widget_task_state_done">зроблено</string>
+    <string name="widget_task_state_open">не зроблено</string>
+    <string name="widget_timer_running">іде</string>
+    <string name="widget_timer_paused">на паузі</string>
+    <string name="widget_timer_new">новий таймер</string>
+    <string name="widget_timer_prefill">"постав таймер на "</string>
+    <string name="widget_voice_rail">шкала відтворення</string>
+    <string name="widget_voice_unknown_length">тривалість невідома — відтворення недоступне</string>
+    <string name="widget_voice_transcript">розшифровка</string>
+    <string name="widget_weather_ribbon">графік температури й опадів на 12 годин</string>
+    <string name="widget_act_forward">переслати в чат</string>
+    <string name="widget_decayed">картку згорнуто, щоб не займала місце</string>
+    <string name="widget_reminder_clear">зняти нагадування · %1$s</string>
+    <string name="widget_reminder_move">перенести нагадування · %1$s</string>
+    <string name="widget_place_on_map">показати на мапі · %1$s</string>
+    <string name="widget_artifact_expand">розгорнути</string>
+    <string name="widget_agenda_title">Порядок денний</string>
+    <string name="widget_chart_title">Графік</string>
+    <string name="widget_act_add_event">додати подію</string>
+    <string name="widget_act_remind">нагадай</string>
+    <string name="widget_act_new_reminder">нове нагадування</string>
+    <string name="widget_act_save_place">зберегти це місце</string>
+    <string name="widget_act_all_on_map">усі на мапі</string>
+    <string name="widget_act_add_task">додати пункт</string>
+    <string name="widget_places_title">Мої місця</string>
+
+    <!-- Іменовані території (OfflinePlacesSection / OfflinePlacePicker) -->
+    <string name="map_places_kicker">МІСЦЯ</string>
+    <string name="map_places_title">Обрати місце</string>
+    <string name="map_places_open">Обрати місце за назвою…</string>
+    <string name="map_places_close">Закрити вибір місця</string>
+    <string name="map_places_none">Жодного місця ще не завантажено</string>
+    <string name="map_places_search_hint">Область, район або місто</string>
+    <string name="map_places_search_empty">Нічого не знайшлося</string>
+    <string name="map_places_note">Прямокутна ділянка навколо обраного місця</string>
+    <string name="map_places_kind_country">країна</string>
+    <string name="map_places_kind_oblast">область</string>
+    <string name="map_places_kind_raion">район</string>
+    <string name="map_places_kind_city">місто</string>
+    <string name="map_places_box_area">%1$s км² рамка</string>
+    <string name="map_places_land_area">Сама межа — %1$s км²; решта прямокутника це сусіди.</string>
+    <string name="map_places_depth_option">наближення до %1$d · ≈%2$s · частин: %3$d</string>
+    <string name="map_places_depth_refused">наближення до %1$d — завелике: частин вийшло б %2$d</string>
+    <string name="map_places_action_download">Завантажити</string>
+    <string name="map_places_size_kb">%1$s КБ</string>
+    <string name="map_places_size_mb">%1$s МБ</string>
+    <string name="map_places_size_gb">%1$s ГБ</string>
+    <string name="map_places_state_complete">завантажено · частин: %1$d · %2$s · наближення %3$d–%4$d</string>
+    <string name="map_places_state_downloading">тягнеться %1$d%% · готово частин: %2$d з %3$d · %4$s</string>
+    <string name="map_places_state_paused">пауза на %1$d%% · готово частин: %2$d з %3$d · %4$s</string>
+    <string name="map_places_action_pause">Пауза</string>
+    <string name="map_places_action_resume">Продовжити</string>
+    <string name="map_places_action_remove">Прибрати</string>
+    <string name="map_places_remove_confirm">прибрати все?</string>
+    <string name="map_places_wait_metered">Чекає на Wi-Fi — мобільний трафік не витрачається.</string>
+    <string name="map_places_wait_battery">Чекає на заряд — нижче 20%% і не на зарядці.</string>
+    <string name="map_places_wait_offline">Нема мережі — продовжиться саме, щойно зʼявиться.</string>
+    <string name="widget_reminders_title">Нагадування</string>
+    <string name="widget_reminder_repeats">повторюється</string>
+    <string name="widget_photo_close">закрити</string>
+    <string name="widget_act_photo_where">де це знято</string>
+    <string name="widget_photo_where_ask">покажи на мапі %1$s</string>
+    <string name="widget_progress_of">%1$d з %2$d</string>
+    <string name="widget_progress_done_all">усі кроки зроблено</string>
+    <string name="widget_progress_steps">кроків</string>
+    <string name="widget_act_whats_next">що далі</string>
+    <string name="widget_progress_next_ask">що далі за цим планом</string>
+    <string name="widget_question_chosen">обрано</string>
+    <string name="widget_question_pick">обрати · %1$s</string>
+    <string name="widget_act_answer_other">інша відповідь</string>
+    <string name="widget_question_other_prefill">моя відповідь: </string>
+    <string name="widget_refusal_axioms">що саме зупинило</string>
+    <string name="widget_act_refusal_why">чому саме</string>
+    <string name="widget_refusal_why_ask">поясни, який принцип це зупинив і що можна зробити натомість</string>
+    <string name="widget_act_route_on_map">на мапі</string>
+
+    <!-- Картка: стан розгортання, вік даних, мапа, дії загальних карток -->
+    <string name="widget_card_state_expanded">розгорнуто</string>
+    <string name="widget_card_state_collapsed">згорнуто</string>
+    <string name="widget_age_now">щойно</string>
+    <string name="widget_age_minutes">%1$d хв тому</string>
+    <string name="widget_age_hours">%1$d год тому</string>
+    <string name="widget_age_days">%1$d дн тому</string>
+    <string name="widget_map_title">Мапа</string>
+    <string name="widget_map_markers">позначок: %1$d</string>
+    <string name="widget_map_routes">маршрутів: %1$d</string>
+    <string name="widget_map_zones">зон: %1$d</string>
+    <string name="widget_map_view_desc">мапа · %1$s</string>
+    <string name="widget_act_open_map">відкрити мапу</string>
+    <string name="widget_act_refine">уточнити</string>
+    <string name="widget_act_convert">перерахувати</string>
+    <!-- Заготовки для поля вводу. Лапки тримають кінцевий пробіл — без них
+         Android його зрізає, і слово злипається з тим, що допише оператор. -->
+    <string name="widget_prefill_refine">"уточни: "</string>
+    <string name="widget_prefill_save_place">"збережи це місце як "</string>
+    <string name="widget_prefill_convert">"переведи в "</string>
+
+    <!-- Картки A–F: слова замість самої лише барви, і назви для озвучення. -->
+    <string name="widget_agenda_map_hint">На мапі</string>
+    <string name="widget_agent_tools">інструменти · %1$s</string>
+    <string name="widget_action_progress">%1$d з %2$d кроків</string>
+    <string name="widget_action_started">розпочинаю · %1$d кроків</string>
+    <string name="widget_action_step">крок %1$d/%2$d · %3$s</string>
+    <string name="widget_action_held">зупинено на кроці %1$d/%2$d · %3$s</string>
+    <string name="widget_action_failed">помилка на кроці %1$d/%2$d · %3$s</string>
+    <string name="widget_action_done">зроблено · %1$d кроків</string>
+    <string name="widget_chart_spoken">графік · %1$d точок · від %2$s до %3$s</string>
+    <string name="widget_code_spoken">код · %1$s · %2$d рядків</string>
+    <string name="widget_diff_tally">додано %1$d · вилучено %2$d</string>
+    <string name="widget_diff_added">додано</string>
+    <string name="widget_diff_removed">вилучено</string>
+    <string name="widget_file_kind_pdf">документ</string>
+    <string name="widget_file_kind_photo">знімок</string>
+    <string name="widget_file_kind_video">відео</string>
+    <string name="widget_file_kind_audio">запис</string>
+    <string name="widget_file_kind_code">код</string>
+    <string name="map_places_other_style">Частина пакетів завантажена для іншого стилю мапи</string>
+    <string name="route_compare_title">Варіанти маршруту</string>
+    <string name="route_compare_source">%1$d від OSRM · %2$s</string>
+    <string name="route_variant">Варіант %1$s</string>
+    <string name="route_variant_turns">%1$d поворотів</string>
+    <string name="route_variant_turns_short">%1$d пов.</string>
+    <string name="route_variant_on_map">на мапі</string>
+    <string name="route_variant_on_map_mark">· на мапі</string>
+    <string name="route_variant_quiet">тихий хід</string>
+    <string name="route_variant_quiet_badge">👻 тихий хід</string>
+    <string name="route_intel_loading">аналізую коридор</string>
+    <string name="route_intel_loading_line">дивлюсь дорогу…</string>
+    <string name="route_intel_unavailable">дані коридору недоступні</string>
+    <string name="route_alert_crossing">перетинає тривогу: %1$s</string>
+    <string name="route_alert_crossing_line">⚠ перетинає тривогу: %1$s</string>
+    <string name="route_risk_spoken">ризик %1$d, %2$s</string>
+    <string name="route_risk_pill">ризик %1$d · %2$s</string>
+    <string name="route_risk_low">низький</string>
+    <string name="route_risk_elevated">підвищений</string>
+    <string name="route_risk_high">високий</string>
+    <string name="route_intel_thin">коридор покрито даними лише на %1$s — без деталей</string>
+    <string name="route_intel_ground">ґрунт %1$s</string>
+    <string name="route_intel_lit">освітлено %1$s</string>
+    <string name="route_intel_no_cameras">камер немає</string>
+    <string name="route_intel_cameras">камери: %1$d</string>
+    <string name="route_intel_elevation">↗ %1$d м · ↘ %2$d м</string>
+    <string name="route_intel_elevation_down">висота: джерело мовчить</string>
+    <string-array name="route_variant_letters">
+        <item>А</item>
+        <item>Б</item>
+        <item>В</item>
+        <item>Г</item>
+    </string-array>
+
+    <!-- Жолоб — нижній край Меридіана: поле вводу і його дієслова. -->
+    <string name="composer_state_listening">слухаю</string>
+    <string name="composer_state_sending">надсилаю</string>
+    <string name="composer_hint_voice">напишіть або тримайте мікрофон</string>
+    <string name="composer_action_attach">файл</string>
+    <string name="composer_action_mic">мікрофон</string>
+    <string name="composer_action_mic_a11y">утримуй, щоб говорити</string>
+    <string name="composer_action_mic_hot">запис іде — відпусти, щоб надіслати</string>
+    <string name="composer_action_complete">дописати</string>
+    <string name="composer_action_complete_a11y">дописати: %1$s</string>
+    <string name="composer_action_stop_a11y">зупинити відповідь</string>
+    <!-- Полиця поверхонь. -->
+    <string name="tray_title">Поверхні</string>
+
+    <!-- Відповідь картки: одне число, і слово поруч із ним. -->
+    <string name="widget_unit_celsius">°C</string>
+    <string name="widget_unit_steps">кроків</string>
+    <string name="widget_route_eta_note">в дорозі</string>
+    <string name="widget_places_nearest">до найближчого</string>
+    <string name="widget_agenda_next">наступне</string>
+    <string name="widget_tasks_done_note">зроблено</string>
+    <string name="widget_reminder_overdue">прострочено</string>
+    <string name="widget_act_forward_diff">переслати зміни</string>
+    <string name="intel_section_rooms">розмови</string>
+    <string name="intel_section_people">люди</string>
+    <string name="intel_section_memory">памʼять</string>
+    <string name="intel_section_count">· %1$d</string>
+    <string name="intel_memory_all">усе, що памʼятаю · %1$d</string>
+    <string name="intel_memory_confirmed">підтверджено %1$s</string>
+    <string name="intel_memory_today">сьогодні</string>
+    <string name="intel_filter_all">усе</string>
+    <string name="intel_filter_owed">винні відповіді</string>
+    <string name="intel_filter_rooms">кімнати</string>
+    <string name="intel_filter_people">люди</string>
+    <string name="intel_title">Чат</string>
+    <string name="intel_filter_unread">непрочитані</string>
+    <string name="intel_filter_agents">агенти</string>
+    <string name="intel_filter_projects">проєкти</string>
+    <string name="intel_node_search">пошук</string>
+    <string name="proj_row_line">%1$s · %2$s</string>
+    <plurals name="proj_members">
+        <item quantity="one">%1$d учасник</item>
+        <item quantity="few">%1$d учасники</item>
+        <item quantity="many">%1$d учасників</item>
+        <item quantity="other">%1$d учасника</item>
+    </plurals>
+    <string name="proj_act_board">оновив дошку</string>
+    <string name="proj_act_comment">коментар</string>
+    <string name="proj_act_file">додав файл</string>
+    <string name="proj_act_task">завдання</string>
+    <string name="proj_new_pick">хто в ньому</string>
+    <string name="proj_new_no_roster">поки нема кого додати — спершу заведіть людей у реєстрі</string>
+    <string name="proj_kicker">простір</string>
+    <string name="proj_add">додати</string>
+    <string name="proj_members_none">у просторі ще нікого</string>
+    <string name="proj_members_more">+%1$d</string>
+    <plurals name="proj_active">
+        <item quantity="one">%1$d активний</item>
+        <item quantity="few">%1$d активні</item>
+        <item quantity="many">%1$d активних</item>
+        <item quantity="other">%1$d активного</item>
+    </plurals>
+    <string name="proj_active_none">зараз нікого</string>
+    <string name="proj_tool_image">додати зображення</string>
+    <string name="proj_tool_palette">палітра</string>
+    <string name="proj_tool_document">додати документ</string>
+    <string name="proj_tool_ai">спитати ШІ</string>
+    <string name="proj_tasks">активні завдання</string>
+    <string name="proj_tasks_empty">Завдань ще немає</string>
+    <string name="proj_task_open">відкрити завдання</string>
+    <string name="proj_task_done">готово</string>
+    <string name="proj_task_running">в роботі</string>
+    <string name="proj_task_waiting">чекає</string>
+    <string name="proj_task_blocked">заблоковано</string>
+    <string name="proj_task_nobody">без виконавця</string>
+    <string name="proj_files">останні файли</string>
+    <string name="proj_files_empty">Файлів ще немає</string>
+    <string name="proj_file_open">відкрити файл</string>
+    <string name="proj_board">дошка</string>
+    <string name="proj_board_live">живе редагування</string>
+    <string name="proj_board_empty">На дошці ще порожньо</string>
+    <string name="proj_board_open">відкрити дошку</string>
+    <string name="proj_activity">активність простору</string>
+    <string name="proj_activity_empty">У просторі ще нічого не відбувалось</string>
+    <string name="proj_say_hint">Написати в простір</string>
+    <string name="proj_attach">прикріпити файл</string>
+    <string name="proj_send">надіслати</string>
+    <string name="constellation_space_creation">Творення</string>
+    <string name="widget_weather_ahead">далі</string>
+    <string name="widget_reminder_ahead">попереду</string>
+
+    <!-- Відповідь PHANTOM, що лишається на мапі замість того, щоб забрати в розмову -->
+    <string name="map_ask_speaker">Nightpost</string>
+    <string name="map_ask_thinking">думаю</string>
+    <string name="map_ask_close">закрити відповідь</string>
+    <string name="map_ask_show">показати на мапі</string>
+    <string name="map_ask_continue">продовжити в розмові</string>
+    <string name="map_ask_retry">спитати ще раз</string>
+    <string name="map_ask_stop">зупинити</string>
+
+    <!-- смуга маршруту -->
+    <string name="route_dest_point">точка</string>
+    <string name="route_start">старт</string>
+    <string name="route_clear">скинути</string>
+    <string name="route_flyover">обліт</string>
+    <string name="route_expand">розгорнути маршрут</string>
+    <string name="route_collapse">згорнути маршрут</string>
+    <string name="route_answer_cd">Маршрут %1$s, %2$s</string>
+    <string name="route_modelled">≈ час орієнтовний</string>
+    <string name="route_depart_label">Виїзд:</string>
+    <string name="route_depart_now">зараз</string>
+    <string name="route_depart_pick">обрати час</string>
+    <string name="route_depart_at">о %1$s</string>
+    <string name="route_depart_arrive">виїзд %1$s · прибуття %2$s</string>
+    <!-- Рядка про клас доріг тут більше немає: він стояв під КОЖНИМ офлайновим
+         маршрутом і наказував людині «перевіряй очима». Факт не зник — його
+         каже RouteBasis.speedLine у деталях маршруту, одним реченням. -->
+    <string name="route_maneuvers">маневри</string>
+    <!-- «44 маневрів» стояло склеєним у Kotlin: одна форма на будь-яке
+         число. Українська має три, і 2, 3, 4 вимагають «маневри». -->
+    <plurals name="route_maneuver_count">
+        <item quantity="one">%1$d маневр</item>
+        <item quantity="few">%1$d маневри</item>
+        <item quantity="many">%1$d маневрів</item>
+        <item quantity="other">%1$d маневру</item>
+    </plurals>
+    <string name="route_arrive_by">прибути до…</string>
+    <string name="route_arrive_clear">зняти відлік</string>
+    <string name="route_action_cd">%1$s, дія над маршрутом</string>
+    <string name="route_basis_kicker">ЗВІДКИ ХВИЛИНИ</string>
+    <string name="route_curfew_window">⚠️ Прибуття %1$s — у вікні комендантської %2$s (%3$s, дані на %4$s)</string>
+    <string name="route_variants_via">варіанти недоступні з проміжною точкою</string>
+    <string name="route_variant_fastest">швидший</string>
+    <string name="route_variant_shortest">коротший</string>
+    <string name="route_variant_lit">світло %1$d%%</string>
+    <string name="route_variant_cd">Варіант %1$d · %2$s</string>
+    <string name="route_variant_cd_selected">варіант %1$d · %2$s, обрано</string>
+    <string name="route_none">Маршруту немає</string>
+    <!-- ЗАПАСНИЙ текст, коли причина невідома: failure.reason ?: route_none_reason.
+         Назвати тут причину означало б її вигадати — маршрут міг не скластись і
+         через збій рушія, не лише через мережу. -->
+    <string name="route_none_reason">маршрут не склався</string>
+    <string name="route_none_bearing">напрямок %1$d° · %2$s навпростець — це не дорога</string>
+    <string name="route_none_bearing_caption">Азимут %1$d° по прямій — це не маршрут, але тримайся цього напряму</string>
+    <!-- ЗІР: чому граф на пристрої відмовив — шість різних світів, які досі ховались за одним "недоступний". -->
+    <string name="route_reason_too_long">Маршрут довший за 80 км — оберіть ближчу точку</string>
+    <string name="route_reason_graph_unreadable">Дороги на телефоні пошкоджені — завантажте їх знову</string>
+    <string name="route_reason_no_data">Немає доріг ділянки — завантажте пакет доріг</string>
+    <string name="route_reason_network_no_route">Помилка мережі — завантажте пакет доріг або спробуйте пізніше</string>
+    <!-- Стеля пошуку ≠ відсутність доріг. Радити пакет тому, у кого пакет уже
+         є, — це відправити людину качати те, що в неї лежить. -->
+    <string name="route_reason_search_ceiling">Маршрут задовгий — додайте проміжну точку</string>
+    <string name="route_reason_off_road">Точка далі ніж за 120 м від дороги — посуньте ближче</string>
+    <!-- Ні пакета, ні свого сервера. Позаду налаштованої основи стояв чужий
+         публічний OSRM, а він отримує ОБИДВІ точки — звідки і куди. Його
+         прибрано, тож цей стан тепер існує і мусить вести до ліку. -->
+    <string name="route_reason_no_pack_no_server">Немає доріг ділянки — Налаштування → Хмарні пакети</string>
+    <string name="route_profile_foot">пішки</string>
+    <string name="route_profile_car">авто</string>
+    <string name="route_profile_bike">вело</string>
+    <string name="route_profile_transit">транспорт</string>
+    <string name="route_profile_cd">Маршрут %1$s</string>
+    <string name="route_profile_cd_selected">маршрут %1$s, обрано</string>
+    <string name="route_thread_walk">пішки</string>
+    <string name="route_thread_drive">авто</string>
+    <string name="route_thread_to_stop">до зупинки</string>
+    <string name="route_thread_to_goal">до цілі</string>
+    <string name="route_thread_transfer">пересадка</string>
+    <string name="route_thread_parking">паркування %1$d хв</string>
+    <string name="route_thread_stops">%1$d зуп.</string>
+    <string name="route_thread_toward">у бік %1$s</string>
+    <string name="route_thread_track">колія %1$s</string>
+    <string name="route_thread_platform">платформа %1$s</string>
+    <string name="route_thread_late">запізнюється на %1$d хв</string>
+    <string name="route_thread_tight">пересадка впритул: ця лінія зазвичай запізнюється на %1$d хв</string>
+    <string name="route_mode_metro">метро</string>
+    <string name="route_mode_tram">трамвай</string>
+    <string name="route_mode_trolleybus">тролейбус</string>
+    <string name="route_mode_bus">автобус</string>
+    <string name="route_mode_rail">потяг</string>
+    <string name="route_mode_funicular">фунікулер</string>
+    <string name="route_mode_ferry">пором</string>
+    <string name="route_mode_other">транспорт</string>
+    <plurals name="route_transfers">
+        <item quantity="one">%1$d пересадка</item>
+        <item quantity="few">%1$d пересадки</item>
+        <item quantity="many">%1$d пересадок</item>
+        <item quantity="other">%1$d пересадки</item>
+    </plurals>
+
+    <string name="map_attrib_row">© OpenStreetMap</string>
+
+    <!-- офлайн: території, коридори, світ -->
+    <string name="map_offline_on_disk">на пристрої · %1$s · %2$s</string>
+    <plurals name="map_offline_maps">
+        <item quantity="one">%1$d мапа</item>
+        <item quantity="few">%1$d мапи</item>
+        <item quantity="many">%1$d мап</item>
+        <item quantity="other">%1$d мапи</item>
+    </plurals>
+    <string name="map_offline_group_downloading">качається</string>
+    <string name="map_offline_group_corridors">уздовж маршрутів</string>
+    <string name="map_offline_group_views">ділянки мапи</string>
+    <string name="map_offline_group_places">міста й країни</string>
+    <string name="map_offline_search_hint">Знайти серед збережених</string>
+    <string name="map_offline_search_empty">Нічого не знайшов серед збережених</string>
+    <string name="map_offline_more">ще %1$d · %2$s</string>
+    <string name="map_offline_collapse">згорнути</string>
+    <string name="map_offline_unnamed">без назви</string>
+    <string name="map_offline_corridor_to">дорога → %1$s</string>
+    <string name="map_offline_corridor_named">маршрут · %1$s</string>
+    <string name="map_offline_corridor_untitled">уздовж маршруту</string>
+    <string name="map_offline_corridor_have">цей маршрут уже збережено</string>
+    <string name="map_offline_corridor_meta">%1$s км² · зум %2$d–%3$d · %4$s</string>
+    <string name="map_offline_corridor_meta_nosize">%1$s км² · зум %2$d–%3$d · розмір поки невідомий</string>
+    <string name="map_offline_no_space">не влізе: треба %1$s, вільно %2$s</string>
+    <string name="map_offline_clear_group">прибрати всі</string>
+    <string name="map_offline_clear_group_confirm">прибрати %1$d і звільнити %2$s?</string>
+    <string name="map_offline_clearing">прибираю…</string>
+    <string name="map_offline_delete_confirm_sized">видалити і звільнити %1$s?</string>
+    <string name="map_offline_action_retry">спробувати ще раз</string>
+    <string name="map_offline_state_downloading">%1$d%% · %2$s з %3$s</string>
+    <string name="map_offline_state_downloading_nototal">%1$d%% · скільки всього — ще невідомо</string>
+    <string name="map_offline_state_paused">пауза на %1$d%%</string>
+    <string name="map_offline_state_ready">%1$s · зум %2$d–%3$d · збережено %4$s</string>
+    <string name="map_offline_state_ready_nodate">%1$s · зум %2$d–%3$d · коли збережено — невідомо</string>
+    <string name="map_offline_state_other_map">%1$s · для іншої карти — на цій буде порожньо</string>
+    <string name="map_offline_state_error">не завантажилось</string>
+    <string name="map_offline_state_error_tiles">не завантажилось — мапа обірветься</string>
+
+    <!-- офлайн: вибір місця у світі -->
+    <string name="map_places_world">світ</string>
+    <string name="map_places_back">назад</string>
+    <string name="map_places_open_inside">відкрити, що всередині: %1$s</string>
+    <string name="map_places_country_only">Доступні лише межі країни</string>
+    <string name="map_places_mainland_frame">Основна територія країни</string>
+    <string name="map_places_no_detail">детальніше поки нема чого показати</string>
+    <string name="map_places_depth_no_space">до зуму %1$d не влізе: треба %2$s, вільно %3$s</string>
+
+    <!-- пошук і аркуші -->
+    <string name="map_search_close">Закрити пошук</string>
+    <string name="map_search_clear_query">Очистити запит</string>
+    <string name="map_search_recent_clear_desc">Очистити нещодавні пошуки</string>
+    <string name="map_search_ask_about">Запитати Nightpost про «%1$s»</string>
+    <string name="map_search_flood_title">Показати всі «%1$s» на мапі</string>
+    <string name="map_search_flood_sub">усі поблизу за назвою чи мережею</string>
+    <string name="map_search_intent_flood_sub">показати всі на мапі</string>
+    <string name="map_search_intent_flood_desc">%1$s %2$s — показати всі на мапі</string>
+    <string name="map_search_intent_here">шукати саме в цій області</string>
+    <string name="map_search_intent_here_desc">Шукати %1$s саме в цій області</string>
+    <string name="map_search_along_route">по дорозі</string>
+    <string name="map_search_nearby_verb">поруч</string>
+    <string name="map_search_empty_title">Нічого не знайшов за «%1$s».</string>
+    <string name="map_search_empty_hint">Спробуйте категорію («аптека»), адресу або район</string>
+    <string name="map_search_pack_missing">%1$s немає в пошуку на цьому пристрої</string>
+    <string name="map_search_pack_missing_action">Завантажити пакет місць — розмір і згода на наступному екрані</string>
+    <string name="map_search_empty_no_pack">Завантажте пакет місць у розділі «Точність»</string>
+    <string name="map_search_empty_not_in_corpus">Не знайдено в базі пристрою — спробуйте інший запит</string>
+    <string name="map_search_grabber">Потягніть, щоб розгорнути або згорнути пошук</string>
+    <string name="map_search_anchor_home">Дім</string>
+    <string name="map_search_anchor_work">Робота</string>
+    <string name="map_search_anchor_set">задати</string>
+    <string name="map_search_anchor_set_desc">Задати «%1$s»</string>
+    <string name="map_anchor_sheet_title">Де «%1$s»?</string>
+    <string name="map_anchor_here">Я зараз тут</string>
+    <string name="map_anchor_here_sub">взяти мою поточну позицію</string>
+    <string name="map_anchor_no_fix">Очікування сигналу позиції</string>
+    <string name="map_anchor_on_map">Вибрати на мапі</string>
+    <string name="map_anchor_on_map_sub">притисніть і потримайте потрібне місце</string>
+    <string name="map_anchor_pill">Оберіть «%1$s»: притисніть і потримайте місце на мапі</string>
+    <string name="map_anchor_pill_cancel">Скасувати вибір місця</string>
+    <string name="map_anchor_set_here">Зробити тут «%1$s»</string>
+    <string name="map_anchor_saved">«%1$s» задано</string>
+    <string name="map_draw_action">Намалювати лінію</string>
+    <string name="map_draw_action_sub">дотики ставлять вершини</string>
+    <string name="map_draw_pill_empty">Малюємо: торкніться мапи</string>
+    <string name="map_draw_pill">Малюємо · %1$s</string>
+    <string name="map_draw_undo">Прибрати останню вершину</string>
+    <string name="map_draw_undo_short">назад</string>
+    <string name="map_draw_pill_held">Вершину взято · %1$s</string>
+    <string name="map_draw_remove_vertex">Прибрати вершину</string>
+    <string name="map_draw_remove_vertex_short">прибрати</string>
+    <string name="map_draw_done">Готово</string>
+    <string name="map_draw_cancel">Скасувати малювання</string>
+    <string name="map_draw_too_few">Лінії потрібні дві точки — торкніться мапи ще раз</string>
+    <string name="map_draw_name_title">Назвіть лінію</string>
+    <string name="map_draw_name_hint">Назва лінії</string>
+    <string name="map_draw_save">Зберегти лінію</string>
+    <string name="map_draw_unnamed">Без імені лінія не збережеться</string>
+    <string name="map_draw_saved">Лінію «%1$s» збережено</string>
+    <string name="map_lines_section">Лінії</string>
+    <string name="map_lines_empty">Ліній ще нема — намалюй дотиками</string>
+    <string name="map_line_length">Довжина · %1$s</string>
+    <string name="map_line_vertices">Вершин · %1$d</string>
+    <string name="map_line_route_along">Маршрут уздовж</string>
+    <string name="map_line_edit">Правити вершини</string>
+    <string name="map_line_delete">Видалити лінію</string>
+    <string name="map_line_deleted">Лінію «%1$s» видалено</string>
+    <string name="map_line_unreadable">Цю лінію не вдалося відкрити — вона пошкоджена</string>
+    <string name="map_line_updated">Лінію «%1$s» оновлено</string>
+    <string name="map_search_categories_all">всі категорії</string>
+    <string name="map_search_categories_less">згорнути категорії</string>
+    <string name="map_search_saved_all">усі мітки (%1$d)</string>
+    <string name="map_search_saved_less">згорнути мітки</string>
+    <string name="map_search_saved_empty">Ще немає збережених міток</string>
+    <string name="map_search_type_categories">категорії та обʼєкти</string>
+    <string name="map_search_type_go">шукати</string>
+    <string name="map_search_ask_near">що поруч?</string>
+    <string name="map_search_ask_near_prompt">що корисного поруч зі мною?</string>
+    <string name="map_search_ask_where">куди краще?</string>
+    <string name="map_search_ask_where_prompt">порадь наступний напрямок звідси</string>
+    <string name="map_search_ask_risks">ризики зараз</string>
+    <string name="map_search_ask_risks_prompt">оціни ризики поруч: погода, час, маршрут</string>
+    <string name="map_search_ask_food">де поїсти?</string>
+    <string name="map_search_ask_food_prompt">порадь де поїсти поруч і чому саме там</string>
+    <string name="map_search_ask_reach">як дістатись?</string>
+    <string name="map_search_ask_reach_prompt">як мені найкраще дістатись до центру звідси</string>
+    <string name="map_sheet_route_here">Маршрут сюди</string>
+    <string name="map_sheet_away_walk">%1$s від вас · %2$s</string>
+    <string name="map_sheet_tile_route">Маршрут</string>
+    <string name="map_sheet_tile_via">Через точку</string>
+    <string name="map_sheet_tile_from">Звідси</string>
+    <string name="map_sheet_more">Ще</string>
+    <string name="map_sheet_less">Згорнути</string>
+    <string name="map_sheet_route_from">Звідси маршрут</string>
+    <string name="map_sheet_distance_from_you">%1$s від вас</string>
+    <string name="map_sheet_cat_custom">Своє</string>
+    <string name="map_sheet_save_mark">Зберегти мітку</string>
+    <string name="map_sheet_save_cancel">Скасувати</string>
+    <string name="map_sheet_delete_confirm_q">Видалити «%1$s»? Це назавжди.</string>
+    <string name="map_sheet_delete_yes">Так, видалити</string>
+    <string name="map_sheet_delete_no">Залишити</string>
+    <string name="map_route_origin_notice">Початок: %1$s. Тепер оберіть, куди — точка, мітка чи пошук</string>
+    <string name="map_route_origin_pill">Маршрут від: %1$s</string>
+    <string name="map_route_origin_cancel">Скасувати вибір початку</string>
+    <string name="map_sheet_point_title">Точка на мапі</string>
+    <string name="map_sheet_what_here">Що тут?</string>
+    <string name="map_sheet_route_via">Маршрут через цю точку</string>
+    <string name="map_sheet_isochrone">Скільки встигну дійти</string>
+    <string name="map_sheet_danger_field">Де зараз небезпечно</string>
+    <string name="map_sheet_ask_about_this">Запитати про це</string>
+    <string name="map_sheet_open_external">Відкрити в картах</string>
+    <string name="map_sheet_save">Зберегти</string>
+    <string name="map_sheet_share">Поділитись</string>
+    <string name="map_sheet_in_maps">У картах</string>
+    <string name="map_sheet_share_place">Поділитись місцем</string>
+    <string name="map_sheet_send_place">Надіслати контактові</string>
+    <string name="peer_place_sent">Місце надіслано: %1$s</string>
+    <string name="peer_place_no_key">%1$s: місце не надішлеться — попросіть нове запрошення</string>
+    <string name="peer_place_no_place">Координати не склались у точку</string>
+    <string name="map_sheet_rename">Перейменувати</string>
+    <string name="map_sheet_delete">Видалити</string>
+    <string name="map_sheet_saved_place">Збережене місце</string>
+    <string name="map_sheet_place_name">Назва місця</string>
+    <string name="map_sheet_name_save">Зберегти назву</string>
+    <string name="map_sheet_name_cancel">Скасувати перейменування</string>
+    <string name="map_sheet_name_empty">Введіть назву — порожню зберегти не можна</string>
+    <string name="map_sheet_mark_2h">Позначити на 2 години</string>
+    <string name="map_sheet_mark_crash">ДТП</string>
+    <!-- знаки подій на мапі: клас називає сам себе, коли власного імені немає -->
+    <string name="mark_gate">Шлагбаум</string>
+    <string name="mark_checkpoint">Пункт пропуску чи оплати</string>
+    <string name="mark_crash">ДТП</string>
+    <string name="mark_camera">Камера</string>
+    <string name="mark_shelter">Укриття</string>
+    <string name="mark_danger">Небезпека</string>
+    <string name="dossier_source_live">з відкритої мапи, свіже</string>
+    <string name="dossier_source_device">збережено на телефоні</string>
+    <string name="dossier_services_label">Послуги</string>
+    <string name="dossier_hours_days">пн,вт,ср,чт,пт,сб,нд</string>
+    <string name="dossier_hours_daily">щодня</string>
+    <string name="dossier_hours_all_day">цілодобово</string>
+    <string name="dossier_hours_off">вихідний</string>
+    <string name="dossier_walk_minutes">≈ %1$d хв пішки</string>
+    <string name="dossier_walk_hours">≈ %1$d год пішки</string>
+    <string name="dossier_walk_hours_minutes">≈ %1$d год %2$d хв пішки</string>
+
+    <!-- смуга ведення -->
+    <string name="nav_off_route_big">Поза маршрутом</string>
+    <string name="nav_rerouting">перепрокладаю…</string>
+    <string name="nav_stop_hint">Утримуйте, щоб зупинити</string>
+    <string name="nav_gps_silent">Місця немає вже %1$d хв</string>
+    <string name="nav_distance_now">зараз</string>
+    <string name="map_recenter_driving">Повернутися до маршруту</string>
+
+    <!-- люди · рядок списку розмов -->
+
+
+    <!-- люди · інтерактивні картки повідомлень -->
+    <string name="sky_delivery_none">Сповіщення вимкнено — тривогу видно лише на мапі</string>
+    <string name="sky_delivery_quiet">Канал тривоги без звуку</string>
+    <string name="sky_missed">Була тривога без сповіщення: %1$s, %2$s.</string>
+    <string name="map_trust_word_own_false">ви показуєте іншу точку</string>
+    <!-- Стан пробудження мозку. Слова тверднуть, число НЕ рухається: смуга,
+         що підповзає сама по собі, була б вигадкою про поступ, якого немає. -->
+
+    <!-- Ділитися положенням і маршрутом з обраним -->
+    <string name="peer_share_open">поділитися положенням</string>
+    <string name="peer_share_title">Поділитися положенням</string>
+    <string name="peer_share_span_quarter">15 хвилин</string>
+    <string name="peer_share_span_hour">1 година</string>
+    <string name="peer_share_span_stop">до зупинки</string>
+    <string name="peer_share_cancel">не зараз</string>
+    <string name="peer_share_no_key">Не надішлеться нікуди. Попросіть у %1$s нове запрошення.</string>
+    <string name="peer_share_reach_nearby">телефон поруч — піде одразу</string>
+    <string name="peer_share_reach_relay">поруч не видно — лист зачекає, поки телефон увімкнеться</string>
+    <string name="peer_share_reach_queued">У черзі — поїде за наявності звʼязку</string>
+    <string name="peer_share_wait">готую положення для %1$s</string>
+    <string name="peer_share_pos_searching">ще шукаю, де ви</string>
+    <string name="peer_share_pos_denied">положення ще невідоме — немає дозволу на локацію</string>
+    <string name="peer_share_pos_denied_tap">положення ще невідоме — торкніться, щоб дати дозвіл</string>
+    <string name="peer_share_grant">дати дозвіл на локацію</string>
+    <string name="peer_share_banner">ділюсь положенням з %1$s</string>
+    <string name="peer_share_left_min">ще %1$d хв</string>
+    <string name="peer_share_left_stop">доки не зупиню</string>
+    <string name="peer_share_stop">зупинити</string>
+    <string name="peer_share_stopped">більше не ділюсь положенням з %1$s</string>
+    <string name="peer_share_none">%1$s положенням не ділиться</string>
+    <string name="peer_share_age_now">щойно</string>
+    <string name="peer_share_age_min">%1$d хв тому</string>
+    <string name="peer_share_age_hour">%1$d год тому</string>
+    <string name="peer_route_send">надіслати маршрут %1$s</string>
+    <string name="peer_route_sent">маршрут поїхав до %1$s</string>
+    <string name="peer_route_arrived">%1$s надіслав маршрут</string>
+    <string name="peer_route_take">їхати цим маршрутом</string>
+    <string name="peer_route_taken">прокладаю від свого положення до тих самих точок</string>
+    <string name="peer_route_no_plan">маршруту ще немає — спершу прокладіть його</string>
+    <string name="peer_route_title">Маршрут</string>
+    <string name="peer_route_title_expired">маршрут · строк минув</string>
+    <string name="peer_route_take_expired">строк минув — перепланувати від себе</string>
+    <string name="peer_route_facts">%1$s · %2$d хв — за словами відправника</string>
+    <string name="peer_route_dist_m">%1$d м</string>
+    <string name="peer_route_dist_km">%1$s км</string>
+    <string name="peer_route_notification">Маршрут</string>
+    <string name="map_peer_route_label">Маршрут від %1$s</string>
+    <string name="peer_route_no_key">Маршрут не дійде до %1$s — попросіть нове запрошення.</string>
+    <string name="peer_route_sent_mesh">маршрут надіслано %1$s — телефон поруч, пішов одразу</string>
+    <string name="peer_route_sent_relay">маршрут надіслано %1$s — зачекає, поки телефон увімкнеться</string>
+    <string name="peer_route_sent_queued">Маршрут для %1$s у черзі</string>
+    <!-- Стрілка була ЛІТЕРОЮ в тексті, тобто знаком чужої руки посеред слова.
+         Знак тепер малюється (MapGlyph.HANDOFF), а слово лишається словом —
+         і коротким, бо комірка ряду дій вужча за колишню пігулку. -->
+    <string name="peer_route_share_chip">Надіслати</string>
+    <string name="peer_route_too_many_stops">у маршруті забагато точок, щоб надіслати — не більше 12</string>
+    <string name="peer_route_unsendable">цей маршрут не вдалося надіслати</string>
+    <!-- ЗІР — розділ зору: камера, рамки поверх живого зображення, дотик. -->
+    <!-- Чому мапа порожня, коли порожня не тому, що там нічого немає. -->
+    <string name="map_poi_zoom_hint">Обʼєкти показую зблизька — наблизь мапу, і вони зʼявляться</string>
+    <string name="map_nearby_offline_unknown_kind">Без мережі не знаю, де тут «%1$s» — з мережею покажу</string>
+    <!-- Смужка закріпленого над стрічкою. Дотик по закріпленому знімає його,
+         і опис для читача екрана мусить назвати САМЕ цю дію, не «закріплено». -->
+    <string name="dossier_board_title">Відправлення</string>
+    <string name="dossier_board_loading">Дивлюсь розклад…</string>
+    <string name="dossier_board_silent">Розклад зараз недоступний</string>
+    <string name="dossier_board_empty">Найближчим часом рейсів звідси немає.</string>
+    <string name="dossier_board_no_flights">Розклад авіарейсів недоступний</string>
+    <string name="dossier_board_now">зараз</string>
+    <string name="dossier_board_in_min">за %1$d хв</string>
+    <string name="dossier_board_late">запізнюється на %1$d хв</string>
+    <string name="dossier_board_usually_late">зазвичай на %1$d хв пізніше</string>
+    <string name="dossier_board_cancelled">скасовано</string>
+    <string name="dossier_trip_loading">Завантажую зупинки рейсу…</string>
+    <string name="dossier_trip_unavailable">Зупинок цього рейсу розклад не дав.</string>
+    <string name="dossier_trip_show_map">Показати маршрут на мапі</string>
+    <string name="dossier_trip_earlier">Раніше: %1$s</string>
+    <string name="dossier_trip_later">Далі: %1$s</string>
+    <string name="dossier_mode_ferry">Пором</string>
+    <string name="map_sheet_meet_here">Зустрітися тут</string>
+    <string name="map_meet_pick_hint">Утримайте палець на мапі, щоб поставити місце зустрічі</string>
+    <string name="map_hazard_no_fix">Немає позиції — не можу зафіксувати «%1$s»</string>
+    <string name="peer_voice_notification">Голосове</string>
+    <string name="peer_video_notification">Відео</string>
+</resources>

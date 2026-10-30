@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_faucet_get">Získat testovací USDC</string>
+    <string name="sol_faucet_off">Nedostupné</string>
+    <string name="sol_faucet_wait">Už získáno</string>
+    <string name="sol_faucet_retry">Zkuste později</string>
+    <string name="sol_faucet_sending">Žádost</string>
+    <string name="sol_note_label">Poznámka</string>
+</resources>

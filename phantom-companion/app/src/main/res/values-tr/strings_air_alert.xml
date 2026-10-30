@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="air_alert_channel_alarm">Nightpost · hava uyarısı</string>
+    <string name="air_alert_channel_alarm_desc">Bölgende hava uyarısı, alarm olarak</string>
+    <string name="air_alert_channel_clear">Nightpost · tehlike geçti</string>
+    <string name="air_alert_channel_clear_desc">Bölgende tehlike geçti, sessiz</string>
+    <string name="air_alert_title_raised">Bölgende hava uyarısı · %1$s</string>
+    <string name="air_alert_title_clear">Tehlike geçti · %1$s</string>
+    <string name="air_alert_full_kicker">Bölgende hava uyarısı</string>
+    <string name="air_alert_full_since">%1$s saatinde ilan edildi</string>
+    <string name="air_alert_full_map">Haritada göster</string>
+    <string name="air_alert_full_dismiss">Anladım</string>
+</resources>

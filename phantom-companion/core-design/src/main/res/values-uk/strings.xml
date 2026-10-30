@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vitals_bpm">BPM</string>
+    <string name="vitals_breath">BRTH</string>
+    <string name="vitals_stress">STRE</string>
+    <string name="state_shadow">ТІНЬ</string>
+    <string name="state_focus">ФОКУС</string>
+    <string name="state_dialogue">ДІАЛОГ</string>
+    <string name="state_sentinel">ВАРТА</string>
+    <string name="state_ghost">ПРИМАРА</string>
+    <string name="state_dream">СОН</string>
+    <string name="state_standing_orders">· %1$d постійних наказів</string>
+    <string name="license_gate_open">Відкрити ліцензію</string>
+    <string name="license_gate_trial">проба · %1$d дн.</string>
+
+    <string name="void_loading_title">Читаю…</string>
+    <string name="void_empty_title">Порожньо</string>
+    <string name="void_failed_title">Не вдалося прочитати</string>
+    <string name="void_failed_detail">Це збій читання, а не порожній результат.</string>
+    <string name="void_mismatch_title">Порожньо, хоча лічильник каже %1$d</string>
+    <string name="void_mismatch_detail">Застосунок суперечить сам собі. Дані є, але сюди не дійшли.</string>
+
+    <string name="back_pill_action">Назад</string>
+</resources>

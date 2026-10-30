@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Szkic przelewu: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Przelew dla %1$s (%2$s) – wpisz kwotę i potwierdź.</string>
+    <string name="money_coin_guessed">Domyślnie %1$s</string>
+    <string name="money_which_one">Kilka dopasowań: %1$s. Podaj nazwisko.</string>
+    <string name="money_no_wallet">%1$s nie ma jeszcze adresu portfela.</string>
+    <string name="money_nobody">Nie znalazłem „%1$s” wśród osób z Twoich czatów.</string>
+    <string name="money_who_missing">Kto ma to dostać? Podaj osobę z Twoich czatów.</string>
+    <string name="money_bad_amount">Nie można wysłać %1$s %2$s: najmniejsza część %2$s to %3$s.</string>
+    <string name="money_coin_not_here">W %2$s nie ma %1$s.</string>
+    <string name="money_no_own_wallet">Twój portfel nie jest jeszcze gotowy – otwórz Ustawienia › Portfel.</string>
+    <string name="money_seal_pick">Wybierz zdjęcie, by opieczętować jego odcisk SHA-256</string>
+    <string name="money_drafted_cash">Gotówka z kieszeni: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Bez internetu mogę dać tylko gotówkę z kieszeni, ale %1$s</string>
+    <string name="money_offline_no_sol">w kieszeni brakuje SOL na opłatę i konto odbiorcy.</string>
+    <string name="money_offline_empty">jest pusta.</string>
+    <string name="money_offline_other_coin">jej banknoty są w %1$s, a nie w %2$s.</string>
+    <string name="money_offline_short">wolne jest tylko %1$s %2$s.</string>
+    <string name="money_offline_external">kieszeń działa tylko z wbudowanym portfelem.</string>
+    <string name="money_offline_not_person">gotówka trafia tylko do kontaktu z czatu.</string>
+    <string name="money_watch_out">Uwaga:</string>
+</resources>

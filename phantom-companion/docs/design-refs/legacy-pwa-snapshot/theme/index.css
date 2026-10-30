@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --display: 'Manrope', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --serif: 'Playfair Display', serif;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--display);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  color: #1c160d;
+  overflow-x: hidden;
+  background: radial-gradient(900px 600px at 18% 10%, #fff5e2 0%, transparent 60%),
+    radial-gradient(1100px 700px at 82% 90%, #ffe9d0 0%, transparent 60%), #f6f1e8;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+[role='button'] {
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+.ph-scroll::-webkit-scrollbar {
+  display: none;
+}
+.ph-scroll {
+  scrollbar-width: none;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+@keyframes phantom-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes phantom-theme-fade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+:focus-visible {
+  outline: 2px solid #F4AF25;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

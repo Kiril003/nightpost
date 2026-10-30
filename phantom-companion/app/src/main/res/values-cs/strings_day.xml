@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="self_reminder_set">Připomínka · %1$s · %2$s</string>
+    <string name="commitment_done_which">Který z nich?</string>
+    <string name="perm_calendar_title">Kalendář</string>
+    <string name="perm_calendar_body">Zobrazit dnešní události</string>
+</resources>

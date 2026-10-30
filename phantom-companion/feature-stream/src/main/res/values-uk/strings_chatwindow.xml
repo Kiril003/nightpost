@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Вікно розмови: згорнута звірка. -->
+    <string name="chatwindow_verify_open">звірити ключ</string>
+    <string name="chatwindow_verify_camera">звірити камерою</string>
+
+    <!-- Два рядки замість абзацу: розгорнутий обряд читають один раз, а картка
+         стояла над стрічкою щодня. -->
+    <string name="chatwindow_why_default">Звірте це число на обох телефонах</string>
+    <string name="chatwindow_why_scanned">Ключ відскановано з екрана — порівняйте число</string>
+    <string name="chatwindow_why_handed">Код із іншого застосунку — звірте число</string>
+    <string name="chatwindow_why_changed">Ключ змінився — звірте число наново</string>
+</resources>

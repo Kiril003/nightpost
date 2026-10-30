@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_title">Scanner un code</string>
+    <string name="scan_card_old_invite">Ancienne invitation</string>
+    <string name="scan_card_own_device">Transfert de profil</string>
+    <string name="scan_card_no_match">Les numéros ne correspondent pas</string>
+    <string name="scan_card_self">C’est votre code</string>
+    <string name="scan_card_not_ours">Pas un code Nightpost</string>
+    <string name="scan_enter_code">Saisir le code</string>
+    <string name="scan_action">Scanner</string>
+    <string name="scan_hint">Pointez la caméra vers un code</string>
+    <string name="scan_code_field">Code ou lien</string>
+    <string name="scan_paste">Coller</string>
+    <string name="scan_code_open">Ouvrir</string>
+</resources>

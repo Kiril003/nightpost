@@ -1,0 +1,10 @@
+{
+  "why": "Один спечений пакет, підписаний підписувачем сервера (sign_world_packs.py). Читається pytest'ом (test_world_pack_signing.py) і Kotlin-тестом (WorldPackServerVectorTest). Розходження тут означає, що сервер підписує те, чого телефон не прийме — і людина побачить це як мертвий каталог, а не як помилку. Українська назва з довгим тире стоїть навмисно: канонізація перед підписом екранує кожен символ поза ASCII, і саме на цьому дві мови розходяться найтихіше.",
+  "ed25519": {
+    "why": "RFC 8032 §7.1 TEST 1 — підпис Ed25519 детермінований, тож вектор відтворюється однією командою, а не приймається на віру.",
+    "seed_hex": "9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7f60",
+    "pub_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a"
+  },
+  "world_catalog_json": "{\n  \"packs\": [\n    {\n      \"bakedAt\": \"2026-09-01T00:00:00Z\",\n      \"bytes\": 41000000,\n      \"country\": \"UA\",\n      \"id\": \"road-mesh-ua\",\n      \"kind\": \"ROAD_MESH\",\n      \"labelUa\": \"Україна — дороги й транспорт\",\n      \"minAppBuild\": 140\n    }\n  ],\n  \"sig\": \"5+KbXXWihBT+F+hmxLBja6HrGBFFIimr8FdTDz+T11Ajc1iRjjgUaR1QpzHvYychoxwv6gWb5Vsso4R2b9VoCQ==\"\n}\n",
+  "manifest_json": "{\n  \"bytes\": 41000000,\n  \"id\": \"road-mesh-ua\",\n  \"minAppBuild\": 140,\n  \"sha256\": \"9f2c0f3ac7b8e51d4a6b90c2e7d3f815a0b4c6d8e9f0a1b2c3d4e5f60718293a\",\n  \"sig\": \"5wXkzPkZU8Dgxzhl71hBiF7xxW2VpfJN8AldKqcK90eQ16xgvbby6j9myGgElKLsmJYq9EilHneXgedZCWFwBA==\",\n  \"version\": 3\n}\n"
+}

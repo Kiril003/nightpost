@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Backup salvo · %1$s</string>
+    <string name="backup_sheet_title">Criar backup</string>
+    <string name="backup_loss_title">Sem backup você perde:</string>
+    <string name="backup_loss_chats">Chats</string>
+    <string name="backup_loss_contacts">Contatos</string>
+    <string name="backup_loss_profiles">Perfis</string>
+    <string name="backup_loss_venues">Edição de locais</string>
+    <string name="backup_loss_licences">Licenças Solana e Seeker</string>
+    <string name="backup_loss_handle">\@usuário por 30 dias</string>
+    <string name="backup_loss_points">Pontos e avaliações</string>
+    <string name="backup_loss_wallet">Carteira sem exportação própria</string>
+    <string name="backup_loss_memory">Memória que não está no computador</string>
+    <string name="backup_pass_hint">Frase secreta (mín. 12 caracteres)</string>
+    <string name="backup_pass_confirm_hint">Repita a frase secreta</string>
+    <string name="backup_pass_mismatch">As frases não coincidem</string>
+    <string name="backup_pass_too_short">Mínimo de 12 caracteres</string>
+    <string name="backup_save_action">Salvar backup</string>
+    <string name="backup_restore_title">Restaurar backup</string>
+    <string name="backup_restore_pass_hint">Frase secreta do backup</string>
+    <string name="backup_restore_action">Restaurar</string>
+    <string name="backup_restore_err_wrong_pass">Frase incorreta</string>
+    <string name="backup_restore_err_not_our_file">Não é um backup do Nightpost</string>
+    <string name="backup_restore_err_not_empty">Apague primeiro os dados deste celular</string>
+    <string name="backup_restore_success">Restaurado: %1$d contatos, %2$d mensagens, %3$d perfis</string>
+    <string name="backup_restore_err_read">Não foi possível abrir o arquivo</string>
+    <string name="backup_restore_err_invalid">O backup está danificado</string>
+    <string name="backup_restore_err_failed">Falha ao restaurar</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_faucet_get">Test USDC al</string>
+    <string name="sol_faucet_off">Kullanılamıyor</string>
+    <string name="sol_faucet_wait">Zaten alındı</string>
+    <string name="sol_faucet_retry">Sonra dene</string>
+    <string name="sol_faucet_sending">İsteniyor</string>
+    <string name="sol_note_label">Not</string>
+</resources>

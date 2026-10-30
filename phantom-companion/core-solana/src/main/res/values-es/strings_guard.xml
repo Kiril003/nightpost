@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_guard_typed">Escrita a mano, no de tu chat. Compruébala con la persona.</string>
+    <string name="sol_guard_venue">Billetera del local en la cuenta: revisa el nombre</string>
+    <string name="sol_guard_scanned">De un código QR, no de tu chat. Compruébala con la persona.</string>
+    <string name="sol_guard_new_address">Dirección nueva: antes pagabas a esta persona en otra. Pregúntale.</string>
+    <string name="sol_guard_first_time">Primera transferencia a esta persona. Asegúrate de que es ella.</string>
+    <string name="sol_guard_other_network">Antes pagabas a esta persona en %1$s y ahora es %2$s.</string>
+    <string name="sol_guard_other_coin">Sueles enviarle %1$s y ahora es %2$s.</string>
+    <string name="sol_guard_unusual">Más de lo habitual: hasta ahora, como máximo %1$s %2$s.</string>
+</resources>

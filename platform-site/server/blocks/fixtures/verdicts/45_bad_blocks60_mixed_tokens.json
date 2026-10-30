@@ -1,0 +1,84 @@
+{
+  "ok": false,
+  "refused": "mixed_tokens",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Linde Studio",
+          "kind": "ceramics",
+          "tagline": "Ceramics and coffee"
+        }
+      },
+      {
+        "id": "service-area-24",
+        "kind": "loc.service_area",
+        "variant": "table",
+        "hidden": false,
+        "data": {
+          "title": "Delivery",
+          "token": "USDC",
+          "pickup": true,
+          "items": [
+            {
+              "id": "zone-a",
+              "area": "Zone A · centre",
+              "fee": "2",
+              "min": "15",
+              "eta": 45
+            },
+            {
+              "id": "zone-b",
+              "area": "Zone B · outer",
+              "fee": "4",
+              "min": "25",
+              "eta": 60
+            }
+          ]
+        }
+      },
+      {
+        "id": "price-table-30",
+        "kind": "cat.price_table",
+        "variant": "table",
+        "hidden": false,
+        "data": {
+          "title": "Studio prices",
+          "token": "SOL",
+          "items": [
+            {
+              "id": "pr-wheel",
+              "name": "Wheel time",
+              "price": "12",
+              "unit": "per hour"
+            },
+            {
+              "id": "pr-kiln",
+              "name": "Kiln firing",
+              "price": "8",
+              "unit": "per shelf"
+            },
+            {
+              "id": "pr-glaze",
+              "name": "Glaze",
+              "price": "6",
+              "unit": "per kg"
+            },
+            {
+              "id": "pr-clay",
+              "name": "Clay",
+              "price": "15",
+              "unit": "10 kg bag"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

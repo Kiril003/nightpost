@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_g_just_now">щойно</string>
+    <string name="mapl_g_mins_ago">%1$d хв тому</string>
+    <string name="mapl_g_hours_ago">%1$d год тому</string>
+    <string name="mapl_g_days_ago">%1$d дн тому</string>
+    <string name="mapl_g_km_fmt_int">%.0f км</string>
+    <string name="mapl_g_km_fmt_dec">%.1f км</string>
+    <string name="mapl_g_m_fmt">%1$d м</string>
+    <string name="mapl_g_hr_min_fmt">%1$d год %2$d хв</string>
+    <string name="mapl_g_min_fmt">%1$d хв</string>
+    <string name="mapl_g_isochrone_title">Встигаю дійти</string>
+    <string name="mapl_g_isochrone_glyph">ізохрона</string>
+    <string name="mapl_g_danger_field_title">Зона небезпеки</string>
+    <string name="mapl_g_danger_field_glyph">небезпека</string>
+    <string name="mapl_g_now">зараз</string>
+    <string name="mapl_g_unit_m">м</string>
+    <string name="mapl_g_unit_km">км</string>
+    <string name="mapl_g_unit_kmh">км/год</string>
+    <string name="mapl_g_slack_plus_hm">+%1$d год %2$d хв</string>
+    <string name="mapl_g_slack_hm">%1$d год %2$d хв</string>
+    <string name="mapl_g_slack_plus_m">+%1$d хв</string>
+    <string name="mapl_g_slack_m">%1$d хв</string>
+</resources>

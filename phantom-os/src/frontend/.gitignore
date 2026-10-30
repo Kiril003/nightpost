@@ -1,0 +1,19 @@
+# Dev / build artefacts
+#
+# БЕЗ скісної риски, і це не дрібниця: у робочому дереві агента `node_modules`
+# — це СИМЛІНК на дерево основного репозиторію, а взірець `node_modules/`
+# збігається лише з КАТАЛОГОМ. Тобто симлінк лишався невідстеженим і щоразу
+# стирчав у `git status` поруч із живою роботою, а `git add -A` затягнув би
+# його в коміт як посилання на чужий абсолютний шлях.
+node_modules
+dist/
+# Збірка під телефон: те, що їде в assets/webmsgr APK.
+dist-phone/
+.vite/
+*.log
+
+# ONNX runtime WASM / ESM blobs (vendored at install time, ~50MB total)
+public/ort.*
+public/ort-wasm-*
+public/vad/ort-wasm-*
+public/vad/ort.*

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Профіль після розпуску старого екрана налаштувань (пакет profile-hub, 04.10).
+  Речення з великої літери, як у решті Профілю; старі рядки settings_* лишились
+  у strings.xml для екранів, яких цей пакет не чіпає.
+-->
+<resources>
+    <!-- Слова рядків-дій -->
+    <string name="look_granted">Надано</string>
+    <string name="look_grant">Надати</string>
+    <string name="look_open">Відкрити</string>
+    <string name="look_turn_on">Увімкнути</string>
+    <string name="look_remove">Прибрати</string>
+
+    <!-- Приватність -->
+    <string name="look_privacy_screen">Екран</string>
+    <string name="look_screen_grant">Бачити екран</string>
+    <string name="look_screen_grant_body">Nightpost читає екран і діє в застосунках</string>
+    <string name="look_screen_title">Передавати екран ШІ</string>
+    <string name="look_screen_body">Із ключем хмари текст з екрана покидає телефон</string>
+    <string name="look_lock_reveal_forced">Лише «Нове повідомлення»</string>
+
+    <!-- Сповіщення -->
+    <string name="look_notif_background">Робота у фоні</string>
+    <string name="look_battery_title">Працювати у фоні</string>
+    <string name="look_battery_body">Щоб система не приспала Nightpost, поки телефон у кишені</string>
+
+    <!-- PHANTOM -->
+    <string name="look_brain_order">Кого питати першим</string>
+    <string name="look_brain_cloud_first">Спершу хмара</string>
+    <string name="look_brain_local_first">Спершу на пристрої</string>
+    <string name="look_brain_local_only">Лише на пристрої</string>
+    <string name="look_brain_cloud_only">Лише хмара</string>
+    <string name="look_brain_no_key">Без ключа відповідає сервер Nightpost, коли він на звʼязку.</string>
+    <string name="look_ai_key_remove">Прибрати ключ Gemini</string>
+    <string name="look_ai_key_remove_title">Прибрати ключ Gemini?</string>
+    <string name="look_ai_key_remove_body">Nightpost перестане ним користуватись. Ключ HuggingFace лишиться.</string>
+    <string name="look_phantom_talk">Розмова</string>
+    <string name="look_tts_title">Читати відповіді вголос</string>
+    <string name="look_tts_body">Український голос, поки застосунок відкритий</string>
+    <string name="look_proactive_title">Заговорювати першим</string>
+    <string name="look_proactive_body">Коротко про важливе, як-от зміну планів</string>
+    <string name="look_live_title">Живий діалог</string>
+    <string name="look_live_body">Мікрофон відкритий. Батарея сідає швидше.</string>
+    <string name="look_live_blocked">Мікрофон вимкнено — живий діалог на паузі</string>
+    <string name="look_live_unmute">Увімкнути мікрофон</string>
+
+    <!-- Пристрої -->
+    <string name="look_pair_paired">Підʼєднано: %1$s</string>
+    <string name="look_pair_drop_stale">Спаруйте ще раз, щоб листи доходили без компʼютера поруч</string>
+    <string name="look_unpair">Відʼєднати компʼютер</string>
+    <string name="look_unpair_title">Відʼєднати компʼютер?</string>
+    <string name="look_unpair_body">Підключити знову — новим кодом</string>
+    <string name="look_pair_subtitle">Відкрийте Nightpost на компʼютері й наведіть камеру на QR-код.</string>
+    <string name="look_pair_scan_again">Сканувати ще раз</string>
+    <string name="look_pair_camera_allow">Доступ до камери</string>
+
+    <!-- Для розробника -->
+    <string name="look_dev_keys">Ключі</string>
+    <string name="look_hf_key_remove">Прибрати ключ HuggingFace</string>
+    <string name="look_hf_key_remove_title">Прибрати ключ HuggingFace?</string>
+    <string name="look_hf_key_remove_body">Закриті моделі більше не звантажаться. Ключ Gemini лишиться.</string>
+    <string name="look_dev_place">Місце й роль</string>
+    <string name="look_dev_models">Моделі</string>
+    <string name="look_models_delete">Видалити завантажені моделі</string>
+    <string name="look_models_none">Завантажених моделей немає</string>
+    <string name="look_models_delete_title">Видалити завантажені моделі?</string>
+    <string name="look_models_delete_body">Видалить завантажені моделі. Чати й мапи лишаться.</string>
+    <string name="look_models_delete_yes">Так, видалити</string>
+    <string name="look_models_sure">Справді видалити?</string>
+    <string name="look_models_tap_again">Повернути не можна.</string>
+    <string name="look_models_wait">Зачекайте %1$d с — щоб не спрацювало від випадкового дотику.</string>
+    <string name="look_models_commit">Видалити</string>
+    <string name="look_models_commit_wait">Видалити · %1$d</string>
+    <string name="look_dev_build">Збірка</string>
+    <string name="look_build">Тип і номер</string>
+    <string name="look_package">Пакет</string>
+    <string name="look_web_bundle">Веб-месенджер</string>
+    <string name="phantom_advanced">Додатково</string>
+</resources>

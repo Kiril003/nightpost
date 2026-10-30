@@ -1,0 +1,37 @@
+{
+  "seed_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+  "pub": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+  "pub_key": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+  "nonce": "00112233445566778899aabbccddeeff",
+  "issued_ms": 1759852800000,
+  "root_sentence": "NP-ERASE-v1|A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=|00112233445566778899aabbccddeeff|1759852800000",
+  "root_signature": "4SApyrwh3yjbAMSmffwujczCue/+0ipvd+v0bmIjHpQv2TWdA995qwmyEx8IHhQod8jzUgxHlGpxbtoxl5XMCQ==",
+  "claim_sentence": "NP-ERASE-CLAIM-v1|A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=|00112233445566778899aabbccddeeff|1759852800000",
+  "claim_signature": "GuWdrFWOaWiuAICJLQ44dlMYnL2qCMxz+O8Q5gyTjIcL1pVSix8jl8NPjpY7H3walDdgCkwOWELo8EXTlErlBA==",
+  "root": {
+    "sentence": "NP-ERASE-v1|A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=|00112233445566778899aabbccddeeff|1759852800000",
+    "signature": "4SApyrwh3yjbAMSmffwujczCue/+0ipvd+v0bmIjHpQv2TWdA995qwmyEx8IHhQod8jzUgxHlGpxbtoxl5XMCQ=="
+  },
+  "claim": {
+    "sentence": "NP-ERASE-CLAIM-v1|A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=|00112233445566778899aabbccddeeff|1759852800000",
+    "signature": "GuWdrFWOaWiuAICJLQ44dlMYnL2qCMxz+O8Q5gyTjIcL1pVSix8jl8NPjpY7H3walDdgCkwOWELo8EXTlErlBA=="
+  },
+  "cases": [
+    {
+      "kind": "root",
+      "pub_key": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+      "nonce": "00112233445566778899aabbccddeeff",
+      "issued_ms": 1759852800000,
+      "sentence": "NP-ERASE-v1|A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=|00112233445566778899aabbccddeeff|1759852800000",
+      "signature": "4SApyrwh3yjbAMSmffwujczCue/+0ipvd+v0bmIjHpQv2TWdA995qwmyEx8IHhQod8jzUgxHlGpxbtoxl5XMCQ=="
+    },
+    {
+      "kind": "claim",
+      "pub_key": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+      "nonce": "00112233445566778899aabbccddeeff",
+      "issued_ms": 1759852800000,
+      "sentence": "NP-ERASE-CLAIM-v1|A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=|00112233445566778899aabbccddeeff|1759852800000",
+      "signature": "GuWdrFWOaWiuAICJLQ44dlMYnL2qCMxz+O8Q5gyTjIcL1pVSix8jl8NPjpY7H3walDdgCkwOWELo8EXTlErlBA=="
+    }
+  ]
+}

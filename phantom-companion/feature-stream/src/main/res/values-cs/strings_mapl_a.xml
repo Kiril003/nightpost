@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_a_grp_energy">Energie</string>
+    <string name="mapl_a_grp_water">Voda</string>
+    <string name="mapl_a_grp_safety">Bezpečnost a kryty</string>
+    <string name="mapl_a_grp_health">Zdraví a pomoc</string>
+    <string name="mapl_a_grp_comms">Pošta a banky</string>
+    <string name="mapl_a_grp_auto">Palivo a doprava</string>
+    <string name="mapl_a_grp_shops">Potraviny a nákupy</string>
+    <string name="mapl_a_grp_food">Jídlo a káva</string>
+    <string name="mapl_a_grp_state">Úřady a služby</string>
+    <string name="mapl_a_grp_terrain">Terén a mosty</string>
+    <string name="mapl_a_grp_culture">Kultura a památky</string>
+    <string name="mapl_a_grp_access">Vchody a průchody</string>
+
+    <string name="mapl_a_cat_generators">Generátory</string>
+    <string name="mapl_a_cat_ev_charging">Nabíjení EV / Power</string>
+    <string name="mapl_a_cat_transformers">Transformátory</string>
+    <string name="mapl_a_cat_drinking_water">Pitná voda</string>
+    <string name="mapl_a_cat_water_wells">Studny a vrty</string>
+    <string name="mapl_a_cat_springs">Přírodní prameny</string>
+    <string name="mapl_a_cat_shelter">Kryty</string>
+    <string name="mapl_a_cat_metro_shelter">Metro (Kryt)</string>
+    <string name="mapl_a_cat_aed">Defibrilátor AED</string>
+    <string name="mapl_a_cat_fire_station">Hasiči</string>
+    <string name="mapl_a_cat_police">Policie</string>
+    <string name="mapl_a_cat_pharmacy">Lékárna</string>
+    <string name="mapl_a_cat_hospital">Nemocnice a pohotovost</string>
+    <string name="mapl_a_cat_ambulance">Záchranná služba</string>
+    <string name="mapl_a_cat_dentist">Zubař</string>
+    <string name="mapl_a_cat_vet">Veterinář</string>
+    <string name="mapl_a_cat_post_office">Pošta</string>
+    <string name="mapl_a_cat_parcel_locker">Výdejní box 24/7</string>
+    <string name="mapl_a_cat_atm">Bankomat a hotovost</string>
+    <string name="mapl_a_cat_bank">Banka</string>
+    <string name="mapl_a_cat_transit_stop">Zastávky MHD</string>
+    <string name="mapl_a_cat_transit_hub">Metro a nádraží</string>
+    <string name="mapl_a_cat_fuel">Čerpací stanice</string>
+    <string name="mapl_a_cat_underground_parking">Podzemní garáže</string>
+    <string name="mapl_a_cat_car_repair">Autoservis</string>
+    <string name="mapl_a_cat_tyres">Pneuservis</string>
+    <string name="mapl_a_cat_supermarket">Supermarket</string>
+    <string name="mapl_a_cat_marketplace">Tržnice</string>
+    <string name="mapl_a_cat_bakery">Pekárna</string>
+    <string name="mapl_a_cat_hardware">Železářství a hobby</string>
+    <string name="mapl_a_cat_cafe">Kavárna</string>
+    <string name="mapl_a_cat_restaurant">Restaurace</string>
+    <string name="mapl_a_cat_fast_food">Rychlé občerstvení</string>
+    <string name="mapl_a_cat_invincibility">Komunitní centrum</string>
+    <string name="mapl_a_cat_cnap">Kontaktní místo veřejné správy</string>
+    <string name="mapl_a_cat_townhall">Radnice</string>
+    <string name="mapl_a_cat_bridges">Mosty a nadjezdy</string>
+    <string name="mapl_a_cat_peaks">Vrcholy a výšiny</string>
+    <string name="mapl_a_cat_landmarks">Památky a vyhlídky</string>
+    <string name="mapl_a_cat_museums">Muzea a galerie</string>
+    <string name="mapl_a_cat_parks">Parky a zahrady</string>
+    <string name="mapl_a_cat_worship">Kostely a chrámy</string>
+    <string name="mapl_a_cat_entrances">Vchody a brány</string>
+    <string name="mapl_a_cat_passages">Pasáže a průchody</string>
+    <string name="mapl_a_cat_steps">Schody a rampy</string>
+
+    <string-array name="mapl_a_kw_generators">
+        <item>generátor</item>
+        <item>diesel</item>
+        <item>elektřina</item>
+        <item>energie</item>
+    </string-array>
+    <string-array name="mapl_a_kw_ev_charging">
+        <item>nabíjení</item>
+        <item>ev</item>
+        <item>nabíječka</item>
+        <item>powerbanka</item>
+        <item>charging</item>
+    </string-array>
+    <string-array name="mapl_a_kw_transformers">
+        <item>rozvodna</item>
+        <item>transformátor</item>
+    </string-array>
+    <string-array name="mapl_a_kw_drinking_water">
+        <item>voda</item>
+        <item>pitná voda</item>
+        <item>pítko</item>
+        <item>water</item>
+    </string-array>
+    <string-array name="mapl_a_kw_water_wells">
+        <item>studna</item>
+        <item>vrt</item>
+        <item>well</item>
+    </string-array>
+    <string-array name="mapl_a_kw_springs">
+        <item>pramen</item>
+        <item>studánka</item>
+    </string-array>
+    <string-array name="mapl_a_kw_shelter">
+        <item>kryt</item>
+        <item>úkryt</item>
+        <item>bunkr</item>
+    </string-array>
+    <string-array name="mapl_a_kw_metro_shelter">
+        <item>metro</item>
+        <item>stanice metra</item>
+        <item>subway</item>
+    </string-array>
+    <string-array name="mapl_a_kw_aed">
+        <item>defibrilátor</item>
+        <item>aed</item>
+        <item>srdce</item>
+    </string-array>
+    <string-array name="mapl_a_kw_fire_station">
+        <item>hasiči</item>
+        <item>požární stanice</item>
+        <item>fire</item>
+    </string-array>
+    <string-array name="mapl_a_kw_police">
+        <item>policie</item>
+        <item>strážnice</item>
+    </string-array>
+    <string-array name="mapl_a_kw_pharmacy">
+        <item>lékárna</item>
+        <item>léky</item>
+        <item>pharmacy</item>
+        <item>chemist</item>
+    </string-array>
+    <string-array name="mapl_a_kw_hospital">
+        <item>nemocnice</item>
+        <item>klinika</item>
+        <item>pohotovost</item>
+        <item>hospital</item>
+    </string-array>
+    <string-array name="mapl_a_kw_ambulance">
+        <item>záchranka</item>
+        <item>sanitka</item>
+    </string-array>
+    <string-array name="mapl_a_kw_dentist">
+        <item>zubař</item>
+        <item>stomatologie</item>
+    </string-array>
+    <string-array name="mapl_a_kw_vet">
+        <item>veterinář</item>
+        <item>veterina</item>
+    </string-array>
+    <string-array name="mapl_a_kw_post_office">
+        <item>pošta</item>
+        <item>zásilka</item>
+        <item>balík</item>
+        <item>post</item>
+    </string-array>
+    <string-array name="mapl_a_kw_parcel_locker">
+        <item>box</item>
+        <item>výdejní box</item>
+        <item>zásilkovna</item>
+    </string-array>
+    <string-array name="mapl_a_kw_atm">
+        <item>bankomat</item>
+        <item>hotovost</item>
+        <item>atm</item>
+    </string-array>
+    <string-array name="mapl_a_kw_bank">
+        <item>banka</item>
+        <item>pobočka</item>
+    </string-array>
+    <string-array name="mapl_a_kw_transit_stop">
+        <item>zastávka</item>
+        <item>autobus</item>
+        <item>tramvaj</item>
+        <item>trolejbus</item>
+        <item>mhd</item>
+        <item>stop</item>
+    </string-array>
+    <string-array name="mapl_a_kw_transit_hub">
+        <item>metro</item>
+        <item>nádraží</item>
+        <item>vlak</item>
+        <item>stanice</item>
+        <item>subway</item>
+    </string-array>
+    <string-array name="mapl_a_kw_fuel">
+        <item>benzínka</item>
+        <item>palivo</item>
+        <item>benzín</item>
+        <item>nafta</item>
+        <item>čerpací stanice</item>
+    </string-array>
+    <string-array name="mapl_a_kw_underground_parking">
+        <item>parkování</item>
+        <item>garáže</item>
+        <item>parkoviště</item>
+    </string-array>
+    <string-array name="mapl_a_kw_car_repair">
+        <item>autoservis</item>
+        <item>servis</item>
+        <item>oprava</item>
+        <item>repair</item>
+    </string-array>
+    <string-array name="mapl_a_kw_tyres">
+        <item>pneuservis</item>
+        <item>pneumatiky</item>
+        <item>tyres</item>
+    </string-array>
+    <string-array name="mapl_a_kw_supermarket">
+        <item>supermarket</item>
+        <item>potraviny</item>
+        <item>obchod</item>
+        <item>grocery</item>
+        <item>shop</item>
+    </string-array>
+    <string-array name="mapl_a_kw_marketplace">
+        <item>tržnice</item>
+        <item>trh</item>
+        <item>market</item>
+    </string-array>
+    <string-array name="mapl_a_kw_bakery">
+        <item>pekárna</item>
+        <item>pečivo</item>
+    </string-array>
+    <string-array name="mapl_a_kw_hardware">
+        <item>železářství</item>
+        <item>nářadí</item>
+        <item>stavebniny</item>
+    </string-array>
+    <string-array name="mapl_a_kw_cafe">
+        <item>káva</item>
+        <item>kavárna</item>
+        <item>coffee</item>
+    </string-array>
+    <string-array name="mapl_a_kw_restaurant">
+        <item>restaurace</item>
+        <item>jídlo</item>
+        <item>restaurant</item>
+    </string-array>
+    <string-array name="mapl_a_kw_fast_food">
+        <item>fastfood</item>
+        <item>burger</item>
+        <item>pizza</item>
+        <item>fast food</item>
+    </string-array>
+    <string-array name="mapl_a_kw_invincibility">
+        <item>komunitní centrum</item>
+        <item>dobrovolníci</item>
+        <item>hub</item>
+    </string-array>
+    <string-array name="mapl_a_kw_cnap">
+        <item>úřad</item>
+        <item>czech point</item>
+        <item>doklady</item>
+    </string-array>
+    <string-array name="mapl_a_kw_townhall">
+        <item>radnice</item>
+        <item>městský úřad</item>
+        <item>magistrát</item>
+    </string-array>
+    <string-array name="mapl_a_kw_bridges">
+        <item>most</item>
+        <item>lávka</item>
+        <item>nadjezd</item>
+    </string-array>
+    <string-array name="mapl_a_kw_peaks">
+        <item>vrchol</item>
+        <item>hora</item>
+        <item>kopec</item>
+    </string-array>
+    <string-array name="mapl_a_kw_landmarks">
+        <item>památka</item>
+        <item>hrad</item>
+        <item>zámek</item>
+        <item>vyhlídka</item>
+        <item>attraction</item>
+    </string-array>
+    <string-array name="mapl_a_kw_museums">
+        <item>muzeum</item>
+        <item>galerie</item>
+        <item>výstava</item>
+    </string-array>
+    <string-array name="mapl_a_kw_parks">
+        <item>park</item>
+        <item>zahrada</item>
+        <item>zoo</item>
+    </string-array>
+    <string-array name="mapl_a_kw_worship">
+        <item>kostel</item>
+        <item>katedrála</item>
+        <item>chrám</item>
+        <item>synagoga</item>
+        <item>church</item>
+    </string-array>
+    <string-array name="mapl_a_kw_entrances">
+        <item>vchod</item>
+        <item>dveře</item>
+        <item>brána</item>
+    </string-array>
+    <string-array name="mapl_a_kw_passages">
+        <item>průchod</item>
+        <item>pasáž</item>
+        <item>podloubí</item>
+    </string-array>
+    <string-array name="mapl_a_kw_steps">
+        <item>schody</item>
+        <item>rampa</item>
+        <item>schodiště</item>
+    </string-array>
+</resources>

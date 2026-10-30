@@ -1,0 +1,79 @@
+/* Тло розмови (Профіль › Вигляд, меню ⋮ › Тло): картинка, завіса полотна й
+ * розмиття, яке людина сама обрала для свого фото. Розмиття живе лише тут і
+ * лише на .ph-wallpaper-img — скла, сяйва й розмитих панелей у шарі немає
+ * (identity.test, appearance.test). Значення Дня й Ночі приходять змінними
+ * з ChatWallpaper, а діюче обирає тема. */
+.ph-wallpaper {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  --wp-dim: var(--wp-dim-night);
+  --wp-blur: var(--wp-blur-night);
+}
+html:root[data-theme='day'] .ph-wallpaper {
+  --wp-dim: var(--wp-dim-day);
+  --wp-blur: var(--wp-blur-day);
+}
+.ph-wallpaper-img {
+  position: absolute;
+  inset: calc(var(--wp-blur) * -2);
+  filter: blur(var(--wp-blur));
+}
+.ph-wallpaper-tile { background-repeat: repeat; background-size: 384px 384px; }
+.ph-wallpaper[data-surface='desk'] .ph-wallpaper-tile { background-size: 640px 640px; }
+.ph-wallpaper-cover { background-repeat: no-repeat; background-size: cover; background-position: center; }
+.ph-wallpaper-scrim {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ph-canvas);
+  opacity: var(--wp-dim);
+}
+.ph-wallpaper[data-surface='desk'][data-kind='builtin'] .ph-wallpaper-scrim {
+  opacity: calc(var(--wp-dim) + (1 - var(--wp-dim)) * 0.45);
+}
+[data-wallpaper='on'] .ph-day-pill {
+  padding: 4px 11px;
+  border-radius: 11px;
+  background-color: var(--ph-raised);
+}
+[data-wallpaper='on'] .ph-on-stage {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background-color: var(--ph-canvas);
+}
+[data-wallpaper='on'] .ph-stage-card {
+  margin: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: var(--ph-surface);
+}
+/* Стіна D без вибору людини: тон --ph-wall і сітка точок 16 px кольору --ph-wall-dot
+ * (друга точка клітинки тихіша), як у затвердженому рендері D. Колір — лише токени. */
+.ph-wall {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--ph-wall);
+}
+.ph-wall-dots {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ph-wall-dot);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='3' cy='3' r='1.5'/%3E%3Ccircle cx='11' cy='11' r='1.5'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='3' cy='3' r='1.5'/%3E%3Ccircle cx='11' cy='11' r='1.5'/%3E%3C/svg%3E");
+  -webkit-mask-size: 16px 16px;
+  mask-size: 16px 16px;
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+}
+/* Уночі крапка тихша за токеном, тож більша — щоб читалась фактурою, а не шумом. */
+html:root:not([data-theme]) .ph-wall-dots,
+html:root[data-theme='night'] .ph-wall-dots,
+html:root[data-theme='dusk'] .ph-wall-dots {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='3' cy='3' r='2'/%3E%3Ccircle cx='11' cy='11' r='2'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='3' cy='3' r='2'/%3E%3Ccircle cx='11' cy='11' r='2'/%3E%3C/svg%3E");
+}

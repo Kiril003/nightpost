@@ -1,0 +1,171 @@
+{
+  "version": 1,
+  "about": "Спільний контракт тіл симбіота: шкала ризику, сфери й рівні драбини, дієслова з аргументами. Єдине джерело для ПК (symbiote/contract.py) і телефона (BodyLadder.RULES звіряється тестом). Аргументи йдуть дротом як рядки (телефон: Map<String,String>).",
+  "risks": {
+    "read": "Читання",
+    "local": "Локальна дія",
+    "outward": "Дія назовні",
+    "irreversible": "Незворотна"
+  },
+  "spheres": {
+    "place": "Місце",
+    "sound": "Звук і голос",
+    "notices": "Сповіщення",
+    "clipboard": "Буфер і посилання",
+    "screen": "Екран",
+    "keyboard": "Клавіатура"
+  },
+  "levels": {
+    "off": "Вимкнено",
+    "see": "Бачити",
+    "suggest": "Пропонувати",
+    "ask": "Робити з «так»",
+    "report": "Робити і звітувати",
+    "silent": "Мовчки"
+  },
+  "verbs": {
+    "phone.locate": {
+      "body": "phone", "sphere": "place", "kind": "read", "risk": "read",
+      "requires": "sensors", "title": "Віддай своє місце зараз",
+      "args": {}
+    },
+    "phone.wifi_scan": {
+      "body": "phone", "sphere": "place", "kind": "read", "risk": "read",
+      "requires": "sensors", "title": "Що бачить твоє радіо",
+      "args": {}
+    },
+    "phone.ring": {
+      "body": "phone", "sphere": "sound", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Подай звук",
+      "args": {}
+    },
+    "phone.find": {
+      "body": "phone", "sphere": "sound", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Знайти телефон",
+      "args": {}
+    },
+    "phone.speak": {
+      "body": "phone", "sphere": "sound", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Скажи це вголос",
+      "args": {"text": {"required": true, "max": 500}}
+    },
+    "phone.notify": {
+      "body": "phone", "sphere": "notices", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Покажи сповіщення",
+      "args": {"title": {"max": 120}, "body": {"max": 500}, "text": {"max": 500}}
+    },
+    "phone.stop": {
+      "body": "phone", "sphere": "", "kind": "stop", "risk": "local",
+      "requires": "approvals", "title": "Перестань",
+      "args": {}
+    },
+    "phone.screen.read": {
+      "body": "phone", "sphere": "screen", "kind": "read", "risk": "read",
+      "requires": "sensors", "title": "Прочитай екран",
+      "args": {"detail": {"max": 24}}
+    },
+    "phone.notifications.recent": {
+      "body": "phone", "sphere": "notices", "kind": "read", "risk": "read",
+      "requires": "approvals", "title": "Покажи останні сповіщення",
+      "args": {"limit": {"max": 3}}
+    },
+    "phone.state": {
+      "body": "phone", "sphere": "place", "kind": "read", "risk": "read",
+      "requires": "sensors", "title": "Як почувається телефон",
+      "args": {}
+    },
+    "phone.app.open": {
+      "body": "phone", "sphere": "screen", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Відкрий застосунок",
+      "args": {"app": {"required": true, "max": 120}}
+    },
+    "phone.tap": {
+      "body": "phone", "sphere": "screen", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Торкнись",
+      "args": {"ref": {"max": 16}, "text": {"max": 200}, "x": {"max": 6}, "y": {"max": 6}},
+      "one_of": [["ref", "text", "x"]]
+    },
+    "phone.type": {
+      "body": "phone", "sphere": "keyboard", "kind": "act", "risk": "irreversible",
+      "requires": "approvals", "title": "Набери текст",
+      "args": {"text": {"required": true, "max": 2000}, "ref": {"max": 16}}
+    },
+    "phone.scroll": {
+      "body": "phone", "sphere": "screen", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Прокрути",
+      "args": {"direction": {"max": 5}}
+    },
+    "phone.back": {
+      "body": "phone", "sphere": "screen", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Назад",
+      "args": {}
+    },
+    "phone.home": {
+      "body": "phone", "sphere": "screen", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "На головний екран",
+      "args": {}
+    },
+    "phone.intent": {
+      "body": "phone", "sphere": "clipboard", "kind": "act", "risk": "outward",
+      "requires": "approvals", "title": "Відкрий посилання чи дію",
+      "args": {"action": {"required": true, "max": 16}, "data": {"max": 2048}}
+    },
+    "phone.clipboard.set": {
+      "body": "phone", "sphere": "clipboard", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Поклади в буфер",
+      "args": {"text": {"required": true, "max": 20000}}
+    },
+    "pc.type": {
+      "body": "desktop", "sphere": "keyboard", "kind": "act", "risk": "irreversible",
+      "requires": "control", "title": "Набери текст",
+      "args": {"text": {"required": true, "max": 4000}}
+    },
+    "pc.clipboard": {
+      "body": "desktop", "sphere": "clipboard", "kind": "act", "risk": "local",
+      "requires": "control", "title": "Поклади в буфер",
+      "args": {"text": {"required": true, "max": 20000}}
+    },
+    "pc.open": {
+      "body": "desktop", "sphere": "clipboard", "kind": "act", "risk": "local",
+      "requires": "control", "title": "Відкрий посилання",
+      "args": {"url": {"max": 2048}, "target": {"max": 2048}},
+      "one_of": [["url", "target"]]
+    },
+    "pc.lock": {
+      "body": "desktop", "sphere": "screen", "kind": "act", "risk": "local",
+      "requires": "control", "title": "Замкни екран",
+      "args": {}
+    },
+    "pc.notify": {
+      "body": "desktop", "sphere": "notices", "kind": "act", "risk": "local",
+      "requires": "approvals", "title": "Покажи сповіщення",
+      "args": {"title": {"max": 120}, "body": {"max": 500}, "text": {"max": 500}}
+    }
+  },
+  "pc_body": {
+    "about": "Тіло ПК бачить і діє на комп'ютері власника. Окремі сфери й дієслова, щоб телефонна BodyLadder.RULES (що звіряє `spheres`/`verbs`) не мусила знати їх, доки телефон не навчиться їх показувати. ПК реєструє і `verbs`, і `pc_body.verbs`; телефон може просити будь-яке з них. `defaults` — сходинка після сполучення і для розуму на цьому ПК: усе, що торкається вмісту (екран, файли, оболонка, браузер, видалення), стоїть «вимкнено», доки власник не підніме. `consent: ask` — читання, яке за драбиною поводиться як дія: на «бачити» — відмова, на «так» — питає.",
+    "spheres": {"sight": "Погляд на екран", "windows": "Вікна й програми", "pointer": "Миша", "files": "Файли", "erase": "Видалення", "processes": "Процеси", "shell": "Оболонка", "browser": "Браузер PHANTOM"},
+    "defaults": {"sight": "off", "windows": "see", "pointer": "see", "files": "off", "erase": "off", "processes": "see", "shell": "off", "browser": "off"},
+    "verbs": {
+      "pc.see": {"body": "desktop", "sphere": "sight", "kind": "read", "risk": "read", "requires": "control", "title": "Подивись на екран", "args": {"prompt": {"max": 1000}, "mode": {"max": 16}}},
+      "pc.windows": {"body": "desktop", "sphere": "windows", "kind": "read", "risk": "read", "requires": "control", "title": "Які вікна відкриті", "args": {}},
+      "pc.ui.find": {"body": "desktop", "sphere": "sight", "kind": "read", "risk": "read", "requires": "control", "title": "Знайди елемент на екрані", "args": {"label": {"max": 200}, "role": {"max": 64}, "app": {"max": 128}}, "one_of": [["label", "role", "app"]]},
+      "pc.clipboard.read": {"body": "desktop", "sphere": "clipboard", "kind": "read", "risk": "read", "requires": "control", "title": "Що в буфері", "consent": "ask", "args": {}},
+      "pc.processes": {"body": "desktop", "sphere": "processes", "kind": "read", "risk": "read", "requires": "control", "title": "Які програми працюють", "args": {"query": {"max": 128}}},
+      "pc.files.list": {"body": "desktop", "sphere": "files", "kind": "read", "risk": "read", "requires": "control", "title": "Що в теці", "args": {"path": {"max": 4096}}},
+      "pc.files.search": {"body": "desktop", "sphere": "files", "kind": "read", "risk": "read", "requires": "control", "title": "Знайди файли", "args": {"query": {"required": true, "max": 200}, "path": {"max": 4096}, "content": {"max": 5}}},
+      "pc.files.read": {"body": "desktop", "sphere": "files", "kind": "read", "risk": "read", "requires": "control", "title": "Прочитай файл", "args": {"path": {"required": true, "max": 4096}}},
+      "pc.browser.read": {"body": "desktop", "sphere": "browser", "kind": "read", "risk": "read", "requires": "control", "title": "Що на сторінці", "args": {}},
+      "pc.app.open": {"body": "desktop", "sphere": "windows", "kind": "act", "risk": "local", "requires": "control", "title": "Відкрий програму", "args": {"app": {"required": true, "max": 128}}},
+      "pc.hotkey": {"body": "desktop", "sphere": "keyboard", "kind": "act", "risk": "local", "requires": "control", "title": "Натисни клавіші", "args": {"keys": {"required": true, "max": 64}}},
+      "pc.click": {"body": "desktop", "sphere": "pointer", "kind": "act", "risk": "local", "requires": "control", "title": "Клацни", "args": {"label": {"max": 200}, "role": {"max": 64}, "app": {"max": 128}, "x": {"max": 6}, "y": {"max": 6}, "button": {"max": 8}}, "one_of": [["label", "x"]]},
+      "pc.files.write": {"body": "desktop", "sphere": "files", "kind": "act", "risk": "local", "requires": "control", "title": "Запиши файл", "args": {"path": {"required": true, "max": 4096}, "text": {"max": 200000}, "mode": {"max": 16}}},
+      "pc.files.move": {"body": "desktop", "sphere": "files", "kind": "act", "risk": "local", "requires": "control", "title": "Перемісти файл", "args": {"src": {"required": true, "max": 4096}, "dst": {"required": true, "max": 4096}}},
+      "pc.files.delete": {"body": "desktop", "sphere": "erase", "kind": "act", "risk": "irreversible", "requires": "control", "title": "Видали файл", "args": {"path": {"required": true, "max": 4096}}},
+      "pc.shell": {"body": "desktop", "sphere": "shell", "kind": "act", "risk": "local", "requires": "control", "title": "Виконай команду", "args": {"cmd": {"required": true, "max": 2000}, "cwd": {"max": 4096}}},
+      "pc.browser.open": {"body": "desktop", "sphere": "browser", "kind": "act", "risk": "local", "requires": "control", "title": "Відкрий сторінку", "args": {"url": {"required": true, "max": 2048}}},
+      "pc.browser.click": {"body": "desktop", "sphere": "browser", "kind": "act", "risk": "outward", "requires": "control", "title": "Клацни на сторінці", "args": {"ref": {"required": true, "max": 32}}},
+      "pc.browser.fill": {"body": "desktop", "sphere": "browser", "kind": "act", "risk": "local", "requires": "control", "title": "Заповни поле", "args": {"ref": {"required": true, "max": 32}, "text": {"required": true, "max": 4000}}}
+    }
+  }
+}

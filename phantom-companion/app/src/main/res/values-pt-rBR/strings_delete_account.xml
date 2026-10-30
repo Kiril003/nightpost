@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Apagar tudo</string>
+    <string name="delete_everything_after">Removido após 7 dias</string>
+    <string name="delete_everything_left_backup">Seu arquivo de backup</string>
+    <string name="delete_everything_left_photos">Fotos salvas</string>
+    <string name="delete_everything_left_letters">Cartas já entregues</string>
+    <string name="delete_everything_pc">Computador: as cópias ficam</string>
+    <string name="delete_everything_retry">Tentar de novo</string>
+    <string name="delete_everything_phone_only">Só este celular</string>
+    <string name="delete_everything_protected">Indisponível para esta conta</string>
+    <string name="delete_everything_allow">Permitir Apagar tudo</string>
+    <string name="delete_pending_on">Exclusão em %1$s</string>
+    <string name="delete_pending_cancel">Cancelar exclusão</string>
+    <string name="delete_everything_stays">Continua após a exclusão:</string>
+    <string name="delete_everything_cancel">Cancelar</string>
+    <string name="delete_everything_phone_only_note">Apaga tudo neste celular, carteira incluída</string>
+    <string name="delete_pending_note">Até lá você pode cancelar e manter tudo</string>
+    <string name="delete_pending_offline">Sem conexão</string>
+    <string name="delete_pending_failed">Não foi possível cancelar</string>
+    <string name="delete_pending_wallet">Carteira</string>
+</resources>

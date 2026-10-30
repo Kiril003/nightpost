@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_settings">Réglages</string>
+    <string name="profile_cover_add">Ajouter une couverture</string>
+    <string name="profile_cover_change">Changer la couverture</string>
+    <string name="profile_cover_chip">Changer</string>
+    <string name="profile_photo_change">Changer la photo</string>
+    <string name="profile_photo_failed">Cette photo ne s’est pas ouverte. Essayez-en une autre.</string>
+    <string name="profile_name_edit">Modifier le nom</string>
+    <string name="profile_name_save">Enregistrer</string>
+    <string name="profile_name_save_failed">Non enregistré</string>
+    <string name="profile_circles">Personnes</string>
+    <string name="profile_circles_empty">Personne ici pour l’instant</string>
+    <string name="profile_moments">Moments</string>
+    <string name="profile_moments_empty">Aucun moment aujourd’hui</string>
+    <string name="profile_moment">Votre moment</string>
+    <string name="profile_moment_add">Ajouter</string>
+    <string name="profile_action_code">Mon code</string>
+    <string name="profile_code_send">Envoyer le lien</string>
+    <string name="profile_code_failed">Impossible de créer le code</string>
+    <string name="circle_close">Proches</string>
+    <string name="circle_family">Famille</string>
+    <string name="circle_friends">Amis</string>
+    <string name="circle_work">Travail</string>
+    <string name="circle_study">Études</string>
+    <string name="circle_travel">Voyage</string>
+    <string name="profile_name_budget">%1$d/%2$d</string>
+    <string name="profile_name_too_long">Un nom plus long ne tient pas dans votre code d’invitation.</string>
+    <string name="profile_server">Assistant</string>
+    <string name="profile_key_short">Empreinte</string>
+    <string name="profile_key_created">Créée</string>
+    <string name="profile_value_server">Nightpost</string>
+    <string name="profile_value_server_spent">épuisé aujourd’hui</string>
+    <string name="profile_value_server_quiet">ne répond pas</string>
+    <string name="profile_backup">Sauvegarde</string>
+    <string name="profile_backup_none">Aucune</string>
+    <string name="profile_about_edit">À propos de moi</string>
+    <string name="profile_status_hint">Statut</string>
+    <string name="profile_photo_remove">Retirer la photo</string>
+    <string name="profile_cover_remove">Retirer la couverture</string>
+</resources>

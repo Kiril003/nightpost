@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_f_stop">Zastávka</string>
+    <string name="mapl_f_transit">Doprava</string>
+    <string name="mapl_f_point">Bod</string>
+    <string name="mapl_f_place">Místo</string>
+    <string name="mapl_f_entrance">Vchod</string>
+
+    <string name="mapl_f_migration_renamed">Přejmenováno kvůli shodě názvů: %1$s</string>
+    <string name="mapl_f_migration_unreadable">Nepodařilo se otevřít staré značky: %1$d</string>
+    <string name="mapl_f_no_active_route_along">Žádná aktivní trasa pro hledání po cestě</string>
+    <string name="mapl_f_along_route_suffix">%1$s · po cestě</string>
+    <string name="mapl_f_not_found_along_route">Po cestě nenalezeno: %1$s</string>
+    <string name="mapl_f_not_found_nearby">V okolí nenalezeno: %1$s</string>
+    <string name="mapl_f_shelter_registry_gap">Nevím, zda jsou zde kryty: v adresáři není žádný certifikovaný</string>
+    <string name="mapl_f_invincibility_gap">Seznam bodů nezdolnosti je jen pro tři oblasti (%1$s), ne pro „%2$s“</string>
+    <string name="mapl_f_quote">„%1$s“</string>
+    <string name="mapl_f_not_found_nearby_quoted">V okolí nenalezeno „%1$s“</string>
+    <string name="mapl_f_found_on_map">„%1$s“: nalezeno %2$d na mapě</string>
+    <string name="mapl_f_source_down">Zdroj neodpovídá — %1$s teď nelze zobrazit</string>
+    <string name="mapl_f_nowhere_to_look">Balíček míst není nainstalován a tato místa ještě nebyla zobrazena</string>
+
+    <string name="mapl_f_routing_not_configured">Online trasy nejsou nastaveny — Nastavení → Mapa → Geoslužby</string>
+    <string name="mapl_f_transit_not_found">Spojení nenalezeno</string>
+    <string name="mapl_f_shown_profile">%1$s — zobrazeno %2$s</string>
+    <string name="mapl_f_replan_kept_previous">Přepočet selhal — ponechána předchozí trasa</string>
+    <string name="mapl_f_deadline_arrive_by">Odpočet: dorazit do %1$s</string>
+    <string name="mapl_f_deadline_cleared">Odpočet zrušen</string>
+
+    <string name="mapl_f_mark">značka</string>
+    <string name="mapl_f_target">Cíl</string>
+    <string name="mapl_f_summary_type">Typ: %1$s</string>
+    <string name="mapl_f_summary_open">Nyní otevřeno</string>
+    <string name="mapl_f_summary_closed">Nyní zavřeno</string>
+    <string name="mapl_f_summary_address">Adresa: %1$s</string>
+    <string name="mapl_f_summary_phone">Tel: %1$s</string>
+    <string name="mapl_f_ai_offline">Nightpost je offline — přehled bude po připojení</string>
+    <string name="mapl_f_ai_failed">Nightpost neodpověděl</string>
+    <string name="mapl_f_ai_empty">Nightpost vrátil prázdnou odpověď</string>
+    <string name="mapl_f_eta_min">%1$d min</string>
+    <string name="mapl_f_eta_hr_min">%1$d hod %2$d min</string>
+
+    <string name="mapl_f_prefetch_idle">Nic se nestahuje.</string>
+    <string name="mapl_f_prefetch_running_tiles">, dlaždice se stahují zvlášť (%1$d balíčků)</string>
+    <string name="mapl_f_prefetch_running">Stahuji „%1$s“: %2$d/%3$d buněk sítě%4$s%5$s.</string>
+    <string name="mapl_f_prefetch_failed_part">, %1$d selhalo</string>
+    <string name="mapl_f_prefetch_done_tiles">; ~%1$d dlaždic v %2$d balíčcích (stahuje MapLibre)</string>
+    <string name="mapl_f_prefetch_done_truncated">; koridor překročil limit — vzat začátek</string>
+    <string name="mapl_f_prefetch_done">Hotovo: „%1$s“ — %2$d nových buněk, %3$d již bylo%4$s%5$s%6$s.</string>
+    <string name="mapl_f_prefetch_empty">Koridor je prázdný — není co stahovat.</string>
+    <string name="mapl_f_prefetch_already_running">Stahování již běží. %1$s</string>
+    <string name="mapl_f_prefetch_start_main">Stahuji „%1$s“ (~%2$d km): %3$d nových buněk, %4$d již máme</string>
+    <string name="mapl_f_prefetch_start_tiles">, ~%1$d dlaždic mapy v %2$d balíčcích</string>
+    <string name="mapl_f_prefetch_start_truncated">; trasa překračuje limit — beru prvních %1$d buněk</string>
+    <string name="mapl_f_prefetch_start_tail">. Běží na pozadí, stav — map.prefetch bez argumentů.</string>
+    <string name="mapl_f_prefetch_active_route">aktivní trasa</string>
+</resources>

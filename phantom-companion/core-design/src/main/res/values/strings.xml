@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vitals_bpm">BPM</string>
+    <string name="vitals_breath">BRTH</string>
+    <string name="vitals_stress">STRE</string>
+    <string name="state_shadow">SHADOW</string>
+    <string name="state_focus">FOCUS</string>
+    <string name="state_dialogue">DIALOGUE</string>
+    <string name="state_sentinel">SENTINEL</string>
+    <string name="state_ghost">GHOST</string>
+    <string name="state_dream">DREAM</string>
+    <string name="state_standing_orders">· %1$d standing orders</string>
+    <string name="license_gate_open">Open licence</string>
+    <string name="license_gate_trial">trial · %1$d d</string>
+
+    <string name="void_loading_title">Reading…</string>
+    <string name="void_empty_title">Nothing here</string>
+    <string name="void_failed_title">Could not read this</string>
+    <string name="void_failed_detail">This is a failed read, not an empty result.</string>
+    <string name="void_mismatch_title">Empty, although the counter says %1$d</string>
+    <string name="void_mismatch_detail">The app contradicts itself: the data exists but did not arrive.</string>
+
+    <string name="back_pill_action">Back</string>
+</resources>

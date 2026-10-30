@@ -1,0 +1,31 @@
+export const uk = {
+  'points.title': 'Бали',
+  'points.loading': 'Читаю бали…',
+  'points.offline': 'Немає звʼязку з сервером балів',
+  'points.empty': 'Балів ще немає',
+  'points.private': 'Бачите лише ви',
+  'points.kind.meetup': 'Зустріч відбулась',
+  'points.kind.payment': 'Перша оплачена частка',
+  'points.kind.invite': 'Друг приєднався за запрошенням',
+  'points.kind.other': 'Інша дія',
+  'points.checkin.awarded': 'Зустріч зараховано — бали додано.',
+  'points.checkin.waiting': 'Відмітку прийнято: зустріч зарахується, коли на місці відмітиться ще хтось.',
+  'points.checkin.counted': 'Відмітку прийнято. Зустріч уже зараховано — нових балів за неї немає.',
+  'points.checkin.sent': 'Відмітку надіслано.',
+};
+
+export const en: Record<keyof typeof uk, string> = {
+  'points.title': 'Points',
+  'points.loading': 'Reading your points…',
+  'points.offline': 'Points server is unreachable',
+  'points.empty': 'No points yet',
+  'points.private': 'Only you see them',
+  'points.kind.meetup': 'Meetup happened',
+  'points.kind.payment': 'First paid share',
+  'points.kind.invite': 'Friend joined by invite',
+  'points.kind.other': 'Other action',
+  'points.checkin.awarded': 'Meetup counted — points added.',
+  'points.checkin.waiting': 'Check-in accepted: the meetup counts once someone else checks in here.',
+  'points.checkin.counted': 'Check-in accepted. This meetup is already counted — no new points for it.',
+  'points.checkin.sent': 'Check-in sent.',
+};

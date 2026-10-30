@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_allow">Zezwól</string>
+    <string name="perm_not_now">Nie teraz</string>
+    <string name="perm_open_settings">Otwórz ustawienia</string>
+    <string name="perm_denied_title">Brak dostępu</string>
+    <string name="perm_blocked_title">Dostęp wyłączony</string>
+    <string name="perm_blocked_body">Android nie zapyta ponownie. Włącz dostęp w ustawieniach aplikacji i wróć.</string>
+</resources>

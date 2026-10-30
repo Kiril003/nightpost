@@ -1,0 +1,13 @@
+{
+  "v": 1,
+  "blocks": [
+    {
+      "type": "title",
+      "text": "Кава на розі"
+    },
+    {
+      "type": "wallet",
+      "address": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+    }
+  ]
+}

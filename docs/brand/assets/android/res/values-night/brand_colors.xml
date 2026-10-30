@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nightpost mark colour, night: accent #F2A93B, the one lit thing. -->
+<resources>
+    <color name="brand_mark">#F2A93B</color>
+</resources>

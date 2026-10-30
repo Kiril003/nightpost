@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_faucet_get">Отримати тестові USDC</string>
+    <string name="sol_faucet_off">Недоступно</string>
+    <string name="sol_faucet_wait">Вже отримано</string>
+    <string name="sol_faucet_retry">Спробуйте пізніше</string>
+    <string name="sol_faucet_sending">Запит</string>
+    <string name="sol_note_label">Нотатка</string>
+</resources>

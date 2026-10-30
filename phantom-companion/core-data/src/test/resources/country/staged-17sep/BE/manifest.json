@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 51.5508,
+    "maxLon": 6.4081,
+    "minLat": 49.497,
+    "minLon": 2.3889
+  },
+  "files": [
+    {
+      "bytes": 1405807,
+      "name": "places.tsv.gz",
+      "sha256": "5e41908ab3c80d553d0a8ff45d858c08bef013dc710bf067e06d48fa2216c74a"
+    },
+    {
+      "bytes": 2445660,
+      "name": "streets.tsv.gz",
+      "sha256": "ec3f8fb12237581f1501145bb4c46a4ec96b0eb7a9c9f706c878ab688e873589"
+    }
+  ],
+  "home": {
+    "lat": 50.8467,
+    "lon": 4.3525,
+    "zoom": 12.0
+  },
+  "id": "BE",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "be-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Бельгія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "be-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Бельгія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Бельгія",
+  "version": 1
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Borrador de transferencia: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Transferencia a %1$s (%2$s): indica el importe y confirma.</string>
+    <string name="money_coin_guessed">Se usó %1$s por defecto</string>
+    <string name="money_which_one">Varias coincidencias: %1$s. Indica el apellido.</string>
+    <string name="money_no_wallet">%1$s aún no tiene dirección de billetera.</string>
+    <string name="money_nobody">No encontré a «%1$s» entre las personas de tus chats.</string>
+    <string name="money_who_missing">¿Quién lo recibe? Nombra a alguien de tus chats.</string>
+    <string name="money_bad_amount">No se pueden enviar %1$s %2$s: la parte más pequeña de %2$s es %3$s.</string>
+    <string name="money_coin_not_here">No hay %1$s en %2$s.</string>
+    <string name="money_no_own_wallet">Tu billetera aún no está lista: abre Ajustes › Billetera.</string>
+    <string name="money_seal_pick">Elige una foto para sellar su huella SHA-256</string>
+    <string name="money_drafted_cash">Efectivo de bolsillo: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Sin internet solo puedo dar efectivo de bolsillo, pero %1$s</string>
+    <string name="money_offline_no_sol">al bolsillo le falta SOL para la comisión y la cuenta del destinatario.</string>
+    <string name="money_offline_empty">está vacío.</string>
+    <string name="money_offline_other_coin">sus billetes están en %1$s, no en %2$s.</string>
+    <string name="money_offline_short">solo hay %1$s %2$s libres.</string>
+    <string name="money_offline_external">el bolsillo solo funciona con la billetera integrada.</string>
+    <string name="money_offline_not_person">el efectivo solo va a un contacto del chat.</string>
+    <string name="money_watch_out">Ojo:</string>
+</resources>

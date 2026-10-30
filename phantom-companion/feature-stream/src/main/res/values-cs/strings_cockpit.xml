@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cockpit_title">Za volantem</string>
+    <string name="cockpit_close">Zavřít</string>
+    <string name="cockpit_mount_title">Obrazovka v držáku</string>
+    <string name="cockpit_mount_sub">velké údaje trasy; lze zrcadlit na čelní sklo</string>
+    <string name="cockpit_marks_kicker">Označit na silnici · zmizí za 2 h</string>
+    <string name="cockpit_mark_crash">Nehoda</string>
+    <string name="cockpit_mark_repair">Práce na silnici</string>
+    <string name="cockpit_mark_camera">Radar</string>
+    <string name="cockpit_find_kicker">Najít poblíž</string>
+    <string name="cockpit_find_fuel">Čerpací stanice</string>
+    <string name="cockpit_find_charging">Nabíjení elektromobilu</string>
+    <string name="cockpit_find_tyres">Pneuservis a autoservis</string>
+    <string name="cockpit_find_wash">Myčka aut</string>
+    <string name="cockpit_find_parking">Podzemní parkoviště</string>
+</resources>

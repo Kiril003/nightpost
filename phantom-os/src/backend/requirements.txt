@@ -1,0 +1,103 @@
+# Web framework
+fastapi==0.111.1
+uvicorn[standard]==0.30.6
+websockets==13.0.1
+python-multipart==0.0.9
+
+# Pydantic & Settings
+pydantic==2.8.2
+pydantic-settings==2.4.0
+
+# Database
+sqlalchemy==2.0.32
+aiosqlite==0.20.0
+alembic==1.13.2
+
+# Vector DB
+chromadb==0.5.5
+# Memory vectors run on ONNX Runtime + tokenizers (memory/onnx_embedding.py),
+# both already pulled in by chromadb / faster-whisper. sentence-transformers
+# is NOT installed by default: it drags torch + CUDA wheels (~5 GB disk,
+# ~GBs RAM). Install it only to pick embedding_backend="sentence_transformers".
+
+# AI
+google-genai>=1.0.0
+ollama==0.3.1
+
+# Voice / STT
+faster-whisper==1.0.3
+vosk==0.3.45
+# soundfile: audio decode/encode (libsndfile binding) used by
+# voice/stt_engine.py to normalise incoming audio to mono 16-bit PCM
+# before handing it to a provider. BSD-3, commercially fine.
+soundfile==0.14.0
+
+# Voice / TTS — Supertonic-3 (MIT-пакет, ваги OpenRAIL-M ~400 МБ у
+# ~/.cache/supertonic3) — той самий голос, що на телефоні. Piper — запасний.
+# Silero VAD (Phase 11b) is shipped as an ONNX file in voice/models/silero-vad/,
+# not a pip package; it runs via the already-installed onnxruntime.
+supertonic==1.3.1
+piper-tts==1.4.2
+
+# Vision
+opencv-python-headless==4.10.0.84
+
+# Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+cryptography==43.0.0
+
+# Phase 19 Mobile Companion — pure-Python QR encoder for /pair/init payload
+# rendering. No native deps. Backend renders SVG so the frontend stays
+# JS-free for QR encoding (~25 KB lib, no add-on packages on the wire).
+segno==1.6.1
+
+# Phase ecosystem (2026-05-04) — mDNS / DNS-SD service advertisement so
+# PHANTOM Companion phones discover the host on the local Wi-Fi without
+# scanning a stale-IP QR. Phone-side picks up `_phantom._tcp.local.` via
+# the in-app Kotlin MdnsPlugin (NsdManager + multicast lock).
+zeroconf>=0.148,<1.0
+
+# System monitoring
+psutil==6.0.0
+platformdirs==4.3.6
+
+# Agent (Phase 09.1+) — browser.navigate / browser.extract actions
+playwright>=1.48.0
+
+# Agent (Phase 09.3b) — standing orders cron schedules
+croniter==6.2.2
+
+# Async utilities
+anyio==4.4.0
+httpx==0.27.0
+
+# Bounded caches for external adapters (Phase 9.4c — audit C1-C3)
+cachetools==7.0.6
+
+# Phase 24-A — YAML manifests for the OmniMap layer registry. Pure-Python
+# parser; no native deps. Used by `geo.layer_registry.LayerRegistry.load`.
+PyYAML==6.0.2
+
+# Phase 24-I — Spatial analysis for geofencing.
+shapely==2.0.5
+
+# Vertical V10 — Mission reporting / PDF / HTML dashboard
+# markdown: converts ledger.md to HTML for weasyprint and dashboard.
+markdown==3.7
+# reportlab: the PDF backend that ships. Pure Python, no system libraries, so
+# "Export PDF" works on a default install instead of returning 422.
+reportlab==4.2.5
+# weasyprint: higher-fidelity HTML→PDF path — real CSS, page headers, embedded
+# images. Left out of the default install because it needs cairo/pango/gdk-pixbuf
+# from the system package manager; pdf_export.py picks it up automatically when
+# present and falls back to reportlab when not.
+# weasyprint==62.3
+
+# Testing
+pytest==8.3.2
+pytest-asyncio==0.23.8
+# A deadlocked test used to park the whole suite indefinitely — CI would burn
+# its budget with no output rather than fail. The default timeout in pytest.ini
+# turns that into a named failure with a stack dump.
+pytest-timeout==2.4.0

@@ -1,0 +1,24 @@
+{
+  "ok": false,
+  "refused": "bad_point",
+  "at": "blocks[0].data.point.lat",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "addr-0",
+        "kind": "loc.address",
+        "variant": "map_line",
+        "hidden": false,
+        "data": {
+          "text": "Stodolní 12",
+          "point": {
+            "lat": 91.5,
+            "lon": 18.28
+          }
+        }
+      }
+    ]
+  }
+}

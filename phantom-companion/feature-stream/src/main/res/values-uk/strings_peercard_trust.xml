@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="peer_card_trust_live">Наживо</string>
+    <string name="peer_card_trust_handle">Знайдено за ніком</string>
+    <string name="peer_card_trust_link">За посиланням</string>
+    <string name="peer_card_trust_none">Не перевірено</string>
+    <string name="peer_card_verify_live">Перевірити наживо</string>
+    <string name="peer_card_optional">Необовʼязково</string>
+    <string name="peer_card_untitled">Без імені</string>
+    <string name="peer_card_safety_code">Код безпеки</string>
+    <string name="peer_card_scan_code">Сканувати код</string>
+    <string name="peer_card_digits_match">Цифри збігаються</string>
+</resources>

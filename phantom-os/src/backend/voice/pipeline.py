@@ -1,0 +1,377 @@
+"""
+Voice pipeline — glue between STT, the chat router, and TTS.
+
+This module owns the process-local singletons so route handlers never
+need to construct providers themselves. The singletons honour live
+settings changes: mutate `config.voice_stt_mode` via /settings and call
+`reset_providers()` to force a rebuild on the next request.
+"""
+from __future__ import annotations
+
+import logging
+import threading
+import time
+from typing import Optional
+
+from voice.stt_engine import (
+    decode_to_mono16k_async,
+    STTProvider,
+    STTResult,
+    build_stt_provider,
+    decode_to_mono16k,
+)
+from voice.tts_engine import (
+    TTSProvider,
+    TTSResult,
+    build_tts_provider,
+)
+
+logger = logging.getLogger(__name__)
+
+
+# Phase 11c.4 — RLock (reentrant) instead of Lock. `get_vosk_model()` is
+# called while still holding `_lock` from `get_stt_provider()` (or vice
+# versa) on the same thread; with a non-reentrant Lock the second
+# acquire deadlocks indefinitely, freezing the worker building the
+# always-on orchestrator and (transitively, before the to_thread fixes)
+# the entire event loop.
+_lock = threading.RLock()
+_stt: Optional[STTProvider] = None
+_tts: Optional[TTSProvider] = None
+#: Monotonic time of the last voice-model use; drives the idle unload.
+_last_use: float = 0.0
+
+
+def _touch() -> None:
+    global _last_use
+    _last_use = time.monotonic()
+
+
+def get_stt_provider() -> STTProvider:
+    """Lazily build the STT provider; thread-safe so burst requests from
+    multiple workers don't race through the chain."""
+    global _stt
+    _touch()
+    if _stt is None:
+        with _lock:
+            if _stt is None:
+                _stt = build_stt_provider()
+                logger.info("STT provider active: %s", _stt.name)
+    return _stt
+
+
+def get_tts_provider() -> TTSProvider:
+    global _tts
+    _touch()
+    if _tts is None:
+        with _lock:
+            if _tts is None:
+                _tts = build_tts_provider()
+                logger.info("TTS provider active: %s", _tts.name)
+    return _tts
+
+
+def voice_for_text(text: str) -> str:
+    """Питає рушій, що говоритиме: Piper — модель мови, Supertonic — пресет."""
+    provider = get_tts_provider()
+    chooser = getattr(provider, "voice_for_text", None)
+    if callable(chooser):
+        return chooser(text)
+    from voice.tts_engine import select_voice_for_text
+
+    return select_voice_for_text(text)
+
+
+def reset_providers() -> None:
+    """Force a rebuild of both providers — call after a voice_* setting
+    changes in /settings so the new mode / voice takes effect."""
+    global _stt, _tts, _vosk_model
+    with _lock:
+        _stt = None
+        _tts = None
+        _vosk_model = None
+    # Phase 12.0 — VAD ORT session cache is independent; drop it too so a
+    # voice_* setting that affects the model path picks up the change.
+    try:
+        from voice.vad import reset_vad_session
+        reset_vad_session()
+    except Exception:
+        pass
+
+
+async def transcribe_blob(raw: bytes, language: str) -> STTResult:
+    """Decode and transcribe a caller-supplied audio blob."""
+    import time as _time
+    from observability import voice_stt_latency_ms
+
+    # A-1: decode may shell out to ffmpeg (up to ~10s) — offload so the
+    # WebM/Opus fallback never stalls the event loop.
+    audio = await decode_to_mono16k_async(raw)
+    t0 = _time.monotonic()
+    result = await get_stt_provider().transcribe(audio, language)
+    elapsed_ms = (_time.monotonic() - t0) * 1000.0
+    # Day-4 V-6 (ADR-RTP-002): histogram observation labelled by engine
+    # so the dashboard can split p50/p95/p99 per backend
+    # (vosk fast-fallback vs faster-whisper).
+    try:
+        voice_stt_latency_ms.observe(elapsed_ms, engine=result.engine)
+    except Exception:  # noqa: BLE001
+        # Observability never raises — STT must keep functioning.
+        pass
+    return result
+
+
+_vosk_model = None
+
+
+def get_vosk_model():
+    """Return a shared ``vosk.Model`` instance, loading it on first call.
+
+    Phase 11b always-on voice needs Vosk for wake-word spotting and for
+    post-wake utterance transcription, regardless of which mode
+    ``voice_stt_mode`` selects for push-to-talk. If the active STT
+    provider is Vosk we reuse the model it already loaded; otherwise we
+    load it fresh via the same path resolver.
+
+    Raises ``RuntimeError`` if the model directory isn't found on disk
+    so callers can disable always-on cleanly.
+    """
+    global _vosk_model
+    _touch()
+    if _vosk_model is not None:
+        return _vosk_model
+    with _lock:
+        if _vosk_model is not None:
+            return _vosk_model
+        provider = get_stt_provider()
+        if hasattr(provider, "get_model"):
+            try:
+                _vosk_model = provider.get_model()
+                logger.info("always-on: reusing Vosk model from STT provider")
+                return _vosk_model
+            except Exception as exc:  # noqa: BLE001
+                logger.warning(
+                    "always-on: STT provider's Vosk model unavailable (%s); "
+                    "loading fresh",
+                    exc,
+                )
+        from voice.stt_engine import _resolve_vosk_model_path
+
+        path = _resolve_vosk_model_path()
+        if path is None:
+            raise RuntimeError(
+                "always-on voice: Vosk model directory not found on disk"
+            )
+        import vosk
+
+        vosk.SetLogLevel(-1)
+        logger.info("always-on: loading fresh Vosk model from %s", path)
+        _vosk_model = vosk.Model(str(path))
+        return _vosk_model
+
+
+def reset_vosk_model() -> None:
+    """Drop the cached Vosk reference — called by reset_providers()
+    when voice settings change."""
+    global _vosk_model
+    with _lock:
+        _vosk_model = None
+
+
+def models_loaded() -> bool:
+    """True while any voice model (STT/TTS provider, Vosk, VAD) is resident."""
+    try:
+        from voice import vad as _vad
+        vad_loaded = _vad._vad_session is not None
+    except Exception:  # noqa: BLE001
+        vad_loaded = False
+    return any(x is not None for x in (_stt, _tts, _vosk_model)) or vad_loaded
+
+
+def _return_heap_to_os() -> None:
+    """glibc keeps freed arenas mapped; malloc_trim hands them back so the
+    unload actually shows in RSS. No-op off glibc."""
+    try:
+        import ctypes
+        import sys
+        if sys.platform.startswith("linux"):
+            ctypes.CDLL("libc.so.6").malloc_trim(0)
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def unload_if_idle(idle_s: float, *, now: float | None = None) -> bool:
+    """Drop every cached voice model when nothing used them for ``idle_s``.
+
+    Live sessions keep their own references, so an ongoing conversation is
+    never cut; the memory is returned once the last holder lets go. The
+    next voice request reloads lazily. Returns True when it unloaded.
+    """
+    if idle_s <= 0 or not models_loaded():
+        return False
+    now = time.monotonic() if now is None else now
+    if now - _last_use < idle_s:
+        return False
+    reset_providers()
+    import gc
+    gc.collect()
+    _return_heap_to_os()
+    logger.info("voice: models unloaded after %.0f s idle", now - _last_use)
+    return True
+
+
+def process_dysfluency(text: str) -> str:
+    """Replaces ToM confidence tags with paralinguistic voice markers for synthesis.
+    Displays tags in text, but speaks pauses/hesitations instead of raw tags.
+    """
+    # Replace band tags with Ukrainian paralinguistic counterparts:
+    # [припускаю] -> "хм... е-е... " (sigh/uncertainty)
+    # [ймовірно] -> "гм... " (brief doubt)
+    # [встановлено] -> "" (direct, clear flow)
+    processed = text
+    processed = processed.replace("[припускаю]", "хм... е-е... ")
+    processed = processed.replace("[ймовірно]", "гм... ")
+    processed = processed.replace("[встановлено]", "")
+    return processed
+
+
+def voice_params(p: dict, state: str) -> dict:
+    """Computes stability, style, rate, and pauses based on affect vector and FSM state.
+    Matches ElevenLabs stability/style and adjusts Piper rate accordingly.
+    """
+    if state == "CRISIS_MODE":
+        return {"stability": 0.85, "style": 0.10, "rate": 1.05, "pauses": "short"}
+    if p.get("fatigue", 0.0) > 0.6 and p.get("valence", 0.5) < 0.4:
+        return {"stability": 0.80, "style": 0.15, "rate": 0.90, "pauses": "long"}
+    if p.get("valence", 0.5) > 0.6 and p.get("arousal", 0.0) > 0.5:
+        return {"stability": 0.45, "style": 0.55, "rate": 1.00, "pauses": "natural"}
+    return {"stability": 0.60, "style": 0.30, "rate": 1.00, "pauses": "natural"}
+
+
+async def synthesize_text(text: str, voice: str, speed: float) -> TTSResult:
+    # 1. Strip and replace band tags
+    spoken_text = process_dysfluency(text)
+    
+    # 2. Affect from what PHANTOM really knows: the system state and the
+    # clock. There is no biosignal — PHANTOM has no body sensors.
+    from core.context_engine import context_engine
+    snap = context_engine.get_snapshot()
+    state = snap.get("system", {}).get("state", "SHADOW")
+
+    p = {"valence": 0.5, "arousal": 0.2, "fatigue": 0.0}
+
+    # Night hours → softer, slower delivery.
+    hour = snap.get("when", {}).get("hour", 12)
+    if hour >= 23 or hour < 6:
+        p["fatigue"] = 0.7
+        p["valence"] = min(p["valence"], 0.3)
+
+    if state == "SENTINEL":
+        state = "CRISIS_MODE"
+
+    params = voice_params(p, state)
+    
+    # 3. Multiply standard speed by the affect-computed rate
+    adjusted_speed = speed * params["rate"]
+    
+    # 4. Synthesize speech using the calculated adjusted speed
+    return await get_tts_provider().synthesize(spoken_text, voice, adjusted_speed)
+
+
+# ─── Phase 12.0 — startup preload (Bug 2 fix) ───────────────────────────────
+
+
+def _warm_whisper(provider) -> None:
+    """Phase 13a.4 — force CTranslate2 to allocate working buffers.
+
+    First ``WhisperModel.transcribe`` call lazily allocates internal
+    encoder/decoder state and warm-caches; subsequent calls are 200-500 ms
+    faster. Run a 1 s silence transcribe at startup to pay that cost
+    before the first user utterance arrives.
+    """
+    try:
+        import numpy as np
+        silence = np.zeros(16_000, dtype=np.float32)
+        # transcribe returns an iterator of segments — drain it.
+        segments, _ = provider._model.transcribe(  # type: ignore[attr-defined]
+            silence, language="uk", beam_size=1, vad_filter=False,
+        )
+        for _ in segments:
+            pass
+    except Exception as exc:
+        logger.warning("whisper warm-up failed: %s", exc)
+
+
+def _warm_vosk(model) -> None:
+    """Phase 13a.4 — force Vosk Kaldi to allocate internal lattice arrays.
+
+    KaldiRecognizer first AcceptWaveform allocates ~50-100 ms of internal
+    state. Disposable recognizer over 1 s of silence pays that cost up
+    front so the first wake spotter / streaming session is fast.
+    """
+    try:
+        import vosk
+        rec = vosk.KaldiRecognizer(model, 16_000)
+        rec.AcceptWaveform(b"\x00" * 32_000)  # 1 s of s16le silence
+        rec.FinalResult()
+    except Exception as exc:
+        logger.warning("vosk warm-up failed: %s", exc)
+
+
+def preload_voice_models(silero_vad_path: Optional[str] = None) -> dict[str, str]:
+    """Pre-load the Silero VAD ORT session, the Vosk model, and (when the
+    active STT provider has one) the Whisper model. Returns a status map
+    so the lifespan logger can record which singletons came up.
+
+    Models stay loaded for the process lifetime via the existing
+    ``_stt`` / ``_vosk_model`` / ``_vad_session`` module-level globals.
+    Without this preload, the first WS connection paid 8-10s of cold load
+    on the event loop's worker thread (11c.5 Bug 2).
+
+    Phase 13a.4 — also warms up the lazy internal buffers of Whisper and
+    Vosk so the first real transcription doesn't pay an extra 200-500 ms
+    cold-cache penalty.
+    """
+    statuses: dict[str, str] = {}
+
+    # Silero VAD ORT session
+    if silero_vad_path:
+        from pathlib import Path as _Path
+        if _Path(silero_vad_path).is_file():
+            try:
+                from voice.vad import get_vad_session
+                get_vad_session(silero_vad_path)
+                statuses["silero_vad"] = "loaded"
+            except Exception as exc:
+                statuses["silero_vad"] = f"failed: {exc}"
+        else:
+            statuses["silero_vad"] = f"skipped: {silero_vad_path} missing"
+    else:
+        statuses["silero_vad"] = "skipped: no path supplied"
+
+    # Vosk model — used by the wake-spotter and the always-on transcribe
+    # fallback. ``get_vosk_model`` already memoises via the module lock.
+    try:
+        vosk_model = get_vosk_model()
+        # Phase 13a.4 — pay the lazy AcceptWaveform allocation up front.
+        _warm_vosk(vosk_model)
+        statuses["vosk"] = "warmed"
+    except Exception as exc:
+        statuses["vosk"] = f"failed: {exc}"
+
+    # Whisper — only providers with ``_ensure_model`` have a warmable
+    # session. Vosk-only providers are a noop for this branch.
+    try:
+        provider = get_stt_provider()
+        ensure = getattr(provider, "_ensure_model", None)
+        if callable(ensure):
+            ensure()
+            # Pay the CTranslate2 lazy buffer cost on a 1 s silence dummy.
+            _warm_whisper(provider)
+            statuses["whisper"] = "warmed"
+        else:
+            statuses["whisper"] = f"skipped: {provider.name} has no whisper model"
+    except Exception as exc:
+        statuses["whisper"] = f"failed: {exc}"
+
+    return statuses

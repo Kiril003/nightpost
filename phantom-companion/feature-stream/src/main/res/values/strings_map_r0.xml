@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_r0_transit_far_stop">Nearest stop is ~%1$.1f km on foot — no transit from here</string>
+    <string name="map_r0_transit_no_trips_at">No trips at %1$d:%2$02d — try another departure time</string>
+    <string name="map_r0_transit_unreachable">No network, and no timetable for this area on the device</string>
+    <string name="map_r0_transit_no_schedule">No timetable for this city</string>
+    <string name="map_r0_map_not_saved">Map not saved</string>
+    <string name="map_r0_save_area">Save this area</string>
+</resources>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_a_grp_energy">Енергія та світло</string>
+    <string name="mapl_a_grp_water">Водна безпека</string>
+    <string name="mapl_a_grp_safety">Безпека та укриття</string>
+    <string name="mapl_a_grp_health">Здоровʼя та допомога</string>
+    <string name="mapl_a_grp_comms">Звʼязок та пошта</string>
+    <string name="mapl_a_grp_auto">Пальне та транспорт</string>
+    <string name="mapl_a_grp_shops">Продовольство та побут</string>
+    <string name="mapl_a_grp_food">Харчування та кава</string>
+    <string name="mapl_a_grp_state">Держава та волонтери</string>
+    <string name="mapl_a_grp_terrain">Рельєф та переправи</string>
+    <string name="mapl_a_grp_culture">Культура та памʼятки</string>
+    <string name="mapl_a_grp_access">Входи, підʼїзди та проходи</string>
+
+    <string name="mapl_a_cat_generators">Генератори</string>
+    <string name="mapl_a_cat_ev_charging">Зарядка EV / Power</string>
+    <string name="mapl_a_cat_transformers">Трансформатори</string>
+    <string name="mapl_a_cat_drinking_water">Питна вода / Бювети</string>
+    <string name="mapl_a_cat_water_wells">Криниці та свердловини</string>
+    <string name="mapl_a_cat_springs">Природні джерела</string>
+    <string name="mapl_a_cat_shelter">Укриття</string>
+    <string name="mapl_a_cat_metro_shelter">Метро (Укриття)</string>
+    <string name="mapl_a_cat_aed">Дефібрилятор AED</string>
+    <string name="mapl_a_cat_fire_station">ДСНС / Пожежна</string>
+    <string name="mapl_a_cat_police">Поліція</string>
+    <string name="mapl_a_cat_pharmacy">Аптека</string>
+    <string name="mapl_a_cat_hospital">Лікарня / Травмпункт</string>
+    <string name="mapl_a_cat_ambulance">Швидка допомога</string>
+    <string name="mapl_a_cat_dentist">Стоматологія</string>
+    <string name="mapl_a_cat_vet">Ветеринар</string>
+    <string name="mapl_a_cat_post_office">Нова Пошта / Укрпошта</string>
+    <string name="mapl_a_cat_parcel_locker">Поштомат 24/7</string>
+    <string name="mapl_a_cat_atm">Банкомат / Готівка</string>
+    <string name="mapl_a_cat_bank">Банк</string>
+    <string name="mapl_a_cat_transit_stop">Зупинки транспорту</string>
+    <string name="mapl_a_cat_transit_hub">Метро та вокзали</string>
+    <string name="mapl_a_cat_fuel">АЗС</string>
+    <string name="mapl_a_cat_underground_parking">Підземний паркінг</string>
+    <string name="mapl_a_cat_car_repair">СТО та ремонт</string>
+    <string name="mapl_a_cat_tyres">Шиномонтаж</string>
+    <string name="mapl_a_cat_supermarket">Супермаркет</string>
+    <string name="mapl_a_cat_marketplace">Продовольчий ринок</string>
+    <string name="mapl_a_cat_bakery">Пекарня</string>
+    <string name="mapl_a_cat_hardware">Будматеріали</string>
+    <string name="mapl_a_cat_cafe">Кавʼярня</string>
+    <string name="mapl_a_cat_restaurant">Ресторан</string>
+    <string name="mapl_a_cat_fast_food">Фастфуд</string>
+    <string name="mapl_a_cat_invincibility">Пункт незламності / Хаб</string>
+    <string name="mapl_a_cat_cnap">ЦНАП</string>
+    <string name="mapl_a_cat_townhall">Ратуша / Мерія</string>
+    <string name="mapl_a_cat_bridges">Мости та естакади</string>
+    <string name="mapl_a_cat_peaks">Панівні висоти</string>
+    <string name="mapl_a_cat_landmarks">Визначні памʼятки</string>
+    <string name="mapl_a_cat_museums">Музеї та галереї</string>
+    <string name="mapl_a_cat_parks">Парки та сади</string>
+    <string name="mapl_a_cat_worship">Храми та собори</string>
+    <string name="mapl_a_cat_entrances">Входи та підʼїзди</string>
+    <string name="mapl_a_cat_passages">Пішохідні проходи та арки</string>
+    <string name="mapl_a_cat_steps">Сходи та пандуси</string>
+
+    <string-array name="mapl_a_kw_generators">
+        <item>генератор</item>
+        <item>дизель</item>
+        <item>живлення</item>
+        <item>світло</item>
+    </string-array>
+    <string-array name="mapl_a_kw_ev_charging">
+        <item>зарядка</item>
+        <item>електрозаправка</item>
+        <item>ev</item>
+        <item>charging</item>
+        <item>ecoflow</item>
+    </string-array>
+    <string-array name="mapl_a_kw_transformers">
+        <item>підстанція</item>
+        <item>трансформатор</item>
+    </string-array>
+    <string-array name="mapl_a_kw_drinking_water">
+        <item>вода</item>
+        <item>питна</item>
+        <item>бювет</item>
+        <item>колонка</item>
+    </string-array>
+    <string-array name="mapl_a_kw_water_wells">
+        <item>свердловина</item>
+        <item>криниця</item>
+        <item>колодязь</item>
+    </string-array>
+    <string-array name="mapl_a_kw_springs">
+        <item>джерело</item>
+        <item>родник</item>
+    </string-array>
+    <string-array name="mapl_a_kw_shelter">
+        <item>укриття</item>
+        <item>бомбосховище</item>
+        <item>сховище</item>
+    </string-array>
+    <string-array name="mapl_a_kw_metro_shelter">
+        <item>метро</item>
+        <item>станція метро</item>
+        <item>підземка</item>
+    </string-array>
+    <string-array name="mapl_a_kw_aed">
+        <item>дефібрилятор</item>
+        <item>aed</item>
+        <item>серце</item>
+    </string-array>
+    <string-array name="mapl_a_kw_fire_station">
+        <item>пожежна</item>
+        <item>дснс</item>
+        <item>рятувальники</item>
+    </string-array>
+    <string-array name="mapl_a_kw_police">
+        <item>поліція</item>
+        <item>відділок</item>
+    </string-array>
+    <string-array name="mapl_a_kw_pharmacy">
+        <item>аптека</item>
+        <item>ліки</item>
+        <item>медикаменти</item>
+        <item>турнікет</item>
+    </string-array>
+    <string-array name="mapl_a_kw_hospital">
+        <item>лікарня</item>
+        <item>шпиталь</item>
+        <item>клініка</item>
+        <item>травмпункт</item>
+    </string-array>
+    <string-array name="mapl_a_kw_ambulance">
+        <item>швидка</item>
+        <item>станція швидкої</item>
+    </string-array>
+    <string-array name="mapl_a_kw_dentist">
+        <item>стоматологія</item>
+        <item>зубний</item>
+    </string-array>
+    <string-array name="mapl_a_kw_vet">
+        <item>ветеринар</item>
+        <item>ветклініка</item>
+    </string-array>
+    <string-array name="mapl_a_kw_post_office">
+        <item>пошта</item>
+        <item>нова пошта</item>
+        <item>нп</item>
+        <item>укрпошта</item>
+    </string-array>
+    <string-array name="mapl_a_kw_parcel_locker">
+        <item>поштомат</item>
+        <item>нова пошта</item>
+        <item>нп</item>
+    </string-array>
+    <string-array name="mapl_a_kw_atm">
+        <item>банкомат</item>
+        <item>готівка</item>
+        <item>зняти</item>
+    </string-array>
+    <string-array name="mapl_a_kw_bank">
+        <item>банк</item>
+        <item>каса</item>
+    </string-array>
+    <string-array name="mapl_a_kw_transit_stop">
+        <item>зупинка</item>
+        <item>транспорт</item>
+        <item>автобус</item>
+        <item>тролейбус</item>
+        <item>трамвай</item>
+        <item>маршрутка</item>
+    </string-array>
+    <string-array name="mapl_a_kw_transit_hub">
+        <item>метро</item>
+        <item>станція</item>
+        <item>вокзал</item>
+        <item>електричка</item>
+        <item>поїзд</item>
+    </string-array>
+    <string-array name="mapl_a_kw_fuel">
+        <item>заправка</item>
+        <item>азс</item>
+        <item>паливо</item>
+        <item>бензин</item>
+        <item>дизель</item>
+    </string-array>
+    <string-array name="mapl_a_kw_underground_parking">
+        <item>підземний паркінг</item>
+        <item>паркінг</item>
+        <item>парковка</item>
+    </string-array>
+    <string-array name="mapl_a_kw_car_repair">
+        <item>сто</item>
+        <item>автосервіс</item>
+        <item>ремонт</item>
+        <item>repair</item>
+    </string-array>
+    <string-array name="mapl_a_kw_tyres">
+        <item>шиномонтаж</item>
+        <item>шини</item>
+        <item>гума</item>
+    </string-array>
+    <string-array name="mapl_a_kw_supermarket">
+        <item>супермаркет</item>
+        <item>магазин</item>
+        <item>продукти</item>
+        <item>сільпо</item>
+        <item>атб</item>
+    </string-array>
+    <string-array name="mapl_a_kw_marketplace">
+        <item>ринок</item>
+        <item>базар</item>
+        <item>market</item>
+    </string-array>
+    <string-array name="mapl_a_kw_bakery">
+        <item>пекарня</item>
+        <item>хліб</item>
+    </string-array>
+    <string-array name="mapl_a_kw_hardware">
+        <item>будматеріали</item>
+        <item>інструмент</item>
+        <item>епіцентр</item>
+    </string-array>
+    <string-array name="mapl_a_kw_cafe">
+        <item>кава</item>
+        <item>кавʼярня</item>
+        <item>кафе</item>
+    </string-array>
+    <string-array name="mapl_a_kw_restaurant">
+        <item>ресторан</item>
+        <item>їжа</item>
+        <item>поїсти</item>
+    </string-array>
+    <string-array name="mapl_a_kw_fast_food">
+        <item>фастфуд</item>
+        <item>бургер</item>
+        <item>шаурма</item>
+        <item>піца</item>
+    </string-array>
+    <string-array name="mapl_a_kw_invincibility">
+        <item>пункт незламності</item>
+        <item>незламність</item>
+        <item>волонтери</item>
+    </string-array>
+    <string-array name="mapl_a_kw_cnap">
+        <item>цнап</item>
+        <item>адмінпослуги</item>
+        <item>паспорт</item>
+    </string-array>
+    <string-array name="mapl_a_kw_townhall">
+        <item>ратуша</item>
+        <item>міськрада</item>
+        <item>сільрада</item>
+    </string-array>
+    <string-array name="mapl_a_kw_bridges">
+        <item>міст</item>
+        <item>переправа</item>
+        <item>шляхопровід</item>
+    </string-array>
+    <string-array name="mapl_a_kw_peaks">
+        <item>висота</item>
+        <item>гора</item>
+        <item>пагорб</item>
+    </string-array>
+    <string-array name="mapl_a_kw_landmarks">
+        <item>памʼятка</item>
+        <item>памʼятник</item>
+        <item>визначне</item>
+        <item>замок</item>
+        <item>фортеця</item>
+    </string-array>
+    <string-array name="mapl_a_kw_museums">
+        <item>музей</item>
+        <item>галерея</item>
+        <item>виставка</item>
+    </string-array>
+    <string-array name="mapl_a_kw_parks">
+        <item>парк</item>
+        <item>сад</item>
+        <item>сквер</item>
+    </string-array>
+    <string-array name="mapl_a_kw_worship">
+        <item>церква</item>
+        <item>собор</item>
+        <item>храм</item>
+        <item>монастир</item>
+        <item>костел</item>
+    </string-array>
+    <string-array name="mapl_a_kw_entrances">
+        <item>вхід</item>
+        <item>підʼїзд</item>
+        <item>парадне</item>
+    </string-array>
+    <string-array name="mapl_a_kw_passages">
+        <item>прохід</item>
+        <item>арка</item>
+        <item>наскрізний</item>
+    </string-array>
+    <string-array name="mapl_a_kw_steps">
+        <item>сходи</item>
+        <item>пандус</item>
+        <item>трап</item>
+    </string-array>
+</resources>

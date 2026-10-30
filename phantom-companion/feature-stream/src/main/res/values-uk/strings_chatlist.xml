@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Розділ більше не список розмов: тут люди та їхні ключі. Імʼя файла й
+     префікс chatlist_ лишились у трьох рядках, які пережили перепис, — на
+     них дивиться сторож у PeopleSurfaceTest. -->
+<resources>
+    <string name="chatlist_title">Люди і ключі</string>
+    <string name="chatlist_add_person">додати людину</string>
+    <string name="chatlist_scan_code">сканувати код</string>
+
+    <string name="keys_lede">Торкніться контакту для керування ключем</string>
+    <string name="keys_section_people">люди</string>
+    <string name="keys_section_rooms">простори</string>
+    <string name="keys_empty">Жодного ключа</string>
+    <string name="keys_empty_body">Ще немає ключів. Додайте контакт за QR або кодом.</string>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="self_remembered">Hatırladım: %1$s.</string>
+    <string name="self_heard_no_brain">Hatırladım: %1$s. Yapay zekâ henüz açık değil.</string>
+    <string name="self_no_brain">Yapay zekâ henüz açık değil ama hafıza çalışıyor.</string>
+    <string name="self_forgot">Unuttum: %1$s. Artık hatırlamıyorum.</string>
+    <string name="self_forgot_nothing">“%1$s” hakkında bir şey hatırlamıyorum, unutacak bir şey yok.</string>
+    <string name="self_forgot_all">Senin hakkında bildiğim her şeyi unuttum.</string>
+    <string name="self_forgot_all_empty">Senin hakkında henüz bir şey bilmiyorum, unutacak bir şey yok.</string>
+    <string name="self_knows_nothing">Kayıtlı bilgi yok.</string>
+    <string name="self_knows_header">Senin hakkında bildiklerim:</string>
+    <string name="self_knows_old">Önceki konuşmalardan eski notlar:</string>
+    <string name="self_knows_footer">Bir kaydı silmek için “unut …” de.</string>
+    <string name="self_from_self">senin sözlerin</string>
+    <string name="self_from_heard">konuşmada duyuldu</string>
+    <string name="self_from_guess">benim çıkarımım</string>
+    <string name="self_ask_no_mind">Şimdi olmaz: zihnim bu telefonda henüz açık değil.</string>
+    <string name="tutor_hello">İki hızlı soruyla başlayalım.</string>
+    <string name="tutor_q_vars">Soru %1$d. Bu kod ne yazdırır?\n\n%2$s\n\nSadece yanıtı yaz.</string>
+    <string name="tutor_q_loops">Soru %1$d. Peki bu?\n\n%2$s</string>
+    <string name="tutor_right">Doğru.</string>
+    <string name="tutor_wrong">Neredeyse: %1$s yazdırır (%2$s).</string>
+    <string name="tutor_task_intro">Şimdi küçük bir görev: %1$s.</string>
+    <string name="tutor_send_code">Kodu mesaj olarak gönder ya da “dur” de.</string>
+    <string name="task_vars">Değeri 30 olan int türünde age değişkeni tanımla ve yazdır.</string>
+    <string name="task_cond">n için: n &gt; 10 ise \"many\", değilse \"few\" yazdır.</string>
+    <string name="task_loops">1’den 5’e kadar sayıları for döngüsüyle her biri ayrı satırda yazdır.</string>
+    <string name="task_methods">Bir int alıp karesini döndüren Square adlı bir metot yaz.</string>
+    <string name="task_arrays">1, 2, 3 değerlerinden bir dizi oluştur ve eleman sayısını yazdır.</string>
+    <string name="tutor_pass">Evet, bu çözüyor. Aferin.</string>
+    <string name="tutor_fail">Neredeyse. Fark ettiğim şu:</string>
+    <string name="tutor_retry">Düzelt ve tekrar gönder.</string>
+    <string name="tutor_read_not_run">Kod çalıştırılmadan statik olarak incelendi.</string>
+    <string name="tutor_second_look">Bir düşünce daha: %1$s</string>
+    <string name="tutor_tomorrow">“%1$s” konusunu yarın tekrar edeceğiz.</string>
+    <string name="tutor_more">Daha fazlası mı? “bana C# öğret” yaz.</string>
+    <string name="tutor_review">“%1$s” konusunu tekrar edelim. Bu kod ne yazdırır?\n\n%2$s</string>
+    <string name="tutor_review_right">Evet! “%1$s” artık sende oturdu.</string>
+    <string name="tutor_review_wrong">%1$s yazdırır (%2$s).</string>
+    <string name="tutor_nothing_to_review">İşlenen tüm konular sağlam.</string>
+    <string name="tutor_stop">Durduruldu. Devam etmek için “bana C# öğret” yaz.</string>
+    <string name="tutor_reminder">C#’ta %1$s konusunu tekrar edelim mi? Tek soru: bana “tekrar edelim” yaz.</string>
+    <string name="tutor_issue_braces">• süslü parantezler { } eşleşmiyor</string>
+    <string name="tutor_issue_parens">• parantezler ( ) eşleşmiyor</string>
+    <string name="tutor_issue_semicolon">• bir satırda noktalı virgül eksik</string>
+    <string name="tutor_issue_quotes">• bir tırnak kapatılmamış</string>
+    <string name="tutor_issue_need">• %1$s göremiyorum</string>
+    <string name="tutor_topic_vars">değişkenler</string>
+    <string name="tutor_topic_cond">koşullar</string>
+    <string name="tutor_topic_loops">döngüler</string>
+    <string name="tutor_topic_methods">metotlar</string>
+    <string name="tutor_topic_arrays">diziler</string>
+    <string name="tutor_skill_ok">C#: %1$s — tamam</string>
+    <string name="tutor_skill_shaky">C#: %1$s — hâlâ oturmadı</string>
+    <string name="visit_title">Nightpost</string>
+    <string name="visit_channel">Nightpost kendiliğinden uğrar</string>
+    <string name="visit_action_not_now">Şimdi değil</string>
+    <string name="visit_action_dont">Yapma</string>
+    <string name="visit_why_lesson">Dünkü “%1$s” konusunu tekrar ediyoruz.</string>
+    <string name="visit_why_reminder">Neden geldim: hatırlatmamı istemiştin.</string>
+    <string name="visit_not_now">Tamam, sonra tekrar gelirim.</string>
+    <string name="visit_dont">Ders hatırlatmaları kapatıldı.</string>
+    <string name="voice_heard_until">%1$s [kişi burada sözünü kesti, gerisini duymadı]</string>
+    <string-array name="voice_fillers">
+        <item>Bir saniye.</item>
+        <item>Hâlâ düşünüyorum.</item>
+        <item>Neredeyse bitti.</item>
+    </string-array>
+    <string name="voice_long_wait">Bu biraz daha sürecek, hazır olunca söylerim.</string>
+    <string name="voice_acting">Bir bakayım.</string>
+    <string name="voice_code_in_chat">Kodu sohbete koydum, ekrana bak.</string>
+    <string name="voice_mic_off">Mikrofon kapalı, ayarlardan aç, konuşalım.</string>
+    <string name="voice_no_permission">Sesle konuşmak için telefon ayarlarında Nightpost’a mikrofon izni ver.</string>
+</resources>

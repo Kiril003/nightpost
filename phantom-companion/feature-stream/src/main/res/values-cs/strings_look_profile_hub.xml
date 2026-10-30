@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="peer_card_quick_chat">Chat</string>
+    <string name="peer_card_quick_verify">Ověřit</string>
+    <string name="peer_card_quick_share">Můj kód</string>
+    <string name="peer_card_vault_title">V této konverzaci</string>
+    <string name="peer_card_vault_media">Média</string>
+    <string name="peer_card_vault_files">Soubory</string>
+    <string name="peer_card_vault_places">Místa</string>
+    <string name="peer_card_vault_hint">Otevřete konverzaci a zobrazte je</string>
+</resources>

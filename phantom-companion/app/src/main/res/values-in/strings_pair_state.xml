@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pair_err_bad_input">Itu bukan kode QR komputer.</string>
+    <string name="pair_err_expired">Kode QR ini kedaluwarsa. Kode baru ada di komputer.</string>
+    <string name="pair_err_not_found">Komputer tidak ditemukan.</string>
+    <string name="pair_err_digits_not_found">Komputer tak ditemukan di jaringan ini. Pindai kode QR-nya.</string>
+    <string name="pair_err_not_proven">Komputer gagal verifikasi.</string>
+    <string name="pair_err_unreachable">Komputer tak terjangkau: %1$s</string>
+    <string name="sphere_place">Tempat</string>
+    <string name="sphere_sound">Suara dan bicara</string>
+    <string name="sphere_notices">Notifikasi</string>
+    <string name="sphere_clipboard">Papan klip dan tautan</string>
+    <string name="sphere_screen">Layar</string>
+    <string name="sphere_keyboard">Papan ketik</string>
+</resources>

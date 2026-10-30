@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="indoor_landmark_toilets">WC</string>
+    <string name="indoor_landmark_atm">Bankomat</string>
+    <string name="indoor_landmark_information">Informace</string>
+    <string name="indoor_landmark_pharmacy">Lékárna</string>
+    <string name="indoor_landmark_post_office">Pošta</string>
+    <string name="indoor_landmark_police">Policie</string>
+    <string name="indoor_landmark_first_aid">První pomoc</string>
+    <string name="indoor_landmark_lost_and_found">Ztráty a nálezy</string>
+    <string name="indoor_landmark_lockers">Úschovna</string>
+    <string name="indoor_landmark_prayer_room">Modlitebna</string>
+    <string name="indoor_landmark_nursing_room">Kojicí místnost</string>
+    <string name="indoor_landmark_childcare">Dětský koutek</string>
+    <string name="indoor_landmark_smoking_area">Kuřárna</string>
+    <string name="indoor_landmark_waiting_room">Čekárna</string>
+    <string name="indoor_landmark_ticket_office">Pokladny</string>
+    <string name="indoor_landmark_reception">Recepce</string>
+</resources>

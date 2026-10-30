@@ -1,0 +1,24 @@
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+.kotlin/
+captures/
+.cxx/
+*.apk.idsig
+app/debug.keystore
+.omc/
+.claude/
+.claude-flow/
+build.log
+graphify-out/
+scratch/
+__pycache__/
+GEMINI.md
+.kyiv_poi_resume.json
+
+# Релізний ключ підпису — ніколи в git.
+keystore.properties
+*.jks
+app/release.keystore

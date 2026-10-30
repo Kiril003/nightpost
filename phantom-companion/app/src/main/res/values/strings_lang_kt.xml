@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="kt_sym_asks">Your computer asks: %1$s</string>
+    <string name="kt_sym_yes">Yes</string>
+    <string name="kt_reminder_channel">Nightpost · reminders</string>
+    <string name="kt_reminder_channel_desc">what you asked not to forget</string>
+    <string name="kt_whisper_slow">slow</string>
+    <string name="kt_whisper_fast">fast</string>
+    <string name="kt_whisper_desc_slow">60 seconds per cycle, almost unnoticeable</string>
+    <string name="kt_whisper_desc_mid">38 seconds per cycle, noticeable but soft</string>
+    <string name="kt_whisper_desc_fast">22 seconds per cycle, always present</string>
+</resources>

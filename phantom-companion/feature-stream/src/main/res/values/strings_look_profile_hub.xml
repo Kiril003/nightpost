@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="peer_card_quick_chat">Chat</string>
+    <string name="peer_card_quick_verify">Verify</string>
+    <string name="peer_card_quick_share">My code</string>
+    <string name="peer_card_vault_title">In this conversation</string>
+    <string name="peer_card_vault_media">Media</string>
+    <string name="peer_card_vault_files">Files</string>
+    <string name="peer_card_vault_places">Places</string>
+    <string name="peer_card_vault_hint">Open the conversation to see them</string>
+</resources>

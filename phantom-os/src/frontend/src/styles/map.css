@@ -1,0 +1,101 @@
+/* PHANTOM OS — Tactical Map (sunrise warm) overrides
+ *
+ * MapLibre GL exposes its DOM canvas + control surfaces in plain CSS, not
+ * tokens. To make the map fit the sunrise-warm DNA we:
+ *   1. Tint the maplibre wrapper background to the warm cream gradient
+ *      so the brief flash before tiles paint matches the rest of the UI.
+ *   2. Apply CSS filters to the raster tile canvas at the wrapper level
+ *      (`hue-rotate` toward amber, `saturate` boost, `contrast` lift).
+ *      MapLibre paint ops handle saturation per-style, but a CSS filter
+ *      on the canvas adds the warm cast that no per-style raster op
+ *      reproduces with raw OSM tiles.
+ *   3. Hide MapLibre's default attribution / logo / popup chrome
+ *      (we render our own glass cards) so nothing breaks the warm look.
+ *   4. Style the marker DOM elements (`.phantom-presence`) with sunrise glow.
+ *
+ * Reduce-motion: every animation declared here is gated on
+ * `(prefers-reduced-motion: no-preference)` so dialed-down operators
+ * see static frames only.
+ *
+ * `.phantom-map-frame` is the root wrapper applied by `TacticalMap`. */
+
+.phantom-map-frame {
+  background: var(--ph-canvas);
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+}
+
+/* Hide MapLibre's default control chrome — we render our own glass UI —
+ * EXCEPT the bottom-right corner, which now hosts the compact attribution
+ * control. OpenFreeMap's tile usage requires "© OpenStreetMap contributors"
+ * to stay visible; nothing else is mounted into this corner (no
+ * NavigationControl/ScaleControl are added anywhere in this codebase), so
+ * un-hiding it only reveals the attribution chip. */
+.phantom-map-frame .maplibregl-ctrl-bottom-left,
+.phantom-map-frame .maplibregl-ctrl-top-right,
+.phantom-map-frame .maplibregl-ctrl-top-left {
+  display: none !important;
+}
+
+.phantom-map-frame .maplibregl-ctrl-attrib,
+.phantom-map-frame .maplibregl-ctrl-attrib.maplibregl-compact {
+  background: var(--ph-surface);
+  color: var(--ph-text-2);
+  border: 1px solid var(--ph-line);
+  box-shadow: none;
+}
+.phantom-map-frame .maplibregl-ctrl-attrib a {
+  color: var(--ph-text-2);
+}
+.phantom-map-frame .maplibregl-ctrl-attrib-button {
+  filter: invert(1);
+}
+[data-theme='day'] .phantom-map-frame .maplibregl-ctrl-attrib-button {
+  filter: none;
+}
+
+/* Marker reset — our markers carry their own boxshadow / pulse */
+.phantom-map-frame .maplibregl-marker {
+  cursor: pointer;
+}
+
+/* Pulsing operator-presence halo — meaningful: indicates live position fix. */
+@keyframes phantom-presence-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  60% {
+    transform: scale(1.55);
+    opacity: 0.05;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phantom-map-frame .phantom-presence > div:first-child {
+    animation: none !important;
+  }
+  .phantom-map-frame .maplibregl-canvas {
+    transition: none !important;
+  }
+}
+
+/* Warm route-line gradient stroke (used by ReconLayer if it adopts the
+ * `--phantom-route-stroke` paint expression — kept as a documented hook
+ * for layer authors who want the design DNA gradient). */
+.phantom-map-frame {
+  --phantom-route-start: var(--primary, #f4af25);
+  --phantom-route-end: var(--orange, #fb923c);
+}
+
+.phantom-map-search::placeholder {
+  font-family: var(--ph-font-sans);
+  color: var(--ink-muted);
+  opacity: 1;
+}
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_settings">Configurações</string>
+    <string name="profile_cover_add">Adicionar capa</string>
+    <string name="profile_cover_change">Alterar capa</string>
+    <string name="profile_cover_chip">Alterar</string>
+    <string name="profile_photo_change">Alterar foto</string>
+    <string name="profile_photo_failed">Essa foto não abriu. Tente outra.</string>
+    <string name="profile_name_edit">Editar nome</string>
+    <string name="profile_name_save">Salvar</string>
+    <string name="profile_name_save_failed">Não salvo</string>
+    <string name="profile_circles">Pessoas</string>
+    <string name="profile_circles_empty">Ninguém aqui ainda</string>
+    <string name="profile_moments">Momentos</string>
+    <string name="profile_moments_empty">Sem momentos hoje</string>
+    <string name="profile_moment">Seu momento</string>
+    <string name="profile_moment_add">Adicionar</string>
+    <string name="profile_action_code">Meu código</string>
+    <string name="profile_code_send">Enviar link</string>
+    <string name="profile_code_failed">Não foi possível gerar o código</string>
+    <string name="circle_close">Próximos</string>
+    <string name="circle_family">Família</string>
+    <string name="circle_friends">Amigos</string>
+    <string name="circle_work">Trabalho</string>
+    <string name="circle_study">Estudos</string>
+    <string name="circle_travel">Viagens</string>
+    <string name="profile_name_budget">%1$d/%2$d</string>
+    <string name="profile_name_too_long">Um nome mais longo não cabe no seu código de convite.</string>
+    <string name="profile_server">Assistente</string>
+    <string name="profile_key_short">Impressão digital</string>
+    <string name="profile_key_created">Criada</string>
+    <string name="profile_value_server">Nightpost</string>
+    <string name="profile_value_server_spent">esgotado hoje</string>
+    <string name="profile_value_server_quiet">sem resposta</string>
+    <string name="profile_backup">Backup</string>
+    <string name="profile_backup_none">Nenhum</string>
+    <string name="profile_about_edit">Sobre mim</string>
+    <string name="profile_status_hint">Status</string>
+    <string name="profile_photo_remove">Remover foto</string>
+    <string name="profile_cover_remove">Remover capa</string>
+</resources>

@@ -1,0 +1,55 @@
+# Census NO-BACKUP list (_briefs/systems/CENSUS.md, 29.10). kind<TAB>name<TAB>keep|skip: reason
+web	np.profiles.v1	keep
+web	np.chatprofile.v1	keep
+web	phantom.listFolders.v1	keep
+web	phantom_archived_chats	keep
+web	np.drafts.v1	keep
+web	np.pins1to1.v1	keep
+web	np.pollVotes.v1	keep
+web	phantom_pinned_chats	keep
+web	phantom_unread_marks	keep
+web	phantom_hushed_chats	keep
+web	phantom_hushed_until	keep
+web	phantom_hush_rules.v1	keep
+web	np.chatKeep.v1	keep
+web	np.selfAdded.v1	keep
+web	nightpost.moments.archive	keep
+web	nightpost.moments.audienceChosen	keep
+web	nightpost.moments.kept	keep
+web	nightpost.moments.known	keep
+web	np.momentseen.v1	keep
+web	np.momentprofile.v1	keep
+web	np.callPrefs.v1	keep
+web	np.gifts.opened	keep
+web	np.stickers.v1	keep
+web	phantom_recent_reactions	keep
+web	np.support.tickets.v1	keep
+web	np.support.reports.v1	keep
+web	np.bizinbox.v1	keep
+web	np.circleRights.v1	keep
+web	np.ringPresets.v1	keep
+web	phantom_language	keep
+web	ui_language	keep
+web	phantom_theme	keep
+web	phantom.themeMode	keep
+web	phantom_invite_name	keep
+web	phantom_invite_address	keep
+web	phantom_user_profile	keep
+web	phantom_pay_notes	keep
+web	phantom_points_payment_claims	keep
+web	phantom_meetup_reminders	keep
+web	np.voiceText.v1	keep
+web	nightpost.builder.pages.v1	keep
+web	np.tempended.v1	keep
+web	phantom_chats_backup	skip: chat cache, rebuilt from the native message log; pins and my votes live in np.pins1to1.v1 / np.pollVotes.v1
+web	phantom_scheduled_messages	skip: web mirror of the native phantom_scheduled slot
+web	np.callMemory.v1	skip: measured network samples with a 30-day expiry
+web	np.callCost.v1	skip: measured call cost samples
+webprefix	np.spaces.v1.	keep
+webprefix	np.work.v1.	keep
+slot	phantom_moments	keep
+slot	phantom_scheduled	keep
+slot	phantom_contact_requests	keep
+room	reminders	keep
+room	saved_places	keep
+room	drawn_lines	keep

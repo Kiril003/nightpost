@@ -1,0 +1,15 @@
+{
+  "v": 1,
+  "blocks": [
+    {
+      "type": "title",
+      "text": "Клуб Читачів"
+    },
+    {
+      "type": "event",
+      "id": "poetry-evening",
+      "title": "Поетичний вечір",
+      "starts": "2026-10-20T19:00"
+    }
+  ]
+}

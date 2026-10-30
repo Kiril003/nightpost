@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_notify_title">Notifikasi</string>
+    <string name="perm_notify_body">Untuk pesan dan panggilan saat aplikasi tertutup</string>
+    <string name="settings_ua_alerts">Peringatan udara Ukraina</string>
+    <string name="settings_ua_alerts_body">Peringatan untuk wilayahmu di Ukraina</string>
+    <string name="settings_ua_alerts_body_map">Di peta, untuk wilayahmu</string>
+    <string name="perm_sms_title">Pesan tanpa internet</string>
+    <string name="perm_sms_body">Akses SMS dibutuhkan untuk mengirim dan menerima permintaan saat tak ada jaringan.</string>
+    <string name="perm_bg_loc_title">Lokasi di latar belakang</string>
+    <string name="perm_bg_loc_body">Menjaga jejak perjalananmu utuh</string>
+</resources>

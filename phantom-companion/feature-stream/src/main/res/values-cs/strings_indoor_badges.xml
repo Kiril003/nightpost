@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="indoor_badge_elevator">Výtah</string>
+    <string name="indoor_badge_escalator">Eskalátor</string>
+    <string name="indoor_badge_steps">Schody</string>
+    <string name="indoor_badge_building_passage">Průchod</string>
+    <string name="indoor_badge_passage">Průchod</string>
+    <string name="indoor_entrance_main">Hlavní vchod</string>
+    <string name="indoor_entrance_subway">Vstup do metra</string>
+    <string name="indoor_entrance_emergency">Nouzový východ</string>
+    <string name="indoor_entrance_accessible">Bezbariérový vchod</string>
+    <string name="indoor_entrance_default">Vchod</string>
+</resources>

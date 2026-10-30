@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 59.9383,
+    "maxLon": 28.21,
+    "minLat": 57.5093,
+    "minLon": 21.3826
+  },
+  "files": [
+    {
+      "bytes": 157548,
+      "name": "places.tsv.gz",
+      "sha256": "502694a277f04bfe8969b834850014ae7e93e55e9cf863b6a12d44738d8f4a98"
+    },
+    {
+      "bytes": 396401,
+      "name": "streets.tsv.gz",
+      "sha256": "18ed793c91ee2be9987d907b3ed9dfb73d2ecf76b5eae6c84b1616748b50f30e"
+    }
+  ],
+  "home": {
+    "lat": 59.4372,
+    "lon": 24.7573,
+    "zoom": 12.0
+  },
+  "id": "EE",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "ee-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Естонія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "ee-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Естонія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Естонія",
+  "version": 1
+}

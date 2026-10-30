@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_settings">Pengaturan</string>
+    <string name="profile_cover_add">Tambah sampul</string>
+    <string name="profile_cover_change">Ganti sampul</string>
+    <string name="profile_cover_chip">Ganti</string>
+    <string name="profile_photo_change">Ganti foto</string>
+    <string name="profile_photo_failed">Foto itu tak terbuka. Coba yang lain.</string>
+    <string name="profile_name_edit">Ubah nama</string>
+    <string name="profile_name_save">Simpan</string>
+    <string name="profile_name_save_failed">Tidak tersimpan</string>
+    <string name="profile_circles">Orang</string>
+    <string name="profile_circles_empty">Belum ada siapa pun</string>
+    <string name="profile_moments">Momen</string>
+    <string name="profile_moments_empty">Tidak ada momen hari ini</string>
+    <string name="profile_moment">Momenmu</string>
+    <string name="profile_moment_add">Tambah</string>
+    <string name="profile_action_code">Kodeku</string>
+    <string name="profile_code_send">Kirim tautan</string>
+    <string name="profile_code_failed">Gagal membuat kode</string>
+    <string name="circle_close">Terdekat</string>
+    <string name="circle_family">Keluarga</string>
+    <string name="circle_friends">Teman</string>
+    <string name="circle_work">Kerja</string>
+    <string name="circle_study">Kuliah</string>
+    <string name="circle_travel">Perjalanan</string>
+    <string name="profile_name_budget">%1$d/%2$d</string>
+    <string name="profile_name_too_long">Nama yang lebih panjang tak muat di kode undanganmu.</string>
+    <string name="profile_server">Asisten</string>
+    <string name="profile_key_short">Sidik</string>
+    <string name="profile_key_created">Dibuat</string>
+    <string name="profile_value_server">Nightpost</string>
+    <string name="profile_value_server_spent">habis hari ini</string>
+    <string name="profile_value_server_quiet">tidak menjawab</string>
+    <string name="profile_backup">Cadangan</string>
+    <string name="profile_backup_none">Tidak ada</string>
+    <string name="profile_about_edit">Tentang saya</string>
+    <string name="profile_status_hint">Status</string>
+    <string name="profile_photo_remove">Hapus foto</string>
+    <string name="profile_cover_remove">Hapus sampul</string>
+</resources>

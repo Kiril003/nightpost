@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Хмара бере лише знімок; його шифрує власний ключ застосунку, тож він їде й без блокування екрана.
+     Обгорнуті Keystore-ом префи, бази й ключі тут не їдуть: на іншому апараті вони мертві. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="file" path="autobackup/snapshot.json" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+        <exclude domain="device_root" />
+        <exclude domain="device_file" />
+        <exclude domain="device_database" />
+        <exclude domain="device_sharedpref" />
+    </device-transfer>
+</data-extraction-rules>

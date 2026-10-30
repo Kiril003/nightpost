@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Transfer taslağı: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">%1$s (%2$s) kişisine transfer, tutarı girip onayla.</string>
+    <string name="money_coin_guessed">Varsayılan olarak %1$s</string>
+    <string name="money_which_one">Birden çok eşleşme: %1$s. Soyadını belirt.</string>
+    <string name="money_no_wallet">%1$s kişisinin henüz cüzdan adresi yok.</string>
+    <string name="money_nobody">Sohbetlerindeki kişiler arasında “%1$s” bulamadım.</string>
+    <string name="money_who_missing">Kim alsın? Sohbetlerinden birini söyle.</string>
+    <string name="money_bad_amount">%1$s %2$s gönderilemez: %2$s biriminin en küçük parçası %3$s.</string>
+    <string name="money_coin_not_here">%2$s üzerinde %1$s yok.</string>
+    <string name="money_no_own_wallet">Cüzdanın henüz hazır değil, Ayarlar › Cüzdan’ı aç.</string>
+    <string name="money_seal_pick">SHA-256 parmak izini mühürlemek için bir fotoğraf seç</string>
+    <string name="money_drafted_cash">Cep nakdi: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">İnternetsiz yalnızca cep nakdi verebilirim, ama %1$s</string>
+    <string name="money_offline_no_sol">ücret ve alıcının hesabı için ceptte SOL yetmiyor.</string>
+    <string name="money_offline_empty">cep boş.</string>
+    <string name="money_offline_other_coin">notları %1$s cinsinden, %2$s değil.</string>
+    <string name="money_offline_short">orada yalnızca %1$s %2$s boşta.</string>
+    <string name="money_offline_external">cep yalnızca yerleşik cüzdanla çalışır.</string>
+    <string name="money_offline_not_person">nakit yalnızca sohbetteki bir kişiye gider.</string>
+    <string name="money_watch_out">Dikkat:</string>
+</resources>

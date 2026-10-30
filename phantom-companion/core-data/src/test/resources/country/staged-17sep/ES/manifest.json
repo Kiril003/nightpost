@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 43.9933,
+    "maxLon": 4.5919,
+    "minLat": 27.4335,
+    "minLon": -18.3937
+  },
+  "files": [
+    {
+      "bytes": 8097853,
+      "name": "places.tsv.gz",
+      "sha256": "a08bb075a54447bcd4f96caf6f29f762fe172b88b48bfd0b4047b9a45f7129ca"
+    },
+    {
+      "bytes": 10004907,
+      "name": "streets.tsv.gz",
+      "sha256": "40099acf7a4032f517962ec5a3ba5ef67cdced6a0d18d8ad5fe3732d5633dfc4"
+    }
+  ],
+  "home": {
+    "lat": 40.4168,
+    "lon": -3.7035,
+    "zoom": 12.0
+  },
+  "id": "ES",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "es-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Іспанія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "es-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Іспанія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Іспанія",
+  "version": 1
+}

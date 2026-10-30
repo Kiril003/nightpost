@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 42.1543,
+    "maxLon": -6.1892,
+    "minLat": 29.8282,
+    "minLon": -31.5575
+  },
+  "files": [
+    {
+      "bytes": 1535702,
+      "name": "places.tsv.gz",
+      "sha256": "8cde389f11a4579984b933df1fb517c4950026f57e8bb9796c9b16025926806b"
+    },
+    {
+      "bytes": 2964396,
+      "name": "streets.tsv.gz",
+      "sha256": "9c314936bd49e0b302213e88b7d18a4b98f2289179f5f2f79f725efbcadd1e20"
+    }
+  ],
+  "home": {
+    "lat": 38.7078,
+    "lon": -9.1366,
+    "zoom": 12.0
+  },
+  "id": "PT",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "pt-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Португалія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "pt-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Португалія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Португалія",
+  "version": 1
+}

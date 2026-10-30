@@ -1,0 +1,24 @@
+{
+  "v": 1,
+  "blocks": [
+    {
+      "type": "title",
+      "text": "Нічний Бар"
+    },
+    {
+      "type": "hours",
+      "rows": [
+        {
+          "day": "fri",
+          "open": "18:00",
+          "close": "02:00"
+        },
+        {
+          "day": "sat",
+          "open": "18:00",
+          "close": "03:00"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+ "comment": "\u0421\u043f\u0440\u0430\u0432\u0436\u043d\u0456 \u0440\u0430\u0445\u0443\u043d\u043a\u0438 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438 \u0441\u0442\u0435\u0439\u043a\u0456\u043d\u0433\u0443 SKR (SKRskrmtL83pcL4YqLWt6iPefDqwXQWHSw9S9vz94BZ) \u0437 mainnet, 02.10.2026. \u0410\u0434\u0440\u0435\u0441\u0443 \u0432\u043b\u0430\u0441\u043d\u0438\u043a\u0430 \u0432 UserStake \u0437\u0430\u043c\u0456\u043d\u0435\u043d\u043e \u043d\u0430 \u0441\u0438\u043d\u0442\u0435\u0442\u0438\u0447\u043d\u0443 (0x07*32 \u0456 0x08*32); \u0440\u0435\u0448\u0442\u0430 \u0431\u0430\u0439\u0442\u0456\u0432 \u2014 \u044f\u043a \u0443 \u043b\u0430\u043d\u0446\u044e\u0437\u0456.",
+ "staker": {
+  "pubkey": "2VkaTKLa1WoHTfbtKL4BsPPHzF4PTYdtWQgTd8ibYUq9",
+  "account": {
+   "data": [
+    "ZjWjawmKV5n8MMd0OFYtRe9beSkvYc8PNRQ1nYzgszbll2atCImxvN4HBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHB7gCUtGNtSuONRWJvQL7jRyzJlcF9a4LANKbp5jhwl3hzVFWtSwAAAAAAAAAAAAAAJTLeDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "base64"
+   ],
+   "executable": false,
+   "lamports": 2067120,
+   "owner": "SKRskrmtL83pcL4YqLWt6iPefDqwXQWHSw9S9vz94BZ",
+   "rentEpoch": 18446744073709551615,
+   "space": 169
+  }
+ },
+ "unstaked": {
+  "pubkey": "1nMmyCsY6gbRRKzTUk1uxrgmfTH7PckKLVTZtAhRjgw",
+  "account": {
+   "data": [
+    "ZjWjawmKV5n/MMd0OFYtRe9beSkvYc8PNRQ1nYzgszbll2atCImxvN4ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICLgCUtGNtSuONRWJvQL7jRyzJlcF9a4LANKbp5jhwl3hAAAAAAAAAAAAAAAAAAAAAADKmjsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPIFKgEAAABfinFpAAAAAA==",
+    "base64"
+   ],
+   "executable": false,
+   "lamports": 2067120,
+   "owner": "SKRskrmtL83pcL4YqLWt6iPefDqwXQWHSw9S9vz94BZ",
+   "rentEpoch": 18446744073709551615,
+   "space": 169
+  }
+ },
+ "stake_config": {
+  "pubkey": "4HQy82s9CHTv1GsYKnANHMiHfhcqesYkK6sB3RDSYyqw",
+  "account": {
+   "data": [
+    "7pcrAwuXP7D/99/RmBWIoUKnBCJppz3tD3Kiqm19wGlNrfxqo58KnyMGfFo+Bf5BRxKnour+Qr52ELzZDL9XFid1g3PLitDYpHK7t3HxKVTi9/Qhl74s+E4dlydE1728RBtKSZ5/fy2TQEIPAAAAAAAAowIAAAAAADig0r5Tfg8AAAAAAAAAAACvBG5EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB1nIJxm+ERAA==",
+    "base64"
+   ],
+   "executable": false,
+   "lamports": 135101466,
+   "owner": "SKRskrmtL83pcL4YqLWt6iPefDqwXQWHSw9S9vz94BZ",
+   "rentEpoch": 18446744073709551615,
+   "space": 193
+  }
+ }
+}

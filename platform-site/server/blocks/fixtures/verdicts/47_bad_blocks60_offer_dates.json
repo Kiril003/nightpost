@@ -1,0 +1,35 @@
+{
+  "ok": false,
+  "refused": "bad_daterange",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Linde Studio",
+          "kind": "ceramics",
+          "tagline": "Ceramics and coffee"
+        }
+      },
+      {
+        "id": "offer-34",
+        "kind": "deal.offer",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "title": "Autumn class week",
+          "percent": 20,
+          "dates": {
+            "from": "2026-11-15",
+            "to": "2026-11-09"
+          }
+        }
+      }
+    ]
+  }
+}

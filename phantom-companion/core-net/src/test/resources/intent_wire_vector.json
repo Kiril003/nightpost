@@ -1,0 +1,123 @@
+{
+  "why": "Мова Наміру (розд. 07 §2.2). Kotlin PeerIntentVectorTest запечатує й відчиняє рівно ці байти, pytest test_intents_wire_vector.py звіряє файл із intents/wire.py. Переписати: cd phantom-os/src/backend && .venv/bin/python -m scripts.intent_wire_vector",
+  "epoch_ms": 1767225600000,
+  "pair_key_b64": "QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl8=",
+  "phone_id": "a1b2c3d4e5f60718",
+  "pc_id": "0f1e2d3c4b5a6978",
+  "pair_hint_hex": "53742c",
+  "intent_key_b64": "SQUEJeOvB3QXIWl4DbIHzmj7S8tV8kl/ksiWty4dTfo=",
+  "contact_tag": {
+    "peer_node_id": "mama-node",
+    "tag_hex": "f0eda159"
+  },
+  "reply_to": {
+    "sms1": 65,
+    "sms3_relay": 195,
+    "relay_lan": 6
+  },
+  "budgets": {
+    "sms": {
+      "1": 96,
+      "2": 205,
+      "3": 320
+    },
+    "relay": 4072
+  },
+  "oblast_order": [
+    "cherkasy",
+    "chernihiv",
+    "chernivtsi",
+    "crimea",
+    "dnipro",
+    "donetsk",
+    "ivano-frankivsk",
+    "kharkiv",
+    "kherson",
+    "khmelnytskyi",
+    "kirovohrad",
+    "kyiv-city",
+    "kyiv",
+    "luhansk",
+    "lviv",
+    "mykolaiv",
+    "odesa",
+    "poltava",
+    "rivne",
+    "sevastopol",
+    "sumy",
+    "ternopil",
+    "vinnytsia",
+    "volyn",
+    "zakarpattia",
+    "zaporizhzhia",
+    "zhytomyr"
+  ],
+  "status": {
+    "OK": 0,
+    "SOURCE_SILENT": 1,
+    "NOT_FOUND": 2,
+    "REFUSED": 3,
+    "TIMEOUT": 4,
+    "UNSUPPORTED": 5,
+    "EXPIRED": 6,
+    "FAILED": 7
+  },
+  "cases": [
+    {
+      "id_hex": "0102030405060708",
+      "op": 1,
+      "created_min": 399000,
+      "deadline_min": 30,
+      "flags": 210,
+      "reply_to": 131,
+      "args_hex": "07000000",
+      "plain_hex": "010203040506070801061698001ed28307000000",
+      "counter": 41,
+      "sealed_b64": "AVN0LAAAACmGn6vzT5Zli3m7QkM7Fwj2kQFUmZuPbiHRdeyszALmzo1FN/I=",
+      "answer": {
+        "1": {
+          "kind": 2,
+          "budget": 205,
+          "key_b64": "lNAy6wlnbOdlS+WLnP6ZmOqcmgqDjFG5kMODf3PEEto=",
+          "plain_hex": "100010008001000b14",
+          "sealed_b64": "AlN0LAAAAClsRpcCJbt20jKuq/oxyj1yFQEhD6egSt7B"
+        },
+        "2": {
+          "kind": 3,
+          "budget": 4072,
+          "key_b64": "9Dpf219TzD/p+cctxgqRo0lu/Vsu58Nh23WAVYJWicc=",
+          "plain_hex": "200010008001000b14",
+          "sealed_b64": "A1N0LAAAAClNhE8qazE54ii/a86FGvEOPOEcuN3b9mlA"
+        }
+      }
+    },
+    {
+      "id_hex": "f0e0d0c0b0a09080",
+      "op": 4,
+      "created_min": 399001,
+      "deadline_min": 5,
+      "flags": 128,
+      "reply_to": 67,
+      "args_hex": "d18fd0ba20d0b7d183d0bfd0b8d0bdd0b8d182d0b820d0bad180d0bed0b2d0bed182d0b5d187d18320d0b1d0b5d0b720d0b4d0b6d0b3d183d182d0b03f",
+      "plain_hex": "f0e0d0c0b0a090800406169900058043d18fd0ba20d0b7d183d0bfd0b8d0bdd0b8d182d0b820d0bad180d0bed0b2d0bed182d0b5d187d18320d0b1d0b5d0b720d0b4d0b6d0b3d183d182d0b03f",
+      "counter": 4294967294,
+      "sealed_b64": "AVN0LP////454kDjNf4YKVfgQwAYsQumKYRiECaXL6XcLgnS2EsAc8iGLTguCJaucHoGQQt0+esSLayHtcYOtd5RSsL7not6CGEYNkb/kgJ94r4R1A7eLbfSZHHRqJ4BtWNK3SE=",
+      "answer": {
+        "1": {
+          "kind": 2,
+          "budget": 96,
+          "key_b64": "3JBe6+n8aMlKPOgsrFV1dBdtz/Ca+yRfFWClmVjMhBg=",
+          "plain_hex": "10d09fd180d0b8d182d0b8d181d0bdd196d182d18c20d180d0b0d0bdd18320d187d0b8d181d182d0bed18e20d182d0bad0b0d0bdd0b8d0bdd0bed18e20d19620d182d180d0b8d0bcd0b0d0b9d182d0b520d182d0b8d181d0bae280a6",
+          "sealed_b64": "AlN0LP////70F6rf8MvLppE2GYL1rnDeb1aiULzoq2wJvGwXIugrrt8JAoRjisv2bsx50L36lnnS16sEDmxm5h8oXiCU1axGXA9KTfWn+LFoairpAknYWd69o79vNbBB+GIYAx1O1BNhdUx9MrxJCXFNcoA="
+        },
+        "2": {
+          "kind": 3,
+          "budget": 4072,
+          "key_b64": "KkRfrCpLWgiqKx5gCflaO+LgfqCCxPpqwGus+o7TObg=",
+          "plain_hex": "20d09fd180d0b8d182d0b8d181d0bdd196d182d18c20d180d0b0d0bdd18320d187d0b8d181d182d0bed18e20d182d0bad0b0d0bdd0b8d0bdd0bed18e20d19620d182d180d0b8d0bcd0b0d0b9d182d0b520d182d0b8d181d0ba20d189d0bed0bdd0b0d0b9d0bcd0b5d0bdd188d0b520313020d185d0b2d0b8d0bbd0b8d0bd2e20d09fd196d0b4d0bdd196d0bcd196d182d18c20d180d183d0bad18320d0b2d0b8d189d0b520d181d0b5d180d186d18f2e",
+          "sealed_b64": "A1N0LP////6NJ7Opvq+sd3EmwW3F3RxUF988J45JZNMcH4GfK60KqG6IlUAGwlY2JZ5EIHCunPinRWEFlo6OpDubT2g+DqkYUvNoDAulvCFA+4rfb/VLmEK6S26rxn89oZng5t9VGxS/W1P1rkRTMSb6GF7e0cUNzM2ZneU2FZIenE2V+UIEuR4mY//pzqs7jlXfXfDBtuRchTKMkxPRQd0Y++kAOWJ4KQxhvvdAfQ8HsTXjFGKaj87GV02W1qQIieKikmWVtFo="
+        }
+      }
+    }
+  ]
+}

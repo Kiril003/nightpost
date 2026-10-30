@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Yedek kaydedildi · %1$s</string>
+    <string name="backup_sheet_title">Yedek oluştur</string>
+    <string name="backup_loss_title">Yedek olmazsa kaybedersin:</string>
+    <string name="backup_loss_chats">Sohbetler</string>
+    <string name="backup_loss_contacts">Kişiler</string>
+    <string name="backup_loss_profiles">Profiller</string>
+    <string name="backup_loss_venues">Mekân düzenleme</string>
+    <string name="backup_loss_licences">Solana ve Seeker lisansları</string>
+    <string name="backup_loss_handle">30 gün boyunca @kullanıcı adı</string>
+    <string name="backup_loss_points">Puanlar ve değerlendirmeler</string>
+    <string name="backup_loss_wallet">Kendi dışa aktarımı olmayan cüzdan</string>
+    <string name="backup_loss_memory">Bilgisayarda olmayan hafıza</string>
+    <string name="backup_pass_hint">Parola (en az 12 karakter)</string>
+    <string name="backup_pass_confirm_hint">Parolayı tekrarla</string>
+    <string name="backup_pass_mismatch">Parolalar uyuşmuyor</string>
+    <string name="backup_pass_too_short">En az 12 karakter gerekli</string>
+    <string name="backup_save_action">Yedeği kaydet</string>
+    <string name="backup_restore_title">Yedekten geri yükle</string>
+    <string name="backup_restore_pass_hint">Yedek parolası</string>
+    <string name="backup_restore_action">Geri yükle</string>
+    <string name="backup_restore_err_wrong_pass">Yanlış parola</string>
+    <string name="backup_restore_err_not_our_file">Nightpost yedeği değil</string>
+    <string name="backup_restore_err_not_empty">Önce bu telefondaki verileri sil</string>
+    <string name="backup_restore_success">Geri yüklendi: %1$d kişi, %2$d mesaj, %3$d profil</string>
+    <string name="backup_restore_err_read">Dosya açılamıyor</string>
+    <string name="backup_restore_err_invalid">Yedek bozuk</string>
+    <string name="backup_restore_err_failed">Geri yükleme başarısız</string>
+</resources>

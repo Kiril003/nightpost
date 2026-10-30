@@ -1,0 +1,288 @@
+{
+  "ok": true,
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "shop",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Linde Studio",
+          "kind": "ceramics",
+          "tagline": "Ceramics and coffee"
+        }
+      },
+      {
+        "id": "address-1",
+        "kind": "loc.address",
+        "variant": "map_line",
+        "hidden": false,
+        "data": {
+          "text": "12 Linden Street",
+          "point": {
+            "lat": 52.52,
+            "lon": 13.405
+          }
+        }
+      },
+      {
+        "id": "products-9",
+        "kind": "cat.products",
+        "variant": "grid",
+        "hidden": false,
+        "data": {
+          "title": "Shop",
+          "token": "USDC",
+          "items": [
+            {
+              "id": "it-mug",
+              "name": "Mug, oat glaze",
+              "price": "24",
+              "stock": 12,
+              "image": {
+                "blob": "sample-mug-01",
+                "w": 1200,
+                "h": 1200,
+                "alt": "Oat-glazed mug"
+              }
+            },
+            {
+              "id": "it-bowl",
+              "name": "Bowl, iron rim",
+              "price": "32",
+              "stock": 6,
+              "image": {
+                "blob": "sample-bowl-01",
+                "w": 1200,
+                "h": 1200,
+                "alt": "Bowl with an iron rim"
+              }
+            },
+            {
+              "id": "it-vase",
+              "name": "Vase, tall",
+              "price": "58",
+              "stock": 2,
+              "image": {
+                "blob": "sample-vase-01",
+                "w": 1200,
+                "h": 1200,
+                "alt": "Tall vase"
+              }
+            },
+            {
+              "id": "it-plate",
+              "name": "Plate, flat",
+              "price": "28",
+              "stock": 9,
+              "image": {
+                "blob": "sample-plate-01",
+                "w": 1200,
+                "h": 1200,
+                "alt": "Flat plate"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "featured-31",
+        "kind": "cat.featured",
+        "variant": "grid",
+        "hidden": false,
+        "data": {
+          "from": "products-9",
+          "show": 3
+        }
+      },
+      {
+        "id": "specials-32",
+        "kind": "cat.specials",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "sp-seconds",
+              "name": "Seconds shelf",
+              "price": "10",
+              "dates": {
+                "from": "2026-11-02",
+                "to": "2026-11-08"
+              },
+              "note": "Small glaze marks"
+            },
+            {
+              "id": "sp-cake",
+              "name": "Cake and filter coffee",
+              "price": "7",
+              "dates": {
+                "from": "2026-11-01",
+                "to": "2026-11-30"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "rental-33",
+        "kind": "cat.rental",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "rt-wheel",
+              "name": "Wheel",
+              "price": "12",
+              "per": 60
+            },
+            {
+              "id": "rt-shelf",
+              "name": "Kiln shelf",
+              "price": "20",
+              "per": 1440,
+              "deposit": "40"
+            }
+          ]
+        }
+      },
+      {
+        "id": "offer-34",
+        "kind": "deal.offer",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "title": "Autumn class week",
+          "percent": 20,
+          "dates": {
+            "from": "2026-11-09",
+            "to": "2026-11-15"
+          },
+          "terms": "Wheel classes only"
+        }
+      },
+      {
+        "id": "first-visit-35",
+        "kind": "deal.first_visit",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "percent": 15,
+          "on": "Your first class"
+        }
+      },
+      {
+        "id": "gift-card-36",
+        "kind": "deal.gift_card",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "amounts": [
+            {
+              "id": "gc-25",
+              "value": "25"
+            },
+            {
+              "id": "gc-50",
+              "value": "50"
+            },
+            {
+              "id": "gc-100",
+              "value": "100"
+            }
+          ],
+          "custom": true,
+          "months": 12
+        }
+      },
+      {
+        "id": "packages-37",
+        "kind": "book.packages",
+        "variant": "cards",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "pk-intro",
+              "name": "Intro",
+              "sessions": 3,
+              "price": "90",
+              "months": 2,
+              "includes": "Clay and two firings"
+            },
+            {
+              "id": "pk-regular",
+              "name": "Regular",
+              "sessions": 8,
+              "price": "220",
+              "months": 4,
+              "includes": "Clay, firings, a shelf"
+            }
+          ]
+        }
+      },
+      {
+        "id": "staff-38",
+        "kind": "book.staff",
+        "variant": "faces",
+        "hidden": false,
+        "data": {
+          "items": [
+            {
+              "id": "st-mara",
+              "name": "Mara",
+              "role": "Wheel classes"
+            },
+            {
+              "id": "st-jonas",
+              "name": "Jonas",
+              "role": "Glazes and kiln"
+            },
+            {
+              "id": "st-ida",
+              "name": "Ida",
+              "role": "Coffee bar"
+            }
+          ]
+        }
+      },
+      {
+        "id": "table-39",
+        "kind": "book.table",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "party_min": 1,
+          "party_max": 6,
+          "hours": {
+            "open": "10:00",
+            "close": "17:00"
+          },
+          "slot": 60,
+          "auto": true,
+          "note": "Larger groups by message"
+        }
+      },
+      {
+        "id": "waitlist-40",
+        "kind": "book.waitlist",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "for": "table-39",
+          "capacity": 20,
+          "notify": true
+        }
+      }
+    ]
+  }
+}

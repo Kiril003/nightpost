@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Мова форми 1.2 для анкети, сховища й питання про мікрофон: рядки, яких старий вигляд не мав. -->
+<resources>
+    <!-- Стан сховища без назви шифру: людині важить «працює», а не бібліотека. -->
+    <string name="prof_look_vault_up">працює</string>
+    <!-- Назва сховища реченням — замість «СХОВИЩЕ · ПРИМАРА» моно-капсом. -->
+    <string name="vault_look_title">Сховище</string>
+    <!-- Питання про мікрофон: було чотирма рядками в коді, тепер тут. -->
+    <string name="mic_look_title">Nightpost просить мікрофон</string>
+    <string name="mic_look_body">Nightpost потребує мікрофона, щоб чути вас. Дозволите?</string>
+    <string name="mic_look_allow">Надати дозвіл</string>
+    <string name="mic_look_skip">Пропустити</string>
+</resources>

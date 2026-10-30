@@ -1,0 +1,34 @@
+{
+  "ok": false,
+  "refused": "bad_tagset",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Linde Studio",
+          "kind": "ceramics",
+          "tagline": "Ceramics and coffee"
+        }
+      },
+      {
+        "id": "amenities-27",
+        "kind": "ame.amenities",
+        "variant": "chips",
+        "hidden": false,
+        "data": {
+          "title": "Amenities",
+          "tags": [
+            "wifi",
+            "jacuzzi"
+          ]
+        }
+      }
+    ]
+  }
+}

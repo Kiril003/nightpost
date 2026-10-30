@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lx_map_title_fuel">АЗС</string>
+    <string name="lx_map_title_ev">Зарядки EV</string>
+    <string name="lx_map_title_auto_repair">СТО / шиномонтаж</string>
+    <string name="lx_map_title_shelters">Укриття</string>
+    <string name="lx_map_title_water">Питна вода</string>
+    <string name="lx_map_title_pharmacies">Аптеки</string>
+    <string name="lx_map_title_rest_areas">Зони відпочинку</string>
+    <string name="lx_map_title_power_towers">Опори ЛЕП</string>
+    <string name="lx_map_title_drainage">Канави та труби</string>
+    <string name="lx_map_title_fords">Броди</string>
+    <string name="lx_map_title_other">Шар</string>
+
+    <string name="lx_map_empty_fuel">Поруч немає АЗС</string>
+    <string name="lx_map_empty_ev">Поруч немає зарядних станцій EV</string>
+    <string name="lx_map_empty_auto_repair">Поруч немає СТО чи шиномонтажів</string>
+    <string name="lx_map_empty_shelters">Поруч не позначено укриттів</string>
+    <string name="lx_map_empty_water">Поруч немає питної води</string>
+    <string name="lx_map_empty_pharmacies">Поруч немає аптек</string>
+    <string name="lx_map_empty_rest_areas">Поруч немає зон відпочинку</string>
+    <string name="lx_map_empty_power_towers">Поруч немає опор ЛЕП</string>
+    <string name="lx_map_empty_drainage">Поруч немає канав чи труб</string>
+    <string name="lx_map_empty_fords">Поруч немає бродів</string>
+    <string name="lx_map_empty_other">Поруч нічого немає</string>
+
+    <string name="lx_map_unavail_fuel">АЗС недоступні</string>
+    <string name="lx_map_unavail_ev">Зарядки EV недоступні</string>
+    <string name="lx_map_unavail_auto_repair">СТО недоступні</string>
+    <string name="lx_map_unavail_shelters">Укриття недоступні</string>
+    <string name="lx_map_unavail_water">Питна вода недоступна</string>
+    <string name="lx_map_unavail_pharmacies">Аптеки недоступні</string>
+    <string name="lx_map_unavail_rest_areas">Зони відпочинку недоступні</string>
+    <string name="lx_map_unavail_power_towers">Опори ЛЕП недоступні</string>
+    <string name="lx_map_unavail_drainage">Канави та труби недоступні</string>
+    <string name="lx_map_unavail_fords">Броди недоступні</string>
+    <string name="lx_map_unavail_other">Шар недоступний</string>
+
+    <string name="lx_map_marker_fuel_default">АЗС</string>
+    <string name="lx_map_marker_fuel_diesel">ДП</string>
+    <string name="lx_map_marker_fuel_lpg">Газ</string>
+    <string name="lx_map_marker_fuel_detail">АЗС: %1$s</string>
+    <string name="lx_map_marker_ev_default">Зарядка EV</string>
+    <string name="lx_map_marker_ev_detail">Зарядка EV: %1$s</string>
+    <string name="lx_map_marker_tyres">Шиномонтаж</string>
+    <string name="lx_map_marker_car_wash">Автомийка</string>
+    <string name="lx_map_marker_auto_repair">СТО</string>
+    <string name="lx_map_marker_auto_repair_detail">Автосервіс: %1$s</string>
+    <string name="lx_map_marker_shelter_default">Укриття</string>
+    <string name="lx_map_marker_shelter_detail">Захисне укриття: %1$s</string>
+    <string name="lx_map_marker_spring">Джерело</string>
+    <string name="lx_map_marker_water_default">Бювет / Вода</string>
+    <string name="lx_map_marker_water_detail">Питна вода: %1$s</string>
+    <string name="lx_map_marker_pharmacy_default">Аптека</string>
+    <string name="lx_map_marker_pharmacy_detail">Аптека: %1$s</string>
+    <string name="lx_map_marker_rest_area_default">Зона відпочинку</string>
+    <string name="lx_map_marker_rest_area_detail">Місце відпочинку на трасі: %1$s</string>
+    <string name="lx_map_marker_tower_label">Опора</string>
+    <string name="lx_map_marker_tower_detail">OSM: опора ЛЕП</string>
+    <string name="lx_map_marker_culvert_label">Труба</string>
+    <string name="lx_map_marker_ditch_label">Канава</string>
+    <string name="lx_map_marker_culvert_detail">OSM: труба під дорогою — стан і прохідність не перевірено</string>
+    <string name="lx_map_marker_ditch_detail">OSM: відкрита канава — можлива перешкода для проїзду</string>
+    <string name="lx_map_marker_ford_label">Брід</string>
+    <string name="lx_map_marker_ford_detail">OSM: брід — прохідність зараз не відома, перевіряйте на місці</string>
+</resources>

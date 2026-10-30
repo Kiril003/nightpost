@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Аркуші мапи v1.2 (03.10): слова, що прийшли разом зі шкірою, — без капсу й без вигаданих чисел. -->
+<resources>
+    <string name="map_sheets_hub_title">Транспорт</string>
+    <string name="map_sheets_hub_tab_metro">Метро</string>
+    <string name="map_sheets_hub_nearby_empty">Поблизу зупинок не знайдено — радіус 1,2 км</string>
+    <string name="map_sheets_hub_walk">%1$d м · %2$d хв пішки</string>
+    <string name="map_sheets_hub_route_to">Маршрут сюди</string>
+    <string name="map_sheets_hub_search">Номер (114, 38…) або вулиця</string>
+    <string name="map_sheets_hub_filter_all">Усі</string>
+    <string name="map_sheets_hub_filter_bus">Автобуси</string>
+    <string name="map_sheets_hub_filter_trolleybus">Тролейбуси</string>
+    <string name="map_sheets_hub_filter_tram">Трамваї</string>
+    <string name="map_sheets_hub_stops_count">зупинок: %1$d</string>
+    <string name="map_sheets_hub_stations_count">станцій: %1$d</string>
+    <string name="map_sheets_hub_show_on_map">Показати на мапі</string>
+    <string name="map_sheets_hub_stops_title">Зупинки маршруту · %1$d</string>
+    <string name="map_sheets_stop_lines_title">Лінії на зупинці</string>
+</resources>

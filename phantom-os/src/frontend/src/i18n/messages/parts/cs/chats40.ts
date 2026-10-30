@@ -1,0 +1,15 @@
+export const cs = {
+  'chats40.title': 'Zvuk konverzace',
+  'chats40.on': 'Se zvukem',
+  'chats40.off': 'Ztlumeno',
+  'chats40.hours': 'Tiché hodiny',
+  'chats40.from': 'Od',
+  'chats40.to': 'Do',
+  'chats40.scopeChat': 'Tato konverzace',
+  'chats40.scopeRing': 'Všechny chaty: {circle}',
+  'chats40.ringActive': 'Tiché hodiny · {circle}: {hours}',
+  'chats40.ringMuted': 'Ztlumeno · {circle}',
+  'chats40.breakLabel': 'Projde',
+  'chats40.breakAsk': 'Otázka pro vás',
+  'chats40.breakPlan': 'Plán do 3 h',
+} as const;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_settings">Ayarlar</string>
+    <string name="profile_cover_add">Kapak ekle</string>
+    <string name="profile_cover_change">Kapağı değiştir</string>
+    <string name="profile_cover_chip">Değiştir</string>
+    <string name="profile_photo_change">Fotoğrafı değiştir</string>
+    <string name="profile_photo_failed">Bu fotoğraf açılmadı. Başkasını dene.</string>
+    <string name="profile_name_edit">Adı düzenle</string>
+    <string name="profile_name_save">Kaydet</string>
+    <string name="profile_name_save_failed">Kaydedilmedi</string>
+    <string name="profile_circles">Kişiler</string>
+    <string name="profile_circles_empty">Burada henüz kimse yok</string>
+    <string name="profile_moments">Anlar</string>
+    <string name="profile_moments_empty">Bugün an yok</string>
+    <string name="profile_moment">Anın</string>
+    <string name="profile_moment_add">Ekle</string>
+    <string name="profile_action_code">Kodum</string>
+    <string name="profile_code_send">Bağlantı gönder</string>
+    <string name="profile_code_failed">Kod oluşturulamadı</string>
+    <string name="circle_close">Yakınlar</string>
+    <string name="circle_family">Aile</string>
+    <string name="circle_friends">Arkadaşlar</string>
+    <string name="circle_work">İş</string>
+    <string name="circle_study">Okul</string>
+    <string name="circle_travel">Seyahat</string>
+    <string name="profile_name_budget">%1$d/%2$d</string>
+    <string name="profile_name_too_long">Daha uzun bir ad davet koduna sığmaz.</string>
+    <string name="profile_server">Asistan</string>
+    <string name="profile_key_short">Parmak izi</string>
+    <string name="profile_key_created">Oluşturuldu</string>
+    <string name="profile_value_server">Nightpost</string>
+    <string name="profile_value_server_spent">bugün bitti</string>
+    <string name="profile_value_server_quiet">yanıt vermiyor</string>
+    <string name="profile_backup">Yedek</string>
+    <string name="profile_backup_none">Yok</string>
+    <string name="profile_about_edit">Hakkımda</string>
+    <string name="profile_status_hint">Durum</string>
+    <string name="profile_photo_remove">Fotoğrafı kaldır</string>
+    <string name="profile_cover_remove">Kapağı kaldır</string>
+</resources>

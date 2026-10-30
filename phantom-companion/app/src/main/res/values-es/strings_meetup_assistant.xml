@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meetup_ask_drafted">Borrador de quedada: %1$s. Revísalo en el messenger.</string>
+    <string name="meetup_ask_still_empty">Aún falta: %1$s.</string>
+    <string name="meetup_ask_field_people">personas</string>
+    <string name="meetup_ask_field_place">lugar</string>
+    <string name="meetup_ask_field_time">hora</string>
+    <string name="meetup_ask_empty">Borrador de quedada listo: elige personas, lugar y hora.</string>
+    <string name="meetup_ask_split_claimed">La cuenta se abre en el messenger: marca lo tuyo y paga.</string>
+    <string name="meetup_ask_split_equal">La cuenta se abre en el messenger: marca todo para dividir a partes iguales.</string>
+    <string name="meetup_ask_roster_unreadable">No pude leer tus contactos. Abre Personas.</string>
+    <string name="meetup_ask_draft_failed">El messenger no aceptó el borrador. Inténtalo de nuevo.</string>
+    <string name="meetup_ask_bad_mode">No entendí cómo dividir: «%1$s». La cuenta se divide por marcas o a partes iguales.</string>
+</resources>

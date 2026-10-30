@@ -1,0 +1,242 @@
+{
+  "bad_version": {
+    "uk": "Невідома версія сторінки.",
+    "en": "Unknown page version."
+  },
+  "too_big": {
+    "uk": "Сторінка завелика.",
+    "en": "The page is too big."
+  },
+  "not_a_list": {
+    "uk": "Блоки мають бути списком.",
+    "en": "Blocks must be a list."
+  },
+  "too_many_blocks": {
+    "uk": "Забагато блоків.",
+    "en": "Too many blocks."
+  },
+  "unknown_block": {
+    "uk": "Такого блоку немає в словнику.",
+    "en": "This block is not in the vocabulary."
+  },
+  "unknown_field": {
+    "uk": "Такого поля в блоці немає.",
+    "en": "This field is not part of the block."
+  },
+  "missing_field": {
+    "uk": "Бракує обов'язкового поля.",
+    "en": "A required field is missing."
+  },
+  "duplicate_block": {
+    "uk": "Цей блок може бути лише один.",
+    "en": "Only one block of this kind is allowed."
+  },
+  "too_many_of_kind": {
+    "uk": "Забагато блоків цього типу на сторінці.",
+    "en": "Too many blocks of this kind on the page."
+  },
+  "bad_id": {
+    "uk": "Код блоку — латиниця, цифри, «-» чи «_», до 36 знаків.",
+    "en": "A block id is Latin letters, digits, “-” or “_”, up to 36 characters."
+  },
+  "duplicate_id": {
+    "uk": "Два блоки з однаковим кодом.",
+    "en": "Two blocks share one id."
+  },
+  "derived_field": {
+    "uk": "Це поле заповнює сервер.",
+    "en": "This field is filled by the server."
+  },
+  "bad_ref": {
+    "uk": "Посилання вказує на відсутній або несумісний блок.",
+    "en": "The reference points to a missing or incompatible block."
+  },
+  "bad_text": {
+    "uk": "Текст порожній, задовгий або з керівними чи невидимими символами.",
+    "en": "Text is empty, too long or has control or invisible characters."
+  },
+  "bad_number": {
+    "uk": "Число поза дозволеними межами або не відповідає кроку.",
+    "en": "Number is out of bounds or does not match the step."
+  },
+  "bad_percent": {
+    "uk": "Відсоток має бути цілим числом від 0 до 100.",
+    "en": "Percent must be a whole number from 0 to 100."
+  },
+  "bad_money": {
+    "uk": "Сума має містити додатне число рядком і валюту.",
+    "en": "Amount must have a positive decimal string and a currency."
+  },
+  "bad_point": {
+    "uk": "Точка поза межами Землі.",
+    "en": "The point is not on Earth."
+  },
+  "bad_route": {
+    "uk": "Маршрут має містити від 2 до 50 точок на мапі.",
+    "en": "Route must contain between 2 and 50 map points."
+  },
+  "bad_hours": {
+    "uk": "Години мають вигляд «пн 08:00–22:00».",
+    "en": "Hours must look like “mon 08:00–22:00”."
+  },
+  "bad_time": {
+    "uk": "Час має вигляд «ГГ:ХХ».",
+    "en": "Time must look like “HH:MM”."
+  },
+  "bad_timerange": {
+    "uk": "Проміжок часу має містити початок і кінець у форматі «ГГ:ХХ».",
+    "en": "Time range must have open and close times as “HH:MM”."
+  },
+  "bad_duration": {
+    "uk": "Тривалість — від 5 до 1440 хвилин з кроком 5.",
+    "en": "Duration must be 5 to 1440 minutes in steps of 5."
+  },
+  "bad_date": {
+    "uk": "Дата має вигляд «РРРР-ММ-ДД» і має існувати в календарі.",
+    "en": "Date must look like “YYYY-MM-DD” and be a real calendar date."
+  },
+  "bad_daterange": {
+    "uk": "Період має містити коректні дати початку й кінця, до 366 днів.",
+    "en": "Date range must have valid start and end dates, up to 366 days."
+  },
+  "bad_datetime": {
+    "uk": "Дата й час мають вигляд «РРРР-ММ-ДДTГГ:ХХ», а кінець — після початку.",
+    "en": "Date and time must look like “YYYY-MM-DDTHH:MM”, with end after start."
+  },
+  "bad_dayset": {
+    "uk": "Оберіть принаймні один день тижня без повторів.",
+    "en": "Choose at least one day of the week without duplicates."
+  },
+  "bad_recurrence": {
+    "uk": "Некоректне правило повторення або понад 52 події.",
+    "en": "Invalid recurrence rule or more than 52 occurrences."
+  },
+  "bad_image": {
+    "uk": "Зображення має містити дійсний код файла, розміри й опис до 120 знаків.",
+    "en": "Image must have a valid file id, dimensions and alt text up to 120 characters."
+  },
+  "bad_gallery": {
+    "uk": "Галерея містить від 1 до 24 зображень.",
+    "en": "Gallery must have between 1 and 24 images."
+  },
+  "bad_video": {
+    "uk": "Відео має бути до 60 секунд, до 40 МБ і з обкладинкою.",
+    "en": "Video must be up to 60 seconds, up to 40 MB and have a poster image."
+  },
+  "bad_audio": {
+    "uk": "Аудіо має бути до 10 хвилин і з назвою.",
+    "en": "Audio must be up to 10 minutes and have a title."
+  },
+  "bad_file": {
+    "uk": "Файл має бути у форматі PDF, до 10 МБ.",
+    "en": "File must be a PDF up to 10 MB."
+  },
+  "bad_link": {
+    "uk": "Посилання має починатися з https:// і бути до 300 знаків.",
+    "en": "Link must start with https:// and be up to 300 characters."
+  },
+  "bad_phone": {
+    "uk": "Номер телефону має бути у міжнародному форматі +420…",
+    "en": "Phone number must be in international E.164 format."
+  },
+  "bad_email": {
+    "uk": "Некоректна адреса електронної пошти.",
+    "en": "Invalid email address."
+  },
+  "bad_person": {
+    "uk": "Некоректний ключ контакту або підпис ролі.",
+    "en": "Invalid contact key or role label."
+  },
+  "bad_choice": {
+    "uk": "Обране значення не входить до списку дозволених.",
+    "en": "Selected value is not one of the allowed options."
+  },
+  "bad_tagset": {
+    "uk": "Некоректний набір позначок зі словника.",
+    "en": "Invalid set of tags from the vocabulary."
+  },
+  "bad_toggle": {
+    "uk": "Перемикач має бути логічним значенням true або false.",
+    "en": "Toggle must be a boolean true or false."
+  },
+  "bad_list": {
+    "uk": "Некоректний список або кількість елементів поза межами.",
+    "en": "Invalid list or item count out of bounds."
+  },
+  "no_items": {
+    "uk": "Список не може бути порожнім.",
+    "en": "The list cannot be empty."
+  },
+  "bad_token": {
+    "uk": "Валюта меню — USDC або SOL.",
+    "en": "Menu currency must be USDC or SOL."
+  },
+  "mixed_tokens": {
+    "uk": "Усе меню — в одній валюті.",
+    "en": "The whole menu must use one currency."
+  },
+  "bad_item_id": {
+    "uk": "Код страви — латиниця, цифри, «-» чи «_», до 36 знаків.",
+    "en": "A dish id is Latin letters, digits, “-” or “_”, up to 36 characters."
+  },
+  "duplicate_item": {
+    "uk": "Дві страви з однаковим кодом.",
+    "en": "Two dishes share one id."
+  },
+  "too_many_items": {
+    "uk": "Забагато страв.",
+    "en": "Too many dishes."
+  },
+  "bad_price": {
+    "uk": "Ціна — додатне число рядком, з крапкою, не більше знаків, ніж у валюти.",
+    "en": "A price is a positive decimal string with a dot and no more decimals than the currency has."
+  },
+  "bad_wallet": {
+    "uk": "Це не адреса Solana.",
+    "en": "This is not a Solana address."
+  },
+  "bad_event_time": {
+    "uk": "Час події має вигляд «РРРР-ММ-ДДTГГ:ХХ», а кінець — після початку.",
+    "en": "Event time must look like “YYYY-MM-DDTHH:MM”, with end after start."
+  },
+  "duplicate_event": {
+    "uk": "Дві події з однаковим кодом.",
+    "en": "Two events share one id."
+  },
+  "too_many_events": {
+    "uk": "Забагато подій.",
+    "en": "Too many events."
+  },
+  "needs_address": {
+    "uk": "Без адреси й точки на мапі сторінку не опублікувати.",
+    "en": "A page needs an address and a map point before it can be published."
+  },
+  "too_many_venues": {
+    "uk": "Забагато закладів на один акаунт.",
+    "en": "Too many venues for one account."
+  },
+  "visit_required": {
+    "uk": "Оцінити заклад можна після візиту за останні 30 днів.",
+    "en": "You can rate a venue after visiting it in the last 30 days."
+  },
+  "bad_invite": {
+    "uk": "Список запрошених: від 1 до 256 різних ключів.",
+    "en": "Invite list: 1 to 256 distinct keys."
+  },
+  "page_is_v2": {
+    "uk": "Цю сторінку зроблено в новому редакторі. Відкрийте її там.",
+    "en": "This page was made in the new editor. Open it there."
+  },
+  "stale_draft": {
+    "uk": "Чернетку змінено в іншій вкладці чи на іншому пристрої.",
+    "en": "The draft changed in another tab or device."
+  },
+  "stale_page": {
+    "uk": "Сторінку вже опубліковано з іншого місця. Оновіть і спробуйте ще раз.",
+    "en": "The page was published from somewhere else. Reload and try again."
+  },
+  "too_many_images": {
+    "uk": "У закладу забагато зображень.",
+    "en": "This place has too many images."
+  }
+}

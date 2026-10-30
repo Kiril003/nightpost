@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="peer_card_here">here</string>
+    <string name="peer_card_in_touch">in touch, not here</string>
+    <string name="peer_card_quiet">not heard</string>
+
+    <string name="peer_card_how">how this works</string>
+    <string name="peer_card_how_hide">collapse</string>
+
+    <string name="peer_card_name_shortened">the sent name is longer — shown shortened</string>
+
+    <string name="peer_point_kicker">Contact</string>
+    <string name="peer_point_now">here now</string>
+    <string name="peer_point_as_of">as of %1$s</string>
+    <string name="peer_point_away">%1$s away</string>
+
+    <string name="peer_card_name_unreadable">Name unreadable. Name this contact yourself</string>
+
+    <string name="peer_where_section">People</string>
+    <string name="peer_where_level_district">district</string>
+    <string name="peer_where_level_quarter">block</string>
+    <string name="peer_where_level_exact">exact place</string>
+    <string name="peer_where_shows">Shows you: %1$s</string>
+    <string name="peer_where_near_same_district">In the same district as you</string>
+    <string name="peer_where_near_same">Right nearby</string>
+    <string name="peer_where_near_near">Nearby</string>
+    <string name="peer_where_near_far">Far away</string>
+    <string name="peer_where_near_unknown">Your own location is unknown, so we can\'t say near or far</string>
+    <string name="peer_where_age_now">just now</string>
+    <string name="peer_where_age_min">%1$d min ago</string>
+    <string name="peer_where_age_hours">%1$d h ago</string>
+    <string name="peer_where_write">Message</string>
+    <string name="peer_where_seen_title">Who can see me</string>
+    <string name="peer_where_seen_nobody">Nobody can see you right now</string>
+    <string name="peer_where_seen_lede">Granted per person for 30 min with no history</string>
+    <string name="peer_where_seen_count_none">nobody</string>
+    <plurals name="peer_where_seen_count">
+        <item quantity="one">%1$d person</item>
+        <item quantity="other">%1$d people</item>
+    </plurals>
+    <string name="peer_where_choice_none">Nothing</string>
+    <string name="peer_where_choice_district">District</string>
+    <string name="peer_where_choice_quarter">Block</string>
+    <string name="peer_where_choice_exact">Exact</string>
+    <string name="peer_where_not_proven">Exchange messages first to share location</string>
+    <string name="peer_where_empty">No people yet</string>
+    <string name="peer_where_add_person">Add person</string>
+    <string name="peer_where_vanish">Stop sharing with everyone</string>
+    <string name="peer_where_vanish_confirm_title">Disappear for everyone?</string>
+    <string name="peer_where_vanish_confirm_body">Everyone loses your location</string>
+    <string name="peer_where_cancel">Cancel</string>
+    <string name="peer_card_away_dir">%1$s %2$s of you</string>
+    <string name="peer_card_dirs">north,north-east,east,south-east,south,south-west,west,north-west</string>
+    <string name="peer_card_show_me">Show where I am</string>
+    <string name="peer_state_home">At home</string>
+    <string name="peer_state_work">At work</string>
+    <string name="peer_state_vehicle">On the road</string>
+    <string name="peer_state_foot">On foot</string>
+    <string name="peer_state_low_battery">phone is dying</string>
+    <string name="peer_state_stale">not updated for a while</string>
+    <string name="peer_act_wave">Wave</string>
+    <string name="peer_act_call_here">Call them here</string>
+    <string name="peer_act_meet_middle">Meet halfway</string>
+    <string name="peer_words_wave">👋</string>
+    <string name="peer_words_call_here">Come here</string>
+    <string name="peer_words_meet_middle">Meet halfway?</string>
+    <string name="peer_words_arrived">I\'m here</string>
+    <string name="peer_notice_waved">You waved: %1$s</string>
+    <string name="peer_notice_called">%1$s will get where you are now</string>
+    <string name="peer_notice_meet">%1$s has the halfway point. When you get there, I\'ll tell them</string>
+    <string name="peer_notice_arrival">When you get there, I\'ll tell %1$s</string>
+    <string name="peer_notice_not_sent">Not sent: no conversation with this person yet</string>
+    <string name="peer_ghost_from_all">Hide from everyone</string>
+    <string name="peer_ghost_1h">for an hour</string>
+    <string name="peer_ghost_3h">for 3 hours</string>
+    <string name="peer_ghost_morning">until morning</string>
+    <string name="peer_ghost_on_all">Hidden from everyone until %1$s</string>
+    <string name="peer_ghost_on_one">Hidden until %1$s</string>
+    <string name="peer_ghost_row">Hide for 3 h</string>
+    <string name="peer_ghost_back">Come back</string>
+    <string name="peer_ghost_explain">Contacts see only your last known position</string>
+    <string name="peer_battery_title">Say when my phone is dying</string>
+    <string name="peer_battery_body">People who see you get a sign when your battery runs low.</string>
+    <string name="peer_near_title">Near you</string>
+    <string name="peer_group_title">Together here: %1$d</string>
+    <string name="my_world_title">My world</string>
+    <string name="my_world_lede">Only on this phone. It goes nowhere unless you share it yourself.</string>
+    <plurals name="my_world_quarters">
+        <item quantity="one">%1$d block</item>
+        <item quantity="other">%1$d blocks</item>
+    </plurals>
+    <plurals name="my_world_cities">
+        <item quantity="one">%1$d city</item>
+        <item quantity="other">%1$d cities</item>
+    </plurals>
+    <string name="my_world_frequent">Your frequent places</string>
+    <string name="my_world_hours">%1$d h here</string>
+    <string name="my_world_minutes">%1$d min here</string>
+    <string name="my_world_place">Frequent place</string>
+    <string name="my_world_empty">Your world opens as you move. Nothing here yet.</string>
+    <string name="my_world_show">Show on the map</string>
+    <string name="my_world_hide">Take off the map</string>
+    <string name="my_world_share">Share</string>
+    <string name="my_world_share_text">My world in Nightpost: %1$s, %2$s</string>
+    <string name="my_world_forget">Forget everything</string>
+    <string name="my_world_forget_title">Forget my world?</string>
+    <string name="my_world_forget_body">Deletes all opened blocks and frequent places</string>
+    <string name="meet_open">Meet up with several</string>
+    <string name="meet_title">Meet-up</string>
+    <string name="meet_pick">Who\'s coming</string>
+    <string name="meet_here">Right where I am</string>
+    <string name="meet_middle_all">Halfway between everyone</string>
+    <string name="meet_send">Invite</string>
+    <string name="meet_words">Let\'s meet here</string>
+    <string name="meet_there">there</string>
+    <string name="meet_on_way">on the way · %1$s to go</string>
+    <string name="meet_to_go">%1$s to go</string>
+    <string name="meet_near">already close</string>
+    <string name="meet_far">still far away</string>
+    <string name="meet_unseen">not sharing where they are</string>
+    <string name="meet_end">End the meet-up</string>
+    <string name="meet_notice">Invited: %1$s. When you get there, I\'ll tell them</string>
+    <string name="meet_nobody">No participant positions shared yet</string>
+    <string name="circle_title">Your people</string>
+    <string name="circle_alert">under alert · %1$s</string>
+    <string name="circle_quiet">all clear · %1$s</string>
+    <string name="circle_quiet_bare">all clear</string>
+    <string name="circle_safe">I\'m safe — tell my people</string>
+    <string name="circle_safe_words">I\'m safe</string>
+    <string name="circle_no_listeners">You can say «I\'m safe» to people you show where you are.</string>
+    <plurals name="circle_safe_told">
+        <item quantity="one">Told %1$d person</item>
+        <item quantity="other">Told %1$d people</item>
+    </plurals>
+</resources>

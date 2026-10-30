@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_guard_typed">Saisie à la main, pas depuis votre discussion. Vérifiez avec la personne.</string>
+    <string name="sol_guard_venue">Portefeuille du lieu sur l’addition : vérifiez le nom</string>
+    <string name="sol_guard_scanned">Via un QR code, pas depuis votre discussion. Vérifiez avec la personne.</string>
+    <string name="sol_guard_new_address">Nouvelle adresse : vous payiez cette personne ailleurs. Demandez-lui.</string>
+    <string name="sol_guard_first_time">Premier virement à cette personne. Assurez-vous que c’est bien elle.</string>
+    <string name="sol_guard_other_network">Vous payiez cette personne sur %1$s, et maintenant c’est %2$s.</string>
+    <string name="sol_guard_other_coin">Vous envoyez d’habitude %1$s à cette personne, et maintenant c’est %2$s.</string>
+    <string name="sol_guard_unusual">Plus que d’habitude : jusqu’ici au maximum %1$s %2$s.</string>
+</resources>

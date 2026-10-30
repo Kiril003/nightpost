@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Bozza di trasferimento: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Trasferimento a %1$s (%2$s): inserisci l’importo e conferma.</string>
+    <string name="money_coin_guessed">Usato %1$s di default</string>
+    <string name="money_which_one">Più corrispondenze: %1$s. Indica il cognome.</string>
+    <string name="money_no_wallet">%1$s non ha ancora un indirizzo wallet.</string>
+    <string name="money_nobody">Non ho trovato «%1$s» tra le persone delle tue chat.</string>
+    <string name="money_who_missing">Chi lo riceve? Indica qualcuno delle tue chat.</string>
+    <string name="money_bad_amount">Impossibile inviare %1$s %2$s: la parte più piccola di %2$s è %3$s.</string>
+    <string name="money_coin_not_here">Non esiste %1$s su %2$s.</string>
+    <string name="money_no_own_wallet">Il tuo wallet non è ancora pronto: apri Impostazioni › Wallet.</string>
+    <string name="money_seal_pick">Scegli una foto per sigillarne l’impronta SHA-256</string>
+    <string name="money_drafted_cash">Contanti in tasca: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Senza internet posso dare solo contanti in tasca, ma %1$s</string>
+    <string name="money_offline_no_sol">in tasca mancano SOL per la commissione e il conto del destinatario.</string>
+    <string name="money_offline_empty">è vuota.</string>
+    <string name="money_offline_other_coin">le sue banconote sono in %1$s, non in %2$s.</string>
+    <string name="money_offline_short">sono liberi solo %1$s %2$s.</string>
+    <string name="money_offline_external">la tasca funziona solo con il wallet integrato.</string>
+    <string name="money_offline_not_person">i contanti vanno solo a un contatto della chat.</string>
+    <string name="money_watch_out">Attenzione:</string>
+</resources>

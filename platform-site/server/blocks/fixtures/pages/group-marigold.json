@@ -1,0 +1,219 @@
+{
+  "handle": "marigold-hours",
+  "sample": true,
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "shop",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Marigold Hours",
+          "tagline": "Band · 4 members"
+        }
+      },
+      {
+        "id": "hero-1",
+        "kind": "id.hero",
+        "variant": "split",
+        "hidden": false,
+        "data": {
+          "headline": "Two guitars, one old organ, a lot of harmonies.",
+          "lede": "New songs all autumn. Shows in small halls and living rooms.",
+          "image": {
+            "blob": "sample-vinyl-01",
+            "w": 1000,
+            "h": 1000,
+            "alt": "The first pressing of Low Orchard"
+          },
+          "chips": [
+            {
+              "id": "chip-band",
+              "label": "Band"
+            },
+            {
+              "id": "chip-folk",
+              "label": "Indie folk"
+            }
+          ],
+          "primary": "show-2",
+          "primary_label": "Get tickets",
+          "secondary": "msg-9",
+          "secondary_label": "Message the band"
+        }
+      },
+      {
+        "id": "show-2",
+        "kind": "evt.single",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "title": "Hall at Mill Lane",
+          "starts": "2026-11-07T20:00",
+          "note": "Doors 19:30",
+          "capacity": 150,
+          "price": {
+            "amount": "12",
+            "token": "USDC"
+          },
+          "audience": "public"
+        }
+      },
+      {
+        "id": "rsvp-3",
+        "kind": "evt.rsvp",
+        "variant": "avatars",
+        "hidden": false,
+        "data": {
+          "event": "show-2",
+          "waitlist": false
+        }
+      },
+      {
+        "id": "crew-4",
+        "kind": "org.members",
+        "variant": "faces",
+        "hidden": false,
+        "data": {
+          "title": "Who plays",
+          "members": [
+            {
+              "id": "m-nina",
+              "name": "Nina",
+              "role": "Vocals"
+            },
+            {
+              "id": "m-tomas",
+              "name": "Tomas",
+              "role": "Guitar"
+            },
+            {
+              "id": "m-ivo",
+              "name": "Ivo",
+              "role": "Drums"
+            },
+            {
+              "id": "m-lea",
+              "name": "Lea",
+              "role": "Organ"
+            }
+          ]
+        }
+      },
+      {
+        "id": "split-5",
+        "kind": "pay.split_cost",
+        "variant": "seats",
+        "hidden": false,
+        "data": {
+          "title": "Bus to the winter fair",
+          "token": "USDC",
+          "total": "76.80",
+          "shares": 12,
+          "closes": "2026-11-28T12:00"
+        }
+      },
+      {
+        "id": "join-6",
+        "kind": "org.join",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "title": "Street team",
+          "note": "Posters, door, merch table",
+          "approve": "owner"
+        }
+      },
+      {
+        "id": "meet-7",
+        "kind": "loc.meet_point",
+        "variant": "map_card",
+        "hidden": false,
+        "data": {
+          "point": {
+            "lat": 48.2167,
+            "lon": 16.3953
+          },
+          "text": "Hall at Mill Lane"
+        }
+      },
+      {
+        "id": "merch-8",
+        "kind": "cat.products",
+        "variant": "grid",
+        "hidden": false,
+        "data": {
+          "title": "First pressing",
+          "eyebrow": "Merch · ships after the show",
+          "token": "USDC",
+          "items": [
+            {
+              "id": "lp",
+              "name": "Low Orchard LP",
+              "detail": "12 inch · 9 songs",
+              "price": "25",
+              "stock": 61,
+              "image": {
+                "blob": "sample-vinyl-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "The first pressing of Low Orchard"
+              }
+            },
+            {
+              "id": "tape",
+              "name": "Demo tape",
+              "detail": "Side A + B",
+              "price": "10",
+              "stock": 12,
+              "image": {
+                "blob": "sample-tape-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Demo cassette"
+              }
+            },
+            {
+              "id": "pin",
+              "name": "Record pin",
+              "detail": "Enamel · 4 cm",
+              "price": "6",
+              "stock": 40,
+              "image": {
+                "blob": "sample-pin-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Enamel record pin"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "msg-9",
+        "kind": "loc.message",
+        "variant": "button",
+        "hidden": false,
+        "data": {
+          "on": true,
+          "who": "owner",
+          "title": "Message the band"
+        }
+      }
+    ]
+  },
+  "live": {
+    "at": "2026-10-22T12:00",
+    "network": "devnet",
+    "rsvp-3": {
+      "going": 64
+    },
+    "split-5": {
+      "paid": 9
+    }
+  }
+}

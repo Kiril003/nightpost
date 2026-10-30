@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- STORE flavor overlay — the Play-submittable manifest diet.
+
+     Everything here is a removal against src/main + library manifests.
+     Rationale (brief 03 defect #11 / §4.6): Google Play rejects
+     non-accessibility uses of the AccessibilityService API, gates
+     QUERY_ALL_PACKAGES behind declared use cases we do not have in the
+     store product (READ_PHONE_STATE прибрано з src/main 05.09 — його ніхто
+     не читав у жодній збірці, тож і знімати вже нема чого), and the mesh/health surface is a
+     field-only capability. The field flavor keeps all of it. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- God-mode / device-hands permissions -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:node="remove" />
+
+    <!-- Оновлення в цій збірці привозить Play, тож і просити встановлювача
+         немає про що. Play відхиляє REQUEST_INSTALL_PACKAGES без задекларованого
+         випадку вжитку, а «застосунок оновлює себе сам» таким випадком не є. -->
+    <uses-permission
+        android:name="android.permission.REQUEST_INSTALL_PACKAGES"
+        tools:node="remove" />
+
+    <!-- Health/body surface (healthmesh — field only) -->
+    <uses-permission
+        android:name="android.permission.BODY_SENSORS"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_HEALTH"
+        tools:node="remove" />
+
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"
+        tools:node="remove" />
+    <uses-permission
+        android:name="androidx.car.app.NAVIGATION_TEMPLATES"
+        tools:node="remove" />
+    <uses-permission
+        android:name="androidx.car.app.ACCESS_SURFACE"
+        tools:node="remove" />
+
+    <!-- Tier 3+ mesh radios — field only -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_SCAN"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADVERTISE"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_CONNECT"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.UWB_RANGING"
+        tools:node="remove" />
+
+    <!-- ── Аудит під політики Google Play, 01.10.2026 ─────────────────────
+         Кожен дозвіл, що ЛИШАЄТЬСЯ в store, має рядок обґрунтування в
+         docs/play/PERMISSIONS.md; задача verifyStore<Тип>Permissions звіряє з
+         ним ЗЛИТИЙ маніфест (разом із бібліотеками) і валить збірку на
+         незадекларованому. Знімаємо тут те, чого Play не пропустить або що
+         Play-версії не потрібне. Інтерфейс цих можливостей у store ховає
+         `Distribution` — щоб кнопка не вела в системний екран, де застосунку
+         вже немає. -->
+
+    <!-- Фоновий доступ до місця. Play пускає його лише під основну функцію з
+         відеодоказом і окремою декларацією; «слід поза екраном» такою не є.
+         Навігація працює службою переднього плану типу location — їй фоновий
+         дозвіл не потрібен. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_BACKGROUND_LOCATION"
+        tools:node="remove" />
+
+    <!-- Хибна позиція для ІНШИХ застосунків. Розробницька можливість, яку
+         Play читає як обман довкілля; у store її немає разом зі службою. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:node="remove" />
+
+    <!-- Малювання поверх інших застосунків (орб і стрічка шепоту). Не основна
+         функція, а самі служби — dataSync без передачі даних, що порушує
+         правила типів служб переднього плану. -->
+    <uses-permission
+        android:name="android.permission.SYSTEM_ALERT_WINDOW"
+        tools:node="remove" />
+
+    <!-- Зміна системних налаштувань (яскравість голосовою командою). -->
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:node="remove" />
+
+    <!-- USE_EXACT_ALARM Play дозволяє лише будильникам і календарям. Нагадування
+         в store падають на неточний будильник (ReminderAlarms вже вміє:
+         canScheduleExactAlarms() == false → setAndAllowWhileIdle). -->
+    <uses-permission
+        android:name="android.permission.USE_EXACT_ALARM"
+        tools:node="remove" />
+
+    <application>
+        <!-- Хибна позиція (див. ACCESS_MOCK_LOCATION вище). -->
+        <service
+            android:name="local.phantom.companion.service.FalsePositionService"
+            tools:node="remove" />
+        <!-- Оверлеї feature-ambient (див. SYSTEM_ALERT_WINDOW вище). -->
+        <service
+            android:name="local.phantom.companion.feature.ambient.service.WhisperLineService"
+            tools:node="remove" />
+        <!-- feature-godmode services (declared in that module's manifest) -->
+        <service
+            android:name="local.phantom.companion.feature.godmode.service.NotificationReceiverService"
+            tools:node="remove" />
+        <service
+            android:name="local.phantom.companion.feature.godmode.service.ScreenAwarenessService"
+            tools:node="remove" />
+        <service
+            android:name="local.phantom.companion.service.AirAlertService"
+            tools:node="remove" />
+        <service
+            android:name="local.phantom.companion.feature.car.PhantomCarAppService"
+            tools:node="remove" />
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            tools:node="remove" />
+        <meta-data
+            android:name="androidx.car.app.minCarApiLevel"
+            tools:node="remove" />
+        <meta-data
+            android:name="com.google.android.gms.car.notification.SmallIcon"
+            tools:node="remove" />
+    </application>
+</manifest>

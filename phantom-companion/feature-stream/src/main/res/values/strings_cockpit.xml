@@ -1,0 +1,16 @@
+<resources>
+    <string name="cockpit_title">At the wheel</string>
+    <string name="cockpit_close">Close</string>
+    <string name="cockpit_mount_title">Mounted screen</string>
+    <string name="cockpit_mount_sub">large route figures; can be mirrored for the windscreen</string>
+    <string name="cockpit_marks_kicker">Mark on the road · gone in 2 h</string>
+    <string name="cockpit_mark_crash">Crash</string>
+    <string name="cockpit_mark_repair">Roadworks</string>
+    <string name="cockpit_mark_camera">Speed camera</string>
+    <string name="cockpit_find_kicker">Find nearby</string>
+    <string name="cockpit_find_fuel">Fuel station</string>
+    <string name="cockpit_find_charging">Electric car charging</string>
+    <string name="cockpit_find_tyres">Tyres and car repair</string>
+    <string name="cockpit_find_wash">Car wash</string>
+    <string name="cockpit_find_parking">Underground parking</string>
+</resources>

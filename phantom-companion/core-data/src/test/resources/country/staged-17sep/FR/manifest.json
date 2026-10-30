@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 51.1,
+    "maxLon": 9.6,
+    "minLat": 41.3,
+    "minLon": -5.15
+  },
+  "files": [
+    {
+      "bytes": 11145862,
+      "name": "places.tsv.gz",
+      "sha256": "69d8a8142c22bd1936cfaf88684f835c765c35caa645cd75806dc971a2e3ab4e"
+    },
+    {
+      "bytes": 24838464,
+      "name": "streets.tsv.gz",
+      "sha256": "7bcec7e8a35c711da5a3da5d55df4aed04b2e4784a2be8c4dfd0d1bb4724a15d"
+    }
+  ],
+  "home": {
+    "lat": 48.8535,
+    "lon": 2.3484,
+    "zoom": 12.0
+  },
+  "id": "FR",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "fr-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Франція: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "fr-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Франція: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Франція",
+  "version": 1
+}

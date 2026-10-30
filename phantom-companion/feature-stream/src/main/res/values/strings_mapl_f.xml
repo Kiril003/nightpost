@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_f_stop">Stop</string>
+    <string name="mapl_f_transit">Transit</string>
+    <string name="mapl_f_point">Point</string>
+    <string name="mapl_f_place">Place</string>
+    <string name="mapl_f_entrance">Entrance</string>
+
+    <string name="mapl_f_migration_renamed">Renamed due to name conflict: %1$s</string>
+    <string name="mapl_f_migration_unreadable">Could not open old marks: %1$d</string>
+    <string name="mapl_f_no_active_route_along">No active route for along-route search</string>
+    <string name="mapl_f_along_route_suffix">%1$s · along route</string>
+    <string name="mapl_f_not_found_along_route">Not found along route: %1$s</string>
+    <string name="mapl_f_not_found_nearby">Not found nearby: %1$s</string>
+    <string name="mapl_f_shelter_registry_gap">Unknown if shelters are here: no certified ones in the directory</string>
+    <string name="mapl_f_invincibility_gap">Invincibility point list covers three regions only (%1$s), not “%2$s”</string>
+    <string name="mapl_f_quote">“%1$s”</string>
+    <string name="mapl_f_not_found_nearby_quoted">Not found nearby “%1$s”</string>
+    <string name="mapl_f_found_on_map">“%1$s”: found %2$d on map</string>
+    <string name="mapl_f_source_down">Source is silent — cannot show %1$s right now</string>
+    <string name="mapl_f_nowhere_to_look">No place pack installed and these places have not been seen yet</string>
+
+    <string name="mapl_f_routing_not_configured">Online routing is not configured — Settings → Map → Geo services</string>
+    <string name="mapl_f_transit_not_found">Transit not found</string>
+    <string name="mapl_f_shown_profile">%1$s — showing %2$s</string>
+    <string name="mapl_f_replan_kept_previous">Could not reroute — kept previous route</string>
+    <string name="mapl_f_deadline_arrive_by">Countdown: arrive by %1$s</string>
+    <string name="mapl_f_deadline_cleared">Countdown cleared</string>
+
+    <string name="mapl_f_mark">mark</string>
+    <string name="mapl_f_target">Target</string>
+    <string name="mapl_f_summary_type">Type: %1$s</string>
+    <string name="mapl_f_summary_open">Open now</string>
+    <string name="mapl_f_summary_closed">Closed now</string>
+    <string name="mapl_f_summary_address">Address: %1$s</string>
+    <string name="mapl_f_summary_phone">Phone: %1$s</string>
+    <string name="mapl_f_ai_offline">Nightpost is offline — summary will appear when connected</string>
+    <string name="mapl_f_ai_failed">Nightpost did not respond</string>
+    <string name="mapl_f_ai_empty">Nightpost returned an empty response</string>
+    <string name="mapl_f_eta_min">%1$d min</string>
+    <string name="mapl_f_eta_hr_min">%1$d hr %2$d min</string>
+
+    <string name="mapl_f_prefetch_idle">Nothing is being fetched.</string>
+    <string name="mapl_f_prefetch_running_tiles">, tiles downloading separately (%1$d packs)</string>
+    <string name="mapl_f_prefetch_running">Fetching “%1$s”: %2$d/%3$d grid cells%4$s%5$s.</string>
+    <string name="mapl_f_prefetch_failed_part">, %1$d failed</string>
+    <string name="mapl_f_prefetch_done_tiles">; ~%1$d tiles in %2$d packs (downloaded by MapLibre)</string>
+    <string name="mapl_f_prefetch_done_truncated">; corridor exceeded limit — took the start</string>
+    <string name="mapl_f_prefetch_done">Done: “%1$s” — %2$d new cells, %3$d already held%4$s%5$s%6$s.</string>
+    <string name="mapl_f_prefetch_empty">Corridor is empty — nothing to fetch.</string>
+    <string name="mapl_f_prefetch_already_running">Fetch already running. %1$s</string>
+    <string name="mapl_f_prefetch_start_main">Fetching “%1$s” (~%2$d km): %3$d new cells, %4$d already stored</string>
+    <string name="mapl_f_prefetch_start_tiles">, ~%1$d map tiles in %2$d packs</string>
+    <string name="mapl_f_prefetch_start_truncated">; route exceeds limit — taking first %1$d cells</string>
+    <string name="mapl_f_prefetch_start_tail">. Running in background, status — map.prefetch with no arguments.</string>
+    <string name="mapl_f_prefetch_active_route">active route</string>
+</resources>

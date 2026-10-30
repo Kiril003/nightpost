@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meetup_ask_drafted">Bozza di incontro: %1$s. Controllala nel messenger.</string>
+    <string name="meetup_ask_still_empty">Ancora vuoto: %1$s.</string>
+    <string name="meetup_ask_field_people">persone</string>
+    <string name="meetup_ask_field_place">luogo</string>
+    <string name="meetup_ask_field_time">orario</string>
+    <string name="meetup_ask_empty">Bozza di incontro pronta: scegli persone, luogo e orario.</string>
+    <string name="meetup_ask_split_claimed">Il conto si apre nel messenger: spunta le tue voci e paga.</string>
+    <string name="meetup_ask_split_equal">Il conto si apre nel messenger: spunta tutte le voci per dividere in parti uguali.</string>
+    <string name="meetup_ask_roster_unreadable">Impossibile leggere i tuoi contatti. Apri Persone.</string>
+    <string name="meetup_ask_draft_failed">Il messenger non ha accettato la bozza. Riprova.</string>
+    <string name="meetup_ask_bad_mode">Non ho capito come dividere: «%1$s». Il conto si divide per spunte o in parti uguali.</string>
+</resources>

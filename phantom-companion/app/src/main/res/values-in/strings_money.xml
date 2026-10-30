@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Draf transfer: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Transfer ke %1$s (%2$s), masukkan jumlah lalu konfirmasi.</string>
+    <string name="money_coin_guessed">Default ke %1$s</string>
+    <string name="money_which_one">Beberapa yang cocok: %1$s. Sebutkan nama belakangnya.</string>
+    <string name="money_no_wallet">%1$s belum punya alamat dompet.</string>
+    <string name="money_nobody">Aku tak menemukan “%1$s” di antara orang di chatmu.</string>
+    <string name="money_who_missing">Siapa penerimanya? Sebut seseorang dari chatmu.</string>
+    <string name="money_bad_amount">%1$s %2$s tak bisa dikirim: bagian terkecil %2$s adalah %3$s.</string>
+    <string name="money_coin_not_here">Tidak ada %1$s di %2$s.</string>
+    <string name="money_no_own_wallet">Dompetmu belum siap, buka Pengaturan › Dompet.</string>
+    <string name="money_seal_pick">Pilih foto untuk menyegel sidik SHA-256-nya</string>
+    <string name="money_drafted_cash">Uang saku: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Tanpa internet aku hanya bisa memberi uang saku, tetapi %1$s</string>
+    <string name="money_offline_no_sol">saku kekurangan SOL untuk biaya dan akun penerima.</string>
+    <string name="money_offline_empty">sakunya kosong.</string>
+    <string name="money_offline_other_coin">uangnya dalam %1$s, bukan %2$s.</string>
+    <string name="money_offline_short">hanya %1$s %2$s yang bebas di sana.</string>
+    <string name="money_offline_external">saku hanya bekerja dengan dompet bawaan.</string>
+    <string name="money_offline_not_person">uang tunai hanya untuk kontak chat.</string>
+    <string name="money_watch_out">Perhatian:</string>
+</resources>

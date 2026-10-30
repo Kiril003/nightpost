@@ -1,0 +1,74 @@
+<html data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440, initial-scale=1">
+<title>Places · Nightpost</title>
+<script>document.documentElement.dataset.theme = location.hash.slice(1) || 'night'</script>
+<link rel="stylesheet" href="./system.css">
+<style>
+  .places-wrap { min-height: 100vh; display: flex; flex-direction: column; }
+  .places-list { max-width: 760px; }
+  .footer { margin-top: auto; }
+</style>
+</head>
+<body>
+  <div class="wrap places-wrap">
+    <header class="topbar">
+      <a href="site-home.html" class="wordmark">Nightpost</a>
+      <nav>
+        <a href="site-home.html">Overview</a>
+        <a href="site-talk.html">Talk</a>
+        <a href="#">People</a>
+        <a href="#">Money</a>
+        <a href="site-places-one.html" aria-current="page">Places</a>
+        <a href="#">Download</a>
+      </nav>
+      <div class="end">
+        <div class="lang">
+          <span aria-current="true">EN</span>
+          <span>UA</span>
+        </div>
+        <a href="site-you.html" class="avatar">AN</a>
+      </div>
+    </header>
+
+    <section class="page-head">
+      <div>
+        <div class="eyebrow">Places</div>
+        <h1>Your places</h1>
+        <p class="line">A page for your place: hours, menu and events, shown in Nightpost.</p>
+        <div class="actions">
+          <button class="btn btn--secondary" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            <span>New place</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <ul class="list places-list">
+      <li class="row">
+        <span class="tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <div class="main">
+          <div class="name">Pho Corner</div>
+          <div class="preview">Market Street 21 · Published</div>
+        </div>
+        <div class="meta">
+          <div>4.6 · 12 ratings</div>
+          <div>1 event</div>
+        </div>
+      </li>
+    </ul>
+
+    <footer class="footer">
+      <span>© 2026 Nightpost</span>
+      <a href="#">Security and data</a>
+      <a href="#">Pricing</a>
+      <a href="#">Legal terms</a>
+      <a href="site-you.html">You</a>
+    </footer>
+  </div>
+</body>
+</html>

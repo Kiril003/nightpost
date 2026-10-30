@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_allow">Povolit</string>
+    <string name="perm_not_now">Teď ne</string>
+    <string name="perm_open_settings">Otevřít nastavení</string>
+    <string name="perm_denied_title">Zatím bez přístupu</string>
+    <string name="perm_blocked_title">Přístup je vypnutý</string>
+    <string name="perm_blocked_body">Android se už nezeptá. Zapněte přístup v nastavení aplikace a vraťte se.</string>
+</resources>

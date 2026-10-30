@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_f_stop">Зупинка</string>
+    <string name="mapl_f_transit">Транзит</string>
+    <string name="mapl_f_point">Точка</string>
+    <string name="mapl_f_place">Місце</string>
+    <string name="mapl_f_entrance">Вхід</string>
+
+    <string name="mapl_f_migration_renamed">Через збіг імен перейменовано: %1$s</string>
+    <string name="mapl_f_migration_unreadable">Не вдалося відкрити старих міток: %1$d</string>
+    <string name="mapl_f_no_active_route_along">Немає активного маршруту для пошуку по дорозі</string>
+    <string name="mapl_f_along_route_suffix">%1$s · по дорозі</string>
+    <string name="mapl_f_not_found_along_route">По дорозі не знайшов: %1$s</string>
+    <string name="mapl_f_not_found_nearby">Поруч не знайшов: %1$s</string>
+    <string name="mapl_f_shelter_registry_gap">Не знаю, чи є тут сховища: у довіднику немає сертифікованих</string>
+    <string name="mapl_f_invincibility_gap">Пункти незламності є лише для трьох областей (%1$s), не для «%2$s»</string>
+    <string name="mapl_f_quote">«%1$s»</string>
+    <string name="mapl_f_not_found_nearby_quoted">Поруч не знайшов «%1$s»</string>
+    <string name="mapl_f_found_on_map">«%1$s»: знайшов %2$d на мапі</string>
+    <string name="mapl_f_source_down">Джерело мовчить — %1$s зараз показати не можу</string>
+    <string name="mapl_f_nowhere_to_look">Шукати нема де: пакет місць не встановлено, і я їх ще не бачив</string>
+
+    <string name="mapl_f_routing_not_configured">Онлайн-маршрутизацію не налаштовано — Налаштування → Мапа → Геосервіси</string>
+    <string name="mapl_f_transit_not_found">Транзит не знайшовся</string>
+    <string name="mapl_f_shown_profile">%1$s — показано %2$s</string>
+    <string name="mapl_f_replan_kept_previous">Не вдалось перепрокласти — лишив попередній маршрут</string>
+    <string name="mapl_f_deadline_arrive_by">Відлік: прибути до %1$s</string>
+    <string name="mapl_f_deadline_cleared">Відлік знято</string>
+
+    <string name="mapl_f_mark">позначка</string>
+    <string name="mapl_f_target">Ціль</string>
+    <string name="mapl_f_summary_type">Тип: %1$s</string>
+    <string name="mapl_f_summary_open">Зараз відчинено</string>
+    <string name="mapl_f_summary_closed">Зараз зачинено</string>
+    <string name="mapl_f_summary_address">Адреса: %1$s</string>
+    <string name="mapl_f_summary_phone">Тел: %1$s</string>
+    <string name="mapl_f_ai_offline">Nightpost зараз без звʼязку — огляд буде, коли повернеться</string>
+    <string name="mapl_f_ai_failed">Nightpost не відповів</string>
+    <string name="mapl_f_ai_empty">Nightpost повернув порожню відповідь</string>
+    <string name="mapl_f_eta_min">%1$d хв</string>
+    <string name="mapl_f_eta_hr_min">%1$d год %2$d хв</string>
+
+    <string name="mapl_f_prefetch_idle">Нічого не стягується.</string>
+    <string name="mapl_f_prefetch_running_tiles">, фрагменти мапи качаються окремо (%1$d пакетів)</string>
+    <string name="mapl_f_prefetch_running">Стягую «%1$s»: %2$d/%3$d комірок сітки%4$s%5$s.</string>
+    <string name="mapl_f_prefetch_failed_part">, %1$d не вдалось</string>
+    <string name="mapl_f_prefetch_done_tiles">; ~%1$d фрагментів у %2$d пакетах (качаються окремо)</string>
+    <string name="mapl_f_prefetch_done_truncated">; коридор був довший за ліміт — взято початок</string>
+    <string name="mapl_f_prefetch_done">Готово: «%1$s» — %2$d нових комірок, %3$d вже було%4$s%5$s%6$s.</string>
+    <string name="mapl_f_prefetch_empty">Коридор порожній — нема що стягувати.</string>
+    <string name="mapl_f_prefetch_already_running">Вже йде стягування. %1$s</string>
+    <string name="mapl_f_prefetch_start_main">Стягую «%1$s» (~%2$d км): %3$d нових комірок, %4$d вже є</string>
+    <string name="mapl_f_prefetch_start_tiles">, ~%1$d фрагментів мапи у %2$d пакетах</string>
+    <string name="mapl_f_prefetch_start_truncated">; маршрут довший за ліміт — беру перші %1$d комірок</string>
+    <string name="mapl_f_prefetch_start_tail">. Працюю у фоні, статус — map.prefetch без аргументів.</string>
+    <string name="mapl_f_prefetch_active_route">активний маршрут</string>
+</resources>

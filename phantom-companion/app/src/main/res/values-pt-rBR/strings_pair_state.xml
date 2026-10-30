@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pair_err_bad_input">Esse não é um QR code de computador.</string>
+    <string name="pair_err_expired">Este QR code expirou. Há um novo no computador.</string>
+    <string name="pair_err_not_found">Computador não encontrado.</string>
+    <string name="pair_err_digits_not_found">Computador não encontrado nesta rede. Escaneie o QR code dele.</string>
+    <string name="pair_err_not_proven">O computador não passou na verificação.</string>
+    <string name="pair_err_unreachable">Não foi possível acessar o computador: %1$s</string>
+    <string name="sphere_place">Local</string>
+    <string name="sphere_sound">Som e voz</string>
+    <string name="sphere_notices">Notificações</string>
+    <string name="sphere_clipboard">Área de transferência e links</string>
+    <string name="sphere_screen">Tela</string>
+    <string name="sphere_keyboard">Teclado</string>
+</resources>

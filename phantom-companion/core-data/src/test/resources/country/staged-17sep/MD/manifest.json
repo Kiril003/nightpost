@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 48.4921,
+    "maxLon": 30.1637,
+    "minLat": 45.4672,
+    "minLon": 26.6164
+  },
+  "files": [
+    {
+      "bytes": 359309,
+      "name": "places.tsv.gz",
+      "sha256": "6770c810c4a296cd118a160e947f3a3db7eb83d5b6b3ff1fce427ce49629f690"
+    },
+    {
+      "bytes": 554442,
+      "name": "streets.tsv.gz",
+      "sha256": "dcb668016504ba8ef99b6e4170f183300ee492720164c92c0802993382724d2d"
+    }
+  ],
+  "home": {
+    "lat": 47.0245,
+    "lon": 28.8323,
+    "zoom": 12.0
+  },
+  "id": "MD",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "md-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Молдова: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "md-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Молдова: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Молдова",
+  "version": 1
+}

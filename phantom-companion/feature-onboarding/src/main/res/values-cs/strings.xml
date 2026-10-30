@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onb_to_chats">Do chatů</string>
+    <string name="onb_start">Začít</string>
+    <string name="onb_restore">Obnovit</string>
+    <string name="onb_photo_add">Přidat fotku</string>
+    <string name="onb_retry">Zkusit znovu</string>
+    <string name="onb_name_title">Jak se jmenujete?</string>
+    <string name="onb_name_field_label">Vaše jméno nebo přezdívka</string>
+    <string name="onb_name_placeholder">jméno…</string>
+    <string name="onb_name_hint_long">Nejvíce %1$d znaků.</string>
+    <string name="onb_name_unnamed">Vaše jméno</string>
+    <string name="onb_error_kicker">chyba</string>
+    <string name="onb_creating_profile">nastavuje se váš profil v tomto telefonu</string>
+    <string name="onb_error_title">Něco se pokazilo</string>
+    <string name="onb_lang_mark">Nightpost</string>
+    <string name="onb_lang_line">Chaty, mapa a peníze s vašimi lidmi — na jednom místě.</string>
+    <string name="onb_lang_title">Vyberte jazyk</string>
+    <string name="onb_lang_continue">Pokračovat</string>
+</resources>

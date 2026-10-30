@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Überweisungsentwurf: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Überweisung an %1$s (%2$s) – Betrag eingeben und bestätigen.</string>
+    <string name="money_coin_guessed">Standardmäßig %1$s</string>
+    <string name="money_which_one">Mehrere Treffer: %1$s. Nenne den Nachnamen.</string>
+    <string name="money_no_wallet">%1$s hat noch keine Wallet-Adresse.</string>
+    <string name="money_nobody">Ich habe „%1$s“ unter den Personen deiner Chats nicht gefunden.</string>
+    <string name="money_who_missing">Wer soll es bekommen? Nenne jemanden aus deinen Chats.</string>
+    <string name="money_bad_amount">%1$s %2$s lassen sich nicht senden: Der kleinste Teil von %2$s ist %3$s.</string>
+    <string name="money_coin_not_here">Es gibt kein %1$s auf %2$s.</string>
+    <string name="money_no_own_wallet">Deine Wallet ist noch nicht bereit – öffne Einstellungen › Wallet.</string>
+    <string name="money_seal_pick">Wähle ein Foto, um seinen SHA-256-Fingerabdruck zu versiegeln</string>
+    <string name="money_drafted_cash">Taschengeld: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Ohne Internet kann ich nur Taschengeld geben, aber %1$s</string>
+    <string name="money_offline_no_sol">in der Tasche fehlt SOL für die Gebühr und das Konto des Empfängers.</string>
+    <string name="money_offline_empty">sie ist leer.</string>
+    <string name="money_offline_other_coin">die Scheine sind in %1$s, nicht in %2$s.</string>
+    <string name="money_offline_short">nur %1$s %2$s sind dort frei.</string>
+    <string name="money_offline_external">die Tasche funktioniert nur mit der eingebauten Wallet.</string>
+    <string name="money_offline_not_person">Bargeld geht nur an einen Chat-Kontakt.</string>
+    <string name="money_watch_out">Achtung:</string>
+</resources>

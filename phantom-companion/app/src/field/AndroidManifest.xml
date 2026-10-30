@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FIELD flavor overlay — лише ДОДАННЯ до src/main.
+
+     SMS-смуга «Наміру» (біблія месенджера, розд. 07 §3.3): телефон без
+     інтернету шле запечатане прохання на мій домашній шлюз і отримує
+     відповідь SMS. Тільки field: store цих дозволів не має і не матиме
+     (Play дозволяє SMS лише застосункам SMS за замовчуванням). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <!-- Купюра «телефон до телефона» без роутера: Google Nearby Connections
+         (BLE/Bluetooth). Питається лише в мить «передати/прийняти поруч». -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+
+    <application>
+        <!-- play-services-nearby 19.3.0 оголошує в маніфесті службу Exposure
+             Notifications, а класу WakeUpService у його classes.jar немає. Ми
+             беремо лише Nearby Connections; служба без класу — мертвий
+             експортований компонент, і verifyFieldReleaseSurvivors не пускає
+             такий APK. Прибираємо оголошення, а не саму залежність. -->
+        <service
+            android:name="com.google.android.gms.nearby.exposurenotification.WakeUpService"
+            tools:node="remove" />
+
+        <!-- BROADCAST_SMS — лише система може вкласти SMS у цей приймач. -->
+        <receiver
+            android:name="local.phantom.companion.data.intent.IntentSmsReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

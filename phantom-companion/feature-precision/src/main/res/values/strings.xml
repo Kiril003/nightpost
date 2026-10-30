@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- English mirror of res/values/strings.xml. Every key here must exist there
+     and vice versa. -->
+<resources>
+    <!-- The only way out of this screen used to be the system back gesture —
+         every sibling settings screen has a PhantomBackPill, this one did not. -->
+    <string name="precision_back">Back</string>
+
+    <!-- OFFLINE ROADS — what the imported road pack actually carries. -->
+    <string name="roadpack_done_tagless">No road tags: routing by length only</string>
+    <string name="roadpack_done_stale_recipe">Older pack format: no road classes or speed limits</string>
+    <string name="roadpack_done_tagged">Road classes and speed limits loaded</string>
+    <string name="roadpack_done_no_transit">Roads loaded (no transit data)</string>
+    <string name="roadpack_done_transit">Transit: %1$d stops, %2$d lines, %3$d routes</string>
+    <string name="roadpack_missing_keys">Missing keys in pack: %1$s</string>
+
+    <!-- OFFLINE BASEMAP — the imported tile file (.mbtiles), OfflineBasemapCard. -->
+    <string name="offline_basemap_title">OFFLINE BASEMAP</string>
+    <string name="offline_basemap_explainer">Tile file (.mbtiles) for map use without internet</string>
+    <string name="offline_basemap_working">Checking the file…</string>
+    <string name="offline_basemap_absent">No file yet — the map draws from the network, as usual</string>
+    <string name="offline_basemap_add_button">Bring in a basemap file manually</string>
+    <string name="offline_basemap_replace_button">Bring in another basemap file manually</string>
+
+    <!-- CLOUD PACKS — the catalog of basemap and road packs baked ahead of
+         time and served from WorldPackLink.baseUrl (empty until the owner
+         decides where they live — CloudPacksCard). -->
+    <string name="cloud_packs_title">CLOUD PACKS</string>
+    <string name="cloud_packs_explainer">Signed basemap and road packs for use without internet</string>
+    <string name="cloud_packs_loading">Asking the catalog…</string>
+    <string name="cloud_packs_not_configured">The catalog address is not configured yet.</string>
+    <string name="cloud_packs_empty">The catalog is empty.</string>
+    <string name="cloud_packs_kind_basemap">BASEMAP</string>
+    <string name="cloud_packs_kind_road_mesh">ROADS AND TRANSIT</string>
+    <string name="cloud_packs_size_baked">%1$s · baked %2$s</string>
+    <string name="cloud_packs_size_only">%1$s</string>
+    <string name="cloud_packs_action_download">Download</string>
+    <string name="cloud_packs_action_update">Update</string>
+    <string name="cloud_packs_action_retry">Try again</string>
+    <string name="cloud_packs_state_checking">Checking…</string>
+    <string name="cloud_packs_state_verifying">Verifying checksum…</string>
+    <string name="cloud_packs_state_installed">Installed ✓</string>
+    <string name="cloud_packs_state_downloading">Downloading… %1$d%% · %2$s of %3$s</string>
+    <string name="cloud_packs_metered_warning">On mobile data.</string>
+    <string name="cloud_packs_action_metered_confirm">Download anyway</string>
+    <string name="cloud_packs_action_cancel">Cancel</string>
+    <string name="forge_packs_title">FORGE — NEXT-GENERATION PACKS</string>
+    <string name="forge_packs_kind_geocoder">PLACES AND ADDRESSES</string>
+    <string name="forge_packs_kind_terrain">RELIEF</string>
+    <string name="forge_packs_kind_basemap">PMTILES BASEMAP</string>
+    <string name="forge_packs_kind_transit">TRANSIT SCHEDULES</string>
+    <string name="forge_packs_kind_places">COUNTRY PLACES AND STREETS</string>
+    <string name="forge_packs_kind_unsupported">this build cannot install this kind yet</string>
+</resources>

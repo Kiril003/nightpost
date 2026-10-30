@@ -1,0 +1,4 @@
+_fontcache/
+_tmp/
+__pycache__/
+.venv/

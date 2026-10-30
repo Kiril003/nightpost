@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_notify_title">Oznámení</string>
+    <string name="perm_notify_body">Pro zprávy a hovory, když je aplikace zavřená</string>
+    <string name="settings_ua_alerts">Letecké poplachy na Ukrajině</string>
+    <string name="settings_ua_alerts_body">Upozornění na poplach ve vaší oblasti na Ukrajině</string>
+    <string name="settings_ua_alerts_body_map">Na mapě, pro vaši oblast</string>
+    <string name="perm_sms_title">Zprávy bez internetu</string>
+    <string name="perm_sms_body">Přístup k SMS je potřeba k odesílání a přijímání žádostí, když není síť.</string>
+    <string name="perm_bg_loc_title">Poloha na pozadí</string>
+    <string name="perm_bg_loc_body">Udrží záznam vaší trasy vcelku</string>
+</resources>

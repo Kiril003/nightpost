@@ -1,0 +1,21 @@
+# PHANTOM для Arch Linux — з того самого .deb, що збирає й перевіряє CI
+# (.github/workflows/pc-linux.yml): вікно, вузол (CPython + код), ярлик.
+#
+#   unzip phantom-arch.zip && cd phantom-arch && makepkg -si
+#   видалити: sudo pacman -R phantom-bin
+pkgname=phantom-bin
+pkgver=0.20.0
+pkgrel=1
+pkgdesc="PHANTOM — жива система на твоєму комп'ютері"
+arch=('x86_64')
+url="https://phantom-os.dev"
+license=('custom')
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
+options=('!strip' '!debug')
+source=("PHANTOM_${pkgver}_amd64.deb")
+sha256sums=('SKIP')
+
+package() {
+  # makepkg уже розпакував .deb (ar) — лишається вміст пакета.
+  bsdtar -xf data.tar.* -C "$pkgdir"
+}

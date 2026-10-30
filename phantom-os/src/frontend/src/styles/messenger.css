@@ -1,0 +1,645 @@
+/* Вигляд месенджера: бульбашки, контури, щільність, анімації.
+ *
+ * Ці класи були в прототипі й до PHANTOM їх просто не перенесли — тому
+ * повідомлення виглядали пласким логом, а не розмовою. ChatArea їх
+ * використовує весь час: msg-bubble-self, bubble-contour-*, msg-density-*.
+ */
+
+
+/* Токени месенджера: колір метаданих і заслінка модалок. Значення живуть тут,
+ * щоб контраст і теплота заслінки правились в одному місці, а не в 17 файлах. */
+/* Геометрія стрічки — токени, не числа по файлах: відступи колонки й рядка часу. */
+:root {
+  --msg-column-pad-x: 12px;
+  --msg-column-pad-y: 12px;
+  --msg-meta-gap: 6px;
+  --msg-meta-mt: 2px;
+  --msg-meta-size: 11.5px;
+}
+@media (min-width: 640px) {
+  :root {
+    --msg-column-pad-x: 24px;
+    --msg-column-pad-y: 16px;
+  }
+}
+.msg-scroller {
+  padding-inline: var(--msg-column-pad-x);
+}
+
+
+:root {
+  /* Картка дзвінка й діаграма в листі: інлайн-стилі та SVG-атрибути
+     читають ці імена, бо класом їх не дістати. Тепер це ПСЕВДОНІМИ --ph-*:
+     вони самі йдуть за Ніччю й Днем, денного двійника не треба.
+     ВИДАЛИТИ, коли CallOverlay і ChartEmbed читатимуть --ph-* напряму
+     (grep не знайде жодного споживача). */
+  --call-end: var(--ph-danger);
+  --call-trust-ok: var(--ph-success);
+
+  --chart-accent: var(--ph-accent-text);
+  --chart-ink-muted: var(--ph-text-3);
+  --chart-hairline: var(--ph-line);
+  --chart-axis: var(--ph-line-strong);
+  --chart-paper: var(--ph-surface);
+
+  /* Час у своїй бульбашці (--msg-meta і --msg-accent* несе form.css). */
+  --msg-meta-self: var(--ph-on-self-2);
+  /* Заслінка старих модалок (.phantom-scrim) — та сама, що й у аркушів форми. */
+  --msg-scrim: var(--ph-scrim);
+
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+
+  /* Шкала кеглів під мобільний екран */
+  --t-micro: 10px;    /* бейджі, лічильники */
+  --t-meta: 11.5px;   /* час, підписи, другий рядок */
+  --t-body: 13px;     /* тіло списків і кнопок */
+  --t-read: 14px;     /* текст повідомлення й назва бесіди */
+  --t-title: 16px;    /* заголовок модалки */
+  --t-display: 18px;  /* головний заголовок */
+
+  /* Радіуси */
+  --r-seam: 6px;
+  --r-control: 10px;
+  --r-card: 14px;
+
+  /* Ролі поверхонь месенджера — псевдоніми форми (--f-*), які несе form.css. */
+  --c-canvas: var(--f-canvas);  /* полотно під стрічкою */
+  --c-panel: var(--f-surface);   /* панелі, картки, шапки */
+  --c-sunk: var(--f-raise);    /* заглиблення, наведення */
+  --c-line: var(--ph-line); /* тонка лінія-волосина */
+
+  /* Швидкості анімацій */
+  --m-tap: 100ms;
+  --m-layer: 180ms;
+  --m-screen: 240ms;
+}
+
+/* Заслінка під модалкою — суцільна --ph-scrim, без розмиття: розмиття в
+ * мові PHANTOM немає (воно ж їло кадри на слабких телефонах). */
+.phantom-scrim {
+  background: var(--msg-scrim);
+}
+
+/* Жодна панель у заслінці не має права вилізти за екран телефона. Модалки
+ * писалися під десктоп і фіксовану висоту не мали — на 375×812 вони просто
+ * тікали під нижній край, і кнопки підтвердження діставав лише той, хто знав,
+ * що вони там є. Стеля висоти + власний скрол усередині вирішують це один раз
+ * для всіх сімнадцяти, а не в кожній окремо.
+ *
+ * Ширину тут не чіпаємо: max-width скасовував би max-w-md/lg/xl самих панелей,
+ * і на десктопі модалка розтягувалась на весь екран. Її і так тримає власний
+ * w-full кожної панелі. */
+.phantom-scrim > * {
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Смуга вкладок і фільтрів. Гортати їх було можна й раніше, але no-scrollbar
+ * ховав єдиний натяк на це — остання вкладка просто обривалась на межі, і
+ * виглядало це як брак, а не як «далі є ще». Тонка тепла смужка з'являється
+ * лише тоді, коли вміст справді не влазить. */
+.msg-strip {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ph-line-strong) transparent;
+  scroll-padding-inline: 12px;
+}
+
+.msg-strip::-webkit-scrollbar {
+  height: 3px;
+}
+
+.msg-strip::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.msg-strip::-webkit-scrollbar-thumb {
+  background: var(--ph-line-strong);
+  border-radius: 999px;
+}
+
+.msg-strip > * {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* РЯД ВКЛАДОК НЕ ГОРТАЄТЬСЯ — ВІН ПЕРЕНОСИТЬСЯ.
+ *
+ * Виміряно 20.09 на A52: вкладок налаштувань шість, на екрані три, і ряд
+ * обривався рівно на краю (остання — [756,998][1076,1127] при ширині 1080):
+ * ні обрізаної половинки, ні градієнта, ні стрілки. Натяк тут узагалі не
+ * міг з'явитись — туман нижче живе на `animation-timeline: scroll()`, а
+ * `@property` дає йому початкові 0px, тож там, де прокруткових анімацій
+ * немає, маска є тотожністю. Три розділи існували для того, хто здогадається
+ * гортати вбік.
+ *
+ * Позначати прокрутку, коли можна її прибрати, — гірший розмін: переноси
+ * коштують один рядок висоти й не коштують жодної здогадки. */
+.msg-tabs {
+  flex-wrap: wrap;
+  overflow-x: visible;
+  row-gap: 6px;
+}
+
+/* Колонка повідомлень: одна вісь для своїх і чужих реплік, коротка розмова
+ * сідає на композер замість того, щоб висіти під стелею. */
+.msg-column {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  min-height: 100%;
+  padding-block: var(--msg-column-pad-y);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+/* Порожня розмова — посередині стрічки, як у Telegram, а не внизу біля поля (TG-look 2). */
+.msg-column:has([data-testid='thread-empty']) {
+  justify-content: center;
+}
+
+/* Smooth pulse for live radar pins */
+@keyframes map-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(var(--msg-accent-rgb) / 0.5);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 12px rgb(var(--msg-accent-rgb) / 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(var(--msg-accent-rgb) / 0);
+  }
+}
+
+.animate-map-pulse {
+  animation: map-pulse 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Audio waveform animation */
+@keyframes soundwave {
+  0%, 100% { height: 25%; }
+  50% { height: 100%; }
+}
+
+.animate-wave-bar {
+  animation: soundwave 1.2s ease-in-out infinite;
+}
+
+/* Subtle organic bounce entrance for smart folders */
+@keyframes organic-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.86) translateY(5px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.035) translateY(-2px);
+  }
+  80% {
+    transform: scale(0.985) translateY(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-organic-bounce {
+  animation: organic-bounce 0.42s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+}
+
+/* =========================================================
+   FLUID-FIT DYNAMIC MESSAGE BUBBLE LAYOUT ENGINE
+   ========================================================= */
+
+/* Base fluid-fit wrapper for message bubbles */
+/* Без переносів зі знаком: «жо-дної» посеред бульбашки — це не доросло. */
+.msg-bubble-fluid {
+  width: fit-content;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  hyphens: manual;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Вибране повідомлення: без пружини й без світіння — лише глибша межа. */
+.msg-bubble-selected {
+  border-color: var(--ph-text-2) !important;
+}
+
+/* Density Variants: dynamically applied based on content analysis */
+
+/* 1. Emoji-Only Density: Snug, clean, larger glyphs with compact organic padding */
+.msg-density-emoji-single {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0.15rem 0.25rem !important;
+  font-size: 2.75rem;
+  line-height: 1.15;
+  width: fit-content;
+}
+
+.msg-density-emoji-multi {
+  padding: 0.35rem 0.65rem !important;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  width: fit-content;
+  letter-spacing: 0.12em;
+}
+
+/* Праве та нижнє поле в щільностях нижче тримає час у куті бульбашки: без
+ * запасу справа він притискався до межі й обрізався на вузьких бульбашках. */
+
+/* Спільна типографіка тексту бульбашки. 14.5px випадало зі шкали — текст
+ * розмови це головна поверхня читання, і їй належить щабель --t-read. */
+.msg-density-short,
+.msg-density-medium,
+.msg-density-long,
+.msg-density-card,
+.msg-density-media {
+  font-size: var(--t-read);
+  line-height: 1.45;
+}
+
+/* 2. Micro/Short text density (< 24 chars, single line): compact hugging width */
+.msg-density-short {
+  padding: 0.4rem 0.7rem 0.35rem 0.7rem;
+  max-width: min(360px, 100%);
+  width: fit-content;
+}
+
+/* 3. Medium text density (25 - 120 chars): optimal organic line width */
+.msg-density-medium {
+  padding: 0.45rem 0.75rem 0.4rem 0.75rem;
+  max-width: min(440px, 100%);
+  width: fit-content;
+}
+
+/* 4. Dense / Long text density (120+ chars): max reading width constrained to 560px / optimal 65ch */
+.msg-density-long {
+  padding: 0.5rem 0.8rem 0.4rem 0.8rem;
+  max-width: min(560px, 100%);
+  width: fit-content;
+  text-wrap: pretty;
+}
+
+/* Long Message Read More / Collapse dynamic transitions */
+.msg-density-long-content {
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.msg-density-long-collapsed {
+  max-height: 112px;
+}
+
+.msg-density-long-expanded {
+  max-height: 2000px;
+}
+
+/* Згасання «Читати далі» не малюється: form.css знімає його (background:
+ * none), а зеленкуваті числа старої ночі тут більше не живуть. */
+
+/* 5. Rich Card density (Table, Chart, Tasks, Poll, Split-bill, Map, etc.) */
+.msg-density-card {
+  padding: 0.5rem 0.65rem 0.45rem 0.65rem;
+  width: 100%;
+  max-width: min(520px, 100%);
+}
+
+/* 6. Media / Image / File Density */
+.msg-density-media {
+  padding: 0.25rem 0.3rem 0.3rem 0.25rem;
+  width: fit-content;
+  max-width: min(340px, 100%);
+}
+
+/* Бульбашки: своя — теплий вилив, чужа — холодна плита. Різнить ТОН, не обвід.
+ *
+ * Обвід і тінь на кожній бульбашці робили з розмови стос карток-сповіщень:
+ * янтарна межа 0.35 — те саме, чим у цьому ж інтерфейсі позначено вибране
+ * (.msg-bubble-selected), тож кожен власний лист виглядав виділеним. Межа
+ * лишається прозорою, а не знятою: ширина в 1px тримає геометрію, і виділення
+ * та збіг пошуку далі мають що фарбувати. */
+/* Тон і чорнило бульбашок несуть form.css та identity.css (`--ph-self`,
+ * `--ph-surface`); тут лише прозора межа, що тримає геометрію. */
+.msg-bubble-self,
+.msg-bubble-other {
+  border: 1px solid transparent;
+}
+
+/* Рядок метаданих (час, галочки) — правий нижній кут бульбашки. */
+.msg-meta-row {
+  font-variant-numeric: tabular-nums;
+  font-size: var(--msg-meta-size);
+  line-height: 1.2;
+  gap: var(--msg-meta-gap);
+  margin-top: var(--msg-meta-mt);
+}
+
+.msg-bubble-other .msg-meta-row {
+  color: var(--msg-meta);
+}
+
+.msg-bubble-self .msg-meta-row {
+  color: var(--msg-meta-self);
+}
+
+/* Контури: Telegram/Discord-grade плавні скруглення з виразним хвостиком.
+ * 18px по колу, 4px на хвостовому куті (bottom-right для self, bottom-left для other). */
+.bubble-contour-self-single.bubble-contour-self-single,
+.bubble-contour-self-first.bubble-contour-self-first {
+  border-radius: 18px 18px 4px 18px;
+}
+.bubble-contour-self-middle.bubble-contour-self-middle,
+.bubble-contour-self-last.bubble-contour-self-last {
+  border-radius: 18px 4px 4px 18px;
+}
+
+.bubble-contour-other-single.bubble-contour-other-single,
+.bubble-contour-other-first.bubble-contour-other-first {
+  border-radius: 18px 18px 18px 4px;
+}
+.bubble-contour-other-middle.bubble-contour-other-middle,
+.bubble-contour-other-last.bubble-contour-other-last {
+  border-radius: 4px 18px 18px 4px;
+}
+
+
+/* =========================================================
+   ШКАЛА КЕГЛІВ І РАДІУСІВ — ОДНЕ МІСЦЕ
+   =========================================================
+   У розмітці месенджера жило 26 різних кеглів (8, 9, 9.5, 10, 10.5, 11, 11.5,
+   12, 12.5, 13, 13.5, 14, 15, 15.5 + шість тейлвіндових) і 13 радіусів. Через
+   це два сусідні підписи відрізнялись на півпікселя — око цього не називає, але
+   бачить як недбалість. Перебирати 700 місць у розмітці означало б величезну
+   правку заради косметики; натомість зводимо їх сюди, до шести кеглів і чотирьох
+   радіусів. Це і є та сама шкала: міняється вона тут, а не в 39 файлах.
+
+   Селектори мають вищу питомість, ніж утиліти Tailwind (додано .messenger-scale),
+   тож !important не потрібен. Кеглі бульбашок задають .msg-density-*, вони нижче
+   й лишаються власними. */
+
+/* Збільшений кегль (Налаштування › Вигляд). Оскільки вся розмітка месенджера
+   вже зведена до цих шести токенів, перемикач рухає і бульбашки, і список
+   бесід — одним місцем, а не сорока. Питомість [data-msg-font] вища за :root
+   вище, тож перевизначення виграє без !important. */
+:root[data-msg-font='large'] {
+  --t-micro: 12.5px;
+  --t-meta: 14px;
+  --t-body: 16px;
+  --t-read: 17.5px;
+  --t-title: 20px;
+  --t-display: 24px;
+}
+
+
+
+/* Система руху: три швидкості замість розсипу. Утиліти duration-* Tailwind і
+ * власні transition-* зводяться сюди. */
+.messenger-scale .duration-100,
+.messenger-scale .duration-150 {
+  animation-duration: var(--m-tap);
+  transition-duration: var(--m-tap);
+}
+
+.messenger-scale .duration-200,
+.messenger-scale .duration-300 {
+  animation-duration: var(--m-layer);
+  transition-duration: var(--m-layer);
+}
+
+.messenger-scale .duration-500,
+.messenger-scale .duration-700 {
+  animation-duration: var(--m-screen);
+  transition-duration: var(--m-screen);
+}
+
+/* ОС ставить min-width/height 44px на всі контроли (тач-цілі). Для щільного
+   десктопного месенджера це роздувало кожну кнопку на третину — саме звідси
+   «дитячий» масштаб. У межах месенджера розміри задає сам месенджер. */
+@media (pointer: fine) {
+  .messenger-scale button,
+  .messenger-scale [role='button'],
+  .messenger-scale a,
+  .messenger-scale input,
+  .messenger-scale select,
+  .messenger-scale textarea {
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+/* Поля без власного класу фарбує нульова база в globals.css
+ * (`:where(input[type=text], …)` → raised/text/line). Тут стояло нічне
+ * !important-перекриття полів і ~60 hex-утиліт старого «обсидіану», а над
+ * ним — перемикач акценту (data-msg-accent), який ніхто не вмикав
+ * (services/messengerAccent.ts не мав жодного імпорту): одна палітра —
+ * --ph-*, і утиліта класу знову виграє. */
+
+/* Поле форми (профіль, UserProfileModal) — одна поверхня raise і кільце
+ * фокуса акцентом, як у полів-input поруч. */
+html:root textarea.f-field {
+  background-color: var(--f-raise) !important;
+  color: var(--f-ink) !important;
+}
+html:root textarea.f-field:focus {
+  outline: 2px solid var(--f-accent) !important;
+}
+
+/* Composer textarea must be borderless, backgroundless, and shadowless */
+.composer-textarea,
+.message-composer-input textarea,
+[data-testid="composer-input"] textarea,
+[data-testid="composer-textarea"] {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+}
+
+/* Modals and Drawers */
+/* Під `:where` і без !important: діалог, що має власну поверхню (екран «Я»,
+ * аркуші форми), лишається своїм; решта отримує полотно форми. Раніше це
+ * правило силою (!important) фарбувало кожен діалог у стару зеленкувату ніч. */
+:where(:root:not([data-theme='day'])) :where([role="dialog"], .modal-content, .drawer-content) {
+  background-color: var(--f-canvas);
+  color: var(--f-ink);
+}
+
+/* ─── Телефон: < 768 px, той самий поріг, що md: у MessengerRoot ─────────────
+   Веб малювався для миші. Підлога дотику тут 48 px (Android), а не 44 (Apple).
+   min-h-0/min-w-0 на дотикових елементах — десктопна щільність; на телефоні
+   вона програє підлозі: одне правило замість сотні правок у розмітці. */
+@media (max-width: 767px) {
+  :root {
+    --touch-min: 48px;
+  }
+
+  /* `.touch-floor-inline` — виняток: ціль 44 йому малює ::after, а сам
+     знак лишається розміром із рядок. Без винятку годинник «надсилається»
+     ріс до 48×48, рядок часу ставав 48 заввишки і в короткій бульбашці
+     вилазив НАД текстом (власник на A52, 02.10). */
+  body :is(button, [role='button'], a, input, select, textarea):is(.min-h-0, .min-w-0):not(.touch-floor-inline) {
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+  }
+  /* Прапорцю й повзуну ціль дає їхній рядок, а не сам квадратик. */
+  body :is(input[type='checkbox'], input[type='radio'], input[type='range']) {
+    min-width: 0;
+    min-height: 0;
+  }
+
+  /* Десктопні скролбари у WebView не малюємо; гортання лишається. */
+  body,
+  body * {
+    scrollbar-width: none;
+  }
+  body::-webkit-scrollbar,
+  body *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Модалки: лист знизу на всю ширину; стеля — динамічна висота екрана
+     (клавіатура її зменшує), низ — під системну смугу. */
+  body .phantom-scrim {
+    align-items: flex-end;
+    padding: 0;
+  }
+  body .phantom-scrim > * {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100dvh - var(--sat));
+    border-radius: 24px 24px 0 0;
+    padding-bottom: var(--sab);
+  }
+}
+
+/* >>> ДЕНЬ: згенеровано з src/styles/dayTheme.ts — не правити руками */
+:root[data-theme='day'] {
+  color-scheme: light;
+}
+:where(:root[data-theme='day']) :where([role="dialog"], .modal-content, .drawer-content) {
+  background-color: var(--ph-surface);
+  border: 1px solid var(--ph-line);
+  color: var(--ph-text);
+  box-shadow: var(--ph-shadow-3);
+}
+:root[data-theme='day'] .hover\:bg-\[\#18241D\]:hover {
+  background-color: #F1EBDD;
+}
+:root[data-theme='day'] .bg-white\/5 {
+  background-color: rgba(26, 30, 24, 0.06);
+}
+:root[data-theme='day'] .border-white\/5 {
+  border-color: rgba(26, 30, 24, 0.06);
+}
+:root[data-theme='day'] .bg-white\/8 {
+  background-color: rgba(26, 30, 24, 0.09);
+}
+:root[data-theme='day'] .border-white\/8 {
+  border-color: rgba(26, 30, 24, 0.09);
+}
+:root[data-theme='day'] .bg-white\/10,
+:root[data-theme='day'] .hover\:bg-white\/10:hover {
+  background-color: rgba(26, 30, 24, 0.12);
+}
+:root[data-theme='day'] .border-white\/10 {
+  border-color: rgba(26, 30, 24, 0.12);
+}
+:root[data-theme='day'] .bg-white\/15 {
+  background-color: rgba(26, 30, 24, 0.16);
+}
+:root[data-theme='day'] .border-white\/15 {
+  border-color: rgba(26, 30, 24, 0.16);
+}
+:root[data-theme='day'] .bg-white\/20 {
+  background-color: rgba(26, 30, 24, 0.2);
+}
+:root[data-theme='day'] .text-white\/40 {
+  color: rgba(26, 30, 24, 0.36);
+}
+:root[data-theme='day'] .text-white\/50 {
+  color: rgba(26, 30, 24, 0.45);
+}
+/* <<< ДЕНЬ */
+
+/* >>> АКЦЕНТ: згенеровано з src/styles/dayTheme.ts — не правити руками */
+/* <<< АКЦЕНТ */
+
+:root {
+  --np-moment-stage: #0a0908;
+  --np-moment-bed: #1c1a18;
+  --np-moment-toast: #2a2724;
+  --np-moment-label: rgba(10, 9, 8, 0.66);
+}
+
+@keyframes np-moment-step {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes np-moment-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes np-moment-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: scale(0.96); }
+}
+@keyframes np-settle {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.np-moment-in { animation: np-moment-in var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+.np-moment-out { animation: np-moment-out var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+.np-settle { animation: np-settle var(--np-ms, 360ms) var(--np-ease, ease-out) both; }
+@keyframes np-moment-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .np-moment-in { animation: f-fade-in 150ms linear both; }
+  .np-moment-out { animation: np-moment-fade-out 150ms linear both; }
+  .np-settle { animation: f-fade-in 120ms linear both; }
+}
+
+@keyframes np-moment-travel {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-72px) scale(0.86); }
+}
+@keyframes np-moment-stamp {
+  from { opacity: 0; transform: scale(1.5); }
+  to { opacity: 1; transform: none; }
+}
+.np-moment-travel { animation: np-moment-travel 520ms var(--ph-ease-accelerate) 220ms both; }
+.np-moment-stamp { animation: np-moment-stamp 200ms var(--ph-ease-decelerate) both; }
+@media (prefers-reduced-motion: reduce) {
+  .np-moment-travel { animation: np-moment-fade-out 150ms linear 200ms both; }
+  .np-moment-stamp { animation: f-fade-in 120ms linear both; }
+}
+
+@keyframes np-profile-switch {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+.np-profile-switch { animation: np-profile-switch 150ms var(--ph-ease-standard) both; }
+@media (prefers-reduced-motion: reduce) {
+  .np-profile-switch { animation: f-fade-in 150ms linear both; }
+}

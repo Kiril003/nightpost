@@ -1,0 +1,26 @@
+# Replaces the server on the Fly app phantom-license with a forwarder to api.phantom-os.dev, so phones
+# and PCs that still have phantom-license.fly.dev baked in keep working (a 301 would not: POST and
+# WebSocket do not survive it). The volume stays mounted as the rollback source.
+app = "phantom-license"
+primary_region = "fra"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  UPSTREAM_HOST = "api.phantom-os.dev"
+
+[[mounts]]
+  source = "phantom_license_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"

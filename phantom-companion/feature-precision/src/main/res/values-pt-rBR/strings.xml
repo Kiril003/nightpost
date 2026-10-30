@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_basemap_replace_button">Importar manualmente outro arquivo de mapa base</string>
+    <string name="cloud_packs_title">PACOTES NA NUVEM</string>
+    <string name="cloud_packs_explainer">Pacotes assinados de mapa base e estradas para usar sem internet</string>
+    <string name="cloud_packs_loading">Consultando o catálogo…</string>
+    <string name="cloud_packs_not_configured">O endereço do catálogo ainda não está configurado.</string>
+    <string name="cloud_packs_empty">O catálogo está vazio.</string>
+    <string name="cloud_packs_kind_basemap">MAPA BASE</string>
+    <string name="cloud_packs_kind_road_mesh">ESTRADAS E TRANSPORTE</string>
+    <string name="cloud_packs_size_baked">%1$s · gerado %2$s</string>
+    <string name="cloud_packs_size_only">%1$s</string>
+    <string name="cloud_packs_action_download">Baixar</string>
+    <string name="cloud_packs_action_update">Atualizar</string>
+    <string name="cloud_packs_action_retry">Tentar de novo</string>
+    <string name="cloud_packs_state_checking">Verificando…</string>
+    <string name="cloud_packs_state_verifying">Verificando checksum…</string>
+    <string name="cloud_packs_state_installed">Instalado ✓</string>
+    <string name="cloud_packs_state_downloading">Baixando… %1$d%% · %2$s de %3$s</string>
+    <string name="cloud_packs_metered_warning">Em dados móveis.</string>
+    <string name="cloud_packs_action_metered_confirm">Baixar mesmo assim</string>
+    <string name="cloud_packs_action_cancel">Cancelar</string>
+    <string name="forge_packs_title">FORGE: PACOTES DE NOVA GERAÇÃO</string>
+    <string name="forge_packs_kind_geocoder">LUGARES E ENDEREÇOS</string>
+    <string name="forge_packs_kind_terrain">RELEVO</string>
+    <string name="forge_packs_kind_basemap">MAPA BASE PMTILES</string>
+    <string name="forge_packs_kind_transit">HORÁRIOS DE TRANSPORTE</string>
+    <string name="forge_packs_kind_places">LUGARES E RUAS DO PAÍS</string>
+    <string name="forge_packs_kind_unsupported">esta versão ainda não instala este tipo</string>
+</resources>

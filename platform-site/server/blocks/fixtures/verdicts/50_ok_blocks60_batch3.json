@@ -1,0 +1,289 @@
+{
+  "ok": true,
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "shop",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Linde Studio",
+          "kind": "ceramics",
+          "tagline": "Ceramics and coffee"
+        }
+      },
+      {
+        "id": "address-1",
+        "kind": "loc.address",
+        "variant": "map_line",
+        "hidden": false,
+        "data": {
+          "text": "12 Linden Street",
+          "point": {
+            "lat": 52.52,
+            "lon": 13.405
+          }
+        }
+      },
+      {
+        "id": "policy-41",
+        "kind": "book.policy",
+        "variant": "rows",
+        "hidden": false,
+        "data": {
+          "cancel": 24,
+          "deposit": 20,
+          "no_show": {
+            "amount": "10",
+            "token": "USDC"
+          },
+          "note": "Reschedule once for free"
+        }
+      },
+      {
+        "id": "timetable-42",
+        "kind": "cls.timetable",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "items": [
+            {
+              "id": "cl-wheel",
+              "name": "Wheel basics",
+              "days": [
+                "tue",
+                "thu"
+              ],
+              "time": "18:00",
+              "length": 120,
+              "coach": "Mara"
+            },
+            {
+              "id": "cl-hand",
+              "name": "Hand building",
+              "days": [
+                "sat"
+              ],
+              "time": "10:00",
+              "length": 180,
+              "coach": "Jonas"
+            },
+            {
+              "id": "cl-open",
+              "name": "Open studio",
+              "days": [
+                "wed"
+              ],
+              "time": "17:00",
+              "length": 180,
+              "note": "Members"
+            }
+          ]
+        }
+      },
+      {
+        "id": "course-43",
+        "kind": "cls.course",
+        "variant": "numbered",
+        "hidden": false,
+        "data": {
+          "title": "Wheel from zero",
+          "token": "USDC",
+          "price": "180",
+          "items": [
+            {
+              "id": "md-centre",
+              "name": "Centring",
+              "lessons": 2,
+              "length": 120
+            },
+            {
+              "id": "md-walls",
+              "name": "Pulling walls",
+              "lessons": 2,
+              "length": 120
+            },
+            {
+              "id": "md-trim",
+              "name": "Trimming",
+              "lessons": 1,
+              "length": 120
+            },
+            {
+              "id": "md-glaze",
+              "name": "Glazing",
+              "lessons": 1,
+              "length": 180
+            }
+          ]
+        }
+      },
+      {
+        "id": "pass-44",
+        "kind": "cls.pass",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "ps-5",
+              "visits": 5,
+              "price": "55",
+              "months": 2
+            },
+            {
+              "id": "ps-10",
+              "visits": 10,
+              "price": "100",
+              "months": 4
+            }
+          ]
+        }
+      },
+      {
+        "id": "membership-45",
+        "kind": "cls.membership",
+        "variant": "cards",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "tr-member",
+              "name": "Member",
+              "price": "40",
+              "includes": "8 h wheel time a month, a shelf"
+            },
+            {
+              "id": "tr-studio",
+              "name": "Studio",
+              "price": "90",
+              "includes": "Wheel any time, kiln shelf, −10% on classes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "single-49",
+        "kind": "evt.single",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "title": "Kiln opening",
+          "starts": "2026-11-08T18:00",
+          "ends": "2026-11-08T21:00",
+          "capacity": 30,
+          "audience": "public"
+        }
+      },
+      {
+        "id": "tickets-46",
+        "kind": "evt.tickets",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "event": "single-49",
+          "token": "USDC",
+          "items": [
+            {
+              "id": "tk-early",
+              "name": "Early",
+              "price": "8",
+              "qty": 20,
+              "until": "2026-11-01"
+            },
+            {
+              "id": "tk-door",
+              "name": "Standard",
+              "price": "12",
+              "qty": 30
+            }
+          ]
+        }
+      },
+      {
+        "id": "series-47",
+        "kind": "evt.series",
+        "variant": "dates",
+        "hidden": false,
+        "data": {
+          "title": "Thursday clay night",
+          "days": [
+            "thu"
+          ],
+          "hours": {
+            "open": "19:00",
+            "close": "21:00"
+          },
+          "starts": "2026-11-05",
+          "ends": "2026-12-17",
+          "note": "Bring a friend, clay is on us"
+        }
+      },
+      {
+        "id": "agenda-48",
+        "kind": "evt.agenda",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "event": "single-49",
+          "items": [
+            {
+              "id": "ag-doors",
+              "time": "18:00",
+              "name": "Doors"
+            },
+            {
+              "id": "ag-kiln",
+              "time": "18:30",
+              "name": "The kiln opens",
+              "who": "Jonas"
+            },
+            {
+              "id": "ag-talk",
+              "time": "19:30",
+              "name": "Glaze talk",
+              "who": "Mara"
+            }
+          ]
+        }
+      },
+      {
+        "id": "lineup-50",
+        "kind": "evt.lineup",
+        "variant": "faces",
+        "hidden": false,
+        "data": {
+          "items": [
+            {
+              "id": "ac-mara",
+              "name": "Mara",
+              "role": "Glaze talk"
+            },
+            {
+              "id": "ac-jonas",
+              "name": "Jonas",
+              "role": "Kiln"
+            }
+          ]
+        }
+      },
+      {
+        "id": "stamps-51",
+        "kind": "loy.stamps",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "stamps": 8,
+          "reward": "Free filter coffee",
+          "note": "One stamp per drink"
+        }
+      }
+    ]
+  }
+}

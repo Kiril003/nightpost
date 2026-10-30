@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_i_metres">%1$d м</string>
+    <string name="mapl_i_kilometres">%1$s км</string>
+    <string name="mapl_i_room">Приміщення</string>
+    <string name="mapl_i_toll_booth">Пункт оплати</string>
+</resources>

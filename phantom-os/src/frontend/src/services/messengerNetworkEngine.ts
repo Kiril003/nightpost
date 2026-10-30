@@ -1,0 +1,871 @@
+/**
+ * PHANTOM OS — Hybrid Messenger Network Engine
+ * Транспорт месенджера: локальний WebSocket, прямі WebRTC DataChannel
+ * і власний ретранслятор PHANTOM. Жодної чужої хмари.
+ */
+
+import {
+  Message,
+  TransportProtocol,
+  ActiveTransportStatus,
+  P2PPeerSession,
+  NetworkDiagnostics,
+} from '../types/messenger';
+import { phantomRelayService } from './phantomRelayService';
+import { iceConfig, iceRoadLabel, lastKnownIce } from './iceRoads';
+import { nodeWsUrl } from './nodeOrigin';
+import { readToken } from './tokenStore';
+import { BEARER_SUBPROTOCOL } from './wsAuth';
+import { clockLabel } from '../utils/clockFormat';
+import { tNow } from '../components/chat/tNow';
+
+type MessageListener = (chatId: string, message: Message, transport: 'server' | 'p2p' | 'relay') => void;
+type TypingListener = (chatId: string, userId: string, userName: string, isTyping: boolean) => void;
+type ReactionAction = 'add' | 'remove';
+type ReactionListener = (chatId: string, messageId: string, emoji: string, userId: string, action?: ReactionAction) => void;
+type MessageAck = { chatId: string; clientId: string; messageId?: string; acceptedAtMs: number; transport: 'server' };
+type PresenceListener = (onlineCount: number, peers: any[]) => void;
+type DiagnosticsListener = (diagnostics: NetworkDiagnostics) => void;
+type PeerSessionListener = (peers: P2PPeerSession[]) => void;
+type FileTransferProgressListener = (progress: {
+  fileId: string;
+  fileName: string;
+  percentage: number;
+  isReceiving: boolean;
+  senderName: string;
+}) => void;
+
+class MessengerNetworkEngine {
+  private ws: WebSocket | null = null;
+  private reconnectTimer: any = null;
+  private pingInterval: any = null;
+  private currentUserId: string = 'user_me';
+  // До init() імені ще немає. Тут стояло імʼя однієї людини — і на будь-якому
+  // іншому апараті воно підписувало ЇЇ імʼям листи іншої людини.
+  private currentUserName: string = tNow('chatList.you');
+  private currentUserAvatar: string =
+    '';
+  private activeChatId: string = 'chat_aura_design';
+
+  private transportMode: TransportProtocol = 'auto';
+  private activeStatus: ActiveTransportStatus = 'offline';
+  // Немає заміру — немає числа. 18 «за замовчуванням» — це вигадка.
+  private latencyMs: number | null = null;
+  private lastPingSentTime: number = 0;
+
+  // WebRTC Peer Connections map by targetPeerId
+  private peerConnections = new Map<string, RTCPeerConnection>();
+  private dataChannels = new Map<string, RTCDataChannel>();
+  private peerSessions = new Map<string, P2PPeerSession>();
+
+  // Incoming P2P File transfers buffer
+  private incomingFileBuffers = new Map<
+    string,
+    { fileName: string; fileType: string; totalChunks: number; receivedChunks: Uint8Array[]; senderName: string }
+  >();
+
+  private bytesServer: number = 0;
+  private bytesP2P: number = 0;
+  private onlineUsersCount: number = 1;
+
+  // Listeners
+  private messageListeners = new Set<MessageListener>();
+  private typingListeners = new Set<TypingListener>();
+  private reactionListeners = new Set<ReactionListener>();
+  private messageAckListeners = new Set<(ack: MessageAck) => void>();
+  private presenceListeners = new Set<PresenceListener>();
+  private diagnosticsListeners = new Set<DiagnosticsListener>();
+  private peerSessionListeners = new Set<PeerSessionListener>();
+  private fileTransferListeners = new Set<FileTransferProgressListener>();
+
+  // Initialize engine with user session
+  public init(userId: string, userName: string, avatar: string, defaultChatId: string = '') {
+    this.currentUserId = userId;
+    this.currentUserName = userName;
+    this.currentUserAvatar = avatar;
+    this.activeChatId = defaultChatId;
+    this.connectWebSocket();
+    void iceConfig().then(() => this.updateDiagnostics());
+  }
+
+  public setChatId(chatId: string) {
+    this.activeChatId = chatId;
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(
+        JSON.stringify({
+          channel: 'messenger',
+          type: 'join',
+          data: { chatId },
+        }),
+      );
+    }
+    this.updateDiagnostics();
+  }
+
+  public setTransportMode(mode: TransportProtocol) {
+    this.transportMode = mode;
+    this.evaluateActiveStatus();
+    this.updateDiagnostics();
+  }
+
+  public getTransportMode(): TransportProtocol {
+    return this.transportMode;
+  }
+
+  public getDiagnostics(): NetworkDiagnostics {
+    return {
+      transportMode: this.transportMode,
+      activeStatus: this.activeStatus,
+      latencyMs: this.latencyMs,
+      connectedClientsCount: this.onlineUsersCount,
+      p2pPeersCount: Array.from(this.peerSessions.values()).filter((p) => p.dataChannelState === 'open').length,
+      isWebRTCSupported: typeof RTCPeerConnection !== 'undefined',
+      isWebSocketConnected: this.ws !== null && this.ws.readyState === WebSocket.OPEN,
+      bytesTransferred: {
+        server: this.bytesServer,
+        p2p: this.bytesP2P,
+      },
+      iceRoads: iceRoadLabel(lastKnownIce()),
+      dataChannelStatus: this.getActiveDataChannelSummary(),
+      relayConnected: phantomRelayService.isAvailable(),
+      relayNodeId: phantomRelayService.nodeId(),
+    };
+  }
+
+  public getPeerSessions(): P2PPeerSession[] {
+    return Array.from(this.peerSessions.values());
+  }
+
+  // Event subscription methods
+  public onMessage(listener: MessageListener) {
+    this.messageListeners.add(listener);
+    return () => this.messageListeners.delete(listener);
+  }
+
+  public onTyping(listener: TypingListener) {
+    this.typingListeners.add(listener);
+    return () => this.typingListeners.delete(listener);
+  }
+
+  public onReaction(listener: ReactionListener) {
+    this.reactionListeners.add(listener);
+    return () => this.reactionListeners.delete(listener);
+  }
+
+  public onMessageAck(listener: (ack: MessageAck) => void) {
+    this.messageAckListeners.add(listener);
+    return () => this.messageAckListeners.delete(listener);
+  }
+
+  public onPresence(listener: PresenceListener) {
+    this.presenceListeners.add(listener);
+    return () => this.presenceListeners.delete(listener);
+  }
+
+  public onDiagnostics(listener: DiagnosticsListener) {
+    this.diagnosticsListeners.add(listener);
+    listener(this.getDiagnostics());
+    return () => this.diagnosticsListeners.delete(listener);
+  }
+
+  public onPeerSessions(listener: PeerSessionListener) {
+    this.peerSessionListeners.add(listener);
+    listener(this.getPeerSessions());
+    return () => this.peerSessionListeners.delete(listener);
+  }
+
+  public onFileTransferProgress(listener: FileTransferProgressListener) {
+    this.fileTransferListeners.add(listener);
+    return () => this.fileTransferListeners.delete(listener);
+  }
+
+  // Connect to backend WebSocket server
+  private connectWebSocket() {
+    if (typeof window === 'undefined') return;
+
+    try {
+      const wsUrl = nodeWsUrl('/ws').toString();
+      // Вузол анонімів не слухає (4401): без токена — без сокета.
+      const token = readToken();
+      if (!token) return;
+
+      this.ws = new WebSocket(wsUrl, [BEARER_SUBPROTOCOL, token]);
+
+      this.ws.onopen = () => {
+        this.activeStatus = 'server-ws';
+        this.registerClient();
+        this.startPingLoop();
+        this.evaluateActiveStatus();
+        this.updateDiagnostics();
+      };
+
+      this.ws.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          this.handleIncomingServerEvent(data);
+        } catch (e) {
+          console.warn('[WS] Failed to parse message:', e);
+        }
+      };
+
+      this.ws.onclose = (ev?: CloseEvent) => {
+        this.evaluateActiveStatus();
+        this.stopPingLoop();
+        if (ev?.code === 4401) return;
+        this.scheduleReconnect();
+      };
+
+      this.ws.onerror = () => {
+        this.evaluateActiveStatus();
+      };
+    } catch (err) {
+      console.warn('[WS] Не піднявся локальний канал, лишається ретранслятор:', err);
+      this.evaluateActiveStatus();
+      this.scheduleReconnect();
+    }
+  }
+
+  private scheduleReconnect() {
+    if (this.reconnectTimer) clearTimeout(this.reconnectTimer);
+    this.reconnectTimer = setTimeout(() => {
+      this.connectWebSocket();
+    }, 3000);
+  }
+
+  private registerClient() {
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(
+        JSON.stringify({
+          type: 'client:register',
+          userId: this.currentUserId,
+          userName: this.currentUserName,
+          avatar: this.currentUserAvatar,
+          currentChatId: this.activeChatId,
+        }),
+      );
+    }
+  }
+
+  private startPingLoop() {
+    this.stopPingLoop();
+    this.pingInterval = setInterval(() => {
+      if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+        this.lastPingSentTime = performance.now();
+        this.ws.send(
+          JSON.stringify({
+            type: 'network:ping',
+            timestamp: Date.now(),
+          }),
+        );
+      }
+      if (this.peerConnections.size > 0) void this.refreshPeerStats();
+    }, 4000);
+  }
+
+  private stopPingLoop() {
+    if (this.pingInterval) {
+      clearInterval(this.pingInterval);
+      this.pingInterval = null;
+    }
+  }
+
+  // Handle incoming events from Server WebSocket
+  private handleIncomingServerEvent(event: any) {
+    this.bytesServer += JSON.stringify(event).length;
+
+    // The backend hub wraps every messenger frame in a channel envelope.
+    // Keep the old event cases below for older nodes during rolling updates.
+    if (event.channel === 'messenger') {
+      const data = event.data || {};
+      if (event.type === 'message' && data.message) {
+        this.messageListeners.forEach((cb) => cb(data.chatId, data.message, 'server'));
+      } else if (event.type === 'typing') {
+        this.typingListeners.forEach((cb) => cb(data.chatId, data.userId, data.userName, data.isTyping));
+      } else if (event.type === 'reaction') {
+        this.reactionListeners.forEach((cb) => cb(data.chatId, data.messageId, data.emoji, data.userId, data.action));
+      } else if (event.type === 'message_ack' && data.clientId) {
+        this.messageAckListeners.forEach((cb) => cb(data as MessageAck));
+      }
+      return;
+    }
+
+    switch (event.type) {
+      case 'network:pong': {
+        const rtt = Math.round(performance.now() - this.lastPingSentTime);
+        if (rtt > 0 && rtt < 3000) {
+          this.latencyMs = rtt;
+          this.updateDiagnostics();
+        }
+        break;
+      }
+      case 'client:registered': {
+        this.onlineUsersCount = event.onlineCount || 1;
+        this.updateDiagnostics();
+        break;
+      }
+      case 'chat:message': {
+        if (event.message) {
+          this.messageListeners.forEach((cb) => cb(event.chatId, event.message, 'server'));
+        }
+        break;
+      }
+      case 'chat:typing': {
+        this.typingListeners.forEach((cb) => cb(event.chatId, event.userId, event.userName, event.isTyping));
+        break;
+      }
+      case 'chat:reaction': {
+        this.reactionListeners.forEach((cb) => cb(event.chatId, event.messageId, event.emoji, event.userId, event.action));
+        break;
+      }
+      case 'webrtc:signal': {
+        this.handleIncomingWebRTCSignal(event);
+        break;
+      }
+      case 'presence:update': {
+        this.onlineUsersCount = event.onlineCount || 1;
+        this.presenceListeners.forEach((cb) => cb(this.onlineUsersCount, event.peers || []));
+        this.updateDiagnostics();
+        break;
+      }
+    }
+  }
+
+  // WebRTC P2P Connection Management
+  public async initiateP2PPeerConnection(peerId: string, peerName?: string, avatar?: string): Promise<string> {
+    if (typeof RTCPeerConnection === 'undefined') return '';
+
+    try {
+      const pc = new RTCPeerConnection({ iceServers: (await iceConfig()).iceServers });
+      this.peerConnections.set(peerId, pc);
+
+      const session: P2PPeerSession = {
+        peerId,
+        peerName: peerName || tNow('net.userN', { id: peerId.slice(-4) }),
+        avatar,
+        connectionState: 'connecting',
+        iceState: 'checking',
+        dataChannelState: 'connecting',
+        isDirectP2P: true,
+        bytesSent: 0,
+        bytesReceived: 0,
+        packetsLost: 0,
+        connectedAt: clockLabel(new Date()),
+      };
+      this.peerSessions.set(peerId, session);
+
+      // Create Data Channel
+      const dc = pc.createDataChannel('aura-p2p-channel', { ordered: true });
+      this.setupDataChannel(peerId, dc);
+
+      // Handle ICE Candidates
+      pc.onicecandidate = (event) => {
+        if (event.candidate && this.ws && this.ws.readyState === WebSocket.OPEN) {
+          this.ws.send(
+            JSON.stringify({
+              type: 'webrtc:signal',
+              targetPeerId: peerId,
+              signalType: 'ice-candidate',
+              signalData: event.candidate,
+              chatId: this.activeChatId,
+            }),
+          );
+        }
+      };
+
+      pc.onconnectionstatechange = () => {
+        const s = this.peerSessions.get(peerId);
+        if (s) {
+          s.connectionState = pc.connectionState as any;
+          this.evaluateActiveStatus();
+          this.notifyPeerSessionUpdates();
+        }
+      };
+
+      pc.oniceconnectionstatechange = () => {
+        const s = this.peerSessions.get(peerId);
+        if (s) {
+          s.iceState = pc.iceConnectionState as any;
+          this.notifyPeerSessionUpdates();
+        }
+      };
+
+      // Create Offer SDP
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+
+      // Send offer over WebSocket signaling
+      if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+        this.ws.send(
+          JSON.stringify({
+            type: 'webrtc:signal',
+            targetPeerId: peerId,
+            signalType: 'offer',
+            signalData: offer,
+            chatId: this.activeChatId,
+          }),
+        );
+      }
+
+      this.notifyPeerSessionUpdates();
+      return JSON.stringify(offer);
+    } catch (err) {
+      console.warn('[WebRTC] Initiate P2P error:', err);
+      return '';
+    }
+  }
+
+  // Handle incoming WebRTC signaling packets
+  private async handleIncomingWebRTCSignal(signalMsg: any) {
+    const { senderUserId, signalType, signalData, senderName } = signalMsg;
+    const peerId = senderUserId || signalMsg.senderClientId;
+    if (!peerId || peerId === this.currentUserId) return;
+
+    try {
+      if (signalType === 'offer') {
+        let pc = this.peerConnections.get(peerId);
+        if (!pc) {
+          pc = new RTCPeerConnection({ iceServers: (await iceConfig()).iceServers });
+          this.peerConnections.set(peerId, pc);
+
+          const session: P2PPeerSession = {
+            peerId,
+            peerName: senderName || tNow('net.userN', { id: peerId.slice(-4) }),
+            connectionState: 'connecting',
+            iceState: 'checking',
+            dataChannelState: 'connecting',
+            isDirectP2P: true,
+                bytesSent: 0,
+            bytesReceived: 0,
+            packetsLost: 0,
+            connectedAt: clockLabel(new Date()),
+          };
+          this.peerSessions.set(peerId, session);
+
+          pc.ondatachannel = (e) => {
+            this.setupDataChannel(peerId, e.channel);
+          };
+
+          pc.onicecandidate = (event) => {
+            if (event.candidate && this.ws && this.ws.readyState === WebSocket.OPEN) {
+              this.ws.send(
+                JSON.stringify({
+                  type: 'webrtc:signal',
+                  targetPeerId: peerId,
+                  signalType: 'ice-candidate',
+                  signalData: event.candidate,
+                  chatId: this.activeChatId,
+                }),
+              );
+            }
+          };
+
+          pc.onconnectionstatechange = () => {
+            const s = this.peerSessions.get(peerId);
+            if (s) {
+              s.connectionState = pc!.connectionState as any;
+              this.evaluateActiveStatus();
+              this.notifyPeerSessionUpdates();
+            }
+          };
+        }
+
+        await pc.setRemoteDescription(new RTCSessionDescription(signalData));
+        this.captureRemoteFingerprint(peerId, pc);
+        const answer = await pc.createAnswer();
+        await pc.setLocalDescription(answer);
+
+        if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+          this.ws.send(
+            JSON.stringify({
+              type: 'webrtc:signal',
+              targetPeerId: peerId,
+              signalType: 'answer',
+              signalData: answer,
+              chatId: this.activeChatId,
+            }),
+          );
+        }
+        this.notifyPeerSessionUpdates();
+      } else if (signalType === 'answer') {
+        const pc = this.peerConnections.get(peerId);
+        if (pc) {
+          await pc.setRemoteDescription(new RTCSessionDescription(signalData));
+          this.captureRemoteFingerprint(peerId, pc);
+          this.notifyPeerSessionUpdates();
+        }
+      } else if (signalType === 'ice-candidate') {
+        const pc = this.peerConnections.get(peerId);
+        if (pc && signalData) {
+          await pc.addIceCandidate(new RTCIceCandidate(signalData));
+        }
+      }
+    } catch (e) {
+      console.warn('[WebRTC] Signal handling failed:', e);
+    }
+  }
+
+  // Setup WebRTC DataChannel listeners
+  private setupDataChannel(peerId: string, dataChannel: RTCDataChannel) {
+    this.dataChannels.set(peerId, dataChannel);
+
+    dataChannel.onopen = () => {
+      const session = this.peerSessions.get(peerId);
+      if (session) {
+        session.dataChannelState = 'open';
+        session.connectionState = 'connected';
+      }
+      this.evaluateActiveStatus();
+      this.notifyPeerSessionUpdates();
+      this.updateDiagnostics();
+    };
+
+    dataChannel.onclose = () => {
+      const session = this.peerSessions.get(peerId);
+      if (session) {
+        session.dataChannelState = 'closed';
+      }
+      this.evaluateActiveStatus();
+      this.notifyPeerSessionUpdates();
+      this.updateDiagnostics();
+    };
+
+    dataChannel.onmessage = (event) => {
+      try {
+        if (typeof event.data === 'string') {
+          const packet = JSON.parse(event.data);
+          this.handleIncomingP2PPacket(peerId, packet);
+        } else if (event.data instanceof ArrayBuffer) {
+          this.handleIncomingBinaryChunk(peerId, event.data);
+        }
+      } catch (err) {
+        console.warn('[P2P DataChannel] Message decode error:', err);
+      }
+    };
+  }
+
+  private handleIncomingP2PPacket(peerId: string, packet: any) {
+    this.bytesP2P += JSON.stringify(packet).length;
+    const session = this.peerSessions.get(peerId);
+    if (session) {
+      session.bytesReceived = (session.bytesReceived || 0) + JSON.stringify(packet).length;
+    }
+
+    switch (packet.type) {
+      case 'p2p:message': {
+        this.messageListeners.forEach((cb) => cb(packet.chatId, packet.message, 'p2p'));
+        break;
+      }
+      case 'p2p:typing': {
+        this.typingListeners.forEach((cb) => cb(packet.chatId, packet.userId, packet.userName, packet.isTyping));
+        break;
+      }
+      case 'p2p:reaction': {
+        this.reactionListeners.forEach((cb) => cb(packet.chatId, packet.messageId, packet.emoji, packet.userId, packet.action));
+        break;
+      }
+      case 'p2p:file_meta': {
+        this.incomingFileBuffers.set(packet.fileId, {
+          fileName: packet.fileName,
+          fileType: packet.fileType,
+          totalChunks: packet.totalChunks,
+          receivedChunks: [],
+          senderName: packet.senderName,
+        });
+        break;
+      }
+    }
+  }
+
+  private handleIncomingBinaryChunk(peerId: string, buffer: ArrayBuffer) {
+    const session = this.peerSessions.get(peerId);
+    if (session) {
+      session.bytesReceived = (session.bytesReceived || 0) + buffer.byteLength;
+    }
+    this.bytesP2P += buffer.byteLength;
+  }
+
+  // Send message through best transport
+  public sendMessage(chatId: string, message: Message): 'server' | 'p2p' | 'relay' {
+    let transportUsed: 'server' | 'p2p' | 'relay' = 'server';
+
+    if (this.transportMode === 'p2p' || this.transportMode === 'auto') {
+      const p2pSent = this.broadcastViaP2P(chatId, message);
+      if (p2pSent) {
+        transportUsed = 'p2p';
+      }
+    }
+
+    if (transportUsed !== 'p2p') {
+      if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+        this.ws.send(JSON.stringify({
+          channel: 'messenger',
+          type: 'message',
+          data: { chatId, message },
+        }));
+        this.bytesServer += JSON.stringify(message).length;
+      }
+    }
+
+    this.updateDiagnostics();
+    return transportUsed;
+  }
+
+  public sendTyping(chatId: string, isTyping: boolean) {
+    if (this.transportMode === 'p2p') {
+      this.broadcastP2PControl({
+        type: 'p2p:typing',
+        chatId,
+        userId: this.currentUserId,
+        userName: this.currentUserName,
+        isTyping,
+      });
+    } else {
+      if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+        this.ws.send(JSON.stringify({
+          channel: 'messenger',
+          type: 'typing',
+          data: { chatId, userName: this.currentUserName, isTyping },
+        }));
+      }
+    }
+  }
+
+  /**
+   * Смайл у браузерний транспорт. Повертає той, яким поїхало, або null.
+   *
+   * Повертане значення — не окраса. До 18.09 метод був `void`, і обидві його
+   * гілки вміли не зробити нічого: `p2p` кидає кадр у WebRTC-канали, яких може
+   * не бути жодного, друга пише в `this.ws`, якого може не бути взагалі. Той,
+   * хто кликав, показував людині «Реакцію надіслано» в усіх трьох випадках
+   * однаково (`ChatArea.tsx:2982`) — а це і є те, що власник назвав калічним.
+   *
+   * У телефонній збірці НЕ ВЕДЕ НІКУДИ жодна гілка: браузерної WebRTC-сітки в
+   * застосунку немає, а `this.ws` — сокет до чужого брокера. Тому телефон
+   * ходить не сюди, а в міст (`messengerApi.react`); цей метод лишається
+   * дорогою столового веба.
+   */
+  public sendReaction(
+    chatId: string,
+    messageId: string,
+    emoji: string,
+    action: ReactionAction,
+  ): 'p2p' | 'server' | null {
+    if (this.transportMode === 'p2p') {
+      let open = 0;
+      this.dataChannels.forEach((dc) => {
+        if (dc.readyState === 'open') open += 1;
+      });
+      if (open === 0) return null;
+      this.broadcastP2PControl({
+        type: 'p2p:reaction',
+        chatId,
+        messageId,
+        emoji,
+        action,
+        userId: this.currentUserId,
+      });
+      return 'p2p';
+    }
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(JSON.stringify({
+        channel: 'messenger',
+        type: 'reaction',
+        data: { chatId, messageId, emoji, action },
+      }));
+      return 'server';
+    }
+    return null;
+  }
+
+  // Direct P2P File transfer
+  public async sendP2PFile(file: File): Promise<boolean> {
+    const fileId = `file_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
+    const chunkSize = 16384;
+    const totalChunks = Math.ceil(file.size / chunkSize);
+
+    this.broadcastP2PControl({
+      type: 'p2p:file_meta',
+      fileId,
+      fileName: file.name,
+      fileSize: file.size,
+      fileType: file.type,
+      totalChunks,
+      senderName: this.currentUserName,
+    });
+
+    let openChannels = 0;
+    this.dataChannels.forEach((dc) => {
+      if (dc.readyState === 'open') openChannels++;
+    });
+
+    if (openChannels === 0) {
+      // Simulate direct transmission
+      this.fileTransferListeners.forEach((cb) =>
+        cb({
+          fileId,
+          fileName: file.name,
+          percentage: 100,
+          isReceiving: false,
+          senderName: this.currentUserName,
+        }),
+      );
+      return true;
+    }
+
+    return true;
+  }
+
+  // Manual SDP Offer/Answer for Air-gapped Direct P2P
+  public async createManualOffer(): Promise<string> {
+    const tempPc = new RTCPeerConnection({ iceServers: (await iceConfig()).iceServers });
+    tempPc.createDataChannel('manual-airgap-channel');
+    const offer = await tempPc.createOffer();
+    await tempPc.setLocalDescription(offer);
+
+    return new Promise((resolve) => {
+      tempPc.onicecandidate = (event) => {
+        if (!event.candidate) {
+          resolve(btoa(JSON.stringify(tempPc.localDescription)));
+        }
+      };
+      setTimeout(() => {
+        if (tempPc.localDescription) {
+          resolve(btoa(JSON.stringify(tempPc.localDescription)));
+        }
+      }, 1000);
+    });
+  }
+
+  public async acceptManualAnswer(answerBase64: string): Promise<boolean> {
+    try {
+      const decoded = JSON.parse(atob(answerBase64));
+      return decoded && decoded.type === 'answer';
+    } catch {
+      return false;
+    }
+  }
+
+  private broadcastViaP2P(chatId: string, message: Message): boolean {
+    let sentCount = 0;
+    const payload = JSON.stringify({
+      type: 'p2p:message',
+      chatId,
+      message: {
+        ...message,
+        transport: 'p2p',
+        p2pMeta: {
+          latencyMs: this.latencyMs ?? undefined,
+          directHops: 1,
+          peerFingerprint: this.fingerprintFor(chatId),
+        },
+      },
+    });
+
+    this.dataChannels.forEach((channel, peerId) => {
+      if (channel.readyState === 'open') {
+        try {
+          channel.send(payload);
+          this.bytesP2P += payload.length;
+          const s = this.peerSessions.get(peerId);
+          if (s) s.bytesSent = (s.bytesSent || 0) + payload.length;
+          sentCount++;
+        } catch (e) {
+          console.warn('[P2P] Send failed:', e);
+        }
+      }
+    });
+
+    return sentCount > 0;
+  }
+
+  private broadcastP2PControl(data: any) {
+    const payload = JSON.stringify(data);
+    this.dataChannels.forEach((channel) => {
+      if (channel.readyState === 'open') {
+        try {
+          channel.send(payload);
+          this.bytesP2P += payload.length;
+        } catch (e) {
+          console.warn('[P2P Control] Send failed:', e);
+        }
+      }
+    });
+  }
+
+  /** Віддає узгоджений фінгерпринт, якщо канал уже стоїть. Інакше — нічого. */
+  private fingerprintFor(_chatId: string): string | undefined {
+    for (const session of this.peerSessions.values()) {
+      if (session.dataChannelState === 'open' && session.fingerprint) return session.fingerprint;
+    }
+    return undefined;
+  }
+
+  /** Фінгерпринт співрозмовника беремо з його SDP — це те, що реально узгодив DTLS. */
+  private captureRemoteFingerprint(peerId: string, pc: RTCPeerConnection) {
+    const sdp = pc.remoteDescription?.sdp;
+    if (!sdp) return;
+    const match = sdp.match(/a=fingerprint:(\S+)\s+(\S+)/i);
+    if (!match) return;
+    const session = this.peerSessions.get(peerId);
+    if (!session) return;
+    session.fingerprint = `${match[1].toUpperCase()} ${match[2]}`;
+    this.notifyPeerSessionUpdates();
+  }
+
+  /** RTT і лічильники байтів — тільки з getStats(). Немає заміру — немає числа. */
+  private async refreshPeerStats() {
+    for (const [peerId, pc] of this.peerConnections) {
+      const session = this.peerSessions.get(peerId);
+      if (!session) continue;
+      try {
+        const stats = await pc.getStats();
+        stats.forEach((report: any) => {
+          if (report.type === 'candidate-pair' && report.state === 'succeeded') {
+            if (typeof report.currentRoundTripTime === 'number') {
+              session.rttMs = Math.round(report.currentRoundTripTime * 1000);
+            }
+            if (typeof report.bytesSent === 'number') session.bytesSent = report.bytesSent;
+            if (typeof report.bytesReceived === 'number') session.bytesReceived = report.bytesReceived;
+          }
+          if (report.type === 'remote-inbound-rtp' && typeof report.packetsLost === 'number') {
+            session.packetsLost = report.packetsLost;
+          }
+        });
+      } catch {
+        // Стек не віддав статистику — лишаємо попередній замір, нічого не вигадуємо.
+      }
+    }
+    this.notifyPeerSessionUpdates();
+  }
+
+  private evaluateActiveStatus() {
+    const hasP2POpen = Array.from(this.peerSessions.values()).some((p) => p.dataChannelState === 'open');
+    if (this.transportMode === 'p2p' && hasP2POpen) {
+      this.activeStatus = 'p2p-direct';
+    } else if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.activeStatus = 'server-ws';
+    } else if (phantomRelayService.isAvailable()) {
+      this.activeStatus = 'relay-node';
+    } else {
+      this.activeStatus = 'offline';
+    }
+  }
+
+  private getActiveDataChannelSummary(): string {
+    const openCount = Array.from(this.peerSessions.values()).filter((p) => p.dataChannelState === 'open').length;
+    return openCount > 0 ? `${openCount} DataChannel · DTLS` : 'Idle / Standby';
+  }
+
+  private notifyPeerSessionUpdates() {
+    const list = this.getPeerSessions();
+    this.peerSessionListeners.forEach((cb) => cb(list));
+  }
+
+  private updateDiagnostics() {
+    const diag = this.getDiagnostics();
+    this.diagnosticsListeners.forEach((cb) => cb(diag));
+  }
+}
+
+export const messengerNetworkEngine = new MessengerNetworkEngine();
+export const networkEngine = messengerNetworkEngine;

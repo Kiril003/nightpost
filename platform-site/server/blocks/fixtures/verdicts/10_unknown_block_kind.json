@@ -1,0 +1,18 @@
+{
+  "ok": false,
+  "refused": "unknown_block",
+  "at": "blocks[0]",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "x-0",
+        "kind": "evil.script",
+        "variant": "plain",
+        "hidden": false,
+        "data": {}
+      }
+    ]
+  }
+}

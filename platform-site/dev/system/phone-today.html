@@ -1,0 +1,167 @@
+<html data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390, initial-scale=1">
+<title>Today</title>
+<script>document.documentElement.dataset.theme = location.hash.slice(1) || 'night'</script>
+<link rel="stylesheet" href="./system.css">
+<style>
+  body { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  .status-spacer { height: 24px; flex: none; }
+  .phone-head { height: 56px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; flex: none; }
+  .icon-actions { display: flex; align-items: center; gap: 4px; }
+  .icon-btn { width: 40px; height: 40px; border: 0; background: none; display: inline-flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; }
+  .icon-btn svg { width: 18px; height: 18px; }
+  .chips-wrap { padding: 0 16px 12px; flex: none; }
+  .moments-label { padding: 4px 16px 8px; flex: none; }
+  .moments-row { padding: 0 16px 12px; display: flex; gap: 16px; flex: none; }
+  .moment-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .moment-circle { width: 56px; height: 56px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; }
+  .moment-circle--add { background: var(--raised); color: var(--text-2); }
+  .moment-circle svg { width: 18px; height: 18px; }
+  .chat-list { flex: 1; overflow: hidden; }
+  .meta-col { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .tabbar { margin-top: auto; flex: none; }
+</style>
+</head>
+<body>
+  <div class="status-spacer"></div>
+  <header class="phone-head">
+    <h1 class="t-display">Today</h1>
+    <div class="icon-actions">
+      <button class="icon-btn c-2" type="button" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn c-2" type="button" aria-label="New message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
+      </button>
+      <button class="icon-btn c-2" type="button" aria-label="Scan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="chips-wrap">
+    <div class="chips">
+      <span class="chip" aria-current="true">All</span>
+      <span class="chip">Close</span>
+      <span class="chip">Friends</span>
+      <span class="chip">Work</span>
+      <span class="chip">Study</span>
+      <span class="chip">Unread</span>
+    </div>
+  </div>
+
+  <div class="moments-label t-caption c-2">Moments</div>
+  <div class="moments-row">
+    <div class="moment-item">
+      <span class="moment-circle moment-circle--add">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+      </span>
+      <span class="t-caption">Add</span>
+    </div>
+    <div class="moment-item">
+      <span class="moment-circle t-title-2 p1">M</span>
+      <span class="t-caption">Marta</span>
+    </div>
+    <div class="moment-item">
+      <span class="moment-circle t-title-2 p2">P</span>
+      <span class="t-caption">Petro</span>
+    </div>
+    <div class="moment-item">
+      <span class="moment-circle t-title-2 p4">I</span>
+      <span class="t-caption">Iva</span>
+    </div>
+    <div class="moment-item">
+      <span class="moment-circle t-title-2 p3">D</span>
+      <span class="t-caption">Daniel</span>
+    </div>
+  </div>
+
+  <ul class="list chat-list">
+    <li class="row">
+      <span class="tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+      </span>
+      <div class="main">
+        <div class="name">Saved</div>
+        <div class="preview">Market Street 21</div>
+      </div>
+      <div class="meta">Thu</div>
+    </li>
+    <li class="row">
+      <span class="avatar avatar--40 p1">M</span>
+      <div class="main">
+        <div class="name">Marta</div>
+        <div class="preview">on my way</div>
+      </div>
+      <div class="meta meta-col">
+        <span>21:07</span>
+        <span class="badge">1</span>
+      </div>
+    </li>
+    <li class="row">
+      <span class="avatar avatar--40 p4">F</span>
+      <div class="main">
+        <div class="name">Friday pho</div>
+        <div class="preview">Petro: booked the window table</div>
+      </div>
+      <div class="meta meta-col">
+        <span>21:05</span>
+        <span class="badge">2</span>
+      </div>
+    </li>
+    <li class="row">
+      <span class="avatar avatar--40 p3">D</span>
+      <div class="main">
+        <div class="name">Daniel</div>
+        <div class="preview">See you Friday</div>
+      </div>
+      <div class="meta">20:28</div>
+    </li>
+    <li class="row">
+      <span class="avatar avatar--40 p2">P</span>
+      <div class="main">
+        <div class="name">Petro</div>
+        <div class="preview">Table for four, 19:00</div>
+      </div>
+      <div class="meta">20:46</div>
+    </li>
+    <li class="row">
+      <span class="avatar avatar--40 p4">I</span>
+      <div class="main">
+        <div class="name">Iva</div>
+        <div class="preview">Thursday 18:30 works for me</div>
+      </div>
+      <div class="meta">18:59</div>
+    </li>
+  </ul>
+
+  <nav class="tabbar">
+    <a href="#" aria-current="page">
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+      </span>
+      <span>Today</span>
+    </a>
+    <a href="#">
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
+      </span>
+      <span>Map</span>
+    </a>
+    <a href="#">
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+      </span>
+      <span>Wallet</span>
+    </a>
+    <a href="#">
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+      </span>
+      <span>You</span>
+    </a>
+  </nav>
+</body>
+</html>

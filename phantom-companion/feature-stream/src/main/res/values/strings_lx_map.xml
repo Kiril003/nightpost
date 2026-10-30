@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lx_map_title_fuel">Fuel stations</string>
+    <string name="lx_map_title_ev">EV chargers</string>
+    <string name="lx_map_title_auto_repair">Auto repair</string>
+    <string name="lx_map_title_shelters">Shelters</string>
+    <string name="lx_map_title_water">Drinking water</string>
+    <string name="lx_map_title_pharmacies">Pharmacies</string>
+    <string name="lx_map_title_rest_areas">Rest areas</string>
+    <string name="lx_map_title_power_towers">Power towers</string>
+    <string name="lx_map_title_drainage">Drainage &amp; culverts</string>
+    <string name="lx_map_title_fords">Fords</string>
+    <string name="lx_map_title_other">Layer</string>
+
+    <string name="lx_map_empty_fuel">No fuel stations nearby</string>
+    <string name="lx_map_empty_ev">No EV chargers nearby</string>
+    <string name="lx_map_empty_auto_repair">No auto repair nearby</string>
+    <string name="lx_map_empty_shelters">No shelters mapped nearby</string>
+    <string name="lx_map_empty_water">No drinking water nearby</string>
+    <string name="lx_map_empty_pharmacies">No pharmacies nearby</string>
+    <string name="lx_map_empty_rest_areas">No rest areas nearby</string>
+    <string name="lx_map_empty_power_towers">No power towers nearby</string>
+    <string name="lx_map_empty_drainage">No ditches or culverts nearby</string>
+    <string name="lx_map_empty_fords">No fords nearby</string>
+    <string name="lx_map_empty_other">Nothing nearby</string>
+
+    <string name="lx_map_unavail_fuel">Fuel stations unavailable</string>
+    <string name="lx_map_unavail_ev">EV chargers unavailable</string>
+    <string name="lx_map_unavail_auto_repair">Auto repair unavailable</string>
+    <string name="lx_map_unavail_shelters">Shelters unavailable</string>
+    <string name="lx_map_unavail_water">Drinking water unavailable</string>
+    <string name="lx_map_unavail_pharmacies">Pharmacies unavailable</string>
+    <string name="lx_map_unavail_rest_areas">Rest areas unavailable</string>
+    <string name="lx_map_unavail_power_towers">Power towers unavailable</string>
+    <string name="lx_map_unavail_drainage">Drainage data unavailable</string>
+    <string name="lx_map_unavail_fords">Fords unavailable</string>
+    <string name="lx_map_unavail_other">Layer unavailable</string>
+
+    <string name="lx_map_marker_fuel_default">Fuel</string>
+    <string name="lx_map_marker_fuel_diesel">D</string>
+    <string name="lx_map_marker_fuel_lpg">LPG</string>
+    <string name="lx_map_marker_fuel_detail">Fuel: %1$s</string>
+    <string name="lx_map_marker_ev_default">EV charger</string>
+    <string name="lx_map_marker_ev_detail">EV charger: %1$s</string>
+    <string name="lx_map_marker_tyres">Tyres</string>
+    <string name="lx_map_marker_car_wash">Car wash</string>
+    <string name="lx_map_marker_auto_repair">Auto repair</string>
+    <string name="lx_map_marker_auto_repair_detail">Auto service: %1$s</string>
+    <string name="lx_map_marker_shelter_default">Shelter</string>
+    <string name="lx_map_marker_shelter_detail">Shelter: %1$s</string>
+    <string name="lx_map_marker_spring">Spring</string>
+    <string name="lx_map_marker_water_default">Drinking water</string>
+    <string name="lx_map_marker_water_detail">Drinking water: %1$s</string>
+    <string name="lx_map_marker_pharmacy_default">Pharmacy</string>
+    <string name="lx_map_marker_pharmacy_detail">Pharmacy: %1$s</string>
+    <string name="lx_map_marker_rest_area_default">Rest area</string>
+    <string name="lx_map_marker_rest_area_detail">Rest area: %1$s</string>
+    <string name="lx_map_marker_tower_label">Tower</string>
+    <string name="lx_map_marker_tower_detail">OSM: power tower</string>
+    <string name="lx_map_marker_culvert_label">Culvert</string>
+    <string name="lx_map_marker_ditch_label">Ditch</string>
+    <string name="lx_map_marker_culvert_detail">OSM: culvert under road — condition unverified</string>
+    <string name="lx_map_marker_ditch_detail">OSM: open ditch — potential crossing obstacle</string>
+    <string name="lx_map_marker_ford_label">Ford</string>
+    <string name="lx_map_marker_ford_detail">OSM: ford — passability unknown</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meetup_ask_drafted">Buluşma taslağı: %1$s. Mesajlaşmada gözden geçir.</string>
+    <string name="meetup_ask_still_empty">Hâlâ boş: %1$s.</string>
+    <string name="meetup_ask_field_people">kişiler</string>
+    <string name="meetup_ask_field_place">yer</string>
+    <string name="meetup_ask_field_time">zaman</string>
+    <string name="meetup_ask_empty">Buluşma taslağı hazır, kişileri, yeri ve zamanı seç.</string>
+    <string name="meetup_ask_split_claimed">Hesap mesajlaşmada açılır: kalemlerini işaretle ve öde.</string>
+    <string name="meetup_ask_split_equal">Hesap mesajlaşmada açılır: eşit bölmek için hepsini işaretle.</string>
+    <string name="meetup_ask_roster_unreadable">Kişilerin okunamadı. Kişiler’i aç.</string>
+    <string name="meetup_ask_draft_failed">Mesajlaşma taslağı almadı. Tekrar dene.</string>
+    <string name="meetup_ask_bad_mode">Nasıl böleceğimi anlamadım: “%1$s”. Hesap işaretlere göre ya da eşit bölünür.</string>
+</resources>

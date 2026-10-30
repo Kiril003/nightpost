@@ -1,0 +1,252 @@
+"""
+Phase 9.4b — Nominatim (OpenStreetMap) geocoding adapter.
+
+Usage policy (https://operations.osmfoundation.org/policies/nominatim/):
+  * One request per second cap — enforced here.
+  * Identifiable User-Agent string required.
+  * Cache results; don't re-geocode on every request.
+
+Forward geocode: text → list of candidates (coordinates, display_name).
+Reverse geocode: coordinates → address (city, country).
+
+Only an own instance is used (`config.geocoder_base_url`, env-only); with no
+base URL nothing leaves the node. Network failures return `[]` / `None`
+unless the caller asks for `strict=True`.
+"""
+from __future__ import annotations
+
+import logging
+from dataclasses import dataclass
+from typing import Optional
+
+import httpx
+from cachetools import TTLCache
+
+from config import config
+
+from .. import service_health
+from .rate_limiter import PerSecondRateLimiter
+
+# Phase 9.4c audit C1 — bounded caches prevent unbounded memory growth over
+# long-running sessions. Capacity keeps the top N hottest queries resident;
+# TTL honours Nominatim's "cache aggressively" policy without staleness.
+_FWD_CACHE_MAX = 1024
+_REV_CACHE_MAX = 1024
+_DEFAULT_TTL_S = 7 * 24 * 3600
+
+logger = logging.getLogger(__name__)
+
+Viewbox = tuple[float, float, float, float]
+
+
+class GeocoderUnavailable(Exception):
+    def __init__(self, reason: str) -> None:
+        super().__init__(reason)
+        self.reason = reason
+
+
+def geocoder_base_url() -> Optional[str]:
+    if not getattr(config, "agent_nominatim_enabled", False):
+        return None
+    base = (getattr(config, "geocoder_base_url", None) or "").strip().rstrip("/")
+    return base or None
+
+
+def geocoder_configured() -> bool:
+    return geocoder_base_url() is not None
+
+
+# ── Result shapes ───────────────────────────────────────────────────────────
+
+
+@dataclass(frozen=True)
+class GeocodeResult:
+    lat: float
+    lon: float
+    display_name: str
+    place_type: Optional[str] = None
+    importance: Optional[float] = None
+
+
+@dataclass(frozen=True)
+class ReverseGeocodeResult:
+    lat: float
+    lon: float
+    display_name: str
+    country: Optional[str]
+    country_code: Optional[str]
+    city: Optional[str]
+    state: Optional[str]
+
+
+# ── Adapter ─────────────────────────────────────────────────────────────────
+
+
+class NominatimGeocoder:
+    def __init__(self, rate_limit: Optional[PerSecondRateLimiter] = None) -> None:
+        self._rate_limit = rate_limit if rate_limit is not None else PerSecondRateLimiter(1.0)
+        ttl = float(getattr(config, "agent_nominatim_cache_ttl_s", _DEFAULT_TTL_S) or _DEFAULT_TTL_S)
+        self._fwd_cache: TTLCache[tuple, list[GeocodeResult]] = TTLCache(maxsize=_FWD_CACHE_MAX, ttl=ttl)
+        self._rev_cache: TTLCache[tuple[int, int], Optional[ReverseGeocodeResult]] = TTLCache(
+            maxsize=_REV_CACHE_MAX, ttl=ttl,
+        )
+
+    # ── Introspection ────────────────────────────────────────────────────────
+
+    def reset_caches(self) -> None:
+        self._fwd_cache.clear()
+        self._rev_cache.clear()
+
+    # ── Forward ──────────────────────────────────────────────────────────────
+
+    async def geocode(
+        self,
+        query: str,
+        *,
+        limit: int = 5,
+        viewbox: Optional[Viewbox] = None,
+        lang: Optional[str] = None,
+        strict: bool = False,
+    ) -> list[GeocodeResult]:
+        """Return up to ``limit`` candidates for ``query`` (text → coords)."""
+        base = geocoder_base_url()
+        if base is None:
+            if strict:
+                raise GeocoderUnavailable("geocoder_not_configured")
+            return []
+        if not query or not query.strip():
+            return []
+
+        norm = query.casefold().strip()
+        key = (norm, int(limit), tuple(viewbox) if viewbox else None, lang or None)
+        cached = self._fwd_cache.get(key)
+        if cached is not None:
+            return cached
+
+        params: dict[str, object] = {
+            "q": query,
+            "format": "json",
+            "limit": int(limit),
+            "addressdetails": "0",
+        }
+        if viewbox:
+            params["viewbox"] = ",".join(f"{v:g}" for v in viewbox)
+        if lang:
+            params["accept-language"] = lang
+
+        await self._rate_limit.wait()
+        ua = str(getattr(config, "agent_nominatim_user_agent", "PHANTOM-OS/0.9") or "PHANTOM-OS/0.9")
+        try:
+            async with httpx.AsyncClient(timeout=10.0, headers={"User-Agent": ua}) as client:
+                resp = await client.get(f"{base}/search", params=params)
+            resp.raise_for_status()
+            data = resp.json()
+        except (httpx.HTTPError, ValueError) as exc:
+            logger.info("Nominatim geocode failure for %r: %s", norm[:40], exc)
+            service_health.mark_failure("nominatim", f"geocode: {exc}")
+            if strict:
+                raise GeocoderUnavailable("geocoder_unavailable") from exc
+            return []
+
+        results: list[GeocodeResult] = []
+        for item in data:
+            try:
+                results.append(GeocodeResult(
+                    lat=float(item["lat"]),
+                    lon=float(item["lon"]),
+                    display_name=str(item.get("display_name") or ""),
+                    place_type=item.get("type"),
+                    importance=(
+                        float(item["importance"]) if "importance" in item else None
+                    ),
+                ))
+            except (KeyError, TypeError, ValueError):
+                continue
+        self._fwd_cache[key] = results
+        service_health.mark_success("nominatim")
+        return results
+
+    # ── Reverse ──────────────────────────────────────────────────────────────
+
+    async def reverse(self, lat: float, lon: float) -> Optional[ReverseGeocodeResult]:
+        """Return the address at ``(lat, lon)``, or ``None`` on failure.
+
+        Cache key rounds to ~11 m precision (4 decimal places). Good enough
+        for "what city am I in"; irrelevant for nearby-memory queries which
+        don't touch this function.
+        """
+        base = geocoder_base_url()
+        if base is None:
+            return None
+        key = (int(lat * 1e4), int(lon * 1e4))
+        if key in self._rev_cache:
+            return self._rev_cache[key]
+
+        await self._rate_limit.wait()
+        ua = str(getattr(config, "agent_nominatim_user_agent", "PHANTOM-OS/0.9") or "PHANTOM-OS/0.9")
+        try:
+            async with httpx.AsyncClient(timeout=10.0, headers={"User-Agent": ua}) as client:
+                resp = await client.get(f"{base}/reverse", params={
+                    "lat": f"{lat}",
+                    "lon": f"{lon}",
+                    "format": "json",
+                    "addressdetails": "1",
+                    "zoom": "14",  # neighbourhood-level
+                })
+            resp.raise_for_status()
+            data = resp.json()
+        except (httpx.HTTPError, ValueError) as exc:
+            logger.info("Nominatim reverse failure for %.4f,%.4f: %s", lat, lon, exc)
+            service_health.mark_failure("nominatim", f"reverse: {exc}")
+            return None
+
+        if not isinstance(data, dict) or "lat" not in data:
+            self._rev_cache[key] = None
+            return None
+        addr = data.get("address") or {}
+        result = ReverseGeocodeResult(
+            lat=float(data.get("lat") or lat),
+            lon=float(data.get("lon") or lon),
+            display_name=str(data.get("display_name") or ""),
+            country=addr.get("country"),
+            country_code=(addr.get("country_code") or "").upper() or None,
+            city=(
+                addr.get("city")
+                or addr.get("town")
+                or addr.get("village")
+                or addr.get("hamlet")
+            ),
+            state=addr.get("state") or addr.get("region"),
+        )
+        self._rev_cache[key] = result
+        service_health.mark_success("nominatim")
+        return result
+
+
+# ── Singleton ───────────────────────────────────────────────────────────────
+
+_default: Optional[NominatimGeocoder] = None
+
+
+def get_default_nominatim() -> NominatimGeocoder:
+    global _default
+    if _default is None:
+        _default = NominatimGeocoder()
+    return _default
+
+
+def set_default_nominatim(geocoder: Optional[NominatimGeocoder]) -> None:
+    global _default
+    _default = geocoder
+
+
+__all__ = [
+    "GeocoderUnavailable",
+    "NominatimGeocoder",
+    "geocoder_base_url",
+    "geocoder_configured",
+    "GeocodeResult",
+    "ReverseGeocodeResult",
+    "get_default_nominatim",
+    "set_default_nominatim",
+]

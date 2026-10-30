@@ -1,0 +1,75 @@
+# www віддає 301 на голе ім'я — рівно те, що сьогодні робить Netlify.
+#
+# Це не смак: `SITE_ORIGINS` ліцензійного сервера знає ЛИШЕ https://phantom-os.dev
+# (переміряно 12.09 заголовком Origin). Сайт, відданий із www, ходив би по
+# /api/downloads із чужого походження, CORS зрізав би відповідь — і картка
+# збірки казала б «сервер не відповів» там, де сервер відповідає чудово.
+server {
+    listen 80;
+    listen [::]:80;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name www.phantom-os.dev;
+
+    ssl_certificate     /etc/letsencrypt/live/try.phantom-os.dev/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/try.phantom-os.dev/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location /.well-known/acme-challenge/ { root /var/www/html; }
+    location / { return 301 https://phantom-os.dev$request_uri; }
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name phantom-os.dev;
+
+    root /var/www/phantom-os.dev;
+    index index.html;
+
+    location /.well-known/acme-challenge/ { root /var/www/html; }
+
+    include snippets/phantom-os-site.conf;
+}
+
+# Той самий корінь і ті самі заголовки на окремому порту.
+#
+# Доки DNS показує на Netlify, жодне ім'я не приводить сюди, і перевірити
+# викладене можна було б лише підміною Host. Цей блок дає адресу, яку відкриває
+# людина: http://<IP>:8090/. Він не робить сайт публічним раніше за рішення
+# власника — на цю адресу ніхто не прийде сам, і в неї немає імені.
+server {
+    listen 8090 default_server;
+    listen [::]:8090 default_server;
+    server_name _;
+
+    root /var/www/phantom-os.dev;
+    index index.html;
+
+    include snippets/phantom-os-site.conf;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name phantom-os.dev;
+
+    root /var/www/phantom-os.dev;
+    index index.html;
+
+    # Сертифікат сусіднього імені стоїть тут ЗАГЛУШКОЮ, і це навмисно.
+    # nginx не підніме ssl-блок без пари файлів, а справжній сертифікат на
+    # phantom-os.dev видається лише після того, як DNS показує сюди. Тобто
+    # заглушка існує рівно для того, щоб увесь шлях — ім'я, заголовки,
+    # SPA-підміна — був живий і перевірний ДО переїзду, а не після нього.
+    # certbot перепише ці два рядки сам (deploy-oracle.sh --certbot).
+    ssl_certificate     /etc/letsencrypt/live/try.phantom-os.dev/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/try.phantom-os.dev/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    add_header Strict-Transport-Security "max-age=31536000" always;
+
+    include snippets/phantom-os-site.conf;
+}

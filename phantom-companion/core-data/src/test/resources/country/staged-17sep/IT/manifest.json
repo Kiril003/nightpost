@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 47.0921,
+    "maxLon": 18.7845,
+    "minLat": 35.289,
+    "minLon": 6.6273
+  },
+  "files": [
+    {
+      "bytes": 7685182,
+      "name": "places.tsv.gz",
+      "sha256": "453a496e8f4db9f836dbdf7a10d5016dfa1ac789edd0de4f7eaaccc3c9a9990e"
+    },
+    {
+      "bytes": 11687449,
+      "name": "streets.tsv.gz",
+      "sha256": "6f984419842da97c64b96abdae688d6cba11e01afacfdd36a01d56afc27c123a"
+    }
+  ],
+  "home": {
+    "lat": 41.8933,
+    "lon": 12.4829,
+    "zoom": 12.0
+  },
+  "id": "IT",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "it-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Італія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "it-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Італія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Італія",
+  "version": 1
+}

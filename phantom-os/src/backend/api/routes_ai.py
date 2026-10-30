@@ -1,0 +1,155 @@
+"""
+AI introspection routes — model discovery + connectivity tests.
+
+GET  /ai/models        Locally installed Ollama models (via ai.model_router)
+                        so the Settings panel can offer a dropdown.
+GET  /ai/routes        Model-router snapshot: providers, capabilities, order.
+POST /ai/test          Round-trip a trivial "ping" through a single provider
+                        so operators can sanity-check credentials + network.
+"""
+from __future__ import annotations
+
+import asyncio
+import logging
+import time
+from typing import Literal
+
+from fastapi import APIRouter, Depends
+from pydantic import BaseModel
+
+from config import config
+from security.auth import get_current_user, require_auth
+from security.jwt_manager import TokenPayload
+from db.models import User
+
+logger = logging.getLogger(__name__)
+
+router = APIRouter(prefix="/ai", tags=["ai"])
+
+
+class OllamaModel(BaseModel):
+    name: str
+    size: int | None = None
+    parameter_size: str | None = None
+    quantization: str | None = None
+    family: str | None = None
+
+
+class ModelsResponse(BaseModel):
+    ok: bool
+    host: str
+    models: list[OllamaModel]
+    error: str | None = None
+
+
+class TestRequest(BaseModel):
+    provider: Literal["ollama", "gemini", "anthropic", "openai"]
+
+
+class TestResponse(BaseModel):
+    ok: bool
+    provider: str
+    latency_ms: int
+    reply_preview: str | None = None
+    error: str | None = None
+
+
+@router.get("/models", response_model=ModelsResponse)
+async def list_ollama_models(
+    _user: User = Depends(get_current_user),
+) -> ModelsResponse:
+    """
+    Return locally installed Ollama models (ai.model_router.local_models).
+    Never raises: an offline Ollama → `ok=false` with human-readable error.
+    Frontend uses ok=false to switch the Settings field into a text input.
+    """
+    from ai.model_router import local_models
+
+    host = config.ai_ollama_host.rstrip("/")
+    try:
+        raw_models = await local_models()
+    except Exception as exc:
+        return ModelsResponse(ok=False, host=host, models=[], error=str(exc))
+
+    models: list[OllamaModel] = []
+    for m in raw_models:
+        details = m.get("details") or {}
+        models.append(
+            OllamaModel(
+                name=m.get("name") or m.get("model") or "?",
+                size=m.get("size"),
+                parameter_size=details.get("parameter_size"),
+                quantization=details.get("quantization_level"),
+                family=details.get("family"),
+            )
+        )
+    models.sort(key=lambda x: x.name)
+    return ModelsResponse(ok=True, host=host, models=models)
+
+
+@router.post("/test", response_model=TestResponse)
+async def test_provider(
+    req: TestRequest,
+    _user: User = Depends(get_current_user),
+) -> TestResponse:
+    """
+    Mini round-trip through the specified provider. Short cap (4 tokens) keeps
+    this cheap and fast on big cloud models as well as slow local ones.
+    """
+    from ai.model_router import probe
+
+    # Local 3B/8B Ollama models can take ~15s cold-start on CPU-only hosts,
+    # so the sanity-check timeout has to accommodate the first invocation.
+    TEST_TIMEOUT_S = 30.0
+    t0 = time.monotonic()
+    try:
+        # health_check returns a trivial round-trip and swallows its own errors,
+        # so we wrap with timeout and capture raw exceptions ourselves.
+        ok = await asyncio.wait_for(probe(req.provider), timeout=TEST_TIMEOUT_S)
+        latency = int((time.monotonic() - t0) * 1000)
+    except asyncio.TimeoutError:
+        return TestResponse(
+            ok=False,
+            provider=req.provider,
+            latency_ms=int((time.monotonic() - t0) * 1000),
+            error=f"Timeout (>{int(TEST_TIMEOUT_S)}s)",
+        )
+    except Exception as exc:
+        return TestResponse(
+            ok=False,
+            provider=req.provider,
+            latency_ms=int((time.monotonic() - t0) * 1000),
+            error=f"{type(exc).__name__}: {exc}",
+        )
+
+    if not ok:
+        return TestResponse(
+            ok=False,
+            provider=req.provider,
+            latency_ms=latency,
+            error="Provider returned a non-success health response",
+        )
+
+    return TestResponse(
+        ok=True,
+        provider=req.provider,
+        latency_ms=latency,
+        reply_preview="pong",
+    )
+
+
+@router.get("/routes")
+async def model_routes(_user: User = Depends(get_current_user)) -> dict:
+    """Маршрутизатор моделей: хто налаштований, хто що вміє і в якому
+    порядку піде кожна здібність (думати / бачити / швидко / шукати)."""
+    from ai.model_router import snapshot
+
+    return snapshot()
+
+
+@router.post("/reset")
+async def reset_ai_router(_: TokenPayload = Depends(require_auth)) -> dict:
+    """Manually clear all cooling and quota states in the AI router."""
+    from ai.provider import ai_router
+    ai_router.reset_cooling()
+    return {"ok": True, "message": "AI router state reset successful"}

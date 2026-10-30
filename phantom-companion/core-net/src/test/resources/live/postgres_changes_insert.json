@@ -1,0 +1,61 @@
+{
+  "ref": null,
+  "event": "postgres_changes",
+  "payload": {
+    "data": {
+      "table": "live_marks",
+      "type": "INSERT",
+      "record": {
+        "id": "4377ce27-3c84-406d-ba3c-2fcf69b2e10b",
+        "lat": 50.4501,
+        "lon": 30.5234,
+        "kind": "патруль",
+        "geohash6": "u8vxn8",
+        "created_at": "2026-08-23T13:00:23.282809+00:00",
+        "device_tag": "probe-laptop",
+        "expires_at": "2026-08-23T13:03:22.958706+00:00"
+      },
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid"
+        },
+        {
+          "name": "kind",
+          "type": "text"
+        },
+        {
+          "name": "lat",
+          "type": "float8"
+        },
+        {
+          "name": "lon",
+          "type": "float8"
+        },
+        {
+          "name": "geohash6",
+          "type": "text"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz"
+        },
+        {
+          "name": "expires_at",
+          "type": "timestamptz"
+        },
+        {
+          "name": "device_tag",
+          "type": "text"
+        }
+      ],
+      "errors": null,
+      "schema": "public",
+      "commit_timestamp": "2026-08-23T13:00:23.286Z"
+    },
+    "ids": [
+      128630944
+    ]
+  },
+  "topic": "realtime:public:live_marks"
+}

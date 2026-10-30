@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_allow">Izinkan</string>
+    <string name="perm_not_now">Nanti</string>
+    <string name="perm_open_settings">Buka pengaturan</string>
+    <string name="perm_denied_title">Belum ada akses</string>
+    <string name="perm_blocked_title">Akses mati</string>
+    <string name="perm_blocked_body">Android tidak akan bertanya lagi. Aktifkan akses di pengaturan aplikasi, lalu kembali.</string>
+</resources>

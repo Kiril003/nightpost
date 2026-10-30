@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="air_alert_channel_alarm">Nightpost · тривога в регіоні</string>
+    <string name="air_alert_channel_alarm_desc">Тривога над вашою областю — будильником, а не сповіщенням</string>
+    <string name="air_alert_channel_clear">Nightpost · відбій тривоги</string>
+    <string name="air_alert_channel_clear_desc">Відбій над вашою областю — тихо, без вібрації</string>
+    <string name="air_alert_title_raised">Тривога в вашому регіоні · %1$s</string>
+    <string name="air_alert_title_clear">Відбій · %1$s</string>
+    <string name="air_alert_full_kicker">Тривога в вашому регіоні</string>
+    <string name="air_alert_full_since">Оголошено о %1$s</string>
+    <string name="air_alert_full_map">Показати на мапі</string>
+    <string name="air_alert_full_dismiss">Зрозумів</string>
+</resources>

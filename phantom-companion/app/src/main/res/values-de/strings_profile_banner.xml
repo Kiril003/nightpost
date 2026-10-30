@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_banner">Banner</string>
+    <string name="profile_banner_add">Banner hinzufügen</string>
+    <string name="profile_banner_photos">Fotos</string>
+    <string name="profile_banner_video">Video</string>
+    <string name="profile_banner_from_phone">Vom Handy</string>
+    <string name="profile_banner_max">Max. 6</string>
+    <string name="profile_banner_count">%1$d/%2$d</string>
+    <string name="profile_banner_focus">Fokus</string>
+    <string name="profile_banner_save">Speichern</string>
+    <string name="profile_banner_saving">Wird gespeichert …</string>
+    <string name="profile_banner_first_frame">andere sehen das erste Bild</string>
+    <string name="profile_banner_video_local">über 8 MB: andere sehen das erste Bild</string>
+    <string name="profile_banner_video_long">Video bis 15 s</string>
+    <string name="profile_banner_failed">Nicht gespeichert</string>
+    <string name="profile_banner_remove">Banner entfernen</string>
+    <string name="profile_banner_photo_n">Foto %1$d</string>
+    <string name="profile_banner_close">Schließen</string>
+    <string name="profile_edit">Bearbeiten</string>
+    <string name="profile_moment_new">Moment</string>
+    <string name="profile_photo_row">Profilfoto</string>
+    <string name="profile_about_row">Status und Bio</string>
+    <string name="profile_new">Neu</string>
+</resources>

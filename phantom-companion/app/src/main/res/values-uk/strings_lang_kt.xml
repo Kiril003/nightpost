@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="kt_sym_asks">Компʼютер просить: %1$s</string>
+    <string name="kt_sym_yes">Так</string>
+    <string name="kt_reminder_channel">Nightpost · нагадування</string>
+    <string name="kt_reminder_channel_desc">те, що ви просили не забути</string>
+    <string name="kt_whisper_slow">повільно</string>
+    <string name="kt_whisper_fast">швидко</string>
+    <string name="kt_whisper_desc_slow">60 секунд на цикл — майже непомітно</string>
+    <string name="kt_whisper_desc_mid">38 секунд на цикл — відчутно але мʼяко</string>
+    <string name="kt_whisper_desc_fast">22 секунди на цикл — постійна присутність</string>
+</resources>

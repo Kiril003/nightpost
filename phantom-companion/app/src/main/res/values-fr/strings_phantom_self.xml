@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="self_remembered">Retenu : %1$s.</string>
+    <string name="self_heard_no_brain">Retenu : %1$s. L’IA n’est pas encore activée.</string>
+    <string name="self_no_brain">L’IA n’est pas encore activée, mais la mémoire fonctionne.</string>
+    <string name="self_forgot">Oublié : %1$s. Je ne m’en souviens plus.</string>
+    <string name="self_forgot_nothing">Je ne sais rien sur « %1$s » : rien à oublier.</string>
+    <string name="self_forgot_all">J’ai oublié tout ce que je savais de vous.</string>
+    <string name="self_forgot_all_empty">Je ne sais encore rien de vous : rien à oublier.</string>
+    <string name="self_knows_nothing">Aucun fait retenu.</string>
+    <string name="self_knows_header">Voici ce que je sais de vous :</string>
+    <string name="self_knows_old">Anciennes notes de conversations passées :</string>
+    <string name="self_knows_footer">Dites « oublie … » pour retirer une entrée.</string>
+    <string name="self_from_self">vos mots</string>
+    <string name="self_from_heard">entendu en conversation</string>
+    <string name="self_from_guess">ma déduction</string>
+    <string name="self_ask_no_mind">Pas maintenant : mon esprit n’est pas encore activé sur ce téléphone.</string>
+    <string name="tutor_hello">Commençons par deux questions rapides.</string>
+    <string name="tutor_q_vars">Question %1$d. Que fait afficher ce code ?\n\n%2$s\n\nRépondez seulement.</string>
+    <string name="tutor_q_loops">Question %1$d. Et celui-ci ?\n\n%2$s</string>
+    <string name="tutor_right">Exact.</string>
+    <string name="tutor_wrong">Presque : il affiche %1$s (%2$s).</string>
+    <string name="tutor_task_intro">Maintenant un petit exercice — %1$s.</string>
+    <string name="tutor_send_code">Envoyez le code en message, ou dites « stop ».</string>
+    <string name="task_vars">Déclarez une variable int age valant 30 et affichez-la.</string>
+    <string name="task_cond">Pour n : si n &gt; 10 affichez \"many\", sinon \"few\".</string>
+    <string name="task_loops">Affichez les nombres de 1 à 5, chacun sur sa ligne, avec une boucle for.</string>
+    <string name="task_methods">Écrivez une méthode Square qui prend un int et renvoie son carré.</string>
+    <string name="task_arrays">Créez un tableau de 1, 2, 3 et affichez son nombre d’éléments.</string>
+    <string name="tutor_pass">Oui, c’est résolu. Bien joué.</string>
+    <string name="tutor_fail">Presque. Voici ce que j’ai remarqué :</string>
+    <string name="tutor_retry">Corrigez et renvoyez.</string>
+    <string name="tutor_read_not_run">Code vérifié statiquement, sans exécution.</string>
+    <string name="tutor_second_look">Encore une remarque : %1$s</string>
+    <string name="tutor_tomorrow">On revoit « %1$s » demain.</string>
+    <string name="tutor_more">Envie d’en savoir plus ? Écrivez « apprends-moi le C# ».</string>
+    <string name="tutor_review">Revoyons « %1$s ». Que fait afficher ce code ?\n\n%2$s</string>
+    <string name="tutor_review_right">Oui ! « %1$s » est acquis.</string>
+    <string name="tutor_review_wrong">Il affiche %1$s (%2$s).</string>
+    <string name="tutor_nothing_to_review">Tous les sujets vus sont acquis.</string>
+    <string name="tutor_stop">Arrêté. Écrivez « apprends-moi le C# » pour reprendre.</string>
+    <string name="tutor_reminder">On revoit %1$s en C# ? Une question — écrivez-moi « révisons ».</string>
+    <string name="tutor_issue_braces">• les accolades { } ne correspondent pas</string>
+    <string name="tutor_issue_parens">• les parenthèses ( ) ne correspondent pas</string>
+    <string name="tutor_issue_semicolon">• il manque un point-virgule</string>
+    <string name="tutor_issue_quotes">• un guillemet n’est pas fermé</string>
+    <string name="tutor_issue_need">• je ne vois pas %1$s</string>
+    <string name="tutor_topic_vars">les variables</string>
+    <string name="tutor_topic_cond">les conditions</string>
+    <string name="tutor_topic_loops">les boucles</string>
+    <string name="tutor_topic_methods">les méthodes</string>
+    <string name="tutor_topic_arrays">les tableaux</string>
+    <string name="tutor_skill_ok">C# : %1$s — acquis</string>
+    <string name="tutor_skill_shaky">C# : %1$s — encore fragile</string>
+    <string name="visit_title">Nightpost</string>
+    <string name="visit_channel">Nightpost passe de lui-même</string>
+    <string name="visit_action_not_now">Pas maintenant</string>
+    <string name="visit_action_dont">Ne pas le faire</string>
+    <string name="visit_why_lesson">Révision du sujet d’hier « %1$s ».</string>
+    <string name="visit_why_reminder">Pourquoi je suis là : vous m’avez demandé de vous le rappeler.</string>
+    <string name="visit_not_now">D’accord, je reviendrai plus tard.</string>
+    <string name="visit_dont">Rappels de leçon désactivés.</string>
+    <string name="voice_heard_until">%1$s [la personne a interrompu ici : elle n’a pas entendu la suite]</string>
+    <string-array name="voice_fillers">
+        <item>Un instant.</item>
+        <item>Je réfléchis encore.</item>
+        <item>Presque prêt.</item>
+    </string-array>
+    <string name="voice_long_wait">Ce sera un peu plus long : je vous préviens dès que c’est prêt.</string>
+    <string name="voice_acting">Je regarde.</string>
+    <string name="voice_code_in_chat">J’ai mis le code dans la discussion : regardez l’écran.</string>
+    <string name="voice_mic_off">Le micro est coupé : activez-le dans les réglages et on parle.</string>
+    <string name="voice_no_permission">Pour parler à voix haute, autorisez Nightpost à utiliser le micro dans les réglages du téléphone.</string>
+</resources>

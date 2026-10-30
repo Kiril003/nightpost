@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 55.0992,
+    "maxLon": 15.0419,
+    "minLat": 47.2701,
+    "minLon": 5.8663
+  },
+  "files": [
+    {
+      "bytes": 17094695,
+      "name": "places.tsv.gz",
+      "sha256": "5df99032496fd059a3b219b1f48adc764fb1541de23fe6b4e1ee502e8a9c8d74"
+    },
+    {
+      "bytes": 16587079,
+      "name": "streets.tsv.gz",
+      "sha256": "fd82da77d284604d87cbfbd363fd898c3e9ecc93fbfe1c703bc33a96719030be"
+    }
+  ],
+  "home": {
+    "lat": 52.5174,
+    "lon": 13.3951,
+    "zoom": 12.0
+  },
+  "id": "DE",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "de-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Німеччина: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "de-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Німеччина: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Німеччина",
+  "version": 1
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Her şeyi sil</string>
+    <string name="delete_everything_after">7 gün sonra silinir</string>
+    <string name="delete_everything_left_backup">Yedek dosyan</string>
+    <string name="delete_everything_left_photos">Kaydedilen fotoğraflar</string>
+    <string name="delete_everything_left_letters">Teslim edilmiş mektuplar</string>
+    <string name="delete_everything_pc">Bilgisayar: kopyalar kalır</string>
+    <string name="delete_everything_retry">Tekrar dene</string>
+    <string name="delete_everything_phone_only">Yalnızca bu telefon</string>
+    <string name="delete_everything_protected">Bu hesap için kullanılamaz</string>
+    <string name="delete_everything_allow">“Her şeyi sil”e izin ver</string>
+    <string name="delete_pending_on">Silinme tarihi: %1$s</string>
+    <string name="delete_pending_cancel">Silmeyi iptal et</string>
+    <string name="delete_everything_stays">Silinmeden sonra kalanlar:</string>
+    <string name="delete_everything_cancel">İptal</string>
+    <string name="delete_everything_phone_only_note">Bu telefondaki her şeyi siler, cüzdan dahil</string>
+    <string name="delete_pending_note">O zamana kadar iptal edip her şeyi koruyabilirsin</string>
+    <string name="delete_pending_offline">Bağlantı yok</string>
+    <string name="delete_pending_failed">İptal edilemedi</string>
+    <string name="delete_pending_wallet">Cüzdan</string>
+</resources>

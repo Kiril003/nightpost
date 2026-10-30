@@ -1,0 +1,113 @@
+{
+  "ok": true,
+  "publish": true,
+  "page": {
+    "v": 2,
+    "tone": "sage",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Cafe X"
+        }
+      },
+      {
+        "id": "about-1",
+        "kind": "id.about",
+        "variant": "paragraph",
+        "hidden": false,
+        "data": {
+          "text": "Кава та десерти.\n[Наше меню](https://cafe.example/menu)"
+        }
+      },
+      {
+        "id": "addr-2",
+        "kind": "loc.address",
+        "variant": "map_line",
+        "hidden": false,
+        "data": {
+          "text": "Masarykovo nám. 1, Ostrava",
+          "point": {
+            "lat": 49.8356,
+            "lon": 18.2925
+          }
+        }
+      },
+      {
+        "id": "hrs-3",
+        "kind": "hrs.week",
+        "variant": "strip",
+        "hidden": false,
+        "data": {
+          "rows": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "hours": {
+                "open": "08:00",
+                "close": "22:00"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "menu-4",
+        "kind": "cat.menu",
+        "variant": "two_col",
+        "hidden": false,
+        "data": {
+          "title": "Напої",
+          "token": "EURC",
+          "items": [
+            {
+              "id": "espresso",
+              "name": "Еспресо",
+              "price": "2.50",
+              "diet": [
+                "vegan"
+              ],
+              "allergens": [
+                "milk"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ev-5",
+        "kind": "evt.single",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "title": "Дегустація",
+          "starts": "2026-10-25T18:00",
+          "ends": "2026-10-25T20:00",
+          "capacity": 20,
+          "price": {
+            "amount": "10",
+            "token": "EURC"
+          },
+          "audience": "public"
+        }
+      },
+      {
+        "id": "wal-6",
+        "kind": "pay.wallet",
+        "variant": "address_row",
+        "hidden": false,
+        "data": {
+          "address": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+        }
+      }
+    ]
+  }
+}

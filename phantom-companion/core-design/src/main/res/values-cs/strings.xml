@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vitals_bpm">BPM</string>
+    <string name="vitals_breath">BRTH</string>
+    <string name="vitals_stress">STRE</string>
+    <string name="state_shadow">STÍN</string>
+    <string name="state_focus">SOUSTŘEDĚNÍ</string>
+    <string name="state_dialogue">DIALOG</string>
+    <string name="state_sentinel">HLÍDKA</string>
+    <string name="state_ghost">DUCH</string>
+    <string name="state_dream">SEN</string>
+    <string name="state_standing_orders">· %1$d trvalých příkazů</string>
+    <string name="license_gate_open">Otevřít licenci</string>
+    <string name="license_gate_trial">zkušební · %1$d d.</string>
+    <string name="void_loading_title">Čtení…</string>
+    <string name="void_empty_title">Nic tu není</string>
+    <string name="void_failed_title">Nepodařilo se přečíst</string>
+    <string name="void_failed_detail">Jde o chybu čtení, ne o prázdný výsledek.</string>
+    <string name="void_mismatch_title">Prázdné, i když počítadlo ukazuje %1$d</string>
+    <string name="void_mismatch_detail">Aplikace si protiřečí: data existují, ale nedorazila.</string>
+    <string name="back_pill_action">Zpět</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <cache-path name="camera" path="camera/" />
+    <!-- Копії файлів, вибраних для листа: WebView читає їх стабільно (WebPickedFiles). -->
+    <cache-path name="picked" path="picked/" />
+    <!-- Завантажена збірка. Кеш, а не сховище: файл потрібен лише до того
+         моменту, як його візьме системний встановлювач. -->
+    <cache-path name="updates" path="updates/" />
+</paths>

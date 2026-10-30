@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_allow">İzin ver</string>
+    <string name="perm_not_now">Şimdi değil</string>
+    <string name="perm_open_settings">Ayarları aç</string>
+    <string name="perm_denied_title">Henüz erişim yok</string>
+    <string name="perm_blocked_title">Erişim kapalı</string>
+    <string name="perm_blocked_body">Android bir daha sormayacak. Erişimi uygulama ayarlarından aç, sonra geri dön.</string>
+</resources>

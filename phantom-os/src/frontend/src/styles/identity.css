@@ -1,0 +1,231 @@
+/* Ідентичність PHANTOM (02.10): шар, який робить месенджер САМЕ нашим.
+ *
+ * Бриф власника: «не бачу кардинальних змін» — чистий, але безликий. Тут
+ * кілька рішень, які впізнаються з одного кадру, і жодного «ШІ-тропа»: ні
+ * сяйва, ні куль, ні градієнтів-прикрас, ні скла.
+ *   1. Тло розмови — папір (День) і глибоке чорнило (Ніч): тонке зерно SVG,
+ *      < 2 КБ, без завантажень. Текст стоїть на бульбашках, не на зерні.
+ *   2. Бульбашка з намальованим хвостом — лише в останньої репліки черги.
+ *   3. Рух — пружини з біблії 05 §1.3 (`--ph-spring-*`, токени).
+ *   4. Пігулка дня, кнопка «вниз», реакції, цитата, медіа, голосове,
+ *      «PHANTOM думає» — одна мова форми.
+ * Сторож — src/__tests__/identity.test.tsx. */
+
+/* ── 1. Зерно ────────────────────────────────────────────────────────────
+ * fractalNoise → альфа; колір зерна — тепле чорнило (День) або теплий
+ * білий (Ніч). Плитка 180 px, зшита (stitchTiles), тож шву не видно. */
+html:root {
+  --ph-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .93 0 0 0 0 .82 0 0 0 -1.4 .8'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='.07'/%3E%3C/svg%3E");
+}
+html:root[data-theme='day'] {
+  --ph-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8 .65' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .38 0 0 0 0 .27 0 0 0 0 .16 0 0 0 -1.3 .78'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='.16'/%3E%3C/svg%3E");
+}
+.msg-stage {
+  background-color: var(--ph-canvas);
+}
+
+/* ── 2. Бульбашка ────────────────────────────────────────────────────────
+ * Поля 12 × 8 (біблія 05 §5.4) замість rem-дробів старого шару. */
+html:root .msg-density-short,
+html:root .msg-density-medium,
+html:root .msg-density-long {
+  padding: 8px 12px;
+}
+html:root .msg-density-media {
+  padding: 4px;
+}
+
+/* Всередині своєї бульбашки посилання й позначки говорять `on-self`. */
+html:root .msg-bubble-self,
+html:root[data-theme] .msg-bubble-self {
+  --ph-accent-text: var(--ph-on-self);
+  --ph-accent-line: var(--ph-on-self-2);
+  --f-accent: var(--ph-on-self);
+  --msg-accent: var(--ph-on-self);
+}
+html:root .msg-bubble-self { --ph-voice-glyph: var(--ph-self); }
+html:root .msg-bubble-self a { color: var(--ph-on-self); text-decoration: underline; text-underline-offset: 2px; }
+
+/* Відповідь помічника — та сама бульбашка `surface`, усі кути 16. */
+html:root .msg-bubble-other.msg-bubble-phantom {
+  border-radius: 16px !important;
+  padding: 8px 12px;
+}
+
+/* Кнопка поверх фото — та сама темна пігулка, що й час на голому фото. */
+.ph-on-photo { background-color: #0F0D0BA6; color: #F3EEE7; }
+
+/* Медіа в бульбашці: внутрішній радіус = 16 − 4. */
+html:root .msg-density-media .ph-media-frame { border-radius: 12px; }
+html:root .msg-bubble-photo .ph-media-frame { border-radius: 0; }
+
+/* ── 3. Рух — пружини ────────────────────────────────────────────────────
+ * `linear()` — спроба пружини з токенів (k, ζ). Змінна з linear() у
+ * WebView без його підтримки дала б «анімації немає», тож пружини — лише
+ * під @supports у кінці файла; поза ним — криві нижче. */
+@keyframes ph-land {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+/* Реакція «приземляється» (мікро №4): 0.6 → 1 пружиною snap. */
+.ph-land { animation: ph-land 240ms var(--ph-ease-decelerate) both; }
+/* Вибір реакції (TG-look 4): підстрибнути й осісти, 220 мс. */
+@keyframes ph-pick {
+  0% { transform: scale(1); }
+  55% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+.ph-pick { animation: ph-pick 220ms var(--ph-ease-decelerate) both; }
+/* Лічильник реакції: нове число піднімається знизу, 180 мс. */
+@keyframes ph-count-tick {
+  from { transform: translateY(60%); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.ph-count-tick { animation: ph-count-tick 180ms var(--ph-ease-decelerate) both; }
+@keyframes ph-rise {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+/* Кнопка «вниз» виїжджає знизу пружиною layer (мікро №6); той самий
+ * підйом — вхід екрана «Я» (.ph-screen-in). */
+.ph-screen-in { animation: ph-rise 240ms var(--ph-ease-decelerate) both; }
+.ph-rise { animation: ph-rise 240ms var(--ph-ease-decelerate) both; }
+.ph-press { transition: transform 120ms var(--ph-ease-standard); }
+.ph-press:active { transform: scale(0.97); }
+[data-pressed] { background-color: var(--ph-overlay); }
+@media (prefers-reduced-motion: reduce) {
+  .f-msg-in,
+  .f-msg-send,
+  .f-sheet-in,
+  .ph-land,
+  .ph-rise,
+  .ph-screen-in { animation: f-fade-in 120ms linear both !important; }
+  .ph-pick,
+  .ph-count-tick { animation: none !important; }
+  .ph-press:active { transform: none; }
+}
+
+/* ── 4. Пігулка дня (мікро №9) ───────────────────────────────────────── */
+.ph-day-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  color: var(--ph-text-2);
+  font: 500 13px/18px var(--ph-font-sans);
+  font-feature-settings: 'tnum';
+}
+.ph-day-pill-float {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background-color: var(--ph-raised);
+}
+
+/* ── 5. «PHANTOM думає» (мікро №11) ──────────────────────────────────────
+ * Три крапки не стрибають: кожна по черзі наливається з 0.3 до 1 і
+ * витягується в риску — «морф», а не театр. Крок 160 мс. */
+@keyframes ph-dot {
+  0%, 60%, 100% { opacity: 0.3; transform: scaleX(1); }
+  20% { opacity: 1; transform: scaleX(1.9); }
+}
+.ph-dots { display: inline-flex; gap: 4px; align-items: center; height: 8px; }
+.ph-dots > i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.3;
+  animation: ph-dot 1200ms var(--ph-ease-standard) infinite;
+}
+.ph-dots > i:nth-child(2) { animation-delay: 160ms; }
+.ph-dots > i:nth-child(3) { animation-delay: 320ms; }
+@media (prefers-reduced-motion: reduce) {
+  .ph-dots > i { animation: none; opacity: 0.6; }
+}
+
+/* ── 6. Медіа: проявлення (мікро №8) ─────────────────────────────────────
+ * Мініатюра з листа (`thumb`, ~24 px) розтягнута браузером — це і є
+ * «розмиття», без filter: blur (у WebView він коштує кадрів). Повне фото
+ * проявляється поверх за 200 мс. */
+.ph-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: auto;
+  transform: scale(1.04);
+}
+@keyframes ph-develop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.ph-develop { animation: ph-develop 200ms var(--ph-ease-decelerate) both; }
+
+/* ── 6а. Печатка (feedParts SealLock) ───────────────────────────────────
+ * Замок 0 → 140 мс тримається, осідає (scale 0.7) і зникає; ✓ з'являється з
+ * 0.4 пружиною snap. Разом ~300 мс, раз на лист. */
+.ph-seal-lock { position: absolute; inset: 0; animation: ph-seal-lock 260ms var(--ph-ease-accelerate) both; }
+.ph-seal .ph-seal-mark { animation: ph-seal-mark 300ms var(--ph-ease-decelerate) both; }
+@keyframes ph-seal-lock {
+  0%, 45% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(1px) scale(0.6); }
+}
+@keyframes ph-seal-mark {
+  0%, 40% { opacity: 0; transform: scale(0.4); }
+  100% { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ph-seal-lock { display: none; }
+  .ph-seal .ph-seal-mark { animation: f-fade-in 120ms linear both; }
+}
+
+/* ── 7. Список: пружинний свайп і натискання ─────────────────────────── */
+.ph-row-settle { transition: transform 240ms var(--ph-ease-decelerate); }
+@media (prefers-reduced-motion: reduce) {
+  .ph-row-settle { transition: transform 120ms linear !important; }
+}
+
+/* Пружини перекривають криві вище — тому в кінці файла. */
+@supports (animation-timing-function: linear(0, 1)) {
+  .f-msg-in { animation: f-msg-in var(--ph-spring-flight-ms) var(--ph-spring-flight) both; }
+  .f-msg-send { animation: f-msg-send var(--ph-spring-flight-ms) var(--ph-spring-flight) both; }
+  .f-sheet-in { animation: f-sheet-in var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+  .ph-land { animation: ph-land var(--ph-spring-snap-ms) var(--ph-spring-snap) both; }
+  .ph-rise { animation: ph-rise var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+  .ph-press:active { transition: transform var(--ph-spring-press-ms) var(--ph-spring-press); }
+  .ph-row-settle { transition: transform var(--ph-spring-snap-ms) var(--ph-spring-snap); }
+  .ph-seal .ph-seal-mark { animation: ph-seal-mark var(--ph-spring-snap-ms) var(--ph-spring-snap) both; }
+  /* Фото розростається пружиною flight. Розмова (vt-push) — без пружини:
+   * короткий наїзд із form.css, як системний «назад» Android (T7, 28.10). */
+  ::view-transition-group(photo-zoom) {
+    animation-duration: var(--ph-spring-flight-ms);
+    animation-timing-function: var(--ph-spring-flight);
+  }
+  .ph-screen-in { animation: ph-rise var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+}
+
+/* ── 8. Щільність (Профіль › Вигляд, services/appearance.ts); тло розмови — wallpaper.css. */
+[data-chat-bubbles='compact'] .msg-density-short,
+[data-chat-bubbles='compact'] .msg-density-medium,
+[data-chat-bubbles='compact'] .msg-density-long,
+html:root[data-bubbles='compact'] :is(.msg-density-short, .msg-density-medium, .msg-density-long):not([data-chat-bubbles] *) {
+  padding: 5px 10px;
+}
+[data-chat-bubbles='compact'] .message-row.mt-2,
+html:root[data-bubbles='compact'] .message-row.mt-2:not([data-chat-bubbles] *) { margin-top: 4px; }
+[data-chat-bubbles='compact'] .message-row.mt-0\.5,
+html:root[data-bubbles='compact'] .message-row.mt-0\.5:not([data-chat-bubbles] *) { margin-top: 1px; }
+
+html:root[data-list-density='compact'] .ph-list-row { height: 60px; }
+
+/* Перший контакт за QR: двоє назустріч, замок між ними, коли ключі зійшлись. */
+.ph-meet [data-meet-side] { transition: transform 360ms var(--ph-ease-decelerate); }
+.ph-meet [data-meet-side="me"] { transform: translateX(-20px); }
+.ph-meet [data-meet-side="them"] { transform: translateX(20px); }
+.ph-meet[data-settled="true"][data-met="true"] [data-meet-side="me"] { transform: translateX(10px); }
+.ph-meet[data-settled="true"][data-met="true"] [data-meet-side="them"] { transform: translateX(-10px); }
+.ph-meet-lock { animation: ph-develop 200ms var(--ph-ease-decelerate) 280ms both; }
+@media (prefers-reduced-motion: reduce) {
+  .ph-meet [data-meet-side] { transition: none; }
+  .ph-meet-lock { animation: none; }
+}

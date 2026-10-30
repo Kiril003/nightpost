@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 69.06,
+    "maxLon": 24.1777,
+    "minLat": 55.1371,
+    "minLon": 10.5935
+  },
+  "files": [
+    {
+      "bytes": 947504,
+      "name": "places.tsv.gz",
+      "sha256": "da8334cb002a97bd8291532ac3bee757bab5ea44f1c420797eeab11deb7b3963"
+    },
+    {
+      "bytes": 2760925,
+      "name": "streets.tsv.gz",
+      "sha256": "afc5fcadb94b1a9611485bab590d2e94504b7faaa13eccb5059ba6a3649f40f5"
+    }
+  ],
+  "home": {
+    "lat": 59.3251,
+    "lon": 18.0711,
+    "zoom": 12.0
+  },
+  "id": "SE",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "se-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Швеція: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "se-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Швеція: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Швеція",
+  "version": 1
+}

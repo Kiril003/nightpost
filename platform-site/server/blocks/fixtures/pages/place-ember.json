@@ -1,0 +1,36 @@
+{
+  "handle": "ember-coffee",
+  "sample": true,
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "journal",
+    "blocks": [
+      {"id": "name-0", "kind": "id.name", "variant": "plain", "hidden": false, "data": {"name": "Ember Coffee", "kind": "cafe", "tagline": "Coffee and cake"}},
+      {"id": "hero-1", "kind": "id.hero", "variant": "split", "hidden": false, "data": {
+        "headline": "Slow coffee, one cake a day.",
+        "lede": "A small counter with six seats. Beans roasted on Mondays, the cake changes daily.",
+        "image": {"blob": "sample-coffee-01", "w": 1200, "h": 900, "alt": "Two coffees and a slice of cake on a table"},
+        "chips": [{"id": "chip-seats", "label": "Six seats"}, {"id": "chip-beans", "label": "Beans to take home"}],
+        "primary": "menu-2", "primary_label": "See the menu",
+        "secondary": "msg-5", "secondary_label": "Ask about beans"}},
+      {"id": "menu-2", "kind": "cat.menu", "variant": "list", "hidden": false, "data": {"title": "Menu", "token": "USDC", "items": [
+        {"id": "m-flat", "name": "Flat white", "price": "3.80", "note": "Oat milk at no extra cost"},
+        {"id": "m-filter", "name": "Filter of the week", "price": "3.20"},
+        {"id": "m-cake", "name": "Cake of the day", "price": "4.50", "note": "Ask what is on the counter"},
+        {"id": "m-beans", "name": "Beans, 250 g", "price": "12"}]}},
+      {"id": "week-3", "kind": "hrs.week", "variant": "ranges", "hidden": false, "data": {"rows": [
+        {"days": ["tue", "fri"], "hours": {"open": "08:00", "close": "17:00"}},
+        {"days": ["sat", "sun"], "hours": {"open": "09:00", "close": "15:00"}}]}},
+      {"id": "addr-4", "kind": "loc.address", "variant": "map_line", "hidden": false, "data": {"text": "Corner of Mill Lane", "point": {"lat": 48.21, "lon": 16.37}}},
+      {"id": "msg-5", "kind": "loc.message", "variant": "card", "hidden": false, "data": {"on": true, "who": "staff", "title": "Message the counter", "starters": [{"id": "ask-beans", "text": "Do you have the Kenyan beans this week?"}]}},
+      {"id": "qr-6", "kind": "pay.qr", "variant": "compact", "hidden": false, "data": {"label": "Pay at the counter", "amount": true}},
+      {"id": "reviews-7", "kind": "com.reviews", "variant": "summary", "hidden": false, "data": {"title": "Reviews", "text": true, "show": 3}},
+      {"id": "wallet-8", "kind": "pay.wallet", "variant": "address_row", "hidden": false, "data": {"address": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"}}
+    ]
+  },
+  "live": {
+    "at": "2026-10-22T12:00",
+    "network": "devnet"
+  }
+}

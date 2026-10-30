@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="air_alert_channel_alarm">Nightpost · alarm lotniczy</string>
+    <string name="air_alert_channel_alarm_desc">Alarm lotniczy w Twoim regionie, jako alarm</string>
+    <string name="air_alert_channel_clear">Nightpost · koniec alarmu</string>
+    <string name="air_alert_channel_clear_desc">Koniec alarmu w Twoim regionie, bez dźwięku</string>
+    <string name="air_alert_title_raised">Alarm lotniczy w Twoim regionie · %1$s</string>
+    <string name="air_alert_title_clear">Koniec alarmu · %1$s</string>
+    <string name="air_alert_full_kicker">Alarm lotniczy w Twoim regionie</string>
+    <string name="air_alert_full_since">Ogłoszony o %1$s</string>
+    <string name="air_alert_full_map">Pokaż na mapie</string>
+    <string name="air_alert_full_dismiss">Rozumiem</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_notify_title">Сповіщення</string>
+    <string name="perm_notify_body">Для отримання повідомлень і дзвінків у фоні</string>
+    <string name="settings_ua_alerts">Повітряні тривоги України</string>
+    <string name="settings_ua_alerts_body">Сповіщення про тривогу у вашій області</string>
+    <string name="settings_ua_alerts_body_map">На мапі, для вашої області</string>
+    <string name="perm_sms_title">Повідомлення без інтернету</string>
+    <string name="perm_sms_body">Дозвіл на SMS потрібен, щоб надіслати й прийняти прохання, коли мережі немає.</string>
+    <string name="perm_bg_loc_title">Місце у фоні</string>
+    <string name="perm_bg_loc_body">Щоб слід поїздки був цілим</string>
+</resources>

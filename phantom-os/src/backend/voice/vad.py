@@ -1,0 +1,327 @@
+"""
+Silero VAD (voice activity detection) — Phase 11b always-on voice pipeline.
+
+The Silero v5 ONNX model distributed by snakers4/silero-vad expects
+512-sample windows at 16 kHz (~32 ms). The WebSocket transport delivers
+20–30 ms PCM frames from the browser, so this module owns a small ring
+buffer that normalises whatever frame size arrives to Silero's native
+window size.
+
+Public contract
+---------------
+* ``SileroVAD(model_path, sample_rate=16000, silence_ms=500,
+   speech_threshold=0.5, silence_threshold=0.35,
+   activation_frames=3)``
+* ``process(pcm_bytes: bytes) -> list[str]`` — feeds s16le PCM. Returns a
+  list of transition event names that fired *during this call*; possible
+  values are ``"speech_start"`` and ``"speech_end"``. Returns ``[]`` when
+  no transition fired (the common case).
+* ``reset() -> None`` — clears the ORT state tensor and hysteresis
+  counters. Called by the orchestrator between utterances and when mic
+  ducking begins.
+
+Hysteresis
+----------
+A bare ``prob > 0.5`` threshold flips on every noise blip. We gate each
+transition with two kinds of hysteresis:
+
+1. **Asymmetric thresholds.** ``speech_threshold`` is higher than
+   ``silence_threshold`` (Schmitt-trigger shape). A window between the
+   two maintains whichever state we're already in.
+2. **Frame counting.** Entering speech requires ``activation_frames``
+   consecutive above-threshold windows (default 3). Entering silence
+   requires a silent run of ``silence_ms`` to elapse.
+
+These values are wired to the (previously dead) ``voice_vad_silence_ms``
+and ``voice_vad_speech_pad_ms`` settings on ``config`` so the operator
+can tune them from the settings screen.
+
+ONNX Runtime only — no torch dependency on the hot path.
+"""
+from __future__ import annotations
+
+import logging
+import threading
+from dataclasses import dataclass
+from typing import Iterable, Optional
+
+import numpy as np
+import onnxruntime as ort
+
+logger = logging.getLogger(__name__)
+
+
+# ─── Phase 12.0 — Module-level Silero VAD singleton (Bug 2 fix) ─────────────
+# 11c.4 hot-path was already off-loaded to a worker thread via to_thread, but
+# every new WS connection still constructed a fresh ``ort.InferenceSession``
+# (1-3s on a slow CPU), blocking the orchestrator setup. The session itself
+# holds the loaded ONNX graph; per-connection state (state tensor, pending
+# samples, hysteresis) lives on the SileroVAD instance, so sharing the
+# session across connections is safe.
+_vad_session: Optional[ort.InferenceSession] = None
+_vad_session_path: Optional[str] = None
+_vad_session_lock = threading.Lock()
+
+
+def get_vad_session(model_path: str) -> ort.InferenceSession:
+    """Return the cached ORT InferenceSession, loading it on first call.
+    Subsequent calls with the same path are no-ops; calls with a different
+    path rebuild the session (rare — model path is fixed in routes_voice_stream).
+    """
+    global _vad_session, _vad_session_path
+    path_str = str(model_path)
+    if _vad_session is not None and _vad_session_path == path_str:
+        return _vad_session
+    with _vad_session_lock:
+        if _vad_session is not None and _vad_session_path == path_str:
+            return _vad_session
+        logger.info(
+            "Loading Silero VAD ONNX model from %s (singleton)", path_str
+        )
+        # Force CPU provider — onnxruntime's GPU provider probing has been
+        # flagging /sys/class/drm warnings on headless Linux; CPU is fast enough
+        # for 512-sample Silero (<1 ms inference).
+        _vad_session = ort.InferenceSession(
+            path_str, providers=["CPUExecutionProvider"],
+        )
+        _vad_session_path = path_str
+        return _vad_session
+
+
+def reset_vad_session() -> None:
+    """Drop the cached ORT session — used by tests and reset_providers()
+    when a path change is needed."""
+    global _vad_session, _vad_session_path
+    with _vad_session_lock:
+        _vad_session = None
+        _vad_session_path = None
+
+
+SPEECH_START = "speech_start"
+SPEECH_END = "speech_end"
+
+# Silero v5 ONNX model hard-codes these window sizes. 256 at 8 kHz,
+# 512 at 16 kHz — anything else triggers a shape-mismatch error inside ORT.
+_SILERO_WINDOW_SAMPLES_16K = 512
+_SILERO_WINDOW_SAMPLES_8K = 256
+
+
+@dataclass(frozen=True)
+class VADConfig:
+    sample_rate: int = 16_000
+    silence_ms: int = 500
+    speech_threshold: float = 0.5
+    silence_threshold: float = 0.35
+    activation_frames: int = 3
+
+
+class _Hysteresis:
+    """Tiny FSM that eats per-window speech probabilities and emits
+    speech_start / speech_end transitions. Isolated so it can be
+    unit-tested without standing up an ORT session."""
+
+    def __init__(
+        self,
+        *,
+        speech_threshold: float,
+        silence_threshold: float,
+        activation_frames: int,
+        silence_windows: int,
+    ) -> None:
+        if speech_threshold <= silence_threshold:
+            raise ValueError(
+                "speech_threshold must be > silence_threshold "
+                f"(got {speech_threshold} <= {silence_threshold})"
+            )
+        if activation_frames < 1:
+            raise ValueError("activation_frames must be >= 1")
+        if silence_windows < 1:
+            raise ValueError("silence_windows must be >= 1")
+        self._speech_threshold = speech_threshold
+        self._silence_threshold = silence_threshold
+        self._activation_frames = activation_frames
+        self._silence_windows = silence_windows
+        self._in_speech = False
+        self._consecutive_speech = 0
+        self._consecutive_silence = 0
+
+    def reset(self) -> None:
+        self._in_speech = False
+        self._consecutive_speech = 0
+        self._consecutive_silence = 0
+
+    @property
+    def in_speech(self) -> bool:
+        return self._in_speech
+
+    def feed(self, prob: float) -> str | None:
+        if self._in_speech:
+            if prob < self._silence_threshold:
+                self._consecutive_silence += 1
+                if self._consecutive_silence >= self._silence_windows:
+                    self._in_speech = False
+                    self._consecutive_silence = 0
+                    self._consecutive_speech = 0
+                    return SPEECH_END
+            else:
+                # above silence_threshold — reset silence counter
+                self._consecutive_silence = 0
+        else:
+            if prob > self._speech_threshold:
+                self._consecutive_speech += 1
+                if self._consecutive_speech >= self._activation_frames:
+                    self._in_speech = True
+                    self._consecutive_speech = 0
+                    self._consecutive_silence = 0
+                    return SPEECH_START
+            else:
+                self._consecutive_speech = 0
+        return None
+
+
+class SileroVAD:
+    """Window-normalising Silero VAD wrapper.
+
+    Construction loads the ONNX model. ``process`` is cheap enough to call
+    from the audio loop (≤ 1 ms per window on a single CPU core)
+    but it is *not* thread-safe — one instance per WebSocket connection.
+    """
+
+    def __init__(
+        self,
+        model_path: str,
+        *,
+        sample_rate: int = 16_000,
+        silence_ms: int = 500,
+        speech_threshold: float = 0.5,
+        silence_threshold: float = 0.35,
+        activation_frames: int = 3,
+    ) -> None:
+        if sample_rate == 16_000:
+            self._window_samples = _SILERO_WINDOW_SAMPLES_16K
+        elif sample_rate == 8_000:
+            self._window_samples = _SILERO_WINDOW_SAMPLES_8K
+        else:
+            raise ValueError(
+                f"Silero VAD supports 8000 or 16000 Hz only (got {sample_rate})"
+            )
+        self._sample_rate = sample_rate
+
+        window_ms = 1000 * self._window_samples / sample_rate
+        silence_windows = max(1, int(silence_ms // window_ms))
+        # Замовлені мілісекунди й досяжні — різні числа: тиша міряється цілими
+        # вікнами. Черга рахує паузу від межі, яку VAD справді вживає.
+        self._silence_floor_ms = int(silence_windows * window_ms)
+
+        self._hysteresis = _Hysteresis(
+            speech_threshold=speech_threshold,
+            silence_threshold=silence_threshold,
+            activation_frames=activation_frames,
+            silence_windows=silence_windows,
+        )
+
+        logger.debug(
+            "Wiring SileroVAD wrapper (sr=%d, window=%d samples, "
+            "silence_windows=%d) — using cached ORT session",
+            sample_rate, self._window_samples, silence_windows,
+        )
+        # Phase 12.0 — share the underlying ORT session across all WS
+        # connections via get_vad_session(). The session itself holds the
+        # loaded ONNX graph; per-connection state (state tensor, pending,
+        # hysteresis) lives on this wrapper, so sharing is safe.
+        self._session = get_vad_session(model_path)
+        self._state = np.zeros((2, 1, 128), dtype=np.float32)
+        # Phase 12.1 — Silero v5 ONNX expects (batch, 576) for 16 kHz
+        # (= 64 context samples carried over from the previous call +
+        # 512 fresh samples) and (batch, 288) for 8 kHz. Without the
+        # context prefix the model is fed only the 512-sample window
+        # and its LSTM never warms up, so probabilities stay pinned
+        # near zero on real speech (max 0.012 vs 0.99 expected). This
+        # mirrors the official OnnxWrapper in silero_vad/utils_vad.py.
+        self._context_size = 64 if sample_rate == 16_000 else 32
+        self._context = np.zeros((1, self._context_size), dtype=np.float32)
+        # Int16 pending samples that didn't yet fill a full window.
+        self._pending = np.zeros(0, dtype=np.int16)
+
+    def reset(self) -> None:
+        self._hysteresis.reset()
+        self._state = np.zeros((2, 1, 128), dtype=np.float32)
+        self._context = np.zeros((1, self._context_size), dtype=np.float32)
+        self._pending = np.zeros(0, dtype=np.int16)
+
+    @property
+    def in_speech(self) -> bool:
+        return self._hysteresis.in_speech
+
+    @property
+    def window_samples(self) -> int:
+        return self._window_samples
+
+    @property
+    def silence_floor_ms(self) -> int:
+        """Скільки тиші вже минуло, коли VAD каже SPEECH_END."""
+        return self._silence_floor_ms
+
+    def process(self, pcm_bytes: bytes) -> list[str]:
+        """Feed raw mono s16le PCM bytes. Returns 0+ transitions that
+        fired while consuming the input."""
+        if not pcm_bytes:
+            return []
+        if len(pcm_bytes) % 2 != 0:
+            raise ValueError(
+                f"pcm_bytes length must be even (s16le); got {len(pcm_bytes)}"
+            )
+
+        incoming = np.frombuffer(pcm_bytes, dtype=np.int16)
+        if self._pending.size:
+            buffer = np.concatenate([self._pending, incoming])
+        else:
+            buffer = incoming
+
+        events: list[str] = []
+        idx = 0
+        n = buffer.size
+        while n - idx >= self._window_samples:
+            window = buffer[idx : idx + self._window_samples]
+            idx += self._window_samples
+            prob = self._infer(window)
+            event = self._hysteresis.feed(prob)
+            if event is not None:
+                events.append(event)
+
+        # Keep the tail; it'll join the next frame's buffer.
+        self._pending = buffer[idx:].copy()
+        return events
+
+    def _infer(self, pcm_int16: np.ndarray) -> float:
+        # Phase 12.1 — concatenate the carried-over context with the
+        # current 512-sample window, mirroring the reference
+        # ``silero_vad.OnnxWrapper.__call__``. Without this prefix the
+        # ONNX graph runs on a truncated input and the speech probability
+        # is permanently floored.
+        chunk = (pcm_int16.astype(np.float32) / 32768.0).reshape(1, -1)
+        audio = np.concatenate([self._context, chunk], axis=1)
+        outputs = self._session.run(
+            None,
+            {
+                "input": audio,
+                "state": self._state,
+                "sr": np.array(self._sample_rate, dtype=np.int64),
+            },
+        )
+        prob = float(outputs[0][0, 0])
+        self._state = outputs[1]
+        # Save the tail of the combined input so the next call sees the
+        # last `context_size` samples as its prefix.
+        self._context = audio[:, -self._context_size:]
+        return prob
+
+    # Exposed for tests that want to feed synthetic probabilities without
+    # running ORT. Not part of the public orchestrator contract.
+    def _feed_probs_for_testing(self, probs: Iterable[float]) -> list[str]:
+        events = []
+        for p in probs:
+            ev = self._hysteresis.feed(p)
+            if ev is not None:
+                events.append(ev)
+        return events

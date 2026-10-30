@@ -1,0 +1,22 @@
+{
+  "ok": false,
+  "refused": "bad_datetime",
+  "at": "blocks[0].data.ends",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "ev-0",
+        "kind": "evt.single",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "title": "Джаз",
+          "starts": "2026-10-20T19:00",
+          "ends": "2026-10-20T18:00"
+        }
+      }
+    ]
+  }
+}

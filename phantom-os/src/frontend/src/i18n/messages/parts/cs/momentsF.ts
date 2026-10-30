@@ -1,0 +1,27 @@
+import type { uk } from '../momentsF';
+
+export const cs: Record<keyof typeof uk, string> = {
+  'momentsF.chats': 'Chaty',
+  'momentsF.moments': 'Momenty',
+  'momentsF.panes': 'Sekce',
+  'momentsF.all': 'Vše',
+  'momentsF.filter': 'Filtr publika',
+  'momentsF.others': 'Ostatní',
+  'momentsF.you': 'Vy',
+  'momentsF.newN.one': '{n} nový',
+  'momentsF.newN.few': '{n} nové',
+  'momentsF.newN.many': '{n} nových',
+  'momentsF.older': 'Starší',
+  'momentsF.olderN': 'Starší · {n}',
+  'momentsF.nothingNew': 'Nic nového',
+  'momentsF.slide': '{i}/{n}',
+  'momentsF.new': 'Nový moment',
+  'momentsF.editTitle': 'Upravit moment',
+  'momentsF.save': 'Uložit',
+  'momentsF.edit': 'Upravit',
+  'momentsF.addMedia': 'Přidat fotku nebo video',
+  'momentsF.maxMedia': 'Nejvýš {n} fotek nebo videí',
+  'momentsF.tone': 'Barva pozadí',
+  'momentsF.toneN': 'Barva {n}',
+  'momentsF.toneNone': 'Bez barvy',
+};

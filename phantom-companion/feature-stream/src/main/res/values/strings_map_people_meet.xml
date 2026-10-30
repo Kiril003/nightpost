@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_people_title">People</string>
+    <string name="map_people_you">You</string>
+    <string name="map_people_none_sharing">No one is sharing</string>
+    <string name="map_share_my_location">Share my location</string>
+    <string name="map_share_with_close">Sharing with Close · %1$s</string>
+    <string name="map_share_15m">15 min</string>
+    <string name="map_share_1h">1 h</string>
+    <string name="map_share_until_arrive">Until I arrive</string>
+    <string name="map_meet_at">Meet at %1$s</string>
+    <string name="map_meet_send_chat">Send to chat</string>
+    <string name="map_meet_now">Now</string>
+    <string name="map_share_close_audience">Close</string>
+    <string name="map_people_meet">Meet</string>
+    <plurals name="map_minutes_away">
+        <item quantity="one">%1$d min away</item>
+        <item quantity="other">%1$d min away</item>
+    </plurals>
+    <plurals name="map_minutes_ago">
+        <item quantity="one">%1$d min ago</item>
+        <item quantity="other">%1$d min ago</item>
+    </plurals>
+</resources>

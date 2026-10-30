@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Elimina tutto</string>
+    <string name="delete_everything_after">Rimosso dopo 7 giorni</string>
+    <string name="delete_everything_left_backup">Il tuo file di backup</string>
+    <string name="delete_everything_left_photos">Foto salvate</string>
+    <string name="delete_everything_left_letters">Lettere già consegnate</string>
+    <string name="delete_everything_pc">Computer: le copie restano</string>
+    <string name="delete_everything_retry">Riprova</string>
+    <string name="delete_everything_phone_only">Solo questo telefono</string>
+    <string name="delete_everything_protected">Non disponibile per questo account</string>
+    <string name="delete_everything_allow">Consenti Elimina tutto</string>
+    <string name="delete_pending_on">Eliminazione il %1$s</string>
+    <string name="delete_pending_cancel">Annulla eliminazione</string>
+    <string name="delete_everything_stays">Resta dopo l’eliminazione:</string>
+    <string name="delete_everything_cancel">Annulla</string>
+    <string name="delete_everything_phone_only_note">Cancella tutto su questo telefono, wallet incluso</string>
+    <string name="delete_pending_note">Fino ad allora puoi annullare e tenere tutto</string>
+    <string name="delete_pending_offline">Nessuna connessione</string>
+    <string name="delete_pending_failed">Impossibile annullare</string>
+    <string name="delete_pending_wallet">Wallet</string>
+</resources>

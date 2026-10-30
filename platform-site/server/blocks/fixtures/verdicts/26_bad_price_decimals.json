@@ -1,0 +1,27 @@
+{
+  "ok": false,
+  "refused": "bad_price",
+  "at": "blocks[0].data.items[0].price",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "menu-0",
+        "kind": "cat.menu",
+        "variant": "two_col",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "tea",
+              "name": "Чай",
+              "price": "1.1234567"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

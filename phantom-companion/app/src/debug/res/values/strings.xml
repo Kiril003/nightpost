@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Той самий підпис і для англійської локалі. Без цього рядка апарат з
+    англійською мовою бере `values-en` з `src/main` — тобто знову «PHANTOM»,
+    бо кваліфіковані каталоги зливаються окремо один від одного.
+-->
+<resources>
+    <string name="app_name">Nightpost · debug</string>
+</resources>

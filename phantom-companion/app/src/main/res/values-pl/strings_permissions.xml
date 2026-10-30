@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_notify_title">Powiadomienia</string>
+    <string name="perm_notify_body">Dla wiadomości i połączeń przy zamkniętej aplikacji</string>
+    <string name="settings_ua_alerts">Alarmy lotnicze w Ukrainie</string>
+    <string name="settings_ua_alerts_body">Alarmy dla Twojego regionu w Ukrainie</string>
+    <string name="settings_ua_alerts_body_map">Na mapie, dla Twojego regionu</string>
+    <string name="perm_sms_title">Wiadomości bez internetu</string>
+    <string name="perm_sms_body">Dostęp do SMS-ów jest potrzebny, by wysyłać i odbierać prośby bez sieci.</string>
+    <string name="perm_bg_loc_title">Lokalizacja w tle</string>
+    <string name="perm_bg_loc_body">Utrzymuje ślad Twojej trasy w całości</string>
+</resources>

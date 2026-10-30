@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Transfer draft: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Transfer to %1$s (%2$s) — enter amount and confirm.</string>
+    <string name="money_coin_guessed">Defaulted to %1$s</string>
+    <string name="money_which_one">Multiple matches: %1$s. Specify surname.</string>
+    <string name="money_no_wallet">%1$s has no wallet address yet.</string>
+    <string name="money_nobody">I couldn\'t find “%1$s” among the people in your chats.</string>
+    <string name="money_who_missing">Who should get it? Name a person from your chats.</string>
+    <string name="money_bad_amount">%1$s %2$s can\'t be sent: the smallest part of %2$s is %3$s.</string>
+    <string name="money_coin_not_here">There is no %1$s on %2$s.</string>
+    <string name="money_no_own_wallet">Your wallet isn\'t ready yet — open Settings › Wallet.</string>
+    <string name="money_seal_pick">Pick a photo to seal its SHA-256 fingerprint</string>
+    <string name="money_drafted_cash">Pocket cash: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Without internet I can only give cash from your pocket, but %1$s</string>
+    <string name="money_offline_no_sol">the pocket is short of SOL for the fee and the recipient\'s account.</string>
+    <string name="money_offline_empty">it is empty.</string>
+    <string name="money_offline_other_coin">its notes are in %1$s, not %2$s.</string>
+    <string name="money_offline_short">only %1$s %2$s is free there.</string>
+    <string name="money_offline_external">pocket works only with the built-in wallet.</string>
+    <string name="money_offline_not_person">cash goes only to a chat contact.</string>
+    <string name="money_watch_out">Heads up:</string>
+</resources>

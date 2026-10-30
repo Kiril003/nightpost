@@ -1,0 +1,37 @@
+{
+  "v": 2,
+  "tone": "amber",
+  "blocks": [
+    {
+      "id": "name-0",
+      "kind": "id.name",
+      "variant": "plain",
+      "hidden": false,
+      "data": {
+        "name": "Cafe X"
+      }
+    },
+    {
+      "id": "about-1",
+      "kind": "id.about",
+      "variant": "paragraph",
+      "hidden": false,
+      "data": {
+        "text": "Ранкова кава та випічка.\nТиха тераса у дворі."
+      }
+    },
+    {
+      "id": "address-2",
+      "kind": "loc.address",
+      "variant": "map_line",
+      "hidden": false,
+      "data": {
+        "text": "Stodolní 12, Ostrava",
+        "point": {
+          "lat": 49.8347,
+          "lon": 18.282
+        }
+      }
+    }
+  ]
+}

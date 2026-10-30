@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="live_share_channel">Місце наживо</string>
+    <string name="live_share_title">Ділюся місцем</string>
+    <string name="live_share_stop">Зупинити</string>
+</resources>

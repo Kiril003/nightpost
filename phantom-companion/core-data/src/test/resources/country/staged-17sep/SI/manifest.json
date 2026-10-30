@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 46.8767,
+    "maxLon": 16.5967,
+    "minLat": 45.4215,
+    "minLon": 13.3755
+  },
+  "files": [
+    {
+      "bytes": 319929,
+      "name": "places.tsv.gz",
+      "sha256": "a25147cedef9a31e6baa5e150a5746197b4abfc25bf6b6dcf157eac67b1926be"
+    },
+    {
+      "bytes": 270358,
+      "name": "streets.tsv.gz",
+      "sha256": "89cf67cb4c044ced8917df446d8687dcff2e3b949d0b0f280c9562a940986ee5"
+    }
+  ],
+  "home": {
+    "lat": 46.05,
+    "lon": 14.5069,
+    "zoom": 12.0
+  },
+  "id": "SI",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "si-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Словенія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "si-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Словенія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Словенія",
+  "version": 1
+}

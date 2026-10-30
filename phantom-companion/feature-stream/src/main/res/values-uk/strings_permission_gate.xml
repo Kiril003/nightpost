@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_location_map_title">Показати, де ви</string>
+    <string name="perm_location_map_body">Місце потрібне, щоб мапа показала вас й вела маршрут.</string>
+    <string name="perm_location_share_title">Поділитися місцем</string>
+    <string name="perm_location_share_body">Місце потрібне, щоб показати його людям, яких ви оберете.</string>
+    <string name="perm_camera_scan_title">Камера для коду</string>
+    <string name="perm_camera_scan_body">Камера потрібна, щоб прочитати QR-код.</string>
+    <string name="perm_call_title">Камера й мікрофон</string>
+    <string name="perm_call_body">Щоб вас бачили й чули в дзвінку.</string>
+    <string name="perm_camera_title">Камера</string>
+    <string name="perm_camera_body">Камера потрібна для цього кадру чи коду.</string>
+    <string name="perm_scan_allow">Дозволити камеру</string>
+    <string name="perm_location_off_title">Місце вимкнено</string>
+    <string name="perm_location_off_body">Увімкніть «Місце» в шторці телефона — без нього мапа не знайде вас.</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Видалити все</string>
+    <string name="delete_everything_after">Видаляється через 7 днів</string>
+    <string name="delete_everything_left_backup">Ваш файл копії</string>
+    <string name="delete_everything_left_photos">Збережені фото</string>
+    <string name="delete_everything_left_letters">Уже доставлені листи</string>
+    <string name="delete_everything_pc">Компʼютер: копії лишаються</string>
+    <string name="delete_everything_retry">Повторити</string>
+    <string name="delete_everything_phone_only">Лише цей телефон</string>
+    <string name="delete_everything_protected">Недоступно для цього облікового запису</string>
+    <string name="delete_everything_allow">Дозволити «Видалити все»</string>
+    <string name="delete_pending_on">Видалення %1$s</string>
+    <string name="delete_pending_cancel">Скасувати видалення</string>
+    <string name="delete_everything_stays">Залишиться після видалення:</string>
+    <string name="delete_everything_cancel">Скасувати</string>
+    <string name="delete_everything_phone_only_note">Зітре все на цьому телефоні, разом із гаманцем</string>
+    <string name="delete_pending_note">До цього дня можна скасувати, і все лишиться</string>
+    <string name="delete_pending_offline">Немає звʼязку</string>
+    <string name="delete_pending_failed">Не вдалося скасувати</string>
+    <string name="delete_pending_wallet">Гаманець</string>
+</resources>

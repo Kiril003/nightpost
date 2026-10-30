@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_g_just_now">právě teď</string>
+    <string name="mapl_g_mins_ago">před %1$d min</string>
+    <string name="mapl_g_hours_ago">před %1$d h</string>
+    <string name="mapl_g_days_ago">před %1$d d</string>
+    <string name="mapl_g_km_fmt_int">%.0f km</string>
+    <string name="mapl_g_km_fmt_dec">%.1f km</string>
+    <string name="mapl_g_m_fmt">%1$d m</string>
+    <string name="mapl_g_hr_min_fmt">%1$d h %2$d min</string>
+    <string name="mapl_g_min_fmt">%1$d min</string>
+    <string name="mapl_g_isochrone_title">Kam dojdu</string>
+    <string name="mapl_g_isochrone_glyph">izochrona</string>
+    <string name="mapl_g_danger_field_title">Riziková zóna</string>
+    <string name="mapl_g_danger_field_glyph">riziko</string>
+    <string name="mapl_g_now">teď</string>
+    <string name="mapl_g_unit_m">m</string>
+    <string name="mapl_g_unit_km">km</string>
+    <string name="mapl_g_unit_kmh">km/h</string>
+    <string name="mapl_g_slack_plus_hm">+%1$d h %2$d min</string>
+    <string name="mapl_g_slack_hm">%1$d h %2$d min</string>
+    <string name="mapl_g_slack_plus_m">+%1$d min</string>
+    <string name="mapl_g_slack_m">%1$d min</string>
+</resources>

@@ -1,0 +1,45 @@
+{
+  "name": "phantom-platform-site",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "serve": "cd server && .venv/bin/python -m uvicorn main:app --env-file .env --host 127.0.0.1 --port 8000",
+    "perf:hitch": "node scripts/scroll-hitch.mjs --gl egl --max-task 800",
+    "test:server": "cd server && .venv/bin/python -m pytest tests/ -q",
+    "test:copy": "node --test src/pages/site-wow-prep.test.mjs src/pages/site-top.test.mjs src/pages/site-fix.test.mjs src/lib/d1motion.test.mjs src/lib/anchor.test.mjs src/lib/accountFlow.test.mjs src/pages/skeleton2.test.mjs src/components/builder/builderModel.test.mjs src/components/builder/builder-shell.test.mjs src/components/builder/logicAudit.test.mjs src/i18n/titles.test.mjs src/i18n/lang.test.mjs src/i18n/home-v7.test.mjs src/pages/home-v9.test.mjs src/pages/site-trim.test.mjs src/components/account/tabs.test.mjs src/components/account/homeModel.test.mjs src/components/account/home-shell.test.mjs src/components/account/no-licence.test.mjs src/components/nav.test.mjs src/lib/morph.test.mjs src/components/account/door.test.mjs src/lib/connectPhone.test.mjs src/pages/delete-account.test.mjs src/pages/privacy-title.test.mjs src/lib/placesRoutes.test.mjs src/lib/slippy.test.mjs src/lib/places/claimFlow.test.mjs src/lib/places/eventsModel.test.mjs src/lib/places/statsModel.test.mjs src/lib/support/reportQueue.test.mjs src/i18n/banned-copy.test.mjs src/styles/flat.test.mjs src/styles/tokens.test.mjs src/i18n/no-old-brand.test.mjs src/lib/chainStatus.test.mjs src/i18n/digits.test.mjs src/i18n/pricing-one-source.test.mjs",
+    "test:blocks": "node --test src/lib/blocks/blocks.test.mjs",
+    "test:creator": "node --test src/lib/creator/creator.test.mjs src/lib/creator/slots.test.mjs src/lib/creator/editor.test.mjs src/lib/creator/library.test.mjs src/lib/creator/inspector.test.mjs src/lib/creator/chrome.test.mjs src/lib/creator/entry.test.mjs src/lib/creator/upgrade.test.mjs src/lib/creator/pro.test.mjs src/lib/creator/blocks60.test.mjs src/lib/creator/aiDraft.test.mjs src/lib/creator/booking.test.mjs src/lib/creator/cart.test.mjs src/lib/creator/course.test.mjs src/lib/fresh.test.mjs",
+    "test": "npm run typecheck && npm run test:copy && npm run test:blocks && npm run test:creator && npm run test:server && mkdir -p ../.claude && touch ../.claude/gate-stamp"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter-tight": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.1.0",
+    "@fontsource-variable/source-serif-4": "^5.3.1",
+    "@fontsource-variable/unbounded": "^5.3.0",
+    "@fontsource-variable/wix-madefor-display": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "lucide-react": "^0.460.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.4.0",
+    "vite": "^5.4.0"
+  }
+}

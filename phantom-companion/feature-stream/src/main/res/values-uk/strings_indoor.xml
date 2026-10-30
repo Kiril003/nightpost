@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Слова безіменних орієнтирів внутрішнього плану (IndoorRoomLabel.kt).
+     Окремий файл, а не strings.xml: словник закритий і живе поруч зі своїм кодом. -->
+<resources>
+    <string name="indoor_landmark_toilets">WC</string>
+    <string name="indoor_landmark_atm">Банкомат</string>
+    <string name="indoor_landmark_information">Довідка</string>
+    <string name="indoor_landmark_pharmacy">Аптека</string>
+    <string name="indoor_landmark_post_office">Пошта</string>
+    <string name="indoor_landmark_police">Поліція</string>
+    <string name="indoor_landmark_first_aid">Медпункт</string>
+    <string name="indoor_landmark_lost_and_found">Бюро знахідок</string>
+    <string name="indoor_landmark_lockers">Камера схову</string>
+    <string name="indoor_landmark_prayer_room">Молитовна кімната</string>
+    <string name="indoor_landmark_nursing_room">Кімната матері</string>
+    <string name="indoor_landmark_childcare">Дитяча кімната</string>
+    <string name="indoor_landmark_smoking_area">Місце для куріння</string>
+    <string name="indoor_landmark_waiting_room">Зала очікування</string>
+    <string name="indoor_landmark_ticket_office">Каси</string>
+    <string name="indoor_landmark_reception">Рецепція</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_route_stops_count">Stops (%1$d)</string>
+    <string name="map_route_remove_stop">Remove stop</string>
+    <string name="map_route_barriers_stops">%1$d stops</string>
+    <string name="map_route_barriers_tolls">%1$d toll gates</string>
+    <string name="map_route_barriers_gates">%1$d gates</string>
+    <string name="map_route_on_route">%1$s on route</string>
+    <string name="map_route_trunk_shoulder">Highway shoulder</string>
+    <string name="map_route_parking">Parking</string>
+</resources>

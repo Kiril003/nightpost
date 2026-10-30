@@ -1,0 +1,413 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>кадр: шифрування</title>
+<!--
+  Чи можна зашифрувати КАДР так, щоб сервер його не зрозумів.
+
+  Ця сторінка САМОДОСТАТНЯ навмисно: ні мережі, ні npm, ні сервера. Її треба
+  вміти відкрити на апараті, де нічого з цього немає, і прочитати вирок з
+  екрана. Знімок екрана і є доказ.
+
+  Пояснення, чому це питання вирішує долю SFU, — у scripts/probe-frame-crypto.mjs
+  (той самий прилад, але з-під свого Chromium і з відповіддю в консоль).
+-->
+<style>
+  body { font: 15px/1.5 system-ui, sans-serif; margin: 0; padding: 16px;
+         background: #0E1210; color: #F8FAF8; }
+  h2 { font-size: 16px; margin: 18px 0 8px; }
+  h1 { font-size: 17px; margin: 0 0 12px; }
+  .verdict { font-size: 26px; font-weight: 800; padding: 14px; border-radius: 14px;
+             margin: 12px 0; line-height: 1.25; }
+  .verdict div { font-size: 14px; font-weight: 600; margin-top: 6px; }
+  .yes  { background: #123A22; color: #6EE7A0; border: 2px solid #6EE7A0; }
+  .no   { background: #3A1616; color: #FF9B9B; border: 2px solid #FF9B9B; }
+  .warn { background: #3A2E12; color: #F4CF6E; border: 2px solid #F4CF6E; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  td, th { text-align: left; padding: 5px 6px; border-bottom: 1px solid #2D362F;
+           vertical-align: top; }
+  th { color: #8A9186; font-weight: 600; width: 45%; }
+  code { font-family: ui-monospace, monospace; font-size: 12px; color: #9FD8B4;
+         word-break: break-all; }
+  .ua { color: #8A9186; font-size: 11px; margin-top: 16px; word-break: break-all; }
+</style>
+<body>
+<h1>Чи можна зашифрувати кадр так, щоб сервер його не зрозумів</h1>
+<div id="out">міряю…</div>
+<div class="ua" id="ua"></div>
+
+<!--
+  Код Worker'а живе окремим тегом, а не рядком у JS.
+
+  Причина не косметична: у рядку його доводилось би екранувати, а прилад, у
+  якому екранування зіпсувало байт, показав би «не вміє» там, де рушій уміє,
+  — тобто збрехав би саме в той бік, який коштує дорожче за все. Тег читається
+  як текст і перетворюється в Blob без жодного екранування.
+-->
+<script type="text/js-worker" id="worker-src">
+const KEY = 0x5A;
+
+/* FNV-1a. Порівнюються ХЕШІ, не масиви: кадрів сотні за секунду, і тягати їх
+   у головний потік означало б міряти вартість власного приладу. */
+const fnv = (bytes) => {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < bytes.length; i++) {
+    h ^= bytes[i];
+    h = (h * 0x01000193) >>> 0;
+  }
+  return h;
+};
+const xorInPlace = (bytes) => {
+  for (let i = 0; i < bytes.length; i++) bytes[i] ^= KEY;
+};
+
+function pump(transformer, side) {
+  const reader = transformer.readable.getReader();
+  const writer = transformer.writable.getWriter();
+  (async () => {
+    for (;;) {
+      const { value: frame, done } = await reader.read();
+      if (done) break;
+      const bytes = new Uint8Array(frame.data);
+      if (side === 'send') {
+        /* Хеш ВІДКРИТОГО кадру — до шифрування. Це еталон. */
+        const plain = fnv(bytes);
+        xorInPlace(bytes);
+        frame.data = bytes.buffer;
+        /* І хеш того, що поїде на дріт: саме це побачив би SFU. */
+        self.postMessage({ side: side, plain: plain, wire: fnv(bytes), len: bytes.length });
+      } else {
+        /* Те, що приїхало (сервер бачив би рівно це), і те, що вийшло після
+           зворотної трансформи. */
+        const wire = fnv(bytes);
+        xorInPlace(bytes);
+        frame.data = bytes.buffer;
+        self.postMessage({ side: side, wire: wire, plain: fnv(bytes), len: bytes.length });
+      }
+      await writer.write(frame);
+    }
+  })().catch((e) => self.postMessage({ side: side, error: String((e && e.message) || e) }));
+}
+
+self.onrtctransform = (event) => {
+  pump(event.transformer, event.transformer.options.side);
+};
+</script>
+
+<script>
+/* Ключ навмисно тривіальний: прилад міряє МОЖЛИВІСТЬ шифрувати кадр, а не
+   стійкість шифру. Справжній SFrame бере AES-GCM і ключі з рукостискання;
+   якби прилад ставив те й те одразу, провал не сказав би, ЧОГО саме не вміє
+   рушій. XOR — щоб байти напевно змінились і напевно вернулись. */
+const KEY = 0x5A;
+const HOLD_MS = Number(new URLSearchParams(location.search).get('hold') || 4000);
+
+const fnv = (bytes) => {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < bytes.length; i++) { h ^= bytes[i]; h = (h * 0x01000193) >>> 0; }
+  return h;
+};
+
+/* Джерело мусить ШУМІТИ: Opus із DTX на тишу шле майже нічого, і прилад
+   заміряв би шифрування порожнечі. */
+function noiseTrack(ctx) {
+  const buf = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * 0.3;
+  const src = ctx.createBufferSource();
+  src.buffer = buf; src.loop = true;
+  const dst = ctx.createMediaStreamDestination();
+  src.connect(dst); src.start();
+  return dst.stream.getAudioTracks()[0];
+}
+
+/*
+ * Кандидати КЛАДУТЬСЯ В ЧЕРГУ, а не шлються одразу.
+ *
+ * Перша редакція приладу шила їх напряму (addIceCandidate із .catch(() => {}))
+ * і отримала ICE, який лишався «new» при завершеному gathering. Причина саме
+ * тут: кандидат, зібраний одразу після setLocalDescription, приїжджає на той
+ * бік РАНІШЕ, ніж там з'явився remote description, addIceCandidate кидає — і
+ * порожній catch ковтає його назавжди. Коли так гинуть усі, дороги не
+ * знаходиться, і прилад доповідає «не вміє» про цілком справний рушій.
+ *
+ * Це та сама черга, що живе в рушієві (`callEngine.pendingIce`), і потрібна
+ * вона тут з тієї самої причини.
+ */
+const tally = { gathered: 0, added: 0, failed: 0, lastErr: '', kinds: {} };
+function wire(from, to) {
+  const queue = [];
+  let open = false;
+  const push = (c) => {
+    to.addIceCandidate(c).then(
+      () => { tally.added++; },
+      (e) => { tally.failed++; tally.lastErr = String((e && e.message) || e); },
+    );
+  };
+  from.onicecandidate = (e) => {
+    if (!e.candidate) return;
+    tally.gathered++;
+    const m = / typ (\w+)/.exec(e.candidate.candidate || '');
+    const k = m ? m[1] : '?';
+    tally.kinds[k] = (tally.kinds[k] || 0) + 1;
+    if (!tally.sample) tally.sample = e.candidate.candidate;
+    if (open) push(e.candidate); else queue.push(e.candidate);
+  };
+  return () => {
+    open = true;
+    while (queue.length) push(queue.shift());
+  };
+}
+
+async function connect(ctx, extra, onReceiver) {
+  const a = new RTCPeerConnection(extra), b = new RTCPeerConnection(extra);
+  const openToB = wire(a, b), openToA = wire(b, a);
+  /* Трансформа отримувача чіпляється СИНХРОННО в ontrack, а не мікрозадачею
+     після нього: причеплена через .then() вона висіла справно й не отримувала
+     ані кадру. */
+  const gotReceiver = new Promise((res) => {
+    b.ontrack = (e) => {
+      if (onReceiver) { try { onReceiver(e.receiver); } catch (err) { /* видно по нулю кадрів */ } }
+      res(e.receiver);
+    };
+  });
+  const sender = a.addTrack(noiseTrack(ctx));
+  /* Другий бік теж говорить: справжня розмова двостороння, і саме так кладе
+     доріжки `measure-mesh-legs.mjs`. */
+  b.addTrack(noiseTrack(ctx));
+  return { a: a, b: b, sender: sender, gotReceiver: gotReceiver,
+           openToB: openToB, openToA: openToA };
+}
+
+async function handshake(link) {
+  const a = link.a, b = link.b;
+  const o = await a.createOffer();
+  await a.setLocalDescription(o);
+  await b.setRemoteDescription(a.localDescription);
+  /* У b тепер є remote description — черга до нього може литись. */
+  link.openToB();
+  const ans = await b.createAnswer();
+  await b.setLocalDescription(ans);
+  await a.setRemoteDescription(b.localDescription);
+  link.openToA();
+  await new Promise((res, rej) => {
+    /* Стани в тексті помилки навмисно: «ICE не встав» без них не каже, ЧИЙ
+       бік не встав і на чому саме зупинився. */
+    const t = setTimeout(() => rej(new Error(
+      'ICE не встав за 10 с (a.ice=' + a.iceConnectionState + ' a.gather=' + a.iceGatheringState
+      + ' a.conn=' + a.connectionState + ' a.sig=' + a.signalingState
+      + ' | b.ice=' + b.iceConnectionState + ' b.gather=' + b.iceGatheringState
+      + ' | кандидатів зібрано=' + tally.gathered + ' прийнято=' + tally.added
+      + ' відмовлено=' + tally.failed + ' типи=' + JSON.stringify(tally.kinds)
+      + ' зразок=' + (tally.sample || '—')
+      + (tally.lastErr ? ' остання помилка: ' + tally.lastErr : '') + ')'
+    )), 10000);
+    const check = () => {
+      if (a.iceConnectionState === 'connected' || a.iceConnectionState === 'completed') {
+        clearTimeout(t); res();
+      }
+    };
+    a.oniceconnectionstatechange = check; check();
+  });
+}
+
+/* ── шлях 1: RTCRtpScriptTransform (кадри йдуть у Worker) ─────────────── */
+async function viaScriptTransform(ctx) {
+  if (typeof RTCRtpScriptTransform === 'undefined') {
+    return { path: 'RTCRtpScriptTransform', available: false, reason: 'немає такого конструктора' };
+  }
+  const src = document.getElementById('worker-src').textContent;
+  const url = URL.createObjectURL(new Blob([src], { type: 'text/javascript' }));
+  /* ОКРЕМИЙ Worker на кожен бік, а не один на два.
+     Спільний Worker дав відправника, що шифрує (198 кадрів), і отримувача з
+     НУЛЕМ кадрів — без жодної помилки: другий `onrtctransform` просто не
+     приходив. Тиха половина гірша за відмову, бо виглядає як «рушій не
+     вміє», а насправді це «прилад попросив неправильно». */
+  const worker = new Worker(url), workerRecv = new Worker(url);
+  const sent = [], got = [];
+  worker.onmessage = (e) => { (e.data.side === 'send' ? sent : got).push(e.data); };
+  workerRecv.onmessage = (e) => { (e.data.side === 'send' ? sent : got).push(e.data); };
+  /* Без цього «жодного кадру не пройшло» не каже, ЧОМУ: Worker, який не
+     розібрався або впав, мовчить так само, як справний і незатребуваний. */
+  const workerErrs = [];
+  worker.onerror = (e) => { workerErrs.push('send: ' + String(e.message || e.type || e)); };
+  workerRecv.onerror = (e) => { workerErrs.push('recv: ' + String(e.message || e.type || e)); };
+
+  let recvNote = 'ontrack не спрацював — отримувача не було';
+  const attachRecv = (r) => {
+    try {
+      r.transform = new RTCRtpScriptTransform(workerRecv, { side: 'recv' });
+      recvNote = 'трансформу причеплено синхронно в ontrack, кадрів не прийшло';
+    } catch (e) {
+      recvNote = 'на отримувача не вішається: ' + ((e && e.message) || e);
+    }
+  };
+  const link = await connect(ctx, {}, attachRecv);
+  try {
+    link.sender.transform = new RTCRtpScriptTransform(worker, { side: 'send' });
+  } catch (err) {
+    link.a.close(); link.b.close(); worker.terminate(); workerRecv.terminate();
+    return { path: 'RTCRtpScriptTransform', available: true, worked: false,
+             reason: 'конструктор є, але не вішається на відправника: ' + ((err && err.message) || err) };
+  }
+  await handshake(link);
+
+  await new Promise((r) => setTimeout(r, HOLD_MS));
+  link.a.close(); link.b.close(); worker.terminate(); workerRecv.terminate();
+  const v = judge('RTCRtpScriptTransform', sent, got);
+  if (!got.length) workerErrs.push('бік отримувача: ' + recvNote);
+  if (workerErrs.length) v.errors = (v.errors || []).concat(workerErrs);
+  return v;
+}
+
+/* ── шлях 2: createEncodedStreams (потоки в головному потоці) ─────────── */
+async function viaEncodedStreams(ctx) {
+  const has = typeof RTCRtpSender !== 'undefined' &&
+    typeof RTCRtpSender.prototype.createEncodedStreams === 'function';
+  if (!has) {
+    return { path: 'createEncodedStreams', available: false, reason: 'немає такого методу' };
+  }
+  const sent = [], got = [];
+  const xorStream = (collect, side) => new TransformStream({
+    transform: function (frame, controller) {
+      const bytes = new Uint8Array(frame.data);
+      if (side === 'send') {
+        const plain = fnv(bytes);
+        for (let i = 0; i < bytes.length; i++) bytes[i] ^= KEY;
+        frame.data = bytes.buffer;
+        collect.push({ side: side, plain: plain, wire: fnv(bytes), len: bytes.length });
+      } else {
+        const wire = fnv(bytes);
+        for (let i = 0; i < bytes.length; i++) bytes[i] ^= KEY;
+        frame.data = bytes.buffer;
+        collect.push({ side: side, wire: wire, plain: fnv(bytes), len: bytes.length });
+      }
+      controller.enqueue(frame);
+    },
+  });
+
+  /* Без цього прапорця Chromium віддає потоки, у які нічого не приїжджає. */
+  const link = await connect(ctx, { encodedInsertableStreams: true });
+  await handshake(link);
+  try {
+    const s = link.sender.createEncodedStreams();
+    s.readable.pipeThrough(xorStream(sent, 'send')).pipeTo(s.writable);
+  } catch (err) {
+    link.a.close(); link.b.close();
+    return { path: 'createEncodedStreams', available: true, worked: false,
+             reason: 'метод є, але потоки не відкрились: ' + ((err && err.message) || err) };
+  }
+  link.gotReceiver.then((r) => {
+    try {
+      const s = r.createEncodedStreams();
+      s.readable.pipeThrough(xorStream(got, 'recv')).pipeTo(s.writable);
+    } catch (e) { /* видно по порожньому боці отримувача */ }
+  });
+
+  await new Promise((r) => setTimeout(r, HOLD_MS));
+  link.a.close(); link.b.close();
+  return judge('createEncodedStreams', sent, got);
+}
+
+/* ── вирок ────────────────────────────────────────────────────────────────
+ * Дві половини, і жодна не необов'язкова:
+ *   hidden — сервер НЕ бачить відкритого кадру;
+ *   intact — співрозмовник дістає його БАЙТ У БАЙТ.
+ * Перша без другої — зламаний дзвінок. Друга без першої — відкритий кадр,
+ * який просто проїхав крізь трансформу.
+ */
+function judge(path, sent, got) {
+  const errs = sent.concat(got).filter((x) => x.error).map((x) => x.error);
+  const s = sent.filter((x) => !x.error), g = got.filter((x) => !x.error);
+  if (!s.length) {
+    return { path: path, available: true, worked: false,
+             reason: 'трансформа повисла, але жодного кадру через неї не пройшло'
+                     + (errs.length ? ' (' + errs[0] + ')' : '') };
+  }
+  /* Зіставляємо за хешем дроту, а не за порядком: кадри губляться, і
+     порівняння по індексу зсунулось би на першому ж загубленому. */
+  const byWire = new Map(s.map((x) => [x.wire, x]));
+  const pairs = g.map((r) => ({ r: r, s: byWire.get(r.wire) })).filter((p) => p.s);
+  const changed = s.filter((x) => x.wire !== x.plain).length;
+  const restored = pairs.filter((p) => p.r.plain === p.s.plain).length;
+  return {
+    path: path, available: true, worked: true,
+    framesSent: s.length, framesRecv: g.length, matched: pairs.length,
+    /* Кадр, у якого хеш до й після шифрування ЗБІГСЯ, не зашифрувався. */
+    hidden: changed === s.length && s.length > 0, changed: changed,
+    intact: pairs.length > 0 && restored === pairs.length, restored: restored,
+    errors: errs,
+  };
+}
+
+function row(k, v) { return '<tr><th>' + k + '</th><td>' + v + '</td></tr>'; }
+
+function render(results) {
+  const ok = results.find((r) => r.worked && r.hidden && r.intact);
+  const half = results.find((r) => r.worked && (r.hidden || r.intact));
+  let cls = 'no', word = 'НЕ ВМІЄ', note =
+    'Кадр зашифрувати нема чим. SFU означав би сервер, що чує розмову.';
+  if (ok) {
+    cls = 'yes'; word = 'ВМІЄ';
+    note = 'Кадр шифрується, сервер бачить шифротекст, співрозмовник дістає кадр байт у байт.';
+  } else if (half) {
+    cls = 'warn'; word = 'ВМІЄ НАПОЛОВИНУ';
+    note = 'Одна з двох половин не виконалась — подробиці нижче. Так ставити SFU не можна.';
+  }
+
+  let html = '<div class="verdict ' + cls + '">' + word + '<div>' + note + '</div></div>';
+  for (const r of results) {
+    html += '<h2>' + r.path + '</h2><table>';
+    if (!r.available) {
+      html += row('доступний', 'НІ — ' + r.reason);
+    } else if (!r.worked) {
+      html += row('доступний', 'так, але не працює');
+      html += row('чому', '<code>' + r.reason + '</code>');
+    } else {
+      html += row('кадрів через відправника', r.framesSent);
+      html += row('кадрів через отримувача', r.framesRecv);
+      html += row('зіставлено пар', r.matched);
+      html += row('сервер бачить шифротекст',
+        (r.hidden ? 'ТАК' : 'НІ') + ' — змінено ' + r.changed + ' з ' + r.framesSent);
+      html += row('кадр доїхав цілим',
+        (r.intact ? 'ТАК' : 'НІ') + ' — відновлено ' + r.restored + ' з ' + r.matched);
+      if (r.errors && r.errors.length) {
+        html += row('помилки', '<code>' + r.errors.join('<br>') + '</code>');
+      }
+    }
+    html += '</table>';
+  }
+  document.getElementById('out').innerHTML = html;
+  document.getElementById('ua').textContent = navigator.userAgent;
+  return word;
+}
+
+(async () => {
+  let results = [];
+  try {
+    const ctx = new AudioContext();
+    for (const run of [viaScriptTransform, viaEncodedStreams]) {
+      try { results.push(await run(ctx)); }
+      catch (e) {
+        results.push({ path: run.name, available: true, worked: false,
+                       reason: String((e && e.stack) || e) });
+      }
+    }
+    await ctx.close().catch(() => {});
+  } catch (e) {
+    document.getElementById('out').textContent = 'прилад не піднявся: ' + ((e && e.message) || e);
+    return;
+  }
+  const word = render(results);
+  /* Сервер слухає лише в режимі без вікна (probe-frame-crypto.mjs). Коли
+     сторінку відкрили руками на апараті, цього шляху немає, і відмова тут не
+     помилка: вирок уже на екрані. */
+  try {
+    await fetch('/result', {
+      method: 'POST',
+      body: JSON.stringify({ ua: navigator.userAgent, verdict: word, results: results }),
+    });
+  } catch (e) { /* знімок екрана і є доказ */ }
+})();
+</script>
+</body>

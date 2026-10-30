@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 44.2162,
+    "maxLon": 28.8875,
+    "minLat": 41.2354,
+    "minLon": 22.3571
+  },
+  "files": [
+    {
+      "bytes": 701814,
+      "name": "places.tsv.gz",
+      "sha256": "85e306d3c26d68f559538ae74612cdac03b1206143c0736ee58d702ecb9ded8f"
+    },
+    {
+      "bytes": 575334,
+      "name": "streets.tsv.gz",
+      "sha256": "814d0a8d62780fc916601998fd1fda4b6aeaee5a043a84ff230da565d622be93"
+    }
+  ],
+  "home": {
+    "lat": 42.6977,
+    "lon": 23.3217,
+    "zoom": 12.0
+  },
+  "id": "BG",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "bg-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Болгарія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "bg-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Болгарія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Болгарія",
+  "version": 1
+}

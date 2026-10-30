@@ -1,0 +1,131 @@
+/* PHANTOM — design tokens */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  /* amber-night (primary) */
+  --bg-base: #0E0A05;
+  --bg-warm: #15100a;
+  --bg-deep: #060402;
+  --glass-tint: rgba(31, 22, 18, 0.55);
+  --glass-edge: rgba(255, 230, 180, 0.10);
+  --glass-edge-strong: rgba(244, 175, 37, 0.18);
+
+  --gold: #F4AF25;
+  --gold-soft: #E0992A;
+  --gold-glow: rgba(244, 175, 37, 0.55);
+  --gold-faint: rgba(244, 175, 37, 0.18);
+
+  --ink-strong: #FFF8E7;
+  --ink: #F0E6CF;
+  --ink-secondary: #A7967D;
+  --ink-tertiary: #6B5C48;
+  --ink-faint: #4A3F30;
+
+  --coral: #FF8B6E;
+  --sage: #9DCC9F;
+  --vault: #7E5DA4;
+  --ghost: rgba(180, 180, 180, 0.6);
+
+  --motion-scale: 1;
+  --breath-period: 8s;
+  --glass-blur: 16px;
+
+  /* type */
+  --font-display: 'Inter Tight', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --state-label: 700 14px/1 var(--font-display);
+  --state-label-spacing: 0.4em;
+}
+
+[data-theme="sunrise-warm"] {
+  --bg-base: #F8F7F5;
+  --bg-warm: #F2EFE9;
+  --bg-deep: #ECE7DC;
+  --glass-tint: rgba(255, 255, 255, 0.6);
+  --glass-edge: rgba(255, 255, 255, 0.7);
+  --glass-edge-strong: rgba(244, 175, 37, 0.35);
+
+  --ink-strong: #1A140B;
+  --ink: #2A2118;
+  --ink-secondary: #5D5142;
+  --ink-tertiary: #8A7A66;
+  --ink-faint: #B8AB95;
+  --gold-faint: rgba(244, 175, 37, 0.22);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; overflow: hidden; }
+body {
+  font-family: var(--font-body);
+  background: #0a0806;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.body-cream { font-family: var(--font-body); color: var(--ink); }
+.mono { font-family: var(--font-mono); font-weight: 300; letter-spacing: 0.02em; }
+.display { font-family: var(--font-display); }
+.state-label {
+  font: var(--state-label);
+  letter-spacing: var(--state-label-spacing);
+  text-transform: uppercase;
+}
+
+/* Glass surfaces */
+.glass {
+  background: var(--glass-tint);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 0.5px solid var(--glass-edge);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge),
+    0 0.5px 0 rgba(0,0,0,0.15);
+  position: relative;
+}
+.glass.accent {
+  border: 0.5px solid var(--glass-edge-strong);
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge-strong),
+    0 0 24px var(--gold-faint),
+    0 0.5px 0 rgba(0,0,0,0.15);
+}
+.glass.subtle  { backdrop-filter: blur(calc(var(--glass-blur) * 0.75)) saturate(140%); }
+.glass.panel   { backdrop-filter: blur(calc(var(--glass-blur) * 1.5)) saturate(140%); }
+.glass.hero    { backdrop-filter: blur(calc(var(--glass-blur) * 2)) saturate(150%); }
+
+/* Breathing background */
+@keyframes phantom-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.06); opacity: 0.8; }
+}
+@keyframes phantom-pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.85; }
+}
+@keyframes phantom-spark-drift {
+  0% { transform: translate(0,0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translate(var(--dx), var(--dy)) rotate(var(--rot)); opacity: 0; }
+}
+@keyframes phantom-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes phantom-bloom-in {
+  from { opacity: 0; filter: blur(8px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+.fade-in  { animation: phantom-fade-in 0.5s ease-out; }
+.bloom-in { animation: phantom-bloom-in 0.6s ease-out; }
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 0; height: 0; }
+
+/* No selection on UI chrome */
+.ui-chrome { user-select: none; -webkit-user-select: none; }

@@ -1,0 +1,20 @@
+{
+  "ok": false,
+  "refused": "bad_wallet",
+  "at": "blocks[0].data.address",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "wal-0",
+        "kind": "pay.wallet",
+        "variant": "address_row",
+        "hidden": false,
+        "data": {
+          "address": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+        }
+      }
+    ]
+  }
+}

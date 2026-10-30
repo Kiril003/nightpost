@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_e_threat_unknown_label">Air alert</string>
+    <string name="mapl_e_threat_unknown_short">alert</string>
+    <string name="mapl_e_duration_just_now">just now</string>
+    <string name="mapl_e_duration_min">%1$d min</string>
+    <string name="mapl_e_duration_hr_min">%1$d h %2$02d min</string>
+    <string name="mapl_e_duration_day_hr">%1$d d %2$d h</string>
+    <string name="mapl_e_duration_month">%1$d mo</string>
+    <string name="mapl_e_duration_year">%1$d y</string>
+    <string name="mapl_e_districts_more">%1$s · and %2$d more</string>
+    <string name="mapl_e_alarm_started">Air alert — %1$s.</string>
+    <string name="mapl_e_alarm_ended">All clear — %1$s.</string>
+
+    <string name="mapl_e_layers_unavailable">Map layers unavailable</string>
+    <string name="mapl_e_empty_transit">No transit nearby (possibly offline)</string>
+    <string name="mapl_e_empty_routes">No routes nearby (possibly offline)</string>
+    <string name="mapl_e_empty_cameras">No cameras nearby (possibly offline)</string>
+    <string name="mapl_e_empty_aircraft">No aircraft nearby (possibly offline)</string>
+    <string name="mapl_e_empty_other">Nothing found nearby (possibly offline)</string>
+    <string name="mapl_e_line_absent_on_map">This line is not on the map</string>
+    <string name="mapl_e_line_ref">No. %1$s</string>
+    <string name="mapl_e_line_fallback">route</string>
+    <string name="mapl_e_line_title">Line %1$s</string>
+    <string name="mapl_e_routes_glyph">routes</string>
+    <string name="mapl_e_line_no_geometry">Line geometry not in database</string>
+    <string name="mapl_e_line_drawn">Route %1$s drawn on map</string>
+    <string name="mapl_e_hazard_marked">Marked “%1$s” — clears in 2 h</string>
+    <string name="mapl_e_hazard_mark_failed">Could not place mark</string>
+    <string name="mapl_e_isochrone_no_roads">Area roads not loaded yet — open map on site</string>
+    <string name="mapl_e_isochrone_unreachable">Unreachable within the loaded map</string>
+    <string name="mapl_e_danger_field_empty">No marked hazards for danger field</string>
+
+    <string name="mapl_e_board_stop">Board: %1$s %2$s</string>
+    <string name="mapl_e_transfer_stop">Transfer: %1$s → %2$s %3$s</string>
+    <string name="mapl_e_alight_stop">Exit here</string>
+    <string name="mapl_e_mode_metro">metro</string>
+    <string name="mapl_e_mode_tram">tram</string>
+    <string name="mapl_e_mode_trolleybus">trolleybus</string>
+    <string name="mapl_e_mode_bus">bus</string>
+    <string name="mapl_e_mode_rail">train</string>
+    <string name="mapl_e_mode_funicular">funicular</string>
+    <string name="mapl_e_mode_ferry">ferry</string>
+    <string name="mapl_e_mode_other">transit</string>
+
+    <string name="mapl_e_comfort_shelter">with shelter</string>
+    <string name="mapl_e_comfort_wheelchair">wheelchair accessible</string>
+    <string name="mapl_e_comfort_tactile">tactile paving</string>
+    <string name="mapl_e_mode_light_rail">rapid tram</string>
+    <string name="mapl_e_mode_share_taxi">minibus</string>
+    <string name="mapl_e_mode_monorail">monorail</string>
+
+    <string name="mapl_e_amenity_bench">bench</string>
+    <string name="mapl_e_amenity_shelter">shelter</string>
+    <string name="mapl_e_amenity_display">digital board</string>
+    <string name="mapl_e_amenity_bin">bin</string>
+    <string name="mapl_e_amenity_lit">streetlamp</string>
+    <string name="mapl_e_both_directions">Showing routes for both sides of the street</string>
+    <string name="mapl_e_operating_hours">Hours: %1$s – %2$s</string>
+    <string name="mapl_e_not_running">Not running now</string>
+    <string name="mapl_e_headway_subtitle">%1$s • about every ~%2$d min</string>
+    <string name="mapl_e_dep_min_clock">%1$d min (%2$s)</string>
+    <string name="mapl_e_dep_min">%1$d min</string>
+    <string name="mapl_e_stop_sequence_header">Stop sequence (%1$d):</string>
+    <string name="mapl_e_you_are_here">You are here</string>
+    <string name="mapl_e_plus_min">+%1$d min</string>
+    <string name="mapl_e_mode_train_dossier">train</string>
+</resources>

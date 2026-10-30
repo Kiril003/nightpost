@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_sheets_hub_title">Doprava</string>
+    <string name="map_sheets_hub_tab_metro">Metro</string>
+    <string name="map_sheets_hub_nearby_empty">V okolí nejsou žádné zastávky — okruh 1,2 km</string>
+    <string name="map_sheets_hub_walk">%1$d m · %2$d min pěšky</string>
+    <string name="map_sheets_hub_route_to">Trasa sem</string>
+    <string name="map_sheets_hub_search">Číslo (114, 38…) nebo ulice</string>
+    <string name="map_sheets_hub_filter_all">Vše</string>
+    <string name="map_sheets_hub_filter_bus">Autobusy</string>
+    <string name="map_sheets_hub_filter_trolleybus">Trolejbusy</string>
+    <string name="map_sheets_hub_filter_tram">Tramvaje</string>
+    <string name="map_sheets_hub_stops_count">zastávek: %1$d</string>
+    <string name="map_sheets_hub_stations_count">stanic: %1$d</string>
+    <string name="map_sheets_hub_show_on_map">Ukázat na mapě</string>
+    <string name="map_sheets_hub_stops_title">Zastávky na lince · %1$d</string>
+    <string name="map_sheets_stop_lines_title">Linky na této zastávce</string>
+</resources>

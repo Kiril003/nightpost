@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Rascunho de transferência: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Transferência para %1$s (%2$s): informe o valor e confirme.</string>
+    <string name="money_coin_guessed">Usado %1$s por padrão</string>
+    <string name="money_which_one">Várias correspondências: %1$s. Informe o sobrenome.</string>
+    <string name="money_no_wallet">%1$s ainda não tem endereço de carteira.</string>
+    <string name="money_nobody">Não encontrei “%1$s” entre as pessoas dos seus chats.</string>
+    <string name="money_who_missing">Quem recebe? Diga o nome de alguém dos seus chats.</string>
+    <string name="money_bad_amount">Não dá para enviar %1$s %2$s: a menor parte de %2$s é %3$s.</string>
+    <string name="money_coin_not_here">Não existe %1$s em %2$s.</string>
+    <string name="money_no_own_wallet">Sua carteira ainda não está pronta: abra Configurações › Carteira.</string>
+    <string name="money_seal_pick">Escolha uma foto para selar sua impressão SHA-256</string>
+    <string name="money_drafted_cash">Dinheiro de bolso: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Sem internet só posso dar dinheiro de bolso, mas %1$s</string>
+    <string name="money_offline_no_sol">falta SOL no bolso para a taxa e a conta do destinatário.</string>
+    <string name="money_offline_empty">está vazio.</string>
+    <string name="money_offline_other_coin">as notas estão em %1$s, não em %2$s.</string>
+    <string name="money_offline_short">só há %1$s %2$s livres.</string>
+    <string name="money_offline_external">o bolso só funciona com a carteira integrada.</string>
+    <string name="money_offline_not_person">o dinheiro só vai para um contato do chat.</string>
+    <string name="money_watch_out">Atenção:</string>
+</resources>

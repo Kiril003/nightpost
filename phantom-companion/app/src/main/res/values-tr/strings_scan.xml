@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_title">Kod tara</string>
+    <string name="scan_card_old_invite">Eski davet</string>
+    <string name="scan_card_own_device">Profil aktarımı</string>
+    <string name="scan_card_no_match">Numaralar uyuşmuyor</string>
+    <string name="scan_card_self">Bu senin kodun</string>
+    <string name="scan_card_not_ours">Nightpost kodu değil</string>
+    <string name="scan_enter_code">Kodu gir</string>
+    <string name="scan_action">Tara</string>
+    <string name="scan_hint">Kamerayı bir koda tut</string>
+    <string name="scan_code_field">Kod veya bağlantı</string>
+    <string name="scan_paste">Yapıştır</string>
+    <string name="scan_code_open">Aç</string>
+</resources>

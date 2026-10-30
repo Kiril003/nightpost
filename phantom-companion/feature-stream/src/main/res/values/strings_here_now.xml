@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="here_now_lang">en</string>
+    <string name="here_now_title">What\'s here now</string>
+    <string name="here_now_report">Report what\'s here</string>
+    <string name="here_now_report_short">Report</string>
+    <string name="here_now_held_short">sends later</string>
+    <string name="here_now_sent_short">sent</string>
+    <string name="here_now_unsure">unconfirmed</string>
+    <string name="here_now_from_people">from people</string>
+    <string name="here_now_yes">Yes</string>
+    <string name="here_now_no">No</string>
+    <string name="here_now_road_yes">Open</string>
+    <string name="here_now_road_no">Closed</string>
+    <string name="here_now_embargo">Reports are held until the alert ends</string>
+    <string name="here_now_held">Your report is waiting for the all-clear</string>
+    <string name="here_now_sent">Received — others will see it after a delay</string>
+    <string name="here_now_no_key">This phone can\'t send reports yet.</string>
+    <string name="here_now_limited">Too many reports this hour — try again in %1$d min.</string>
+    <string name="here_now_failed">Couldn\'t send — no connection.</string>
+    <string name="here_now_refused">The report was not accepted — try again a little later.</string>
+</resources>

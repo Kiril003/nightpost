@@ -1,0 +1,62 @@
+{
+ "cases": [
+  {
+   "pub_key": "PUBKEYbase64+/=",
+   "nonce": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "issued_ms": 1758800000000,
+   "cell": "881e6d8a5bfffff",
+   "object": null,
+   "kind": "utility.power",
+   "claim": "assert",
+   "reading": "on",
+   "presence": null,
+   "note": null,
+   "sentence": "phantom-truth-observe|v1|PUBKEYbase64+/=|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa|1758800000000|881e6d8a5bfffff||utility.power|assert|on|||"
+  },
+  {
+   "pub_key": "PUB",
+   "nonce": "0123456789abcdef0123456789abcdef",
+   "issued_ms": 1,
+   "cell": "881e6d8a5bfffff",
+   "object": "osm:node/123",
+   "kind": "shelter.open",
+   "claim": "confirm",
+   "reading": null,
+   "presence": [
+    1758800000000,
+    1758803600000
+   ],
+   "note": "Двері з боку двору, ключ у сусіда — ʼапостроф’",
+   "sentence": "phantom-truth-observe|v1|PUB|0123456789abcdef0123456789abcdef|1|881e6d8a5bfffff|osm:node/123|shelter.open|confirm||1758800000000|1758803600000|d8a7b14034ebb2dd4bb386fc1a3f289824aaba0376ae5e71e8da83ac8f9e7ff9"
+  },
+  {
+   "pub_key": "PUB",
+   "nonce": "ffffffffffffffffffffffffffffffff",
+   "issued_ms": 9007199254740993,
+   "cell": "8828308281fffff",
+   "object": null,
+   "kind": "road.passable",
+   "claim": "deny",
+   "reading": "blocked",
+   "presence": null,
+   "note": "",
+   "sentence": "phantom-truth-observe|v1|PUB|ffffffffffffffffffffffffffffffff|9007199254740993|8828308281fffff||road.passable|deny|blocked|||"
+  },
+  {
+   "pub_key": "PUB",
+   "nonce": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+   "issued_ms": 0,
+   "cell": "881e6d8a5bfffff",
+   "object": null,
+   "kind": "utility.signal",
+   "claim": "assert",
+   "reading": "off",
+   "presence": [
+    0,
+    0
+   ],
+   "note": "x",
+   "sentence": "phantom-truth-observe|v1|PUB|bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb|0|881e6d8a5bfffff||utility.signal|assert|off|0|0|2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"
+  }
+ ]
+}

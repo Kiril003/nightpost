@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nightpost</string>
+    <string name="invite_link_bad">Код запрошення неповний — попросіть надіслати ще раз.</string>
+    <string name="invite_link_legacy">Застаріле запрошення. Оновіть застосунок і створіть нове.</string>
+    <!-- Один постійний рядок: спершу небо, потім труби. Машина не говорить про себе. -->
+    <string name="status_channel">Nightpost · стан</string>
+    <string name="status_channel_desc">Nightpost працює</string>
+
+
+
+
+
+    <!-- NAV-FGS — turn-by-turn foreground service. Keeps the drive alive and
+         GPS legal while the app is backgrounded (brief 03 §4.1). -->
+    <string name="nav_service_channel">Nightpost · Навігація</string>
+    <string name="nav_service_channel_desc">Тримає маршрут активним, поки застосунок згорнуто.</string>
+    <string name="nav_service_status_default">Навігація активна</string>
+    <string name="nav_service_status_waiting">Навігація · чекаю сигнал</string>
+
+    <!-- AppContainer boot-failure notices — construction throwing leaves the
+         fallback null for the rest of the process; errorBus.emit needs a
+         Context.getString here since AppContainer isn't a @Composable. -->
+    <string name="ai_router_boot_failed">Розум не запустився — перезапустіть застосунок</string>
+    <string name="tts_engine_boot_failed">голос вимкнений — Android TTS не запускається</string>
+    <!-- Чому відповіді немає — AgencySessionManager.words(), одна причина на тип AIError -->
+    <string name="ai_fail_no_network">Немає мережі</string>
+    <string name="ai_fail_no_brain">Помічник не налаштований</string>
+    <string name="ai_fail_pc">ПК не відповів (%1$d)</string>
+    <string name="ai_fail_key">Ключ відхилено</string>
+    <string name="ai_fail_too_often">Забагато запитів</string>
+    <string name="ai_fail_daily_limit">Денний ліміт вичерпано</string>
+    <string name="ai_fail_cloud_down">Помічник недоступний</string>
+    <string name="ai_fail_cloud">Помилка хмари %1$d</string>
+    <string name="ai_fail_cancelled">Скасовано</string>
+    <string name="ai_fail_silent">Без відповіді</string>
+    <string name="ai_fail_unknown">Не вдалося відповісти</string>
+    <string name="ai_fail_unknown_with_tail">Не вдалося відповісти: %1$s</string>
+    <string name="ai_fail_empty_ask">Порожнє питання</string>
+    <string name="ai_group_unavailable">У групах недоступно</string>
+    <string name="assistant_sees_text_only">Бачу лише текст і підпис</string>
+    <string name="ai_fail_group_unsent">Не надіслано в групу</string>
+
+    <string name="pair_title">Зʼєднати з компʼютером</string>
+    <string name="pair_subtitle">Наведіть камеру на QR на компʼютері</string>
+    <string name="pair_scan_again">сканувати ще раз</string>
+    <string name="pair_paste">Вставити ПОВНИЙ JSON конфіг (не PIN)</string>
+    <string name="pair_claim">Зʼєднати</string>
+    <string name="pair_camera_denied">Щоб зчитати QR, потрібен доступ до камери.</string>
+    <string name="pair_scan_status">Знайшов QR, зʼєднуюсь…</string>
+    <string name="pair_manual_label">Або вручну</string>
+    <string name="pair_manual_placeholder">{ \"v\": 1, \"host\": …</string>
+    <string name="pair_connecting_status">Зʼєднуюсь із компʼютером…</string>
+
+    <string name="accessibility_description">Дозволяє Nightpost бачити активні вікна для надання контекстної допомоги.</string>
+
+    <!-- LUX-7 — Settings › Appearance (SettingsRealm.kt). Theme mode chips,
+         the palette-state readout, the living-phase words, the text-size dial
+         glyphs, and the footer dismiss. -->
+    <string name="settings_theme_living">Живий</string>
+    <string name="settings_theme_light">День</string>
+    <string name="settings_theme_dark">Ніч</string>
+    <string name="settings_theme_system">Система</string>
+    <string name="settings_theme_living_desc">Зараз %1$s — за часом доби</string>
+    <string name="settings_theme_light_desc">Закріплено денну палітру.</string>
+    <string name="settings_theme_dark_desc">Закріплено нічну палітру.</string>
+    <string name="settings_theme_system_desc">Йде за темним режимом системи.</string>
+    <string name="settings_phase_dawn">світанок</string>
+    <string name="settings_phase_day">день</string>
+    <string name="settings_phase_dusk">сутінки</string>
+    <string name="settings_phase_night">ніч</string>
+    <string name="settings_font_smaller">А−</string>
+    <string name="settings_font_sample">Аа</string>
+    <string name="settings_font_larger">А＋</string>
+
+    <!-- Bottom navigation island (VISUAL DAY 2 — chat-first) -->
+    <!-- Підписи ДІЙ для читача з екрана: TalkBack промовляє їх як «двічі
+         торкніться, щоб …». Орб і Скриня досі мали лише опис, без дії. -->
+
+    <!-- ПЕРЕКРИТТЯ ЧУЖИХ РЯДКІВ. Ці імена оголошені в MapLibre та Material3;
+         ресурс модуля :app має вищий пріоритет за aar, тож тут стоїть наше
+         слово. Саме ці чотири TalkBack читав російською на апараті 19.09
+         (бібліотеки везуть власні values-ru). Фільтр локалей у build.gradle.kts
+         прибирає російську з пакунка; це — другий замок, який діє й без нього.
+         Компас витікав навіть на головний екран, де мапи немає. -->
+    <string name="maplibre_mapActionDescription">Показує мапу, зібрану з MapLibre. Пересувайте двома пальцями. Змінюйте масштаб зведенням пальців.</string>
+    <string name="maplibre_compassContentDescription">Компас. Натисніть, щоб розвернути мапу на північ.</string>
+    <string name="maplibre_myLocationViewContentDescription">Ваше місце на мапі.</string>
+    <string name="maplibre_attributionsIconContentDescription">Джерела даних. Натисніть, щоб показати список.</string>
+    <string name="m3c_bottom_sheet_dismiss_description">Закрити аркуш</string>
+    <string name="m3c_bottom_sheet_drag_handle_description">Держак аркуша</string>
+    <string name="m3c_bottom_sheet_collapse_description">Згорнути аркуш</string>
+    <string name="m3c_bottom_sheet_expand_description">Розгорнути аркуш</string>
+    <string name="m3c_bottom_sheet_pane_title">Аркуш</string>
+
+    <!-- Скриня sheet rows — sховище/діагностика reuse existing app-module
+         strings (license_feature_core_vault, settings_diag_open); only this
+         row had no row-appropriate (lowercase) form yet. -->
+
+    <!-- Whisper overlay: the grant its switch depends on. -->
+    <string name="whisper_grant_overlay">потрібен дозвіл малювати поверх вікон</string>
+    <string name="whisper_line_kicker">ШЕПІТ · СТРІЧКА</string>
+    <string name="whisper_overlay_title">Стрічка завжди-видима</string>
+    <string name="whisper_overlay_body_running">1.5px золотої тиші поверх будь-якого додатка</string>
+    <string name="whisper_overlay_body_off">увімкніть, щоб Nightpost був поверх екрана</string>
+    <string name="whisper_freq_title">Частота</string>
+    <string name="whisper_sound_title">Звук</string>
+    <string name="whisper_sound_body">крихкий тон при появі нового рядка</string>
+    <string name="whisper_overlay_rationale_title">Потрібен дозвіл «поверх інших додатків»</string>
+    <string name="whisper_overlay_rationale_body">без нього Nightpost не може малювати стрічку зверху. на Samsung One UI ця опція знаходиться в Налаштування → Особливі → Поверх інших додатків.</string>
+    <string name="whisper_overlay_rationale_action">·  відкрити налаштування  ·</string>
+
+    <!-- Wave 1 §5 Executor C — map POI save/delete/rename, ContinuumHost.kt.
+         Extracted rather than left as raw Toast literals (HardcodedCyrillicFirewallTest). -->
+    <string name="map_poi_saved">Збережено</string>
+    <string name="map_poi_save_failed">не вдалось зберегти</string>
+    <string name="map_poi_deleted">Позначку видалено</string>
+    <string name="map_poi_delete_failed">Не вдалося видалити</string>
+    <string name="map_poi_renamed">Перейменовано</string>
+    <string name="map_poi_recategorized">Категорію змінено</string>
+    <string name="map_poi_rename_failed">не вдалось перейменувати</string>
+
+    <!-- Settings: the sections, the hero, and where the thinking happens. -->
+    <string name="settings_hero_body">зміни діють одразу — зберігати нічого не треба.</string>
+    <!-- Retention: the operator's number, and the only thing that goes sooner. -->
+    <string name="settings_retention_title">Скільки тримати історію</string>
+    <string name="settings_retention_detent_days">%1$d дн</string>
+    <string name="settings_retention_detent_year">Рік</string>
+    <string name="settings_retention_detent_forever">Назавжди</string>
+        <string name="settings_retention_status">Записів: %1$d · з %2$s · закріплено %3$d · ~%4$d МБ</string>
+    <string name="settings_retention_status_empty">В історії поки порожньо</string>
+    <string name="settings_retention_wipe">Стерти %1$d записів</string>
+    <string name="settings_retention_wipe_armed">Точно стерти?</string>
+    <string name="settings_sec_brain">РОЗУМ</string>
+    <string name="settings_sec_assets">МОДЕЛІ</string>
+    <string name="settings_sec_debug_state">НАЛАГОДЖЕННЯ · СТАН</string>
+    <string name="settings_brain_cloud">думає через хмару</string>
+    <string name="settings_brain_local">думає тут, на цьому пристрої</string>
+    <string name="settings_brain_cloud_body">Запити йдуть у хмару за вашим ключем</string>
+    <string name="settings_brain_local_body">Модель працює на пристрої без мережі</string>
+
+    <!-- Settings hub: six disclosure groups, each row carrying its own value. -->
+    <string name="settings_look_value">%1$s · текст %2$d%%</string>
+    <string name="settings_device_value_paired">ПК · %1$s</string>
+    <string name="settings_device_value_solo">соло — без ПК</string>
+    <string name="settings_about_value">версія %1$s</string>
+
+    <!-- Сім рішень оператора: групи названі питанням, а не модулем. -->
+    <string name="settings_realm_senses">чутно й видно</string>
+    <string name="settings_realm_senses_q">що Nightpost чує і бачить</string>
+    <string name="settings_realm_attention">увага</string>
+    <string name="settings_realm_attention_q">коли Nightpost озивається сам</string>
+    <string name="settings_realm_autonomy">автономність</string>
+    <string name="settings_realm_autonomy_q">що працює без мережі</string>
+    <string name="settings_realm_rest">що лишається</string>
+    <string name="settings_realm_rest_q">що знайдуть на цьому телефоні</string>
+    <string name="settings_realm_look">вигляд</string>
+    <string name="settings_realm_look_q">як це виглядає й читається</string>
+    <string name="settings_realm_link">звʼязок</string>
+    <string name="settings_realm_link_q">ПК, оболонка, діагностика</string>
+    <string name="settings_realm_about">про Nightpost</string>
+    <string name="settings_realm_about_q">версія, ліцензія, джерела даних</string>
+
+    <string name="settings_value_two">%1$s · %2$s</string>
+    <string name="settings_senses_mic_muted">мікрофон вимкнено</string>
+    <string name="settings_senses_mic_live">мікрофон відкритий постійно</string>
+    <string name="settings_senses_mic_ptt">мікрофон лише на натиск</string>
+    <string name="settings_senses_screen_on">екран читається</string>
+    <string name="settings_senses_screen_off">екран не читається</string>
+    <string name="settings_attention_voice_on">говорить уголос</string>
+    <string name="settings_attention_voice_off">мовчить</string>
+    <string name="settings_attention_proactive_on">озивається сам</string>
+    <string name="settings_attention_proactive_off">тільки на запит</string>
+    <string name="settings_autonomy_value">%1$s · моделей %2$d з %3$d · мапа %4$s</string>
+    <string name="settings_rest_records">%1$d записів</string>
+
+    <!-- Пошук по важелях: знайдене — самі важелі, не посилання на них. -->
+    <string name="settings_search_hint">Знайти налаштування</string>
+    <string name="settings_search_clear">очистити пошук</string>
+    <string name="settings_search_found">знайдено: %1$d</string>
+    <string name="settings_search_empty">Нічого не знайшлося</string>
+    <string name="settings_search_empty_body">Спробуйте інше слово</string>
+
+    <!-- Ціна важеля. Перемикач, наслідку якого не передбачити, — це пастка. -->
+    <string name="settings_cost_battery">батарея: %1$s</string>
+    <string name="settings_cost_network">мережа: %1$s</string>
+    <string name="settings_cost_privacy">приватність: %1$s</string>
+    <string name="settings_cost_battery_word">батарея</string>
+    <string name="settings_cost_network_word">мережа</string>
+    <string name="settings_cost_privacy_word">приватність</string>
+    <string name="settings_cost_saves">економить</string>
+    <string name="settings_cost_low">трохи</string>
+    <string name="settings_cost_medium">помітно</string>
+    <string name="settings_cost_high">суттєво — розрахуй на коротший день</string>
+    <string name="settings_cost_light_battery">на OLED світла тема їсть більше</string>
+    <string name="settings_cost_net_never">нічого не надсилає</string>
+    <string name="settings_cost_net_once">разове завантаження, далі офлайн</string>
+    <string name="settings_cost_net_cloud">питання йдуть у хмару</string>
+    <string name="settings_cost_priv_mic_off">доки увімкнено, не чує нічого</string>
+    <string name="settings_cost_priv_mic_open">мікрофон відкритий постійно</string>
+    <string name="settings_cost_priv_screen">читає текст з чужих застосунків</string>
+    <string name="settings_cost_priv_local">усе лишається на телефоні</string>
+    <string name="settings_cost_priv_cloud">текст питання бачить постачальник ключа</string>
+
+    <string name="settings_a11y_expanded">розгорнуто</string>
+    <string name="settings_a11y_collapsed">згорнуто</string>
+    <string name="settings_a11y_two_step">дія у два дотики</string>
+    <string name="settings_a11y_armed">Підтвердь ще раз</string>
+
+    <string name="settings_theme_row">Тема</string>
+    <string name="settings_font_row">Розмір тексту</string>
+    <string name="settings_font_body">Зразок розміру тексту</string>
+    <string name="settings_font_smaller_a11y">зменшити текст</string>
+    <string name="settings_font_larger_a11y">збільшити текст</string>
+    <string name="settings_map_body">збережені терени працюють без мережі</string>
+    <string name="settings_pair_body">звʼязати з ПК у своїй мережі</string>
+
+    <!-- Синоніми для пошуку: слова, яких немає в самому рядку. -->
+    <string name="settings_kw_mic">мікрофон звук слух запис</string>
+    <string name="settings_kw_live">жива розмова діалог голос</string>
+    <string name="settings_kw_screen">екран доступність читання</string>
+    <string name="settings_kw_notif">сповіщення шторка</string>
+    <string name="settings_kw_voice">голос озвучення tts синтез</string>
+    <string name="settings_kw_proactive">ініціатива сам підказки</string>
+    <string name="settings_kw_battery">батарея фон оптимізація живлення</string>
+    <string name="settings_kw_lock">замкнений екран блокування превʼю</string>
+    <string name="settings_kw_brain">розум модель llm Gemma хмара ключ</string>
+    <string name="settings_kw_models">моделі завантаження файли Vosk Whisper</string>
+    <string name="settings_kw_map">мапа карта терени офлайн регіони</string>
+    <string name="settings_kw_retention">історія зберігання строк чистка видалення</string>
+    <string name="settings_kw_theme">тема оформлення колір денна нічна</string>
+    <string name="settings_kw_font">шрифт розмір текст крупніше дрібніше</string>
+    <string name="settings_kw_pair">пк пара звʼязок підключення міст</string>
+    <string name="settings_kw_symbiote">симбіот оболонка</string>
+    <string name="settings_kw_whisper">шепіт стрічка рядок поверх вікон завжди видима</string>
+    <string name="settings_kw_diag">діагностика стан журнал</string>
+    <string name="settings_kw_license">ліцензія тариф підписка</string>
+    <string name="settings_kw_sources">джерела дані osm атрибуція</string>
+    <string name="settings_kw_version">версія збірка пакет веб месенджер</string>
+    <!-- Wave 05.09 — SettingsRealm search-blind-spot fix: "notif" bundled
+         four unrelated controls under one haystack, so none of these three
+         had their own searchable words. -->
+    <string name="settings_kw_false_position">хибна позиція локація підміна координати геолокація</string>
+    <string name="settings_kw_bg_location">слід поза екраном фон локація завжди дозвіл</string>
+    <string name="settings_kw_ai_key">ключ хмара Gemini Google Studio api</string>
+    <string name="settings_kw_hf_key">ключ токен HuggingFace HF Gemma закрита модель</string>
+
+    <!-- The honest capability strip: what PHANTOM can do right now. -->
+    <string name="settings_caps_title">Що Nightpost зараз може</string>
+    <string name="settings_caps_open">докладно про стан</string>
+    <string name="settings_cap_mind">розум</string>
+    <string name="settings_cap_hearing">слух</string>
+    <string name="settings_cap_voice">голос</string>
+    <string name="settings_cap_map">мапа</string>
+    <string name="settings_cap_link">звʼязок</string>
+    <string name="settings_cap_mind_local">на пристрої</string>
+    <string name="settings_cap_mind_cloud">через хмару</string>
+    <string name="settings_cap_mind_pc">через ПК</string>
+    <string name="settings_cap_mind_fetching">качається</string>
+    <string name="settings_cap_mind_none">ще нема</string>
+    <string name="settings_cap_hearing_on">модель є</string>
+    <string name="settings_cap_hearing_none">моделі нема</string>
+    <string name="settings_hearing_fetch">завантажити модель слуху</string>
+    <string name="settings_hearing_size">%1$d МіБ</string>
+    <string name="settings_hearing_fetching">качаю модель слуху</string>
+    <string name="settings_hearing_percent">%1$d%%</string>
+    <string name="settings_hearing_failed">не вдалося завантажити модель слуху</string>
+    <string name="settings_hearing_retry">спробувати ще</string>
+    <string name="settings_cap_voice_on">увімкнено</string>
+    <string name="settings_cap_voice_off">вимкнено</string>
+    <string name="settings_cap_voice_fetching">качаю живий голос</string>
+    <string name="settings_cap_voice_offline">немає мережі · говорить системний</string>
+    <string name="settings_cap_voice_wifi">чекаю Wi-Fi</string>
+    <string name="settings_cap_voice_nospace">бракує місця</string>
+    <string name="settings_cap_voice_stalled">не завантажився</string>
+    <string name="settings_cap_voice_not_requested">системний · преміум не запитано</string>
+    <string name="settings_voice_fetching">Качаю живий голос</string>
+    <!-- 05.09 privacy audit — стан на кожному свіжому встановленні: дотик тут і є той дозвіл, якого LiveVoiceProvisioner тепер чекає. -->
+    <string name="settings_voice_fetch">Завантажити живий голос</string>
+    <string name="settings_voice_size">%1$d МБ</string>
+    <string name="settings_voice_allow_mobile">качати живий голос по мобільному</string>
+    <string name="settings_voice_allow">дозволити</string>
+    <string name="settings_voice_nospace">бракує місця для живого голосу</string>
+    <string name="settings_voice_stalled">живий голос не завантажився</string>
+    <string name="settings_voice_offline">живий голос чекає мережі</string>
+    <string name="settings_cap_map_offline">працює офлайн</string>
+    <string name="settings_cap_map_online">лише поки є мережа</string>
+    <string name="settings_cap_link_paired">ПК поруч</string>
+    <string name="settings_cap_link_solo">соло</string>
+    <string name="settings_value_reading">читаю…</string>
+    <string name="settings_mind_short_local">розум на пристрої</string>
+    <string name="settings_mind_short_cloud">розум у хмарі</string>
+    <string name="settings_mind_short_fetching">качаю розум</string>
+    <string name="settings_mind_short_absent">розуму ще нема</string>
+
+    <!-- Where the thinking happens — status, never a question. -->
+    <string name="settings_brain_fetching">готує свій розум · %1$d%%</string>
+    <string name="settings_brain_fetching_body">качає модель сам. можна закрити — тягнутиме далі.</string>
+    <string name="settings_brain_absent">розум ще не на пристрої</string>
+    <string name="settings_brain_absent_body">Підʼєднайте ПК через QR або додайте ключ Gemini</string>
+    <string name="settings_brain_failed">розум не піднявся</string>
+    <string name="settings_keys_stored_body">Зі старої збірки</string>
+    <string name="settings_keys_clear">прибрати ключі</string>
+    <string name="settings_keys_clear_confirm">точно прибрати?</string>
+
+    <!-- Ключ хмарної моделі — раніше поле вводу без ресурсів, і жило під
+         сповіщеннями замість поруч зі статусом вище. Прибрати лишається
+         кнопкою settings_keys_clear — тут лише вставка/зміна. -->
+    <string name="ai_key_title">Ключ Gemini</string>
+    <string name="ai_key_body_unset">Не задано</string>
+    <string name="ai_key_body_set">Підключено</string>
+    <string name="ai_key_action_paste">Вставити</string>
+    <string name="ai_key_action_change">Змінити</string>
+    <string name="ai_key_dialog_title">Ключ Google AI Studio</string>
+    <string name="ai_key_dialog_body">Лежить зашифрованим на телефоні. Йде лише до Google.</string>
+    <string name="ai_key_dialog_hint">AIza…</string>
+    <string name="ai_key_save">Зберегти</string>
+    <string name="hf_key_title">Ключ HuggingFace (закриті моделі)</string>
+    <string name="hf_key_body_unset">Не задано. Закриті моделі не звантажаться.</string>
+    <string name="hf_key_body_set">Підключено</string>
+    <string name="hf_key_dialog_title">Ключ HuggingFace</string>
+    <string name="hf_key_dialog_body">Зберігається на телефоні лише для huggingface.co</string>
+    <string name="hf_key_dialog_hint">hf_…</string>
+
+    <!-- Voice and hearing. -->
+    <string name="settings_tts_title">Nightpost читає вголос</string>
+    <string name="settings_tts_body">Відповіді озвучуються українською — поки ви в застосунку</string>
+    <string name="peer_channel">Nightpost · повідомлення</string>
+    <string name="peer_channel_buzz">%1$s · лише вібрація</string>
+    <string name="peer_channel_desc">Хтось із ваших написав — приходить навіть зі згорнутим застосунком</string>
+    <string name="peer_me">Я</string>
+
+    <!-- Шторка: відповідь і швидкі дії без відкривання застосунку. -->
+    <string name="peer_reply">Відповісти</string>
+    <string name="peer_reply_hint">Написати…</string>
+    <string name="peer_reply_failed">Не відправилось. Відкрийте чат.</string>
+    <string name="peer_quick_ack">Прийняв</string>
+    <string name="peer_mark_read">Прочитано</string>
+
+    <!-- Усе, що бачить замкнений екран: ані імені, ані тексту, ані кількості. -->
+    <string name="peer_lock_redacted">Нове повідомлення</string>
+    <plurals name="peer_summary_chats">
+        <item quantity="one">%d розмова</item>
+        <item quantity="few">%d розмови</item>
+        <item quantity="many">%d розмов</item>
+        <item quantity="other">%d розмови</item>
+    </plurals>
+
+    <string name="mission_lock_redacted">Завдання виконується</string>
+    <string name="reminder_title">Нагадування</string>
+
+    <!-- Налаштування: скільки замкнений телефон має право сказати. -->
+    <string name="lock_reveal_title">Заблокований екран</string>
+    <string name="lock_reveal_body">Що видно до розблокування</string>
+    <string name="lock_reveal_hidden">Нічого</string>
+    <string name="lock_reveal_hidden_cost">Жодної плашки на екрані</string>
+    <string name="lock_reveal_system">Як у налаштуваннях телефона</string>
+    <string name="lock_reveal_system_cost">Типово. Імʼя і текст, якщо телефон їх показує</string>
+    <string name="lock_reveal_redacted">Тільки «Нове повідомлення»</string>
+    <string name="lock_reveal_redacted_cost">Без імені й тексту.</string>
+    <string name="lock_reveal_full">Імʼя і текст</string>
+    <string name="lock_reveal_full_cost">Прочитає будь-хто, у кого телефон</string>
+    <plurals name="lock_reveal_exceptions">
+        <item quantity="one">%d розмова з окремим правилом</item>
+        <item quantity="few">%d розмови з окремим правилом</item>
+        <item quantity="many">%d розмов з окремим правилом</item>
+        <item quantity="other">%d розмови з окремим правилом</item>
+    </plurals>
+    <string name="lock_reveal_reset">Прибрати винятки</string>
+    <string name="mission_channel">Довгі місії</string>
+    <string name="mission_notif_idle">місія завершується</string>
+    <string name="mission_notif_many">%1$d місії виконуються</string>
+    <string name="mission_notif_progress">крок %1$d з %2$d · %3$d хв</string>
+    <string name="mission_notif_stop">зупинити</string>
+    <string name="settings_proactive_title">Заговорює перший</string>
+    <string name="settings_proactive_body">Короткі підказки без запиту</string>
+    <string name="settings_live_title">Живий діалог</string>
+    <string name="settings_live_body">мікрофон лишається відкритим і сам ловить репліки</string>
+    <string name="settings_live_blocked">мікрофон вимкнено — живий діалог на паузі</string>
+    <string name="settings_live_unmute">увімкнути мікрофон</string>
+    <string name="settings_voice_open">тест слуху та голосу</string>
+
+    <!-- Privacy: the master mute, the soft screen gate, the three OS grants. -->
+    <string name="settings_mic_title">Вимкнути всі мікрофонні входи</string>
+    <string name="settings_mic_body">Вимикає всі голосові входи</string>
+    <string name="settings_mic_open">хто тримає мікрофон</string>
+    <string name="settings_screen_title">Передавати екран ШІ</string>
+    <string name="settings_screen_body">текст з екрана потрапляє в контекст моделі</string>
+    <string name="settings_screen_blocked">спершу дай дозвіл «бачити екран»</string>
+    <string name="settings_perm_screen">бачити екран</string>
+    <string name="settings_perm_screen_detail">спеціальні можливості — щоб діяти в застосунках</string>
+    <string name="settings_alert_delivery_none">Сповіщення вимкнені — тривога не прийде</string>
+    <string name="settings_alert_delivery_none_detail">Видно лише у відкритому застосунку</string>
+    <string name="settings_alert_delivery_quiet">Канал тривоги стишено — вночі не розбудить</string>
+    <string name="settings_alert_delivery_quiet_detail">Плашка зʼявиться в шторці без звуку.</string>
+    <string name="settings_alert_delivery_ok">Тривога виходить у шторку</string>
+    <string name="settings_alert_delivery_caveat">Оболонка системи може затримувати сповіщення</string>
+    <string name="settings_perm_notif">Читати сповіщення</string>
+    <string name="settings_perm_notif_detail">Telegram, Viber та інші</string>
+    <string name="settings_perm_battery">працювати у фоні</string>
+    <string name="settings_perm_battery_detail">щоб система не приспала Nightpost</string>
+    <string name="settings_perm_granted">надано</string>
+    <string name="settings_perm_grant">надати</string>
+
+    <!-- Data that lives on the device. -->
+    <string name="settings_map_open">мапа офлайн</string>
+    <string name="settings_map_value_regions">регіонів збережено: %1$d</string>
+    <string name="settings_map_value_none">офлайн-регіонів немає</string>
+    <string name="settings_licenses_open">дані та ліцензії</string>
+    <string name="settings_licenses_value">OpenStreetMap · ODbL 1.0</string>
+    <string name="settings_asset_ready">Готово</string>
+    <string name="settings_asset_absent">Нема на пристрої</string>
+    <string name="settings_asset_absent_sized">Нема на пристрої · %1$s</string>
+    <string name="settings_size_gb">%1$.1f ГБ</string>
+    <string name="settings_size_mb">%1$d МБ</string>
+    <string name="settings_asset_fetching">Завантажую · %1$d%%</string>
+    <string name="settings_asset_unwired">рушія ще нема</string>
+    <string name="settings_asset_get">завантажити</string>
+    <string name="settings_asset_drop">видалити</string>
+    <string name="settings_asset_import">взяти файлом</string>
+    <string name="settings_asset_about">про це</string>
+
+    <!-- Device: the desktop link, the overlay orb, the two child screens. -->
+    <string name="settings_pair_open">підʼєднати (QR)</string>
+    <string name="settings_unpair">розпарувати</string>
+    <string name="settings_unpair_confirm">точно розпарувати?</string>
+    <string name="settings_unpair_body">Nightpost працюватиме сам. пару можна навести знову з QR.</string>
+    <string name="settings_pair_drop_stale">Спаруйте знову для доставки без ПК поруч</string>
+    <string name="settings_diag_open">діагностика</string>
+    <string name="settings_symbiote_open">помічник</string>
+    <string name="settings_whisper_open">шепіт</string>
+    <string name="settings_whisper_value">тонка стрічка поверх інших застосунків</string>
+
+    <!-- About. -->
+    <string name="settings_about_version">версія</string>
+    <string name="settings_about_build">збірка</string>
+    <string name="settings_about_package">пакет</string>
+    <string name="settings_about_web">веб-месенджер</string>
+
+    <!-- The danger zone: two steps, a cooldown, and named consequences. -->
+    <string name="settings_danger">небезпечна зона</string>
+    <string name="settings_danger_empty">Тут зʼявиться щось страшне, коли буде що видаляти</string>
+    <string name="settings_danger_drop_models">видалити всі завантажені моделі</string>
+    <string name="settings_danger_drop_title">Видалити всі завантажені моделі?</string>
+    <string name="settings_danger_drop_body">Видалить завантажені моделі з пристрою</string>
+    <string name="settings_danger_yes">так, видалити</string>
+    <string name="settings_danger_no">ні</string>
+    <string name="settings_danger_sure">справді так?</string>
+    <string name="settings_danger_wait">почекай %1$d — щоб не вилетіло від випадкового тапу</string>
+    <string name="settings_danger_tap_again">тапни ще раз щоб підтвердити · повернути не можна</string>
+    <string name="settings_danger_commit">видалити</string>
+    <string name="settings_danger_commit_wait">видалити · %1$d</string>
+    <string name="settings_danger_cancel">скасувати</string>
+    <string name="settings_saved">збережено</string>
+    <string name="settings_back">← налаштування</string>
+
+    <!-- Who is holding the microphone, and what each owner is doing. -->
+    <string name="mic_state_muted">мікрофон вимкнено</string>
+    <string name="mic_state_active">мікрофон активний · %1$d%%</string>
+    <string name="mic_state_idle">мікрофон не використовується</string>
+    <string name="mic_owners_kicker">ВЛАСНИКИ МІКРОФОНА</string>
+    <string name="mic_status_active">слухає</string>
+    <string name="mic_status_idle">очікує</string>
+    <string name="mic_status_muted">вимкнено</string>
+    <string name="mic_status_disabled">недоступно</string>
+
+    <!-- Diagnostics: read from live sources, never from a placeholder. -->
+    <string name="diag_kicker">ДІАГНОСТИКА</string>
+    <string name="diag_state">СТАН</string>
+    <string name="diag_pair">пара</string>
+    <string name="diag_pair_none">нема</string>
+    <string name="diag_sensors">сенсори</string>
+    <string name="diag_gnss_title">ПОЗИЦІЯ · СЛАБКИЙ СИГНАЛ</string>
+    <string name="diag_gnss_body">Супутники, розбіжності, перевірка підміни</string>
+    <string name="diag_resources">РЕСУРСИ</string>
+    <string name="diag_mem_pss">памʼять PSS</string>
+    <string name="diag_ram_free">вільна RAM</string>
+    <string name="diag_megabytes">%1$d МБ</string>
+    <string name="diag_log">ЖУРНАЛ ПОМИЛОК · %1$d</string>
+    <string name="diag_clear">очистити</string>
+    <string name="diag_empty">Поки тиша · усі підсистеми працюють</string>
+    <string name="diag_constitution_title">ВІДХИЛЕНО КОНСТИТУЦІЄЮ · %1$d</string>
+    <string name="diag_constitution_empty">Жодного відхилення</string>
+    <string name="diag_axiom_operator_advocate">загрожує самостійності оператора</string>
+    <string name="diag_axiom_refusal_ok">діє без згоди оператора</string>
+    <string name="diag_axiom_conflict_transparency">приховує конфлікт інтересів</string>
+    <string name="diag_axiom_power_asymmetry_guard">може зашкодити вразливим</string>
+    <string name="diag_axiom_sunset_clause">не має чіткого строку дії</string>
+    <string name="diag_axiom_self_audit_daily">не пройшло щоденний самоогляд</string>
+
+    <!-- Data and licences: what is bundled, where it came from, under what terms. -->
+    <string name="lic_map">Мапа</string>
+    <string name="lic_map_body">Дані © OpenStreetMap contributors, ліцензія ODbL 1.0 (openstreetmap.org/copyright). Тайли — OpenFreeMap (openfreemap.org).</string>
+    <string name="lic_bundled">Вбудовані дані</string>
+    <string name="lic_bundled_note">Похідні бази OpenStreetMap (ODbL 1.0) та державні відкриті реєстри (CC BY 4.0) — умови вказано для кожного джерела.</string>
+    <string name="lic_poi">точки інтересу</string>
+    <string name="lic_streets">назви вулиць</string>
+    <string name="lic_transit">транспорт</string>
+    <string name="lic_oblasts">межі областей</string>
+    <string name="lic_official_health">аптеки та медзаклади</string>
+    <string name="lic_feeds">Живі фіди</string>
+    <string name="lic_feed_alerts">Тривоги</string>
+    <string name="lic_feed_threats">Типи тривог, райони</string>
+    <string name="lic_feed_details">Деталі тривог</string>
+    <string name="lic_feed_radar">Радар опадів</string>
+    <string name="lic_feed_weather">Погода</string>
+    <string name="lic_fonts">Шрифти</string>
+    <string name="lic_fonts_body">Inter, JetBrains Mono — SIL Open Font License 1.1.</string>
+    <!-- Окрема секція, а не рядок у «вбудованих даних»: та секція вся під ODbL,
+         а це суспільне надбання уряду США. Списати одне під ліцензію іншого було
+         б рівно тією неточністю, проти якої існує цей екран. -->
+    <string name="lic_model">Геофізична модель</string>
+    <string name="lic_model_wmm_name">Світова магнітна модель WMM2025</string>
+    <string name="lic_model_wmm">NOAA/NCEI · суспільне надбання · чинна до 2030</string>
+    <string name="lic_engines">Двигуни</string>
+
+    <!-- Voice and hearing lab: what is running, and a five-second proof of it. -->
+    <string name="voice_engines">Зараз працює</string>
+    <string name="voice_stt_models">Моделі слуху</string>
+    <string name="voice_clone_models">Голос-клон</string>
+    <string name="voice_test_title">Тест слуху</string>
+    <string name="voice_test_idle">Скажіть щось — є 5 секунд</string>
+    <string name="voice_test_listening">Слухаю · ще %1$d с</string>
+    <string name="voice_test_muted">Мікрофон вимкнено</string>
+    <string name="voice_test_stt_off">Розпізнавання мови вимкнено</string>
+    <string name="voice_test_nothing">Нічого не почув</string>
+    <string name="voice_test_heard">Почув</string>
+    <string name="voice_test_button">Тест 5 с</string>
+    <string name="voice_test_button_live">Слухаю…</string>
+
+    <!-- Voice character: ten shipped styles and five pace stops, each answered by the same probe phrase — the ear is the only honest picker among opaque names. -->
+    <string name="voice_character_title">Характер голосу</string>
+    <string name="voice_styles_male">чоловічі</string>
+    <string name="voice_styles_female">жіночі</string>
+    <string name="voice_tempo_label">Темп</string>
+    <string name="voice_tempo_slow">повільний</string>
+    <string name="voice_tempo_calm">спокійний</string>
+    <string name="voice_tempo_default">звичний</string>
+    <string name="voice_tempo_fast">швидкий</string>
+    <string name="voice_tempo_max">стрімкий</string>
+    <string name="voice_tempo_slower_a11y">повільніший темп</string>
+    <string name="voice_tempo_faster_a11y">швидший темп</string>
+    <string name="voice_preview_phrase">Nightpost на звʼязку. Рухаюсь із вами.</string>
+    <string name="voice_preview_button">Проба голосу</string>
+    <string name="voice_styles_fetch">докачати стилі · ~3 МБ</string>
+    <string name="voice_styles_fetching">стилі завантажуються…</string>
+    <string name="voice_styles_missing_hint">На пристрої лише частина стилів — решта важать ~3 МБ разом</string>
+    <string name="tts_route_baked">Nightpost · навігаційний пак</string>
+    <string name="tts_route_premium">Supertonic 3 · стрім</string>
+    <string name="tts_route_system">системний TTS (uk-UA)</string>
+    <string name="stt_route_hybrid">Moonshine + Vosk-UA</string>
+    <string name="stt_route_moonshine">Moonshine · Tiny UK</string>
+    <string name="stt_route_vosk">Vosk-UA</string>
+    <string name="route_off">вимкнено</string>
+    <!-- Голос: коли замість живого говорить системний — причина, не здогадка по тембру. -->
+    <string name="voice_fallback_channel">Голос</string>
+    <string name="voice_fallback_channel_desc">коли замість живого голосу Nightpost говорить системний</string>
+    <string name="voice_fallback_title">Говорив системний голос</string>
+    <string name="voice_silent_title">Голос мовчав</string>
+    <string name="voice_fallback_reason_not_loaded">живий голос не завантажений</string>
+    <string name="voice_fallback_reason_failed">живий голос упав на цій фразі</string>
+    <string name="voice_fallback_reason_unproven">живий голос ще не прогрітий</string>
+    <string name="voice_fallback_reason_none">жоден голос не заговорив</string>
+    <!-- Плашка живе, поки живий голос не заговорить знову, тож каже про
+         останню промовлену фразу, а не про давній збій. -->
+    <string name="voice_fallback_line">О %1$s фразу прочитав голос системи: %2$s</string>
+    <string name="voice_silent_line">О %1$s фразу не прочитав жоден голос</string>
+
+    <!-- Symbiote: what PHANTOM is allowed to notice about the body. -->
+    <string name="symbiote_kicker">ПОМІЧНИК</string>
+    <string name="symbiote_group_body">тіло</string>
+    <string name="symbiote_group_self">він сам</string>
+    <string name="symbiote_haptic">haptic-ритм стану</string>
+    <string name="symbiote_haptic_hint">30-секундні тікти за поточним станом</string>
+    <string name="symbiote_audit">щоденний самоогляд</string>
+    <string name="symbiote_audit_hint">О 03:00 Nightpost перевіряє себе на дрейф аксіом</string>
+
+    <!-- Settings › Map: offline data and an honest source readout, no questions. -->
+    <string name="map_source_title">Джерело мапи</string>
+    <string name="map_source_reset">Повернути типове джерело</string>
+    <string name="map_regions_title">Збережені ділянки мапи</string>
+    <string name="map_regions_empty">Жодної ділянки ще не збережено</string>
+    <string name="map_regions_open_map">Відкрити мапу</string>
+    <string name="map_region_ready">Готово · %1$s МБ · тайлів %2$d</string>
+    <string name="map_region_progress">%1$d%% · %2$s МБ</string>
+    <string name="map_region_waiting">Чекає тайли · %1$s МБ</string>
+    <string name="map_region_drop">Видалити ділянку</string>
+    <string name="map_online_title">Онлайн-геосервіси</string>
+    <string name="map_online_off">Вимкнено</string>
+    <string name="map_online_on">Увімкнено</string>
+    <string name="diag_sensor_live">живі</string>
+    <string name="diag_sensor_idle">тиша</string>
+    <string name="diag_sensor_off">вимкнені</string>
+    <string name="diag_sev_info">до відома</string>
+    <string name="diag_sev_warn">попередження</string>
+    <string name="diag_sev_error">помилка</string>
+    <string name="diag_sev_critical">критично</string>
+    <string name="diag_link_connected">підключено</string>
+    <string name="diag_link_connecting">підключаюсь</string>
+    <string name="diag_link_disconnected">немає звʼязку</string>
+    <string name="mic_owner_ptt">Кнопка «говорити»</string>
+    <string name="mic_owner_live">Живий діалог</string>
+
+    <!-- Phase 2-A5 — sttEnabled had no writer anywhere; this switch is it. -->
+    <string name="mic_stt_title">Голосове введення (STT)</string>
+    <string name="model_fetch_failed">не вдалось завантажити %1$s</string>
+    <string name="model_role_brain">мозок</string>
+    <string name="model_role_hearing">слух</string>
+    <string name="model_role_voice">голос</string>
+    <string name="model_role_sounds">розпізнавання звуків</string>
+    <string name="model_role_memory">пошук по памʼяті</string>
+    <string name="model_role_meaning">пошук за змістом</string>
+    <string name="err_region_save_failed">не вдалось почати збереження регіону · деталі в Діагностиці</string>
+    <string name="err_symbiote_audit_drift">самоперевірка: %1$d розходжень, %2$d правил протерміновано</string>
+    <string name="stop_all_tile">Зупинити все</string>
+    <string name="err_tool_refused_source">Конституція</string>
+    <string name="err_tool_refused">Дію «%1$s» відхилено за правилами безпеки</string>
+    <string name="license_title">Ліцензія</string>
+    <string name="license_kicker">права на цю копію</string>
+    <string name="license_state_active">Ліцензія активна</string>
+    <string name="license_state_trial">Пробний період</string>
+    <string name="license_state_free">Вільний рівень</string>
+    <string name="license_state_broken">Сертифікат не сходиться</string>
+    <string name="license_state_foreign">Сертифікат від іншого пристрою</string>
+    <string name="license_state_revoked">Ліцензію відкликано</string>
+    <string name="license_state_outdated">Збірка застаріла</string>
+    <string name="license_state_stale">Давно без звірки</string>
+    <string name="license_tier_free">Вільний</string>
+    <string name="license_tier_personal">Особистий</string>
+    <string name="license_tier_crew">Екіпаж</string>
+    <string name="license_tier_unit">Підрозділ</string>
+    <string name="license_safety_note">Навігація, тривоги, мапа й сховище доступні завжди.</string>
+    <string name="license_signature_section">Підпис збірки</string>
+    <string name="license_signature_foreign">Цю копію підписали не ми.</string>
+    <string name="license_signature_meaning">Її перепакували й підписали іншим ключем уже після того, як ми випустили збірку. Ми нічого не вимикаємо через це: навігація, тривоги, мапа й сховище працюють як завжди. Але сертифікат ліцензії з цієї копії не йде, тож платний ключ на ній не активується. Що ще в ній змінили, ми сказати не можемо.</string>
+    <string name="license_signature_found">Підпис цієї копії</string>
+    <string name="license_signature_expected">Підпис наших збірок</string>
+    <string name="license_signature_row">Підписано не нами</string>
+    <string name="license_key_hint">PHTM-XXXXX-XXXXX-XXXXX-XXXXX</string>
+    <string name="license_key_label">Ключ ліцензії</string>
+    <string name="license_activate">Активувати</string>
+    <string name="license_release">Звільнити пристрій</string>
+    <string name="license_recheck">Звірити зараз</string>
+    <string name="license_err_malformed">Ключ введено з помилкою</string>
+    <string name="license_err_notfound">Такого ключа немає</string>
+    <string name="license_err_limit">Усі активації зайнято — звільни інший пристрій</string>
+    <string name="license_err_revoked">Цю ліцензію відкликано</string>
+    <string name="license_err_network">Немає звʼязку з сервером ліцензій</string>
+    <string name="checkout_section">Купити в Google Play</string>
+    <string name="checkout_buy">Купити</string>
+    <string name="checkout_restore">Відновити покупку</string>
+    <string name="checkout_note">Оплата через Google Play. Ключ активується автоматично.</string>
+    <string name="checkout_loading">Ціни від Google Play ще не завантажились.</string>
+    <string name="checkout_working">Звіряємо покупку з Google Play…</string>
+    <string name="checkout_pending">Очікуємо підтвердження оплати від Google Play</string>
+    <string name="checkout_activated">Покупку підтверджено, ліцензію активовано.</string>
+    <string name="checkout_nothing">На цьому акаунті Google Play покупок Nightpost немає.</string>
+    <string name="checkout_unavailable">Google Play недоступний на цьому пристрої</string>
+    <string name="checkout_failed">Покупку не завершено (%1$d). Спробуйте «Відновити покупку».</string>
+    <string name="license_trial_left">Залишилось %1$d дн. пробного періоду</string>
+    <string name="license_grace_left">Без звірки ще %1$d дн.</string>
+    <string name="license_updates_until">Оновлення включено до %1$s</string>
+    <string name="license_device_id">Відбиток пристрою · %1$s</string>
+    <string name="license_features_title">Що відкрито</string>
+    <string name="license_feature_trial_only">до кінця проби</string>
+    <string name="license_feature_core_chat">Чат і памʼять діалогу</string>
+    <string name="license_feature_core_map">Мапа</string>
+    <string name="license_feature_core_nav">Навігація</string>
+    <string name="license_feature_core_alerts">Тривоги</string>
+    <string name="license_feature_core_vault">Сховище</string>
+    <string name="license_feature_core_voice">Голос</string>
+    <string name="license_feature_bridge_pair">Звʼязка з ПК</string>
+    <string name="license_feature_memory_longterm">Довготривала памʼять</string>
+    <string name="license_feature_map_terrain3d">Обʼємний рельєф і місто</string>
+    <string name="license_feature_voice_premium">Преміальний голос</string>
+    <string name="license_feature_gnss_blackbox">Чорна скринька GNSS</string>
+    <string name="license_feature_export_reports">Експорт звітів</string>
+    <string name="license_feature_crew_sync">Синхронізація екіпажу</string>
+    <string name="license_feature_fleet_onprem">Свій сервер підрозділу</string>
+    <string name="license_release_confirm">Точно звільнити?</string>
+    <string name="update_headline">Вийшла версія %1$s</string>
+    <string name="update_detail">У вас %1$s. Підпис файла перевіряється автоматично.</string>
+    <string name="update_detail_cabinet">У вас %1$s. Файл %2$s, %3$s — завантажується в кабінеті.</string>
+    <string name="update_fetch">Завантажити (%1$s)</string>
+    <string name="update_progress">Завантаження · %1$s із %2$s</string>
+    <string name="update_verifying">Звіряємо суму з підписаною політикою…</string>
+    <string name="update_ready">Суми збіглися. Далі — системний діалог встановлення.</string>
+    <string name="update_install">Встановити</string>
+    <string name="update_pause">Зупинити</string>
+    <string name="update_stalled">Завантаження перервано — спробуємо ще раз</string>
+    <string name="update_no_space">Бракує місця: потрібно ще %1$s</string>
+    <string name="update_mismatch_headline">Сума не зійшлася</string>
+    <string name="update_mismatch">Контрольна сума не збіглася. Файл видалено.</string>
+    <string name="update_unknown_sources">Android спитає дозволу встановлювати з цього джерела</string>
+    <string name="update_file">Файл %1$s, %2$s</string>
+    <string name="update_open">Оновити</string>
+    <string name="update_later">Пізніше</string>
+    <string name="update_checksum">Звірте sha256 перед встановленням:</string>
+    <string name="update_none">Стоїть найсвіжіша відома збірка</string>
+    <string name="update_via_dapp_store">Оновлення привозить Solana dApp Store</string>
+    <string name="update_developer">Збірка розробника — оновлення вимкнено</string>
+    <string name="update_locked">Доступна версія %1$s (потрібен активний ключ)</string>
+    <string name="update_section">Оновлення</string>
+
+    <string name="pair_without">Поки без компʼютера</string>
+    <string name="settings_pair_trial">проба · %1$d дн.</string>
+    <string name="pair_gate_headline">Звʼязка з ПК — у рівні «Особистий»</string>
+    <string name="pair_gate_body">Потрібен рівень «Особистий». Телефон і без нього працює повністю.</string>
+
+    <!-- Месенджер вузла. Стани доставки кажуть рівно те, що телефон знає:
+         годинник — вузол тримає лист, галочка — лист у базі вузла. Про те,
+         чи прочитала людина, телефон не знає нічого і мовчить. -->
+    <!-- Вузол на дроті й відхилив токен. «Перевірте мережу» тут було б неправдою. -->
+    <!-- Код і крапка: що він означає, знає той, хто тримає вузол, а не телефон. -->
+
+    <!-- Список розмов -->
+    <!-- «Автор: текст» у превʼю рядка — як на ПК: своє імʼя, а не «Ви». -->
+
+    <!-- Превʼю нетекстового листа: тип видно зі слова, тіла не показуємо. -->
+
+    <!-- Скринька вузла — той самий рядок, що під карткою профілю на ПК. -->
+
+    <!-- Стрічка -->
+    <!-- Розшифрування медіа на телефоні ще немає — картка каже це прямо. -->
+
+    <!-- Вкладення з телефона -->
+
+    <!-- Композер -->
+
+    <!-- Точка «я тут» -->
+
+    <!-- Лист із вузла у шторці -->
+
+    <!-- Кола спілкування (Circles) -->
+
+    <!-- Хаб дій (Action Hub) -->
+
+    <!-- Віджети: Опитування (Polls) -->
+
+    <!-- Віджети: Завдання (Task Lists) -->
+
+    <!-- Віджети: Події (Events) -->
+
+    <!-- Віджети: Розділення рахунку (Split Bill) -->
+
+    <!-- Віджети: Код (Code) -->
+
+    <!-- Віджети: Голосові повідомлення (Voice) -->
+
+    <!-- Меню дій над повідомленням (Actions & Reactions) -->
+
+    <!-- Створення нового чату -->
+
+    <!-- Віджети: Таблиці (Data Tables) -->
+
+    <!-- Віджети: Мульти-цитування та синтез (Multi-Quote) -->
+
+    <!-- Віджети: Досьє локації (Location Dossier) -->
+
+    <!-- Медіа переглядач (Lightbox) -->
+    <string name="update_wrong_package">Чужий пакет застосунку. Встановлення скасовано.</string>
+    <string name="update_wrong_signer">Невірний підпис пакета. Встановлення скасовано.</string>
+
+    <!-- Вузол: джерело десктопного месенджера (WebMessengerScreen) -->
+    <string name="msgr_web_exit">вийти з месенджера</string>
+    <string name="msgr_files_bad_body">порожній запит</string>
+    <string name="msgr_files_no_conversation">не сказано, в яку розмову</string>
+    <string name="msgr_files_empty">Порожнє вкладення</string>
+    <string name="msgr_files_unreadable">вкладення не читається</string>
+    <string name="msgr_files_empty_file">порожній файл везти нема чого</string>
+    <string name="msgr_files_too_big">файл більший за %1$d МБ — такий не надіслати</string>
+    <string name="msgr_save_bad_body">нема чого зберегти — файл не прочитався</string>
+    <string name="msgr_save_too_big">файл більший за %1$d МБ — такий телефон не збереже</string>
+    <string name="msgr_save_bad_mime">Неприпустимий або виконуваний тип файла</string>
+    <string name="msgr_save_failed">не вдалось записати файл у памʼять телефона</string>
+    <string name="msgr_files_no_store">не вдалося покласти файл на диск</string>
+    <string name="false_position_channel">Хибна позиція</string>
+    <string name="false_position_title">Світ бачить іншу вашу точку</string>
+    <string name="false_position_text">Віддаємо %1$.5f, %2$.5f іншим застосункам</string>
+    <string name="false_position_stop">Повернути правду</string>
+    <string name="false_position_refused">Підміна не ввімкнулась</string>
+    <string name="false_position_row_title">Хибна позиція для інших застосунків</string>
+    <string name="false_position_row_off">Вимкнено — передається справжня позиція</string>
+    <string name="false_position_row_on">Світ бачить %1$.5f, %2$.5f</string>
+    <string name="false_position_row_set">Задати точку</string>
+    <string name="false_position_row_stop">Вимкнути</string>
+    <string name="false_position_row_open_dev">Розробницькі</string>
+    <string name="false_position_dialog_title">Яку точку показати світові</string>
+    <string name="false_position_dialog_body">Оберіть Nightpost як застосунок фіктивної локації в системі.</string>
+    <string name="false_position_lat">Широта</string>
+    <string name="false_position_lon">Довгота</string>
+    <string name="action_cancel">Скасувати</string>
+    <string name="bg_loc_title">Слід поза екраном</string>
+    <string name="bg_loc_on">Дозволено завжди</string>
+    <string name="bg_loc_off">Лише з увімкненим екраном; у сліді будуть пропуски</string>
+    <string name="bg_loc_needs_fine">Спершу потрібен доступ до точного розташування.</string>
+    <string name="dir_row_title">Моє імʼя для пошуку</string>
+    <string name="dir_row_off">Не опубліковано</string>
+    <string name="dir_row_republish">Опублікувати знову</string>
+    <string name="dir_change_title">Змінити імʼя</string>
+    <string name="dir_withdraw_title">Зняти імʼя з довідника</string>
+    <string name="dir_row_change">Змінити</string>
+    <string name="dir_row_withdraw">Зняти</string>
+    <string name="dir_dialog_title">Імʼя, за яким вас знайдуть</string>
+    <string name="dir_dialog_body">Знайдуть лише за повним іменем. Коротке імʼя легко вгадати.</string>
+    <string name="dir_dialog_label">8–32 знаки: латиниця, цифри, підкреслення</string>
+    <string name="dir_dialog_findable">За цим ніком вас знайдуть</string>
+    <string name="dir_dialog_save">Опублікувати</string>
+    <string name="dir_working">Хвилинку…</string>
+    <string name="dir_err_no_route">Такого шляху в довіднику немає.</string>
+    <string name="dir_err_no_address">У цій збірці пошуку за іменем немає.</string>
+    <string name="dir_err_unreachable">Сервер пошуку не відповів. Спробуйте пізніше.</string>
+    <string name="dir_err_not_proven">Підпис запису не відповідає ключу</string>
+    <string name="dir_err_bad_handle">8–32 знаки: латиниця в нижньому регістрі, цифри, підкреслення.</string>
+    <string name="dir_err_none">Такого імені в довіднику немає.</string>
+    <string name="dir_err_taken">Це імʼя вже за кимось іншим.</string>
+    <string name="dir_err_no_identity">Телефон ще не має власного ключа.</string>
+    <string name="dir_err_refused">Сервер відмовив і не назвав причини.</string>
+    <string name="settings_brain_order">кого питати першим</string>
+    <string name="settings_brain_order_cloud_first">спершу хмара</string>
+    <string name="settings_brain_order_local_first">спершу на пристрої</string>
+    <string name="settings_brain_order_local_only">лише на пристрої</string>
+    <string name="settings_brain_order_cloud_only">лише хмара</string>
+    <string name="settings_brain_order_cloud_first_body">Швидше; питання покидає телефон</string>
+    <string name="settings_brain_order_local_first_body">Лишається на телефоні, коли може</string>
+    <string name="settings_brain_order_local_only_body">Не покидає телефон; частина питань лишиться без відповіді</string>
+    <string name="settings_brain_order_cloud_only_body">Потрібні мережа й ключ</string>
+    <string name="settings_brain_no_key_fact">Ключа немає — відповідає модель на пристрої</string>
+    <string name="settings_brain_no_key_nothing">Немає ключа й локальної моделі</string>
+    <string name="peer_typed_service_prefix">Зарезервований префікс кадру — додайте символ на початку</string>
+    <string name="peer_frame_broken">Кадр пристрою пошкоджено</string>
+    <string name="peer_reply_refused">Не відправилось: рядок починався як кадр пристрою.</string>
+    <string name="peer_reply_key_hold">Не надіслано: ключ безпеки змінився. Відкрийте чат.</string>
+    <string name="link_preview_row">Превʼю посилань</string>
+    <string name="cloud_backup_row">Резервна копія в хмарі</string>
+    <string name="cloud_backup_held">Копію не відновити</string>
+    <string name="cloud_backup_no_cloud">Хмарна копія недоступна: лише на цьому телефоні</string>
+    <string name="cloud_backup_weak">Копія: слабкий захист · немає блокування екрана</string>
+    <string name="cloud_backup_set_lock">Увімкнути блокування</string>
+    <string name="msgr_bridge_key_hold">ключ безпеки змінився — перевірте контакт або натисніть «Продовжити»</string>
+    <string name="msgr_say_voice">Голосове · %1$s (відтворення ще не підтримується)</string>
+    <string name="msgr_say_event">Подія: «%1$s» · %2$s о %3$s</string>
+    <string name="msgr_say_event_where">Подія: «%1$s» · %2$s о %3$s · %4$s</string>
+    <string name="msgr_say_bodiless">Вкладення порожнє — немає даних</string>
+    <string name="msgr_say_unknown">Цей застосунок ще не вміє показати цей вміст (%1$s).</string>
+    <string name="msgr_say_empty">Картка «%1$s» приїхала без вмісту — показувати нічого.</string>
+    <string name="msgr_group_sys_add">%1$s додає %2$s</string>
+    <string name="msgr_group_sys_add_you_actor">ви додаєте %1$s</string>
+    <string name="msgr_group_sys_add_you_object">%1$s додає вас</string>
+    <string name="msgr_group_sys_rm">%1$s прибирає %2$s</string>
+    <string name="msgr_group_sys_rm_you_actor">ви прибираєте %1$s</string>
+    <string name="msgr_group_sys_rm_you_object">%1$s прибирає вас з групи</string>
+    <string name="msgr_group_sys_leave">%1$s виходить з групи</string>
+    <string name="msgr_group_sys_leave_you">ви виходите з групи</string>
+    <string name="msgr_group_sys_rename">%1$s перейменовує групу на «%2$s»</string>
+    <string name="msgr_group_sys_rename_you">ви перейменовуєте групу на «%1$s»</string>
+    <string name="msgr_group_opening">Почали групу. Говоримо тут.</string>
+    <string name="msgr_group_needs_people">Оберіть принаймні одного учасника</string>
+    <string name="msgr_group_gone">Ви більше не в групі</string>
+    <string name="msgr_group_full">у групі вже найбільше учасників, скільки вона тримає</string>
+    <string name="msgr_group_no_key">у цієї людини немає ключа — потрібне свіже запрошення</string>
+    <string name="msgr_group_not_member">цієї людини немає в групі</string>
+    <string name="msgr_group_unsent">Не надіслано: немає доступних отримувачів у групі</string>
+    <string name="msgr_group_avatar_too_big">Зображення завелике — оберіть менше</string>
+    <!-- Ролі в гілці. Кожен рядок — ПРИЧИНА відмови приймача
+         (PeerGroupRoles.Why), а не «не вдалось»: акт без права чесна збірка
+         не застосує, і людина мусить знати, чого саме їй бракує. -->
+    <string name="msgr_group_why_not_in_group">вас немає в цій гілці — жодної дії над нею ви не робите</string>
+    <string name="msgr_group_why_subject_gone">цієї людини немає у складі</string>
+    <string name="msgr_group_why_needs_moderator">це може модератор і вище</string>
+    <string name="msgr_group_why_needs_admin">це може адміністратор і вище</string>
+    <string name="msgr_group_why_needs_owner">це може лише власник гілки</string>
+    <string name="msgr_group_why_outranks">Недостатньо прав щодо рівного за роллю</string>
+    <string name="msgr_group_why_role_too_high">видати щабель, не нижчий за власний, не можна</string>
+    <string name="msgr_group_why_no_change">у людини вже рівно цей щабель</string>
+    <string name="msgr_group_why_already_in">ця людина вже у складі</string>
+    <string name="msgr_group_why_self">над собою цього не роблять: вийти — окрема дія</string>
+    <string name="msgr_group_about_too_big">опис задовгий для гілки — коротше</string>
+    <!-- Дії над щаблем у стрічці. На дроті летить дієслово, не переклад. -->
+    <string name="msgr_group_sys_grant">%1$s робить %2$s: %3$s</string>
+    <string name="msgr_group_sys_grant_you_actor">ви робите %1$s: %2$s</string>
+    <string name="msgr_group_sys_grant_you_object">%1$s робить вас: %2$s</string>
+    <string name="msgr_group_sys_own">%1$s передає гілку %2$s</string>
+    <string name="msgr_group_sys_own_you_actor">ви передаєте гілку %1$s</string>
+    <string name="msgr_group_sys_own_you_object">%1$s передає гілку вам</string>
+    <string name="msgr_group_sys_pin">%1$s закріплює рядок</string>
+    <string name="msgr_group_sys_pin_you">ви закріплюєте рядок</string>
+    <string name="msgr_group_sys_unpin">%1$s знімає закріплення</string>
+    <string name="msgr_group_sys_unpin_you">ви знімаєте закріплення</string>
+    <string name="msgr_group_sys_about">%1$s міняє опис гілки</string>
+    <string name="msgr_group_sys_about_you">ви міняєте опис гілки</string>
+    <string name="msgr_group_sys_face">%1$s міняє обличчя гілки</string>
+    <string name="msgr_group_sys_face_you">ви міняєте обличчя гілки</string>
+    <string name="msgr_group_why_no_right">власник не дав вам цього права</string>
+    <string name="msgr_group_sys_settings">%1$s змінює налаштування групи</string>
+    <string name="msgr_group_sys_settings_you">ви змінюєте налаштування групи</string>
+    <string name="msgr_group_sys_rights">%1$s змінює права: %2$s</string>
+    <string name="msgr_group_sys_rights_you">ви змінюєте права: %1$s</string>
+    <string name="msgr_group_slow">Повільний режим: ще %1$d с</string>
+    <string name="msgr_group_channel_admins">Тут пишуть лише адміни</string>
+    <string name="msgr_group_role_owner">власник</string>
+    <string name="msgr_group_role_admin">адміністратор</string>
+    <string name="msgr_group_role_mod">модератор</string>
+    <string name="msgr_group_role_member">учасник</string>
+    <string name="msgr_group_ai_author">Nightpost</string>
+    <string name="msgr_group_no_files">Файли в групах ще не підтримуються</string>
+    <!-- Не «ти в гілці з …»: дати вступу телефон не знає, він знає лише
+         найраніший лист, який у нього лежить. -->
+    <string name="msgr_group_past_none">Історія на цьому телефоні з %1$s</string>
+    <string name="msgr_group_past_empty">Раніших листів на цьому телефоні немає.</string>
+    <string name="msgr_group_past_ask">Попросити історію в учасників</string>
+    <string name="msgr_group_past_asked">Запит історії надіслано: %1$s</string>
+    <string name="msgr_group_past_nobody">Немає учасників зі спільним ключем</string>
+    <string name="msgr_group_retold">переказано через %1$s, %2$s</string>
+    <string name="msgr_group_retold_unsigned">Переказана копія — засвідчена тим, хто переслав</string>
+    <string name="invite_link_pc">Це код ПК. Підʼєднайте його у розділі «Пристрої».</string>
+    <!-- Два рядки по ~36 знаків: плашка обрізає на ~76 і зʼїдає саме хвіст,
+         а хвіст тут — головне слово («збережено»). -->
+    <string name="peer_group_not_in_messenger">Групи тут ще не видно. Лист збережено.</string>
+    <string name="msgr_web_link_refused">Посилання такого виду месенджер не відкриває.</string>
+    <string name="msgr_web_link_no_browser">Нема чим відкрити посилання: на пристрої немає браузера.</string>
+    <string name="agency_council_halted">Колегія зупинилась на «%1$s»: %2$s</string>
+    <string name="agency_agent_architect">Архітектор систем</string>
+    <string name="agency_agent_architect_badge">Топологія й контракти даних</string>
+    <string name="agency_agent_red_team">Червона команда</string>
+    <string name="agency_agent_red_team_badge">Безпека й перегони потоків</string>
+    <string name="agency_agent_hardware">Інженер продуктивності</string>
+    <string name="agency_agent_hardware_badge">Складність O(N) і памʼять</string>
+    <string name="agency_agent_synthesizer">Головний синтезатор</string>
+    <string name="agency_agent_synthesizer_badge">Згода й готовий результат</string>
+    <string name="agency_council_finished">🏛️ Виступили агентів: %1$d.</string>
+    <string name="agency_no_reply">модель не відповіла</string>
+    <string name="agency_tool_missing">Інструмента «%1$s» на цьому пристрої немає — нічого не виконано.</string>
+    <string name="agency_memory_empty">Памʼять порожня</string>
+    <string name="agency_no_ai_route">жодного (немає ні ключа хмари, ні моделі на пристрої)</string>
+    <string name="agency_pc_open_usage">Використання: !pc.open &lt;url|шлях&gt;</string>
+    <string name="agency_pc_open_ok">🖥️ **[ПК Симбіот]**: Успішно відкрито на десктопі: `%1$s`</string>
+    <string name="agency_pc_open_fail">🖥️ **[ПК Симбіот]**: Відмова виконання pc.open: %1$s</string>
+    <string name="agency_pc_clipboard_usage">⚠️ Вкажіть текст для буфера обміну: `!pc.clipboard &lt;текст&gt;`</string>
+    <string name="agency_pc_clipboard_ok">Скопійовано в буфер ПК: %1$s...</string>
+    <string name="agency_pc_clipboard_fail">🖥️ **[ПК Симбіот]**: Помилка буфера: %1$s</string>
+    <string name="agency_pc_type_usage">⚠️ Вкажіть текст для набору: `!pc.type &lt;текст&gt;`</string>
+    <string name="agency_pc_type_ok">🖥️ **[ПК Симбіот]**: Надруковано на ПК: `%1$s`</string>
+    <string name="agency_pc_type_fail">🖥️ **[ПК Симбіот]**: Помилка друку: %1$s</string>
+    <string name="agency_pc_lock_ok">🔒 **[ПК Симбіот]**: Екран ПК заблоковано.</string>
+    <string name="widget_link_pc">ПК · НА ЗВʼЯЗКУ</string>
+    <string name="widget_link_solo">Nightpost · БЕЗ ПК</string>
+    <string name="agency_pc_lock_fail">🔒 **[ПК Симбіот]**: Відповідь: %1$s</string>
+    <string name="agency_pc_notify_title">Сповіщення від Nightpost</string>
+    <string name="agency_pc_notify_body">Повідомлення з телефону</string>
+    <string name="agency_pc_notify_ok">Сповіщення надіслано на ПК: %1$s</string>
+    <string name="agency_pc_notify_fail">🔔 **[ПК Симбіот]**: Помилка сповіщення: %1$s</string>
+    <string name="agency_pc_no_link">немає звʼязку з ПК</string>
+    <string name="agency_pc_not_paired">ПК не підʼєднано. Відкрийте «Пристрої».</string>
+    <string name="agency_pc_state">ПК: %1$s · %2$s · %3$s</string>
+    <string name="agency_pc_link">Звʼязок: %1$s</string>
+    <string name="agency_pc_unpaired">Не спаровано</string>
+    <string name="agency_memory_header">🧠 **Довгострокова памʼять оператора (%1$d фактів):**</string>
+    <string name="agency_council_usage">Використання: !agency.council &lt;завдання&gt;</string>
+    <string name="agency_council_handoff">Передаю завдання Колегії агентів</string>
+    <string name="agency_tool_denied">Доступ заборонено: %1$s</string>
+    <string name="agency_tool_cancelled">Скасовано</string>
+    <string name="agency_model_link_error">Помилка звʼязку з моделлю</string>
+    <string name="agency_dialogue_error">⚡ Збій обробки: %1$s. Перевірте налаштування Gemini ключа.</string>
+    <string name="msgr_profile_avatar_unreadable">аватар не прочитався — байти прийшли зіпсованими</string>
+    <string name="msgr_profile_avatar_kind">аватар мусить бути WebP або JPEG — інших родів дріт не везе</string>
+    <string name="msgr_profile_too_big">Поле «%1$s»: +%2$d Б понад ліміт %3$d</string>
+    <string name="msgr_profile_frame_failed">кадр профілю не склався</string>
+    <string name="msgr_bridge_bad_body">порожній запит</string>
+    <string name="msgr_bridge_no_path">немає такого шляху: %1$s</string>
+    <string name="msgr_bridge_no_route">немає такого шляху: %1$s %2$s</string>
+    <string name="msgr_bridge_not_bridged">через міст телефона це ще не їде: %1$s</string>
+    <string name="msgr_bridge_new_project">Новий Проєкт</string>
+    <string name="msgr_bridge_new_topic">Мультиагентна розробка</string>
+    <string name="msgr_report_subject">Nightpost — скарга на людину</string>
+    <string name="msgr_report_intro">Скарга на користувача в Nightpost. Деталі нижче:</string>
+    <string name="msgr_bridge_no_contact">такого контакту немає</string>
+    <string name="paired_pc_name">Мій компʼютер</string>
+    <string name="msgr_pulse_not_sharing">людина вже не показує місце</string>
+    <string name="msgr_link_narrow">слабкий звʼязок — текст іде першим</string>
+    <string name="msgr_where_not_ready">цій людині поки не показати, де ви</string>
+    <string name="msgr_where_gone">людина вже не показує, де вона</string>
+    <string name="msgr_where_bad_choice">такої точності чи строку меню не пропонує</string>
+    <string name="msgr_bridge_no_speaker">такого співрозмовника немає</string>
+    <string name="msgr_bridge_needs_contact">розмова починається з контакту, а не з назви</string>
+    <string name="msgr_bridge_bad_title">Порожня назва</string>
+    <!-- Заява на посилання для вкладення у сховищі. Апострофи екрановані. -->
+    <string name="msgr_bridge_bad_json">Запит не прочитався як JSON — нічого не підписано</string>
+    <string name="msgr_claim_bad_size">Вага файла поза межами: сховище бере від 1 байта до 2 ГіБ</string>
+    <string name="msgr_claim_bad_key">Це не ключ вкладення — заяву на нього не підписуємо</string>
+    <string name="msgr_claim_bad_op">Невідомий рід заяви: буває лише \'put\' або \'get\'</string>
+    <string name="msgr_bridge_no_conversation">розмови немає</string>
+    <string name="msgr_bridge_no_message">листа немає</string>
+    <string name="msgr_pair_bad_input">Це не схоже на QR з компʼютера</string>
+    <string name="msgr_bridge_place_unreadable">місце не прочиталось — кадр не склався</string>
+    <string name="msgr_bridge_reaction_unreadable">позначка не склалась у кадр — смайл не поїхав</string>
+    <!-- Підпис під смайлом, який поставив сам власник апарата. -->
+    <string name="msgr_bridge_me">Я</string>
+    <string name="msgr_bridge_kind_not_carried">ця збірка не несе рід «%1$s» — лист не поїхав</string>
+    <string name="msgr_bridge_card_unreadable">картка не прочиталась — кадр не склався</string>
+    <string name="msgr_bridge_card_too_big">картка завелика для одного кадру — поділіть її</string>
+    <string name="peer_card_notification">Нова картка</string>
+    <string name="gift_notification">Подарунок</string>
+    <string name="moment_notification">новий момент</string>
+    <string name="msgr_bridge_edit_not_mine">переписати можна лише власний лист</string>
+    <string name="msgr_bridge_edit_not_words">цей лист склав пристрій, а не слова — його не переписують</string>
+    <string name="msgr_bridge_edit_too_long">правка задовга, щоб поїхати дротом — скоротіть текст</string>
+    <string name="msgr_bridge_edit_window">минуло понад 48 годин — цей лист уже не змінити</string>
+    <string name="msgr_bridge_not_mine">про чужий лист цей телефон знає лише свою копію</string>
+    <string name="msgr_bridge_empty_text">порожній лист</string>
+    <string name="msgr_bridge_sched_past">цей час уже минув</string>
+    <string name="msgr_bridge_sched_gone">цього листа вже немає серед запланованих</string>
+    <string name="msgr_saved_title">Збережене</string>
+    <string name="msgr_saved_permanent">«Збережене» можна лише очистити</string>
+    <string name="msgr_saved_kind_not_kept">Тип«%1$s» ще не підтримується у «Збереженому»</string>
+    <string name="msgr_bridge_media_unreadable">голосове чи кружок без вкладення — не надіслано</string>
+    <string name="msgr_saved_media_unreadable">голосове чи кружок без вкладення — нотатку не записано</string>
+    <string name="msgr_bridge_add_who">не сказано, кого додати</string>
+    <string name="msgr_bridge_bad_key">код не читається або застарілий</string>
+    <string name="msgr_bridge_no_invite">у тексті немає коду запрошення PH2 або адреси вузла</string>
+    <string name="msgr_bridge_node_name">Вузол %1$s</string>
+    <string name="msgr_bridge_no_identity">телефон ще не має власного ключа</string>
+    <string name="msgr_bridge_peer_no_key">у цього контакту немає ключа — потрібне свіже запрошення</string>
+    <string name="msgr_bridge_pin_unsupported">Їхній застосунок ще не приймає спільних закріплень</string>
+    <!-- Сцена зустрічі: заклади, бали, позначки на картці. Відмови моста словами. -->
+    <string name="msgr_scene_no_fix">Позиція невідома — заклади поруч недоступні</string>
+    <string name="msgr_scene_place_coarse">Місце приблизне або застаріле — для «Я на місці» потрібне точне</string>
+    <string name="msgr_scene_bad_stars">Оцінка — ціле число від 1 до 5.</string>
+    <string name="msgr_scene_no_venue">Такого закладу немає.</string>
+    <string name="msgr_scene_no_key">На цьому телефоні немає ключа пристрою — підписувати нічим.</string>
+    <string name="msgr_scene_not_enabled">Сервер закладів і балів ще не ввімкнено.</string>
+    <string name="msgr_scene_unreachable">Сервер не відповів. Спробуйте, коли буде мережа.</string>
+    <string name="msgr_scene_limited">Забагато запитів — трохи зачекайте.</string>
+    <string name="msgr_scene_refused">Сервер відмовив.</string>
+    <string name="msgr_scene_bad_answer">Сервер відповів так, що це не прочитати.</string>
+    <string name="msgr_scene_not_found">Такого шляху немає.</string>
+    <string name="msgr_scene_points_test_only">Бали поки що рахують лише за переказами в тестовій мережі.</string>
+    <string name="msgr_scene_points_built_in">Бали нараховуються лише з вбудованого гаманця</string>
+    <string name="msgr_scene_bad_body">Запит не прочитався.</string>
+    <string name="msgr_scene_no_wallet">Гаманця на цьому телефоні немає — заявляти нічого.</string>
+    <string name="msgr_scene_mark_bad">Така позначка не приймається.</string>
+    <string name="msgr_scene_not_card">Позначку можна поставити лише на картку зустрічі чи рахунку.</string>
+    <string name="msgr_scene_checkin_no_fix">Позиція невідома — неможливо відмітитись</string>
+    <string name="msgr_scene_near_stale">Увімкніть геолокацію, щоб побачити заклади поруч</string>
+    <string name="msgr_scene_peer_old">Оновіть застосунок співрозмовника для позначок</string>
+    <string name="msgr_scene_mark_failed">Дотик не поїхав. Спробуйте ще раз.</string>
+    <string name="msgr_bridge_second_door">це повідомлення вже в розмові — відповідь прийде туди ж</string>
+    <string name="msgr_bridge_no_license_host">у цій збірці не задано адреси вузла — ICE нема звідки взяти</string>
+    <string name="msgr_bridge_ice_http">вузол ICE відповів HTTP %1$d</string>
+    <string name="msgr_bridge_ice_bad_answer">відповідь вузла ICE пошкоджена</string>
+    <string name="msgr_bridge_ice_dns">ICE: адресу %1$s не знайдено</string>
+    <string name="msgr_bridge_ice_tls">ICE: помилка захищеного зʼєднання — %1$s</string>
+    <string name="msgr_bridge_ice_timeout">ICE: вузол %1$s не відповів за відведений час</string>
+    <string name="msgr_bridge_ice_connect">ICE: не вдалося зʼєднатися — %1$s</string>
+    <string name="msgr_bridge_call_no_address">адреси співрозмовника немає — дзвінок нікуди відправити</string>
+    <string name="msgr_bridge_call_refused">вузол співрозмовника не прийняв сигнал</string>
+    <string name="msgr_bridge_call_kind">невідомий рід сигналу дзвінка: %1$s</string>
+    <string name="msgr_bridge_call_group_empty">У групі немає нікого, крім вас — дзвонити нема кому</string>
+    <string name="msgr_bridge_call_group_partial">кадр дійшов %1$d з %2$d — решта поза прямою дорогою</string>
+    <string name="msgr_bridge_call_room_full">Ліміт кімнати %2$d — не вмістилось: %1$d</string>
+    <string name="msgr_bridge_call_no_leg">не сказано, чию ногу забрати</string>
+    <!-- Дзвінок 1:1 і в групу. -->
+    <string name="peer_call_channel">Nightpost · дзвінки</string>
+    <string name="peer_call_channel_desc">Вхідні дзвінки від людей з вашого реєстру</string>
+    <string name="peer_call_unknown">Невідомий</string>
+    <string name="peer_call_ringing">Вхідний дзвінок</string>
+    <string name="peer_call_missed_quiet">Пропущений дзвінок · тиша вночі</string>
+    <string name="peer_call_dialing">Набираємо…</string>
+    <string name="peer_call_talking">Розмова</string>
+    <string name="peer_call_answer">Взяти</string>
+    <string name="peer_call_decline">Відхилити</string>
+    <string name="peer_call_hang_up">Покласти</string>
+    <string name="peer_call_close">Зрозуміло</string>
+    <string name="peer_call_no_route">поруч нікого — дзвінок іде лише прямою дорогою</string>
+    <string name="peer_call_ended">Дзвінок завершено</string>
+    <string name="peer_call_declined">Відмовили</string>
+    <string name="peer_call_busy">Зайнято</string>
+    <string name="peer_call_missed">Ніхто не підійшов</string>
+    <string name="peer_call_hung_up">Поклали</string>
+    <string name="peer_call_allow_full_screen">На весь екран</string>
+    <string name="peer_call_spoken">Говорили %1$s</string>
+    <!-- Вимір, а не вибачення: у цій збірці немає рушія WebRTC — ані
+         бібліотеки в APK, ані екрана дзвінка в зібраному вебі. Дорога
+         сигналу справжня, звук по ній ще не їде, і поверхня каже це
+         замість того, щоб малювати розмову. -->
+    <string name="peer_call_no_voice">Передача голосу ще не підтримується в цій збірці</string>
+
+    <string name="msgr_road_direct_title">Напряму</string>
+    <string name="msgr_road_direct_detail">Між телефонами в одній мережі</string>
+    <string name="msgr_road_direct_howto">будьте в одній Wi-Fi або поруч</string>
+    <string name="msgr_road_relay_title">Через сховок</string>
+    <string name="msgr_road_relay_detail">лист чекає у сховку, доки адресат не зʼявиться в мережі</string>
+    <string name="msgr_road_relay_detail_absent">Сховок не налаштовано в цій збірці</string>
+    <string name="msgr_road_relay_howto">потрібна мережа хоча б у одного</string>
+    <!-- Українська має три форми: 21 день, 22 дні, 25 днів. Плоский рядок
+         «%1$d днів» друкував «через 21 днів» — кадр 31 з апарата. -->
+    <plurals name="retention_days">
+        <item quantity="one">%1$d день</item>
+        <item quantity="few">%1$d дні</item>
+        <item quantity="many">%1$d днів</item>
+        <item quantity="other">%1$d дня</item>
+    </plurals>
+    <plurals name="retention_records">
+        <item quantity="one">%1$d запис</item>
+        <item quantity="few">%1$d записи</item>
+        <item quantity="many">%1$d записів</item>
+        <item quantity="other">%1$d запису</item>
+    </plurals>
+    <string name="stance_country_title">Країна й регіон</string>
+    <string name="stance_country_body">За мовою та позицією. Торкніться для зміни.</string>
+    <string name="stance_country_auto">авто · %1$s</string>
+    <string name="stance_role_title">Хто ви</string>
+    <string name="stance_role_body">Від цього залежить, що пропонує швидкий доступ на мапі.</string>
+    <string name="stance_role_civilian">цивільний</string>
+    <string name="stance_role_volunteer">волонтер</string>
+    <string name="stance_role_service">служба</string>
+    <string name="settings_kw_stance">країна регіон роль цивільний волонтер служба укриття</string>
+    <!-- Згода на інструмент з наслідком -->
+    <string name="tool_consent_title">Дозволити дію?</string>
+    <string name="tool_consent_risk_device">Діє на цьому пристрої</string>
+    <string name="tool_consent_risk_outward">Виходить за межі пристрою</string>
+    <string name="tool_consent_args">Аргументи: %1$s</string>
+    <string name="tool_consent_field_recipient">Отримувач</string>
+    <string name="tool_consent_field_amount">Сума</string>
+    <string name="tool_consent_field_url">Адреса</string>
+    <string name="tool_consent_field_method">Метод</string>
+    <string name="tool_consent_field_target">Параметр · %1$s</string>
+    <string name="tool_consent_field_body">Вміст</string>
+    <string name="tool_consent_once">Цього разу</string>
+    <string name="tool_consent_always">Завжди</string>
+    <string name="tool_consent_never">Ніколи</string>
+    <string name="tool_consent_hint">Змінюється в Налаштуваннях → Інструменти</string>
+    <!-- Налаштування -> Інструменти -->
+    <string name="tools_screen_title">Інструменти</string>
+    <string name="tools_screen_subtitle">Що Nightpost дозволено робити вашими руками</string>
+    <string name="tools_group_outward">Діють назовні</string>
+    <string name="tools_group_device">Діють на пристрої</string>
+    <string name="tools_group_read">Лише читають</string>
+    <string name="tools_decision_ask">Питати</string>
+    <string name="tools_decision_always">Дозволено</string>
+    <string name="tools_decision_never">Заборонено</string>
+    <string name="tools_read_never_asks">Читання не питає — дозволу тут не треба.</string>
+    <string name="tools_all_caption">Для всіх</string>
+    <string name="tools_all_confirm_title">Усі інструменти: «%1$s»?</string>
+    <string name="tools_all_apply">Застосувати</string>
+    <string name="tools_journal_title">Журнал дій</string>
+    <string name="tools_journal_empty">Жодної дії ще не виконано.</string>
+    <string name="tools_journal_entry">%1$s · %2$s</string>
+    <string name="tools_journal_open">Показати журнал</string>
+    <string name="tool_label_accessibility">Дії на екрані</string>
+    <string name="tool_label_calendar_add">Додати подію в календар</string>
+    <string name="tool_label_calendar_remove">Прибрати подію з календаря</string>
+    <string name="tool_label_fence_set">Встановити геопериметр</string>
+    <string name="tool_label_file">Файли застосунку</string>
+    <string name="tool_label_http">Запити в мережу (HTTP)</string>
+    <string name="tool_label_launch">Відкрити інший застосунок</string>
+    <string name="tool_label_map_patrol">Перевірити район на мапі</string>
+    <string name="tool_label_map_prefetch">Завантажити мапу наперед</string>
+    <string name="tool_label_medevac_handover">Поділитися карткою місця</string>
+    <string name="tool_label_media">Керування відтворенням</string>
+    <string name="tool_label_memory_forget">Забути факт із памʼяті</string>
+    <string name="tool_label_nav_add_stop">Додати зупинку до маршруту</string>
+    <string name="tool_label_nav_exfil">Маршрут до безпечного місця</string>
+    <string name="tool_label_nav_retrace">Зворотний маршрут по слідах</string>
+    <string name="tool_label_nav_start">Почати навігацію</string>
+    <string name="tool_label_nav_stop">Зупинити навігацію</string>
+    <string name="tool_label_notification">Показати сповіщення</string>
+    <string name="tool_label_people_draft">Чернетка повідомлення людині</string>
+    <string name="tool_label_phone_alarm">Поставити будильник</string>
+    <string name="tool_label_phone_calendar">Чернетка в системному календарі</string>
+    <string name="tool_label_phone_dial">Набрати номер телефону</string>
+    <string name="tool_label_phone_dnd">Режим «Не турбувати»</string>
+    <string name="tool_label_phone_panel">Відкрити системну панель</string>
+    <string name="tool_label_phone_sms">Чернетка SMS</string>
+    <string name="tool_label_phone_timer">Поставити таймер</string>
+    <string name="tool_label_phone_torch">Ліхтарик</string>
+    <string name="tool_label_place_remove">Прибрати збережене місце</string>
+    <string name="tool_label_reminder_remove">Прибрати нагадування</string>
+    <string name="tool_label_settings">Гучність, яскравість і ліхтарик</string>
+    <string name="tool_label_shell">Командний рядок</string>
+    <string name="tool_label_task_remove">Видалити задачу</string>
+    <string name="tool_label_track_export">Експортувати записаний шлях</string>
+    <string name="tool_label_world_report">Позначити подію на мапі</string>
+    <!-- Просодія системного голосу (Налаштування -> ГОЛОС). Чути з наступної
+         фрази: рушій перечитує ці числа на кожній репліці. -->
+    <string name="voice_prosody">Висота й темп голосу</string>
+    <string name="voice_pitch">Висота</string>
+    <string name="voice_rate">Темп</string>
+    <string name="voice_prosody_reset">Повернути як було</string>
+    <string name="voice_prosody_untouched">За системними налаштуваннями</string>
+    <!-- Вибір профілю на старті (ProfileLauncherScreen). Апостроф у
+         «повʼязані» писаний \' — інакше aapt2 не сплющить ресурс. -->
+    <string name="profile_picker_kicker">ОБЕРІТЬ ПРОФІЛЬ</string>
+    <string name="profile_delete_title">Видалити профіль?</string>
+    <string name="profile_delete_body">Профіль «%1$s» буде видалено назавжди.</string>
+    <string name="profile_delete_cancel">СКАСУВАТИ</string>
+    <string name="profile_delete_confirm">ВИДАЛИТИ</string>
+    <string name="profile_tile_active">АКТИВНИЙ</string>
+    <string name="profile_add_cd">Додати профіль</string>
+    <string name="profile_add_label">Новий профіль</string>
+    <string name="settings_wallet_open">Гаманець</string>
+    <string name="settings_wallet_value">Перекази в розмовах, Seeker</string>
+    <string name="settings_kw_wallet">гаманець solana переказ оплата seeker usdc</string>
+    <string name="intents_test_question">Перевірка шляху до ПК. Відповідай одним словом: «так».</string>
+    <!-- Замок застосунку (паритет, хвиля 1). -->
+    <string name="peer_hidden_message">Нове повідомлення</string>
+    <string name="peer_in_profile">%1$s · як «%2$s»</string>
+    <string name="applock_title">Nightpost зачинено</string>
+    <string name="applock_wrong">Не той код</string>
+    <string name="applock_wait">Забагато спроб. Ще %1$d с</string>
+    <string name="applock_open">Відчинити</string>
+    <string name="applock_delete">Стерти цифру</string>
+    <string name="applock_biometric">Відбиток</string>
+    <string name="applock_use_code">Ввести код</string>
+    <string name="applock_row">Замок застосунку</string>
+    <string name="applock_on">Увімкнено</string>
+    <string name="applock_off">Вимкнено</string>
+    <string name="applock_hide_text">Ховати текст у сповіщеннях</string>
+    <string name="applock_new_code">Новий код</string>
+    <string name="applock_next">Далі</string>
+    <string name="applock_repeat_code">Ще раз той самий код</string>
+    <string name="applock_save">Зберегти</string>
+    <string name="applock_mismatch">Коди не збіглися — почніть знову</string>
+    <string name="applock_current_code">Поточний код</string>
+    <string name="applock_explain">Код із 4+ цифр захищає застосунок і сповіщення.</string>
+    <string name="applock_turn_on">Увімкнути замок</string>
+    <string name="applock_biometric_row">Відчиняти відбитком</string>
+    <string name="applock_change">Змінити код</string>
+    <string name="applock_turn_off">Вимкнути замок</string>
+    <string name="applock_auto">Зачиняти після виходу</string>
+    <string name="applock_auto_now">Одразу</string>
+    <string name="applock_auto_1m">1 хв</string>
+    <string name="applock_auto_5m">5 хв</string>
+    <string name="applock_auto_1h">1 год</string>
+    <string name="web_signin_title">Увійти на сайті</string>
+    <string name="web_signin_bad_qr">Це не код входу Nightpost</string>
+    <string name="web_signin_expired">Код прострочено</string>
+    <string name="web_signin_browser">Браузер</string>
+    <string name="web_signin_country">Країна</string>
+    <string name="web_signin_time">Час</string>
+    <string name="web_signin_account">Обліковий запис</string>
+    <string name="web_signin_purpose_signin">Увійти</string>
+    <string name="web_signin_purpose_erase">Видалити обліковий запис</string>
+    <string name="web_signin_purpose_link">Читати запити з ваших сторінок</string>
+    <string name="web_signin_link_title">Підʼєднати телефон</string>
+    <string name="web_signin_link_confirm">Підʼєднати</string>
+    <string name="web_signin_confirm">Увійти</string>
+    <string name="web_signin_cancel">Скасувати</string>
+    <string name="web_signin_done">Вхід виконано</string>
+    <string name="web_signin_refused">Відхилено</string>
+    <string name="web_signin_unreachable">Немає звʼязку</string>
+    <string name="web_signin_network">Мережа</string>
+    <string name="web_signin_other_network">Інша мережа</string>
+    <string name="web_signin_back_to_browser">Назад у браузер</string>
+    <string name="commitment_saved">%1$s: %2$s</string>
+    <string name="commitment_saved_due">%1$s: %2$s — %3$s</string>
+    <string name="commitment_choose">%1$s: %2$s</string>
+    <string name="commitment_none">Відкритих обіцянок немає</string>
+    <string name="commitment_list_header">Обіцянки</string>
+    <string name="commitment_marked_done">Готово · %1$s: %2$s</string>
+    <string name="commitment_when_today">сьогодні</string>
+    <string name="commitment_when_tomorrow">завтра</string>
+    <string name="commitment_when_day_after">післязавтра</string>
+    <string name="map_poi_ask_prompt">Розкажи про %1$s</string>
+    <string name="lic_places">місця по країні</string>
+    <string name="lic_settlements">населені пункти</string>
+    <string name="lic_schedule">розклад транспорту</string>
+    <string name="lic_invincibility_points">пункти незламності</string>
+    <string name="voice_now_voice">Голос</string>
+    <string name="voice_now_hearing">Розпізнавання мови</string>
+    <string name="voice_route_nav">Навігаційні фрази</string>
+    <string name="voice_route_system">Голос системи</string>
+    <string name="voice_route_off">Вимкнено</string>
+    <string name="voice_route_on">Увімкнено</string>
+    <string name="model_label_hearing_full">Розпізнавання мови · повне</string>
+    <string name="model_label_hearing_light">Розпізнавання мови · легке</string>
+    <string name="model_label_voice">Живий голос</string>
+    <string name="model_label_voice_lite">Живий голос · економний</string>
+    <string name="peer_unknown_sender">Невідомий контакт</string>
+    <string name="peer_reaction_notification">Реакція %1$s на «%2$s»</string>
+    <string name="peer_reaction_notification_plain">Реакція %1$s на ваше повідомлення</string>
+    <string name="peer_marker_edu">Завдання</string>
+    <string name="peer_marker_order">Замовлення</string>
+    <string name="peer_marker_order_status">Оновлення замовлення</string>
+    <string name="peer_marker_update">Оновлення</string>
+    <string name="peer_marker_sticker">Стікер</string>
+</resources>

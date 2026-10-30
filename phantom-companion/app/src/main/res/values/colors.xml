@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Тло значка — нічне полотно токенів (docs/design/system/tokens.json)
+         в обох темах телефона: значок не перефарбовується. -->
+    <color name="ic_launcher_background">#111214</color>
+
+    <!-- Полотно системної заставки й вікна під Compose (values-night — Ніч).
+         Тему заставки обирає не лише телефон: застосунок ставить свій нічний
+         режим за розвʼязаною фазою Living (SplashNight), тож наступний
+         холодний старт починається в палітрі, у якій застосунок закрився.
+         Перший кадр Compose далі малює вже розвʼязана палітра. -->
+    <color name="phantom_canvas">#F6F1E7</color>
+    <color name="phantom_ink">#1E1A15</color>
+</resources>

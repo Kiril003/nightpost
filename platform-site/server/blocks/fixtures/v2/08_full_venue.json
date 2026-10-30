@@ -1,0 +1,129 @@
+{
+  "v": 2,
+  "tone": "amber",
+  "blocks": [
+    {
+      "id": "name-0",
+      "kind": "id.name",
+      "variant": "plain",
+      "hidden": false,
+      "data": {
+        "name": "Кафе Масарик"
+      }
+    },
+    {
+      "id": "about-1",
+      "kind": "id.about",
+      "variant": "paragraph",
+      "hidden": false,
+      "data": {
+        "text": "Кава й обіди біля площі."
+      }
+    },
+    {
+      "id": "address-2",
+      "kind": "loc.address",
+      "variant": "map_line",
+      "hidden": false,
+      "data": {
+        "text": "Masarykovo nám. 1, Ostrava",
+        "point": {
+          "lat": 49.8356,
+          "lon": 18.2925
+        }
+      }
+    },
+    {
+      "id": "week-3",
+      "kind": "hrs.week",
+      "variant": "strip",
+      "hidden": false,
+      "data": {
+        "rows": [
+          {
+            "days": [
+              "mon"
+            ],
+            "hours": {
+              "open": "08:00",
+              "close": "22:00"
+            }
+          },
+          {
+            "days": [
+              "sat"
+            ],
+            "hours": {
+              "open": "10:00",
+              "close": "01:00"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "menu-4",
+      "kind": "cat.menu",
+      "variant": "two_col",
+      "hidden": false,
+      "data": {
+        "title": "Кухня",
+        "token": "SOL",
+        "items": [
+          {
+            "id": "borshch",
+            "name": "Борщ",
+            "price": "0.025"
+          },
+          {
+            "id": "kava",
+            "name": "Кава",
+            "price": "0.01",
+            "note": "еспресо"
+          }
+        ]
+      }
+    },
+    {
+      "id": "menu-5",
+      "kind": "cat.menu",
+      "variant": "two_col",
+      "hidden": false,
+      "data": {
+        "token": "SOL",
+        "items": [
+          {
+            "id": "pyrih",
+            "name": "Пиріг",
+            "price": "0.015"
+          }
+        ]
+      }
+    },
+    {
+      "id": "acoustic-fri",
+      "kind": "evt.single",
+      "variant": "card",
+      "hidden": false,
+      "data": {
+        "title": "Акустична пʼятниця",
+        "starts": "2026-10-23T19:00",
+        "ends": "2026-10-23T21:30",
+        "note": "Живий звук",
+        "price": {
+          "amount": "0.05",
+          "token": "SOL"
+        }
+      }
+    },
+    {
+      "id": "wallet-7",
+      "kind": "pay.wallet",
+      "variant": "address_row",
+      "hidden": false,
+      "data": {
+        "address": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+      }
+    }
+  ]
+}

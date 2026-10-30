@@ -1,0 +1,31 @@
+export const uk = {
+  'chats40.title': 'Звук розмови',
+  'chats40.on': 'Зі звуком',
+  'chats40.off': 'Без звуку',
+  'chats40.hours': 'Тихі години',
+  'chats40.from': 'Від',
+  'chats40.to': 'До',
+  'chats40.scopeChat': 'Ця розмова',
+  'chats40.scopeRing': 'Усі розмови: {circle}',
+  'chats40.ringActive': 'Тихі години · {circle}: {hours}',
+  'chats40.ringMuted': 'Без звуку · {circle}',
+  'chats40.breakLabel': 'Пробивається',
+  'chats40.breakAsk': 'Питання до вас',
+  'chats40.breakPlan': 'План за 3 год',
+} as const;
+
+export const en: Record<keyof typeof uk, string> = {
+  'chats40.title': 'Chat sound',
+  'chats40.on': 'Sound on',
+  'chats40.off': 'Muted',
+  'chats40.hours': 'Quiet hours',
+  'chats40.from': 'From',
+  'chats40.to': 'To',
+  'chats40.scopeChat': 'This chat',
+  'chats40.scopeRing': 'All chats: {circle}',
+  'chats40.ringActive': 'Quiet hours · {circle}: {hours}',
+  'chats40.ringMuted': 'Muted · {circle}',
+  'chats40.breakLabel': 'Breaks through',
+  'chats40.breakAsk': 'Question for you',
+  'chats40.breakPlan': 'Plan within 3 h',
+};

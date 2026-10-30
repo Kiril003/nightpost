@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Слова бейджів внутрішнього плану: проходи й входи. Кадр стенда 04.09 01:13 (A52,
+  Острава): «🚪 Прохід» емодзі на вуличному шлагбаумі. Мова форми: правда — словом,
+  ніколи піктограмою; emoji — лише операторський вміст. Тому тут слово, без емодзі,
+  у мові оператора (uk + en), а не літерал у коді. Парність uk/en доводить
+  IndoorBadgeWordsTest, бо модульні сторожі парності цей файл не читають.
+-->
+<resources>
+    <string name="indoor_badge_elevator">Ліфт</string>
+    <string name="indoor_badge_escalator">Ескалатор</string>
+    <string name="indoor_badge_steps">Сходи</string>
+    <string name="indoor_badge_building_passage">Прохід</string>
+    <string name="indoor_badge_passage">Прохід</string>
+    <string name="indoor_entrance_main">Головний вхід</string>
+    <string name="indoor_entrance_subway">Вхід у метро</string>
+    <string name="indoor_entrance_emergency">Аварійний вихід</string>
+    <string name="indoor_entrance_accessible">Безбарʼєрний вхід</string>
+    <string name="indoor_entrance_default">Вхід</string>
+</resources>

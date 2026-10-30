@@ -1,0 +1,439 @@
+/* Форма месенджера → дизайн-система PHANTOM v1 «тепла ніч» (01.10).
+ *
+ * Джерело правди — docs/design/system/tokens.json; згенеровані змінні
+ * `--ph-*` лежать у src/styles/phantom/tokens.css (не правити руками).
+ * Тут лише:
+ *   1. старі змінні форми `--f-*` як ПСЕВДОНІМИ нових токенів — для CSS і
+ *      інлайн-стилів, які ще говорять старими іменами;
+ *   2. поведінка, якої токени не описують: бульбашки, аркуш, перехід теми.
+ *
+ * Тем дві — Ніч і День (`data-theme`), перемикає сонце (services/theme.ts).
+ * Світанок, сутінки, сяйво розмови й горизонталі під стрічкою прибрано
+ * (AUDIT.md №6, №7). Сторож — src/__tests__/formTokens.test.ts. */
+
+html:root {
+  --f-canvas: var(--ph-canvas);
+  --f-stage: var(--ph-canvas);
+  --f-surface: var(--ph-surface);
+  --f-raise: var(--ph-raised);
+  --f-self: var(--ph-self);
+  --f-line: var(--ph-line);
+  --f-ink: var(--ph-text);
+  --f-ink-2: var(--ph-text-2);
+  --f-ink-3: var(--ph-text-3);
+  --f-accent: var(--ph-accent-text);
+  --f-accent-fill: var(--ph-accent);
+  --f-on-accent: var(--ph-on-accent);
+  --f-warn: var(--ph-warning);
+  --f-danger: var(--ph-danger);
+  --f-live: var(--ph-success);
+
+  /* Один шрифт. Моно — лише код. */
+  --f-font-sans: var(--ph-font-sans);
+  --f-font-serif: var(--ph-font-sans);
+  --f-font-mono: var(--ph-font-mono);
+
+  /* Радіуси й рух — з токенів. */
+  --f-r-s: var(--ph-radius-control);
+  --f-r-m: var(--ph-radius-control);
+  --f-r-bubble: var(--ph-radius-bubble);
+  --f-r-tail: var(--ph-radius-bubble-tail);
+  --f-r-sheet: var(--ph-radius-sheet);
+  --f-m-tap: var(--ph-dur-instant);
+  --f-m-layer: var(--ph-dur-standard);
+  --f-m-exit: var(--ph-dur-exit);
+  --f-ease: var(--ph-ease-standard);
+  --f-ease-leave: var(--ph-ease-accelerate);
+
+  /* Стара шкала месенджера (--t-*) — на ролі нової: 12 — підлога. */
+  --t-micro: 12px;
+  --t-meta: 13px;
+  --t-body: 15px;
+  --t-read: 16px;
+  --t-title: 18px;
+  --t-display: 22px;
+  --msg-meta-size: 12px;
+
+  /* Старі поверхні месенджера говорять тими самими числами. */
+  --c-canvas: var(--ph-canvas);
+  --c-panel: var(--ph-surface);
+  --c-sunk: var(--ph-raised);
+  --c-line: var(--ph-line);
+  --msg-meta: var(--ph-text-3);
+  --m-tap: var(--ph-dur-instant);
+  --m-layer: var(--ph-dur-standard);
+  --m-screen: var(--ph-dur-standard);
+
+  /* Один акцент — бурштин. Явний вибір у налаштуваннях більше не діє:
+   * дизайн-система має рівно одну акцентну барву. */
+  --msg-accent: var(--ph-accent-text);
+  --msg-accent-rgb: 242 169 59;
+  --msg-accent-soft: var(--ph-accent-soft);
+  --msg-accent-soft-hover: var(--ph-overlay);
+  --msg-accent-ink: var(--ph-accent-text);
+
+  background-color: var(--ph-canvas);
+  color: var(--ph-text);
+}
+html:root[data-theme='day'] {
+  --msg-accent-rgb: 143 86 0;
+}
+
+html:root[data-msg-font='large'] {
+  --t-micro: 14px;
+  --t-meta: 15px;
+  --t-body: 17px;
+  --t-read: 18px;
+  --t-title: 20px;
+  --t-display: 24px;
+  --msg-meta-size: 14px;
+}
+
+/* Перехід Ночі в День і назад — на сході й заході сонця (services/theme.ts).
+ * Кольори перетікають, лише поки на корені стоїть клас `phase-shift`; поза
+ * зміною transition немає — ні на першому кадрі, ні в роботі.
+ * !important — бо компоненти мають власні короткі transition (натискання). */
+html.phase-shift,
+html.phase-shift *,
+html.phase-shift *::before,
+html.phase-shift *::after {
+  transition-property: background-color, color, border-color, fill, stroke, outline-color !important;
+  transition-duration: 600ms !important;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.phase-shift,
+  html.phase-shift *,
+  html.phase-shift *::before,
+  html.phase-shift *::after {
+    transition-duration: 150ms !important;
+  }
+}
+
+/* Скорочений рух: усе — 150 мс згасання, петлі стоять (дизайн-система §6). */
+@media (prefers-reduced-motion: reduce) {
+  html:root {
+    --f-m-tap: 0ms;
+    --f-m-layer: 150ms;
+    --f-m-exit: 150ms;
+  }
+  html:root *,
+  html:root *::before,
+  html:root *::after {
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ── Аркуш і шар ───────────────────────────────────────────────────────── */
+.f-scrim {
+  background: var(--ph-scrim);
+}
+.f-scrim-soft {
+  background: color-mix(in srgb, var(--ph-scrim) 55%, transparent);
+}
+@keyframes f-sheet-in {
+  from { transform: translateY(100%); }
+  to { transform: none; }
+}
+@keyframes f-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Одна пружина layer (k 400, ζ 0.86 — feel/physics LAYER) на все, що
+ * заходить і виходить шаром: аркуш, його заслінка, вікно меню, кроки вікна.
+ * Жест униз відпускає її ж зі швидкістю пальця (useSheetDrag); таймер зняття —
+ * LAYER_EXIT_MS, той самий час осідання. Відкриття розмови — окремий слайд T7. */
+.f-sheet-in { animation: f-sheet-in var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+@keyframes f-sheet-out {
+  from { transform: none; }
+  to { transform: translateY(100%); }
+}
+@keyframes f-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+.f-sheet-out { animation: f-sheet-out var(--ph-spring-layer-ms) var(--ph-spring-layer) both; pointer-events: none; }
+.f-layer-scrim-in { animation: f-fade-in var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+/* Заслінка, що йде, ще ловить дотик (T46): поки аркуш осідає, чат під ним не натискається. */
+.f-layer-scrim-out { animation: f-fade-out var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+@keyframes f-pop-in {
+  from { transform: scale(0.94); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.f-pop-in { animation: f-pop-in var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+.f-fade-out { animation: f-fade-out var(--ph-dur-exit) var(--ph-ease-accelerate) both; pointer-events: none; }
+.f-fade-in { animation: f-fade-in var(--ph-dur-quick) var(--ph-ease-standard) both; }
+
+/* ── Бульбашки ─────────────────────────────────────────────────────────────
+ * Своя — тихий бурштиновий тон `self` з `on-self`, НЕ суцільна заливка
+ * (AUDIT.md: «найгучніший об'єкт на кожному екрані»). Чужа — `surface`, без
+ * тону людини, з волосяною межею `line` (лист D). Без тіні.
+ *
+ * Усередині своєї бульбашки ролі тексту перевизначено: цитата, ім'я файла,
+ * час пишуть `text-ink-3`/`text-f-ink-3`, і всередині це `on-self-2`. */
+html:root .msg-bubble-self,
+html:root[data-theme] .msg-bubble-self {
+  background-color: var(--ph-self);
+  color: var(--ph-on-self);
+  border-color: transparent;
+  box-shadow: none;
+  --ph-text: var(--ph-on-self);
+  --ph-text-2: var(--ph-on-self);
+  --ph-text-3: var(--ph-on-self-2);
+  --ph-raised: color-mix(in srgb, var(--ph-on-self) 8%, var(--ph-self));
+  --ph-overlay: color-mix(in srgb, var(--ph-on-self) 12%, var(--ph-self));
+  --ph-line: color-mix(in srgb, var(--ph-on-self) 18%, var(--ph-self));
+  --f-ink: var(--ph-on-self);
+  --f-ink-2: var(--ph-on-self);
+  --f-ink-3: var(--ph-on-self-2);
+  --f-raise: color-mix(in srgb, var(--ph-on-self) 8%, var(--ph-self));
+  --f-line: color-mix(in srgb, var(--ph-on-self) 18%, var(--ph-self));
+  --msg-meta: var(--ph-on-self-2);
+}
+html:root .msg-bubble-other,
+html:root[data-theme] .msg-bubble-other {
+  background-color: var(--ph-surface);
+  color: var(--ph-text);
+  border-color: var(--ph-line);
+  box-shadow: none;
+}
+html:root .msg-bubble-self .msg-meta-row,
+html:root .msg-bubble-other .msg-meta-row {
+  color: var(--ph-text-3);
+  font-family: var(--ph-font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  font-feature-settings: 'tnum';
+}
+html:root .msg-bubble-selected {
+  box-shadow: 0 0 0 2px var(--ph-text-2) !important;
+}
+/* Черга реплік: радіус 16; хвостовий кут 8 — лише в останньої бульбашки черги. */
+html:root .bubble-contour-self-single.bubble-contour-self-single { border-radius: 16px 16px 8px 16px; }
+html:root .bubble-contour-self-first.bubble-contour-self-first { border-radius: 16px; }
+html:root .bubble-contour-self-middle.bubble-contour-self-middle { border-radius: 16px; }
+html:root .bubble-contour-self-last.bubble-contour-self-last { border-radius: 16px 16px 8px 16px; }
+html:root .bubble-contour-other-single.bubble-contour-other-single { border-radius: 16px 16px 16px 8px; }
+html:root .bubble-contour-other-first.bubble-contour-other-first { border-radius: 16px; }
+html:root .bubble-contour-other-middle.bubble-contour-other-middle { border-radius: 16px; }
+html:root .bubble-contour-other-last.bubble-contour-other-last { border-radius: 16px 16px 16px 8px; }
+/* Хвостик останньої бульбашки черги (TG-look 1): кут 4 і крива назовні,
+ * колір — тло самої бульбашки, у чужої ще й волосяна межа. Без тіні. */
+html:root .msg-has-tail.msg-has-tail.bubble-contour-self-last,
+html:root .msg-has-tail.msg-has-tail.bubble-contour-self-single { border-bottom-right-radius: 4px; }
+html:root .msg-has-tail.msg-has-tail.bubble-contour-other-last,
+html:root .msg-has-tail.msg-has-tail.bubble-contour-other-single { border-bottom-left-radius: 4px; }
+.msg-tail { position: absolute; bottom: -1px; width: 11px; height: 17px; pointer-events: none; }
+.msg-tail svg { display: block; width: 11px; height: 17px; }
+.msg-tail[data-bubble-tail='self'] { right: -10px; }
+.msg-tail[data-bubble-tail='other'] { left: -10px; transform: scaleX(-1); }
+html:root .msg-bubble-self .msg-tail-fill { fill: var(--ph-self); }
+html:root .msg-bubble-other .msg-tail-fill { fill: var(--ph-surface); }
+.msg-tail-edge { stroke: none; }
+html:root .msg-bubble-other .msg-tail-edge { stroke: var(--ph-line); stroke-width: 1; }
+/* Голе фото: кадр і є бульбашка. Час на темній пігулці поверх кадру. */
+html:root .msg-bubble-photo.msg-bubble-photo {
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--ph-text);
+}
+html:root .msg-bubble-photo [data-testid='media-image'],
+html:root .msg-bubble-photo [data-testid='media-reading'] {
+  padding-top: 0;
+  margin-top: 0;
+}
+html:root .msg-bubble-photo img,
+html:root .msg-bubble-photo [data-testid='media-reading'] {
+  display: block;
+  border-radius: 0;
+}
+html:root .msg-bubble-photo .msg-meta-row {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background-color: #0F0D0BA6;
+  color: #F3EEE7;
+  pointer-events: none;
+}
+html:root .msg-read-more-fade-self { background: none; }
+html:root .msg-read-more-fade-other { background: none; }
+
+/* Денний блок messenger.css фарбує КОЖЕН [role=dialog] своєю поверхнею з
+ * рамкою й тінню. Аркуші форми від нього звільнені. */
+html:root [role='dialog'].f-dialog,
+html:root[data-theme] [role='dialog'].f-dialog {
+  background-color: var(--ph-raised) !important;
+  border: 0 !important;
+  box-shadow: var(--ph-shadow-3) !important;
+  color: var(--ph-text) !important;
+}
+/* Повноекранний шар на полотні (екран «Я»): тло — `canvas`, як у списку. */
+html:root [role='dialog'].f-dialog.f-dialog-canvas,
+html:root[data-theme] [role='dialog'].f-dialog.f-dialog-canvas {
+  background-color: var(--ph-canvas) !important;
+  box-shadow: none !important;
+}
+
+/* ── Рух і дотик ──────────────────────────────────────────────────────────
+ * Свій щойно надісланий лист виростає з поля композера (§6 «Send»: 240 мс,
+ * decelerate); чужий — з'являється зсувом 8 px. Один раз, без петель. */
+@keyframes f-msg-in {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes f-msg-send {
+  from { transform: translateY(var(--f-send-from, 24px)) scale(0.96); opacity: 0.4; }
+  to { transform: none; opacity: 1; }
+}
+.f-msg-in { animation: f-msg-in var(--ph-dur-exit) var(--ph-ease-decelerate) both; }
+.f-msg-send {
+  transform-origin: 100% 100%;
+  animation: f-msg-send var(--ph-spring-flight-ms) var(--ph-spring-flight) both;
+}
+.f-press { transition: background-color var(--ph-dur-instant) var(--ph-ease-standard), transform var(--ph-dur-instant) var(--ph-ease-standard); }
+.f-press:active { transform: scale(0.97); }
+
+/* Поле композера — одна поверхня `raised`. Старе нічне правило messenger.css
+ * фарбувало саму textarea, і всередині капсули стояла темніша смуга. */
+html:root .message-composer-input textarea.composer-textarea {
+  background-color: transparent !important;
+  color: var(--ph-text) !important;
+}
+
+/* Цифри часу, лічильників і тривалостей — табличні (§3.1). */
+.tnum { font-feature-settings: 'tnum'; }
+
+/* Тост (§7.10): підйом на 8 і прозорість, 240 мс. */
+@keyframes f-toast-in {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.f-toast-in { animation: f-toast-in var(--ph-dur-standard) var(--ph-ease-decelerate) both; }
+
+/* Прочитано: ✓✓ у text-2, ніколи не бурштин і не зелений. */
+.msg-tick-read { color: var(--ph-text-2); }
+
+/* Кнопка «Надіслати» зʼявляється, щойно є текст: швидке збільшення (§6, quick). */
+@keyframes f-send-in {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.f-send-in { animation: f-send-in var(--ph-dur-quick) var(--ph-ease-decelerate) both; }
+@keyframes f-stamp-in {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.f-stamp-in { animation: f-stamp-in var(--ph-spring-press-ms) var(--ph-spring-press) both; }
+@keyframes f-shake {
+  0%, 100% { transform: translateX(0); }
+  8% { transform: translateX(-6px); }
+  25% { transform: translateX(6px); }
+  42% { transform: translateX(-4px); }
+  58% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+  90% { transform: translateX(2px); }
+}
+.f-shake { animation: f-shake 300ms var(--ph-ease-standard) 1 both; }
+
+/* ── Нові ходи: вкладка, рядок списку ──────────────────────────────────── */
+@keyframes f-tab-in {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.f-tab-in { animation: f-tab-in var(--ph-dur-quick) var(--ph-ease-decelerate) both; }
+@keyframes f-row-in {
+  from { transform: translateY(-8px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes f-row-out {
+  from { transform: none; opacity: 1; }
+  to { transform: translateX(-16px); opacity: 0; }
+}
+.f-row-in { animation: f-row-in var(--ph-dur-standard) var(--ph-ease-decelerate) both; }
+.f-row-out { animation: f-row-out var(--ph-dur-exit) var(--ph-ease-accelerate) both; pointer-events: none; }
+
+/* Вікна одного аркуша («Коли»: швидко → дата → час): вперед наїжджає справа, назад — зліва. */
+@keyframes f-win-fwd {
+  from { transform: translateX(24px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes f-win-back {
+  from { transform: translateX(-24px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.f-win-fwd { animation: f-win-fwd var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+.f-win-back { animation: f-win-back var(--ph-spring-layer-ms) var(--ph-spring-layer) both; }
+
+/* ── Скорочений рух: системне налаштування АБО клас html.reduce-motion ────
+ * Усі переміщення стають згасанням 120 мс, струс і петлі зупиняються. */
+@media (prefers-reduced-motion: reduce) {
+  .f-sheet-in, .f-msg-in, .f-msg-send, .f-toast-in, .f-send-in, .f-stamp-in,
+  .f-tab-in, .f-row-in, .f-win-fwd, .f-win-back, .f-pop-in, .f-layer-scrim-in { animation: f-fade-in 120ms linear both; }
+  .f-sheet-out, .f-row-out, .f-layer-scrim-out { animation: f-fade-out 120ms linear both; }
+  .f-shake { animation: none !important; }
+}
+html.reduce-motion .f-sheet-in, html.reduce-motion .f-msg-in, html.reduce-motion .f-msg-send,
+html.reduce-motion .f-toast-in, html.reduce-motion .f-send-in, html.reduce-motion .f-stamp-in,
+html.reduce-motion .f-tab-in, html.reduce-motion .f-row-in,
+html.reduce-motion .f-win-fwd, html.reduce-motion .f-win-back,
+html.reduce-motion .f-pop-in, html.reduce-motion .f-layer-scrim-in { animation: f-fade-in 120ms linear both; }
+html.reduce-motion .f-sheet-out, html.reduce-motion .f-row-out { animation: f-fade-out 120ms linear both; }
+html.reduce-motion .f-layer-scrim-out { animation: f-fade-out 120ms linear both; }
+html.reduce-motion .f-shake { animation: none !important; }
+
+
+/* ── Спільні елементи (services/viewTransition.ts, §6 signature moves) ─────
+ * Відкрити розмову на телефоні: один рух — екран наїжджає на 8 % ширини
+ * із прозорості (240, decelerate, без відскоку), як системний «назад»
+ * Android; на ПК — згасання 150. Фото: мініатюра розростається на весь
+ * екран (360). Скорочений рух — усе 150 мс згасання. */
+::view-transition-group(photo-zoom) {
+  animation-duration: var(--ph-dur-emphasized);
+  animation-timing-function: var(--ph-ease-standard);
+}
+@keyframes vt-push-in {
+  from { transform: translateX(8%); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes vt-push-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+html.vt-push::view-transition-new(root) {
+  animation: vt-push-in var(--ph-dur-standard) var(--ph-ease-decelerate) both;
+}
+html.vt-push::view-transition-old(root) {
+  animation: vt-push-out var(--ph-dur-exit) var(--ph-ease-accelerate) both;
+}
+html.vt-fade::view-transition-old(root),
+html.vt-fade::view-transition-new(root) {
+  animation-duration: var(--ph-dur-quick);
+}
+html.vt-zoom::view-transition-old(root),
+html.vt-zoom::view-transition-new(root) {
+  animation-duration: var(--ph-dur-emphasized);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 150ms !important;
+  }
+}
+/* Нова сторона переходу: фото в перегляді несе те саме імʼя. */
+html.vt-zoom [data-lightbox-img] { view-transition-name: photo-zoom; }
+
+/* Один набір значків — Lucide, штрих завжди 1.75 (§5). Десять різних
+ * штрихів (1…3) у розмітці зводяться тут, без правки кожного виклику. */
+svg.lucide { stroke-width: 1.75; }
+
+/* Смужка життя тоста з дією: видно, коли «Скасувати» зникне. */
+@keyframes f-toast-timer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+.f-toast-timer { transform-origin: left; animation-name: f-toast-timer; animation-timing-function: linear; animation-fill-mode: forwards; }
+@media (prefers-reduced-motion: reduce) { .f-toast-timer { animation: none; } }

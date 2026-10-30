@@ -1,0 +1,19 @@
+{
+  "v": 1,
+  "blocks": [
+    {
+      "type": "title",
+      "text": "Джаз Клуб"
+    },
+    {
+      "type": "event",
+      "id": "jazz-quartet",
+      "title": "Джазовий квартет",
+      "starts": "2026-10-22T20:00",
+      "ends": "2026-10-22T23:00",
+      "note": "Вхід з двору",
+      "price": "7.50",
+      "token": "USDC"
+    }
+  ]
+}

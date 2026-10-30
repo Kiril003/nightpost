@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_h_coordinates">Координати</string>
+    <string name="mapl_h_coordinates_fmt">Координати (%1$s)</string>
+    <string name="mapl_h_evac_route_failed">Укриття «%1$s» знайдено, але маршрут не вдалось прокласти</string>
+    <string name="mapl_h_shelter_source_down">Джерело укриттів недоступне, це не означає, що їх нема</string>
+    <string name="mapl_h_mirror_on">дзеркало: увімкнено</string>
+    <string name="mapl_h_mirror_for_glass">дзеркало для скла</string>
+</resources>

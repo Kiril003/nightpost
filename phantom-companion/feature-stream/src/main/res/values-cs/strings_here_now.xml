@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="here_now_lang">cs</string>
+    <string name="here_now_title">Co se tu teď děje</string>
+    <string name="here_now_report">Nahlásit, co tu je</string>
+    <string name="here_now_report_short">Nahlásit</string>
+    <string name="here_now_held_short">odešle se později</string>
+    <string name="here_now_sent_short">odesláno</string>
+    <string name="here_now_unsure">nepotvrzeno</string>
+    <string name="here_now_from_people">od lidí</string>
+    <string name="here_now_yes">Ano</string>
+    <string name="here_now_no">Ne</string>
+    <string name="here_now_road_yes">Průjezdné</string>
+    <string name="here_now_road_no">Uzavřeno</string>
+    <string name="here_now_embargo">Hlášení se odešlou až po skončení výstrahy</string>
+    <string name="here_now_held">Vaše hlášení čeká na odvolání výstrahy</string>
+    <string name="here_now_sent">Přijato — ostatním se zobrazí se zpožděním</string>
+    <string name="here_now_no_key">Z tohoto telefonu zatím nelze posílat hlášení.</string>
+    <string name="here_now_limited">Příliš mnoho hlášení za hodinu — zkuste to za %1$d min.</string>
+    <string name="here_now_failed">Nepodařilo se odeslat — bez připojení.</string>
+    <string name="here_now_refused">Hlášení nebylo přijato — zkuste to o něco později.</string>
+</resources>

@@ -1,0 +1,8 @@
+# Nightpost — responsible disclosure (RFC 9116)
+# Політика й перелік того, що йде в мережу: https://phantom-os.dev/security
+
+Contact: mailto:security@phantom-os.dev
+Expires: 2027-08-06T00:00:00.000Z
+Preferred-Languages: uk, en
+Canonical: https://phantom-os.dev/.well-known/security.txt
+Policy: https://phantom-os.dev/security

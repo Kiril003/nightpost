@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Реєстр як облік зобовʼязань: правий стовпчик рядка каже рівно одну річ. -->
+    <string name="people_duty_undelivered">не доїхало</string>
+    <string name="people_duty_your_turn">ваша черга</string>
+
+    <string name="people_back">назад</string>
+    <string name="people_search_clear">очистити</string>
+    <string name="people_filter_all">Усі</string>
+    <string name="people_filter_ai">ШІ ✦</string>
+    <string name="people_filter_people">Контакти</string>
+    <string name="people_filter_groups">Групи</string>
+    <string name="people_filter_live">В мережі</string>
+
+    <!-- Псевдонім, за яким асистента знаходить пошук: людина пише кирилицею. -->
+    <string name="people_ai_alias">фантом</string>
+    <string name="people_ai_preview">автономний асистент — тут, без мережі</string>
+    <string name="people_now">зараз</string>
+    <!-- Асистент місцевий: він не «онлайн», він просто тут. -->
+    <string name="people_state_online">на пристрої</string>
+    <string name="people_new_ai_room">новий діалог з асистентом</string>
+    <string name="people_scan_qr">сканувати QR-код</string>
+
+    <string name="people_memory_head">що я про вас памʼятаю</string>
+    <string name="people_none_yet">поки нікого</string>
+    <string name="people_empty_body">Ще немає контактів. Додайте за QR або кодом.</string>
+    <string name="people_empty_ai_cta">До асистента</string>
+    <string name="people_empty_scan_cta">Сканувати код</string>
+
+    <!-- Нетекстове навантаження в превʼю рядка — словом, тим самим, що в месенджері вузла. -->
+    <string name="people_kind_voice">Голосове</string>
+    <string name="people_kind_table">Таблиця</string>
+    <string name="people_kind_tasks">Задачі</string>
+    <string name="people_kind_poll">Опитування</string>
+    <string name="people_kind_bill">Рахунок</string>
+    <string name="people_kind_chart">Графік</string>
+    <string name="people_kind_quotes">Цитати</string>
+    <string name="people_kind_event">Подія</string>
+    <string name="people_kind_code">Код</string>
+    <string name="people_kind_file">Файл</string>
+    <string name="people_kind_image">Фото</string>
+    <string name="people_kind_key">Ключ</string>
+    <string name="people_kind_place">Локація</string>
+    <string name="people_kind_other">Вкладення</string>
+    <string name="people_kind_route">Маршрут</string>
+</resources>

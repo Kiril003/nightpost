@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Зустріч і рахунок голосом помічника. Він лише відкриває чернетку: запрошує й платить людина. -->
+    <string name="meetup_ask_drafted">Чернетка зустрічі: %1$s. Перевірте в месенджері.</string>
+    <string name="meetup_ask_still_empty">Ще порожньо: %1$s.</string>
+    <string name="meetup_ask_field_people">люди</string>
+    <string name="meetup_ask_field_place">місце</string>
+    <string name="meetup_ask_field_time">час</string>
+    <string name="meetup_ask_empty">Чернетка зустрічі готова — оберіть людей, місце й час.</string>
+    <string name="meetup_ask_split_claimed">Рахунок у месенджері: кожен відмічає й оплачує своє.</string>
+    <string name="meetup_ask_split_equal">Рахунок у месенджері: для рівних часток відмітьте всі страви.</string>
+    <string name="meetup_ask_roster_unreadable">Не вдалось прочитати контакти. Відкрийте «Люди».</string>
+    <string name="meetup_ask_draft_failed">Месенджер не взяв чернетку. Відкрийте месенджер і спробуйте ще раз.</string>
+    <string name="meetup_ask_bad_mode">Невідомий режим «%1$s»: доступно за відмітками або порівну.</string>
+</resources>

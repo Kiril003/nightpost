@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "page": {
+    "v": 2,
+    "tone": "graphite",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Cafe X"
+        }
+      },
+      {
+        "id": "ev-members",
+        "kind": "evt.single",
+        "variant": "row",
+        "hidden": false,
+        "audience": "pass",
+        "data": {
+          "title": "Вечірка клубу",
+          "starts": "2026-11-01T20:00"
+        }
+      }
+    ]
+  }
+}

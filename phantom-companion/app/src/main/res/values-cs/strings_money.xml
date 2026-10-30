@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Návrh převodu: %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Převod pro %1$s (%2$s) — zadejte částku a potvrďte.</string>
+    <string name="money_coin_guessed">Vybrána měna %1$s</string>
+    <string name="money_which_one">Více shod: %1$s. Upřesněte příjmení.</string>
+    <string name="money_no_wallet">%1$s ještě nemá adresu peněženky.</string>
+    <string name="money_nobody">Mezi lidmi ve vašich chatech není „%1$s“.</string>
+    <string name="money_who_missing">Komu to poslat? Řekněte jméno člověka z chatů.</string>
+    <string name="money_bad_amount">%1$s %2$s nelze poslat: nejmenší díl %2$s je %3$s.</string>
+    <string name="money_coin_not_here">V síti %2$s není %1$s.</string>
+    <string name="money_no_own_wallet">Vaše peněženka ještě není připravena — otevřete Nastavení › Peněženka.</string>
+    <string name="money_seal_pick">Vyberte fotku k potvrzení otiskem SHA-256</string>
+    <string name="money_drafted_cash">Hotovost z kapsy: %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Bez internetu mohu dát jen hotovost z kapsy, ale %1$s</string>
+    <string name="money_offline_no_sol">v kapse chybí SOL na poplatek a účet příjemce.</string>
+    <string name="money_offline_empty">je prázdná.</string>
+    <string name="money_offline_other_coin">bankovky v ní jsou v %1$s, ne v %2$s.</string>
+    <string name="money_offline_short">je v ní volných jen %1$s %2$s.</string>
+    <string name="money_offline_external">kapsa funguje jen s vestavěnou peněženkou.</string>
+    <string name="money_offline_not_person">hotovost lze předat jen kontaktu z chatu.</string>
+    <string name="money_watch_out">Upozornění:</string>
+</resources>

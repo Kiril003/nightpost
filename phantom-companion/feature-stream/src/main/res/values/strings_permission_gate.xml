@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_location_map_title">Show where you are</string>
+    <string name="perm_location_map_body">Your location lets the map show you and guide your route.</string>
+    <string name="perm_location_share_title">Share your location</string>
+    <string name="perm_location_share_body">Your location is needed to show it to the people you choose.</string>
+    <string name="perm_camera_scan_title">Camera for the code</string>
+    <string name="perm_camera_scan_body">The camera is needed to read the QR code.</string>
+    <string name="perm_call_title">Camera and microphone</string>
+    <string name="perm_call_body">So people can see and hear you on the call.</string>
+    <string name="perm_camera_title">Camera</string>
+    <string name="perm_camera_body">The camera is needed for this photo or code.</string>
+    <string name="perm_scan_allow">Allow camera</string>
+    <string name="perm_location_off_title">Location is off</string>
+    <string name="perm_location_off_body">Turn on Location in quick settings — the map needs it to find you.</string>
+</resources>

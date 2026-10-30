@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="self_reminder_set">Rappel · %1$s · %2$s</string>
+    <string name="commitment_done_which">Lequel ?</string>
+    <string name="perm_calendar_title">Agenda</string>
+    <string name="perm_calendar_body">Afficher les événements du jour</string>
+</resources>

@@ -1,0 +1,37 @@
+{
+  "why": "Конверт v5 (docs/crypto/RELAY_FS.md). Kotlin RelayFsVectorTest запечатує й відчиняє рівно ці байти; pytest test_relay_fs.py звіряє файл із node/relay_fs.py. Ключі ТЕСТОВІ.",
+  "x3dh_info": "PHANTOM OS/messenger-x3dh-v1",
+  "letter_info": "PHANTOM OS/relay-fs-letter-v1",
+  "a": {
+    "ed_priv": "EBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8=",
+    "dh_priv": "MDEyMzQ1Njc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk8=",
+    "ed": "d3bocLkzVPKgskwj8qNsxOgOIjIYwbl5Jv3QGDlqK5s=",
+    "dh": "NOQtSvXvlKB6OoQgG4idTNGnQ8snsRtqEEOKj+uOWEc="
+  },
+  "b": {
+    "ed_priv": "UFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm8=",
+    "dh_priv": "cHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo8=",
+    "ed": "P3cI1fXMK8YztZ0rOi7ZLnR5IgxvCK3iCL682FgKuTs=",
+    "dh": "I7e7jJGuAIcR+xKEZ4C83x4GX4Ib3+xJ9X58fc1MSCM="
+  },
+  "spk": {
+    "id": 7,
+    "priv": "kJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq8=",
+    "pub": "n9etbc/0KY3T+W1bGyr5EKBTWxSI1/j6uzSamCiAthU=",
+    "sig": "1xnQOIx5GgjQoDdfj7ZCH2xcIFDWPqsVV6F9qdFtyhRD2V/sMcNY+PTlm0tZLrNKkrS0uQjH4VxwgsGDhuqEDA=="
+  },
+  "opk": {
+    "id": 42,
+    "priv": "sLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs8=",
+    "pub": "Pz5fbYaSbJwSjPhFgVdPloQNmO5atTsew7duK7JblF4="
+  },
+  "plaintext": "{\"id\":\"m-1\",\"fromId\":\"aaaa\",\"toId\":\"bbbb\",\"body\":\"Привіт зі сховку\",\"sentAtMs\":1790000000000}",
+  "with_opk": {
+    "ek_priv": "0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u8=",
+    "frame": "{\"v\":5,\"from\":\"aaaa\",\"to\":\"bbbb\",\"ek\":\"az7mdGNYPL49wI/p0HZcJmb/UhDdUnydhwXkSSfIDVU\",\"spk\":7,\"opk\":42,\"n\":\"Y6WlaUvjweMmyc5u\",\"ct\":\"R+25pA15lUjO2MpyhrkbQZS8wsey57AKAMJU+YEecVsAhLaoZU9XeKBOOqZwSs/uMI53rS6RN0muuelBaQpyUm9Irpo6f3rxHobXfkQ82SUC1tU3lBwJwzP+N2Xnd6oFIV+xT5UYWpSCLz5tYFrvkHuOhGPUHye6pHSv\"}"
+  },
+  "spk_only": {
+    "ek_priv": "4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8=",
+    "frame": "{\"v\":5,\"from\":\"aaaa\",\"to\":\"bbbb\",\"ek\":\"c2hF1U6H3gnWuxFKpwQsUKSgFb2ZAdGgAm9ZVlM6FRk\",\"spk\":7,\"n\":\"JwglwdJJz2w4zdUK\",\"ct\":\"jC5A2dJhm3UrT3Ymk+tGb1uacxF4t58MkuaXezP7Qyc1qDCUuce70RHqTfRoCYtL1F5X28QkK5S0f/Gey/u5zz5oqKXFmDu8Tn03v+o62ie2Jw160rb5DQetGtuQT8jBPF3EQbLQwX/lMX/cHFurO6sLASrD5t1bmGmc\"}"
+  }
+}

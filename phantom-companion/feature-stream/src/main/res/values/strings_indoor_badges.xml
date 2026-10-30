@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="indoor_badge_elevator">Lift</string>
+    <string name="indoor_badge_escalator">Escalator</string>
+    <string name="indoor_badge_steps">Stairs</string>
+    <string name="indoor_badge_building_passage">Passage</string>
+    <string name="indoor_badge_passage">Passage</string>
+    <string name="indoor_entrance_main">Main entrance</string>
+    <string name="indoor_entrance_subway">Metro entrance</string>
+    <string name="indoor_entrance_emergency">Emergency exit</string>
+    <string name="indoor_entrance_accessible">Step-free entrance</string>
+    <string name="indoor_entrance_default">Entrance</string>
+</resources>

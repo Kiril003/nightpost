@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      HIGHWAY — the car head's declarations live with the car head, not in
+      `:app`'s manifest, so the whole surface can be removed by removing one
+      module. Manifest merging folds these into the app at build time.
+
+      CATEGORY_NAVIGATION, since 9.08.2026. It was POI while the claim would
+      have been a lie: a navigation app must own turn-by-turn on the car's
+      screen, a trip surface behind it, and a drive that does not belong to a
+      phone screen. All three now exist — CarNavigationScreen off GuidanceHub,
+      CarMapSurface drawing the route with no tiles and no network, and
+      NavigationEngine owning the drive on a process-scoped scope. The app also
+      answers ACTION_NAVIGATE, which is what the host actually asks of a
+      navigator. Claiming the category before that would have put a
+      half-navigator in front of a driver at 90 km/h.
+
+      NAVIGATION_TEMPLATES and ACCESS_SURFACE are declared in `:app`.
+    -->
+    <application>
+        <service
+            android:name="local.phantom.companion.feature.car.PhantomCarAppService"
+            android:exported="true"
+            android:foregroundServiceType="location">
+            <intent-filter>
+                <action android:name="androidx.car.app.CarAppService" />
+                <category android:name="androidx.car.app.category.NAVIGATION" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="androidx.car.app.minCarApiLevel"
+            android:value="1" />
+    </application>
+</manifest>

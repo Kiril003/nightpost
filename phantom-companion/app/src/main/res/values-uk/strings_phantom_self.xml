@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="self_remembered">Запамʼятав: %1$s.</string>
+    <string name="self_heard_no_brain">Запамʼятав: %1$s. Розум ще не ввімкнено.</string>
+    <string name="self_no_brain">Розум ще не ввімкнено, але памʼять працює.</string>
+    <string name="self_forgot">Забув: %1$s. Більше цього не памʼятаю.</string>
+    <string name="self_forgot_nothing">Про «%1$s» я нічого не памʼятаю — забувати нема чого.</string>
+    <string name="self_forgot_all">Забув усе, що знав про вас.</string>
+    <string name="self_forgot_all_empty">Я ще нічого про вас не знаю — забувати нема чого.</string>
+    <string name="self_knows_nothing">Ще немає записів у памʼяті.</string>
+    <string name="self_knows_header">Ось що я про вас знаю:</string>
+    <string name="self_knows_old">Старі нотатки з давніших розмов:</string>
+    <string name="self_knows_footer">Щоб видалити, скажіть «забудь …».</string>
+    <string name="self_from_self">ваші слова</string>
+    <string name="self_from_heard">почув у розмові</string>
+    <string name="self_from_guess">мій висновок</string>
+    <string name="self_ask_no_mind">Зараз не вийде: мій розум на цьому телефоні ще не ввімкнено.</string>
+
+    <string name="tutor_hello">Почнімо з двох коротких питань.</string>
+    <string name="tutor_q_vars">Питання %1$d. Що виведе цей код?\n\n%2$s\n\nНапиши лише відповідь.</string>
+    <string name="tutor_q_loops">Питання %1$d. А цей?\n\n%2$s</string>
+    <string name="tutor_right">Правильно.</string>
+    <string name="tutor_wrong">Не зовсім: буде %1$s (%2$s).</string>
+    <string name="tutor_task_intro">Тепер маленька задача — %1$s.</string>
+    <string name="tutor_send_code">Надішліть код повідомленням або напишіть «стоп».</string>
+    <string name="task_vars">Оголоси змінну age типу int зі значенням 30 і виведи її на екран.</string>
+    <string name="task_cond">Для n: якщо n &gt; 10 — виведи \"багато\", інакше \"мало\".</string>
+    <string name="task_loops">Виведи числа від 1 до 5, кожне з нового рядка, циклом for.</string>
+    <string name="task_methods">Напишіть метод Square: він приймає int і повертає його квадрат.</string>
+    <string name="task_arrays">Створіть масив із чисел 1, 2, 3 і виведіть, скільки в ньому елементів.</string>
+    <string name="tutor_pass">Так, це розвʼязує задачу. Добре.</string>
+    <string name="tutor_fail">Майже. Ось що я помітив:</string>
+    <string name="tutor_retry">Виправите — надсилайте ще раз.</string>
+    <string name="tutor_read_not_run">Код перевірено статично без запуску.</string>
+    <string name="tutor_second_look">Ще одна думка: %1$s</string>
+    <string name="tutor_tomorrow">Тема «%1$s» поки хитається — завтра нагадаю, і повторимо.</string>
+    <string name="tutor_more">Захочете далі — напишіть «вчи мене C#».</string>
+    <string name="tutor_review">Повторимо тему «%1$s». Що виведе цей код?\n\n%2$s</string>
+    <string name="tutor_review_right">Так! «%1$s» тепер виходить.</string>
+    <string name="tutor_review_wrong">Буде %1$s (%2$s).</string>
+    <string name="tutor_nothing_to_review">Усі пройдені теми засвоєно.</string>
+    <string name="tutor_stop">Зупинено. Напишіть «вчи мене C#», щоб продовжити.</string>
+    <string name="tutor_reminder">Повторимо %1$s у C#? Одне питання — напишіть мені «повторимо».</string>
+    <string name="tutor_issue_braces">• фігурні дужки { } не зійшлися</string>
+    <string name="tutor_issue_parens">• круглі дужки ( ) не зійшлися</string>
+    <string name="tutor_issue_semicolon">• десь бракує крапки з комою в кінці рядка</string>
+    <string name="tutor_issue_quotes">• лапки не закриті</string>
+    <string name="tutor_issue_need">• не бачу %1$s</string>
+    <string name="tutor_topic_vars">змінні</string>
+    <string name="tutor_topic_cond">умови</string>
+    <string name="tutor_topic_loops">цикли</string>
+    <string name="tutor_topic_methods">методи</string>
+    <string name="tutor_topic_arrays">масиви</string>
+    <string name="tutor_skill_ok">C#: %1$s — виходить</string>
+    <string name="tutor_skill_shaky">C#: %1$s — поки хитається</string>
+    <string name="visit_title">Nightpost</string>
+    <string name="visit_channel">Nightpost приходить сам</string>
+    <string name="visit_action_not_now">Не зараз</string>
+    <string name="visit_action_dont">Так не роби</string>
+    <string name="visit_why_lesson">Повторення вчорашньої теми «%1$s».</string>
+    <string name="visit_why_reminder">Чому я прийшов: ви самі просили нагадати.</string>
+    <string name="visit_not_now">Добре, прийду пізніше.</string>
+    <string name="visit_dont">Нагадування про уроки вимкнено.</string>
+    <string name="voice_heard_until">%1$s [тут людина перебила — далі вона не чула]</string>
+    <string-array name="voice_fillers">
+        <item>Хвилинку.</item>
+        <item>Ще думаю.</item>
+        <item>Майже.</item>
+    </string-array>
+    <string name="voice_long_wait">Це займе трохи довше — скажу, щойно буде готово.</string>
+    <string name="voice_acting">Зараз гляну.</string>
+    <string name="voice_code_in_chat">Код я поклав у розмову — гляньте на екран.</string>
+    <string name="voice_mic_off">Мікрофон вимкнено в налаштуваннях.</string>
+    <string name="voice_no_permission">Щоб говорити голосом, дозвольте Nightpost користуватись мікрофоном у налаштуваннях телефона.</string>
+</resources>

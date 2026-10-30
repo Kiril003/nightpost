@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_banner">Банер</string>
+    <string name="profile_banner_add">Додати банер</string>
+    <string name="profile_banner_photos">Фото</string>
+    <string name="profile_banner_video">Відео</string>
+    <string name="profile_banner_from_phone">З телефона</string>
+    <string name="profile_banner_max">Максимум 6</string>
+    <string name="profile_banner_count">%1$d/%2$d</string>
+    <string name="profile_banner_focus">Фокус</string>
+    <string name="profile_banner_save">Зберегти</string>
+    <string name="profile_banner_saving">Зберігаю…</string>
+    <string name="profile_banner_first_frame">інші бачать перший кадр</string>
+    <string name="profile_banner_video_local">понад 8 МБ: інші бачать перший кадр</string>
+    <string name="profile_banner_video_long">Відео до 15 с</string>
+    <string name="profile_banner_failed">Не збережено</string>
+    <string name="profile_banner_remove">Прибрати банер</string>
+    <string name="profile_banner_photo_n">Фото %1$d</string>
+    <string name="profile_banner_close">Закрити</string>
+    <string name="profile_edit">Редагувати</string>
+    <string name="profile_moment_new">Момент</string>
+    <string name="profile_photo_row">Фото профілю</string>
+    <string name="profile_about_row">Статус і опис</string>
+    <string name="profile_new">Новий</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_basemap_replace_button">Weitere Basiskarten-Datei manuell einspielen</string>
+    <string name="cloud_packs_title">CLOUD-PAKETE</string>
+    <string name="cloud_packs_explainer">Signierte Basiskarten- und Straßenpakete für die Nutzung ohne Internet</string>
+    <string name="cloud_packs_loading">Katalog wird abgefragt …</string>
+    <string name="cloud_packs_not_configured">Die Katalogadresse ist noch nicht eingerichtet.</string>
+    <string name="cloud_packs_empty">Der Katalog ist leer.</string>
+    <string name="cloud_packs_kind_basemap">BASISKARTE</string>
+    <string name="cloud_packs_kind_road_mesh">STRASSEN UND ÖPNV</string>
+    <string name="cloud_packs_size_baked">%1$s · erstellt %2$s</string>
+    <string name="cloud_packs_size_only">%1$s</string>
+    <string name="cloud_packs_action_download">Laden</string>
+    <string name="cloud_packs_action_update">Aktualisieren</string>
+    <string name="cloud_packs_action_retry">Erneut versuchen</string>
+    <string name="cloud_packs_state_checking">Prüfe …</string>
+    <string name="cloud_packs_state_verifying">Prüfsumme wird geprüft …</string>
+    <string name="cloud_packs_state_installed">Installiert ✓</string>
+    <string name="cloud_packs_state_downloading">Lade … %1$d%% · %2$s von %3$s</string>
+    <string name="cloud_packs_metered_warning">Über mobile Daten.</string>
+    <string name="cloud_packs_action_metered_confirm">Trotzdem laden</string>
+    <string name="cloud_packs_action_cancel">Abbrechen</string>
+    <string name="forge_packs_title">FORGE – PAKETE DER NÄCHSTEN GENERATION</string>
+    <string name="forge_packs_kind_geocoder">ORTE UND ADRESSEN</string>
+    <string name="forge_packs_kind_terrain">RELIEF</string>
+    <string name="forge_packs_kind_basemap">PMTILES-BASISKARTE</string>
+    <string name="forge_packs_kind_transit">FAHRPLÄNE</string>
+    <string name="forge_packs_kind_places">ORTE UND STRASSEN DES LANDES</string>
+    <string name="forge_packs_kind_unsupported">diese Version kann diesen Typ noch nicht installieren</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="peer_card_trust_live">Osobně</string>
+    <string name="peer_card_trust_handle">Nalezeno podle přezdívky</string>
+    <string name="peer_card_trust_link">Přes odkaz</string>
+    <string name="peer_card_trust_none">Neověřeno</string>
+    <string name="peer_card_verify_live">Ověřit osobně</string>
+    <string name="peer_card_optional">Volitelné</string>
+    <string name="peer_card_untitled">Bez jména</string>
+    <string name="peer_card_safety_code">Bezpečnostní kód</string>
+    <string name="peer_card_scan_code">Naskenovat kód</string>
+    <string name="peer_card_digits_match">Číslice se shodují</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  HIGHWAY DOMINANCE — declares PHANTOM to Android Auto as a template app.
+  `template` (not `media`, not `projection`) is what a NavigationTemplate app
+  registers as; the host reads this before it will bind the CarAppService.
+-->
+<automotiveApp>
+    <!-- `navigation` is what unlocks NavigationTemplate and puts PHANTOM in the
+         host's navigation category. `template` alone binds the service but the
+         host refuses turn-by-turn from it. -->
+    <uses name="navigation" />
+    <uses name="template" />
+</automotiveApp>

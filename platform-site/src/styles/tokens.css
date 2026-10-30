@@ -1,0 +1,54 @@
+/* GENERATED from docs/design/system/tokens.json — do not edit by hand. */
+:root,
+.scheme-night {
+  --ph-canvas: 17 18 20;
+  --ph-surface: 28 29 33;
+  --ph-raised: 32 33 37;
+  --ph-overlay: 43 44 49;
+  --ph-line: 38 39 42;
+  --ph-line-strong: 51 52 56;
+  --ph-text: 236 234 229;
+  --ph-text-2: 163 164 170;
+  --ph-text-3: 148 149 153;
+  --ph-accent: 226 160 72;
+  --ph-accent-hover: 232 174 96;
+  --ph-accent-press: 207 141 54;
+  --ph-accent-text: 232 174 96;
+  --ph-accent-line: 226 160 72;
+  --ph-accent-soft: 42 38 32;
+  --ph-on-accent: 27 20 8;
+  --ph-success: 127 199 154;
+  --ph-danger: 232 135 122;
+  --ph-warning: 228 192 122;
+  --ph-device: 28 29 33;
+  --ph-shadow-e1: none;
+  --ph-shadow-e2: none;
+  --ph-shadow-e3: none;
+  color-scheme: dark;
+}
+.scheme-day {
+  --ph-canvas: 246 241 231;
+  --ph-surface: 252 250 245;
+  --ph-raised: 237 230 216;
+  --ph-overlay: 227 218 202;
+  --ph-line: 222 217 208;
+  --ph-line-strong: 207 202 193;
+  --ph-text: 30 26 21;
+  --ph-text-2: 91 82 71;
+  --ph-text-3: 102 95 85;
+  --ph-accent: 194 122 22;
+  --ph-accent-hover: 206 135 34;
+  --ph-accent-press: 189 118 20;
+  --ph-accent-text: 132 81 13;
+  --ph-accent-line: 184 116 21;
+  --ph-accent-soft: 241 230 210;
+  --ph-on-accent: 30 26 21;
+  --ph-success: 24 112 62;
+  --ph-danger: 179 56 44;
+  --ph-warning: 122 82 0;
+  --ph-device: 252 250 245;
+  --ph-shadow-e1: none;
+  --ph-shadow-e2: none;
+  --ph-shadow-e3: none;
+  color-scheme: light;
+}

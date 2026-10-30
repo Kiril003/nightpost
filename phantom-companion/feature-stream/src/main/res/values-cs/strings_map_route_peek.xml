@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_route_stops_count">Zastávky (%1$d)</string>
+    <string name="map_route_remove_stop">Odebrat zastávku</string>
+    <string name="map_route_barriers_stops">%1$d zastavení</string>
+    <string name="map_route_barriers_tolls">%1$d mýtné brány</string>
+    <string name="map_route_barriers_gates">%1$d závory</string>
+    <string name="map_route_on_route">%1$s na trase</string>
+    <string name="map_route_trunk_shoulder">Krajnice dálnice</string>
+    <string name="map_route_parking">Parkoviště</string>
+</resources>

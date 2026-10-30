@@ -1,0 +1,29 @@
+{
+  "why": "Паринг телефона з ПК: доказ телефона накриває його сітьовий блок, доказ ПК — свій. Читають і Kotlin-тест PairMeshVectorTest, і pytest test_pair_mesh_vector.py; розійшлись — кожне спарювання падає в bad_proof.",
+  "hkdf_info": "PHANTOM OS/mobile-pair-v1",
+  "pair_id": "pair-mesh-vector-1",
+  "nonce_b64": "ERITFBUWFxgZGhscHR4fIA==",
+  "server_x25519_priv_b64": "QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl8=",
+  "server_x25519_pub_b64": "eaYx7t4b+cmPEgMs3q3Q56B5OY/HhriMyEbsia+FpRo=",
+  "client_x25519_priv_b64": "YGFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6e3x9fn8=",
+  "client_x25519_pub_b64": "Z13VdO13iTELPS52gfN5C0ZsdzsVIf7PNld5WDcepS8=",
+  "device_pub_ed25519_b64": "zRSzf5VulTGU/3+3Oz2B3MVh1hp1OAlLfD4aZD7l86o=",
+  "phone_mesh": {
+    "peer_id": "90d04df5b98fa351",
+    "pub_ed25519_b64": "T9CZzNR9eJPf6ewkQU7LDZtUICMqrTDZHEZb4zy+ZcQ=",
+    "dh_x25519_b64": "3CzKMejkO72R3/fkdcyjNH60eBB9W9dlq6SuSjDDXUQ="
+  },
+  "node_mesh": {
+    "peer_id": "8c5635f15af741eb",
+    "pub_ed25519_b64": "E9mQinCSWZLtVGAH0n9Q2mi6chfvYqw8ynhFKf8QRxw=",
+    "dh_x25519_b64": "B6N8vBQgk8i3VdwbEOhstCY3StFqqFPtC9/AsrhtHHw="
+  },
+  "device_jwt": "vector.device.jwt",
+  "expected": {
+    "shared_key_b64": "VSvbzlXSsPV88nM4/jO3YvfnuLbPmUfl48Cc1VY7mBs=",
+    "client_proof_b64": "/1gB7/JJnKUfCL01s9Pf9CJloDhNexjZyUnyYwfXKfk=",
+    "client_proof_without_mesh_b64": "rnMv+X9b7QXQGZImUL3tzPT861OgYMYBexVPTXZHe+o=",
+    "server_proof_b64": "KyKzBhsTJyJOIhMASktiRcNUSoD3wZRB1DuHTMRISy0=",
+    "server_proof_without_mesh_b64": "Oz0HNCOs86yRYVcrEL072HPWU292uAEM9E9Ca+wh43I="
+  }
+}

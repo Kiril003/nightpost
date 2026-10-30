@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_location_map_title">Ukázat, kde jste</string>
+    <string name="perm_location_map_body">Díky poloze vás mapa ukáže a povede po trase.</string>
+    <string name="perm_location_share_title">Sdílet polohu</string>
+    <string name="perm_location_share_body">Poloha je potřeba, abyste ji mohli ukázat vybraným lidem.</string>
+    <string name="perm_camera_scan_title">Fotoaparát pro kód</string>
+    <string name="perm_camera_scan_body">Fotoaparát je potřeba k načtení QR kódu.</string>
+    <string name="perm_call_title">Fotoaparát a mikrofon</string>
+    <string name="perm_call_body">Aby vás ostatní v hovoru viděli a slyšeli.</string>
+    <string name="perm_camera_title">Fotoaparát</string>
+    <string name="perm_camera_body">Fotoaparát je potřeba pro tuto fotku nebo kód.</string>
+    <string name="perm_scan_allow">Povolit fotoaparát</string>
+    <string name="perm_location_off_title">Poloha je vypnutá</string>
+    <string name="perm_location_off_body">Zapněte Polohu v rychlém nastavení — mapa ji potřebuje, aby vás našla.</string>
+</resources>

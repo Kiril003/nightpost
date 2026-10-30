@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chatlist_title">Lidé a klíče</string>
+    <string name="chatlist_add_person">přidat člověka</string>
+    <string name="chatlist_scan_code">naskenovat kód</string>
+    <string name="keys_lede">Klepnutím na kontakt spravujte jeho klíč</string>
+    <string name="keys_section_people">lidé</string>
+    <string name="keys_section_rooms">prostory</string>
+    <string name="keys_empty">Zatím žádné klíče</string>
+    <string name="keys_empty_body">Zatím žádné klíče. Přidejte kontakt přes QR nebo kód.</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_allow">Erlauben</string>
+    <string name="perm_not_now">Nicht jetzt</string>
+    <string name="perm_open_settings">Einstellungen</string>
+    <string name="perm_denied_title">Noch kein Zugriff</string>
+    <string name="perm_blocked_title">Zugriff ist aus</string>
+    <string name="perm_blocked_body">Android fragt nicht noch einmal. Schalte den Zugriff in den App-Einstellungen ein und komm zurück.</string>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "ok": false,
+  "refused": "duplicate_id",
+  "at": "blocks[1].id",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "same-id",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Cafe X"
+        }
+      },
+      {
+        "id": "same-id",
+        "kind": "id.about",
+        "variant": "paragraph",
+        "hidden": false,
+        "data": {
+          "text": "Опис"
+        }
+      }
+    ]
+  }
+}

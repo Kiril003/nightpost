@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="air_alert_channel_alarm">Nightpost · peringatan udara</string>
+    <string name="air_alert_channel_alarm_desc">Peringatan udara di wilayahmu, sebagai alarm</string>
+    <string name="air_alert_channel_clear">Nightpost · peringatan berakhir</string>
+    <string name="air_alert_channel_clear_desc">Peringatan di wilayahmu berakhir, senyap</string>
+    <string name="air_alert_title_raised">Peringatan udara di wilayahmu · %1$s</string>
+    <string name="air_alert_title_clear">Peringatan berakhir · %1$s</string>
+    <string name="air_alert_full_kicker">Peringatan udara di wilayahmu</string>
+    <string name="air_alert_full_since">Diumumkan pukul %1$s</string>
+    <string name="air_alert_full_map">Lihat di peta</string>
+    <string name="air_alert_full_dismiss">Mengerti</string>
+</resources>

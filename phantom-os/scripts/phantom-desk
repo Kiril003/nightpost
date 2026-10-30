@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+# PHANTOM на ПК однією командою: вузол, вікно, вхід без PIN.
+#
+#   scripts/phantom-desk            зібрати, що застаріло, підняти вузол і вікно
+#   scripts/phantom-desk --rebuild  перезібрати веб і вікно, навіть якщо свіжі
+#
+# Закрив вікно — вузол гасне разом із ним (якщо його підняв цей скрипт).
+# Вузол, що вже слухав на :8000 до запуску, не чіпаємо: лише під'єднуємось.
+#
+# PHANTOM_FULL=0  легкий вузол (лише месенджер) — швидше, без голосу й агента.
+# Пакета (AppImage/deb/msi) цей скрипт не робить — це шлях розробника й
+# першого знайомства на своїй машині; вузол у пакеті — scripts/build_sidecar.sh.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BACKEND="$ROOT/src/backend"
+FRONTEND="$ROOT/src/frontend"
+SHELL_DIR="$FRONTEND/src-tauri"
+DATA="${PHANTOM_DATA_DIR:-$ROOT/.phantom-data}"
+RUN="$DATA/run"
+LOGS="$DATA/logs"
+# Лише :8000 — її одну знають веб (services/nodeOrigin.ts), CSP вікна й CORS вузла.
+PORT=8000
+NODE_URL="http://127.0.0.1:$PORT"
+NODE_LOG="$LOGS/desk-node.log"
+BUILD_LOG="$LOGS/desk-build.log"
+DOOR_KEY="$RUN/desk-door.key"
+EXE="$SHELL_DIR/target/debug/phantom-os-shell"
+[[ "${OS:-}" == "Windows_NT" ]] && EXE="$EXE.exe"
+
+B=$'\033[1m'; DIM=$'\033[2m'; GRN=$'\033[32m'; RED=$'\033[31m'; N=$'\033[0m'
+ok()  { printf '  %s✓%s %s\n' "$GRN" "$N" "$*"; }
+die() { printf '\n%s✗%s %s\n\n' "$RED" "$N" "$*" >&2; exit 1; }
+
+REBUILD=0
+for a in "$@"; do
+  case "$a" in
+    --rebuild) REBUILD=1 ;;
+    -h|--help) sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) die "Не знаю «$a». Є: --rebuild." ;;
+  esac
+done
+
+api_up() { curl -fsS --max-time 2 "$NODE_URL/health" >/dev/null 2>&1; }
+
+# Чи новіше хоч щось у теках за файл-результат. Нема результату — «новіше».
+newer_than() {
+  local target="$1"; shift
+  [[ -e "$target" ]] || return 0
+  [[ -n "$(find "$@" -newer "$target" -type f -print -quit 2>/dev/null)" ]]
+}
+
+preflight() {
+  [[ -x "$BACKEND/.venv/bin/uvicorn" ]] || die "Немає віртуального оточення вузла.
+   Полагодити:  python3 -m venv $BACKEND/.venv && $BACKEND/.venv/bin/pip install -r $BACKEND/requirements.txt"
+  [[ -d "$FRONTEND/node_modules" ]] || die "Не встановлені залежності вебу.
+   Полагодити:  (cd $FRONTEND && npm ci)"
+  command -v cargo >/dev/null || die "Потрібен Rust (cargo): https://rustup.rs"
+  command -v curl  >/dev/null || die "Потрібен curl."
+  mkdir -p "$RUN" "$LOGS"; chmod 700 "$RUN" 2>/dev/null || true
+}
+
+build_web() {
+  if [[ $REBUILD == 0 ]] && ! newer_than "$FRONTEND/dist/index.html" \
+       "$FRONTEND/src" "$ROOT/src/shared" "$FRONTEND/index.html" "$FRONTEND/package-lock.json"; then
+    ok "веб свіжий"; return
+  fi
+  printf '  … збираю веб'
+  (cd "$FRONTEND" && npx vite build) >>"$BUILD_LOG" 2>&1 \
+    || die "Веб не зібрався. Лог: $BUILD_LOG"
+  printf '\r'; ok "веб зібрано        "
+}
+
+build_shell() {
+  # Веб вшивається у вікно під час компіляції — свіжий веб = перезбірка вікна.
+  if [[ $REBUILD == 0 ]] && ! newer_than "$EXE" \
+       "$SHELL_DIR/src" "$SHELL_DIR/Cargo.toml" "$SHELL_DIR/tauri.conf.json" "$FRONTEND/dist"; then
+    ok "вікно свіже"; return
+  fi
+  # Теки вузла-з-пакета тут може не бути (її кладе build_sidecar.sh) —
+  # тоді вікно збираємо без ресурсу, вузол піднімемо з venv.
+  local conf=()
+  [[ -d "$SHELL_DIR/binaries/phantom-backend" ]] || conf=(env 'TAURI_CONFIG={"bundle":{"resources":[]}}')
+  printf '  … збираю вікно (перший раз — кілька хвилин)'
+  (cd "$SHELL_DIR" && "${conf[@]}" cargo build) >>"$BUILD_LOG" 2>&1 \
+    || die "Вікно не зібралось. Лог: $BUILD_LOG
+   На Linux потрібні: libwebkit2gtk-4.1-dev libgtk-3-dev librsvg2-dev"
+  printf '\r'; ok "вікно зібрано                                   "
+}
+
+NODE_PID=""
+start_node() {
+  if api_up; then ok "вузол уже на звʼязку — під'єднуюсь, гасити не буду"; return; fi
+  rm -f "$DOOR_KEY"
+  local env=("PHANTOM_DOOR_KEY_FILE=$DOOR_KEY" "PHANTOM_DATA_DIR=$DATA" "HOST=127.0.0.1" "PORT=$PORT")
+  [[ "${PHANTOM_FULL:-1}" == "0" ]] && env+=("PHANTOM_MESSENGER_ONLY=1")
+  (cd "$BACKEND" && exec env "${env[@]}" .venv/bin/uvicorn main:app \
+      --host 127.0.0.1 --port "$PORT") >>"$NODE_LOG" 2>&1 </dev/null &
+  NODE_PID=$!
+  ok "вузол піднімається (вікно покаже, коли прокинеться)"
+}
+
+stop_node() {
+  [[ -n "$NODE_PID" ]] || return 0
+  kill -0 "$NODE_PID" 2>/dev/null || return 0
+  kill -TERM "$NODE_PID" 2>/dev/null || true
+  # lifespan вузла закриває базу й моделі — до 8 с, як і в оболонці.
+  for _ in $(seq 1 16); do kill -0 "$NODE_PID" 2>/dev/null || break; sleep 0.5; done
+  kill -KILL "$NODE_PID" 2>/dev/null || true
+  rm -f "$DOOR_KEY"
+  ok "вузол зупинено"
+}
+
+main() {
+  preflight
+  printf '\n%sPHANTOM%s\n' "$B" "$N"
+  build_web
+  build_shell
+  start_node
+  trap 'stop_node' EXIT
+  trap 'exit 130' INT TERM
+  # Вікно не піднімає свій вузол: PHANTOM_NODE_URL каже «вузол уже є».
+  # Ключ дверей — той, що пише наш вузол, або вже живого (якщо є).
+  local key="$DOOR_KEY"
+  [[ -z "$NODE_PID" && -n "${PHANTOM_DOOR_KEY_FILE:-}" ]] && key="$PHANTOM_DOOR_KEY_FILE"
+  printf '  %sлог вузла  %s%s\n\n' "$DIM" "$NODE_LOG" "$N"
+  # PHANTOM_READY=0: тут вікно й вузол живуть і гаснуть разом — без трея.
+  PHANTOM_READY=0 PHANTOM_NODE_URL="$NODE_URL" PHANTOM_DOOR_KEY_FILE="$key" "$EXE" || true
+}
+
+main

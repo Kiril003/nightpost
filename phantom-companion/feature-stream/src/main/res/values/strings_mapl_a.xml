@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_a_grp_energy">Power</string>
+    <string name="mapl_a_grp_water">Water</string>
+    <string name="mapl_a_grp_safety">Safety &amp; Shelters</string>
+    <string name="mapl_a_grp_health">Health &amp; Care</string>
+    <string name="mapl_a_grp_comms">Post &amp; Banking</string>
+    <string name="mapl_a_grp_auto">Fuel &amp; Transit</string>
+    <string name="mapl_a_grp_shops">Groceries &amp; Supplies</string>
+    <string name="mapl_a_grp_food">Food &amp; Coffee</string>
+    <string name="mapl_a_grp_state">Public Services</string>
+    <string name="mapl_a_grp_terrain">Terrain &amp; Crossings</string>
+    <string name="mapl_a_grp_culture">Culture &amp; Sights</string>
+    <string name="mapl_a_grp_access">Entrances &amp; Access</string>
+
+    <string name="mapl_a_cat_generators">Generators</string>
+    <string name="mapl_a_cat_ev_charging">EV &amp; Power Charging</string>
+    <string name="mapl_a_cat_transformers">Transformers</string>
+    <string name="mapl_a_cat_drinking_water">Drinking Water</string>
+    <string name="mapl_a_cat_water_wells">Wells &amp; Boreholes</string>
+    <string name="mapl_a_cat_springs">Natural Springs</string>
+    <string name="mapl_a_cat_shelter">Shelters</string>
+    <string name="mapl_a_cat_metro_shelter">Metro (Shelter)</string>
+    <string name="mapl_a_cat_aed">AED Defibrillator</string>
+    <string name="mapl_a_cat_fire_station">Fire Station</string>
+    <string name="mapl_a_cat_police">Police</string>
+    <string name="mapl_a_cat_pharmacy">Pharmacy</string>
+    <string name="mapl_a_cat_hospital">Hospital &amp; Clinic</string>
+    <string name="mapl_a_cat_ambulance">Ambulance Station</string>
+    <string name="mapl_a_cat_dentist">Dentist</string>
+    <string name="mapl_a_cat_vet">Veterinary</string>
+    <string name="mapl_a_cat_post_office">Post Office</string>
+    <string name="mapl_a_cat_parcel_locker">Parcel Locker 24/7</string>
+    <string name="mapl_a_cat_atm">ATM &amp; Cash</string>
+    <string name="mapl_a_cat_bank">Bank</string>
+    <string name="mapl_a_cat_transit_stop">Transit Stops</string>
+    <string name="mapl_a_cat_transit_hub">Metro &amp; Stations</string>
+    <string name="mapl_a_cat_fuel">Gas Station</string>
+    <string name="mapl_a_cat_underground_parking">Underground Parking</string>
+    <string name="mapl_a_cat_car_repair">Auto Repair</string>
+    <string name="mapl_a_cat_tyres">Tire Service</string>
+    <string name="mapl_a_cat_supermarket">Supermarket</string>
+    <string name="mapl_a_cat_marketplace">Food Market</string>
+    <string name="mapl_a_cat_bakery">Bakery</string>
+    <string name="mapl_a_cat_hardware">Hardware Store</string>
+    <string name="mapl_a_cat_cafe">Cafe</string>
+    <string name="mapl_a_cat_restaurant">Restaurant</string>
+    <string name="mapl_a_cat_fast_food">Fast Food</string>
+    <string name="mapl_a_cat_invincibility">Community Hub</string>
+    <string name="mapl_a_cat_cnap">Citizen Service Center</string>
+    <string name="mapl_a_cat_townhall">Town Hall</string>
+    <string name="mapl_a_cat_bridges">Bridges &amp; Overpasses</string>
+    <string name="mapl_a_cat_peaks">Peaks &amp; High Ground</string>
+    <string name="mapl_a_cat_landmarks">Landmarks &amp; Sights</string>
+    <string name="mapl_a_cat_museums">Museums &amp; Galleries</string>
+    <string name="mapl_a_cat_parks">Parks &amp; Gardens</string>
+    <string name="mapl_a_cat_worship">Places of Worship</string>
+    <string name="mapl_a_cat_entrances">Entrances &amp; Doorways</string>
+    <string name="mapl_a_cat_passages">Passages &amp; Arcades</string>
+    <string name="mapl_a_cat_steps">Stairs &amp; Ramps</string>
+
+    <string-array name="mapl_a_kw_generators">
+        <item>generator</item>
+        <item>diesel</item>
+        <item>power</item>
+        <item>electricity</item>
+    </string-array>
+    <string-array name="mapl_a_kw_ev_charging">
+        <item>charging</item>
+        <item>ev</item>
+        <item>charger</item>
+        <item>ecoflow</item>
+        <item>powerbank</item>
+    </string-array>
+    <string-array name="mapl_a_kw_transformers">
+        <item>substation</item>
+        <item>transformer</item>
+    </string-array>
+    <string-array name="mapl_a_kw_drinking_water">
+        <item>water</item>
+        <item>drinking water</item>
+        <item>fountain</item>
+        <item>tap</item>
+    </string-array>
+    <string-array name="mapl_a_kw_water_wells">
+        <item>well</item>
+        <item>borehole</item>
+        <item>water well</item>
+    </string-array>
+    <string-array name="mapl_a_kw_springs">
+        <item>spring</item>
+        <item>natural spring</item>
+    </string-array>
+    <string-array name="mapl_a_kw_shelter">
+        <item>shelter</item>
+        <item>bomb shelter</item>
+        <item>bunker</item>
+    </string-array>
+    <string-array name="mapl_a_kw_metro_shelter">
+        <item>metro</item>
+        <item>subway</item>
+        <item>underground</item>
+    </string-array>
+    <string-array name="mapl_a_kw_aed">
+        <item>defibrillator</item>
+        <item>aed</item>
+        <item>heart</item>
+    </string-array>
+    <string-array name="mapl_a_kw_fire_station">
+        <item>fire</item>
+        <item>fire station</item>
+        <item>rescue</item>
+    </string-array>
+    <string-array name="mapl_a_kw_police">
+        <item>police</item>
+        <item>station</item>
+    </string-array>
+    <string-array name="mapl_a_kw_pharmacy">
+        <item>pharmacy</item>
+        <item>chemist</item>
+        <item>medicine</item>
+        <item>drugstore</item>
+    </string-array>
+    <string-array name="mapl_a_kw_hospital">
+        <item>hospital</item>
+        <item>clinic</item>
+        <item>emergency</item>
+        <item>trauma</item>
+    </string-array>
+    <string-array name="mapl_a_kw_ambulance">
+        <item>ambulance</item>
+        <item>paramedic</item>
+    </string-array>
+    <string-array name="mapl_a_kw_dentist">
+        <item>dentist</item>
+        <item>dental</item>
+    </string-array>
+    <string-array name="mapl_a_kw_vet">
+        <item>vet</item>
+        <item>veterinary</item>
+    </string-array>
+    <string-array name="mapl_a_kw_post_office">
+        <item>post</item>
+        <item>post office</item>
+        <item>mail</item>
+        <item>parcel</item>
+    </string-array>
+    <string-array name="mapl_a_kw_parcel_locker">
+        <item>locker</item>
+        <item>parcel locker</item>
+        <item>parcel</item>
+    </string-array>
+    <string-array name="mapl_a_kw_atm">
+        <item>atm</item>
+        <item>cash</item>
+        <item>withdraw</item>
+    </string-array>
+    <string-array name="mapl_a_kw_bank">
+        <item>bank</item>
+        <item>branch</item>
+    </string-array>
+    <string-array name="mapl_a_kw_transit_stop">
+        <item>stop</item>
+        <item>bus stop</item>
+        <item>bus</item>
+        <item>tram</item>
+        <item>trolleybus</item>
+        <item>platform</item>
+    </string-array>
+    <string-array name="mapl_a_kw_transit_hub">
+        <item>metro</item>
+        <item>subway</item>
+        <item>station</item>
+        <item>train</item>
+        <item>railway</item>
+    </string-array>
+    <string-array name="mapl_a_kw_fuel">
+        <item>fuel</item>
+        <item>gas</item>
+        <item>petrol</item>
+        <item>diesel</item>
+        <item>gas station</item>
+    </string-array>
+    <string-array name="mapl_a_kw_underground_parking">
+        <item>parking</item>
+        <item>underground parking</item>
+        <item>garage</item>
+    </string-array>
+    <string-array name="mapl_a_kw_car_repair">
+        <item>repair</item>
+        <item>car repair</item>
+        <item>garage</item>
+        <item>mechanic</item>
+    </string-array>
+    <string-array name="mapl_a_kw_tyres">
+        <item>tyres</item>
+        <item>tires</item>
+        <item>wheel</item>
+    </string-array>
+    <string-array name="mapl_a_kw_supermarket">
+        <item>supermarket</item>
+        <item>grocery</item>
+        <item>shop</item>
+        <item>store</item>
+        <item>market</item>
+    </string-array>
+    <string-array name="mapl_a_kw_marketplace">
+        <item>market</item>
+        <item>marketplace</item>
+        <item>bazaar</item>
+    </string-array>
+    <string-array name="mapl_a_kw_bakery">
+        <item>bakery</item>
+        <item>bread</item>
+    </string-array>
+    <string-array name="mapl_a_kw_hardware">
+        <item>hardware</item>
+        <item>tools</item>
+        <item>diy</item>
+    </string-array>
+    <string-array name="mapl_a_kw_cafe">
+        <item>coffee</item>
+        <item>cafe</item>
+        <item>espresso</item>
+    </string-array>
+    <string-array name="mapl_a_kw_restaurant">
+        <item>restaurant</item>
+        <item>food</item>
+        <item>dining</item>
+    </string-array>
+    <string-array name="mapl_a_kw_fast_food">
+        <item>fastfood</item>
+        <item>fast food</item>
+        <item>burger</item>
+        <item>pizza</item>
+    </string-array>
+    <string-array name="mapl_a_kw_invincibility">
+        <item>community centre</item>
+        <item>hub</item>
+        <item>volunteers</item>
+    </string-array>
+    <string-array name="mapl_a_kw_cnap">
+        <item>government</item>
+        <item>passport</item>
+        <item>public services</item>
+    </string-array>
+    <string-array name="mapl_a_kw_townhall">
+        <item>townhall</item>
+        <item>city hall</item>
+        <item>municipality</item>
+    </string-array>
+    <string-array name="mapl_a_kw_bridges">
+        <item>bridge</item>
+        <item>overpass</item>
+        <item>crossing</item>
+    </string-array>
+    <string-array name="mapl_a_kw_peaks">
+        <item>peak</item>
+        <item>hill</item>
+        <item>summit</item>
+    </string-array>
+    <string-array name="mapl_a_kw_landmarks">
+        <item>attraction</item>
+        <item>sight</item>
+        <item>monument</item>
+        <item>castle</item>
+        <item>viewpoint</item>
+    </string-array>
+    <string-array name="mapl_a_kw_museums">
+        <item>museum</item>
+        <item>gallery</item>
+        <item>exhibition</item>
+    </string-array>
+    <string-array name="mapl_a_kw_parks">
+        <item>park</item>
+        <item>garden</item>
+        <item>zoo</item>
+    </string-array>
+    <string-array name="mapl_a_kw_worship">
+        <item>church</item>
+        <item>cathedral</item>
+        <item>temple</item>
+        <item>mosque</item>
+        <item>synagogue</item>
+    </string-array>
+    <string-array name="mapl_a_kw_entrances">
+        <item>entrance</item>
+        <item>door</item>
+        <item>gate</item>
+    </string-array>
+    <string-array name="mapl_a_kw_passages">
+        <item>passage</item>
+        <item>arcade</item>
+        <item>arch</item>
+    </string-array>
+    <string-array name="mapl_a_kw_steps">
+        <item>steps</item>
+        <item>stairs</item>
+        <item>ramp</item>
+    </string-array>
+</resources>

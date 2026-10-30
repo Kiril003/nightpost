@@ -1,0 +1,18 @@
+node_modules/
+dist/
+*.local
+.env
+.env.*
+server/.venv/
+server/__pycache__/
+server/**/__pycache__/
+server/*.db
+server/keys/
+
+# Local Netlify folder
+.netlify
+
+# Робочі каталоги агентів — не в історію.
+.claude/
+
+.claude-flow/

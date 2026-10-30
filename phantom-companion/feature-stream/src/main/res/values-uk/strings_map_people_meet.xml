@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_people_title">Люди</string>
+    <string name="map_people_you">Ви</string>
+    <string name="map_people_none_sharing">Ніхто не ділиться геопозицією</string>
+    <string name="map_share_my_location">Поділитись геопозицією</string>
+    <string name="map_share_with_close">Видимо для Близьких · %1$s</string>
+    <string name="map_share_15m">15 хв</string>
+    <string name="map_share_1h">1 год</string>
+    <string name="map_share_until_arrive">Поки не дійду</string>
+    <string name="map_meet_at">Зустріч у %1$s</string>
+    <string name="map_meet_send_chat">Надіслати в чат</string>
+    <string name="map_meet_now">Зараз</string>
+    <string name="map_share_close_audience">Близькі</string>
+    <string name="map_people_meet">Зустрітись</string>
+    <plurals name="map_minutes_away">
+        <item quantity="one">за %1$d хв</item>
+        <item quantity="few">за %1$d хв</item>
+        <item quantity="many">за %1$d хв</item>
+        <item quantity="other">за %1$d хв</item>
+    </plurals>
+    <plurals name="map_minutes_ago">
+        <item quantity="one">%1$d хв тому</item>
+        <item quantity="few">%1$d хв тому</item>
+        <item quantity="many">%1$d хв тому</item>
+        <item quantity="other">%1$d хв тому</item>
+    </plurals>
+</resources>

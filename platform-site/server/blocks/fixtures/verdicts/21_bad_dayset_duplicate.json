@@ -1,0 +1,31 @@
+{
+  "ok": false,
+  "refused": "bad_dayset",
+  "at": "blocks[0].data.rows[0].days",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "hrs-0",
+        "kind": "hrs.week",
+        "variant": "strip",
+        "hidden": false,
+        "data": {
+          "rows": [
+            {
+              "days": [
+                "mon",
+                "mon"
+              ],
+              "hours": {
+                "open": "08:00",
+                "close": "22:00"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

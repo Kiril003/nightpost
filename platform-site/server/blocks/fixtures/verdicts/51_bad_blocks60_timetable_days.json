@@ -1,0 +1,41 @@
+{
+  "ok": false,
+  "refused": "bad_dayset",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Linde Studio",
+          "kind": "ceramics",
+          "tagline": "Ceramics and coffee"
+        }
+      },
+      {
+        "id": "timetable-42",
+        "kind": "cls.timetable",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "items": [
+            {
+              "id": "cl-wheel",
+              "name": "Wheel basics",
+              "days": [
+                "tue",
+                "tue"
+              ],
+              "time": "18:00",
+              "length": 120
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

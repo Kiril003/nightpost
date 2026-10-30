@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meetup_ask_drafted">Brouillon de rendez-vous : %1$s. Relisez-le dans la messagerie.</string>
+    <string name="meetup_ask_still_empty">Encore vide : %1$s.</string>
+    <string name="meetup_ask_field_people">personnes</string>
+    <string name="meetup_ask_field_place">lieu</string>
+    <string name="meetup_ask_field_time">heure</string>
+    <string name="meetup_ask_empty">Brouillon de rendez-vous prêt : choisissez personnes, lieu et heure.</string>
+    <string name="meetup_ask_split_claimed">L’addition s’ouvre dans la messagerie : cochez vos articles et payez.</string>
+    <string name="meetup_ask_split_equal">L’addition s’ouvre dans la messagerie : cochez tout pour partager à parts égales.</string>
+    <string name="meetup_ask_roster_unreadable">Impossible de lire vos contacts. Ouvrez Personnes.</string>
+    <string name="meetup_ask_draft_failed">La messagerie n’a pas pris le brouillon. Réessayez.</string>
+    <string name="meetup_ask_bad_mode">Je n’ai pas compris le partage : « %1$s ». L’addition se partage par cases cochées ou à parts égales.</string>
+</resources>

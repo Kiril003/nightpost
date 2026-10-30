@@ -1,0 +1,20 @@
+{
+  "ok": false,
+  "refused": "bad_text",
+  "at": "blocks[0].data.text",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "about-0",
+        "kind": "id.about",
+        "variant": "paragraph",
+        "hidden": false,
+        "data": {
+          "text": "Дивіться [меню](http://insecure.example/menu)"
+        }
+      }
+    ]
+  }
+}

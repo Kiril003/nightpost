@@ -1,0 +1,27 @@
+import type { uk } from '../profilesW5';
+
+export const cs: Record<keyof typeof uk, string> = {
+  'business.open': 'Firemní profil',
+  'business.page': 'Stránka',
+  'business.pageNone': 'Zatím žádná stránka',
+  'business.pick': 'Vybrat podnik poblíž',
+  'business.nearNone': 'Poblíž žádné podniky',
+  'business.unlink': 'Odpojit',
+  'business.onMap': 'Na mapě',
+  'business.services': 'Služby',
+  'business.servicesNone': 'Zatím žádné služby',
+  'business.all': 'Vše · {n}',
+  'business.less': 'Sbalit',
+  'business.bookings': 'Rezervace',
+  'business.bookingsNone': 'Žádné rezervace',
+  'business.team': 'Tým',
+  'business.teamNone': 'Zatím žádný tým',
+  'business.payments': 'Platby',
+  'business.wallet': 'Peněženka',
+  'business.paymentsNone': 'Platby nejsou nastavené',
+  'business.numbers': 'Čísla',
+  'business.numbersNone': 'Zatím žádná data',
+  'business.openUntil': 'Otevřeno do {time}',
+  'business.closed': 'Zavřeno',
+  'business.retry': 'Zkusit znovu',
+};

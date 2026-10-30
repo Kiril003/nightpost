@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="kt_sym_asks">Počítač žádá: %1$s</string>
+    <string name="kt_sym_yes">Ano</string>
+    <string name="kt_reminder_channel">Nightpost · připomínky</string>
+    <string name="kt_reminder_channel_desc">co jsi chtěl nezapomenout</string>
+    <string name="kt_whisper_slow">pomalu</string>
+    <string name="kt_whisper_fast">rychle</string>
+    <string name="kt_whisper_desc_slow">60 sekund na cyklus, skoro nepostřehnutelné</string>
+    <string name="kt_whisper_desc_mid">38 sekund na cyklus, znatelné, ale jemné</string>
+    <string name="kt_whisper_desc_fast">22 sekund na cyklus, stále přítomné</string>
+</resources>

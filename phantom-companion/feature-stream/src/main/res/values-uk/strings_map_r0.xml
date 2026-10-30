@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_r0_transit_far_stop">До найближчої зупинки ~%1$.1f км пішки — транспорт звідси не бере</string>
+    <string name="map_r0_transit_no_trips_at">На %1$d:%2$02d рейсів не знайдено — спробуйте інший час виїзду</string>
+    <string name="map_r0_transit_unreachable">Мережі немає, а розкладу на цей район на пристрої немає</string>
+    <string name="map_r0_transit_no_schedule">Немає розкладу для цього міста</string>
+    <string name="map_r0_map_not_saved">Мапа не збережена</string>
+    <string name="map_r0_save_area">Зберегти область</string>
+</resources>

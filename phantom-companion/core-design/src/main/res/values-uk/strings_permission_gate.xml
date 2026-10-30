@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_allow">Дозволити</string>
+    <string name="perm_not_now">Не зараз</string>
+    <string name="perm_open_settings">Відкрити налаштування</string>
+    <string name="perm_denied_title">Доступу поки немає</string>
+    <string name="perm_blocked_title">Доступ вимкнено</string>
+    <string name="perm_blocked_body">Android більше не питатиме. Увімкніть доступ у налаштуваннях застосунку й повертайтеся.</string>
+</resources>

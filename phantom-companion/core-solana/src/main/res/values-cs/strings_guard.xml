@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_guard_typed">Zadáno ručně — ne z chatu. Ověřte to s danou osobou.</string>
+    <string name="sol_guard_venue">Peněženka podniku z účtu — zkontrolujte název</string>
+    <string name="sol_guard_scanned">Z QR kódu, ne z konverzace. Ověřte to s danou osobou.</string>
+    <string name="sol_guard_new_address">Nová adresa: dříve šly platby této osobě jinam. Ověřte ji.</string>
+    <string name="sol_guard_first_time">První převod této osobě. Ujistěte se, že je to ona.</string>
+    <string name="sol_guard_other_network">Dříve šly platby této osobě v síti %1$s, teď je to %2$s.</string>
+    <string name="sol_guard_other_coin">Této osobě obvykle posíláte %1$s, teď je to %2$s.</string>
+    <string name="sol_guard_unusual">Více než obvykle: dosud nejvýše %1$s %2$s.</string>
+</resources>

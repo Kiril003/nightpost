@@ -1,0 +1,24 @@
+{
+ "about": "POST /venues/{id}/rate: речення venues.rate_message і підпис Ed25519 (base64, стандартна абетка). Ключ — seed_hex, лише для тестів.",
+ "seed_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+ "cases": [
+  {
+   "pub_key": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+   "nonce": "00112233445566778899aabbccddeeff",
+   "issued_ms": 1759852800000,
+   "venue_id": "0123456789abcdef",
+   "stars": 5,
+   "sentence": "phantom-venue-rate|v1|A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=|00112233445566778899aabbccddeeff|1759852800000|0123456789abcdef|5",
+   "signature": "iziqXR91pGpPqwUbZj9sApNpxR9HdRQpWYo1caPAqtTHFPOeGXSPL7R/f3OpSi69BfWzZvcYERaVbMUxdVkZBw=="
+  },
+  {
+   "pub_key": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+   "nonce": "ffeeddccbbaa99887766554433221100",
+   "issued_ms": 1759856400123,
+   "venue_id": "fedcba9876543210",
+   "stars": 1,
+   "sentence": "phantom-venue-rate|v1|A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=|ffeeddccbbaa99887766554433221100|1759856400123|fedcba9876543210|1",
+   "signature": "UoOL3B8nPgiP/CAgqWpGYqSPNy8MO0eyIwM0x0WVCy0XxHcdG3Z9lXBdN7dlT+uEFdFiVigTfVxsD634Jq5xAg=="
+  }
+ ]
+}

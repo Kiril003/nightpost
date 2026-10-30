@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_title">Сканувати код</string>
+    <string name="scan_card_old_invite">Старе запрошення</string>
+    <string name="scan_card_own_device">Перенесення профілю</string>
+    <string name="scan_card_no_match">Цифри не збіглися</string>
+    <string name="scan_card_self">Це ваш код</string>
+    <string name="scan_card_not_ours">Це не код Nightpost</string>
+    <string name="scan_enter_code">Ввести код</string>
+    <string name="scan_action">Сканувати</string>
+    <string name="scan_hint">Наведіть камеру на код</string>
+    <string name="scan_code_field">Код або посилання</string>
+    <string name="scan_paste">Вставити</string>
+    <string name="scan_code_open">Відкрити</string>
+</resources>

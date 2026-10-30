@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="venue_card_verified">Підтверджено</string>
+    <string name="venue_card_hours">Години</string>
+    <string name="venue_card_menu">Меню</string>
+    <string name="venue_card_menu_more">+%1$d</string>
+    <string name="venue_card_events">Події</string>
+    <string name="venue_card_going_count">Ідуть: %1$d</string>
+    <string name="venue_card_going_of">Ідуть: %1$d з %2$d</string>
+    <string name="venue_card_going">Піду</string>
+    <string name="venue_card_youre_going">Ви йдете</string>
+    <string name="venue_card_full">Місць немає</string>
+    <string name="venue_card_cancelled">Скасовано</string>
+    <string name="venue_card_ended">Завершено</string>
+    <string name="venue_card_load_failed">Не вдалося завантажити</string>
+    <string name="venue_card_retry">Повторити</string>
+</resources>

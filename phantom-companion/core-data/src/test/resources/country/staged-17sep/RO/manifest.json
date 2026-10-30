@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 48.2655,
+    "maxLon": 30.0454,
+    "minLat": 43.6188,
+    "minLon": 20.262
+  },
+  "files": [
+    {
+      "bytes": 1204297,
+      "name": "places.tsv.gz",
+      "sha256": "afa78674d938f079677234d113f8da3cb43bc42f09bd92de6e8bc788c49a2346"
+    },
+    {
+      "bytes": 1621823,
+      "name": "streets.tsv.gz",
+      "sha256": "e7294d1d666ab3b2fe0aace04d20c8d640ba5e9938813d91cc86d49cbcba3a02"
+    }
+  ],
+  "home": {
+    "lat": 44.4361,
+    "lon": 26.1027,
+    "zoom": 12.0
+  },
+  "id": "RO",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "ro-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Румунія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "ro-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Румунія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Румунія",
+  "version": 1
+}

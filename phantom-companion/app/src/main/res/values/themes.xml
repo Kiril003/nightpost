@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Material3 NoActionBar — visual styling is driven entirely by Compose
+         (PhantomTheme tokens in §1 of MOBILE_COMPANION_DESIGN.md). The XML
+         theme exists only to suppress the default action bar and let Compose
+         own the status bar. We anchor to AppCompat parent so AndroidX views
+         (BiometricPrompt) inherit a sane palette during rendering. -->
+    <style name="Theme.PhantomCompanion" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">@bool/phantom_light_bars</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">@bool/phantom_light_bars</item>
+        <item name="android:windowBackground">@color/phantom_canvas</item>
+        <!-- Без windowSplashScreenIconBackgroundColor: інакше система підкладає
+             під знак коло, а заставка має бути самим полотном. На 29–30 цих
+             атрибутів немає — там видно лише windowBackground. -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/phantom_canvas</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/ic_splash_mark</item>
+    </style>
+</resources>

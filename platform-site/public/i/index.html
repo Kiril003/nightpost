@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0A0C10" />
+    <title>Invitation to Nightpost</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/i/invite.css" />
+  </head>
+  <body>
+    <main class="card" id="card" data-state="loading">
+      <p class="brand"><a href="/">Nightpost</a></p>
+
+      <section id="invite" hidden>
+        <h1 id="invite-title">You're invited to Nightpost</h1>
+        <p id="invite-sub">One tap opens the invitation in the app. No app yet? Get it below, then open the link again.</p>
+        <p class="actions">
+          <a class="btn primary" id="open" href="/download">Open in Nightpost</a>
+          <a class="btn" id="get" href="/download">Get the app</a>
+        </p>
+        <details class="code">
+          <summary id="code-summary">Show the invitation code</summary>
+          <p id="code-hint">Paste it in the app where you add a person.</p>
+          <code id="code"></code>
+          <button type="button" class="btn copy" id="copy">Copy code</button>
+        </details>
+      </section>
+
+      <section id="pc" hidden>
+        <h1 id="pc-title">This invitation is for the computer</h1>
+        <p id="pc-sub">Open it in Nightpost on your computer, not on the phone.</p>
+        <details class="code">
+          <summary id="pc-code-summary">Show the invitation code</summary>
+          <p id="pc-code-hint">Paste it in Nightpost on your computer.</p>
+          <code id="pc-code"></code>
+          <button type="button" class="btn copy" id="pc-copy">Copy code</button>
+        </details>
+      </section>
+
+      <section id="empty" hidden>
+        <h1 id="empty-title">This link carries no invitation</h1>
+        <p id="empty-sub">Ask the person to send the link again, whole: the invitation is the part after #.</p>
+        <p class="actions"><a class="btn primary" id="get-empty" href="/download">Get the app</a></p>
+      </section>
+
+      <section id="legacy" hidden>
+        <h1 id="legacy-title">This invitation is from an older version</h1>
+        <p id="legacy-sub">Ask the person to update Nightpost and send a new one.</p>
+        <p class="actions"><a class="btn primary" id="get-legacy" href="/download">Get the app</a></p>
+      </section>
+
+      <noscript>
+        <p>Turn on JavaScript: the invitation is read on your device only, and the page needs a script for that.</p>
+      </noscript>
+
+      <p class="privacy" id="privacy">The code stays in your browser. The server never sees what follows the #.</p>
+    </main>
+    <script src="/i/invite.js" defer></script>
+  </body>
+</html>

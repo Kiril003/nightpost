@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="self_remembered">Zapamatováno: %1$s.</string>
+    <string name="self_heard_no_brain">Zapamatováno: %1$s. AI ještě není zapnutá.</string>
+    <string name="self_no_brain">AI ještě není zapnutá, ale paměť funguje.</string>
+    <string name="self_forgot">Zapomenuto: %1$s. Už si to nepamatuji.</string>
+    <string name="self_forgot_nothing">O «%1$s» si nic nepamatuji — není co zapomenout.</string>
+    <string name="self_forgot_all">Všechno, co o vás bylo uložené, je zapomenuto.</string>
+    <string name="self_forgot_all_empty">Zatím o vás nic nevím — není co zapomenout.</string>
+    <string name="self_knows_nothing">Zatím žádné uložené údaje.</string>
+    <string name="self_knows_header">Tady je to, co o vás vím:</string>
+    <string name="self_knows_old">Staré poznámky z dřívějších rozhovorů:</string>
+    <string name="self_knows_footer">Pro smazání záznamu řekněte «zapomeň …».</string>
+    <string name="self_from_self">vaše slova</string>
+    <string name="self_from_heard">z rozhovoru</string>
+    <string name="self_from_guess">můj závěr</string>
+    <string name="self_ask_no_mind">Teď to nepůjde: moje mysl na tomto telefonu ještě není zapnutá.</string>
+    <string name="tutor_hello">Začněme dvěma krátkými otázkami.</string>
+    <string name="tutor_q_vars">Otázka %1$d. Co vypíše tento kód?\n\n%2$s\n\nNapište jen odpověď.</string>
+    <string name="tutor_q_loops">Otázka %1$d. A tento?\n\n%2$s</string>
+    <string name="tutor_right">Správně.</string>
+    <string name="tutor_wrong">Ne tak docela: vypíše %1$s (%2$s).</string>
+    <string name="tutor_task_intro">Teď malý úkol — %1$s.</string>
+    <string name="tutor_send_code">Pošlete kód ve zprávě, nebo napište «stop».</string>
+    <string name="task_vars">Deklarujte proměnnou age typu int s hodnotou 30 a vypište ji.</string>
+    <string name="task_cond">Pro n: pokud n &gt; 10, vypište „many“, jinak „few“.</string>
+    <string name="task_loops">Vypište čísla 1 až 5, každé na nový řádek, pomocí cyklu for.</string>
+    <string name="task_methods">Napište metodu Square, která vezme int a vrátí jeho druhou mocninu.</string>
+    <string name="task_arrays">Vytvořte pole s čísly 1, 2, 3 a vypište počet jeho prvků.</string>
+    <string name="tutor_pass">Ano, to úlohu řeší. Dobrá práce.</string>
+    <string name="tutor_fail">Skoro. Tohle mi neuniklo:</string>
+    <string name="tutor_retry">Opravte to a pošlete znovu.</string>
+    <string name="tutor_read_not_run">Kód zkontrolován staticky bez spuštění.</string>
+    <string name="tutor_second_look">Ještě jedna myšlenka: %1$s</string>
+    <string name="tutor_tomorrow">Téma «%1$s» si zopakujeme zítra.</string>
+    <string name="tutor_more">Chcete pokračovat? Napište «uč mě C#».</string>
+    <string name="tutor_review">Zopakujme si «%1$s». Co vypíše tento kód?\n\n%2$s</string>
+    <string name="tutor_review_right">Ano! «%1$s» už vám jde.</string>
+    <string name="tutor_review_wrong">Vypíše %1$s (%2$s).</string>
+    <string name="tutor_nothing_to_review">Všechna probraná témata máte v malíku.</string>
+    <string name="tutor_stop">Zastaveno. Pro pokračování napište «uč mě C#».</string>
+    <string name="tutor_reminder">Zopakujeme si %1$s v C#? Jedna otázka — napište mi «zopakujme».</string>
+    <string name="tutor_issue_braces">• složené závorky { } nesedí</string>
+    <string name="tutor_issue_parens">• kulaté závorky ( ) nesedí</string>
+    <string name="tutor_issue_semicolon">• na konci řádku chybí středník</string>
+    <string name="tutor_issue_quotes">• uvozovky nejsou uzavřené</string>
+    <string name="tutor_issue_need">• nevidím %1$s</string>
+    <string name="tutor_topic_vars">proměnné</string>
+    <string name="tutor_topic_cond">podmínky</string>
+    <string name="tutor_topic_loops">cykly</string>
+    <string name="tutor_topic_methods">metody</string>
+    <string name="tutor_topic_arrays">pole</string>
+    <string name="tutor_skill_ok">C#: %1$s — zvládnuto</string>
+    <string name="tutor_skill_shaky">C#: %1$s — ještě nejisté</string>
+    <string name="visit_title">Nightpost</string>
+    <string name="visit_channel">Nightpost přichází sám</string>
+    <string name="visit_action_not_now">Teď ne</string>
+    <string name="visit_action_dont">Nedělej to</string>
+    <string name="visit_why_lesson">Opakování včerejšího tématu «%1$s».</string>
+    <string name="visit_why_reminder">Proč přicházím: chtěli jste to připomenout.</string>
+    <string name="visit_not_now">Dobře, stavím se později.</string>
+    <string name="visit_dont">Připomínky lekcí jsou vypnuté.</string>
+    <string name="voice_heard_until">%1$s [zde člověk skočil do řeči — zbytek už neslyšel]</string>
+    <string-array name="voice_fillers">
+        <item>Chvilku.</item>
+        <item>Ještě přemýšlím.</item>
+        <item>Už skoro.</item>
+    </string-array>
+    <string name="voice_long_wait">Chvíli to potrvá — dám vědět, až to bude hotové.</string>
+    <string name="voice_acting">Podívám se na to.</string>
+    <string name="voice_code_in_chat">Kód máte v chatu — podívejte se na obrazovku.</string>
+    <string name="voice_mic_off">Mikrofon je vypnutý — zapněte ho v nastavení a můžeme mluvit.</string>
+    <string name="voice_no_permission">Pro hlasovou komunikaci povolte Nightpostu přístup k mikrofonu v nastavení telefonu.</string>
+</resources>

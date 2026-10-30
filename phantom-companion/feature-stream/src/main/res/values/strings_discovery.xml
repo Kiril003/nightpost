@@ -1,0 +1,26 @@
+<resources>
+    <string name="map_discovery_note_generator">Generators marked on the open map.</string>
+    <string name="map_discovery_note_ev_charging">Charging stations for electric vehicles.</string>
+    <string name="map_discovery_note_drinking_water">Water kiosks, pumps and springs from the open map.</string>
+    <string name="map_discovery_note_shelter">Shelters the open map marks as protective.</string>
+    <string name="map_discovery_note_metro_shelter">Metro stations.</string>
+    <string name="map_discovery_note_pharmacy">Pharmacies.</string>
+    <string name="map_discovery_note_hospital">Hospitals.</string>
+    <string name="map_discovery_note_post_office">Post offices.</string>
+    <string name="map_discovery_note_parcel_locker">Parcel lockers.</string>
+    <string name="map_discovery_note_atm">ATMs.</string>
+    <string name="map_discovery_note_transit_stop">Surface transit stops.</string>
+    <string name="map_discovery_note_transit_hub">Metro, city rail stations and terminals.</string>
+    <string name="map_discovery_note_fuel">Fuel stations.</string>
+    <string name="map_discovery_note_underground_parking">Underground car parks.</string>
+    <string name="map_discovery_note_supermarket">Supermarkets.</string>
+    <string name="map_discovery_note_invincibility_point">Invincibility points from the open map.</string>
+    <string name="map_discovery_note_bridge">Bridges.</string>
+    <string name="map_discovery_note_landmark">Landmarks, castles, monuments, viewpoints.</string>
+    <string name="map_discovery_note_museum">Museums and galleries.</string>
+    <string name="map_discovery_note_park">Parks and gardens.</string>
+    <string name="map_discovery_note_place_of_worship">Places of worship.</string>
+    <string name="map_discovery_note_entrance">Entrances marked on the open map.</string>
+    <string name="map_discovery_note_passage">Passages through buildings into courtyards.</string>
+    <string name="map_discovery_note_steps">Stairs and ramps.</string>
+</resources>

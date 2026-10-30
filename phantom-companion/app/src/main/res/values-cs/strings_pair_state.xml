@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pair_err_bad_input">Toto není QR kód počítače.</string>
+    <string name="pair_err_expired">Platnost QR kódu vypršela. Na počítači je nový.</string>
+    <string name="pair_err_not_found">Počítač nenalezen.</string>
+    <string name="pair_err_digits_not_found">Počítač v této síti nenalezen. Naskenujte jeho QR kód.</string>
+    <string name="pair_err_not_proven">Počítač neprošel kontrolou.</string>
+    <string name="pair_err_unreachable">Počítač je nedostupný: %1$s</string>
+    <string name="sphere_place">Poloha</string>
+    <string name="sphere_sound">Zvuk a hlas</string>
+    <string name="sphere_notices">Oznámení</string>
+    <string name="sphere_clipboard">Schránka a odkazy</string>
+    <string name="sphere_screen">Obrazovka</string>
+    <string name="sphere_keyboard">Klávesnice</string>
+</resources>

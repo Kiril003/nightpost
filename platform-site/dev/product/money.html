@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Money — Nightpost</title>
+  <style>
+    :root {
+      --paper: #0e0f11;
+      --paper-2: #141619;
+      --surface-2: #1a1c20;
+      --ink: #f3efea;
+      --ink-2: #a8a29b;
+      --ink-3: #8a847c;
+      --line: #24272c;
+      --amber: #e8a33d;
+      --on-amber: #0e0f11;
+      --max: 90rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      margin: 0;
+      font-family: "Manrope Variable", Manrope, system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: 56px;
+      padding-right: 56px;
+    }
+
+    .nav {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink-2);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .lang-toggle {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--ink-2);
+    }
+
+    .lang-toggle b {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 84px);
+      line-height: 1.02;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+    }
+
+    .copy {
+      margin: 18px 0 0;
+      max-width: 34rem;
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink-2);
+    }
+
+    .section-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(32px, 6vw, 112px);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-row--flip {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .section-row--flip .phone-col {
+      order: -1;
+    }
+
+    .phone {
+      border-radius: 44px;
+      border: 10px solid #1d1f23;
+      outline: 1px solid var(--line);
+      overflow: hidden;
+      aspect-ratio: 540 / 1094;
+      width: min(340px, 80vw);
+      background: var(--paper-2);
+    }
+
+    .phone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .also {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .also-list {
+      list-style: none;
+      margin: 20px 0 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .also-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink-2);
+    }
+
+    .end-band {
+      padding: 88px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .end-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .btn-amber {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: 999px;
+      background: var(--amber);
+      color: var(--on-amber);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .link-secondary {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink-2);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .link-secondary:hover {
+      color: var(--ink);
+    }
+
+    .footer {
+      padding-top: 32px;
+      padding-bottom: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 24px;
+      font-size: 14px;
+      color: var(--ink-3);
+    }
+
+    .footer a {
+      color: var(--ink-2);
+    }
+
+    .footer a:hover {
+      color: var(--ink);
+    }
+
+    @media (min-width: 640px) and (max-width: 1023px) {
+      .wrap {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+
+    @media (max-width: 899px) {
+      .nav-links {
+        display: none;
+      }
+
+      .section-row,
+      .section-row--flip {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 56px 0;
+      }
+
+      .section-row--flip .phone-col {
+        order: 0;
+      }
+
+      .phone-col {
+        display: flex;
+        justify-content: center;
+      }
+
+      .end-band {
+        padding: 64px 0;
+      }
+    }
+
+    @media (max-width: 639px) {
+      .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="/">Nightpost</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/">Overview</a>
+        <a href="/download">Download</a>
+        <a href="/security">Security and data</a>
+        <a href="/pricing">Pricing</a>
+      </nav>
+      <div class="lang-toggle" aria-label="Language"><b>EN</b> / UA</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section-row">
+      <div class="text-col">
+        <p class="eyebrow">Money</p>
+        <h1>Money moves like a message.</h1>
+        <p class="copy">A built-in USDC wallet to send, receive, request and split with the people in your chats.</p>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <img src="../../public/v7/clips/b11.webp" alt="Built-in USDC wallet">
+        </div>
+      </div>
+    </section>
+
+    <section class="section-row section-row--flip">
+      <div class="text-col">
+        <h2>Split by what you had.</h2>
+        <p class="copy">Everyone ticks their own dishes in the chat and pays their share in USDC.</p>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <img src="../../public/v7/clips/b09.webp" alt="Split sheet where everyone ticks their own dishes">
+        </div>
+      </div>
+    </section>
+
+    <section class="section-row">
+      <div class="text-col">
+        <h2>Ask once. You confirm.</h2>
+        <p class="copy">The assistant drafts a payment, and nothing leaves until you confirm with your fingerprint or PIN.</p>
+      </div>
+    </section>
+
+    <section class="section-row section-row--flip">
+      <div class="text-col">
+        <h2>From plan to settled in chat.</h2>
+        <p class="copy">Send, receive, request or split right where you make plans with friends.</p>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <img src="../../public/v9/flow.webp" alt="Meetup and bill split inside a chat">
+        </div>
+      </div>
+    </section>
+
+    <section class="also">
+      <p class="eyebrow">Also</p>
+      <ul class="also-list">
+        <li>Each share of a bill is its own transfer with the bill id in an SPL Memo.</li>
+        <li>Keys stay on the phone in Android Keystore, or Mobile Wallet Adapter and Seed Vault on Seeker.</li>
+        <li>Payments use Solana devnet test funds today.</li>
+        <li>Mainnet launches after an independent security audit.</li>
+      </ul>
+    </section>
+
+    <section class="end-band">
+      <h2>Get it on your phone.</h2>
+      <div class="end-actions">
+        <a class="btn-amber" href="/download">Download for Android</a>
+        <a class="link-secondary" href="/">All pages: Overview</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <span>© 2026 Nightpost</span>
+    <a href="/download">Download</a>
+    <a href="/security">Security and data</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/legal">Legal terms</a>
+    <a href="/account">Account</a>
+  </footer>
+</body>
+</html>

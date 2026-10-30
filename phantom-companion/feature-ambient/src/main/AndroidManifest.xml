@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <application>
+        <!-- Phase 3-E1 — Whisper Line presence overlay. Foreground service
+             with low-importance notification («фантом · присутність») so
+             the 1.5dp gold stripe can stay attached across app switches.
+             foregroundServiceType="dataSync" mirrors PhantomLinkService —
+             the strip is a long-lived presence channel, not media or
+             location-bound. -->
+        <service
+            android:name=".service.WhisperLineService"
+            android:label="Familiar Whisper Line"
+            android:foregroundServiceType="dataSync"
+            android:exported="false" />
+    </application>
+</manifest>

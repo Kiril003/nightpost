@@ -1,0 +1,21 @@
+{
+  "ok": false,
+  "refused": "bad_choice",
+  "at": "look",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "neon",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Alma Brandt"
+        }
+      }
+    ]
+  }
+}

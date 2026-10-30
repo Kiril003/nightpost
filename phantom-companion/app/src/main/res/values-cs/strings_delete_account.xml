@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_everything">Smazat vše</string>
+    <string name="delete_everything_after">Odstraní se za 7 dní</string>
+    <string name="delete_everything_left_backup">Váš záložní soubor</string>
+    <string name="delete_everything_left_photos">Uložené fotky</string>
+    <string name="delete_everything_left_letters">Již doručené zprávy</string>
+    <string name="delete_everything_pc">Počítač: kopie zůstávají</string>
+    <string name="delete_everything_retry">Zkusit znovu</string>
+    <string name="delete_everything_phone_only">Pouze tento telefon</string>
+    <string name="delete_everything_protected">Pro tento účet není k dispozici</string>
+    <string name="delete_everything_allow">Povolit „Smazat vše“</string>
+    <string name="delete_pending_on">Smazání %1$s</string>
+    <string name="delete_pending_cancel">Zrušit smazání</string>
+    <string name="delete_everything_stays">Po smazání zůstane:</string>
+    <string name="delete_everything_cancel">Zrušit</string>
+    <string name="delete_everything_phone_only_note">Smaže vše v tomto telefonu, včetně peněženky</string>
+    <string name="delete_pending_note">Do té doby můžete smazání zrušit a vše zůstane</string>
+    <string name="delete_pending_offline">Bez připojení</string>
+    <string name="delete_pending_failed">Zrušení se nezdařilo</string>
+    <string name="delete_pending_wallet">Peněženka</string>
+</resources>

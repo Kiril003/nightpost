@@ -1,0 +1,62 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# The editor reads its own images same-origin, so the SameSite=Strict media cookie travels.
+# Builder v2 (drafts, media, versions, publish) runs only on the Oracle server.
+[[redirects]]
+  from = "/venues/:id/media-session"
+  to = "https://api.phantom-os.dev/venues/:id/media-session"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/venues/:id/media/*"
+  to = "https://api.phantom-os.dev/venues/:id/media/:splat"
+  status = 200
+  force = true
+
+# SPA: client-side router owns every path.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[headers]]
+  for = "/version.json"
+  [headers.values]
+    Cache-Control = "no-store"
+
+# Hashed filenames: safe to cache forever.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Порожні дужки, а не `self`. Сторінка /security каже рецензентові, що ці
+    # чотири заборонені на рівні заголовка; із `self` вони були ДОЗВОЛЕНІ
+    # власному походженню, і одного `curl -I` вистачало, щоб спіймати нас на
+    # слові. Сайт статичний і жодного з цих API не викликає (у src немає ні
+    # getUserMedia, ні navigator.geolocation, ні жодного iframe), тож заборона
+    # нічого не коштує — а обіцянка стає перевірною.
+    Permissions-Policy = "camera=(), microphone=(), display-capture=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000"
+    Cross-Origin-Opener-Policy = "same-origin"
+    # Токен сесії кабінету лежить у localStorage: будь-який чужий скрипт на
+    # сторінці міг би його прочитати. Тому скрипти — лише власні (без
+    # 'unsafe-inline' і 'unsafe-eval'), стилі теж лише власні (framer-motion,
+    # що ставив стилі атрибутом, із сайту прибрано), а мережа — лише власне
+    # походження і ліцензійний сервер (/api/downloads, вхід у кабінет).
+    # `data:` у font-src і img-src — Vite вшиває дрібні файли в CSS як data:.
+    # Цей самий рядок стоїть у scripts/phantom-os-headers.conf (nginx);
+    # server/tests/test_site_csp.py тримає їх однаковими.
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data: blob: https://phantom-license.fly.dev https://api.phantom-os.dev https://*.r2.cloudflarestorage.com; font-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://phantom-license.fly.dev https://api.phantom-os.dev https://api.devnet.solana.com https://*.r2.cloudflarestorage.com; frame-src https://www.youtube-nocookie.com; upgrade-insecure-requests"

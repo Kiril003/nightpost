@@ -1,0 +1,326 @@
+{
+  "ok": false,
+  "refused": "bad_choice",
+  "at": "on",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "shop",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Alma Brandt",
+          "tagline": "Ceramics"
+        }
+      },
+      {
+        "id": "hero-1",
+        "kind": "id.hero",
+        "variant": "split",
+        "hidden": false,
+        "data": {
+          "headline": "Small batches of everyday stoneware.",
+          "lede": "Thrown and glazed by hand. A new batch each season, wheel classes on weekends.",
+          "image": {
+            "blob": "sample-hero-01",
+            "w": 1600,
+            "h": 1200,
+            "alt": "Vase, bowl and mug from the autumn batch"
+          },
+          "chips": [
+            {
+              "id": "chip-stone",
+              "label": "Stoneware"
+            },
+            {
+              "id": "chip-work",
+              "label": "Workshops"
+            },
+            {
+              "id": "chip-pickup",
+              "label": "Pickup at the studio"
+            }
+          ],
+          "primary": "shop-7",
+          "primary_label": "Shop the batch",
+          "secondary": "book-9",
+          "secondary_label": "Book a class"
+        }
+      },
+      {
+        "id": "drop-2",
+        "kind": "deal.drop",
+        "variant": "staged",
+        "hidden": false,
+        "data": {
+          "title": "Autumn batch",
+          "note": "Reserved for 10 min while you pay. Pickup on Saturday or local delivery.",
+          "products": "shop-7",
+          "total": 40,
+          "stages": [
+            {
+              "id": "st-close",
+              "circle": "close",
+              "opens": "2026-10-19T10:00"
+            },
+            {
+              "id": "st-friends",
+              "circle": "friends",
+              "opens": "2026-10-21T10:00"
+            },
+            {
+              "id": "st-social",
+              "circle": "social",
+              "opens": "2026-10-23T18:00"
+            },
+            {
+              "id": "st-all",
+              "circle": "everyone",
+              "opens": "2026-10-25T18:00"
+            }
+          ],
+          "closes": "2026-11-01T18:00"
+        }
+      },
+      {
+        "id": "reviews-3",
+        "kind": "com.reviews",
+        "variant": "summary",
+        "hidden": false,
+        "data": {
+          "title": "Reviews",
+          "text": true,
+          "show": 3
+        }
+      },
+      {
+        "id": "meet-4",
+        "kind": "loc.meet_point",
+        "variant": "map_card",
+        "hidden": false,
+        "data": {
+          "point": {
+            "lat": 48.2049,
+            "lon": 16.3662
+          },
+          "text": "Linden Yard 4"
+        }
+      },
+      {
+        "id": "msg-5",
+        "kind": "loc.message",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "on": true,
+          "who": "owner",
+          "hours": {
+            "open": "10:00",
+            "close": "18:00"
+          },
+          "title": "Message Alma",
+          "starters": [
+            {
+              "id": "ask-vase",
+              "text": "Is the sage vase coming back?"
+            },
+            {
+              "id": "ask-set",
+              "text": "Could you make a set of six?"
+            }
+          ]
+        }
+      },
+      {
+        "id": "qr-6",
+        "kind": "pay.qr",
+        "variant": "compact",
+        "hidden": false,
+        "data": {
+          "label": "Straight to Alma",
+          "amount": true
+        }
+      },
+      {
+        "id": "shop-7",
+        "kind": "cat.products",
+        "variant": "grid",
+        "hidden": false,
+        "data": {
+          "title": "Shop the batch",
+          "eyebrow": "Autumn batch",
+          "token": "USDC",
+          "items": [
+            {
+              "id": "p-mug",
+              "name": "Everyday mug",
+              "detail": "Iron brown · 350 ml",
+              "price": "32",
+              "stock": 3,
+              "group": "Mugs",
+              "image": {
+                "blob": "sample-mug-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Brown glazed mug"
+              }
+            },
+            {
+              "id": "p-bowl",
+              "name": "Breakfast bowl",
+              "detail": "Oat speckle · 15 cm",
+              "price": "28",
+              "stock": 6,
+              "group": "Bowls",
+              "image": {
+                "blob": "sample-bowl-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Speckled cream bowl"
+              }
+            },
+            {
+              "id": "p-vase",
+              "name": "Bud vase",
+              "detail": "Sage celadon · 16 cm",
+              "price": "40",
+              "stock": 0,
+              "group": "Vases",
+              "image": {
+                "blob": "sample-vase-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Pale celadon bud vase"
+              }
+            },
+            {
+              "id": "p-plate",
+              "name": "Side plate",
+              "detail": "Honey · 22 cm",
+              "price": "24",
+              "stock": 5,
+              "group": "Plates",
+              "image": {
+                "blob": "sample-plate-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Honey glazed side plate"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "svc-8",
+        "kind": "cat.services",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "title": "Workshops",
+          "eyebrow": "At the studio",
+          "token": "USDC",
+          "items": [
+            {
+              "id": "w-basics",
+              "name": "Wheel basics",
+              "duration": 120,
+              "price": "45",
+              "note": "Clay and firing included",
+              "capacity": 6,
+              "image": {
+                "blob": "sample-workshop-01",
+                "w": 1400,
+                "h": 1050,
+                "alt": "Six cups drying on a board"
+              }
+            },
+            {
+              "id": "w-glaze",
+              "name": "Glaze evening",
+              "duration": 180,
+              "price": "60",
+              "note": "Glaze two pieces you made",
+              "capacity": 8,
+              "image": {
+                "blob": "sample-mug-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Brown glazed mug"
+              }
+            },
+            {
+              "id": "w-one",
+              "name": "One-to-one",
+              "duration": 90,
+              "price": "70",
+              "note": "Your pace, your project",
+              "capacity": 1,
+              "image": {
+                "blob": "sample-bowl-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Speckled cream bowl"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "book-9",
+        "kind": "book.slots",
+        "variant": "day_strip",
+        "hidden": false,
+        "data": {
+          "services": "svc-8",
+          "slot": 30,
+          "buffer": 15,
+          "lead": 24,
+          "horizon": 30,
+          "auto": false,
+          "who": "everyone"
+        }
+      },
+      {
+        "id": "evt-10",
+        "kind": "evt.single",
+        "variant": "row",
+        "hidden": false,
+        "data": {
+          "title": "Kiln opening",
+          "starts": "2026-11-08T18:00",
+          "note": "The winter batch comes out of the kiln. Tea, no sales talk.",
+          "capacity": 30,
+          "audience": "public"
+        }
+      },
+      {
+        "id": "rsvp-11",
+        "kind": "evt.rsvp",
+        "variant": "button_count",
+        "hidden": false,
+        "data": {
+          "event": "evt-10",
+          "waitlist": true,
+          "plus_ones": 1
+        }
+      },
+      {
+        "id": "wallet-12",
+        "kind": "pay.wallet",
+        "variant": "address_row",
+        "hidden": false,
+        "data": {
+          "address": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+        }
+      }
+    ],
+    "on": [
+      "W",
+      "X"
+    ]
+  }
+}

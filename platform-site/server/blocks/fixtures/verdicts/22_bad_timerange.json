@@ -1,0 +1,30 @@
+{
+  "ok": false,
+  "refused": "bad_timerange",
+  "at": "blocks[0].data.rows[0].hours",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "hrs-0",
+        "kind": "hrs.week",
+        "variant": "strip",
+        "hidden": false,
+        "data": {
+          "rows": [
+            {
+              "days": [
+                "mon"
+              ],
+              "hours": {
+                "open": "25:00",
+                "close": "22:00"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+/**
+ * Phase 9.4b — Collapsible timeline drawer for LocationHistory.
+ *
+ * Hidden by default. Opens via a button on the TacticalMap overlay. Fetches
+ * the most recent 200 entries on open and on manual refresh. Clicking an
+ * entry centers the map there (via the `onSelect` callback).
+ */
+import { useEffect, useMemo, useState } from 'react';
+import { Clock, RefreshCw, X, AlertTriangle } from 'lucide-react';
+import { mapApi, type LocationHistoryEntry } from '../../services/api';
+import { useTranslation } from '../../i18n/useTranslation';
+
+export interface TimelineDrawerProps {
+  open: boolean;
+  onClose: () => void;
+  onSelect?: (entry: LocationHistoryEntry) => void;
+}
+
+const sourceLabel: Record<string, string> = {
+  gps_hardware: 'GPS',
+  browser_geolocation: 'Browser',
+  ip_estimate: 'IP',
+  user_stated: 'Stated',
+  none: '—',
+};
+
+export function TimelineDrawer({ open, onClose, onSelect }: TimelineDrawerProps) {
+  const { t } = useTranslation();
+  const [entries, setEntries] = useState<LocationHistoryEntry[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const load = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await mapApi.getLocationHistory(undefined, undefined, 200);
+      setEntries(res.entries);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (open) void load();
+  }, [open]);
+
+  const grouped = useMemo(() => {
+    const byDay = new Map<string, LocationHistoryEntry[]>();
+    for (const e of entries) {
+      const day = new Date(e.timestamp).toLocaleDateString('uk-UA', { weekday: 'long', day: 'numeric', month: 'long' });
+      if (!byDay.has(day)) byDay.set(day, []);
+      byDay.get(day)!.push(e);
+    }
+    return Array.from(byDay.entries());
+  }, [entries]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      role="dialog"
+      className="h-full w-[360px] bg-[color:var(--ph-surface)] text-[color:var(--ph-text)] border-l border-[color:var(--ph-line)] flex flex-col"
+    >
+      <header className="flex items-center justify-between px-5 py-4 border-b border-[color:var(--ph-line)]">
+        <div className="flex items-center gap-3">
+          <div className="p-2 rounded-xl bg-[color:var(--ph-raised)] text-[color:var(--ph-text-2)]">
+            <Clock size={18} />
+          </div>
+          <span className="text-sm font-bold text-ink-primary">
+            {t('map.timeline.title')}
+          </span>
+        </div>
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={() => void load()}
+            disabled={loading}
+            className="p-2 rounded-full hover:bg-[color:var(--ph-raised)] disabled:opacity-20 transition-colors"
+          >
+            <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={t('map.timeline.close')}
+            className="p-2 rounded-full hover:bg-[color:var(--ph-raised)] transition-colors"
+          >
+            <X size={18} />
+          </button>
+        </div>
+      </header>
+
+      <div className="flex-1 overflow-y-auto py-4 custom-scrollbar">
+        {error ? (
+          <div className="px-6 py-10 text-center">
+            <AlertTriangle size={32} className="mx-auto text-[color:var(--ph-danger)] mb-3 opacity-50" />
+            <div className="text-sm text-[color:var(--ph-danger)]">{error}</div>
+          </div>
+        ) : entries.length === 0 && !loading ? (
+          <div className="px-8 py-20 text-center space-y-3">
+            <Clock size={48} className="mx-auto text-[color:var(--ink-primary)]/5" />
+            <div className="text-xs text-[color:var(--ink-muted)] italic font-serif leading-relaxed">
+              {t('map.timeline.empty')}
+            </div>
+          </div>
+        ) : (
+          grouped.map(([day, items]) => (
+            <div key={day} className="mb-6 px-3">
+              <div className="px-3 text-[10px] font-bold text-[color:var(--ink-muted)] mb-3 flex items-center gap-4">
+                <span className="shrink-0">{day}</span>
+                <span className="h-px bg-[color:var(--ph-line)] flex-1" />
+              </div>
+              <div className="space-y-1">
+                {items.map((e) => (
+                  <button
+                    key={e.id}
+                    type="button"
+                    onClick={() => onSelect?.(e)}
+                    className="w-full text-left px-3 py-3 rounded-2xl hover:bg-[color:var(--ph-raised)] flex items-start justify-between gap-4 transition-all group active:scale-[0.98]"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[13px] text-[color:var(--ink-primary)] group-hover:text-[color:var(--ink-primary)] truncate font-display mb-0.5">
+                        {e.place_name || e.city || `${e.lat.toFixed(5)}, ${e.lon.toFixed(5)}`}
+                      </div>
+                      <div className="flex items-center gap-2 text-[10px] font-mono text-[color:var(--ink-muted)]">
+                        <span className="text-[color:var(--ph-text-3)]">
+                          {new Date(e.timestamp).toLocaleTimeString([], {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
+                        </span>
+                        <span className="px-1.5 py-0.5 rounded bg-[color:var(--ph-raised)] border border-[color:var(--ph-line)]">
+                          {sourceLabel[e.source] ?? e.source}
+                        </span>
+                        {e.country_code && <span className="opacity-60">{e.country_code}</span>}
+                      </div>
+                    </div>
+                    <div className="text-[9px] font-bold text-[color:var(--ph-text-3)] mt-1">
+                      {Math.round((e.confidence ?? 0) * 100)}%
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  );
+}

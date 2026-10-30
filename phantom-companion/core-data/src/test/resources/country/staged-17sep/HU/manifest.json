@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 48.5853,
+    "maxLon": 22.8965,
+    "minLat": 45.7371,
+    "minLon": 16.1139
+  },
+  "files": [
+    {
+      "bytes": 1466414,
+      "name": "places.tsv.gz",
+      "sha256": "cdb26628b06eb94f648d03a3eacaf19ac274cbf64dbf66233cd9b36fc5db9873"
+    },
+    {
+      "bytes": 1474969,
+      "name": "streets.tsv.gz",
+      "sha256": "a244bbfb15bef43614028af484371c49bd274c5e45c354747d59250a54e24d64"
+    }
+  ],
+  "home": {
+    "lat": 47.4979,
+    "lon": 19.0402,
+    "zoom": 12.0
+  },
+  "id": "HU",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "hu-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Угорщина: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "hu-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Угорщина: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Угорщина",
+  "version": 1
+}

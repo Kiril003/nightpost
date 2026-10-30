@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="money_drafted">Brouillon de virement : %1$s · %2$s %3$s</string>
+    <string name="money_drafted_no_amount">Virement à %1$s (%2$s) : saisissez le montant et confirmez.</string>
+    <string name="money_coin_guessed">%1$s par défaut</string>
+    <string name="money_which_one">Plusieurs correspondances : %1$s. Précisez le nom de famille.</string>
+    <string name="money_no_wallet">%1$s n’a pas encore d’adresse de portefeuille.</string>
+    <string name="money_nobody">Je n’ai pas trouvé « %1$s » parmi les personnes de vos discussions.</string>
+    <string name="money_who_missing">Qui doit le recevoir ? Nommez quelqu’un de vos discussions.</string>
+    <string name="money_bad_amount">Impossible d’envoyer %1$s %2$s : la plus petite part de %2$s est %3$s.</string>
+    <string name="money_coin_not_here">Il n’y a pas de %1$s sur %2$s.</string>
+    <string name="money_no_own_wallet">Votre portefeuille n’est pas encore prêt : ouvrez Réglages › Portefeuille.</string>
+    <string name="money_seal_pick">Choisissez une photo pour sceller son empreinte SHA-256</string>
+    <string name="money_drafted_cash">Cash de poche : %1$s · %2$s %3$s</string>
+    <string name="money_offline_only_cash">Sans internet, je ne peux donner que du cash de poche, mais %1$s</string>
+    <string name="money_offline_no_sol">il manque du SOL dans la poche pour les frais et le compte du destinataire.</string>
+    <string name="money_offline_empty">elle est vide.</string>
+    <string name="money_offline_other_coin">ses billets sont en %1$s, pas en %2$s.</string>
+    <string name="money_offline_short">seulement %1$s %2$s de libres.</string>
+    <string name="money_offline_external">la poche ne marche qu’avec le portefeuille intégré.</string>
+    <string name="money_offline_not_person">le cash ne va qu’à un contact de discussion.</string>
+    <string name="money_watch_out">Attention :</string>
+</resources>

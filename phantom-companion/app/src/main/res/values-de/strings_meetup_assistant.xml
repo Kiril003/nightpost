@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meetup_ask_drafted">Treffen-Entwurf: %1$s. Prüfe ihn im Messenger.</string>
+    <string name="meetup_ask_still_empty">Noch leer: %1$s.</string>
+    <string name="meetup_ask_field_people">Personen</string>
+    <string name="meetup_ask_field_place">Ort</string>
+    <string name="meetup_ask_field_time">Zeit</string>
+    <string name="meetup_ask_empty">Treffen-Entwurf bereit – wähle Personen, Ort und Zeit.</string>
+    <string name="meetup_ask_split_claimed">Die Rechnung öffnet im Messenger: Hake deine Posten ab und zahle.</string>
+    <string name="meetup_ask_split_equal">Die Rechnung öffnet im Messenger: Alle Posten abhaken für gleiche Teile.</string>
+    <string name="meetup_ask_roster_unreadable">Kontakte nicht lesbar. Öffne Personen.</string>
+    <string name="meetup_ask_draft_failed">Der Messenger hat den Entwurf nicht übernommen. Versuch es erneut.</string>
+    <string name="meetup_ask_bad_mode">Ich habe nicht verstanden, wie geteilt wird: „%1$s“. Eine Rechnung wird nach Häkchen oder gleich geteilt.</string>
+</resources>

@@ -1,0 +1,20 @@
+{
+  "ok": false,
+  "refused": "bad_id",
+  "at": "blocks[0].id",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "blocks": [
+      {
+        "id": "привіт",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Cafe X"
+        }
+      }
+    ]
+  }
+}

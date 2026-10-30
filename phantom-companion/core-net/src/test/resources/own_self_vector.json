@@ -1,0 +1,33 @@
+{
+  "why": "Передача особи телефона на ПК (docs/ONE_SELF.md, крок 1). Kotlin (OwnSelfVectorTest) запечатує рівно ці байти, pytest (test_own_self_handover.py) їх відчиняє. Розійшлись — особа не переїде, а ПК мовчки не знатиме чому.",
+  "info": "PHANTOM OS/own-self-v1",
+  "pair_id": "own-self-vector-1",
+  "nonce_b64": "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY",
+  "server_x25519_priv_b64": "YGFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6e3x9fn8=",
+  "server_x25519_pub_b64": "Z13VdO13iTELPS52gfN5C0ZsdzsVIf7PNld5WDcepS8=",
+  "client_x25519_priv_b64": "gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp8=",
+  "client_x25519_pub_b64": "ST6C/HRGSlkmiBdiPSBTxeuOLMSpiLT+4XnsawENUx0=",
+  "iv_b64": "oKGio6Slpqeoqaqr",
+  "node_id": "37e70f24bd956f9f",
+  "me": {
+    "self_id": "e4224c6eea5fb652",
+    "ed25519_seed_b64": "wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t8",
+    "ed25519_pub_b64": "3eO8zsfzpmoRFfRdcg9NwTXDrnxOItyjj9se/WpJX/g",
+    "x25519_priv_b64": "4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8",
+    "x25519_pub_b64": "c2hF1U6H3gnWuxFKpwQsUKSgFb2ZAdGgAm9ZVlM6FRk"
+  },
+  "letter": {
+    "id": "own-self-letter-1",
+    "fromId": "e4224c6eea5fb652",
+    "toId": "0011223344556677",
+    "sentAtMs": 1790000000000,
+    "body": "Привіт з комп'ютера"
+  },
+  "expected": {
+    "key_b64": "mbd7M690M3ilSO6Wm+ciM/BioXc04W+LTukm5jSaPP0=",
+    "aad_b64": "UEhBTlRPTSBPUy9vd24tc2VsZi12MR9vd24tc2VsZi12ZWN0b3ItMR9lNDIyNGM2ZWVhNWZiNjUyHzM3ZTcwZjI0YmQ5NTZmOWY=",
+    "sealed_b64": "fdrOzmwXW/Vxa5JbOI2SsHpPL9LhMLKJvBskMaHDMAJ0yQbFsVjFzYdSqvoDMIKXYRZfglF54T3yFnp0dZgowZuP6sXW68zSiswkDsh6iq8=",
+    "done_proof_b64": "NjEfKL5eEpK46eto9Hwj2/JsM1V1QhH4iF3K5Oh+xrk=",
+    "letter_signature": "FhTkLegOFBSvgSR/TI3r03e6C3+OtVqriQZup3mw599DTl22B0iVBs6G6eTB4bBK9ZwWfCP6TbEibtsn7ykuBg"
+  }
+}

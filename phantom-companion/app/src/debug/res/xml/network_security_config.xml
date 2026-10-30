@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Debug-variant override of `src/main/res/xml/network_security_config.xml`.
+
+  AGP merges debug resources over main, so this file replaces the
+  production NSC for `:app:assembleDebug` builds only. It allows
+  cleartext (HTTP) to *any* host so the operator can pair against a
+  phantom-os instance that lives outside the RFC1918 ranges the
+  production NSC tries to whitelist (e.g. a Radxa on a university or
+  corporate public-IP segment).
+
+  Production releases keep the main file's HTTPS-only stance + the
+  pair-QR `server_cert_sha256` SPKI pin.
+
+  Discovered 2026-05-09 during live E2E on SM-A566B / Android 16:
+  the main NSC's `<domain>10.0.0.0/8</domain>` etc. silently match
+  *nothing* — Android NSC's `<domain>` element does not parse CIDR
+  notation; it expects DNS names or exact IPs. The intended LAN
+  whitelist therefore never worked even on RFC1918 networks.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

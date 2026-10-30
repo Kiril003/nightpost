@@ -1,0 +1,110 @@
+{
+ "mark": "\u0001phantom-kind:",
+ "cases": [
+  {
+   "name": "request",
+   "kind": "contact:request",
+   "body": "{\"id\": \"r-1\", \"name\": \"Олена\", \"text\": \"привіт\"}",
+   "peer": "peer-a",
+   "display_name": "Запасне",
+   "expect": {
+    "id": "r-1",
+    "name": "Олена",
+    "text": "привіт"
+   }
+  },
+  {
+   "name": "id clipped to 64",
+   "kind": "contact:request",
+   "body": "{\"id\": \"iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\", \"name\": \"N\", \"text\": \"t\"}",
+   "peer": "peer-a",
+   "display_name": "Запасне",
+   "expect": {
+    "id": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+    "name": "N",
+    "text": "t"
+   }
+  },
+  {
+   "name": "link text dropped",
+   "kind": "contact:request",
+   "body": "{\"id\": \"r-2\", \"name\": \"N\", \"text\": \"\\u0434\\u0438\\u0432\\u0438\\u0441\\u044c https://x.io\"}",
+   "peer": "peer-a",
+   "display_name": "Запасне",
+   "expect": {
+    "id": "r-2",
+    "name": "N",
+    "text": ""
+   }
+  },
+  {
+   "name": "name falls back to the contact",
+   "kind": "contact:request",
+   "body": "{\"id\": \"r-3\", \"text\": \"hi\"}",
+   "peer": "peer-a",
+   "display_name": "Запасне",
+   "expect": {
+    "id": "r-3",
+    "name": "Запасне",
+    "text": "hi"
+   }
+  },
+  {
+   "name": "text clipped to 500",
+   "kind": "contact:request",
+   "body": "{\"id\": \"r-4\", \"name\": \"N\", \"text\": \"яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя\"}",
+   "peer": "peer-a",
+   "display_name": "Запасне",
+   "expect": {
+    "id": "r-4",
+    "name": "N",
+    "text": "яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя"
+   }
+  },
+  {
+   "name": "name stripped and clipped to 60",
+   "kind": "contact:request",
+   "body": "{\"id\": \"r-5\", \"name\": \"  мммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммм\", \"text\": \"t\"}",
+   "peer": "peer-a",
+   "display_name": "Запасне",
+   "expect": {
+    "id": "r-5",
+    "name": "мммммммммммммммммммммммммммммммммммммммммммммммммммммммммммм",
+    "text": "t"
+   }
+  },
+  {
+   "name": "broken json is ignored",
+   "kind": "contact:request",
+   "body": "{not json",
+   "peer": "peer-a",
+   "display_name": "Z",
+   "expect": null
+  },
+  {
+   "name": "request without id is ignored",
+   "kind": "contact:request",
+   "body": "{\"name\": \"N\", \"text\": \"t\"}",
+   "peer": "peer-a",
+   "display_name": "Z",
+   "expect": null
+  }
+ ],
+ "frames": [
+  {
+   "kind": "contact:request",
+   "body": "{\"id\": \"r-1\", \"name\": \"Олена\", \"text\": \"привіт\"}",
+   "frame": "\u0001phantom-kind:contact:request\n{\"id\": \"r-1\", \"name\": \"Олена\", \"text\": \"привіт\"}"
+  },
+  {
+   "kind": "contact:withdraw",
+   "body": "r-1",
+   "frame": "\u0001phantom-kind:contact:withdraw\nr-1"
+  },
+  {
+   "kind": "contact:accept",
+   "body": "r-1",
+   "frame": "\u0001phantom-kind:contact:accept\nr-1"
+  }
+ ]
+}

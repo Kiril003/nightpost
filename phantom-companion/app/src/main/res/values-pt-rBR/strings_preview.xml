@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preview_close">Fechar</string>
+    <string name="preview_cant_open">Não foi possível abrir este arquivo</string>
+</resources>

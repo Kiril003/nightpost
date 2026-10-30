@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_h_coordinates">Coordinates</string>
+    <string name="mapl_h_coordinates_fmt">Coordinates (%1$s)</string>
+    <string name="mapl_h_evac_route_failed">Shelter &quot;%1$s&quot; found, route unavailable</string>
+    <string name="mapl_h_shelter_source_down">Shelter source unavailable</string>
+    <string name="mapl_h_mirror_on">mirror: on</string>
+    <string name="mapl_h_mirror_for_glass">windshield mirror</string>
+</resources>

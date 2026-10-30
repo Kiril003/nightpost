@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_guard_typed">Адресу вписано вручну — не з розмови. Звірте її з людиною.</string>
+    <string name="sol_guard_venue">Гаманець закладу з рахунку — звірте назву</string>
+    <string name="sol_guard_scanned">Адресу взято з QR-коду, не з розмови. Звірте її з людиною.</string>
+    <string name="sol_guard_new_address">Нова адреса: раніше ви платили цій людині на іншу. Перепитайте.</string>
+    <string name="sol_guard_first_time">Перший переказ цій людині. Переконайтеся, що це вона.</string>
+    <string name="sol_guard_other_network">Раніше ви переказували цій людині в мережі %1$s, а зараз — %2$s.</string>
+    <string name="sol_guard_other_coin">Зазвичай ви шлете цій людині %1$s, а зараз — %2$s.</string>
+    <string name="sol_guard_unusual">Більше, ніж зазвичай: досі найбільше — %1$s %2$s.</string>
+</resources>

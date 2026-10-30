@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="air_alert_channel_alarm">Nightpost · letecký poplach</string>
+    <string name="air_alert_channel_alarm_desc">Letecký poplach nad tvým regionem jako budík</string>
+    <string name="air_alert_channel_clear">Nightpost · konec poplachu</string>
+    <string name="air_alert_channel_clear_desc">Konec poplachu nad tvým regionem, potichu</string>
+    <string name="air_alert_title_raised">Letecký poplach v tvém regionu · %1$s</string>
+    <string name="air_alert_title_clear">Konec poplachu · %1$s</string>
+    <string name="air_alert_full_kicker">Letecký poplach v tvém regionu</string>
+    <string name="air_alert_full_since">Vyhlášeno v %1$s</string>
+    <string name="air_alert_full_map">Ukázat na mapě</string>
+    <string name="air_alert_full_dismiss">Rozumím</string>
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mapl_e_threat_unknown_label">Повітряна тривога</string>
+    <string name="mapl_e_threat_unknown_short">тривога</string>
+    <string name="mapl_e_duration_just_now">щойно</string>
+    <string name="mapl_e_duration_min">%1$d хв</string>
+    <string name="mapl_e_duration_hr_min">%1$d год %2$02d хв</string>
+    <string name="mapl_e_duration_day_hr">%1$d дн %2$d год</string>
+    <string name="mapl_e_duration_month">%1$d міс</string>
+    <string name="mapl_e_duration_year">%1$d р</string>
+    <string name="mapl_e_districts_more">%1$s · та ще %2$d</string>
+    <string name="mapl_e_alarm_started">Повітряна тривога — %1$s.</string>
+    <string name="mapl_e_alarm_ended">Відбій повітряної тривоги — %1$s.</string>
+
+    <string name="mapl_e_layers_unavailable">Шари мапи недоступні</string>
+    <string name="mapl_e_empty_transit">Транспорту поруч не знайшов (можливо, немає мережі)</string>
+    <string name="mapl_e_empty_routes">Маршрутів поруч не знайшов (можливо, немає мережі)</string>
+    <string name="mapl_e_empty_cameras">Камер поруч не знайшов (можливо, немає мережі)</string>
+    <string name="mapl_e_empty_aircraft">Бортів поруч не знайшов (можливо, немає мережі)</string>
+    <string name="mapl_e_empty_other">Нічого не знайшов (можливо, немає мережі)</string>
+    <string name="mapl_e_line_absent_on_map">Цієї лінії немає на мапі</string>
+    <string name="mapl_e_line_ref">№%1$s</string>
+    <string name="mapl_e_line_fallback">маршрут</string>
+    <string name="mapl_e_line_title">Лінія %1$s</string>
+    <string name="mapl_e_routes_glyph">маршрути</string>
+    <string name="mapl_e_line_no_geometry">Геометрії цієї лінії немає в базі</string>
+    <string name="mapl_e_line_drawn">Маршрут %1$s нанесено на мапу</string>
+    <string name="mapl_e_hazard_marked">Позначив «%1$s» — зникне за 2 год</string>
+    <string name="mapl_e_hazard_mark_failed">Не вдалось поставити позначку</string>
+    <string name="mapl_e_isochrone_no_roads">Ще не завантажив дороги околиці — відкрийте мапу на місці</string>
+    <string name="mapl_e_isochrone_unreachable">Звідси нікуди не дійти в межах завантаженої карти</string>
+    <string name="mapl_e_danger_field_empty">Немає позначок для поля небезпеки</string>
+
+    <string name="mapl_e_board_stop">Посадка: %1$s %2$s</string>
+    <string name="mapl_e_transfer_stop">Пересадка: %1$s → %2$s %3$s</string>
+    <string name="mapl_e_alight_stop">Вихід тут</string>
+    <string name="mapl_e_mode_metro">метро</string>
+    <string name="mapl_e_mode_tram">трамвай</string>
+    <string name="mapl_e_mode_trolleybus">тролейбус</string>
+    <string name="mapl_e_mode_bus">автобус</string>
+    <string name="mapl_e_mode_rail">потяг</string>
+    <string name="mapl_e_mode_funicular">фунікулер</string>
+    <string name="mapl_e_mode_ferry">пором</string>
+    <string name="mapl_e_mode_other">транспорт</string>
+
+    <string name="mapl_e_comfort_shelter">з навісом</string>
+    <string name="mapl_e_comfort_wheelchair">доступно на візку</string>
+    <string name="mapl_e_comfort_tactile">тактильна плитка</string>
+    <string name="mapl_e_mode_light_rail">швидкісний трамвай</string>
+    <string name="mapl_e_mode_share_taxi">маршрутка</string>
+    <string name="mapl_e_mode_monorail">монорейка</string>
+
+    <string name="mapl_e_amenity_bench">лавка</string>
+    <string name="mapl_e_amenity_shelter">навіс</string>
+    <string name="mapl_e_amenity_display">електронне табло</string>
+    <string name="mapl_e_amenity_bin">урна</string>
+    <string name="mapl_e_amenity_lit">освітлення</string>
+    <string name="mapl_e_both_directions">Показано маршрути для обох боків вулиці</string>
+    <string name="mapl_e_operating_hours">Графік роботи: %1$s – %2$s</string>
+    <string name="mapl_e_not_running">Не курсує зараз</string>
+    <string name="mapl_e_headway_subtitle">%1$s • орієнтовно раз на ~%2$d хв</string>
+    <string name="mapl_e_dep_min_clock">%1$d хв (%2$s)</string>
+    <string name="mapl_e_dep_min">%1$d хв</string>
+    <string name="mapl_e_stop_sequence_header">Послідовність зупинок (%1$d):</string>
+    <string name="mapl_e_you_are_here">Ви тут</string>
+    <string name="mapl_e_plus_min">+%1$d хв</string>
+    <string name="mapl_e_mode_train_dossier">поїзд</string>
+</resources>

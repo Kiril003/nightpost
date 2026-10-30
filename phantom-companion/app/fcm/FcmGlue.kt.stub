@@ -1,0 +1,54 @@
+// FcmGlue.kt.stub — Firebase push wake for Nightpost.
+//
+// NOT COMPILED. This file is not compiled until the owner approves the Firebase fetch
+// (firebase-messaging and the google-services plugin are not in the local Gradle cache).
+// The core it calls is already in the tree and tested: service/PushWake.kt (no-op without
+// google-services.json; data-only {"w":"1"} pings pull from the relay; nothing else is read).
+//
+// Dropping it in touches exactly these four places and no other file:
+//
+// 1. This file (class PushWakeService : FirebaseMessagingService) -> phantom-companion/app/fcm/PushWakeService.kt
+//    (git mv, same directory)
+//
+// 2. phantom-companion/app/src/main/AndroidManifest.xml, inside <application>:
+//        <service
+//            android:name=".service.PushWakeService"
+//            android:enabled="${pushWake}"
+//            android:exported="false">
+//            <intent-filter>
+//                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+//            </intent-filter>
+//        </service>
+//
+// 3. phantom-companion/gradle/libs.versions.toml and phantom-companion/build.gradle.kts:
+//        [versions]   firebaseBom = "<pinned>"   googleServices = "<pinned>"
+//        [libraries]  firebase-bom       = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+//                     firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
+//        [plugins]    google-services    = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+//    root build.gradle.kts, plugins block:
+//        alias(libs.plugins.google.services) apply false
+//
+// 4. phantom-companion/app/build.gradle.kts (the only place that reads the config file):
+//        val pushConfigured = file("google-services.json").exists()
+//        android { defaultConfig { manifestPlaceholders["pushWake"] = pushConfigured.toString() }
+//                  sourceSets { if (pushConfigured) getByName("main").java.srcDir("fcm") } }
+//        if (pushConfigured) apply(plugin = "com.google.gms.google-services")
+//        dependencies { if (pushConfigured) { implementation(platform(libs.firebase.bom)); implementation(libs.firebase.messaging) } }
+//
+// google-services.json lives at phantom-companion/app/google-services.json, is git-ignored and is never
+// committed. Without it the plugin, the dependencies and this class are all absent and the app does nothing.
+//
+// Server contract (not built yet): a data-only message {"w":"1"}, android.priority=high, collapse_key="wake",
+// no "notification" block. FCM token registration with the relay is a server item; onNewToken stays empty
+// until that endpoint exists.
+package local.phantom.companion.service
+
+import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
+
+class PushWakeService : FirebaseMessagingService() {
+
+    override fun onMessageReceived(message: RemoteMessage) {
+        PushWake.shared(applicationContext).onData(message.data)
+    }
+}

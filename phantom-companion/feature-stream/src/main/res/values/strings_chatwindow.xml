@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chatwindow_verify_open">check the key</string>
+    <string name="chatwindow_verify_camera">check by camera</string>
+
+    <string name="chatwindow_why_default">Compare this number on both phones</string>
+    <string name="chatwindow_why_scanned">Key scanned off screen — compare the number</string>
+    <string name="chatwindow_why_handed">Code from another app — compare the number</string>
+    <string name="chatwindow_why_changed">Key changed — compare the number again</string>
+</resources>

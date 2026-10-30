@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_pack_banner_title">%1$s map · %2$d MB</string>
+    <string name="map_pack_banner_title_nosize">%1$s map</string>
+    <string name="map_pack_download">Download</string>
+    <string name="map_pack_progress">%1$s · %2$d %%</string>
+    <string name="map_search_empty">No results</string>
+    <string name="map_search_wider">Search wider</string>
+    <string name="map_nearby_empty">Nothing nearby</string>
+</resources>

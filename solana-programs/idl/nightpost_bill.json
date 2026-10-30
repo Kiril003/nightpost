@@ -1,0 +1,937 @@
+{
+  "address": "BiLL111111111111111111111111111111111111111",
+  "metadata": {
+    "name": "nightpost_bill",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Nightpost group bill escrow on Solana"
+  },
+  "instructions": [
+    {
+      "name": "cancel",
+      "discriminator": [
+        232,
+        219,
+        223,
+        41,
+        219,
+        236,
+        220,
+        190
+      ],
+      "accounts": [
+        {
+          "name": "caller",
+          "signer": true
+        },
+        {
+          "name": "bill",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  105,
+                  108,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bill.payee",
+                "account": "Bill"
+              },
+              {
+                "kind": "account",
+                "path": "bill.bill_id",
+                "account": "Bill"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "close_bill",
+      "discriminator": [
+        237,
+        108,
+        151,
+        67,
+        249,
+        83,
+        247,
+        250
+      ],
+      "accounts": [
+        {
+          "name": "payee",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "bill"
+          ]
+        },
+        {
+          "name": "bill",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  105,
+                  108,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bill.payee",
+                "account": "Bill"
+              },
+              {
+                "kind": "account",
+                "path": "bill.bill_id",
+                "account": "Bill"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "payee_token_account",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "create_bill",
+      "discriminator": [
+        28,
+        241,
+        180,
+        161,
+        109,
+        255,
+        220,
+        44
+      ],
+      "accounts": [
+        {
+          "name": "payee",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "bill",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  105,
+                  108,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "payee"
+              },
+              {
+                "kind": "arg",
+                "path": "bill_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "bill"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "bill_id",
+          "type": "u64"
+        },
+        {
+          "name": "deadline",
+          "type": "i64"
+        },
+        {
+          "name": "shares",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "ShareInput"
+              }
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "type": {
+            "defined": {
+              "name": "BillMode"
+            }
+          }
+        },
+        {
+          "name": "cutoff",
+          "type": "i64"
+        },
+        {
+          "name": "forfeit_allowed",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "forfeit",
+      "discriminator": [
+        80,
+        154,
+        237,
+        158,
+        244,
+        198,
+        154,
+        9
+      ],
+      "accounts": [
+        {
+          "name": "payee",
+          "signer": true,
+          "relations": [
+            "bill"
+          ]
+        },
+        {
+          "name": "bill",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  105,
+                  108,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bill.payee",
+                "account": "Bill"
+              },
+              {
+                "kind": "account",
+                "path": "bill.bill_id",
+                "account": "Bill"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "payee_token_account",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "pay_share",
+      "discriminator": [
+        95,
+        14,
+        255,
+        254,
+        57,
+        192,
+        231,
+        238
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "signer": true
+        },
+        {
+          "name": "bill",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  105,
+                  108,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bill.payee",
+                "account": "Bill"
+              },
+              {
+                "kind": "account",
+                "path": "bill.bill_id",
+                "account": "Bill"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "payer_token_account",
+          "writable": true
+        },
+        {
+          "name": "payee_token_account",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "index",
+          "type": "u8"
+        },
+        {
+          "name": "expected_amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "refund_hold",
+      "discriminator": [
+        151,
+        230,
+        95,
+        113,
+        213,
+        78,
+        241,
+        145
+      ],
+      "accounts": [
+        {
+          "name": "caller",
+          "signer": true
+        },
+        {
+          "name": "bill",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  105,
+                  108,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bill.payee",
+                "account": "Bill"
+              },
+              {
+                "kind": "account",
+                "path": "bill.bill_id",
+                "account": "Bill"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "payer_token_account",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "refund_share",
+      "discriminator": [
+        72,
+        101,
+        247,
+        55,
+        25,
+        255,
+        189,
+        171
+      ],
+      "accounts": [
+        {
+          "name": "caller",
+          "signer": true
+        },
+        {
+          "name": "bill",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  105,
+                  108,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bill.payee",
+                "account": "Bill"
+              },
+              {
+                "kind": "account",
+                "path": "bill.bill_id",
+                "account": "Bill"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "payer_token_account",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "index",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "release",
+      "discriminator": [
+        253,
+        249,
+        15,
+        206,
+        28,
+        127,
+        193,
+        241
+      ],
+      "accounts": [
+        {
+          "name": "caller",
+          "signer": true
+        },
+        {
+          "name": "bill",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  105,
+                  108,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bill.payee",
+                "account": "Bill"
+              },
+              {
+                "kind": "account",
+                "path": "bill.bill_id",
+                "account": "Bill"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "payee_token_account",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Bill",
+      "discriminator": [
+        70,
+        76,
+        251,
+        175,
+        212,
+        227,
+        212,
+        179
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidShareCount",
+      "msg": "Share count must be 1..=16 for Split and 1 for Hold"
+    },
+    {
+      "code": 6001,
+      "name": "ZeroShareAmount",
+      "msg": "Share amount must be greater than zero"
+    },
+    {
+      "code": 6002,
+      "name": "DuplicatePayer",
+      "msg": "Duplicate payer in shares"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidDeadline",
+      "msg": "Deadline must be in the future"
+    },
+    {
+      "code": 6004,
+      "name": "DeadlineTooFar",
+      "msg": "Deadline exceeds maximum allowed for mode"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidCutoff",
+      "msg": "Invalid cutoff timestamp for mode"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidForfeitConfig",
+      "msg": "Invalid forfeit configuration for mode"
+    },
+    {
+      "code": 6007,
+      "name": "ArithmeticOverflow",
+      "msg": "Arithmetic overflow"
+    },
+    {
+      "code": 6008,
+      "name": "BillNotOpen",
+      "msg": "Bill is not open"
+    },
+    {
+      "code": 6009,
+      "name": "BillNotCancelled",
+      "msg": "Bill is not cancelled"
+    },
+    {
+      "code": 6010,
+      "name": "BillNotHeld",
+      "msg": "Bill is not held"
+    },
+    {
+      "code": 6011,
+      "name": "DeadlinePassed",
+      "msg": "Bill deadline has passed"
+    },
+    {
+      "code": 6012,
+      "name": "NotYetCancellable",
+      "msg": "Bill cannot be cancelled by non-payee before deadline"
+    },
+    {
+      "code": 6013,
+      "name": "IndexOutOfRange",
+      "msg": "Share index is out of range"
+    },
+    {
+      "code": 6014,
+      "name": "WrongPayer",
+      "msg": "Signer is not the designated payer for this share"
+    },
+    {
+      "code": 6015,
+      "name": "AlreadyPaid",
+      "msg": "Share is already paid"
+    },
+    {
+      "code": 6016,
+      "name": "AmountMismatch",
+      "msg": "Share amount does not match expected amount"
+    },
+    {
+      "code": 6017,
+      "name": "ShareNotPaid",
+      "msg": "Share has not been paid"
+    },
+    {
+      "code": 6018,
+      "name": "AlreadyRefunded",
+      "msg": "Share has already been refunded"
+    },
+    {
+      "code": 6019,
+      "name": "BillNotCloseable",
+      "msg": "Bill cannot be closed in its current state"
+    },
+    {
+      "code": 6020,
+      "name": "UnrefundedSharesRemain",
+      "msg": "Paid shares remain unrefunded"
+    },
+    {
+      "code": 6021,
+      "name": "InvalidVault",
+      "msg": "Invalid vault token account"
+    },
+    {
+      "code": 6022,
+      "name": "InvalidPayeeTokenAccount",
+      "msg": "Invalid payee token account"
+    },
+    {
+      "code": 6023,
+      "name": "InvalidPayerTokenAccount",
+      "msg": "Invalid payer token account"
+    },
+    {
+      "code": 6024,
+      "name": "InvalidMode",
+      "msg": "Invalid bill mode for this instruction"
+    },
+    {
+      "code": 6025,
+      "name": "Unauthorized",
+      "msg": "Caller is not authorized"
+    },
+    {
+      "code": 6026,
+      "name": "CutoffPassed",
+      "msg": "Cancellation cutoff has already passed"
+    },
+    {
+      "code": 6027,
+      "name": "CutoffNotReached",
+      "msg": "Cancellation cutoff has not been reached"
+    },
+    {
+      "code": 6028,
+      "name": "NotYetRefundable",
+      "msg": "Hold cannot be cranked for refund before deadline"
+    },
+    {
+      "code": 6029,
+      "name": "ForfeitNotAllowed",
+      "msg": "Forfeit is not allowed on this hold"
+    }
+  ],
+  "types": [
+    {
+      "name": "Bill",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "payee",
+            "type": "pubkey"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "bill_id",
+            "type": "u64"
+          },
+          {
+            "name": "deadline",
+            "type": "i64"
+          },
+          {
+            "name": "cutoff",
+            "type": "i64"
+          },
+          {
+            "name": "forfeit_allowed",
+            "type": "bool"
+          },
+          {
+            "name": "mode",
+            "type": {
+              "defined": {
+                "name": "BillMode"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": {
+                "name": "BillStatus"
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "shares",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "Share"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "BillMode",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Split"
+          },
+          {
+            "name": "Hold"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BillStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Open"
+          },
+          {
+            "name": "Settled"
+          },
+          {
+            "name": "Cancelled"
+          },
+          {
+            "name": "Held"
+          },
+          {
+            "name": "Released"
+          },
+          {
+            "name": "Refunded"
+          },
+          {
+            "name": "Forfeited"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Share",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "payer",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "paid",
+            "type": "bool"
+          },
+          {
+            "name": "refunded",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShareInput",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "payer",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}

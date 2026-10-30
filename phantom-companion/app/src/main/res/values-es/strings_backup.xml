@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Copia guardada · %1$s</string>
+    <string name="backup_sheet_title">Crear copia</string>
+    <string name="backup_loss_title">Sin copia perderás:</string>
+    <string name="backup_loss_chats">Chats</string>
+    <string name="backup_loss_contacts">Contactos</string>
+    <string name="backup_loss_profiles">Perfiles</string>
+    <string name="backup_loss_venues">Edición de lugares</string>
+    <string name="backup_loss_licences">Licencias de Solana y Seeker</string>
+    <string name="backup_loss_handle">\@usuario durante 30 días</string>
+    <string name="backup_loss_points">Puntos y valoraciones</string>
+    <string name="backup_loss_wallet">Billetera sin exportación propia</string>
+    <string name="backup_loss_memory">Memoria que no esté en un ordenador</string>
+    <string name="backup_pass_hint">Frase de contraseña (mín. 12 caracteres)</string>
+    <string name="backup_pass_confirm_hint">Repite la frase</string>
+    <string name="backup_pass_mismatch">Las frases no coinciden</string>
+    <string name="backup_pass_too_short">Mínimo 12 caracteres</string>
+    <string name="backup_save_action">Guardar copia</string>
+    <string name="backup_restore_title">Restaurar copia</string>
+    <string name="backup_restore_pass_hint">Frase de la copia</string>
+    <string name="backup_restore_action">Restaurar</string>
+    <string name="backup_restore_err_wrong_pass">Frase incorrecta</string>
+    <string name="backup_restore_err_not_our_file">No es una copia de Nightpost</string>
+    <string name="backup_restore_err_not_empty">Primero borra los datos de este teléfono</string>
+    <string name="backup_restore_success">Restaurado: %1$d contactos, %2$d mensajes, %3$d perfiles</string>
+    <string name="backup_restore_err_read">No se puede abrir el archivo</string>
+    <string name="backup_restore_err_invalid">La copia está dañada</string>
+    <string name="backup_restore_err_failed">Error al restaurar</string>
+</resources>

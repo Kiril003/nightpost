@@ -1,0 +1,7 @@
+/target/
+**/*.rs.bk
+*.json
+.anchor/
+test-ledger/
+!idl/
+!idl/nightpost_bill.json

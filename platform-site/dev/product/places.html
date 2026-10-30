@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plans &amp; places — Nightpost</title>
+  <style>
+    :root {
+      --paper: #0e0f11;
+      --paper-2: #141619;
+      --surface-2: #1a1c20;
+      --ink: #f3efea;
+      --ink-2: #a8a29b;
+      --ink-3: #8a847c;
+      --line: #24272c;
+      --amber: #e8a33d;
+      --on-amber: #0e0f11;
+      --max: 90rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      margin: 0;
+      font-family: "Manrope Variable", Manrope, system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: 56px;
+      padding-right: 56px;
+    }
+
+    .nav {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink-2);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .lang-toggle {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--ink-2);
+    }
+
+    .lang-toggle b {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 84px);
+      line-height: 1.02;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+    }
+
+    .copy {
+      margin: 18px 0 0;
+      max-width: 34rem;
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink-2);
+    }
+
+    .section-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(32px, 6vw, 112px);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-row--flip {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .section-row--flip .phone-col {
+      order: -1;
+    }
+
+    .phone {
+      border-radius: 44px;
+      border: 10px solid #1d1f23;
+      outline: 1px solid var(--line);
+      overflow: hidden;
+      aspect-ratio: 540 / 1094;
+      width: min(340px, 80vw);
+      background: var(--paper-2);
+    }
+
+    .phone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .phone--empty {
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--ink-3);
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .also {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .also-list {
+      list-style: none;
+      margin: 20px 0 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .also-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink-2);
+    }
+
+    .end-band {
+      padding: 88px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .end-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .btn-amber {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: 999px;
+      background: var(--amber);
+      color: var(--on-amber);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .link-secondary {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink-2);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .link-secondary:hover {
+      color: var(--ink);
+    }
+
+    .footer {
+      padding-top: 32px;
+      padding-bottom: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 24px;
+      font-size: 14px;
+      color: var(--ink-3);
+    }
+
+    .footer a {
+      color: var(--ink-2);
+    }
+
+    .footer a:hover {
+      color: var(--ink);
+    }
+
+    @media (min-width: 640px) and (max-width: 1023px) {
+      .wrap {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+
+    @media (max-width: 899px) {
+      .nav-links {
+        display: none;
+      }
+
+      .section-row,
+      .section-row--flip {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 56px 0;
+      }
+
+      .section-row--flip .phone-col {
+        order: 0;
+      }
+
+      .phone-col {
+        display: flex;
+        justify-content: center;
+      }
+
+      .end-band {
+        padding: 64px 0;
+      }
+    }
+
+    @media (max-width: 639px) {
+      .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="/">Nightpost</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/">Overview</a>
+        <a href="/download">Download</a>
+        <a href="/security">Security and data</a>
+        <a href="/pricing">Pricing</a>
+      </nav>
+      <div class="lang-toggle" aria-label="Language"><b>EN</b> / UA</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section-row">
+      <div class="text-col">
+        <p class="eyebrow">Plans &amp; places</p>
+        <h1>Every place has its own page.</h1>
+        <p class="copy">Hours, menu and ratings on one page, set by whoever runs the place. Start a plan there in one tap.</p>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <img src="../../public/v7/clips/b14.webp" alt="Place page with hours, menu and Meet here">
+        </div>
+      </div>
+    </section>
+
+    <section class="section-row section-row--flip">
+      <div class="text-col">
+        <h2>Who’s in, right in the chat.</h2>
+        <p class="copy">A meetup card shows the place, the time and who’s going. One tap for I’m in, Maybe, I’m out or On my way.</p>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <img src="../../public/v7/clips/b08.webp" alt="Meetup card in a group chat">
+        </div>
+      </div>
+    </section>
+
+    <section class="section-row">
+      <div class="text-col">
+        <h2>Friends and plans on the map.</h2>
+        <p class="copy">See the friends who chose to share until a time they set, with places from people’s plans on the same map.</p>
+      </div>
+      <div class="phone-col">
+        <div class="phone phone--empty" data-shot-needed="Map with friends sharing location until a set time and places from plans">
+          <span>Recording needed</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-row section-row--flip">
+      <div class="text-col">
+        <h2>From the table to the bill.</h2>
+        <p class="copy">When the meal ends, everyone ticks their own dishes from the menu and settles their share in USDC.</p>
+      </div>
+      <div class="phone-col">
+        <div class="phone">
+          <img src="../../public/v7/clips/b09.webp" alt="Split sheet with dishes ticked">
+        </div>
+      </div>
+    </section>
+
+    <section class="also">
+      <p class="eyebrow">Also</p>
+      <ul class="also-list">
+        <li>Meet here starts a meetup card in your chat in one tap.</li>
+        <li>Hours and menu are set by whoever runs the place.</li>
+        <li>Ratings show on the place page.</li>
+      </ul>
+    </section>
+
+    <section class="end-band">
+      <h2>Get it on your phone.</h2>
+      <div class="end-actions">
+        <a class="btn-amber" href="/download">Download for Android</a>
+        <a class="link-secondary" href="/">All pages: Overview</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <span>© 2026 Nightpost</span>
+    <a href="/download">Download</a>
+    <a href="/security">Security and data</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/legal">Legal terms</a>
+    <a href="/account">Account</a>
+  </footer>
+</body>
+</html>

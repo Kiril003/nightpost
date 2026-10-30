@@ -1,0 +1,77 @@
+{
+  "v": 1,
+  "blocks": [
+    {
+      "type": "title",
+      "text": "Кафе Масарик"
+    },
+    {
+      "type": "about",
+      "text": "Кава й обіди біля площі."
+    },
+    {
+      "type": "address",
+      "text": "Masarykovo nám. 1, Ostrava",
+      "lat": 49.8356,
+      "lon": 18.2925
+    },
+    {
+      "type": "hours",
+      "rows": [
+        {
+          "day": "mon",
+          "open": "08:00",
+          "close": "22:00"
+        },
+        {
+          "day": "sat",
+          "open": "10:00",
+          "close": "01:00"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "title": "Кухня",
+      "token": "SOL",
+      "items": [
+        {
+          "id": "borshch",
+          "name": "Борщ",
+          "price": "0.025"
+        },
+        {
+          "id": "kava",
+          "name": "Кава",
+          "price": "0.01",
+          "note": "еспресо"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "token": "SOL",
+      "items": [
+        {
+          "id": "pyrih",
+          "name": "Пиріг",
+          "price": "0.015"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "id": "acoustic-fri",
+      "title": "Акустична пʼятниця",
+      "starts": "2026-10-23T19:00",
+      "ends": "2026-10-23T21:30",
+      "note": "Живий звук",
+      "price": "0.05",
+      "token": "SOL"
+    },
+    {
+      "type": "wallet",
+      "address": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+    }
+  ]
+}

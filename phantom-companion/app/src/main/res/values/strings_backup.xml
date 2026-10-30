@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_backup_saved">Backup saved · %1$s</string>
+    <string name="backup_sheet_title">Create backup</string>
+    <string name="backup_loss_title">Without a backup you lose:</string>
+    <string name="backup_loss_chats">Chats</string>
+    <string name="backup_loss_contacts">Contacts</string>
+    <string name="backup_loss_profiles">Profiles</string>
+    <string name="backup_loss_venues">Venue editing</string>
+    <string name="backup_loss_licences">Solana and Seeker licences</string>
+    <string name="backup_loss_handle">@handle for 30 days</string>
+    <string name="backup_loss_points">Points and ratings</string>
+    <string name="backup_loss_wallet">Wallet without its own export</string>
+    <string name="backup_loss_memory">Memory not on a computer</string>
+    <string name="backup_pass_hint">Passphrase (at least 12 characters)</string>
+    <string name="backup_pass_confirm_hint">Repeat passphrase</string>
+    <string name="backup_pass_mismatch">Passphrases do not match</string>
+    <string name="backup_pass_too_short">At least 12 characters required</string>
+    <string name="backup_save_action">Save backup</string>
+    <string name="backup_restore_title">Restore from backup</string>
+    <string name="backup_restore_pass_hint">Backup passphrase</string>
+    <string name="backup_restore_action">Restore</string>
+    <string name="backup_restore_err_wrong_pass">Wrong passphrase</string>
+    <string name="backup_restore_err_not_our_file">Not a Nightpost backup</string>
+    <string name="backup_restore_err_not_empty">Delete data on this phone first</string>
+    <string name="backup_restore_success">Restored: %1$d contacts, %2$d messages, %3$d profiles</string>
+    <string name="backup_restore_err_read">Can\'t open the file</string>
+    <string name="backup_restore_err_invalid">Backup is damaged</string>
+    <string name="backup_restore_err_failed">Restore failed</string>
+    <string name="profile_backup_old_phone">Erase the old phone</string>
+    <string name="backup_pass_show">Show password</string>
+    <string name="backup_pass_hide">Hide password</string>
+    <string name="backup_create_err">Couldn\'t save the backup</string>
+    <string name="profile_backup_restore">Restore from backup</string>
+    <string name="profile_backup_wallet_no_lock">Wallet not in backup · no screen lock</string>
+    <string name="profile_backup_wallet_needs_words">Wallet not in backup · open its words in Wallet</string>
+    <plurals name="profile_backup_media_left">
+        <item quantity="one">%d photo or file not restored</item>
+        <item quantity="other">%d photos or files not restored</item>
+    </plurals>
+</resources>

@@ -1,0 +1,419 @@
+{
+  "handle": "olha-melnyk",
+  "sample": true,
+  "lang": "uk",
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "shop",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Ольга Мельник",
+          "tagline": "Кераміка"
+        }
+      },
+      {
+        "id": "hero-1",
+        "kind": "id.hero",
+        "variant": "split",
+        "hidden": false,
+        "data": {
+          "headline": "Невеликі партії щоденної кераміки.",
+          "lede": "Кручу й поливаю вручну. Нова партія щосезону, гончарні заняття на вихідних.",
+          "image": {
+            "blob": "sample-hero-01",
+            "w": 1600,
+            "h": 1200,
+            "alt": "Ваза, миска й чашка з осінньої партії"
+          },
+          "chips": [
+            {
+              "id": "chip-stone",
+              "label": "Кераміка"
+            },
+            {
+              "id": "chip-work",
+              "label": "Заняття"
+            },
+            {
+              "id": "chip-pickup",
+              "label": "Самовивіз зі студії"
+            }
+          ],
+          "primary": "shop-7",
+          "primary_label": "Купити з партії",
+          "secondary": "book-9",
+          "secondary_label": "Записатися на заняття"
+        }
+      },
+      {
+        "id": "drop-2",
+        "kind": "deal.drop",
+        "variant": "staged",
+        "hidden": false,
+        "data": {
+          "title": "Осіння партія",
+          "note": "Тримаємо 10 хвилин, поки ви платите. Самовивіз у суботу або доставка містом.",
+          "products": "shop-7",
+          "total": 40,
+          "stages": [
+            {
+              "id": "st-close",
+              "circle": "close",
+              "opens": "2026-10-19T10:00"
+            },
+            {
+              "id": "st-friends",
+              "circle": "friends",
+              "opens": "2026-10-21T10:00"
+            },
+            {
+              "id": "st-social",
+              "circle": "social",
+              "opens": "2026-10-23T18:00"
+            },
+            {
+              "id": "st-all",
+              "circle": "everyone",
+              "opens": "2026-10-25T18:00"
+            }
+          ],
+          "closes": "2026-11-01T18:00"
+        }
+      },
+      {
+        "id": "reviews-3",
+        "kind": "com.reviews",
+        "variant": "summary",
+        "hidden": false,
+        "data": {
+          "title": "Відгуки",
+          "text": true,
+          "show": 3
+        }
+      },
+      {
+        "id": "meet-4",
+        "kind": "loc.meet_point",
+        "variant": "map_card",
+        "hidden": false,
+        "data": {
+          "point": {
+            "lat": 48.2049,
+            "lon": 16.3662
+          },
+          "text": "Липовий двір, 4"
+        }
+      },
+      {
+        "id": "msg-5",
+        "kind": "loc.message",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "on": true,
+          "who": "owner",
+          "hours": {
+            "open": "10:00",
+            "close": "18:00"
+          },
+          "title": "Написати Ользі",
+          "starters": [
+            {
+              "id": "ask-vase",
+              "text": "Шавлієва ваза ще буде?"
+            },
+            {
+              "id": "ask-set",
+              "text": "Можна набір на шістьох?"
+            }
+          ]
+        }
+      },
+      {
+        "id": "qr-6",
+        "kind": "pay.qr",
+        "variant": "compact",
+        "hidden": false,
+        "data": {
+          "label": "Напряму Ользі",
+          "amount": true
+        }
+      },
+      {
+        "id": "shop-7",
+        "kind": "cat.products",
+        "variant": "grid",
+        "hidden": false,
+        "data": {
+          "title": "Купити з партії",
+          "eyebrow": "Осіння партія",
+          "token": "USDC",
+          "items": [
+            {
+              "id": "p-mug",
+              "name": "Щоденна чашка",
+              "detail": "Залізно-брунатна · 350 мл",
+              "price": "32",
+              "stock": 3,
+              "group": "Чашки",
+              "image": {
+                "blob": "sample-mug-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Брунатна поливʼяна чашка"
+              }
+            },
+            {
+              "id": "p-bowl",
+              "name": "Миска для сніданку",
+              "detail": "Вівсяний крап · 15 см",
+              "price": "28",
+              "stock": 6,
+              "group": "Миски",
+              "image": {
+                "blob": "sample-bowl-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Кремова миска в крапинку"
+              }
+            },
+            {
+              "id": "p-vase",
+              "name": "Вазочка",
+              "detail": "Шавлієвий селадон · 16 см",
+              "price": "40",
+              "stock": 0,
+              "group": "Вази",
+              "image": {
+                "blob": "sample-vase-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Блідо-зелена вазочка"
+              }
+            },
+            {
+              "id": "p-plate",
+              "name": "Тарілка",
+              "detail": "Медова · 22 см",
+              "price": "24",
+              "stock": 5,
+              "group": "Тарілки",
+              "image": {
+                "blob": "sample-plate-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Тарілка під медовою поливою"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "svc-8",
+        "kind": "cat.services",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "title": "Заняття",
+          "eyebrow": "У студії",
+          "token": "USDC",
+          "items": [
+            {
+              "id": "w-basics",
+              "name": "Основи гончарства",
+              "duration": 120,
+              "price": "45",
+              "note": "Глина й випал включені",
+              "capacity": 6,
+              "image": {
+                "blob": "sample-workshop-01",
+                "w": 1400,
+                "h": 1050,
+                "alt": "Шість чашок сохнуть на дошці"
+              }
+            },
+            {
+              "id": "w-glaze",
+              "name": "Вечір поливи",
+              "duration": 180,
+              "price": "60",
+              "note": "Полийте дві свої роботи",
+              "capacity": 8,
+              "image": {
+                "blob": "sample-mug-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Брунатна поливʼяна чашка"
+              }
+            },
+            {
+              "id": "w-one",
+              "name": "Індивідуально",
+              "duration": 90,
+              "price": "70",
+              "note": "Ваш темп, ваш задум",
+              "capacity": 1,
+              "image": {
+                "blob": "sample-bowl-01",
+                "w": 1000,
+                "h": 1000,
+                "alt": "Кремова миска в крапинку"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "book-9",
+        "kind": "book.slots",
+        "variant": "day_strip",
+        "hidden": false,
+        "data": {
+          "services": "svc-8",
+          "slot": 30,
+          "buffer": 15,
+          "lead": 24,
+          "horizon": 30,
+          "auto": false,
+          "who": "everyone"
+        }
+      },
+      {
+        "id": "evt-10",
+        "kind": "evt.single",
+        "variant": "row",
+        "hidden": false,
+        "data": {
+          "title": "Відкриття печі",
+          "starts": "2026-11-08T18:00",
+          "note": "Зимова партія виходить із печі. Чай, без продажів.",
+          "capacity": 30,
+          "audience": "public"
+        }
+      },
+      {
+        "id": "rsvp-11",
+        "kind": "evt.rsvp",
+        "variant": "button_count",
+        "hidden": false,
+        "data": {
+          "event": "evt-10",
+          "waitlist": true,
+          "plus_ones": 1
+        }
+      },
+      {
+        "id": "wallet-12",
+        "kind": "pay.wallet",
+        "variant": "address_row",
+        "hidden": false,
+        "data": {
+          "address": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+        }
+      }
+    ]
+  },
+  "live": {
+    "at": "2026-10-22T12:00",
+    "network": "devnet",
+    "hero-1": {
+      "proof": {
+        "names": [
+          "Оля",
+          "Петро"
+        ],
+        "more": 3
+      }
+    },
+    "drop-2": {
+      "left": 14
+    },
+    "reviews-3": {
+      "rating": 4.9,
+      "count": 23,
+      "notes": [
+        {
+          "text": "Чашка, по яку тягнуся щоранку.",
+          "by": "Марта Коваль",
+          "what": "Щоденна чашка · вер"
+        },
+        {
+          "text": "Спокійно й точно. Виправляє руки, але глину лишає вам.",
+          "by": "Іван Бойко",
+          "what": "Основи гончарства · вер"
+        },
+        {
+          "text": "Миски повернулися политими за два тижні, як і обіцяли.",
+          "by": "Софія Шевчук",
+          "what": "Вечір поливи · сер"
+        }
+      ]
+    },
+    "book-9": {
+      "service": "w-basics",
+      "days": [
+        {
+          "date": "2026-10-24",
+          "times": [
+            {
+              "t": "10:00",
+              "left": 2
+            },
+            {
+              "t": "12:30",
+              "left": 0
+            },
+            {
+              "t": "15:00",
+              "left": 4
+            }
+          ]
+        },
+        {
+          "date": "2026-10-25",
+          "times": [
+            {
+              "t": "11:00",
+              "left": 3
+            }
+          ]
+        },
+        {
+          "date": "2026-10-26",
+          "times": []
+        },
+        {
+          "date": "2026-10-31",
+          "times": [
+            {
+              "t": "10:00",
+              "left": 6
+            }
+          ]
+        },
+        {
+          "date": "2026-11-01",
+          "times": [
+            {
+              "t": "11:00",
+              "left": 5
+            }
+          ]
+        }
+      ],
+      "booked": {
+        "name": "Оля",
+        "when": "суботу 10:00"
+      }
+    },
+    "rsvp-11": {
+      "going": 12
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "bounds": {
+    "maxLat": 58.0856,
+    "maxLon": 28.2415,
+    "minLat": 55.6747,
+    "minLon": 20.601
+  },
+  "files": [
+    {
+      "bytes": 228429,
+      "name": "places.tsv.gz",
+      "sha256": "f60071c3c934d64e5d9f5969624227da26ac7e3c325433a3be7b53f37a98e47b"
+    },
+    {
+      "bytes": 435128,
+      "name": "streets.tsv.gz",
+      "sha256": "2dce8a62d7c332937fda71492ee3d6fdd305b530f6215522d79b253c7d3a69d0"
+    }
+  ],
+  "home": {
+    "lat": 56.9494,
+    "lon": 24.1052,
+    "zoom": 12.0
+  },
+  "id": "LV",
+  "minAppBuild": 13,
+  "placesAsset": "places.tsv.gz",
+  "sources": [
+    {
+      "asset": "places.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "lv-places",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Латвія: місця"
+    },
+    {
+      "asset": "streets.tsv.gz",
+      "attribution": "© OpenStreetMap contributors",
+      "id": "lv-streets",
+      "license": "ODBL",
+      "role": "OVERLAY",
+      "source": "OpenStreetMap",
+      "title": "Латвія: вулиці"
+    }
+  ],
+  "streetsAsset": "streets.tsv.gz",
+  "title": "Латвія",
+  "version": 1
+}

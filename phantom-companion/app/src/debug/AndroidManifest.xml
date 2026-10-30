@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Лише debug: входи для adb. DUMP має лише shell.
+     SymbioteDebugReceiver — дієслова тіла без ПК; ChatProbeReceiver — хід у чаті PHANTOM
+     з мітками TurnClock (scripts/turn_bench.sh). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <receiver
+            android:name="local.phantom.companion.debug.SymbioteDebugReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP" />
+        <receiver
+            android:name="local.phantom.companion.debug.ChatProbeReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP" />
+        <receiver
+            android:name="local.phantom.companion.debug.HushProbeReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP" />
+    </application>
+</manifest>

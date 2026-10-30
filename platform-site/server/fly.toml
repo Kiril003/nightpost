@@ -1,0 +1,78 @@
+# Сервер ліцензій PHANTOM на Fly.io.
+#
+# Розгортається скриптом ../scripts/deploy-server.sh — він же переносить
+# секрети з .env, які в цей файл НЕ потрапляють і потрапити не мають.
+
+app = "phantom-license"
+primary_region = "fra"          # Франкфурт
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  SITE_ORIGINS = "https://phantom-os.dev,https://www.phantom-os.dev"
+
+# Ключ підпису переживає викладення тільки тут. Загубити цей том = визнати
+# недійсними всі видані сертифікати разом узяті. Знімки лишаються ввімкненими
+# саме тому: цей том має бути відновлюваним.
+[[mounts]]
+  source = "phantom_license_data"
+  destination = "/data"
+
+# Сховок листів живе на диску машини, а не на томі. Fly дає ОДИН том на
+# машину («only 1 volume supported»), а той том мусить зніматися у знімки:
+# на ньому єдиний примірник ключа підпису ліцензій. Знімок конверта порушив
+# би обіцянку «сім днів і зникає», тож конверти на том не йдуть.
+# Ціна — викладення стирає ще не забрані листи. Її гасить store_since_ms:
+# телефон бачить, що сховок народився після його вкидання, і кладе лист знову
+# одразу, а не через тиждень (див. tests/test_relay_survives_a_deploy.py).
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  # Машина НЕ засинає: перший після сну запит активації чекав би на холодний
+  # старт, а людина в цей момент стоїть із купленим ключем у руках.
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+  # Машина рівно ОДНА, і це не економія. Сховок — SQLite на томі цієї машини,
+  # а мапа «адреса → живе з'єднання» — у пам'яті її процесу. Друга машина мала
+  # б власний том і власну мапу: лист, покладений на одну, не існував би для
+  # забору й підписки на іншій. Тому `fly deploy --ha=false`, а скрипт
+  # викладення відмовляється йти далі, побачивши дві машини
+  # (tests/test_relay_is_one_machine.py).
+  #
+  # Стеля з'єднань: типова у Fly — 25, а кожен телефон із живим каналом тримає
+  # одне з'єднання весь час. Двадцять шостий телефон чекав би в черзі проксі.
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 800
+    hard_limit = 1000
+
+  [http_service.http_options.response.headers]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+
+[[http_service.checks]]
+  grace_period = "10s"
+  interval = "30s"
+  method = "GET"
+  timeout = "5s"
+  path = "/healthz"
+
+# Перевірка сховку — окремо від /healthz і НЕ в маршрутизації: збій тому
+# сховку видно в `fly checks list`, але машину з обігу він не виводить — інакше
+# разом зі сховком лягли б активації ключів.
+[checks.relay]
+  type = "http"
+  port = 8080
+  method = "GET"
+  path = "/relay/v2/health"
+  interval = "60s"
+  timeout = "5s"
+  grace_period = "10s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

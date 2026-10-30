@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_basemap_replace_button">Başka bir temel harita dosyasını elle ekle</string>
+    <string name="cloud_packs_title">BULUT PAKETLERİ</string>
+    <string name="cloud_packs_explainer">İnternetsiz kullanım için imzalı temel harita ve yol paketleri</string>
+    <string name="cloud_packs_loading">Katalog sorgulanıyor…</string>
+    <string name="cloud_packs_not_configured">Katalog adresi henüz ayarlanmadı.</string>
+    <string name="cloud_packs_empty">Katalog boş.</string>
+    <string name="cloud_packs_kind_basemap">TEMEL HARİTA</string>
+    <string name="cloud_packs_kind_road_mesh">YOLLAR VE ULAŞIM</string>
+    <string name="cloud_packs_size_baked">%1$s · oluşturuldu %2$s</string>
+    <string name="cloud_packs_size_only">%1$s</string>
+    <string name="cloud_packs_action_download">İndir</string>
+    <string name="cloud_packs_action_update">Güncelle</string>
+    <string name="cloud_packs_action_retry">Tekrar dene</string>
+    <string name="cloud_packs_state_checking">Kontrol ediliyor…</string>
+    <string name="cloud_packs_state_verifying">Sağlama toplamı doğrulanıyor…</string>
+    <string name="cloud_packs_state_installed">Yüklendi ✓</string>
+    <string name="cloud_packs_state_downloading">İndiriliyor… %1$d%% · %2$s / %3$s</string>
+    <string name="cloud_packs_metered_warning">Mobil veride.</string>
+    <string name="cloud_packs_action_metered_confirm">Yine de indir</string>
+    <string name="cloud_packs_action_cancel">İptal</string>
+    <string name="forge_packs_title">FORGE – YENİ NESİL PAKETLER</string>
+    <string name="forge_packs_kind_geocoder">YERLER VE ADRESLER</string>
+    <string name="forge_packs_kind_terrain">ARAZİ</string>
+    <string name="forge_packs_kind_basemap">PMTILES TEMEL HARİTA</string>
+    <string name="forge_packs_kind_transit">ULAŞIM SEFER SAATLERİ</string>
+    <string name="forge_packs_kind_places">ÜLKE YERLERİ VE SOKAKLARI</string>
+    <string name="forge_packs_kind_unsupported">bu sürüm bu türü henüz yükleyemiyor</string>
+</resources>

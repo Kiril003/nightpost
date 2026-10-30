@@ -1,0 +1,31 @@
+export const uk = {
+  'momentsX.empty': 'Ще немає моментів',
+  'momentsX.addShort': 'Додати',
+  'momentsX.quote': 'Момент',
+  'momentsX.photo': 'Фото',
+  'momentsX.video': 'Відео',
+  'momentsX.gone': 'Момент уже зник',
+  'dayX.calTitle': 'Календар телефона',
+  'dayX.calEvents': 'Події дня',
+  'dayX.calRead': 'Лише читання',
+  'dayX.calLocal': 'Лишається на телефоні',
+  'dayX.calAllow': 'Дозволити',
+  'dayX.calLater': 'Не зараз',
+  'dayX.next': 'Далі',
+};
+
+export const en: Record<keyof typeof uk, string> = {
+  'momentsX.empty': 'No moments yet',
+  'momentsX.addShort': 'Add',
+  'momentsX.quote': 'Moment',
+  'momentsX.photo': 'Photo',
+  'momentsX.video': 'Video',
+  'momentsX.gone': 'Moment is gone',
+  'dayX.calTitle': 'Phone calendar',
+  'dayX.calEvents': "Today's events",
+  'dayX.calRead': 'Read only',
+  'dayX.calLocal': 'Stays on the phone',
+  'dayX.calAllow': 'Allow',
+  'dayX.calLater': 'Not now',
+  'dayX.next': 'Next',
+};

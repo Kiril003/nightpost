@@ -1,0 +1,262 @@
+{
+  "ok": true,
+  "page": {
+    "v": 2,
+    "tone": "amber",
+    "look": "shop",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Linde Studio",
+          "kind": "ceramics",
+          "tagline": "Ceramics and coffee"
+        }
+      },
+      {
+        "id": "address-1",
+        "kind": "loc.address",
+        "variant": "map_line",
+        "hidden": false,
+        "data": {
+          "text": "12 Linden Street",
+          "point": {
+            "lat": 52.52,
+            "lon": 13.405
+          }
+        }
+      },
+      {
+        "id": "contact-21",
+        "kind": "loc.contact",
+        "variant": "rows",
+        "hidden": false,
+        "data": {
+          "phone": "+12025550142",
+          "email": "hello@linde.example",
+          "site": {
+            "url": "https://linde.example",
+            "label": "linde.example"
+          }
+        }
+      },
+      {
+        "id": "list-22",
+        "kind": "loc.list",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "items": [
+            {
+              "id": "pl-studio",
+              "name": "Studio",
+              "address": "12 Linden Street",
+              "hours": "Tue–Sat 10–18"
+            },
+            {
+              "id": "pl-shop",
+              "name": "Shop corner",
+              "address": "4 Market Square",
+              "hours": "Daily 9–20"
+            }
+          ]
+        }
+      },
+      {
+        "id": "transit-23",
+        "kind": "loc.transit",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "items": [
+            {
+              "id": "way-tram",
+              "mode": "tram",
+              "text": "Linden Street stop, 2 min walk"
+            },
+            {
+              "id": "way-bus",
+              "mode": "bus",
+              "text": "Market stop, 5 min walk"
+            },
+            {
+              "id": "way-car",
+              "mode": "car",
+              "text": "4 spaces in the yard"
+            },
+            {
+              "id": "way-bike",
+              "mode": "bike",
+              "text": "Rack at the door"
+            }
+          ]
+        }
+      },
+      {
+        "id": "service-area-24",
+        "kind": "loc.service_area",
+        "variant": "table",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "pickup": true,
+          "items": [
+            {
+              "id": "zone-a",
+              "area": "Zone A · centre",
+              "fee": "2",
+              "min": "15",
+              "eta": 45
+            },
+            {
+              "id": "zone-b",
+              "area": "Zone B · outer",
+              "fee": "4",
+              "min": "25",
+              "eta": 60
+            }
+          ]
+        }
+      },
+      {
+        "id": "exceptions-25",
+        "kind": "hrs.exceptions",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "items": [
+            {
+              "id": "ex-nov1",
+              "date": "2026-11-01",
+              "note": "Stocktake"
+            },
+            {
+              "id": "ex-dec24",
+              "date": "2026-12-24",
+              "hours": {
+                "open": "10:00",
+                "close": "14:00"
+              }
+            },
+            {
+              "id": "ex-dec25",
+              "date": "2026-12-25"
+            }
+          ]
+        }
+      },
+      {
+        "id": "happy-hour-26",
+        "kind": "hrs.happy_hour",
+        "variant": "card",
+        "hidden": false,
+        "data": {
+          "title": "Happy hour",
+          "days": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri"
+          ],
+          "hours": {
+            "open": "16:00",
+            "close": "18:00"
+          },
+          "percent": 30,
+          "note": "Filter coffee and pastries"
+        }
+      },
+      {
+        "id": "amenities-27",
+        "kind": "ame.amenities",
+        "variant": "chips",
+        "hidden": false,
+        "data": {
+          "tags": [
+            "wifi",
+            "power",
+            "terrace",
+            "play_corner",
+            "pets",
+            "crypto_pay"
+          ]
+        }
+      },
+      {
+        "id": "access-28",
+        "kind": "ame.access",
+        "variant": "chips",
+        "hidden": false,
+        "data": {
+          "tags": [
+            "step_free_entrance",
+            "accessible_toilet",
+            "quiet_hours"
+          ],
+          "note": "Door 90 cm wide. Quiet hour Tue 9–10."
+        }
+      },
+      {
+        "id": "rules-29",
+        "kind": "ame.rules",
+        "variant": "numbered",
+        "hidden": false,
+        "data": {
+          "items": [
+            {
+              "id": "rule-hands",
+              "text": "Wash hands before the wheel"
+            },
+            {
+              "id": "rule-glaze",
+              "text": "Glaze only in the glaze room"
+            },
+            {
+              "id": "rule-shelf",
+              "text": "Pieces left 30 days go to the free shelf"
+            }
+          ]
+        }
+      },
+      {
+        "id": "price-table-30",
+        "kind": "cat.price_table",
+        "variant": "table",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "pr-wheel",
+              "name": "Wheel time",
+              "price": "12",
+              "unit": "per hour"
+            },
+            {
+              "id": "pr-kiln",
+              "name": "Kiln firing",
+              "price": "8",
+              "unit": "per shelf"
+            },
+            {
+              "id": "pr-glaze",
+              "name": "Glaze",
+              "price": "6",
+              "unit": "per kg"
+            },
+            {
+              "id": "pr-clay",
+              "name": "Clay",
+              "price": "15",
+              "unit": "10 kg bag"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

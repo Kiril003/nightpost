@@ -1,0 +1,93 @@
+{
+  "about": "SelfMap (Kotlin) і self_map.py (Python): однакові операції з двох пристроїв дають однаковий стан у будь-якому порядку.",
+  "cases": [
+    {
+      "name": "пізніша правка місця перемагає, пристрій розводить однакову мить",
+      "a": [
+        {"op": "place", "id": "p-home", "at": 1000, "origin": "phone", "gone": false, "label": "Дім", "cat": "home", "lat": 50.45, "lon": 30.52, "address": null, "note": null},
+        {"op": "place", "id": "p-gym", "at": 3000, "origin": "phone", "gone": false, "label": "Зал", "cat": "custom", "lat": 50.4, "lon": 30.6, "address": "Хрещатик, 1", "note": null}
+      ],
+      "b": [
+        {"op": "place", "id": "p-home", "at": 2000, "origin": "pc", "gone": false, "label": "Хата", "cat": "home", "lat": 50.451, "lon": 30.521, "address": null, "note": "ключ у сусідки"},
+        {"op": "place", "id": "p-gym", "at": 3000, "origin": "pc", "gone": false, "label": "Спортзал", "cat": "favourite", "lat": 50.4, "lon": 30.6, "address": null, "note": null}
+      ],
+      "expect": {
+        "places": [
+          {"op": "place", "id": "p-gym", "at": 3000, "origin": "phone", "gone": false, "label": "Зал", "cat": "custom", "lat": 50.4, "lon": 30.6, "address": "Хрещатик, 1", "note": null},
+          {"op": "place", "id": "p-home", "at": 2000, "origin": "pc", "gone": false, "label": "Хата", "cat": "home", "lat": 50.451, "lon": 30.521, "address": null, "note": "ключ у сусідки"}
+        ],
+        "routes": [], "settings": [], "world": []
+      }
+    },
+    {
+      "name": "стирання — теж правка: новіше ховає, новіше збереження після нього повертає",
+      "a": [
+        {"op": "place", "id": "p1", "at": 1000, "origin": "phone", "gone": false, "label": "Кава", "cat": "favourite", "lat": 49.84, "lon": 24.03, "address": null, "note": null},
+        {"op": "route", "id": "r1", "at": 5000, "origin": "phone", "gone": false, "label": "До бабусі", "pts": [[49.84, 24.03], [49.85, 24.04], [49.86, 24.02]]}
+      ],
+      "b": [
+        {"op": "place", "id": "p1", "at": 2000, "origin": "pc", "gone": true},
+        {"op": "route", "id": "r1", "at": 4000, "origin": "pc", "gone": true}
+      ],
+      "expect": {
+        "places": [{"op": "place", "id": "p1", "at": 2000, "origin": "pc", "gone": true}],
+        "routes": [{"op": "route", "id": "r1", "at": 5000, "origin": "phone", "gone": false, "label": "До бабусі", "pts": [[49.84, 24.03], [49.85, 24.04], [49.86, 24.02]]}],
+        "settings": [], "world": []
+      }
+    },
+    {
+      "name": "показ себе: кожен ключ окремо, зняте — теж правка",
+      "a": [
+        {"op": "mapself", "key": "see:0123456789abcdef", "at": 1000, "origin": "phone", "value": "exact;0"},
+        {"op": "mapself", "key": "ghost:*", "at": 7000, "origin": "phone", "value": "1790000000000"},
+        {"op": "mapself", "key": "battery", "at": 1000, "origin": "phone", "value": "on"}
+      ],
+      "b": [
+        {"op": "mapself", "key": "see:0123456789abcdef", "at": 6000, "origin": "pc", "value": null},
+        {"op": "mapself", "key": "ghost:*", "at": 2000, "origin": "pc", "value": null},
+        {"op": "mapself", "key": "ghost:fedcba9876543210", "at": 2000, "origin": "pc", "value": "1790000360000"}
+      ],
+      "expect": {
+        "places": [], "routes": [],
+        "settings": [
+          {"op": "mapself", "key": "battery", "at": 1000, "origin": "phone", "value": "on"},
+          {"op": "mapself", "key": "ghost:*", "at": 7000, "origin": "phone", "value": "1790000000000"},
+          {"op": "mapself", "key": "ghost:fedcba9876543210", "at": 2000, "origin": "pc", "value": "1790000360000"},
+          {"op": "mapself", "key": "see:0123456789abcdef", "at": 6000, "origin": "pc", "value": null}
+        ],
+        "world": []
+      }
+    },
+    {
+      "name": "мій світ лише росте: повтор нічого не додає",
+      "a": [
+        {"op": "world", "cell": "q:30001:4410", "first": 1000, "last": 5000, "dwell": 600000},
+        {"op": "world", "cell": "q:30001:4411", "first": 2000, "last": 2000, "dwell": 0}
+      ],
+      "b": [
+        {"op": "world", "cell": "q:30001:4410", "first": 500, "last": 4000, "dwell": 900000},
+        {"op": "world", "cell": "q:30001:4410", "first": 500, "last": 4000, "dwell": 900000}
+      ],
+      "expect": {
+        "places": [], "routes": [], "settings": [],
+        "world": [
+          {"op": "world", "cell": "q:30001:4410", "first": 500, "last": 5000, "dwell": 900000},
+          {"op": "world", "cell": "q:30001:4411", "first": 2000, "last": 2000, "dwell": 0}
+        ]
+      }
+    }
+  ],
+  "refused": [
+    {"op": "place", "id": "p", "at": 1, "origin": "phone", "gone": false, "label": "Поза світом", "cat": "home", "lat": 91.0, "lon": 30.0, "address": null, "note": null},
+    {"op": "place", "id": "p", "at": 1, "origin": "phone", "gone": false, "label": "  ", "cat": "home", "lat": 50.0, "lon": 30.0, "address": null, "note": null},
+    {"op": "place", "id": "p", "at": 1, "origin": "phone", "gone": false, "label": "Тека", "cat": "folder", "lat": 50.0, "lon": 30.0, "address": null, "note": null},
+    {"op": "place", "id": "../x", "at": 1, "origin": "phone", "gone": true},
+    {"op": "place", "id": "p", "at": 0, "origin": "phone", "gone": true},
+    {"op": "route", "id": "r", "at": 1, "origin": "phone", "gone": false, "label": "Одна точка", "pts": [[50.0, 30.0]]},
+    {"op": "mapself", "key": "see:Вася", "at": 1, "origin": "phone", "value": "exact;0"},
+    {"op": "mapself", "key": "anything", "at": 1, "origin": "phone", "value": "x"},
+    {"op": "world", "cell": "q:1:2", "first": 5, "last": 4, "dwell": 0},
+    {"op": "world", "cell": "district:1:2", "first": 1, "last": 4, "dwell": 0},
+    {"op": "line", "id": "m1", "at": 1, "origin": "phone"}
+  ]
+}

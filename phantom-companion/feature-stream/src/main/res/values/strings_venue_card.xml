@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="venue_card_verified">Verified</string>
+    <string name="venue_card_hours">Hours</string>
+    <string name="venue_card_menu">Menu</string>
+    <string name="venue_card_menu_more">+%1$d</string>
+    <string name="venue_card_events">Events</string>
+    <string name="venue_card_going_count">%1$d going</string>
+    <string name="venue_card_going_of">%1$d of %2$d going</string>
+    <string name="venue_card_going">Going</string>
+    <string name="venue_card_youre_going">You’re going</string>
+    <string name="venue_card_full">Full</string>
+    <string name="venue_card_cancelled">Cancelled</string>
+    <string name="venue_card_ended">Ended</string>
+    <string name="venue_card_load_failed">Can’t load</string>
+    <string name="venue_card_retry">Retry</string>
+</resources>

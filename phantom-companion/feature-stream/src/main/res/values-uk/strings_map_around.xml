@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_around_title">Поруч</string>
+    <string name="map_around_friends">Друзі, що діляться місцем</string>
+    <string name="map_around_places">Місця поруч</string>
+    <string name="map_around_venues">Заклади Nightpost поруч</string>
+    <string name="map_around_sharing">діляться: %1$d</string>
+    <string name="map_around_now">щойно</string>
+    <string name="map_around_min_ago">%1$d хв тому</string>
+    <string name="map_around_h_ago">%1$d год тому</string>
+    <string name="map_around_area">район</string>
+    <string name="map_around_places_wait">Шукаю місця поруч…</string>
+    <string name="map_around_places_none">Поруч місць не знайдено</string>
+    <string name="map_around_places_unknown">Місця поруч зараз не завантажити</string>
+    <string name="map_around_no_fix">Увімкніть визначення місця, щоб бачити відстані й місця поруч</string>
+    <string name="map_around_rating">%1$s · оцінок: %2$d</string>
+    <string name="map_layers">Шари</string>
+    <string name="place_meet_here">Зустрітися тут</string>
+    <string name="place_send_chat">У чат</string>
+    <string name="place_send_title">Кому надіслати «%1$s»?</string>
+    <string name="place_send_none">Поки нема кому надіслати. Тут зʼявляться люди, яких ви додасте.</string>
+    <string name="place_sent">Надіслано: %1$s</string>
+    <string name="place_rating_label">Оцінка</string>
+    <string name="place_generic">Це місце</string>
+    <string name="map_peek_zoom_in">Наблизьте мапу, щоб побачити місця</string>
+    <string name="map_peek_all">Усі</string>
+    <plurals name="map_peek_count">
+        <item quantity="one">%1$d місце</item>
+        <item quantity="few">%1$d місця</item>
+        <item quantity="many">%1$d місць</item>
+        <item quantity="other">%1$d місця</item>
+    </plurals>
+    <string name="map_peek_collapse">Згорнути</string>
+    <string name="map_peek_expand">Розгорнути</string>
+</resources>

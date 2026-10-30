@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_basemap_replace_button">Tambahkan file peta dasar lain secara manual</string>
+    <string name="cloud_packs_title">PAKET CLOUD</string>
+    <string name="cloud_packs_explainer">Paket peta dasar dan jalan bertanda tangan untuk dipakai tanpa internet</string>
+    <string name="cloud_packs_loading">Menanyakan katalog…</string>
+    <string name="cloud_packs_not_configured">Alamat katalog belum diatur.</string>
+    <string name="cloud_packs_empty">Katalog kosong.</string>
+    <string name="cloud_packs_kind_basemap">PETA DASAR</string>
+    <string name="cloud_packs_kind_road_mesh">JALAN DAN TRANSIT</string>
+    <string name="cloud_packs_size_baked">%1$s · dibuat %2$s</string>
+    <string name="cloud_packs_size_only">%1$s</string>
+    <string name="cloud_packs_action_download">Unduh</string>
+    <string name="cloud_packs_action_update">Perbarui</string>
+    <string name="cloud_packs_action_retry">Coba lagi</string>
+    <string name="cloud_packs_state_checking">Memeriksa…</string>
+    <string name="cloud_packs_state_verifying">Memverifikasi checksum…</string>
+    <string name="cloud_packs_state_installed">Terpasang ✓</string>
+    <string name="cloud_packs_state_downloading">Mengunduh… %1$d%% · %2$s dari %3$s</string>
+    <string name="cloud_packs_metered_warning">Pakai data seluler.</string>
+    <string name="cloud_packs_action_metered_confirm">Tetap unduh</string>
+    <string name="cloud_packs_action_cancel">Batal</string>
+    <string name="forge_packs_title">FORGE – PAKET GENERASI BERIKUTNYA</string>
+    <string name="forge_packs_kind_geocoder">TEMPAT DAN ALAMAT</string>
+    <string name="forge_packs_kind_terrain">RELIEF</string>
+    <string name="forge_packs_kind_basemap">PETA DASAR PMTILES</string>
+    <string name="forge_packs_kind_transit">JADWAL TRANSIT</string>
+    <string name="forge_packs_kind_places">TEMPAT DAN JALAN NEGARA</string>
+    <string name="forge_packs_kind_unsupported">versi ini belum bisa memasang jenis ini</string>
+</resources>

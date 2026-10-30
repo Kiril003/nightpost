@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="self_remembered">Diingat: %1$s.</string>
+    <string name="self_heard_no_brain">Diingat: %1$s. AI belum diaktifkan.</string>
+    <string name="self_no_brain">AI belum diaktifkan, tetapi memori berfungsi.</string>
+    <string name="self_forgot">Dilupakan: %1$s. Aku tak mengingatnya lagi.</string>
+    <string name="self_forgot_nothing">Aku tak ingat apa pun tentang “%1$s”, tak ada yang dilupakan.</string>
+    <string name="self_forgot_all">Aku sudah melupakan semua yang kutahu tentangmu.</string>
+    <string name="self_forgot_all_empty">Aku belum tahu apa pun tentangmu, tak ada yang dilupakan.</string>
+    <string name="self_knows_nothing">Belum ada fakta tersimpan.</string>
+    <string name="self_knows_header">Ini yang kutahu tentangmu:</string>
+    <string name="self_knows_old">Catatan lama dari percakapan sebelumnya:</string>
+    <string name="self_knows_footer">Ucapkan “lupakan …” untuk menghapus entri.</string>
+    <string name="self_from_self">katamu sendiri</string>
+    <string name="self_from_heard">terdengar dalam percakapan</string>
+    <string name="self_from_guess">kesimpulanku</string>
+    <string name="self_ask_no_mind">Belum bisa: pikiranku belum aktif di ponsel ini.</string>
+    <string name="tutor_hello">Mulai dengan dua pertanyaan cepat.</string>
+    <string name="tutor_q_vars">Pertanyaan %1$d. Apa yang dicetak kode ini?\n\n%2$s\n\nJawab saja hasilnya.</string>
+    <string name="tutor_q_loops">Pertanyaan %1$d. Kalau yang ini?\n\n%2$s</string>
+    <string name="tutor_right">Benar.</string>
+    <string name="tutor_wrong">Hampir: dicetak %1$s (%2$s).</string>
+    <string name="tutor_task_intro">Sekarang tugas kecil: %1$s.</string>
+    <string name="tutor_send_code">Kirim kode sebagai pesan, atau ucapkan “stop”.</string>
+    <string name="task_vars">Deklarasikan variabel int age bernilai 30 dan cetak.</string>
+    <string name="task_cond">Untuk n: jika n &gt; 10 cetak \"many\", jika tidak \"few\".</string>
+    <string name="task_loops">Cetak angka 1 sampai 5, masing-masing di barisnya sendiri, dengan perulangan for.</string>
+    <string name="task_methods">Tulis metode Square yang menerima int dan mengembalikan kuadratnya.</string>
+    <string name="task_arrays">Buat array berisi 1, 2, 3 dan cetak jumlah elemennya.</string>
+    <string name="tutor_pass">Ya, itu menyelesaikannya. Bagus.</string>
+    <string name="tutor_fail">Hampir. Ini yang kulihat:</string>
+    <string name="tutor_retry">Perbaiki dan kirim lagi.</string>
+    <string name="tutor_read_not_run">Kode diperiksa secara statis, tanpa dijalankan.</string>
+    <string name="tutor_second_look">Satu pikiran lagi: %1$s</string>
+    <string name="tutor_tomorrow">Besok kita ulas “%1$s”.</string>
+    <string name="tutor_more">Mau lagi? Tulis “ajari aku C#”.</string>
+    <string name="tutor_review">Mari kita ulas “%1$s”. Apa yang dicetak kode ini?\n\n%2$s</string>
+    <string name="tutor_review_right">Ya! “%1$s” sekarang sudah lancar.</string>
+    <string name="tutor_review_wrong">Dicetak %1$s (%2$s).</string>
+    <string name="tutor_nothing_to_review">Semua topik yang dibahas sudah kuat.</string>
+    <string name="tutor_stop">Dihentikan. Tulis “ajari aku C#” untuk melanjutkan.</string>
+    <string name="tutor_reminder">Ulas %1$s di C#? Satu pertanyaan, tulis “ayo ulas”.</string>
+    <string name="tutor_issue_braces">• kurung kurawal { } tidak berpasangan</string>
+    <string name="tutor_issue_parens">• kurung ( ) tidak berpasangan</string>
+    <string name="tutor_issue_semicolon">• ada baris tanpa titik koma</string>
+    <string name="tutor_issue_quotes">• ada tanda kutip belum ditutup</string>
+    <string name="tutor_issue_need">• aku tak melihat %1$s</string>
+    <string name="tutor_topic_vars">variabel</string>
+    <string name="tutor_topic_cond">kondisi</string>
+    <string name="tutor_topic_loops">perulangan</string>
+    <string name="tutor_topic_methods">metode</string>
+    <string name="tutor_topic_arrays">array</string>
+    <string name="tutor_skill_ok">C#: %1$s — sudah paham</string>
+    <string name="tutor_skill_shaky">C#: %1$s — masih goyah</string>
+    <string name="visit_title">Nightpost</string>
+    <string name="visit_channel">Nightpost datang sendiri</string>
+    <string name="visit_action_not_now">Nanti saja</string>
+    <string name="visit_action_dont">Jangan lakukan</string>
+    <string name="visit_why_lesson">Mengulas topik kemarin “%1$s”.</string>
+    <string name="visit_why_reminder">Kenapa aku datang: kamu minta diingatkan.</string>
+    <string name="visit_not_now">Baik, aku kembali nanti.</string>
+    <string name="visit_dont">Pengingat pelajaran dimatikan.</string>
+    <string name="voice_heard_until">%1$s [orang itu menyela di sini, sisanya tak terdengar]</string>
+    <string-array name="voice_fillers">
+        <item>Sebentar.</item>
+        <item>Masih berpikir.</item>
+        <item>Hampir selesai.</item>
+    </string-array>
+    <string name="voice_long_wait">Ini agak lama, kukabari begitu siap.</string>
+    <string name="voice_acting">Kulihat dulu.</string>
+    <string name="voice_code_in_chat">Kodenya kutaruh di chat, lihat layarmu.</string>
+    <string name="voice_mic_off">Mikrofon mati, nyalakan di pengaturan lalu kita ngobrol.</string>
+    <string name="voice_no_permission">Untuk bicara lewat suara, izinkan Nightpost memakai mikrofon di pengaturan ponsel.</string>
+</resources>

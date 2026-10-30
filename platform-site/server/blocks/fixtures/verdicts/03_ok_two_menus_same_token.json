@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "page": {
+    "v": 2,
+    "tone": "sea",
+    "blocks": [
+      {
+        "id": "name-0",
+        "kind": "id.name",
+        "variant": "plain",
+        "hidden": false,
+        "data": {
+          "name": "Cafe X"
+        }
+      },
+      {
+        "id": "m1",
+        "kind": "cat.menu",
+        "variant": "two_col",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "d1",
+              "name": "Суп",
+              "price": "4.00"
+            }
+          ]
+        }
+      },
+      {
+        "id": "m2",
+        "kind": "cat.menu",
+        "variant": "list",
+        "hidden": false,
+        "data": {
+          "token": "USDC",
+          "items": [
+            {
+              "id": "d2",
+              "name": "Чай",
+              "price": "2.00"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

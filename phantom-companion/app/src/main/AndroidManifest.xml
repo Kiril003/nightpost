@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Tier 1 minimum permissions. Camera = QR scanner, mic = PTT voice,
+         INTERNET = REST + WS to phantom-os, foreground service = persistent
+         WS link, biometric = vault & ROOT-approve flows. Coarse location is
+         enough for wardriving GPS dot; fine location is opt-in later via
+         a separate Settings toggle that adds ACCESS_FINE_LOCATION. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- HIGHWAY DOMINANCE — Android Auto. NAVIGATION_TEMPLATES lets the host render
+         turn cards from this app; without it the CarAppService binds and then is
+         refused the moment it returns a NavigationTemplate. -->
+    <uses-permission android:name="androidx.car.app.NAVIGATION_TEMPLATES" />
+    <!-- Без цього setSurfaceCallback кидає SecurityException, і за банером
+         маневру лишається порожній прямокутник. -->
+    <uses-permission android:name="androidx.car.app.ACCESS_SURFACE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Без ЦЬОГО дозволу мікрофон у дзвінку не відкривається НІКОЛИ, за жодних
+         умов мережі й видимості. Chromium у WebView вимагає його В ПАРІ з
+         RECORD_AUDIO і без нього навіть не пробує взяти пристрій запису:
+
+           W cr_media: Requires MODIFY_AUDIO_SETTINGS and RECORD_AUDIO.
+                       No audio device will be available for recording
+
+         Заміряно 20.09 на A52: шість таких рядків за 0,35 с, відтворено двічі;
+         усі звукові потоки були лише відтворенням, жодного захоплення, режим
+         лишався MODE_NORMAL. Людині при цьому не казали нічого: тридцять
+         секунд тиші, далі рушій тихо вмирав за таймером.
+
+         Дозвіл звичайний (normal), питати в людини нема чого. Саме тому його
+         відсутність і непомітна: ні відмови, ні діалогу, просто порожнеча. -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <!-- AI Secretary call detection — requested at runtime by MainActivity
+         when SDK ≥ 31. Without this <uses-permission>, every cold launch
+         pops a permission dialog that auto-denies. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Без цього слід поза екраном має діри: система віддає позицію лише
+         доки екран увімкнений або крутиться служба переднього плану. -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <!-- SV-2 — Live Dialog foregroundServiceType="microphone" requires
+         this declaration on Android 14+. Operator-controlled — the
+         service only ever starts when Live Dialog is toggled on. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+    <!-- ХИБНА ПОЗИЦІЯ. Сам по собі цей дозвіл нічого не відмикає: підміну
+         вмикає ЛЮДИНА, обравши ФАНТОМ у розробницьких налаштуваннях як
+         застосунок фіктивної локації. Оголошення тут потрібне, щоб система
+         взагалі прийняла тестового провайдера. -->
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="MockLocation,ProtectedPermissions" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Без FCM листи й дзвінки тримає лише власна служба: Doze її присипляє. -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- СИРЕНА-4 — тривога вмикає погаслий екран. Дається при встановленні до
+         API 33 і окремо з 34; AirAlertNotifications щоразу питає
+         canUseFullScreenIntent(), бо знятий дозвіл система не повідомляє —
+         вона просто мовчки ігнорує намір. Використовується РІВНО на оголошення
+         повітряної тривоги над областю оператора, ніколи на повідомлення. -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
+
+    <!-- Reminders that actually go off. USE_EXACT_ALARM is auto-granted from
+         API 33, so setting one never sends the operator into system settings
+         (zero-config law); SCHEDULE_EXACT_ALARM covers 31–32. -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        android:maxSdkVersion="32" />
+
+    <!-- R5 Device Hands — lets phone.alarm/phone.timer set silently (EXTRA_SKIP_UI) -->
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+    <!-- R5.1 Device Hands fix — Android 11+ package-visibility filtering hid
+         every other app from us: getLaunchIntentForPackage returned null,
+         queryIntentActivities(LAUNCHER) came back near-empty, so the model's
+         [APPS:] context was blank and «відкрий застосунок» answered «такого
+         немає». Sideloaded operator companion — full visibility is the
+         product (device assistant), so QUERY_ALL_PACKAGES is justified;
+         the <queries> block is the belt to that suspender for the
+         launcher-enumeration path. -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <!-- mDNS LAN discovery — NsdManager on some Android versions needs multicast lock -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <!-- Tier 3+ Mesh & P2P -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Phase B — sensor permissions -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+
+    <!-- Phase 3-E — floating orb overlay -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Яскравість екрана через SettingsTool. Без цього рядка
+         Settings.System.canWrite() НІКОЛИ не поверне true: екран «Зміна
+         системних налаштувань» показує лише застосунки, які цей дозвіл
+         оголосили. Інструмент чесно відповідав permission_required, дати
+         той дозвіл було нікуди, і «зроби яскравіше» просто не працювало. -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- Оновлення поза Play. Дозвіл лише ДОЗВОЛЯЄ запропонувати: остаточне
+         «Встановити» тисне людина в системному діалозі, а до нього застосунок
+         звіряє sha256 файла з тією, що приїхала в ПІДПИСАНІЙ політиці. У
+         store-збірці рядок знімається (src/store/AndroidManifest.xml): там
+         оновлення привозить Play. -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- R5.1 — explicit visibility for the launcher-app enumeration path
+         (installedAppsProvider) and the Termux presence check that gates
+         ShellTool. Works even on builds where an OEM strips
+         QUERY_ALL_PACKAGES. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <package android:name="com.termux" />
+    </queries>
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+
+    <application
+        android:name=".PhantomApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/backup_rules"
+        android:fullBackupContent="@xml/backup_rules_legacy"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PhantomCompanion"
+        tools:targetApi="34">
+
+        <!-- HIGHWAY DOMINANCE — the car head. It projects the process-scoped
+             NavigationEngine; it does not own a route of its own. -->
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+        <meta-data
+            android:name="androidx.car.app.minCarApiLevel"
+            android:value="1" />
+        <meta-data
+            android:name="com.google.android.gms.car.notification.SmallIcon"
+            android:resource="@mipmap/ic_launcher" />
+
+
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.PhantomCompanion">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- singleTask: посилання з месенджера мусить потрапити в ТОЙ
+                 застосунок, що вже відкритий. Стандартний режим клав поверх
+                 стосу другу копію всього UI — з власним станом і власним
+                 «назад», і повідомлення після цього доходило в ту копію, якої
+                 оператор не бачить. -->
+            <!-- Код запрошення приходить у месенджері. Природна дія з ним —
+                 тапнути або поділитись у PHANTOM, а не шукати екран і
+                 вставляти вручну. Розмова так само має власну адресу:
+                 сповіщення про повідомлення мусить вести саме в неї. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="${linkScheme}" android:host="invite" />
+                <data android:scheme="${linkScheme}" android:host="peer" />
+                <!-- Група має власний хост: її id — це id групи, і за адресою
+                     розмови на двох її шукали серед контактів намарне. -->
+                <data android:scheme="${linkScheme}" android:host="peergroup" />
+                <!-- Дзвінок має власну адресу: тап по плашці й повноекранний
+                     намір ведуть на екран дзвінка, а не в перелік розмов. -->
+                <data android:scheme="${linkScheme}" android:host="call" />
+                <!-- Прийметься лише в debug — MainActivity першим рядком
+                     звіряє BuildConfig.DEBUG. -->
+                <data android:scheme="${linkScheme}" android:host="screen" />
+                <!-- Місце, яким поділились. Наше посилання першим, бо лише воно
+                     несе назву й відкриває НАШУ мапу, а не сайт у браузері. -->
+                <data android:scheme="${linkScheme}" android:host="map" />
+            </intent-filter>
+            <!-- Чужа мапа теж уміє надіслати місце. Приймаємо `geo:` і
+                 посилання osm.org, щоб лист, надісланий будь-чим, відкривався
+                 тут, а не в браузері. Окремим фільтром, бо host у них свій. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="geo" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="www.openstreetmap.org" />
+                <data android:scheme="https" android:host="openstreetmap.org" />
+            </intent-filter>
+            <!-- Лише /i і /i/: префікс /i забрав би в браузера /index.html.
+                 Перевірку проходять лише пакети з assetlinks.json сайту: відбитків
+                 .store і .seeker там ще немає, і в них посилання відкриває браузер. -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="phantom-os.dev" android:path="/i" />
+                <data android:scheme="https" android:host="phantom-os.dev" android:path="/i/" />
+                <data android:scheme="https" android:host="phantom-os.dev" android:path="/s" />
+                <data android:scheme="https" android:host="phantom-os.dev" android:path="/g" />
+                <data android:scheme="https" android:host="phantom-os.dev" android:path="/g/" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- Екран-сирена повноекранного наміру. taskAffinity="" — власний стос:
+             зі спільним із MainActivity тривога витягала б наперед увесь
+             застосунок, і після «Зрозумів» оператор лишався б у розблокованому
+             PHANTOM замість замкненого екрана. -->
+        <activity
+            android:name=".service.AirAlertFullScreenActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:theme="@style/Theme.PhantomCompanion" />
+
+        <activity
+            android:name=".ui.messenger.preview.PreviewViewerActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:theme="@style/Theme.PhantomCompanion" />
+
+        <!-- Persistent WS link to phantom-os. `dataSync` is the right service
+             type per Android 14 rules: we move JSON payloads (state pushes,
+             sensor batches) on a long-lived connection. NOT `connectedDevice`
+             (that's BT/USB), NOT `mediaPlayback` (no audio), NOT
+             `location` (GPS isn't the *primary* purpose — sensor batch is). -->
+        <!-- Тримає підміну живою і показує незмивне сповіщення: забути про
+             ввімкнену хибну позицію небезпечніше, ніж не мати її взагалі. -->
+        <service
+            android:name=".service.FalsePositionService"
+            android:foregroundServiceType="specialUse"
+            android:exported="false">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Keeps a user-chosen false position live for other apps" />
+        </service>
+
+        <service
+            android:name=".service.PhantomLinkService"
+            android:foregroundServiceType="dataSync"
+            android:exported="false" />
+
+        <!-- Сітка людей: слухач і маяк живуть за згорнутим застосунком.
+             Одноліток, якого чути лише поки відкритий чат, — не одноліток. -->
+        <service
+            android:name=".service.PeerMeshService"
+            android:foregroundServiceType="dataSync"
+            android:exported="false" />
+
+        <!-- HIGHWAY DOMINANCE — Android Auto CarAppService -->
+        <service
+            android:name="local.phantom.companion.feature.car.PhantomCarAppService"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:icon="@mipmap/ic_launcher"
+            android:foregroundServiceType="location">
+            <intent-filter>
+                <action android:name="androidx.car.app.CarAppService" />
+                <category android:name="androidx.car.app.category.NAVIGATION" />
+                <category android:name="androidx.car.app.category.FEATURE_CLUSTER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.car.app.action.NAVIGATE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="geo" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.google.android.gearhead.vanagon.category.CATEGORY_NAVIGATION" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="geo" />
+                <data android:scheme="google.navigation" />
+            </intent-filter>
+        </service>
+
+        <!-- SV-2 — Live Dialog continuous-listen foreground service. The
+             foregroundServiceType is `microphone` (added in API 34) so
+             Android 14+ correctly attributes the persistent recorder to
+             the service rather than nagging about background mic access.
+             The service starts only when the operator flips the Live
+             Dialog toggle; AppContainer drives lifecycle. -->
+        <service
+            android:name=".service.LiveDialogService"
+            android:foregroundServiceType="microphone"
+            android:exported="false" />
+
+        <service
+            android:name=".service.PeerCallService"
+            android:foregroundServiceType="microphone|camera"
+            android:exported="false" />
+
+        <service
+            android:name=".service.PeerCallConnectionService"
+            android:exported="true"
+            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE">
+            <intent-filter>
+                <action android:name="android.telecom.ConnectionService" />
+            </intent-filter>
+        </service>
+
+        <!-- NAV-FGS (brief 03 §4.1) — turn-by-turn foreground service.
+             `location` is the correct Android 14+ type: it keeps GPS delivery
+             at navigation grade and the process alive while the app is
+             backgrounded mid-drive. Kept in BOTH flavors — turn-by-turn
+             navigation is exactly the sanctioned use of a location FGS, so it
+             is not stripped from the store diet. AppContainer drives lifecycle
+             off navEngine.state.guiding. -->
+        <service
+            android:name=".service.NavigationService"
+            android:foregroundServiceType="location"
+            android:exported="false" />
+
+        <service
+            android:name="local.phantom.companion.feature.stream.ui.map.live.LiveShareService"
+            android:foregroundServiceType="location"
+            android:exported="false" />
+
+        <!-- СИРЕНА-3 — вартовий повітряних тривог. `specialUse`, бо Android 15
+             ріже `dataSync` до 6 год/добу, а тривога не працює за розкладом;
+             WorkManager із його мінімумом у 15 хв тут теж не годиться. -->
+        <service
+            android:name=".service.AirAlertService"
+            android:foregroundServiceType="specialUse"
+            android:exported="false">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="civil_defence_air_raid_alerting" />
+        </service>
+
+        <receiver
+            android:name=".service.WatchdogReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name=".service.BootReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".service.ReminderReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name=".service.ScheduledLetterReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name=".self.VisitActionReceiver"
+            android:exported="false" />
+
+        <!-- Відповідь із шторки. exported=false: писати від імені оператора
+             має право лише система, що доставила RemoteInput. -->
+        <receiver
+            android:name=".service.PeerReplyReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- «Прочитано» зі шторки: гасить плашку і зсуває межу прочитаного. -->
+        <receiver
+            android:name=".service.PeerMarkReadReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Дві кнопки дзвінка. exported=false: кадр «взяв»/«відмовив» їде
+             тому, хто дзвонить, і слати його має право лише система. -->
+        <receiver
+            android:name=".service.PeerCallActionReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- R2.3 — camera capture target for the composer attach flow -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- «Зупинити все» для спареного ПК: плитка в шторці, діє без ПК. -->
+        <service
+            android:name=".service.StopAllTile"
+            android:exported="true"
+            android:icon="@drawable/lc_stop_all"
+            android:label="@string/stop_all_tile"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".service.TalkTile"
+            android:exported="true"
+            android:icon="@drawable/lc_phantom_mark"
+            android:label="@string/call_phantom_title"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

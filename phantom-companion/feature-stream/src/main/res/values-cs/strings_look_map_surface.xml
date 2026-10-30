@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="indoor_level_title">Patro</string>
+    <string name="indoor_level_desc">Patro %1$s</string>
+    <string name="map_offline_all_maps">Všechny uložené mapy</string>
+    <string name="map_offline_all_maps_line">V telefonu: %1$d · stahuje se: %2$d</string>
+    <string name="map_offline_panel_title">Uložené mapy</string>
+    <string name="map_pc_layers_title">Z počítače</string>
+    <string name="map_offline_corridor_show">Zobrazit</string>
+</resources>

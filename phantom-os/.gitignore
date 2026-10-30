@@ -1,0 +1,123 @@
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+*.lock
+package-lock.json
+# phantom-mono: замок фронтенду В git — без нього `npm ci` у хмарі неможливий.
+!src/frontend/package-lock.json
+.venv/
+venv/
+.env
+.env.local
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+coverage/
+.coverage
+htmlcov/
+.pio/build/
+.pio/.cache/
+*.db
+*.db-journal
+*.db.bak.*
+*.enc
+ghost_*.enc
+.DS_Store
+Thumbs.db
+*.log
+.claude/worktrees/
+.omc/
+*.tsbuildinfo
+src/frontend/tailwind.config.d.ts
+src/frontend/tailwind.config.js
+src/frontend/vite.config.d.ts
+src/frontend/vite.config.js
+
+
+# Playwright e2e artifacts
+src/frontend/playwright-report/
+src/frontend/test-results/
+src/frontend/.playwright/
+
+# ChromaDB per-collection data dirs (UUID-named) AND the chroma.sqlite3
+# metadata DB. Day-3 D3-C-8 (audit-2026-04-30): chroma.sqlite3 was
+# previously tracked "for the schema" — but the schema is created by
+# the persistent client on first instantiation (`init_chroma_eager`
+# at lifespan), so checking it in only meant operator data (collection
+# metadata, sealed embeddings) ended up in the commit graph. The
+# audit's recommendation was to untrack and rely on lifespan
+# bootstrap; that's what the gitignore now enforces.
+src/backend/chroma_data/chroma.sqlite3
+src/backend/chroma_data/chroma.sqlite3-journal
+src/backend/chroma_data/chroma.sqlite3-shm
+src/backend/chroma_data/chroma.sqlite3-wal
+src/backend/chroma_data/*/
+# Day-4 Wave-2 audit fix: pytest sometimes creates ./chroma_data at the
+# repo root (CWD-dependent). Never commit operator data anywhere in the
+# tree.
+chroma_data/
+**/chroma_data/
+
+# Voice models: large pretrained blobs (Piper UA ~73 MB, Vosk UK ~400 MB)
+# stay out of git; fetched via setup / manual download. Silero VAD
+# (~2.3 MB) is small enough to commit for a self-contained repo (Phase 11b).
+src/backend/voice/models/piper/
+src/backend/voice/models/vosk-model-uk-v3/
+src/backend/voice/models/vosk-model-uk-v3.zip
+
+# Phase 15: HuggingFace Whisper checkpoints (large) and converted ONNX/QNN
+# bundles. Both fetched/built locally via scripts/convert_whisper_to_qnn.py.
+src/backend/voice/models/whisper-turbo-hf/
+src/backend/voice/models/whisper-small-qnn/
+src/backend/voice/models/whisper-small-hf/
+src/backend/voice/models/whisper-turbo-qnn/
+
+# Phase 15b: MMS-1B per-language bundles (one ~280 MB .bin per lang) and
+# raw AI Hub compile assets. All built locally via
+# scripts/aihub_compile_mms.py / aihub_compile_whisper_turbo.py.
+src/backend/voice/models/mms-*-qnn/
+aihub_assets/
+aihub_assets_*/
+src/backend/test_script/
+src/frontend/chroma_data/
+
+# F0.2 — root scratch/fix scripts must never return (repo-hygiene law)
+/scratch.py
+/fix_fasttrack.py
+/refactor_imports.py
+/*_flake8.log
+/*_vulture.log
+
+# Ruflo / claude-flow swarm artifacts (Day-4 onwards)
+.claude/
+.claude-flow/
+.swarm/
+.swarm-temp/
+.ruflo-cache/
+.swarm.backup-*/
+
+# Day-4 V-2 (ADR-DSH-002) — dev-mode data root for chroma / sqlite /
+# voice_models / workspace caches. Packaged builds resolve under
+# platformdirs.user_data_dir, which lives outside the repo by design.
+.phantom-data/
+
+# G0.1 (PHANTOM_FORGE_PLAN Part II): graphify code graph is a regenerable
+# ~50MB local artifact (`graphify update .`), not a commit-worthy blob.
+# Same precedent as phantom-companion's .gitignore.
+graphify-out/
+src/frontend/polis-preview.html
+src/frontend/src/polis-preview.tsx
+
+# Симлінк на спільні node_modules (так у всіх веб-деревах: один установлений
+# набір на PHANTOM_OS_BLUEPRINT/phantom-os-messenger). Рядок `node_modules/`
+# вище його НЕ ловить: зі скісною він збігається лише з КАТАЛОГОМ, а це
+# симлінк — і він стирчав у `git status` як недоданий, чекаючи, поки хтось
+# зробить `git add -A`.
+src/frontend/node_modules
+
+# Застосунок ПК фіксує версії tauri саме цим файлом (див. src-tauri/.gitignore).
+!/src/frontend/src-tauri/Cargo.lock

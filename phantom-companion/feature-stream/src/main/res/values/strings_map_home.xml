@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_search_field">Search the map</string>
+    <string name="map_me">I am here</string>
+    <string name="map_my_people">My people</string>
+    <string name="map_shelters">Shelters</string>
+    <string name="map_loading">The map is loading</string>
+    <string name="map_sheet_style">Map look</string>
+    <string name="map_sheet_offline">Save this area for offline use</string>
+    <string name="map_people_none">Nobody is sharing their location with you yet</string>
+    <string name="map_sheet_car">Phone in the car</string>
+    <string name="map_sheet_saved">Saved areas</string>
+    <string name="map_home_search_hint">Search places and people</string>
+    <string name="map_chip_coffee">Coffee</string>
+    <string name="map_chip_food">Food</string>
+    <string name="map_chip_tonight">Tonight</string>
+    <string name="map_chip_groceries">Groceries</string>
+    <string name="map_chip_pharmacy">Pharmacy</string>
+    <string name="map_chip_transit">Transit</string>
+    <string name="map_search_this_area">Search this area</string>
+    <string name="map_tray_plans">Plans</string>
+    <string name="map_tray_meet">Meet</string>
+    <string name="map_state_allow_location">Allow location</string>
+    <string name="map_invite_empty">No one nearby</string>
+</resources>

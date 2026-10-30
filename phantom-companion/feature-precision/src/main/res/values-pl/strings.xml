@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_basemap_replace_button">Wgraj ręcznie inny plik mapy bazowej</string>
+    <string name="cloud_packs_title">PACZKI Z CHMURY</string>
+    <string name="cloud_packs_explainer">Podpisane paczki map bazowych i dróg do użycia bez internetu</string>
+    <string name="cloud_packs_loading">Pytam katalog…</string>
+    <string name="cloud_packs_not_configured">Adres katalogu nie jest jeszcze skonfigurowany.</string>
+    <string name="cloud_packs_empty">Katalog jest pusty.</string>
+    <string name="cloud_packs_kind_basemap">MAPA BAZOWA</string>
+    <string name="cloud_packs_kind_road_mesh">DROGI I TRANSPORT</string>
+    <string name="cloud_packs_size_baked">%1$s · zbudowano %2$s</string>
+    <string name="cloud_packs_size_only">%1$s</string>
+    <string name="cloud_packs_action_download">Pobierz</string>
+    <string name="cloud_packs_action_update">Aktualizuj</string>
+    <string name="cloud_packs_action_retry">Spróbuj ponownie</string>
+    <string name="cloud_packs_state_checking">Sprawdzam…</string>
+    <string name="cloud_packs_state_verifying">Sprawdzam sumę kontrolną…</string>
+    <string name="cloud_packs_state_installed">Zainstalowano ✓</string>
+    <string name="cloud_packs_state_downloading">Pobieram… %1$d%% · %2$s z %3$s</string>
+    <string name="cloud_packs_metered_warning">Na danych mobilnych.</string>
+    <string name="cloud_packs_action_metered_confirm">Pobierz mimo to</string>
+    <string name="cloud_packs_action_cancel">Anuluj</string>
+    <string name="forge_packs_title">FORGE – PACZKI NOWEJ GENERACJI</string>
+    <string name="forge_packs_kind_geocoder">MIEJSCA I ADRESY</string>
+    <string name="forge_packs_kind_terrain">RZEŹBA TERENU</string>
+    <string name="forge_packs_kind_basemap">MAPA BAZOWA PMTILES</string>
+    <string name="forge_packs_kind_transit">ROZKŁADY JAZDY</string>
+    <string name="forge_packs_kind_places">MIEJSCA I ULICE KRAJU</string>
+    <string name="forge_packs_kind_unsupported">ta wersja nie potrafi jeszcze zainstalować tego typu</string>
+</resources>

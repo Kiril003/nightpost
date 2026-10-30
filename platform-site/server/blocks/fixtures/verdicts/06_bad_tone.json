@@ -1,0 +1,10 @@
+{
+  "ok": false,
+  "refused": "bad_choice",
+  "at": "tone",
+  "page": {
+    "v": 2,
+    "tone": "neon_pink",
+    "blocks": []
+  }
+}

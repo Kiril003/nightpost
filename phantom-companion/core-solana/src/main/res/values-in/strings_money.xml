@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_faucet_get">Dapatkan USDC uji coba</string>
+    <string name="sol_faucet_off">Tidak tersedia</string>
+    <string name="sol_faucet_wait">Sudah diterima</string>
+    <string name="sol_faucet_retry">Coba nanti</string>
+    <string name="sol_faucet_sending">Meminta</string>
+    <string name="sol_note_label">Catatan</string>
+</resources>

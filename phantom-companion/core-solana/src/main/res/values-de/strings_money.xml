@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sol_faucet_get">Test-USDC holen</string>
+    <string name="sol_faucet_off">Nicht verfügbar</string>
+    <string name="sol_faucet_wait">Schon erhalten</string>
+    <string name="sol_faucet_retry">Später versuchen</string>
+    <string name="sol_faucet_sending">Wird angefordert</string>
+    <string name="sol_note_label">Notiz</string>
+</resources>

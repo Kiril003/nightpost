@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Картка людини: те, що каже сам екран про себе. -->
+
+    <string name="peer_card_here">тут</string>
+    <string name="peer_card_in_touch">на звʼязку, не поруч</string>
+    <string name="peer_card_quiet">не чути</string>
+
+    <!-- Пояснення звірки — абзац, а не рядок. Згорнуте до двох рядків воно не
+         відпихає цифри й дії за край; розгорнути можна одним дотиком. -->
+    <string name="peer_card_how">як це працює</string>
+    <string name="peer_card_how_hide">згорнути</string>
+
+    <!-- Імʼя довше за межу приймання. Мовчазний обріз — неправда про людину:
+         саме за іменем людина звіряє, з ким говорить. -->
+    <string name="peer_card_name_shortened">надіслане імʼя довше — показано скорочено</string>
+
+    <!-- Картка людини на мапі. «Станом на» — час ВИМІРУ на її вузлі, ніколи не
+         час доставки: точка з минулого не має права вдягати живий бейдж. -->
+    <string name="peer_point_kicker">Контакт</string>
+    <string name="peer_point_now">зараз тут</string>
+    <string name="peer_point_as_of">станом на %1$s</string>
+    <string name="peer_point_away">%1$s звідси</string>
+
+    <string name="peer_card_name_unreadable">Імʼя не читається. Назвіть контакт самі</string>
+
+    <string name="peer_where_section">Люди</string>
+    <string name="peer_where_level_district">район</string>
+    <string name="peer_where_level_quarter">квартал</string>
+    <string name="peer_where_level_exact">точне місце</string>
+    <string name="peer_where_shows">Показує вам: %1$s</string>
+    <string name="peer_where_near_same_district">У тому ж районі, що й ви</string>
+    <string name="peer_where_near_same">Зовсім поруч</string>
+    <string name="peer_where_near_near">Поруч</string>
+    <string name="peer_where_near_far">Далеко</string>
+    <string name="peer_where_near_unknown">Де ви самі — невідомо, тож «поруч чи далеко» не скажемо</string>
+    <string name="peer_where_age_now">щойно</string>
+    <string name="peer_where_age_min">%1$d хв тому</string>
+    <string name="peer_where_age_hours">%1$d год тому</string>
+    <string name="peer_where_write">Написати</string>
+    <string name="peer_where_seen_title">Хто мене бачить</string>
+    <string name="peer_where_seen_nobody">Зараз вас ніхто не бачить</string>
+    <string name="peer_where_seen_lede">Доступ надається окремо на 30 хв без історії</string>
+    <string name="peer_where_seen_count_none">ніхто</string>
+    <plurals name="peer_where_seen_count">
+        <item quantity="one">%1$d людина</item>
+        <item quantity="few">%1$d людини</item>
+        <item quantity="many">%1$d людей</item>
+        <item quantity="other">%1$d людини</item>
+    </plurals>
+    <string name="peer_where_choice_none">Нічого</string>
+    <string name="peer_where_choice_district">Район</string>
+    <string name="peer_where_choice_quarter">Квартал</string>
+    <string name="peer_where_choice_exact">Точно</string>
+    <string name="peer_where_not_proven">Потрібен попередній обмін повідомленнями</string>
+    <string name="peer_where_empty">Ще нікого немає</string>
+    <string name="peer_where_add_person">Додати людину</string>
+    <string name="peer_where_vanish">Припинити ділитися з усіма</string>
+    <string name="peer_where_vanish_confirm_title">Зникнути для всіх?</string>
+    <string name="peer_where_vanish_confirm_body">Усі втратять ваше місце</string>
+    <string name="peer_where_cancel">Скасувати</string>
+    <string name="peer_card_away_dir">%1$s %2$s від вас</string>
+    <string name="peer_card_dirs">на північ,на північний схід,на схід,на південний схід,на південь,на південний захід,на захід,на північний захід</string>
+    <string name="peer_card_show_me">Показати, де я</string>
+    <string name="peer_state_home">Вдома</string>
+    <string name="peer_state_work">На роботі</string>
+    <string name="peer_state_vehicle">У дорозі</string>
+    <string name="peer_state_foot">Пішки</string>
+    <string name="peer_state_low_battery">телефон сідає</string>
+    <string name="peer_state_stale">давно не оновлювалось</string>
+    <string name="peer_act_wave">Помахати</string>
+    <string name="peer_act_call_here">Покликати сюди</string>
+    <string name="peer_act_meet_middle">Зустрітися на півдорозі</string>
+    <string name="peer_words_wave">👋</string>
+    <string name="peer_words_call_here">Приходь сюди</string>
+    <string name="peer_words_meet_middle">Зустрінемось на півдорозі?</string>
+    <string name="peer_words_arrived">Я на місці</string>
+    <string name="peer_notice_waved">Ви помахали: %1$s</string>
+    <string name="peer_notice_called">%1$s отримає, де ви зараз</string>
+    <string name="peer_notice_meet">Точка на півдорозі — у %1$s. Коли доїдете, скажу сам</string>
+    <string name="peer_notice_arrival">Коли доїдете, скажу %1$s</string>
+    <string name="peer_notice_not_sent">Не надіслано: з цією людиною ще немає розмови</string>
+    <string name="peer_ghost_from_all">Сховатися від усіх</string>
+    <string name="peer_ghost_1h">на годину</string>
+    <string name="peer_ghost_3h">на 3 години</string>
+    <string name="peer_ghost_morning">до ранку</string>
+    <string name="peer_ghost_on_all">Ви сховані від усіх до %1$s</string>
+    <string name="peer_ghost_on_one">Сховано до %1$s</string>
+    <string name="peer_ghost_row">Сховатися на 3 год</string>
+    <string name="peer_ghost_back">Повернутися</string>
+    <string name="peer_ghost_explain">Контакти бачитимуть лише вашу останню відому точку</string>
+    <string name="peer_battery_title">Казати, коли телефон сідає</string>
+    <string name="peer_battery_body">Ті, хто вас бачить, побачать знак, коли заряду лишиться мало.</string>
+    <string name="peer_near_title">Поруч з вами</string>
+    <string name="peer_group_title">Тут разом: %1$d</string>
+    <string name="my_world_title">Мій світ</string>
+    <string name="my_world_lede">Зберігається лише на цьому телефоні</string>
+    <plurals name="my_world_quarters">
+        <item quantity="one">%1$d квартал</item>
+        <item quantity="few">%1$d квартали</item>
+        <item quantity="many">%1$d кварталів</item>
+        <item quantity="other">%1$d кварталу</item>
+    </plurals>
+    <plurals name="my_world_cities">
+        <item quantity="one">%1$d місто</item>
+        <item quantity="few">%1$d міста</item>
+        <item quantity="many">%1$d міст</item>
+        <item quantity="other">%1$d міста</item>
+    </plurals>
+    <string name="my_world_frequent">Ваші часті місця</string>
+    <string name="my_world_hours">%1$d год тут</string>
+    <string name="my_world_minutes">%1$d хв тут</string>
+    <string name="my_world_place">Часте місце</string>
+    <string name="my_world_empty">Світ відкривається, коли ви рухаєтесь. Поки що тут порожньо.</string>
+    <string name="my_world_show">Показати на мапі</string>
+    <string name="my_world_hide">Прибрати з мапи</string>
+    <string name="my_world_share">Поділитися</string>
+    <string name="my_world_share_text">Мій світ у Nightpost: %1$s, %2$s</string>
+    <string name="my_world_forget">Забути все</string>
+    <string name="my_world_forget_title">Забути мій світ?</string>
+    <string name="my_world_forget_body">Видалить відкриті квартали й часті місця</string>
+    <string name="meet_open">Зустріч з кількома</string>
+    <string name="meet_title">Зустріч</string>
+    <string name="meet_pick">Кого кличете</string>
+    <string name="meet_here">Тут, де я</string>
+    <string name="meet_middle_all">На півдорозі між усіма</string>
+    <string name="meet_send">Покликати</string>
+    <string name="meet_words">Зустрічаємось тут</string>
+    <string name="meet_there">на місці</string>
+    <string name="meet_on_way">у дорозі · %1$s до точки</string>
+    <string name="meet_to_go">%1$s до точки</string>
+    <string name="meet_near">уже неподалік</string>
+    <string name="meet_far">поки далеко</string>
+    <string name="meet_unseen">не показує, де зараз</string>
+    <string name="meet_end">Завершити зустріч</string>
+    <string name="meet_notice">Покликали: %1$s. Коли доїдете, скажу сам</string>
+    <string name="meet_nobody">Немає відомих позицій учасників</string>
+    <string name="circle_title">Ваші люди</string>
+    <string name="circle_alert">під тривогою · %1$s</string>
+    <string name="circle_quiet">тиша · %1$s</string>
+    <string name="circle_quiet_bare">тиша</string>
+    <string name="circle_safe">Я в безпеці — сказати своїм</string>
+    <string name="circle_safe_words">Я в безпеці</string>
+    <string name="circle_no_listeners">«Я в безпеці» можна сказати тим, кому ви показуєте, де ви.</string>
+    <plurals name="circle_safe_told">
+        <item quantity="one">Сказали %1$d людині</item>
+        <item quantity="few">Сказали %1$d людям</item>
+        <item quantity="many">Сказали %1$d людям</item>
+        <item quantity="other">Сказали %1$d людини</item>
+    </plurals>
+</resources>

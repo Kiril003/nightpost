@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "local.phantom.companion",
+      "sha256_cert_fingerprints": [
+        "D2:49:E0:FB:73:74:3D:21:90:47:FC:18:EC:E1:EA:FF:DF:19:38:92:F1:C8:59:A6:B7:AF:46:CD:98:BE:43:57"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "local.phantom.companion.debug",
+      "sha256_cert_fingerprints": [
+        "3D:A9:F8:26:03:B4:A9:96:CD:F1:A4:E1:19:F4:FF:48:78:45:2C:5C:6E:A4:CF:36:6C:2C:75:C2:20:41:34:C0"
+      ]
+    }
+  }
+]
