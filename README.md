@@ -1,110 +1,313 @@
-# Nightpost
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/img/mark-dark.svg">
+    <img alt="Nightpost" src="docs/img/mark-light.svg" width="52">
+  </picture>
+</p>
 
-**Everything a phone is for, joined into one space.** Talk and share, people in circles, the map, your day, money and points, places and organisers, and an assistant that works across all of it.
+<h1 align="center">Nightpost</h1>
 
-This repository is the complete product: the Android app, the messenger that ships inside it, the server behind it, the site with its page Builder, and the Solana programs.
+<p align="center">
+  <b>Your people, places, plans and money — in one flow.</b><br>
+  <sub>Encrypted conversations · Multi-profile life spaces · Vector map &amp; routing · Structured page Builder &amp; CRM · Instant USDC/EURC settlement on Solana</sub>
+</p>
 
-| | |
-|---|---|
-| **App** | Android 10+, Kotlin + Compose shell with a React messenger inside, two flavours (`field`, `store`) |
-| **Server** | FastAPI on our own VM at `api.phantom-os.dev`, Postgres |
-| **Site** | [phantom-os.dev](https://phantom-os.dev), with the Builder for places, organisers and creators |
-| **Money** | Solana devnet: USDC, EURC, SOL. The mainnet switch exists behind an explicit confirmation and is off |
-| **Code** | ~1.09 M lines, ~2,800 test files, 26 Android modules |
+<p align="center">
+  <a href="https://phantom-os.dev"><img alt="Website" src="https://img.shields.io/badge/site-phantom--os.dev-F2A93B?style=flat-square&labelColor=0A0C10"></a>
+  <img alt="Build 35" src="https://img.shields.io/badge/Android_build-35_(vc35)-F2A93B?style=flat-square&labelColor=0A0C10">
+  <img alt="Android 10+" src="https://img.shields.io/badge/Android-10%2B_(API_29--36)-E9D2A6?style=flat-square&labelColor=0A0C10">
+  <img alt="Solana devnet" src="https://img.shields.io/badge/Solana-devnet_(Escrow_%2B_Pay)-14F195?style=flat-square&labelColor=0A0C10">
+  <img alt="Tests" src="https://img.shields.io/badge/test_suites-2%2C800%2B-5FD08A?style=flat-square&labelColor=0A0C10">
+</p>
+
+<p align="center">
+  <img src="docs/img/hero-banner.jpg" alt="Nightpost flagship overview: Chats & Your Day, Life Profiles, Vector Map & Places, and Split & Settle in USDC on Solana" width="100%">
+</p>
+
+---
+
+## Why Nightpost Exists
+
+Going out with friends, running a local studio, or coordinating your day shouldn't force you across **six disconnected apps** — a messenger to talk, a map to find the venue, a browser to check hours or book a slot, a poll to agree on time, a notes app to track tasks, and a banking or split app to chase who owes what. At every hop, context leaks.
+
+**Nightpost joins the entire loop into one private space:**
+1. **Context stays in the conversation.** A meetup card, a live place sheet from the map, an itemized bill split, and an AI assistant live directly inside the chat thread.
+2. **Real-world identity, not a single global dump.** You aren't the same person to your family, your clients, and your study group. Nightpost gives you **Circles** and **Multiple Life Profiles** (`Personal`, `Work`, `Family`, `Studio`, `Temporary`) with one-tap switching and separate inboxes.
+3. **Every business page is structured data, not dead HTML.** With the built-in **Builder**, cafés, studios, creators, and schools publish pages where services, time slots, prices, and stock are typed fields — queryable by the assistant, pinned on the vector map, and connected straight to the owner's chat inbox as a zero-setup CRM.
+4. **Social money that settles in seconds.** Split a group bill by dish, hold a booking deposit in an on-chain escrow vault (`nightpost_bill`), or send USDC/EURC directly inside a conversation — signed by your fingerprint in the Android Keystore or via Solana Mobile Seed Vault.
+
+---
+
+## Product Tour — Build 35 on Android
+
+### 1. Conversations, Moments, and Your Day
+No phone number or email required to start — people connect via cryptographic invites or `@handle` directory lookup. Conversations support E2E sealed envelopes, view-once photos (`FLAG_SECURE` hardware screenshot block), built-in photo markup editor, custom chat folders, conditional send (*"Send when online"* or scheduled recurring windows), voice/video calls with call privacy gates, Spaces (forums & channels), and audience-scoped **Moments**.
+
+At the top of your chat list sits **Your Day** — pulling together your current schedule, upcoming plans, and promises automatically extracted from your conversations.
 
 <table>
-<tr>
-<td align="center"><img src="docs/img/moments.png" width="200" alt="Moments feed with audience and seen count"><br><sub>Moments</sub></td>
-<td align="center"><img src="docs/img/group-requests.png" width="200" alt="Group join requests with real people"><br><sub>Group requests</sub></td>
-<td align="center"><img src="docs/img/recovery-code.png" width="200" alt="Recovery code at sign-up"><br><sub>Account recovery</sub></td>
-<td align="center"><img src="docs/img/builder-page.png" width="200" alt="A Builder page with services, prices and booking slots"><br><sub>Builder page</sub></td>
-</tr>
+  <tr>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-chats-day.jpg" width="210" alt="Chats list with Your Day bar, Moments strip, and Circle filters"><br>
+      <sub><b>Chats &amp; Your Day</b><br>Schedule bar, Moments &amp; Circle tabs</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-moments.jpg" width="210" alt="Moments feed scoped to the Close circle"><br>
+      <sub><b>Moments</b><br>Audience per post (Close, Friends, Custom)</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-profiles.jpg" width="210" alt="Profile switcher sheet showing Personal, Work, and Family profiles"><br>
+      <sub><b>Multi-Profile Switcher</b><br>Separate inboxes, handles &amp; unread badges</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-profile-me.jpg" width="210" alt="User profile card with Studio mode, Circles count, and Profiles"><br>
+      <sub><b>Identity &amp; Circles</b><br>Per-profile look, status &amp; circle rules</sub>
+    </td>
+  </tr>
 </table>
 
-Screens rendered from the app's own code with test data.
+### 2. Map, Routing, Meetup Plans, and the Assistant
+Nightpost ships its own **OpenStreetMap vector map** and on-device/OSRM routing engine (`core-geo`, `core-nav`, `core-mobility`) with downloadable offline city packs, public transit timetables (GTFS), road closures with arrival-time impact, parking prices, and Android Auto support.
 
-## What is inside
+Drop a place into a group chat, start a **Meetup Card** (*"I'm in / Maybe / On my way"*), or ask the **Nightpost Assistant** (*"When is everyone free on Saturday?"* or *"Find a quiet café nearby and send it to Marta"*). The assistant drafts actions; only your tap or fingerprint executes them.
 
-| Area | What it does |
-|---|---|
-| **Conversations** | 1:1 chats, groups, channels and spaces. Join requests, invite links, roles, Saved, drafts, pins, voice notes, files of any size, calls with a call log |
-| **People and circles** | Every person appears as a real person: photo, name, handle and mutual people. Circles (close, friends, social, work) decide who sees what |
-| **Profiles** | As many profiles as you need, made from templates (personal, work, family, trip, study, business), each with its own handle, inbox, circles and settings. One tap switches between them |
-| **Moments** | Photo and text posts with an audience per post, a viewer, reactions and seen counts, plus a strip in your day |
-| **Map** | Vector map with its own place index, search, place sheets, routes and transit where open timetables exist. Downloadable country packs |
-| **Your day** | Plans, reminders and what the assistant did for you, in one list |
-| **Wallet** | Send and request money inside a chat, split a bill by dish, Solana Pay, an in-app wallet or an external one (Mobile Wallet Adapter / Seed Vault) |
-| **Points and gifts** | Earned for real activity, spent on gifts. Claims are signed by a separate key |
-| **Builder** | Places, organisers and creators build a page from blocks, take bookings and requests, and publish to the site. The same editor runs on the site and in the app |
-| **Assistant** | Works across chats, map, day and Builder. The server picks the model for each kind of request, so the app never holds a model name or a key |
-| **Backup** | Encrypted snapshot of profile, circles and chats. A new phone restores it |
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-map-place.jpg" width="210" alt="Vector map showing a café place dossier with hours and actions"><br>
+      <sub><b>Map &amp; Place Dossier</b><br>Hours, 1-tap route &amp; share to chat</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-map-route.jpg" width="210" alt="Turn-by-turn route sheet with road closure warning and parking price"><br>
+      <sub><b>Smart Routing</b><br>Timed closures, underground parking &amp; fees</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-meetup-plan.jpg" width="210" alt="Group chat with a live Meetup card and a bill card below"><br>
+      <sub><b>Meetup Card in Chat</b><br>Place, time, RSVP &amp; live status</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-assistant.jpg" width="210" alt="Nightpost Assistant coordinating group availability in chat"><br>
+      <sub><b>Ask Nightpost</b><br>Works across chats, calendar, map &amp; money</sub>
+    </td>
+  </tr>
+</table>
 
-## How it fits
+### 3. Builder: Structured Web + App Pages & Chat-Native CRM
+Unlike Linktree, Wix, or Instagram bios that trap business information in unstructured text or images, **Builder** turns every local venue, studio, creator, or school into a **structured node**:
+- **55+ modular blocks** across *Sell, Book, Classes, Hiring, Delivery, Talk, Pay, and Place* — editable in **Canvas** or **Pro** mode on both desktop (`phantom-os.dev/build`) and mobile.
+- **AI Page Generator:** Describe your business, attach photos and a price sheet, and get a ready-to-publish structured page in seconds.
+- **Chat = CRM:** When a customer books a time slot or asks a question on `/p/:handle`, it lands directly in the owner's Nightpost chat inbox with an AI-prepared reply draft.
+
+<p align="center">
+  <img src="docs/img/builder-showcase.jpg" alt="Nightpost Builder: Desktop 55-block editor paired with the owner's mobile booking inbox" width="100%">
+</p>
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-builder-page.jpg" width="210" alt="Published Builder page for a hair studio with services, prices and slot picker"><br>
+      <sub><b>Live Booking Page (`/p/:handle`)</b><br>Services, prices &amp; real-time slot picker</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-builder-inbox.jpg" width="210" alt="Owner's mobile inbox showing incoming customer bookings and questions"><br>
+      <sub><b>Owner's Booking Inbox</b><br>Bookings &amp; questions arrive straight on phone</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-split-bill.jpg" width="210" alt="Itemized bill split by dish in chat, paid in USDC"><br>
+      <sub><b>Itemized Bill Split</b><br>Tick what you had, pay your share in USDC</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="docs/img/screen-recovery.jpg" width="210" alt="Account recovery code screen"><br>
+      <sub><b>Zero-Knowledge Backup</b><br>Recovery code &amp; client-encrypted snapshot</sub>
+    </td>
+  </tr>
+</table>
+
+### 4. Solana Money, Escrow (`nightpost_bill`), Points & 3D Gifts
+Money between people and local venues is small, frequent, and social. Nightpost uses Solana (currently **devnet** by default; mainnet sits behind an explicit operator & user gate) so transfers settle in seconds for `$0.0005`:
+- **Non-Custodial Keystore & Seed Vault:** Built-in wallet with Ed25519 keys protected by Android Keystore biometrics, plus full **Mobile Wallet Adapter (MWA)**, **Seed Vault**, and **Seeker Genesis Token (SGT)** recognition.
+- **Gasless Fee Sponsor (`sponsor.py` / `Sponsor.kt`):** The server co-signs as fee payer so users only need USDC or EURC — never SOL for gas.
+- **On-Chain Anchor Program (`solana-programs/programs/nightpost_bill`):** Native Rust/Anchor escrow program supporting two modes on SPL tokens:
+  - `Split` mode (1–16 shares): Group bill escrow where shares sit in a PDA vault and auto-settle to the payee when the last share is paid (or refund if cancelled/expired).
+  - `Hold` mode: Single-buyer booking deposit escrow with a configurable cancellation `cutoff` and optional `forfeit_allowed` protection against no-shows.
+- **Activity Points & 3D Gifts:** Users earn points for real activity (meetups, first transfers, invites), signed by an isolated claims key (`ClaimKeyStore`), and redeem them in the in-app 3D Gift & Sticker Store.
+
+<p align="center">
+  <img src="docs/img/gifts-3d.jpg" alt="Nightpost 3D Gifts and Stickers collection in Day and Night themes" width="100%"><br>
+  <sub><b>In-App 3D Gifts &amp; Stickers</b> · Earned via cryptographic activity claims or sent inside conversations</sub>
+</p>
+
+---
+
+## How Nightpost Compares
+
+| Capability | Telegram / WhatsApp | Google Maps + Linktree | Revolut / Splitwise | **Nightpost** |
+|---|---|---|---|---|
+| **Identity & Privacy** | Phone number required; one global profile | Public web / Google account | Full KYC bank account | **No phone number required · Multiple isolated profiles &amp; Circles** |
+| **Group Planning** | Text polls buried in scroll | Share static links back and forth | Manual IOUs after the fact | **Live Meetup Card + Map pin + Itemized USDC split in one thread** |
+| **Local Business Pages** | Unstructured channel posts or bots | Static links; 3rd-party booking fees | Payment links only | **Structured Builder (`/p/:handle`) + 0% fee + Bookings land in chat** |
+| **AI Assistant** | Separate chatbot threads | Keyword search only | Support bot | **Cross-surface Assistant (chats, map, calendar, Builder, wallet drafts)** |
+| **Payments & Escrow** | Platform-locked stars or 3rd-party bots | None | Fiat rails, no programmable escrow | **Self-custodial USDC/EURC + On-chain Split &amp; No-Show Hold Escrow** |
+
+---
+
+## Who Nightpost Is For & Business Model
+
+Nightpost operates as a **two-sided network**: everyday people and groups use the entire messenger, map, and wallet **for free** (creating organic local demand and viral group loops), while solo professionals, venues, and teams pay a simple flat subscription to run their business inside that same flow.
+
+### 1. Customer Segments & Problems Solved
+
+| Segment | The Problem Today | What Nightpost Gives Them |
+|---|---|---|
+| **Everyday People & Friend Groups (B2C · Free)** | Planning one evening takes 6 apps (chat, map, browser, poll, notes, bank app). **46%** of people owed money after a group outing never chase it back because it feels awkward. And phone-number messengers dump family, boss, and strangers into one profile. | **One thread for the whole plan:** drop a place from the vector map, vote on a Meetup Card, and split the bill by dish in USDC inside the group chat — while keeping **Personal, Work, and Family** identities in separate profiles. |
+| **Solo Professionals & Creators (`Studio`)** | Barbers, beauty masters, tutors, trainers, and indie makers pay for Linktree/Wix + Calendly/Fresha + 2–3% card fees while manually answering DMs across 4 apps. | **Structured page (`/p/:handle`) in 60 seconds:** AI generates a booking/shop page from photos and a price sheet; client bookings and questions arrive straight in the Nightpost chat inbox (`Chat = CRM`) with **0% commission on sales**. |
+| **Physical Venues, Teams & Schools (`Place`)** | Cafés, studios, workshops, and local schools suffer from costly **no-shows**, fake unverified web reviews, and complex multi-seat CRM software. | **On-chain no-show deposits (`Hold` escrow):** lock a refundable booking deposit with a cutoff time, issue shift-scoped staff passes (`+€3/staff`), get pinned on the city map, and accept reviews verified by real payment receipts. |
+
+### 2. How Nightpost Makes Money
+
+**People never pay to talk, coordinate plans, or send money to friends — and Nightpost takes 0% cut from business sales.** Revenue comes from four transparent streams:
+
+1. **B2B SaaS Subscriptions (`Studio` & `Place` Plans):**
+   - **Personal (`€0 / forever`):** Full encrypted messenger, multi-profiles & Circles, vector map & routing, self-custodial wallet, P2P transfers, and a personal page.
+   - **Studio (`€9 / month`):** For solo masters, creators, and freelancers — all 55+ structured Builder blocks (booking slots, catalog, classes), AI page generator, customer requests in chat, and extended AI assistant limits.
+   - **Place (`€19 / month` + `€3 / month` per extra staff member):** For physical venues, multi-staff studios, and schools — team shift passes with granular permissions, map venue pin, no-show deposit holds (`nightpost_bill`), and CRM analytics. *(All plans are free during the launch window through 31 Dec 2026).*
+2. **24/7 AI Business Receptionist (Add-On):**
+   Because every Builder page stores structured fields (exact hours, services, prices, free slots, allergens) rather than dead HTML text, the Nightpost Assistant can act as a **24/7 digital employee** — answering customer questions accurately and booking open slots automatically without human intervention.
+3. **Consumer Micro-Transactions (3D Gifts & Look Packs):**
+   Paid 3D collectible gifts, custom sticker packs, and profile Look themes purchased in-app (via Google Play Billing or earned/topped-up points) to send inside conversations and Moments.
+4. **Financial & Wallet Rails:**
+   Zero platform fee on P2P transfers, group bill splits, and merchant checkouts; small spread/service fee only on optional in-wallet token swaps and fiat on/off-ramp conversions.
+
+---
+
+## System Architecture
+
+Nightpost is engineered as a **five-part monorepo** where the native Android shell owns cryptography, storage, sensors, map rendering, and wallet signing, while the embedded React messenger and web platform share a strict design and type contract.
 
 ```mermaid
-flowchart LR
-  subgraph Phone["Android phone"]
-    Web["Messenger (React, in WebView)"]
-    Shell["Kotlin shell<br/>net · solana · ai · map · voice · data"]
-    Wallet["In-app wallet<br/>or MWA / Seed Vault"]
-    Web <--> Shell
-    Shell --> Wallet
+flowchart TB
+  subgraph Client["Android Device (phantom-companion · 26 Gradle Modules)"]
+    direction TB
+    Web["Web Messenger UI (React 18 + TS)<br/>Sealed in APK assets/webmsgr (SHA-256 verified)"]
+    Bridge["Typed JS ↔ Native Bridge (WebMessengerHost)"]
+    CoreNet["core-net · Blind Relay Envelopes<br/>WebRTC Calls · PeerDirectory"]
+    CoreGeo["core-geo · core-nav · core-mobility<br/>MapLibre Vector Map · Offline Packs · OSRM/GTFS"]
+    CoreSol["core-solana · Android Keystore<br/>MWA / Seed Vault · Solana Pay · Sponsor"]
+    CoreAI["core-ai · core-voice · core-memory<br/>On-device Whisper/Vosk STT · Context Engine"]
+    Web <--> Bridge
+    Bridge --> CoreNet & CoreGeo & CoreSol & CoreAI
   end
-  Relay["Blind relay<br/>sealed envelopes"]
-  Other["Another person's phone"]
-  API["api.phantom-os.dev<br/>FastAPI: directory, Builder, points,<br/>assistant, backup, support"]
-  DB[("Postgres")]
-  Site["phantom-os.dev<br/>site + Builder"]
-  Chain[("Solana devnet")]
 
-  Shell -->|sealed| Relay -->|sealed| Other
-  Shell <-->|"directory, points, backup"| API
-  Site <--> API
-  API --- DB
-  Wallet -->|"transfers, Solana Pay"| Chain
-  API -->|"reads transactions itself"| Chain
+  subgraph Desktop["Computer Node (phantom-os/src/backend)"]
+    PC["FastAPI + Desktop Shell<br/>E2E paired with phone (X25519 + Ed25519)"]
+  end
+
+  subgraph Cloud["Backend Infrastructure (platform-site/server · api.phantom-os.dev)"]
+    Relay["Blind Store-and-Forward Relay<br/>Opaque sealed envelopes (7-day TTL)"]
+    API["FastAPI Core Server<br/>@handle Directory · Builder Engine & Bookings<br/>AI Model Router · Points & Gift Store · Encrypted Backup"]
+    DB[("PostgreSQL + SQLite<br/>Venues & Points")]
+    API --- DB
+  end
+
+  subgraph WebSite["Public Web (platform-site · phantom-os.dev)"]
+    Site["Product Site · Web Builder Editor (Canvas + Pro)<br/>Public Live Pages (/p/:handle) · Account Cabinet"]
+  end
+
+  subgraph Blockchain["Solana Network (solana-programs · Devnet)"]
+    SPL["SPL Token (USDC · EURC · SOL) + SPL Memo"]
+    Escrow["nightpost_bill Anchor Program<br/>PDA Vaults: Group Split & Booking Hold Escrow"]
+  end
+
+  CoreNet ===>|"E2E Sealed Blob"| Relay
+  CoreNet <-->|"Direct LAN / E2E"| PC
+  CoreNet <-->|"Directory, Builder, Backup, AI"| API
+  Site <-->|"REST + QR Sign-In"| API
+  CoreSol ===>|"Signed Tx / Fee Sponsor"| SPL & Escrow
+  API -.->|"Verifies Tx on-chain via RPC"| SPL & Escrow
 ```
 
-More in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Deep-dive documentation:
+- **[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)** — Module breakdown, phone-to-relay envelope flow, and server subsystems.
+- **[`docs/SECURITY.md`](docs/SECURITY.md)** — Threat boundaries, hardware-backed keystore isolation, blind relay guarantees, and bundle sealing.
+- **[`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md)** — Build instructions, `gate.sh` test runner, web bundle seal workflow, and release pipeline.
+- **[`docs/brand/BRAND.md`](docs/brand/BRAND.md)** — Brand identity, *"Warm Night / Deep Ink"* token specification (`#0A0C10` canvas, `#F2A93B` amber accent), and typography.
 
-## Repository map
+---
 
-| Path | What | Stack |
+## Repository Map
+
+| Directory | Component | Tech Stack & Scope |
 |---|---|---|
-| [`phantom-companion/`](phantom-companion) | Android app: shell, 26 modules (`core-*`, `feature-*`, `app`) | Kotlin, Compose, Gradle 8.11, AGP 8.7 |
-| [`phantom-os/src/frontend`](phantom-os/src/frontend) | Messenger UI that ships inside the APK | React 18, Vite 5, TypeScript |
-| [`phantom-os/src/backend`](phantom-os/src/backend) | Computer node: the same account on a desktop | Python 3.11, FastAPI |
-| [`platform-site/`](platform-site) | Site, Builder editor, and the API server (`server/`) | React + Vite, FastAPI |
-| [`solana-programs/`](solana-programs) | On-chain programs | Rust, Anchor (devnet) |
+| [`phantom-companion/`](phantom-companion) | **Android Application** | Kotlin 2.0, Jetpack Compose, Gradle 8.11, AGP 8.7, `targetSdk 36`, `minSdk 29`. **26 modules** (`app` with `field`/`store` flavors, 18 `core-*` modules, 6 `feature-*` modules, `wear`) |
+| [`phantom-os/src/frontend/`](phantom-os/src/frontend) | **Messenger & App UI** | React 18, TypeScript strict, Vite 5, Tailwind/Design Tokens. Compiles to `dist-phone` and ships inside the APK (`assets/webmsgr`) with a cryptographic SHA-256 build seal |
+| [`phantom-os/src/backend/`](phantom-os/src/backend) | **Computer Node & AI Runtime** | Python 3.11, FastAPI, SQLAlchemy 2 async, ChromaDB, multi-tier STT/TTS voice pipeline, local/cloud AI router, paired E2E with the phone |
+| [`platform-site/`](platform-site) | **Web Platform & Builder** | React + Vite (`src/`): `phantom-os.dev` marketing site, 55-block Builder editor (`Canvas` & `Pro`), public `/p/:handle` venue renderer, user cabinet |
+| [`platform-site/server/`](platform-site/server) | **Cloud API & Blind Relay** | Python 3.11, FastAPI, PostgreSQL: `@handle` directory, blind envelope relay, Builder API & bookings, fee sponsor (`sponsor.py`), points & 3D gift store, encrypted backup vault, support desk |
+| [`solana-programs/`](solana-programs) | **On-Chain Escrow Program** | Rust, Anchor (`nightpost_bill`), LiteSVM integration tests: PDA-based group bill `Split` (up to 16 shares) and booking deposit `Hold` with cutoff/forfeit rules |
 
-Internal code paths still use the early code name `phantom`; the product is Nightpost.
+*Note: Internal package names and directory paths retain the early engineering codename `phantom`; the user-facing product and brand is **Nightpost**.*
 
-## How we build it
+---
 
-- **A change ships with its proof.** Every change needs a test that fails without it, and the new code must be reachable from a real entry point on the phone.
-- **The messenger bundle is sealed.** The web bundle in the APK is a committed artifact, built from a clean commit and stamped with a content hash. Gradle refuses to package a bundle that does not match its seal.
-- **One gate.** `scripts/gate.sh` runs the module tests from fresh JUnit reports. A module with zero tests or a stale report is red even when Gradle reports success.
-- **Nothing invented in the UI.** When there is no data, the screen says so honestly. A control either works end to end or has no entry point.
-- **Keys never ship.** No provider key, model name or secret goes into the APK. The server holds them, and the repository holds only `*.env.example` files with empty values.
+## Engineering Discipline & Verification Gates
 
-## Build and test
+Nightpost is built under strict, automated engineering invariants (~1.09M lines of code across ~2,800 test files):
 
+1. **Cryptographic Web Bundle Seal (`verify<Variant>WebBundleSeal`):**
+   The React messenger inside the APK (`app/src/main/assets/webmsgr`) is never edited by hand. [`sync_web_messenger.sh`](phantom-companion/scripts/sync_web_messenger.sh) builds `build:phone` from a **clean git tree** of the target commit and writes `BUNDLE_SOURCE` containing `web_sha` and `content_sha256`. Gradle verifies this hash on every APK/AAB build and refuses to package an unsealed or drifted bundle.
+2. **Zero-Tolerance Test Gate (`scripts/gate.sh`):**
+   [`gate.sh`](phantom-companion/scripts/gate.sh) acquires a machine `flock`, clears stale configuration caches, runs unit/Robolectric tests, and parses **fresh JUnit XML reports**. A module with zero executed tests or a stale XML timestamp fails the gate even if Gradle prints `BUILD SUCCESSFUL`.
+3. **No Invented UI or Silent Fallbacks:**
+   Every screen implements explicit Empty, Loading, Error, and Offline states. No API keys, model names, or provider secrets are ever compiled into the APK.
+4. **On-Chain Truth Verification:**
+   The backend never trusts client-reported payment statuses; it fetches and verifies finalized SPL Token and `nightpost_bill` transactions directly from Solana RPC nodes.
+
+---
+
+## Quick Start: Build & Test
+
+### 1. Android App (`phantom-companion`)
+Requires JDK 17 and Android SDK 34/36.
 ```bash
-# Android
 cd phantom-companion
+
+# Run the verification gate on app flavors (field + store)
 bash scripts/gate.sh :app:testFieldDebugUnitTest :app:testStoreDebugUnitTest
+
+# Run Solana wallet & escrow unit tests
+bash scripts/gate.sh :core-solana:testDebugUnitTest
+
+# Assemble the debug APK (verifies the webmsgr SHA-256 seal automatically)
 bash scripts/gate.sh :app:assembleFieldDebug
-
-# Messenger
-cd phantom-os/src/frontend && npm ci && npx vitest run && npm run typecheck
-
-# Site and server
-cd platform-site && npm ci && npm run build
-cd server && python -m pytest tests -q
 ```
 
-Full setup, the bundle seal and release steps are in [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md). Security model: [docs/SECURITY.md](docs/SECURITY.md).
+### 2. Messenger UI (`phantom-os/src/frontend`)
+```bash
+cd phantom-os/src/frontend
+npm ci
+npx vitest run          # Unit & component test suite
+npm run typecheck       # Strict TypeScript check (tsc --noEmit)
+npm run build:phone     # Production bundle for Android WebView
+```
 
-## Licence
+### 3. Platform Site, Builder & Cloud Server (`platform-site`)
+```bash
+cd platform-site
+npm ci && npm run typecheck && npm run build
 
-Proprietary. All rights reserved. See [LICENSE](LICENSE).
+cd server
+python3 -m pytest tests/ -q
+```
+
+### 4. Solana Escrow Program (`solana-programs`)
+```bash
+cd solana-programs
+anchor build
+cargo test --test escrow
+```
+
+---
+
+## License
+
+Proprietary — © 2026 Kyrylo Myloserdov. All rights reserved. See [LICENSE](LICENSE).
