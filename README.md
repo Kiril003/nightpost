@@ -48,46 +48,46 @@ At the top of your chat list sits **Your Day** — pulling together your current
 <table>
   <tr>
     <td align="center" width="25%">
-      <img src="docs/img/screen-chats-day.jpg" width="210" alt="Chats list with Your Day bar, Moments strip, and Circle filters"><br>
-      <sub><b>Chats &amp; Your Day</b><br>Schedule bar, Moments &amp; Circle tabs</sub>
+      <img src="docs/img/screen-chats-day.jpg" width="210" alt="Chats list with pinned USDC reminder, Moments strip, and Circle tabs"><br>
+      <sub><b>Chats &amp; Circles</b><br>Pinned reminders, Moments &amp; Circle tabs</sub>
     </td>
     <td align="center" width="25%">
-      <img src="docs/img/screen-moments.jpg" width="210" alt="Moments feed scoped to the Close circle"><br>
-      <sub><b>Moments</b><br>Audience per post (Close, Friends, Custom)</sub>
+      <img src="docs/img/screen-moments.jpg" width="210" alt="Your Day schedule sheet with 1-tap Pay €20.00 debt reminder and evening plans"><br>
+      <sub><b>Your Day &amp; Debts</b><br>Schedule sheet, 1-tap debt pay &amp; plans</sub>
     </td>
     <td align="center" width="25%">
-      <img src="docs/img/screen-profiles.jpg" width="210" alt="Profile switcher sheet showing Personal, Work, and Family profiles"><br>
-      <sub><b>Multi-Profile Switcher</b><br>Separate inboxes, handles &amp; unread badges</sub>
+      <img src="docs/img/screen-profiles.jpg" width="210" alt="1-tap radial profile switcher fan showing Work, Family, and Hobby profiles"><br>
+      <sub><b>1-Tap Profile Fan</b><br>Switch Work, Family &amp; Hobby inboxes</sub>
     </td>
     <td align="center" width="25%">
-      <img src="docs/img/screen-profile-me.jpg" width="210" alt="User profile card with Studio mode, Circles count, and Profiles"><br>
-      <sub><b>Identity &amp; Circles</b><br>Per-profile look, status &amp; circle rules</sub>
+      <img src="docs/img/screen-profile-me.jpg" width="210" alt="User profile screen with topographic relief header, Circles, QR code, and linked devices"><br>
+      <sub><b>Identity &amp; Devices</b><br>Circles, QR code, privacy &amp; PC pairing</sub>
     </td>
   </tr>
 </table>
 
 ### 2. Map, Routing, Meetup Plans, and the Assistant
-Nightpost ships its own **OpenStreetMap vector map** and on-device/OSRM routing engine (`core-geo`, `core-nav`, `core-mobility`) with downloadable offline city packs, public transit timetables (GTFS), road closures with arrival-time impact, parking prices, and Android Auto support.
+Nightpost ships its own **OpenStreetMap 3D vector map** and on-device/OSRM routing engine (`core-geo`, `core-nav`, `core-mobility`) with 3D extruded buildings, downloadable offline city packs, public transit timetables (GTFS), road closures with arrival-time impact, parking prices, and Android Auto support.
 
-Drop a place into a group chat, start a **Meetup Card** (*"I'm in / Maybe / On my way"*), or ask the **Nightpost Assistant** (*"When is everyone free on Saturday?"* or *"Find a quiet café nearby and send it to Marta"*). The assistant drafts actions; only your tap or fingerprint executes them.
+Tap any venue on the 3D map to open its live **Place Dossier**, drop a **Meetup Card** (*"I'm in / I'm out"*) into a group chat, or ask the **Nightpost Assistant** to summarize unread messages, find a free evening slot, or draft a split. The assistant drafts actions; only your tap or fingerprint executes them.
 
 <table>
   <tr>
     <td align="center" width="25%">
-      <img src="docs/img/screen-map-place.jpg" width="210" alt="Vector map showing a café place dossier with hours and actions"><br>
-      <sub><b>Map &amp; Place Dossier</b><br>Hours, 1-tap route &amp; share to chat</sub>
+      <img src="docs/img/screen-map-place.jpg" width="210" alt="Live Galaxy A52 capture: 3D vector map in Ostrava with Pizzerie na kolejích place dossier"><br>
+      <sub><b>3D Map &amp; Place Dossier</b><br>Live 3D buildings, distance &amp; meet-here</sub>
     </td>
     <td align="center" width="25%">
-      <img src="docs/img/screen-map-route.jpg" width="210" alt="Turn-by-turn route sheet with road closure warning and parking price"><br>
-      <sub><b>Smart Routing</b><br>Timed closures, underground parking &amp; fees</sub>
+      <img src="docs/img/screen-map-route.jpg" width="210" alt="Live Galaxy A52 capture: 3D extruded campus buildings and nearby venues on MapLibre"><br>
+      <sub><b>3D Vector City Map</b><br>Extruded buildings, venues &amp; offline packs</sub>
     </td>
     <td align="center" width="25%">
-      <img src="docs/img/screen-meetup-plan.jpg" width="210" alt="Group chat with a live Meetup card and a bill card below"><br>
-      <sub><b>Meetup Card in Chat</b><br>Place, time, RSVP &amp; live status</sub>
+      <img src="docs/img/screen-meetup-plan.jpg" width="210" alt="Group chat Dinner at Lantern Kitchen with a live Meetup card and RSVP avatars"><br>
+      <sub><b>Meetup Card in Chat</b><br>Venue, time, 1-tap RSVP &amp; route</sub>
     </td>
     <td align="center" width="25%">
-      <img src="docs/img/screen-assistant.jpg" width="210" alt="Nightpost Assistant coordinating group availability in chat"><br>
-      <sub><b>Ask Nightpost</b><br>Works across chats, calendar, map &amp; money</sub>
+      <img src="docs/img/screen-assistant.jpg" width="210" alt="Nightpost Assistant bottom sheet summarizing 5 unread messages in a neighborhood chat"><br>
+      <sub><b>Ask Nightpost</b><br>Unread digest, schedule &amp; chat actions</sub>
     </td>
   </tr>
 </table>
@@ -96,29 +96,29 @@ Drop a place into a group chat, start a **Meetup Card** (*"I'm in / Maybe / On m
 Unlike Linktree, Wix, or Instagram bios that trap business information in unstructured text or images, **Builder** turns every local venue, studio, creator, or school into a **structured node**:
 - **55+ modular blocks** across *Sell, Book, Classes, Hiring, Delivery, Talk, Pay, and Place* — editable in **Canvas** or **Pro** mode on both desktop (`phantom-os.dev/build`) and mobile.
 - **AI Page Generator:** Describe your business, attach photos and a price sheet, and get a ready-to-publish structured page in seconds.
-- **Chat = CRM:** When a customer books a time slot or asks a question on `/p/:handle`, it lands directly in the owner's Nightpost chat inbox with an AI-prepared reply draft.
+- **Chat = CRM:** When a customer books a time slot or asks a question on `/p/:handle`, it lands directly in the owner's Nightpost chat inbox with shift-scoped staff controls.
 
 <p align="center">
-  <img src="docs/img/builder-showcase.jpg" alt="Nightpost Builder: Desktop 55-block editor paired with the owner's mobile booking inbox" width="100%">
+  <img src="docs/img/builder-showcase.jpg" alt="Nightpost Builder: Desktop Pro editor with live map preview paired with mobile /p/alma page and staff inbox" width="100%">
 </p>
 
 <table>
   <tr>
     <td align="center" width="25%">
-      <img src="docs/img/screen-builder-page.jpg" width="210" alt="Published Builder page for a hair studio with services, prices and slot picker"><br>
-      <sub><b>Live Booking Page (`/p/:handle`)</b><br>Services, prices &amp; real-time slot picker</sub>
+      <img src="docs/img/screen-builder-page.jpg" width="210" alt="Published Builder page /p/alma for Alma Brandt Ceramics with batch stock counter and social proof"><br>
+      <sub><b>Live Studio Page (`/p/alma`)</b><br>Batch stock counter, social proof &amp; shop</sub>
     </td>
     <td align="center" width="25%">
-      <img src="docs/img/screen-builder-inbox.jpg" width="210" alt="Owner's mobile inbox showing incoming customer bookings and questions"><br>
-      <sub><b>Owner's Booking Inbox</b><br>Bookings &amp; questions arrive straight on phone</sub>
+      <img src="docs/img/screen-builder-inbox.jpg" width="210" alt="AI Builder readiness checklist for Clay Studio showing services, masters, hours, 20% deposit, and EURC pricing"><br>
+      <sub><b>AI Page Readiness</b><br>Services, 20% deposit &amp; EURC price check</sub>
     </td>
     <td align="center" width="25%">
-      <img src="docs/img/screen-split-bill.jpg" width="210" alt="Itemized bill split by dish in chat, paid in USDC"><br>
-      <sub><b>Itemized Bill Split</b><br>Tick what you had, pay your share in USDC</sub>
+      <img src="docs/img/screen-split-bill.jpg" width="210" alt="Multi-currency EURC and USDC wallet with topographic card relief, Split button, and Debts tracker"><br>
+      <sub><b>EURC &amp; USDC Wallet</b><br>Topographic cards, Debts &amp; 1-tap Split</sub>
     </td>
     <td align="center" width="25%">
-      <img src="docs/img/screen-recovery.jpg" width="210" alt="Account recovery code screen"><br>
-      <sub><b>Zero-Knowledge Backup</b><br>Recovery code &amp; client-encrypted snapshot</sub>
+      <img src="docs/img/screen-recovery.jpg" width="210" alt="In-chat Gift picker sheet with warm notes and collectible gifts"><br>
+      <sub><b>In-Chat Gift Picker</b><br>Send a warm note or gift inside any chat</sub>
     </td>
   </tr>
 </table>
@@ -133,8 +133,8 @@ Money between people and local venues is small, frequent, and social. Nightpost 
 - **Activity Points & 3D Gifts:** Users earn points for real activity (meetups, first transfers, invites), signed by an isolated claims key (`ClaimKeyStore`), and redeem them in the in-app 3D Gift & Sticker Store.
 
 <p align="center">
-  <img src="docs/img/gifts-3d.jpg" alt="Nightpost 3D Gifts and Stickers collection in Day and Night themes" width="100%"><br>
-  <sub><b>In-App 3D Gifts &amp; Stickers</b> · Earned via cryptographic activity claims or sent inside conversations</sub>
+  <img src="docs/img/gifts-3d.jpg" alt="Nightpost 3D Collectibles, Stickers, and Profile Gift Shelf showcase" width="100%"><br>
+  <sub><b>In-App 3D Gifts &amp; Stickers</b> · Interactive unwrap in chat, profile gift shelf, and creator editions</sub>
 </p>
 
 ---
