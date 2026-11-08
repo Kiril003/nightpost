@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Nightpost mark colour, day: accent-line #A9680A (amber as a mark on light ground).
-     ic_launcher_background (#0A0C10) already exists in the app's values/colors.xml; do not define it twice. -->
-<resources>
-    <color name="brand_mark">#A9680A</color>
-</resources>
