@@ -1,0 +1,10 @@
+# capture	kicker	title	sub   (captures: 1080x2400 from the SUBMITTED APK, night theme, English UI, demo contacts only)
+captures/01-chats.png	Messenger	Talk when the internet is down.	Phones on the same Wi-Fi reach each other directly. No account, no phone number.
+captures/02-conversation.png	Messenger	Sealed until it arrives.	If someone is away, the message waits on our server for up to 7 days. The server cannot read it.
+captures/03-route.png	Map	Directions without a network.	Download a road pack once. Your phone finds the way on foot or by car.
+captures/04-shelters.png	Map	Alerts and shelters nearby.	Air-raid alerts and the nearest shelters, with status confirmed by people.
+captures/05-wallet.png	Money · test network	Your keys stay on your phone.	12 words, every signature behind your fingerprint. Starts on devnet, Solana's test network.
+captures/06-pay.png	Money · test network	Pay a person, not an address.	Send SOL, USDC or EURC inside a conversation. Test money by default.
+captures/07-seal.png	Proof	Seal a file.	Only its fingerprint goes on-chain. The file stays on your phone.
+# ONLY IF the submitted APK passes a two-phone run (see listing.md):
+# captures/08-cash.png	Money · test network	Cash without internet.	Hand a signed note to a phone nearby. Whoever gets online first settles it.

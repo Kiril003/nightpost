@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nightpost preview frame</title>
+<!--
+  dApp Store preview frame, 1080 x 2400 (portal: 4-8 images, all the same size,
+  >= 1080 px on both sides; JPG/PNG <= 3 MB). Wraps ONE real capture from the
+  submitted APK. Never put a mock-up or an invented screen in here.
+
+  Query: ?shot=<path to a 1080x2400 capture, relative to this file>
+         &kicker=<one or two words>&title=<the line>&sub=<one plain sentence>
+  Render: bash render.sh frames.en.tsv ../previews/en   (one browser, under the machine lock)
+-->
+<style>
+  @font-face {
+    font-family: "Manrope";
+    src: url("../../src/fonts/Manrope.ttf") format("truetype");
+    font-weight: 200 800;
+    font-display: block;
+  }
+  :root {
+    /* tokens v1.2.0, night */
+    --canvas: #0A0C10; --surface: #12151B; --line: #232831; --line-strong: #343B47;
+    --text: #F4F1EC; --text-2: #B6BCC6; --text-3: #939AA6; --accent-text: #F5B24A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 2400px; overflow: hidden; background: var(--canvas); }
+  body {
+    position: relative;
+    font-family: "Manrope", system-ui, sans-serif;
+    color: var(--text);
+    background: var(--canvas) url("relief-1080x2400.jpg") center top / 1080px 2400px no-repeat;
+    -webkit-font-smoothing: antialiased;
+  }
+  .copy { position: absolute; left: 112px; right: 112px; top: 132px; }
+  .kicker { font-size: 32px; line-height: 40px; font-weight: 600; color: var(--accent-text); }
+  h1 {
+    margin-top: 22px; font-size: 78px; line-height: 84px; font-weight: 700; letter-spacing: -0.02em;
+    text-wrap: balance; max-height: 168px; overflow: hidden;
+  }
+  .sub {
+    margin-top: 26px; font-size: 34px; line-height: 46px; font-weight: 500; color: var(--text-2);
+    text-wrap: pretty; max-height: 92px; overflow: hidden;
+  }
+  /* the capture: 0.7 of the phone, on one surface step, hairline, no shadow (night elevates by surface, not shadow) */
+  .plate {
+    position: absolute; left: 148px; top: 616px; width: 784px; height: 1708px;
+    padding: 14px; border-radius: 58px; background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .screen {
+    display: block; width: 756px; height: 1680px; border-radius: 44px; overflow: hidden;
+    box-shadow: 0 0 0 1px var(--line-strong);
+    background: var(--canvas);
+  }
+  .screen img { display: block; width: 756px; height: 1680px; object-fit: cover; object-position: top; }
+  .slot {
+    display: grid; place-content: center; gap: 14px; text-align: center; height: 100%;
+    border: 2px dashed var(--line-strong); border-radius: 44px; color: var(--text-3);
+    font-size: 30px; line-height: 40px; font-weight: 500;
+  }
+  .slot b { color: var(--text-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <p class="kicker" id="kicker">Messenger</p>
+    <h1 id="title">Talk when the internet is down.</h1>
+    <p class="sub" id="sub">Phones on the same Wi-Fi reach each other directly. No account, no phone number.</p>
+  </div>
+  <div class="plate"><div class="screen" id="screen">
+    <div class="slot"><b>1080 × 2400</b><span>real capture from the submitted APK</span></div>
+  </div></div>
+<script>
+  const q = new URLSearchParams(location.search);
+  for (const k of ['kicker', 'title', 'sub']) if (q.has(k)) document.getElementById(k).textContent = q.get(k);
+  if (q.get('shot')) {
+    const img = new Image();
+    img.alt = '';
+    img.src = q.get('shot');
+    const s = document.getElementById('screen');
+    s.replaceChildren(img);
+  }
+  document.documentElement.lang = q.get('lang') || 'en';
+</script>
+</body>
+</html>
